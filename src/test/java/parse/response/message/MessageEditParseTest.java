@@ -1,10 +1,10 @@
 package parse.response.message;
 
-import bots.longpoll.sdk.converters.updates.UpdateResponseConverterImpl;
-import bots.longpoll.sdk.model.messages.Message;
-import bots.longpoll.sdk.model.update.Update;
-import bots.longpoll.sdk.model.update.UpdateObject;
-import bots.longpoll.sdk.model.update.UpdateResponse;
+import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.model.objects.basic.Message;
+import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.response.events.GetEventsResult;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -20,25 +20,25 @@ public class MessageEditParseTest extends AbstractParseTest {
 	@Test
 	public void test1_messageEdit() throws IOException {
 		JsonObject jsonObject = readJson("json/response/message_edit/message_edit_sample_5_110.json");
-		UpdateResponse updateResponse = new UpdateResponseConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(updateResponse);
-		Assert.assertEquals(Integer.valueOf(2611), updateResponse.getTs());
+		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		Assert.assertNotNull(getEventsResult);
+		Assert.assertEquals(Integer.valueOf(2611), getEventsResult.getTs());
 
-		List<Update> updates = updateResponse.getUpdates();
-		Assert.assertNotNull(updates);
-		Assert.assertEquals(1, updates.size());
+		List<Event> events = getEventsResult.getEvents();
+		Assert.assertNotNull(events);
+		Assert.assertEquals(1, events.size());
 
-		Update update = updates.get(0);
-		Assert.assertNotNull(update);
-		Assert.assertEquals("message_edit", update.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), update.getGroupId());
-		Assert.assertEquals("6517aa2171da46748a39a44166a7c775777b9f25", update.getEventId());
+		Event event = events.get(0);
+		Assert.assertNotNull(event);
+		Assert.assertEquals("message_edit", event.getType());
+		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
+		Assert.assertEquals("6517aa2171da46748a39a44166a7c775777b9f25", event.getEventId());
 
-		UpdateObject updateObject = update.getObject();
-		Assert.assertNotNull(updateObject);
+		EventObject eventObject = event.getObject();
+		Assert.assertNotNull(eventObject);
 
-		Assert.assertTrue(updateObject instanceof Message);
-		Message message = (Message) updateObject;
+		Assert.assertTrue(eventObject instanceof Message);
+		Message message = (Message) eventObject;
 		Assert.assertNotNull(message);
 		Assert.assertEquals(Integer.valueOf(1594282377), message.getDate());
 		Assert.assertEquals(Integer.valueOf(-168975658), message.getFromId());

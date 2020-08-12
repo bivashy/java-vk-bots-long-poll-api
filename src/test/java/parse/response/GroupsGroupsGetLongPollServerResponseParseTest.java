@@ -1,8 +1,8 @@
 package parse.response;
 
-import bots.longpoll.sdk.converters.StringToJsonConverterImpl;
-import bots.longpoll.sdk.converters.groups.GroupsGetLongPollServerResponseConverterImpl;
-import bots.longpoll.sdk.model.groups.GroupsGetLongPollServerResponse;
+import api.longpoll.bots.converters.StringToJsonConverterImpl;
+import api.longpoll.bots.converters.groups.GroupsGetLongPollServerResponseConverterImpl;
+import api.longpoll.bots.model.groups.GroupsGetLongPollServerResponse;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;

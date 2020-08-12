@@ -1,10 +1,10 @@
 package parse.response.wall;
 
-import bots.longpoll.sdk.converters.updates.UpdateResponseConverterImpl;
-import bots.longpoll.sdk.model.update.Update;
-import bots.longpoll.sdk.model.update.UpdateObject;
-import bots.longpoll.sdk.model.update.UpdateResponse;
-import bots.longpoll.sdk.model.wall.reply.WallReplyDeleteUpdate;
+import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.response.events.GetEventsResult;
+import api.longpoll.bots.model.wall.reply.WallReplyDeleteEvent;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -20,24 +20,24 @@ public class WallReplyDeleteParseTest extends AbstractParseTest {
 	@Test
 	public void test1_wallReplyDelete() throws IOException {
 		JsonObject jsonObject = readJson("json/response/wall_reply_delete/wall_reply_delete_sample_5_110.json");
-		UpdateResponse updateResponse = new UpdateResponseConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(updateResponse);
-		Assert.assertEquals(Integer.valueOf(2633), updateResponse.getTs());
+		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		Assert.assertNotNull(getEventsResult);
+		Assert.assertEquals(Integer.valueOf(2633), getEventsResult.getTs());
 
-		List<Update> updates = updateResponse.getUpdates();
-		Assert.assertNotNull(updates);
-		Assert.assertFalse(updates.isEmpty());
+		List<Event> events = getEventsResult.getEvents();
+		Assert.assertNotNull(events);
+		Assert.assertFalse(events.isEmpty());
 
-		Update update = updates.get(0);
-		Assert.assertNotNull(update);
-		Assert.assertEquals("wall_reply_delete", update.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), update.getGroupId());
-		Assert.assertEquals("c9acacdf064098f14c65b698290b4b103a4b9525", update.getEventId());
+		Event event = events.get(0);
+		Assert.assertNotNull(event);
+		Assert.assertEquals("wall_reply_delete", event.getType());
+		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
+		Assert.assertEquals("c9acacdf064098f14c65b698290b4b103a4b9525", event.getEventId());
 
-		UpdateObject updateObject = update.getObject();
-		Assert.assertTrue(updateObject instanceof WallReplyDeleteUpdate);
+		EventObject eventObject = event.getObject();
+		Assert.assertTrue(eventObject instanceof WallReplyDeleteEvent);
 
-		WallReplyDeleteUpdate wallReplyDeleteUpdate = (WallReplyDeleteUpdate) updateObject;
+		WallReplyDeleteEvent wallReplyDeleteUpdate = (WallReplyDeleteEvent) eventObject;
 		Assert.assertEquals(Integer.valueOf(-168975658), wallReplyDeleteUpdate.getOwnerId());
 		Assert.assertEquals(Integer.valueOf(4), wallReplyDeleteUpdate.getId());
 		Assert.assertEquals(Integer.valueOf(381980625), wallReplyDeleteUpdate.getDeleterId());

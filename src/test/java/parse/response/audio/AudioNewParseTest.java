@@ -1,10 +1,10 @@
 package parse.response.audio;
 
-import bots.longpoll.sdk.converters.updates.UpdateResponseConverterImpl;
-import bots.longpoll.sdk.model.audio.Audio;
-import bots.longpoll.sdk.model.update.Update;
-import bots.longpoll.sdk.model.update.UpdateObject;
-import bots.longpoll.sdk.model.update.UpdateResponse;
+import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.model.audio.Audio;
+import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.response.events.GetEventsResult;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -20,25 +20,25 @@ public class AudioNewParseTest extends AbstractParseTest {
 	@Test
 	public void test1_audioNew() throws IOException {
 		JsonObject jsonObject = readJson("json/response/audio_new/audio_new_sample_5_110.json");
-		UpdateResponse updateResponse = new UpdateResponseConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(updateResponse);
-		Assert.assertEquals(Integer.valueOf(2618), updateResponse.getTs());
+		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		Assert.assertNotNull(getEventsResult);
+		Assert.assertEquals(Integer.valueOf(2618), getEventsResult.getTs());
 
-		List<Update> updates = updateResponse.getUpdates();
-		Assert.assertNotNull(updates);
-		Assert.assertEquals(1, updates.size());
+		List<Event> events = getEventsResult.getEvents();
+		Assert.assertNotNull(events);
+		Assert.assertEquals(1, events.size());
 
-		Update update = updates.get(0);
-		Assert.assertNotNull(update);
-		Assert.assertEquals("audio_new", update.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), update.getGroupId());
-		Assert.assertEquals("35a535e65e5b35837a0fc0c07f26e2d0cf11450a", update.getEventId());
+		Event event = events.get(0);
+		Assert.assertNotNull(event);
+		Assert.assertEquals("audio_new", event.getType());
+		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
+		Assert.assertEquals("35a535e65e5b35837a0fc0c07f26e2d0cf11450a", event.getEventId());
 
-		UpdateObject updateObject = update.getObject();
-		Assert.assertNotNull(updateObject);
+		EventObject eventObject = event.getObject();
+		Assert.assertNotNull(eventObject);
 
-		Assert.assertTrue(updateObject instanceof Audio);
-		Audio audio = (Audio) updateObject;
+		Assert.assertTrue(eventObject instanceof Audio);
+		Audio audio = (Audio) eventObject;
 		Assert.assertEquals("Rick Astley", audio.getArtist());
 		Assert.assertEquals(Integer.valueOf(456239017), audio.getId());
 		Assert.assertEquals(Integer.valueOf(-168975658), audio.getOwnerId());

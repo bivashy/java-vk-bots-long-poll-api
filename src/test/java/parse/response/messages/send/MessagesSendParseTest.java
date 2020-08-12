@@ -1,7 +1,7 @@
 package parse.response.messages.send;
 
-import bots.longpoll.sdk.converters.messages.MessagesSendResponseConverterImpl;
-import bots.longpoll.sdk.model.messages.MessagesSendResponse;
+import api.longpoll.bots.converters.messages.MessagesSendResponseConverterImpl;
+import api.longpoll.bots.model.messages.MessagesSendResponse;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;

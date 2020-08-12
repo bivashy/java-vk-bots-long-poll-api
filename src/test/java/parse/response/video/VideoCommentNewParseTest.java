@@ -1,11 +1,11 @@
 package parse.response.video;
 
-import bots.longpoll.sdk.converters.updates.UpdateResponseConverterImpl;
-import bots.longpoll.sdk.model.update.Update;
-import bots.longpoll.sdk.model.update.UpdateObject;
-import bots.longpoll.sdk.model.update.UpdateResponse;
-import bots.longpoll.sdk.model.video.VideoCommentUpdate;
-import bots.longpoll.sdk.model.wall.reply.Thread;
+import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.response.events.GetEventsResult;
+import api.longpoll.bots.model.video.VideoCommentEvent;
+import api.longpoll.bots.model.wall.reply.Thread;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -21,25 +21,25 @@ public class VideoCommentNewParseTest extends AbstractParseTest {
 	@Test
 	public void test1_videoCommentNew() throws IOException {
 		JsonObject jsonObject = readJson("json/response/video_comment_new/video_comment_new_sample_5_110.json");
-		UpdateResponse updateResponse = new UpdateResponseConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(updateResponse);
-		Assert.assertEquals(Integer.valueOf(2619), updateResponse.getTs());
+		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		Assert.assertNotNull(getEventsResult);
+		Assert.assertEquals(Integer.valueOf(2619), getEventsResult.getTs());
 
-		List<Update> updates = updateResponse.getUpdates();
-		Assert.assertNotNull(updates);
-		Assert.assertEquals(1, updates.size());
+		List<Event> events = getEventsResult.getEvents();
+		Assert.assertNotNull(events);
+		Assert.assertEquals(1, events.size());
 
-		Update update = updates.get(0);
-		Assert.assertNotNull(update);
-		Assert.assertEquals("video_comment_new", update.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), update.getGroupId());
-		Assert.assertEquals("a4f2f918304676aeff8825cfe55a20f5a9a7547d", update.getEventId());
+		Event event = events.get(0);
+		Assert.assertNotNull(event);
+		Assert.assertEquals("video_comment_new", event.getType());
+		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
+		Assert.assertEquals("a4f2f918304676aeff8825cfe55a20f5a9a7547d", event.getEventId());
 
-		UpdateObject updateObject = update.getObject();
-		Assert.assertNotNull(updateObject);
+		EventObject eventObject = event.getObject();
+		Assert.assertNotNull(eventObject);
 
-		Assert.assertTrue(updateObject instanceof VideoCommentUpdate);
-		VideoCommentUpdate videoCommentUpdate = (VideoCommentUpdate) updateObject;
+		Assert.assertTrue(eventObject instanceof VideoCommentEvent);
+		VideoCommentEvent videoCommentUpdate = (VideoCommentEvent) eventObject;
 		Assert.assertEquals(Integer.valueOf(1), videoCommentUpdate.getId());
 		Assert.assertEquals(Integer.valueOf(381980625), videoCommentUpdate.getFromId());
 		Assert.assertEquals(Integer.valueOf(1594823317), videoCommentUpdate.getDate());

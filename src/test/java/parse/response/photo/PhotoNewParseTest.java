@@ -1,11 +1,11 @@
 package parse.response.photo;
 
-import bots.longpoll.sdk.converters.updates.UpdateResponseConverterImpl;
-import bots.longpoll.sdk.model.photos.Photo;
-import bots.longpoll.sdk.model.photos.Size;
-import bots.longpoll.sdk.model.update.Update;
-import bots.longpoll.sdk.model.update.UpdateObject;
-import bots.longpoll.sdk.model.update.UpdateResponse;
+import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.model.photos.Photo;
+import api.longpoll.bots.model.photos.Size;
+import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.response.events.GetEventsResult;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -21,25 +21,25 @@ public class PhotoNewParseTest extends AbstractParseTest {
 	@Test
 	public void test1_messageEdit() throws IOException {
 		JsonObject jsonObject = readJson("json/response/photo_new/photo_new_sample_5_110.json");
-		UpdateResponse updateResponse = new UpdateResponseConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(updateResponse);
-		Assert.assertEquals(Integer.valueOf(2612), updateResponse.getTs());
+		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		Assert.assertNotNull(getEventsResult);
+		Assert.assertEquals(Integer.valueOf(2612), getEventsResult.getTs());
 
-		List<Update> updates = updateResponse.getUpdates();
-		Assert.assertNotNull(updates);
-		Assert.assertEquals(1, updates.size());
+		List<Event> events = getEventsResult.getEvents();
+		Assert.assertNotNull(events);
+		Assert.assertEquals(1, events.size());
 
-		Update update = updates.get(0);
-		Assert.assertNotNull(update);
-		Assert.assertEquals("photo_new", update.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), update.getGroupId());
-		Assert.assertEquals("ddc5e5b73765f5a56eae81814be72889a4f511ea", update.getEventId());
+		Event event = events.get(0);
+		Assert.assertNotNull(event);
+		Assert.assertEquals("photo_new", event.getType());
+		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
+		Assert.assertEquals("ddc5e5b73765f5a56eae81814be72889a4f511ea", event.getEventId());
 
-		UpdateObject updateObject = update.getObject();
-		Assert.assertNotNull(updateObject);
+		EventObject eventObject = event.getObject();
+		Assert.assertNotNull(eventObject);
 
-		Assert.assertTrue(updateObject instanceof Photo);
-		Photo photo = (Photo) updateObject;
+		Assert.assertTrue(eventObject instanceof Photo);
+		Photo photo = (Photo) eventObject;
 		Assert.assertNotNull(photo);
 		Assert.assertEquals(Integer.valueOf(255186642), photo.getAlbumId());
 		Assert.assertEquals(Integer.valueOf(1594284077), photo.getDate());

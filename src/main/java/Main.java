@@ -1,23 +1,16 @@
-import bots.longpoll.sdk.BotsLongPoll;
-import bots.longpoll.sdk.LongPollBot;
-import bots.longpoll.sdk.exceptions.ApiHttpException;
-import bots.longpoll.sdk.executors.board.BoardDeleteComment;
-import bots.longpoll.sdk.executors.board.BoardRestoreComment;
-import bots.longpoll.sdk.executors.docs.DocsSearch;
-import bots.longpoll.sdk.executors.groups.GroupsAddAddress;
-import bots.longpoll.sdk.executors.groups.GroupsDeleteAddress;
-import bots.longpoll.sdk.executors.messages.MessageUploadPhoto;
-import bots.longpoll.sdk.executors.messages.MessagesSend;
-import bots.longpoll.sdk.executors.photos.PhotosGetMessagesUploadServer;
-import bots.longpoll.sdk.model.board.BoardPostDeleteUpdate;
-import bots.longpoll.sdk.model.board.BoardPostUpdate;
-import bots.longpoll.sdk.model.document.DocsSearchResponse;
-import bots.longpoll.sdk.model.groups.GroupsAddAddressResponse;
-import bots.longpoll.sdk.model.groups.GroupsDeleteAddressResponse;
-import bots.longpoll.sdk.model.messages.Message;
-import bots.longpoll.sdk.model.messages.MessageUpdate;
-import bots.longpoll.sdk.model.messages.MessageUploadPhotoResponse;
-import bots.longpoll.sdk.model.photos.PhotosGetMessagesUploadServerResponse;
+import api.longpoll.bots.BotsLongPoll;
+import api.longpoll.bots.LongPollBot;
+import api.longpoll.bots.exceptions.ApiHttpException;
+import api.longpoll.bots.executors.board.BoardDeleteComment;
+import api.longpoll.bots.executors.board.BoardRestoreComment;
+import api.longpoll.bots.executors.groups.GroupsAddAddress;
+import api.longpoll.bots.executors.groups.GroupsDeleteAddress;
+import api.longpoll.bots.executors.messages.MessagesSend;
+import api.longpoll.bots.model.board.BoardPostDeleteEvent;
+import api.longpoll.bots.model.board.BoardPostEvent;
+import api.longpoll.bots.model.groups.GroupsAddAddressResponse;
+import api.longpoll.bots.model.groups.GroupsDeleteAddressResponse;
+import api.longpoll.bots.model.events.messages.MessageEvent;
 import org.slf4j.impl.SimpleLogger;
 
 import java.io.File;
@@ -26,7 +19,7 @@ public class Main {
 	private static BotsLongPoll botsLongPoll;
 	private static class MyBot extends LongPollBot {
 		@Override
-		public void onMessageNew(MessageUpdate messageUpdate) {
+		public void onMessageNew(MessageEvent messageUpdate) {
 			try {
 				File photo = new File("screenshot.png");
 
@@ -56,7 +49,7 @@ public class Main {
 		}
 
 		@Override
-		public void onBoardPostNew(BoardPostUpdate boardPostUpdate) {
+		public void onBoardPostNew(BoardPostEvent boardPostUpdate) {
 			try {
 				new BoardDeleteComment(this)
 						.setCommentId(boardPostUpdate.getId())
@@ -69,7 +62,7 @@ public class Main {
 		}
 
 		@Override
-		public void onBoardPostDelete(BoardPostDeleteUpdate boardPostDeleteUpdate) {
+		public void onBoardPostDelete(BoardPostDeleteEvent boardPostDeleteUpdate) {
 			try {
 				new BoardRestoreComment(this)
 						.setCommentId(boardPostDeleteUpdate.getId())

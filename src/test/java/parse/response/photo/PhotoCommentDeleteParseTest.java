@@ -1,10 +1,10 @@
 package parse.response.photo;
 
-import bots.longpoll.sdk.converters.updates.UpdateResponseConverterImpl;
-import bots.longpoll.sdk.model.photos.PhotoCommentDeleteUpdate;
-import bots.longpoll.sdk.model.update.Update;
-import bots.longpoll.sdk.model.update.UpdateObject;
-import bots.longpoll.sdk.model.update.UpdateResponse;
+import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.photos.PhotoCommentDeleteEvent;
+import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.response.events.GetEventsResult;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -20,25 +20,25 @@ public class PhotoCommentDeleteParseTest extends AbstractParseTest {
 	@Test
 	public void test1_messageEdit() throws IOException {
 		JsonObject jsonObject = readJson("json/response/photo_comment_delete/photo_comment_delete_sample_5_110.json");
-		UpdateResponse updateResponse = new UpdateResponseConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(updateResponse);
-		Assert.assertEquals(Integer.valueOf(2615), updateResponse.getTs());
+		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		Assert.assertNotNull(getEventsResult);
+		Assert.assertEquals(Integer.valueOf(2615), getEventsResult.getTs());
 
-		List<Update> updates = updateResponse.getUpdates();
-		Assert.assertNotNull(updates);
-		Assert.assertEquals(1, updates.size());
+		List<Event> events = getEventsResult.getEvents();
+		Assert.assertNotNull(events);
+		Assert.assertEquals(1, events.size());
 
-		Update update = updates.get(0);
-		Assert.assertNotNull(update);
-		Assert.assertEquals("photo_comment_delete", update.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), update.getGroupId());
-		Assert.assertEquals("bcaa59d39d90c7f655b172c992ca43b96e81c8ca", update.getEventId());
+		Event event = events.get(0);
+		Assert.assertNotNull(event);
+		Assert.assertEquals("photo_comment_delete", event.getType());
+		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
+		Assert.assertEquals("bcaa59d39d90c7f655b172c992ca43b96e81c8ca", event.getEventId());
 
-		UpdateObject updateObject = update.getObject();
-		Assert.assertNotNull(updateObject);
+		EventObject eventObject = event.getObject();
+		Assert.assertNotNull(eventObject);
 
-		Assert.assertTrue(updateObject instanceof PhotoCommentDeleteUpdate);
-		PhotoCommentDeleteUpdate photoCommentDeleteUpdate = (PhotoCommentDeleteUpdate) updateObject;
+		Assert.assertTrue(eventObject instanceof PhotoCommentDeleteEvent);
+		PhotoCommentDeleteEvent photoCommentDeleteUpdate = (PhotoCommentDeleteEvent) eventObject;
 		Assert.assertNotNull(photoCommentDeleteUpdate);
 		Assert.assertEquals(Integer.valueOf(-168975658), photoCommentDeleteUpdate.getOwnerId());
 		Assert.assertEquals(Integer.valueOf(3), photoCommentDeleteUpdate.getId());
