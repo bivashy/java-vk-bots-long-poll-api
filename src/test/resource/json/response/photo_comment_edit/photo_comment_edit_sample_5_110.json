@@ -1,0 +1,22 @@
+{
+  "ts": "2614",
+  "updates": [
+    {
+      "type": "photo_comment_edit",
+      "object": {
+        "id": 3,
+        "from_id": 381980625,
+        "parents_stack": [],
+        "date": 1594285508,
+        "text": "tt",
+        "thread": {
+          "count": 0
+        },
+        "photo_owner_id": -168975658,
+        "photo_id": 457239017
+      },
+      "group_id": 168975658,
+      "event_id": "24c4fd1d5d9ad88cd714b91364e6737f2cff2814"
+    }
+  ]
+}

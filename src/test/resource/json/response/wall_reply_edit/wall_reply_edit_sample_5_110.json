@@ -1,0 +1,23 @@
+{
+  "ts": "2632",
+  "updates": [
+    {
+      "type": "wall_reply_edit",
+      "object": {
+        "id": 4,
+        "from_id": 381980625,
+        "post_id": 3,
+        "owner_id": -168975658,
+        "parents_stack": [],
+        "date": 1594972082,
+        "text": "test1",
+        "thread": {
+          "count": 0
+        },
+        "post_owner_id": -168975658
+      },
+      "group_id": 168975658,
+      "event_id": "2723997e68891a0c9a14418a39b89d8a6a685418"
+    }
+  ]
+}

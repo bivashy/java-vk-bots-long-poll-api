@@ -1,0 +1,17 @@
+{
+  "ts": "2615",
+  "updates": [
+    {
+      "type": "photo_comment_delete",
+      "object": {
+        "owner_id": -168975658,
+        "id": 3,
+        "deleter_id": 381980625,
+        "photo_id": 457239017,
+        "user_id": 381980625
+      },
+      "group_id": 168975658,
+      "event_id": "bcaa59d39d90c7f655b172c992ca43b96e81c8ca"
+    }
+  ]
+}

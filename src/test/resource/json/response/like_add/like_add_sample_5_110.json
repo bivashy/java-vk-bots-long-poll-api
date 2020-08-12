@@ -1,0 +1,18 @@
+{
+    "ts": "2629",
+    "updates": [
+        {
+            "type": "like_add",
+            "object": {
+                "liker_id": 381980625,
+                "object_type": "post",
+                "object_owner_id": -168975658,
+                "object_id": 3,
+                "thread_reply_id": 0,
+                "post_id": 0
+            },
+            "group_id": 168975658,
+            "event_id": "3118e7a0997ee58f62536cca69f2cff7bdbe9fd0"
+        }
+    ]
+}

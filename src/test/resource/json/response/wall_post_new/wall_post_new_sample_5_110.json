@@ -1,0 +1,26 @@
+{
+  "ts": "2626",
+  "updates": [
+    {
+      "type": "wall_post_new",
+      "object": {
+        "id": 1,
+        "from_id": 381980625,
+        "owner_id": -168975658,
+        "date": 1594888935,
+        "marked_as_ads": 0,
+        "post_type": "post",
+        "text": "test",
+        "can_edit": 1,
+        "created_by": 381980625,
+        "can_delete": 1,
+        "comments": {
+          "count": 0
+        },
+        "is_favorite": false
+      },
+      "group_id": 168975658,
+      "event_id": "a7908558beb83a61332f329e93ffea33598e361c"
+    }
+  ]
+}

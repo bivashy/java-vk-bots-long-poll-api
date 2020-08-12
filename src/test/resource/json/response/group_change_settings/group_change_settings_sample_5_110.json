@@ -1,0 +1,19 @@
+{
+  "ts": "2644",
+  "updates": [
+    {
+      "type": "group_change_settings",
+      "object": {
+        "user_id": 381980625,
+        "changes": {
+          "description": {
+            "old_value": "test",
+            "new_value": "test1"
+          }
+        }
+      },
+      "group_id": 168975658,
+      "event_id": "e2a922b60f3002aa5e5098084c971107ec85e61a"
+    }
+  ]
+}

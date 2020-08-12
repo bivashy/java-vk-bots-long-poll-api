@@ -1,0 +1,16 @@
+{
+  "ts": "2622",
+  "updates": [
+    {
+      "type": "video_comment_delete",
+      "object": {
+        "owner_id": -168975658,
+        "id": 1,
+        "deleter_id": 381980625,
+        "video_id": 456239017
+      },
+      "group_id": 168975658,
+      "event_id": "c790943c674f5cd91396f351cbc0aa60285e3c86"
+    }
+  ]
+}

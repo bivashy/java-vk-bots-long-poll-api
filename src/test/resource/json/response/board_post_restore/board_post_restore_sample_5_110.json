@@ -1,0 +1,18 @@
+{
+  "ts": "2639",
+  "updates": [
+    {
+      "type": "board_post_restore",
+      "object": {
+        "id": 3,
+        "from_id": 381980625,
+        "date": 1596652625,
+        "text": "t",
+        "topic_owner_id": -168975658,
+        "topic_id": 41499874
+      },
+      "group_id": 168975658,
+      "event_id": "be66ec79c0ecc3f61917c262b54f7f1d0d13c3e0"
+    }
+  ]
+}

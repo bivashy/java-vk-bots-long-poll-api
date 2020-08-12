@@ -1,0 +1,62 @@
+{
+  "ts": "2606",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1594235111,
+          "from_id": 381980625,
+          "id": 0,
+          "out": 0,
+          "peer_id": 2000000001,
+          "text": "",
+          "conversation_message_id": 4410,
+          "fwd_messages": [],
+          "ref": "single",
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "wall_reply",
+              "wall_reply": {
+                "id": 110932,
+                "from_id": 10564569,
+                "post_id": 110926,
+                "owner_id": -153395656,
+                "parents_stack": [
+                  110930
+                ],
+                "date": 1594231450,
+                "text": "[id150408292|Луна], самой красивой машичкой же Францеска Финдебаир является. Или ты имеешь ввиду из сериальных магичек?",
+                "likes": {
+                  "count": 1,
+                  "user_likes": 0,
+                  "can_like": 1
+                },
+                "reply_to_user": 150408292,
+                "reply_to_comment": 110930
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": false,
+          "lang_id": 0
+        }
+      },
+      "group_id": 168975658,
+      "event_id": "dcffab7b7c54607d00ed33c32e69e15f1b5e2079"
+    }
+  ]
+}
