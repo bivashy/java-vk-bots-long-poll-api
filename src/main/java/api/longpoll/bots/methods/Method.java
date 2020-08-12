@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public abstract class Executor<Response> {
-	private static final Logger log = LoggerFactory.getLogger(Executor.class);
+public abstract class Method<Response> {
+	private static final Logger log = LoggerFactory.getLogger(Method.class);
 
 	private Converter<String, JsonObject> jsonConverter = new StringToJsonConverterImpl();
 	private Validator validator = new ResponseValidator();
@@ -53,13 +53,16 @@ public abstract class Executor<Response> {
 
 			log.debug("Sending: method={}, api={}, data={}", method, api, data);
 
-			String body = Jsoup.connect(api)
+			Connection connection = Jsoup.connect(api)
 					.ignoreContentType(true)
 					.timeout(0)
-					.method(method)
-					.data(data)
-					.execute()
-					.body();
+					.method(method);
+
+			if (!data.isEmpty()) {
+				connection.data(data);
+			}
+
+			String body = execute(connection).body();
 
 			log.debug("Received: {}", body);
 
@@ -68,6 +71,10 @@ public abstract class Executor<Response> {
 			log.error("Failed to send request {}.", getMethod(), e);
 			throw new ApiHttpException(e);
 		}
+	}
+
+	protected Connection.Response execute(Connection connection) throws IOException {
+		return connection.execute();
 	}
 
 	protected List<Connection.KeyVal> getData() {
@@ -82,10 +89,6 @@ public abstract class Executor<Response> {
 			value = ((List) value).stream().map(String::valueOf).collect(Collectors.joining(","));
 		}
 		return HttpConnection.KeyVal.create(key, String.valueOf(value));
-	}
-
-	protected Connection.KeyVal keyVal(String key, String name, InputStream inputStream) {
-		return HttpConnection.KeyVal.create(key, name, inputStream);
 	}
 
 	protected abstract String getApi();

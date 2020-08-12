@@ -4,9 +4,9 @@ import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
 import api.longpoll.bots.model.response.events.GetEventsResult;
-import api.longpoll.bots.methods.GetExecutor;
+import api.longpoll.bots.methods.GetMethod;
 
-public class GetUpdates extends GetExecutor<GetEventsResult> {
+public class GetUpdates extends GetMethod<GetEventsResult> {
 	private static final String ACT_FIELD = "act";
 	private static final String ACT = "a_check";
 	private static final String WAIT_FIELD = "wait";

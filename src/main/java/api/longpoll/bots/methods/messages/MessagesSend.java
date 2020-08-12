@@ -4,7 +4,7 @@ import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.exceptions.ApiHttpException;
-import api.longpoll.bots.methods.GetExecutor;
+import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.methods.docs.DocsGetMessagesUploadServer;
 import api.longpoll.bots.methods.docs.DocsSave;
@@ -27,14 +27,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessagesSend extends GetExecutor<MessagesSendResponse> {
+public class MessagesSend extends GetMethod<MessagesSendResponse> {
 	private static final String RANDOM_ID = "random_id";
 	private static final String PEER_ID = "peer_id";
 	private static final String DOMAIN = "domain";
 	private static final String USER_IDS = "user_ids";
 	private static final String MESSAGE = "message";
-	private static final String LAT = "lat";
-	private static final String LONG = "long";
+	private static final String LATITUDE = "lat";
+	private static final String LONGITUDE = "long";
 	private static final String ATTACHMENT = "attachment";
 	private static final String PHOTO = "photo";
 	private static final String DOC = "doc";
@@ -46,6 +46,7 @@ public class MessagesSend extends GetExecutor<MessagesSendResponse> {
 	private static final String STICKER_ID = "sticker_id";
 	private static final String DONT_PARSE_LINKS = "dont_parse_links";
 	private static final String DISABLE_MENTIONS = "disable_mentions";
+
 
 	private List<String> attachments = new ArrayList<>();
 
@@ -100,21 +101,21 @@ public class MessagesSend extends GetExecutor<MessagesSendResponse> {
 	}
 
 	public MessagesSend setLatitude(float latitude) {
-		params.put(LAT, latitude);
+		params.put(LATITUDE, latitude);
 		return this;
 	}
 
 	public float getLatitude() {
-		return (float) params.get(LAT);
+		return (float) params.get(LATITUDE);
 	}
 
 	public MessagesSend setLongtitude(float longitude) {
-		params.put(LONG, longitude);
+		params.put(LONGITUDE, longitude);
 		return this;
 	}
 
 	public float getLongtitude() {
-		return (float) params.get(LONG);
+		return (float) params.get(LONGITUDE);
 	}
 
 	public List<String> getAttachments() {

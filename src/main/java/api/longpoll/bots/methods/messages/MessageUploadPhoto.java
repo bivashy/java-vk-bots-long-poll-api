@@ -2,12 +2,12 @@ package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.methods.PostExecutor;
+import api.longpoll.bots.methods.PostMethod;
 import api.longpoll.bots.model.messages.MessageUploadPhotoResponse;
 
 import java.io.File;
 
-public class MessageUploadPhoto extends PostExecutor<MessageUploadPhotoResponse> {
+public class MessageUploadPhoto extends PostMethod<MessageUploadPhotoResponse> {
 	private static final String PHOTO = "photo";
 
 	private String uploadUrl;

@@ -3,11 +3,11 @@ package api.longpoll.bots.methods.docs;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.methods.GetExecutor;
+import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.document.DocsSearchResponse;
 
-public class DocsSearch extends GetExecutor<DocsSearchResponse> {
+public class DocsSearch extends GetMethod<DocsSearchResponse> {
 	private static final String Q = "q";
 	private static final String COUNT = "count";
 	private static final String OFFSET = "offset";

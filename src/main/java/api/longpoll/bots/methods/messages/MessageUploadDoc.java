@@ -2,12 +2,12 @@ package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.methods.PostExecutor;
+import api.longpoll.bots.methods.PostMethod;
 import api.longpoll.bots.model.messages.MessageUploadDocResponse;
 
 import java.io.File;
 
-public class MessageUploadDoc extends PostExecutor<MessageUploadDocResponse> {
+public class MessageUploadDoc extends PostMethod<MessageUploadDocResponse> {
 	private static final String FILE = "file";
 
 	private String uploadUrl;

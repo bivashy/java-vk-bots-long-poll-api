@@ -3,11 +3,11 @@ package api.longpoll.bots.methods.photos;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.methods.GetExecutor;
+import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.photos.PhotosGetMessagesUploadServerResponse;
 
-public class PhotosGetMessagesUploadServer extends GetExecutor<PhotosGetMessagesUploadServerResponse> {
+public class PhotosGetMessagesUploadServer extends GetMethod<PhotosGetMessagesUploadServerResponse> {
 	private static final String PEER_ID = "peer_id";
 
 	public PhotosGetMessagesUploadServer setPeerId(int peerId) {

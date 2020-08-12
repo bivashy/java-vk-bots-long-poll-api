@@ -3,12 +3,12 @@ package api.longpoll.bots.methods.groups;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.methods.GetExecutor;
+import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.groups.GroupsAddAddressResponse;
 import com.google.gson.JsonObject;
 
-public class GroupsAddAddress extends GetExecutor<GroupsAddAddressResponse> {
+public class GroupsAddAddress extends GetMethod<GroupsAddAddressResponse> {
 	private static final String GROUP_ID = "group_id";
 	private static final String TITLE = "title";
 	private static final String ADDRESS = "address";

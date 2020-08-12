@@ -4,10 +4,10 @@ import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.photo.PhotosSaveMessagesPhotoResponseConverterImpl;
 import api.longpoll.bots.model.photos.PhotosSaveMessagesPhotoResponse;
-import api.longpoll.bots.methods.GetExecutor;
+import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 
-public class PhotosSaveMessagesPhoto extends GetExecutor<PhotosSaveMessagesPhotoResponse> {
+public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoResponse> {
 	private static final String PHOTO = "photo";
 	private static final String SERVER = "server";
 	private static final String HASH = "hash";

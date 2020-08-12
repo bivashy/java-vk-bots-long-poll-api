@@ -3,11 +3,11 @@ package api.longpoll.bots.methods.groups;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.methods.GetExecutor;
+import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.groups.GroupsGetLongPollServerResponse;
 
-public class GroupsGetLongPollServer extends GetExecutor<GroupsGetLongPollServerResponse> {
+public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerResponse> {
 	private static final String GROUP_ID_FIELD = "group_id";
 
 	public GroupsGetLongPollServer(LongPollBot bot) {

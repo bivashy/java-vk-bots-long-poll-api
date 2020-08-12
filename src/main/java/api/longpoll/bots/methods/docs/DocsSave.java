@@ -3,11 +3,11 @@ package api.longpoll.bots.methods.docs;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.methods.GetExecutor;
+import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.document.DocsSaveResponse;
 
-public class DocsSave extends GetExecutor<DocsSaveResponse> {
+public class DocsSave extends GetMethod<DocsSaveResponse> {
 	private static final String FILE = "file";
 	private static final String TITLE = "title";
 	private static final String TAGS = "tags";

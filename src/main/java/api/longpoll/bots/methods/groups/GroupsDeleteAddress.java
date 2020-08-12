@@ -3,11 +3,11 @@ package api.longpoll.bots.methods.groups;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.methods.GetExecutor;
+import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.groups.GroupsDeleteAddressResponse;
 
-public class GroupsDeleteAddress extends GetExecutor<GroupsDeleteAddressResponse> {
+public class GroupsDeleteAddress extends GetMethod<GroupsDeleteAddressResponse> {
 	private static final String GROUP_ID = "group_id";
 	private static final String ADDRESS_ID = "address_id";
 
