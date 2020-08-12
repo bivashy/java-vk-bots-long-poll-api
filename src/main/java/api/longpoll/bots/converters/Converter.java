@@ -1,5 +1,5 @@
 package api.longpoll.bots.converters;
 
-public interface Converter<Source, Target> {
-	Target convert(Source source);
+public interface Converter<From, To> {
+	To convert(From from);
 }

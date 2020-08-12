@@ -1,7 +1,7 @@
 package parse.response;
 
+import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.StringToJsonConverterImpl;
-import api.longpoll.bots.converters.groups.GroupsGetLongPollServerResponseConverterImpl;
 import api.longpoll.bots.model.groups.GroupsGetLongPollServerResponse;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
@@ -16,7 +16,7 @@ public class GroupsGroupsGetLongPollServerResponseParseTest extends AbstractPars
 	@Test
 	public void test1_getLongPollServerResponseSuccessParse() throws IOException {
 		JsonObject jsonObject = new StringToJsonConverterImpl().convert(readJson("json/response/get_long_poll_server_response_sample_5_110.json").toString());
-		GroupsGetLongPollServerResponse groupsGetLongPollServerResponse = new GroupsGetLongPollServerResponseConverterImpl()
+		GroupsGetLongPollServerResponse groupsGetLongPollServerResponse = GenericConverterFactory.get(GroupsGetLongPollServerResponse.class)
 				.convert(jsonObject);
 		Assert.assertNotNull(groupsGetLongPollServerResponse);
 

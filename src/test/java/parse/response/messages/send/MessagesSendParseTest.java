@@ -1,6 +1,6 @@
 package parse.response.messages.send;
 
-import api.longpoll.bots.converters.messages.MessagesSendResponseConverterImpl;
+import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.model.messages.MessagesSendResponse;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
@@ -16,7 +16,7 @@ public class MessagesSendParseTest extends AbstractParseTest {
 	@Test
 	public void test1_responses() throws IOException {
 		JsonObject jsonObject = readJson("json/response/messages_send/message_send_responses_sample_5_110.json");
-		MessagesSendResponse response = new MessagesSendResponseConverterImpl().convert(jsonObject);
+		MessagesSendResponse response = GenericConverterFactory.get(MessagesSendResponse.class).convert(jsonObject);
 		Assert.assertNotNull(response);
 	}
 }

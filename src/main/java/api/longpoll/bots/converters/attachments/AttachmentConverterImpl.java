@@ -1,18 +1,19 @@
 package api.longpoll.bots.converters.attachments;
 
 import api.longpoll.bots.constants.AttachmentTypes;
-import api.longpoll.bots.converters.audio.message.AudioMessageConverterImpl;
+import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.audio.AudioConverterImpl;
-import api.longpoll.bots.converters.doc.DocumentConverter;
-import api.longpoll.bots.converters.graffiti.GraffitiConverter;
-import api.longpoll.bots.converters.photo.PhotoConverterImpl;
-import api.longpoll.bots.converters.sticker.StickerConverterImpl;
-import api.longpoll.bots.converters.video.VideoConverterImpl;
 import api.longpoll.bots.converters.wall.post.WallPostConverterImpl;
 import api.longpoll.bots.converters.wall.reply.WallReplyConverterImpl;
 import api.longpoll.bots.model.attachment.Attachment;
 import api.longpoll.bots.model.attachment.MediaObject;
+import api.longpoll.bots.model.audio.Audio;
+import api.longpoll.bots.model.audio.message.AudioMessage;
+import api.longpoll.bots.model.document.Document;
+import api.longpoll.bots.model.graffiti.Graffiti;
+import api.longpoll.bots.model.photos.Photo;
+import api.longpoll.bots.model.sticker.Sticker;
+import api.longpoll.bots.model.video.Video;
 import com.google.gson.JsonObject;
 
 public class AttachmentConverterImpl extends JsonToPojoConverter<Attachment> {
@@ -32,25 +33,25 @@ public class AttachmentConverterImpl extends JsonToPojoConverter<Attachment> {
 
 		switch (attachment.getType()) {
 			case AttachmentTypes.PHOTO:
-				return attachment.setMediaObject(new PhotoConverterImpl().convert(source.getAsJsonObject(PHOTO_FIELD)));
+				return attachment.setMediaObject(GenericConverterFactory.get(Photo.class).convert(source.getAsJsonObject(PHOTO_FIELD)));
 
 			case AttachmentTypes.VIDEO:
-				return attachment.setMediaObject(new VideoConverterImpl().convert(source.getAsJsonObject(VIDEO_FIELD)));
+				return attachment.setMediaObject(GenericConverterFactory.get(Video.class).convert(source.getAsJsonObject(VIDEO_FIELD)));
 
 			case AttachmentTypes.AUDIO:
-				return attachment.setMediaObject(new AudioConverterImpl().convert(source.getAsJsonObject(AUDIO_FIELD)));
+				return attachment.setMediaObject(GenericConverterFactory.get(Audio.class).convert(source.getAsJsonObject(AUDIO_FIELD)));
 
 			case AttachmentTypes.DOCUMENT:
-				return attachment.setMediaObject(new DocumentConverter().convert(source.getAsJsonObject(DOC_FIELD)));
+				return attachment.setMediaObject(GenericConverterFactory.get(Document.class).convert(source.getAsJsonObject(DOC_FIELD)));
 
 			case AttachmentTypes.GRAFFITI:
-				return attachment.setMediaObject(new GraffitiConverter().convert(source.getAsJsonObject(GRAFFITI_FIELD)));
+				return attachment.setMediaObject(GenericConverterFactory.get(Graffiti.class).convert(source.getAsJsonObject(GRAFFITI_FIELD)));
 
 			case AttachmentTypes.AUDIO_MESSAGE:
-				return attachment.setMediaObject(new AudioMessageConverterImpl().convert(source.getAsJsonObject(AUDIO_MESSAGE_FIELD)));
+				return attachment.setMediaObject(GenericConverterFactory.get(AudioMessage.class).convert(source.getAsJsonObject(AUDIO_MESSAGE_FIELD)));
 
 			case AttachmentTypes.STICKER:
-				return attachment.setMediaObject(new StickerConverterImpl().convert(source.getAsJsonObject(STICKER_FIELD)));
+				return attachment.setMediaObject(GenericConverterFactory.get(Sticker.class).convert(source.getAsJsonObject(STICKER_FIELD)));
 
 			case AttachmentTypes.WALL_POST:
 				return attachment.setMediaObject(new WallPostConverterImpl().convert(source.getAsJsonObject(WALL_FIELD)));
