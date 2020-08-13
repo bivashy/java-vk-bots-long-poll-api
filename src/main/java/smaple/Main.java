@@ -5,15 +5,15 @@ import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.exceptions.ApiHttpException;
 import api.longpoll.bots.methods.board.BoardDeleteComment;
 import api.longpoll.bots.methods.board.BoardRestoreComment;
-import api.longpoll.bots.methods.groups.GroupsAddAddress;
 import api.longpoll.bots.methods.messages.MessagesSend;
 import api.longpoll.bots.model.board.BoardPostDeleteEvent;
 import api.longpoll.bots.model.board.BoardPostEvent;
 import api.longpoll.bots.model.events.messages.MessageEvent;
-import api.longpoll.bots.model.response.groups.GroupsAddAddressResult;
+import api.longpoll.bots.model.response.messages.MessagesSendResult;
 import org.slf4j.impl.SimpleLogger;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class Main {
 	private static BotsLongPoll botsLongPoll;
@@ -22,21 +22,15 @@ public class Main {
 		public void onMessageNew(MessageEvent messageUpdate) {
 			try {
 				File photo = new File("screenshot.png");
-
-				GroupsAddAddressResult addAddressResponse = new GroupsAddAddress(this)
-						.setGroupId(getGroupId())
-						.setTitle("test")
-						.setAddress("test addr")
-						.setCountryId(1)
-						.setCityId(1)
-						.setLatitude(50)
-						.setLongitude(50)
-						.execute();
-
-				new MessagesSend(this)
+//381980625,49385182
+				MessagesSendResult answer = new MessagesSend(this)
 						.setPeerId(messageUpdate.getMessage().getPeerId())
+						.addPhoto(photo)
+						//.setUserIds(Arrays.asList(381980625,49385182))
 						.setMessage("answer")
 						.execute();
+
+				System.out.println(answer);
 
 			} catch (ApiHttpException e) {
 				e.printStackTrace();

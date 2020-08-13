@@ -1,13 +1,13 @@
 package api.longpoll.bots.methods.photos;
 
 import api.longpoll.bots.LongPollBot;
+import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.photo.PhotosSaveMessagesPhotoResponseConverterImpl;
-import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 
-public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoResponse> {
+public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoResult> {
 	private static final String PHOTO = "photo";
 	private static final String SERVER = "server";
 	private static final String HASH = "hash";
@@ -49,7 +49,7 @@ public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoRe
 	}
 
 	@Override
-	protected JsonToPojoConverter<PhotosSaveMessagesPhotoResponse> getConverter() {
-		return new PhotosSaveMessagesPhotoResponseConverterImpl();
+	protected JsonToPojoConverter<PhotosSaveMessagesPhotoResult> getConverter() {
+		return GenericConverterFactory.get(PhotosSaveMessagesPhotoResult.class);
 	}
 }

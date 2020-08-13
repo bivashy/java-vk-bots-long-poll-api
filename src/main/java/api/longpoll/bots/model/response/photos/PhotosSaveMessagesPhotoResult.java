@@ -5,15 +5,15 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class PhotosSaveMessagesPhotoResponse {
+public class PhotosSaveMessagesPhotoResult {
 	@SerializedName("response")
-	private Response response;
+	private List<Response> response;
 
-	public Response getResponse() {
+	public List<Response> getResponse() {
 		return response;
 	}
 
-	public PhotosSaveMessagesPhotoResponse setResponse(Response response) {
+	public PhotosSaveMessagesPhotoResult setResponse(List<Response> response) {
 		this.response = response;
 		return this;
 	}

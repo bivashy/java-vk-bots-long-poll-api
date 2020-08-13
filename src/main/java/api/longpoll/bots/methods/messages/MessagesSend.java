@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.messages.MessagesSendResultConverterIpml;
 import api.longpoll.bots.exceptions.ApiHttpException;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
@@ -20,7 +20,7 @@ import api.longpoll.bots.model.response.other.UploadPhotoResult;
 import api.longpoll.bots.model.response.messages.MessagesSendResult;
 import api.longpoll.bots.model.photos.Photo;
 import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
-import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
 import api.longpoll.bots.model.video.Video;
 import api.longpoll.bots.model.wall.post.WallPost;
 import org.jsoup.Connection;
@@ -141,12 +141,13 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 				.setPhoto(photo)
 				.execute();
 
-		PhotosSaveMessagesPhotoResponse.Response uploadedPhoto = new PhotosSaveMessagesPhoto(bot)
+		PhotosSaveMessagesPhotoResult.Response uploadedPhoto = new PhotosSaveMessagesPhoto(bot)
 				.setHash(uploadPhotoResult.getHash())
 				.setPhoto(uploadPhotoResult.getPhoto())
 				.setServer(uploadPhotoResult.getServer())
 				.execute()
-				.getResponse();
+				.getResponse()
+				.get(0);
 
 		attachments.add(attachment(PHOTO, uploadedPhoto.getOwnerId(), uploadedPhoto.getId()));
 
@@ -264,6 +265,6 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 
 	@Override
 	protected JsonToPojoConverter<MessagesSendResult> getConverter() {
-		return GenericConverterFactory.get(MessagesSendResult.class);
+		return new MessagesSendResultConverterIpml();
 	}
 }
