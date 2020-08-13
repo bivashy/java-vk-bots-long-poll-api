@@ -8,6 +8,7 @@ public class VkApi {
 		public static final String GET_LONG_POLL_SERVER = METHOD.concat("getLongPollServer");
 		public static final String ADD_ADDRESS = METHOD.concat("addAddress");
 		public static final String DELETE_ADDRESS = METHOD.concat("deleteAddress");
+		public static final String ADD_CALLBACK_SERVER = METHOD.concat("addCallbackServer");
 	}
 
 	public static class Messages {

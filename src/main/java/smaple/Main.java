@@ -5,10 +5,12 @@ import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.exceptions.ApiHttpException;
 import api.longpoll.bots.methods.board.BoardDeleteComment;
 import api.longpoll.bots.methods.board.BoardRestoreComment;
+import api.longpoll.bots.methods.groups.GroupsAddCallbackServer;
 import api.longpoll.bots.methods.messages.MessagesSend;
 import api.longpoll.bots.model.board.BoardPostDeleteEvent;
 import api.longpoll.bots.model.board.BoardPostEvent;
 import api.longpoll.bots.model.events.messages.MessageEvent;
+import api.longpoll.bots.model.response.groups.GroupsAddCallbackServerResult;
 import api.longpoll.bots.model.response.messages.MessagesSendResult;
 import org.slf4j.impl.SimpleLogger;
 
@@ -23,14 +25,14 @@ public class Main {
 			try {
 				File photo = new File("screenshot.png");
 //381980625,49385182
-				MessagesSendResult answer = new MessagesSend(this)
-						.setPeerId(messageUpdate.getMessage().getPeerId())
-						.addPhoto(photo)
-						//.setUserIds(Arrays.asList(381980625,49385182))
-						.setMessage("answer")
+				GroupsAddCallbackServerResult result = new GroupsAddCallbackServer(this)
+						.setGroupId(getGroupId())
+						.setSecretKey("html")
+						.setTitle("test")
+						.setUrl("https://google.com")
 						.execute();
 
-				System.out.println(answer);
+				System.out.println(result);
 
 			} catch (ApiHttpException e) {
 				e.printStackTrace();
