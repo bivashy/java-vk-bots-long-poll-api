@@ -1,13 +1,13 @@
-package api.longpoll.bots.methods.messages;
+package api.longpoll.bots.methods.other;
 
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.PostMethod;
-import api.longpoll.bots.model.messages.MessageUploadPhotoResponse;
+import api.longpoll.bots.model.response.other.UploadPhotoResult;
 
 import java.io.File;
 
-public class MessageUploadPhoto extends PostMethod<MessageUploadPhotoResponse> {
+public class UploadPhoto extends PostMethod<UploadPhotoResult> {
 	private static final String PHOTO = "photo";
 
 	private String uploadUrl;
@@ -16,7 +16,7 @@ public class MessageUploadPhoto extends PostMethod<MessageUploadPhotoResponse> {
 		return getFile();
 	}
 
-	public MessageUploadPhoto setPhoto(File photo) {
+	public UploadPhoto setPhoto(File photo) {
 		setFile(photo);
 		return this;
 	}
@@ -25,7 +25,7 @@ public class MessageUploadPhoto extends PostMethod<MessageUploadPhotoResponse> {
 		return uploadUrl;
 	}
 
-	public MessageUploadPhoto setUploadUrl(String uploadUrl) {
+	public UploadPhoto setUploadUrl(String uploadUrl) {
 		this.uploadUrl = uploadUrl;
 		return this;
 	}
@@ -36,8 +36,8 @@ public class MessageUploadPhoto extends PostMethod<MessageUploadPhotoResponse> {
 	}
 
 	@Override
-	protected JsonToPojoConverter<MessageUploadPhotoResponse> getConverter() {
-		return GenericConverterFactory.get(MessageUploadPhotoResponse.class);
+	protected JsonToPojoConverter<UploadPhotoResult> getConverter() {
+		return GenericConverterFactory.get(UploadPhotoResult.class);
 	}
 
 	@Override

@@ -5,9 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.groups.GroupsDeleteAddressResponse;
+import api.longpoll.bots.model.response.other.IntegerResult;
 
-public class GroupsDeleteAddress extends GetMethod<GroupsDeleteAddressResponse> {
+public class GroupsDeleteAddress extends GetMethod<IntegerResult> {
 	private static final String GROUP_ID = "group_id";
 	private static final String ADDRESS_ID = "address_id";
 
@@ -20,8 +20,8 @@ public class GroupsDeleteAddress extends GetMethod<GroupsDeleteAddressResponse> 
 		return (int) params.get(GROUP_ID);
 	}
 
-	public GroupsDeleteAddress setAddressId(int addressid) {
-		params.put(ADDRESS_ID, addressid);
+	public GroupsDeleteAddress setAddressId(int addressId) {
+		params.put(ADDRESS_ID, addressId);
 		return this;
 	}
 
@@ -39,7 +39,7 @@ public class GroupsDeleteAddress extends GetMethod<GroupsDeleteAddressResponse> 
 	}
 
 	@Override
-	protected JsonToPojoConverter<GroupsDeleteAddressResponse> getConverter() {
-		return GenericConverterFactory.get(GroupsDeleteAddressResponse.class);
+	protected JsonToPojoConverter<IntegerResult> getConverter() {
+		return GenericConverterFactory.get(IntegerResult.class);
 	}
 }

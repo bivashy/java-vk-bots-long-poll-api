@@ -1,8 +1,8 @@
-package api.longpoll.bots.model.messages;
+package api.longpoll.bots.model.response.messages;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MessagesSendResponse {
+public class MessagesSendResult {
 	@SerializedName("response")
 	private Object response;
 
@@ -10,7 +10,7 @@ public class MessagesSendResponse {
 		return response;
 	}
 
-	public MessagesSendResponse setResponse(Object response) {
+	public MessagesSendResult setResponse(Object response) {
 		this.response = response;
 		return this;
 	}

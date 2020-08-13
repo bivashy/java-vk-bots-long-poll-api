@@ -8,17 +8,19 @@ import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.methods.docs.DocsGetMessagesUploadServer;
 import api.longpoll.bots.methods.docs.DocsSave;
+import api.longpoll.bots.methods.other.UploadDoc;
+import api.longpoll.bots.methods.other.UploadPhoto;
 import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
 import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
-import api.longpoll.bots.model.document.DocsGetMessagesUploadServerResponse;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
 import api.longpoll.bots.model.document.Document;
 import api.longpoll.bots.model.market.item.MarketItem;
-import api.longpoll.bots.model.messages.MessageUploadDocResponse;
-import api.longpoll.bots.model.messages.MessageUploadPhotoResponse;
-import api.longpoll.bots.model.messages.MessagesSendResponse;
+import api.longpoll.bots.model.response.other.UploadDocResult;
+import api.longpoll.bots.model.response.other.UploadPhotoResult;
+import api.longpoll.bots.model.response.messages.MessagesSendResult;
 import api.longpoll.bots.model.photos.Photo;
-import api.longpoll.bots.model.photos.PhotosGetMessagesUploadServerResponse;
-import api.longpoll.bots.model.photos.PhotosSaveMessagesPhotoResponse;
+import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
 import api.longpoll.bots.model.video.Video;
 import api.longpoll.bots.model.wall.post.WallPost;
 import org.jsoup.Connection;
@@ -27,7 +29,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MessagesSend extends GetMethod<MessagesSendResponse> {
+public class MessagesSend extends GetMethod<MessagesSendResult> {
 	private static final String RANDOM_ID = "random_id";
 	private static final String PEER_ID = "peer_id";
 	private static final String DOMAIN = "domain";
@@ -133,19 +135,20 @@ public class MessagesSend extends GetMethod<MessagesSendResponse> {
 			photosGetMessagesUploadServer.setPeerId(getPeerId());
 		}
 
-		PhotosGetMessagesUploadServerResponse uploadServerResponse = photosGetMessagesUploadServer.execute();
-		MessageUploadPhotoResponse uploadPhotoResponse = new MessageUploadPhoto()
-				.setUploadUrl(uploadServerResponse.getUploadUrl())
+		PhotosGetMessagesUploadServerResult.Response response = photosGetMessagesUploadServer.execute().getResponse();
+		UploadPhotoResult uploadPhotoResult = new UploadPhoto()
+				.setUploadUrl(response.getUploadUrl())
 				.setPhoto(photo)
 				.execute();
 
-		PhotosSaveMessagesPhotoResponse response = new PhotosSaveMessagesPhoto(bot)
-				.setHash(uploadPhotoResponse.getHash())
-				.setPhoto(uploadPhotoResponse.getPhoto())
-				.setServer(uploadPhotoResponse.getServer())
-				.execute();
+		PhotosSaveMessagesPhotoResponse.Response uploadedPhoto = new PhotosSaveMessagesPhoto(bot)
+				.setHash(uploadPhotoResult.getHash())
+				.setPhoto(uploadPhotoResult.getPhoto())
+				.setServer(uploadPhotoResult.getServer())
+				.execute()
+				.getResponse();
 
-		attachments.add(attachment(PHOTO, response.getOwnerId(), response.getId()));
+		attachments.add(attachment(PHOTO, uploadedPhoto.getOwnerId(), uploadedPhoto.getId()));
 
 		return this;
 	}
@@ -156,13 +159,14 @@ public class MessagesSend extends GetMethod<MessagesSendResponse> {
 	}
 
 	public MessagesSend addDoc(File doc) throws ApiHttpException {
-		DocsGetMessagesUploadServerResponse uploadServerResponse = new DocsGetMessagesUploadServer(bot)
+		DocsGetUploadServerResult.Response response = new DocsGetMessagesUploadServer(bot)
 				.setPeerId(getPeerId())
 				.setType(DOC)
-				.execute();
+				.execute()
+				.getResponse();
 
-		MessageUploadDocResponse uploadDocResponse = new MessageUploadDoc()
-				.setUploadUrl(uploadServerResponse.getUploadUrl())
+		UploadDocResult uploadDocResponse = new UploadDoc()
+				.setUploadUrl(response.getUploadUrl())
 				.setDoc(doc)
 				.execute();
 
@@ -170,6 +174,8 @@ public class MessagesSend extends GetMethod<MessagesSendResponse> {
 				.setTitle(doc.getName())
 				.setFile(uploadDocResponse.getFile())
 				.execute()
+				.getResponses()
+				.get(0)
 				.getObject();
 
 		attachments.add(attachment(DOC, document.getOwnerId(), document.getId()));
@@ -257,7 +263,7 @@ public class MessagesSend extends GetMethod<MessagesSendResponse> {
 	}
 
 	@Override
-	protected JsonToPojoConverter<MessagesSendResponse> getConverter() {
-		return GenericConverterFactory.get(MessagesSendResponse.class);
+	protected JsonToPojoConverter<MessagesSendResult> getConverter() {
+		return GenericConverterFactory.get(MessagesSendResult.class);
 	}
 }

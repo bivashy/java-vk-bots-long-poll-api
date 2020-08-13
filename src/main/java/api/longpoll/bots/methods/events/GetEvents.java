@@ -1,4 +1,4 @@
-package api.longpoll.bots.methods.updates;
+package api.longpoll.bots.methods.events;
 
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
@@ -6,7 +6,7 @@ import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import api.longpoll.bots.methods.GetMethod;
 
-public class GetUpdates extends GetMethod<GetEventsResult> {
+public class GetEvents extends GetMethod<GetEventsResult> {
 	private static final String ACT_FIELD = "act";
 	private static final String ACT = "a_check";
 	private static final String WAIT_FIELD = "wait";
@@ -17,7 +17,7 @@ public class GetUpdates extends GetMethod<GetEventsResult> {
 
 	private String server;
 
-	public GetUpdates(LongPollBot bot) {
+	public GetEvents(LongPollBot bot) {
 		super(bot);
 		params.put(ACT_FIELD, ACT);
 		params.put(WAIT_FIELD, WAIT);
@@ -27,7 +27,7 @@ public class GetUpdates extends GetMethod<GetEventsResult> {
 		return server;
 	}
 
-	public GetUpdates setServer(String server) {
+	public GetEvents setServer(String server) {
 		this.server = server;
 		return this;
 	}
@@ -36,7 +36,7 @@ public class GetUpdates extends GetMethod<GetEventsResult> {
 		return (String) params.get(KEY_FIELD);
 	}
 
-	public GetUpdates setKey(String key) {
+	public GetEvents setKey(String key) {
 		params.put(KEY_FIELD, key);
 		return this;
 	}
@@ -45,7 +45,7 @@ public class GetUpdates extends GetMethod<GetEventsResult> {
 		return (int) params.get(TS_FIELD);
 	}
 
-	public GetUpdates setTs(int ts) {
+	public GetEvents setTs(int ts) {
 		params.put(TS_FIELD, String.valueOf(ts));
 		return this;
 	}

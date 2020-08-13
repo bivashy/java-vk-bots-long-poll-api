@@ -1,8 +1,8 @@
-package api.longpoll.bots.model.messages;
+package api.longpoll.bots.model.response.other;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MessageUploadDocResponse {
+public class UploadDocResult {
 	@SerializedName("file")
 	private String file;
 
@@ -10,7 +10,7 @@ public class MessageUploadDocResponse {
 		return file;
 	}
 
-	public MessageUploadDocResponse setFile(String file) {
+	public UploadDocResult setFile(String file) {
 		this.file = file;
 		return this;
 	}

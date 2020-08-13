@@ -5,9 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.document.DocsSaveResponse;
+import api.longpoll.bots.model.response.docs.DocsSaveResult;
 
-public class DocsSave extends GetMethod<DocsSaveResponse> {
+public class DocsSave extends GetMethod<DocsSaveResult> {
 	private static final String FILE = "file";
 	private static final String TITLE = "title";
 	private static final String TAGS = "tags";
@@ -59,7 +59,7 @@ public class DocsSave extends GetMethod<DocsSaveResponse> {
 	}
 
 	@Override
-	protected JsonToPojoConverter<DocsSaveResponse> getConverter() {
-		return GenericConverterFactory.get(DocsSaveResponse.class);
+	protected JsonToPojoConverter<DocsSaveResult> getConverter() {
+		return GenericConverterFactory.get(DocsSaveResult.class);
 	}
 }

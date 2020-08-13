@@ -5,9 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.document.DocsGetWallUploadServerResponse;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
 
-public class DocsGetWallUploadServer extends GetMethod<DocsGetWallUploadServerResponse> {
+public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerResult> {
 	private static final String GROUP_ID = "group_id";
 
 	public DocsGetWallUploadServer setGroupId(int groupId) {
@@ -29,7 +29,7 @@ public class DocsGetWallUploadServer extends GetMethod<DocsGetWallUploadServerRe
 	}
 
 	@Override
-	protected JsonToPojoConverter<DocsGetWallUploadServerResponse> getConverter() {
-		return GenericConverterFactory.get(DocsGetWallUploadServerResponse.class);
+	protected JsonToPojoConverter<DocsGetUploadServerResult> getConverter() {
+		return GenericConverterFactory.get(DocsGetUploadServerResult.class);
 	}
 }

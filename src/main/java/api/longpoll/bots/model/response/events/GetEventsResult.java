@@ -18,7 +18,7 @@ public class GetEventsResult {
 	/**
 	 * List of events.
 	 */
-	@SerializedName("events")
+	@SerializedName("updates")
 	private List<Event> events;
 
 	/**

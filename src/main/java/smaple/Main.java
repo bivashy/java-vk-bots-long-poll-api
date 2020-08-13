@@ -6,13 +6,11 @@ import api.longpoll.bots.exceptions.ApiHttpException;
 import api.longpoll.bots.methods.board.BoardDeleteComment;
 import api.longpoll.bots.methods.board.BoardRestoreComment;
 import api.longpoll.bots.methods.groups.GroupsAddAddress;
-import api.longpoll.bots.methods.groups.GroupsDeleteAddress;
 import api.longpoll.bots.methods.messages.MessagesSend;
 import api.longpoll.bots.model.board.BoardPostDeleteEvent;
 import api.longpoll.bots.model.board.BoardPostEvent;
-import api.longpoll.bots.model.groups.GroupsAddAddressResponse;
-import api.longpoll.bots.model.groups.GroupsDeleteAddressResponse;
 import api.longpoll.bots.model.events.messages.MessageEvent;
+import api.longpoll.bots.model.response.groups.GroupsAddAddressResult;
 import org.slf4j.impl.SimpleLogger;
 
 import java.io.File;
@@ -25,7 +23,7 @@ public class Main {
 			try {
 				File photo = new File("screenshot.png");
 
-				GroupsAddAddressResponse addAddressResponse = new GroupsAddAddress(this)
+				GroupsAddAddressResult addAddressResponse = new GroupsAddAddress(this)
 						.setGroupId(getGroupId())
 						.setTitle("test")
 						.setAddress("test addr")
@@ -33,11 +31,6 @@ public class Main {
 						.setCityId(1)
 						.setLatitude(50)
 						.setLongitude(50)
-						.execute();
-
-				GroupsDeleteAddressResponse deleteAddressResponse = new GroupsDeleteAddress(this)
-						.setGroupId(getGroupId())
-						.setAddressId(1)
 						.execute();
 
 				new MessagesSend(this)

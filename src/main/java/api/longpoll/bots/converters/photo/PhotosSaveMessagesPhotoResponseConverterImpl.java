@@ -1,7 +1,7 @@
 package api.longpoll.bots.converters.photo;
 
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.model.photos.PhotosSaveMessagesPhotoResponse;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 

@@ -3,7 +3,7 @@ package api.longpoll.bots.methods.photos;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.photo.PhotosSaveMessagesPhotoResponseConverterImpl;
-import api.longpoll.bots.model.photos.PhotosSaveMessagesPhotoResponse;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 

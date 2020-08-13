@@ -1,8 +1,8 @@
-package api.longpoll.bots.model.messages;
+package api.longpoll.bots.model.response.other;
 
 import com.google.gson.annotations.SerializedName;
 
-public class MessageUploadPhotoResponse {
+public class UploadPhotoResult {
 	@SerializedName("server")
 	private Integer server;
 	@SerializedName("photo")
@@ -14,7 +14,7 @@ public class MessageUploadPhotoResponse {
 		return server;
 	}
 
-	public MessageUploadPhotoResponse setServer(Integer server) {
+	public UploadPhotoResult setServer(Integer server) {
 		this.server = server;
 		return this;
 	}
@@ -23,7 +23,7 @@ public class MessageUploadPhotoResponse {
 		return photo;
 	}
 
-	public MessageUploadPhotoResponse setPhoto(String photo) {
+	public UploadPhotoResult setPhoto(String photo) {
 		this.photo = photo;
 		return this;
 	}
@@ -32,7 +32,7 @@ public class MessageUploadPhotoResponse {
 		return hash;
 	}
 
-	public MessageUploadPhotoResponse setHash(String hash) {
+	public UploadPhotoResult setHash(String hash) {
 		this.hash = hash;
 		return this;
 	}

@@ -1,8 +1,8 @@
-package api.longpoll.bots.model.board;
+package api.longpoll.bots.model.response.other;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BoardRestoreCommentResponse {
+public class IntegerResult {
 	@SerializedName("response")
 	private Integer response;
 
@@ -10,7 +10,7 @@ public class BoardRestoreCommentResponse {
 		return response;
 	}
 
-	public BoardRestoreCommentResponse setResponse(Integer response) {
+	public IntegerResult setResponse(Integer response) {
 		this.response = response;
 		return this;
 	}

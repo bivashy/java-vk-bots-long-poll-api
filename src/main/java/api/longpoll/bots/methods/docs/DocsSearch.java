@@ -5,9 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.document.DocsSearchResponse;
+import api.longpoll.bots.model.response.docs.DocsSearchResult;
 
-public class DocsSearch extends GetMethod<DocsSearchResponse> {
+public class DocsSearch extends GetMethod<DocsSearchResult> {
 	private static final String Q = "q";
 	private static final String COUNT = "count";
 	private static final String OFFSET = "offset";
@@ -58,7 +58,7 @@ public class DocsSearch extends GetMethod<DocsSearchResponse> {
 	}
 
 	@Override
-	protected JsonToPojoConverter<DocsSearchResponse> getConverter() {
-		return GenericConverterFactory.get(DocsSearchResponse.class);
+	protected JsonToPojoConverter<DocsSearchResult> getConverter() {
+		return GenericConverterFactory.get(DocsSearchResult.class);
 	}
 }

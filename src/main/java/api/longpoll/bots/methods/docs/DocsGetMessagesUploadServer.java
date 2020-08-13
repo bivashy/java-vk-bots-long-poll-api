@@ -5,9 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.document.DocsGetMessagesUploadServerResponse;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
 
-public class DocsGetMessagesUploadServer extends GetMethod<DocsGetMessagesUploadServerResponse> {
+public class DocsGetMessagesUploadServer extends GetMethod<DocsGetUploadServerResult> {
 	private static final String TYPE = "type";
 	private static final String PEER_ID = "peer_id";
 
@@ -39,7 +39,7 @@ public class DocsGetMessagesUploadServer extends GetMethod<DocsGetMessagesUpload
 	}
 
 	@Override
-	protected JsonToPojoConverter<DocsGetMessagesUploadServerResponse> getConverter() {
-		return GenericConverterFactory.get(DocsGetMessagesUploadServerResponse.class);
+	protected JsonToPojoConverter<DocsGetUploadServerResult> getConverter() {
+		return GenericConverterFactory.get(DocsGetUploadServerResult.class);
 	}
 }

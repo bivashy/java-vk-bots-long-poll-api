@@ -21,12 +21,10 @@ public abstract class PostMethod<Response> extends Method<Response> {
 
 	@Override
 	protected Connection.Response execute(Connection connection) throws IOException {
-		if (file != null) {
-			try (InputStream inputStream = new FileInputStream(file)) {
-				connection.data(getType(), file.getName(), inputStream);
-			}
+		try (InputStream inputStream = new FileInputStream(file)) {
+			connection.data(getType(), file.getName(), inputStream);
+			return super.execute(connection);
 		}
-		return super.execute(connection);
 	}
 
 	@Override

@@ -5,9 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.board.BoardRestoreCommentResponse;
+import api.longpoll.bots.model.response.other.IntegerResult;
 
-public class BoardRestoreComment extends GetMethod<BoardRestoreCommentResponse> {
+public class BoardRestoreComment extends GetMethod<IntegerResult> {
 	private static final String GROUP_ID = "group_id";
 	private static final String TOPIC_ID = "topic_id";
 	private static final String COMMENT_ID = "comment_id";
@@ -49,7 +49,7 @@ public class BoardRestoreComment extends GetMethod<BoardRestoreCommentResponse> 
 	}
 
 	@Override
-	protected JsonToPojoConverter<BoardRestoreCommentResponse> getConverter() {
-		return GenericConverterFactory.get(BoardRestoreCommentResponse.class);
+	protected JsonToPojoConverter<IntegerResult> getConverter() {
+		return GenericConverterFactory.get(IntegerResult.class);
 	}
 }

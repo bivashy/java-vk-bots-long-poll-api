@@ -32,7 +32,6 @@ public class UpdateResponseConverterImpl extends JsonToPojoConverter<GetEventsRe
 	@Override
 	protected boolean shouldSkipField(FieldAttributes fieldAttributes) {
 		return GetEventsResult.class.equals(fieldAttributes.getDeclaringClass())
-				&& List.class.equals(fieldAttributes.getDeclaredClass())
-				&& UPDATES_FIELD.equals(fieldAttributes.getName());
+				&& List.class.equals(fieldAttributes.getDeclaredClass());
 	}
 }

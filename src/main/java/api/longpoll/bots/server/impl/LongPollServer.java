@@ -7,8 +7,8 @@ import api.longpoll.bots.server.Server;
 import api.longpoll.bots.exceptions.ApiException;
 import api.longpoll.bots.exceptions.ApiHttpException;
 import api.longpoll.bots.methods.groups.GroupsGetLongPollServer;
-import api.longpoll.bots.methods.updates.GetUpdates;
-import api.longpoll.bots.model.groups.GroupsGetLongPollServerResponse;
+import api.longpoll.bots.methods.events.GetEvents;
+import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResult;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import com.google.gson.JsonObject;
@@ -24,7 +24,7 @@ public class LongPollServer implements Server {
 	private static final String FAILED_FIELD = "failed";
 
 	private LongPollBot bot;
-	private GetUpdates getUpdates;
+	private GetEvents getEvents;
 	private Converter<String, JsonObject> converter = new StringToJsonConverterImpl();
 
 	public LongPollServer(LongPollBot bot) {
@@ -33,19 +33,19 @@ public class LongPollServer implements Server {
 
 	@Override
 	public List<Event> getUpdates() throws ApiHttpException {
-		if (getUpdates == null) {
+		if (getEvents == null) {
 			init();
 		}
 
 		for (int attempt = 0; attempt < ATTEMPTS_AMOUNT; ++attempt) {
-			log.debug("Getting updates from VK Long Poll Server. Attempt: {}.", attempt + 1);
+			log.debug("Getting events from VK Long Poll Server. Attempt: {}.", attempt + 1);
 			try {
-				GetEventsResult getEventsResult = getUpdates.execute();
+				GetEventsResult getEventsResult = getEvents.execute();
 
 				updateTs(getEventsResult.getTs());
 				return getEventsResult.getEvents();
 			} catch (ApiException e) {
-				log.warn("Failed to get updates from VK Long Poll Server.", e);
+				log.warn("Failed to get events from VK Long Poll Server.", e);
 				JsonObject jsonObject = converter.convert(e.getMessage());
 
 				if (!jsonObject.has(FAILED_FIELD)) {
@@ -65,21 +65,22 @@ public class LongPollServer implements Server {
 			}
 		}
 
-		throw new ApiHttpException("Failed to get updates from Long Poll server. Number of attempts: " + ATTEMPTS_AMOUNT + ".");
+		throw new ApiHttpException("Failed to get events from Long Poll server. Number of attempts: " + ATTEMPTS_AMOUNT + ".");
 	}
 
 	private void init() throws ApiHttpException {
-		GroupsGetLongPollServerResponse serverResponse = new GroupsGetLongPollServer(bot)
+		GroupsGetLongPollServerResult.Response response = new GroupsGetLongPollServer(bot)
 				.setGroupId(bot.getGroupId())
-				.execute();
+				.execute()
+				.getResponse();
 
-		getUpdates = new GetUpdates(bot)
-				.setServer(serverResponse.getServer())
-				.setKey(serverResponse.getKey())
-				.setTs(serverResponse.getTs());
+		getEvents = new GetEvents(bot)
+				.setServer(response.getServer())
+				.setKey(response.getKey())
+				.setTs(response.getTs());
 	}
 
 	private void updateTs(int ts) {
-		getUpdates.setTs(ts);
+		getEvents.setTs(ts);
 	}
 }

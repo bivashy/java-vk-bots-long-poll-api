@@ -5,9 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.groups.GroupsGetLongPollServerResponse;
+import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResult;
 
-public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerResponse> {
+public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerResult> {
 	private static final String GROUP_ID_FIELD = "group_id";
 
 	public GroupsGetLongPollServer(LongPollBot bot) {
@@ -24,8 +24,8 @@ public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerRe
 	}
 
 	@Override
-	protected JsonToPojoConverter<GroupsGetLongPollServerResponse> getConverter() {
-		return GenericConverterFactory.get(GroupsGetLongPollServerResponse.class);
+	protected JsonToPojoConverter<GroupsGetLongPollServerResult> getConverter() {
+		return GenericConverterFactory.get(GroupsGetLongPollServerResult.class);
 	}
 
 	@Override

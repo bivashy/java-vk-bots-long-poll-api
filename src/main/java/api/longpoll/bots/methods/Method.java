@@ -15,13 +15,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public abstract class Method<Response> {
+public abstract class Method<Result> {
 	private static final Logger log = LoggerFactory.getLogger(Method.class);
 
 	private Converter<String, JsonObject> jsonConverter = new StringToJsonConverterImpl();
@@ -29,12 +28,12 @@ public abstract class Method<Response> {
 
 	protected Map<String, Object> params = new HashMap<>();
 
-	public Response execute() throws ApiHttpException {
+	public Result execute() throws ApiHttpException {
 		return execute(getConverter());
 	}
 
-	private Response execute(JsonToPojoConverter<Response> converter) throws ApiHttpException {
-		String stringResponse = send();
+	private Result execute(JsonToPojoConverter<Result> converter) throws ApiHttpException {
+		String stringResponse = sendRequest();
 
 		JsonObject responseJson = jsonConverter.convert(stringResponse);
 
@@ -45,7 +44,7 @@ public abstract class Method<Response> {
 		throw new ApiException(responseJson.toString());
 	}
 
-	private String send() throws ApiHttpException {
+	private String sendRequest() throws ApiHttpException {
 		try {
 			String api = getApi();
 			Connection.Method method = getMethod();
@@ -95,5 +94,5 @@ public abstract class Method<Response> {
 
 	protected abstract Connection.Method getMethod();
 
-	protected abstract JsonToPojoConverter<Response> getConverter();
+	protected abstract JsonToPojoConverter<Result> getConverter();
 }

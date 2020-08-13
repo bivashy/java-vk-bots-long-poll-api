@@ -1,13 +1,13 @@
-package api.longpoll.bots.methods.messages;
+package api.longpoll.bots.methods.other;
 
 import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.PostMethod;
-import api.longpoll.bots.model.messages.MessageUploadDocResponse;
+import api.longpoll.bots.model.response.other.UploadDocResult;
 
 import java.io.File;
 
-public class MessageUploadDoc extends PostMethod<MessageUploadDocResponse> {
+public class UploadDoc extends PostMethod<UploadDocResult> {
 	private static final String FILE = "file";
 
 	private String uploadUrl;
@@ -16,7 +16,7 @@ public class MessageUploadDoc extends PostMethod<MessageUploadDocResponse> {
 		return uploadUrl;
 	}
 
-	public MessageUploadDoc setUploadUrl(String uploadUrl) {
+	public UploadDoc setUploadUrl(String uploadUrl) {
 		this.uploadUrl = uploadUrl;
 		return this;
 	}
@@ -25,7 +25,7 @@ public class MessageUploadDoc extends PostMethod<MessageUploadDocResponse> {
 		return getFile();
 	}
 
-	public MessageUploadDoc setDoc(File doc) {
+	public UploadDoc setDoc(File doc) {
 		setFile(doc);
 		return this;
 	}
@@ -36,8 +36,8 @@ public class MessageUploadDoc extends PostMethod<MessageUploadDocResponse> {
 	}
 
 	@Override
-	protected JsonToPojoConverter<MessageUploadDocResponse> getConverter() {
-		return GenericConverterFactory.get(MessageUploadDocResponse.class);
+	protected JsonToPojoConverter<UploadDocResult> getConverter() {
+		return GenericConverterFactory.get(UploadDocResult.class);
 	}
 
 	@Override

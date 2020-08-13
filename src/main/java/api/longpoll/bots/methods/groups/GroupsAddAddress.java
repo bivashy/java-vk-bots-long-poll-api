@@ -5,10 +5,10 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.groups.GroupsAddAddressResponse;
+import api.longpoll.bots.model.response.groups.GroupsAddAddressResult;
 import com.google.gson.JsonObject;
 
-public class GroupsAddAddress extends GetMethod<GroupsAddAddressResponse> {
+public class GroupsAddAddress extends GetMethod<GroupsAddAddressResult> {
 	private static final String GROUP_ID = "group_id";
 	private static final String TITLE = "title";
 	private static final String ADDRESS = "address";
@@ -150,7 +150,7 @@ public class GroupsAddAddress extends GetMethod<GroupsAddAddressResponse> {
 	}
 
 	@Override
-	protected JsonToPojoConverter<GroupsAddAddressResponse> getConverter() {
-		return GenericConverterFactory.get(GroupsAddAddressResponse.class);
+	protected JsonToPojoConverter<GroupsAddAddressResult> getConverter() {
+		return GenericConverterFactory.get(GroupsAddAddressResult.class);
 	}
 }
