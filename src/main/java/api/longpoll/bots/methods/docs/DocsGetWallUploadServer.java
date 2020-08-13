@@ -15,10 +15,6 @@ public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerResult
 		return this;
 	}
 
-	public int getGroupId() {
-		return (int) params.get(GROUP_ID);
-	}
-
 	public DocsGetWallUploadServer(LongPollBot bot) {
 		super(bot);
 	}

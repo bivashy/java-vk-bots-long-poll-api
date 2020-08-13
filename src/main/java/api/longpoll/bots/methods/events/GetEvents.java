@@ -23,26 +23,14 @@ public class GetEvents extends GetMethod<GetEventsResult> {
 		params.put(WAIT_FIELD, WAIT);
 	}
 
-	public String getServer() {
-		return server;
-	}
-
 	public GetEvents setServer(String server) {
 		this.server = server;
 		return this;
 	}
 
-	public String getKey() {
-		return (String) params.get(KEY_FIELD);
-	}
-
 	public GetEvents setKey(String key) {
 		params.put(KEY_FIELD, key);
 		return this;
-	}
-
-	public int getTs() {
-		return (int) params.get(TS_FIELD);
 	}
 
 	public GetEvents setTs(int ts) {

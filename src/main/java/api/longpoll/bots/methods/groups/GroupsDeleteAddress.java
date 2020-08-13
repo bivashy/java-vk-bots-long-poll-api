@@ -16,17 +16,9 @@ public class GroupsDeleteAddress extends GetMethod<IntegerResult> {
 		return this;
 	}
 
-	public int getGroupId() {
-		return (int) params.get(GROUP_ID);
-	}
-
 	public GroupsDeleteAddress setAddressId(int addressId) {
 		params.put(ADDRESS_ID, addressId);
 		return this;
-	}
-
-	public int getAddressId() {
-		return (int) params.get(ADDRESS_ID);
 	}
 
 	public GroupsDeleteAddress(LongPollBot bot) {

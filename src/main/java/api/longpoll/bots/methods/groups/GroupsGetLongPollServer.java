@@ -14,10 +14,6 @@ public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerRe
 		super(bot);
 	}
 
-	public int getGroupId() {
-		return (int) params.get(GROUP_ID_FIELD);
-	}
-
 	public GroupsGetLongPollServer setGroupId(int groupId) {
 		params.put(GROUP_ID_FIELD, groupId);
 		return this;

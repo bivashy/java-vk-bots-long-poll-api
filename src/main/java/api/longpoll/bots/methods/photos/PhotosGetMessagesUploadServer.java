@@ -15,10 +15,6 @@ public class PhotosGetMessagesUploadServer extends GetMethod<PhotosGetMessagesUp
 		return this;
 	}
 
-	public int getPeerId(int peerId) {
-		return (int) params.get(PEER_ID);
-	}
-
 	public PhotosGetMessagesUploadServer(LongPollBot bot) {
 		super(bot);
 	}

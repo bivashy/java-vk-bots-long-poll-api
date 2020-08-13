@@ -16,17 +16,9 @@ public class DocsGetMessagesUploadServer extends GetMethod<DocsGetUploadServerRe
 		return this;
 	}
 
-	public String getType(String type) {
-		return (String) params.get(TYPE);
-	}
-
 	public DocsGetMessagesUploadServer setPeerId(int peerId) {
 		params.put(PEER_ID, peerId);
 		return this;
-	}
-
-	public int getPeerId(int peerId) {
-		return (int) params.get(PEER_ID);
 	}
 
 	public DocsGetMessagesUploadServer(LongPollBot bot) {

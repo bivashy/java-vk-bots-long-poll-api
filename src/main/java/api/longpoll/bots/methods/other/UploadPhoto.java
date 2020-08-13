@@ -12,17 +12,9 @@ public class UploadPhoto extends PostMethod<UploadPhotoResult> {
 
 	private String uploadUrl;
 
-	public File getPhoto() {
-		return getFile();
-	}
-
 	public UploadPhoto setPhoto(File photo) {
 		setFile(photo);
 		return this;
-	}
-
-	public String getUploadUrl() {
-		return uploadUrl;
 	}
 
 	public UploadPhoto setUploadUrl(String uploadUrl) {

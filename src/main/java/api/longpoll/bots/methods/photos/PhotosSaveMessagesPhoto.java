@@ -21,26 +21,14 @@ public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoRe
 		return this;
 	}
 
-	public String getPhoto(String photo) {
-		return (String) params.get(PHOTO);
-	}
-
 	public PhotosSaveMessagesPhoto setServer(int server) {
 		params.put(SERVER, server);
 		return this;
 	}
 
-	public int getServer(int server) {
-		return (int) params.get(SERVER);
-	}
-
 	public PhotosSaveMessagesPhoto setHash(String hash) {
 		params.put(HASH, hash);
 		return this;
-	}
-
-	public String getHash(String hash) {
-		return (String) params.get(HASH);
 	}
 
 	@Override

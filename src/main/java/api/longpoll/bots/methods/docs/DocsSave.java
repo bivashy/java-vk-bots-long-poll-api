@@ -22,17 +22,10 @@ public class DocsSave extends GetMethod<DocsSaveResult> {
 		return this;
 	}
 
-	public String getFile(String file) {
-		return (String) params.get(FILE);
-	}
 
 	public DocsSave setTitle(String title) {
 		params.put(TITLE, title);
 		return this;
-	}
-
-	public String getTitle(String title) {
-		return (String) params.get(TITLE);
 	}
 
 	public DocsSave setTags(String tags) {
@@ -40,17 +33,9 @@ public class DocsSave extends GetMethod<DocsSaveResult> {
 		return this;
 	}
 
-	public String getTags(String tags) {
-		return (String) params.get(TAGS);
-	}
-
 	public DocsSave setReturnTags(boolean returnTags) {
 		params.put(RETURN_TAGS, returnTags ? 1 : 0);
 		return this;
-	}
-
-	public boolean getReturnTags(boolean returnTags) {
-		return (int) params.get(RETURN_TAGS) == 1;
 	}
 
 	@Override

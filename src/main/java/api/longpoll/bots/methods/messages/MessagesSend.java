@@ -62,17 +62,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 		return this;
 	}
 
-	public int getRandomId() {
-		return (int) params.get(RANDOM_ID);
-	}
-
 	public MessagesSend setPeerId(int peerId) {
 		params.put(PEER_ID, peerId);
 		return this;
-	}
-
-	public int getPeerId() {
-		return (int) params.get(PEER_ID);
 	}
 
 	public MessagesSend setDomain(String domain) {
@@ -80,17 +72,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 		return this;
 	}
 
-	public String getDomain() {
-		return (String) params.get(DOMAIN);
-	}
-
 	public MessagesSend setUserIds(List<Integer> userIds) {
 		params.put(USER_IDS, userIds);
 		return this;
-	}
-
-	public List<Integer> getUserIds() {
-		return (List<Integer>) params.get(USER_IDS);
 	}
 
 	public MessagesSend setMessage(String message) {
@@ -98,26 +82,14 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 		return this;
 	}
 
-	public String getMessage() {
-		return (String) params.get(MESSAGE);
-	}
-
 	public MessagesSend setLatitude(float latitude) {
 		params.put(LATITUDE, latitude);
 		return this;
 	}
 
-	public float getLatitude() {
-		return (float) params.get(LATITUDE);
-	}
-
 	public MessagesSend setLongtitude(float longitude) {
 		params.put(LONGITUDE, longitude);
 		return this;
-	}
-
-	public float getLongtitude() {
-		return (float) params.get(LONGITUDE);
 	}
 
 	public List<String> getAttachments() {
@@ -132,7 +104,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 	public MessagesSend addPhoto(File photo) throws ApiHttpException {
 		PhotosGetMessagesUploadServer photosGetMessagesUploadServer = new PhotosGetMessagesUploadServer(bot);
 		if (params.containsKey(PEER_ID)) {
-			photosGetMessagesUploadServer.setPeerId(getPeerId());
+			photosGetMessagesUploadServer.setPeerId((int) params.get(PEER_ID));
 		}
 
 		PhotosGetMessagesUploadServerResult.Response response = photosGetMessagesUploadServer.execute().getResponse();
@@ -161,7 +133,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 
 	public MessagesSend addDoc(File doc) throws ApiHttpException {
 		DocsGetUploadServerResult.Response response = new DocsGetMessagesUploadServer(bot)
-				.setPeerId(getPeerId())
+				.setPeerId((int) params.get(PEER_ID))
 				.setType(DOC)
 				.execute()
 				.getResponse();
@@ -212,17 +184,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 		return this;
 	}
 
-	public int getReplyTo() {
-		return (int) params.get(REPLY_TO);
-	}
-
 	public MessagesSend setForwardMessages(List<Integer> forwardMessages) {
 		params.put(FORWARD_MESSAGES, forwardMessages);
 		return this;
-	}
-
-	public List<Integer> getForwardMessages() {
-		return (List<Integer>) params.get(FORWARD_MESSAGES);
 	}
 
 	public MessagesSend setStickerId(int stickerId) {
@@ -230,26 +194,14 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 		return this;
 	}
 
-	public int getStickerId() {
-		return (int) params.get(STICKER_ID);
-	}
-
 	public MessagesSend setDontParseLinks(boolean dontParseLinks) {
 		params.put(DONT_PARSE_LINKS, dontParseLinks ? 1 : 0);
 		return this;
 	}
 
-	public boolean getDontParseLinks() {
-		return (int) params.get(DONT_PARSE_LINKS) == 1;
-	}
-
 	public MessagesSend setDisableMentions(boolean disableMentions) {
 		params.put(DISABLE_MENTIONS, disableMentions ? 1 : 0);
 		return this;
-	}
-
-	public boolean getDisableMentions() {
-		return (int) params.get(DISABLE_MENTIONS) == 1;
 	}
 
 	@Override

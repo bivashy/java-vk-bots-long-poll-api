@@ -17,26 +17,14 @@ public class BoardDeleteComment extends GetMethod<IntegerResult> {
 		return this;
 	}
 
-	public int getGroupId() {
-		return (int) params.get(GROUP_ID);
-	}
-
 	public BoardDeleteComment setTopicId(int topicId) {
 		params.put(TOPIC_ID, topicId);
 		return this;
 	}
 
-	public int getTopicId() {
-		return (int) params.get(TOPIC_ID);
-	}
-
 	public BoardDeleteComment setCommentId(int commentId) {
 		params.put(COMMENT_ID, commentId);
 		return this;
-	}
-
-	public int getCommentId() {
-		return (int) params.get(COMMENT_ID);
 	}
 
 	public BoardDeleteComment(LongPollBot bot) {
