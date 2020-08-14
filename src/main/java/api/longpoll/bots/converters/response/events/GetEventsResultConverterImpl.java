@@ -1,6 +1,7 @@
 package api.longpoll.bots.converters.response.events;
 
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.events.EventConverterImpl;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import com.google.gson.FieldAttributes;

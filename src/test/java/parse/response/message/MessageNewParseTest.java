@@ -4,13 +4,12 @@ import api.longpoll.bots.constants.DocumentTypes;
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
 import api.longpoll.bots.model.objects.media.Attachable;
 import api.longpoll.bots.model.objects.media.Attachment;
-import api.longpoll.bots.model.audio.Audio;
-import api.longpoll.bots.model.audio.MainArtist;
-import api.longpoll.bots.model.audio.message.AudioMessage;
+import api.longpoll.bots.model.objects.media.Audio;
+import api.longpoll.bots.model.objects.media.AudioMessage;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.messages.MessageEvent;
-import api.longpoll.bots.model.graffiti.Graffiti;
+import api.longpoll.bots.model.objects.media.Graffiti;
 import api.longpoll.bots.model.objects.additional.ClientInfo;
 import api.longpoll.bots.model.objects.additional.Geo;
 import api.longpoll.bots.model.objects.basic.Message;
@@ -214,16 +213,6 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertEquals("In the End",  audio.getTitle());
 		Assert.assertEquals(Integer.valueOf(219), audio.getDuration());
 		Assert.assertEquals(Integer.valueOf(1490105766), audio.getDate());
-		Assert.assertEquals(Integer.valueOf(2), audio.getContentRestricted());
-
-		List<MainArtist> mainArtists = audio.getMainArtists();
-		Assert.assertNotNull(mainArtists);
-		Assert.assertEquals(1, mainArtists.size());
-
-		MainArtist mainArtist = mainArtists.get(0);
-		Assert.assertNotNull(mainArtist);
-		Assert.assertEquals("Linkin Park", mainArtist.getName());
-		Assert.assertEquals("67550258036106963", mainArtist.getId());
 	}
 
 	@Test

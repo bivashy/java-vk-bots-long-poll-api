@@ -5,17 +5,14 @@ import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.exceptions.ApiHttpException;
 import api.longpoll.bots.methods.board.BoardDeleteComment;
 import api.longpoll.bots.methods.board.BoardRestoreComment;
-import api.longpoll.bots.methods.groups.GroupsAddCallbackServer;
 import api.longpoll.bots.methods.messages.MessagesSend;
-import api.longpoll.bots.model.board.BoardPostDeleteEvent;
-import api.longpoll.bots.model.board.BoardPostEvent;
+import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
+import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import api.longpoll.bots.model.events.messages.MessageEvent;
-import api.longpoll.bots.model.response.groups.GroupsAddCallbackServerResult;
 import api.longpoll.bots.model.response.messages.MessagesSendResult;
 import org.slf4j.impl.SimpleLogger;
 
 import java.io.File;
-import java.util.Arrays;
 
 public class Main {
 	private static BotsLongPoll botsLongPoll;

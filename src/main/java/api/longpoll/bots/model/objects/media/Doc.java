@@ -84,13 +84,13 @@ public class Doc implements Attachable {
 	/**
 	 * Describes document preview data.
 	 */
-	public abstract class Preview {
+	public interface Preview {
 	}
 
 	/**
 	 * Describes document photo preview data.
 	 */
-	public class Photo extends Preview {
+	public class Photo implements Preview {
 		/**
 		 * Array with the photo copies of different sizes.
 		 */
@@ -183,7 +183,7 @@ public class Doc implements Attachable {
 	/**
 	 * Describes document graffiti preview data.
 	 */
-	public class Graffiti extends Preview {
+	public class Graffiti implements Preview {
 		/**
 		 * Doc URL with graffiti
 		 */
@@ -233,9 +233,9 @@ public class Doc implements Attachable {
 	/**
 	 * Describes document audio message preview data.
 	 */
-	public class AudioMessage extends Preview {
+	public class AudioMessage implements Preview {
 		/**
-		 * Audio messages duration in seconds.
+		 * Audio message duration in seconds.
 		 */
 		@SerializedName("duration")
 		private Integer duration;

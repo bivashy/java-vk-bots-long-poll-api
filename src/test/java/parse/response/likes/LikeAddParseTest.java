@@ -1,7 +1,7 @@
 package parse.response.likes;
 
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
-import api.longpoll.bots.model.likes.LikeEvent;
+import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;

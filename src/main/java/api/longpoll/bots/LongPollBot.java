@@ -1,11 +1,11 @@
 package api.longpoll.bots;
 
-import api.longpoll.bots.model.likes.LikeEvent;
-import api.longpoll.bots.model.audio.Audio;
-import api.longpoll.bots.model.board.BoardPostDeleteEvent;
-import api.longpoll.bots.model.board.BoardPostEvent;
-import api.longpoll.bots.model.market.item.MarketCommentDeleteEvent;
-import api.longpoll.bots.model.market.item.MarketCommentEvent;
+import api.longpoll.bots.model.events.likes.LikeEvent;
+import api.longpoll.bots.model.objects.media.Audio;
+import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
+import api.longpoll.bots.model.events.boards.BoardPostEvent;
+import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
+import api.longpoll.bots.model.events.market.MarketCommentEvent;
 import api.longpoll.bots.model.market.order.MarketOrder;
 import api.longpoll.bots.model.other.AppPayload;
 import api.longpoll.bots.model.other.GroupChangePhotoEvent;

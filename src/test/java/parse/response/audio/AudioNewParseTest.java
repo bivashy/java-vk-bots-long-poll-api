@@ -1,7 +1,7 @@
 package parse.response.audio;
 
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
-import api.longpoll.bots.model.audio.Audio;
+import api.longpoll.bots.model.objects.media.Audio;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
@@ -44,12 +44,7 @@ public class AudioNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(-168975658), audio.getOwnerId());
 		Assert.assertEquals("Never Gonna Give You Up", audio.getTitle());
 		Assert.assertEquals(Integer.valueOf(211), audio.getDuration());
-		Assert.assertFalse(audio.isExplicit());
-		Assert.assertFalse(audio.isFocusTrack());
-		Assert.assertEquals("485a78a6qghyMJRnAYPVpvLMTORD7n1p", audio.getTrackCode());
 		Assert.assertTrue(audio.getUrl().isEmpty());
 		Assert.assertEquals(Integer.valueOf(1594822421), audio.getDate());
-		Assert.assertFalse(audio.isShortVidoesAllowed());
-		Assert.assertFalse(audio.isStoriesAllowed());
 	}
 }

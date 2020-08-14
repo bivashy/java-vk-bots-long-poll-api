@@ -1,8 +1,8 @@
 package api.longpoll.bots.model.market.order;
 
 import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.link.product.Price;
-import api.longpoll.bots.model.market.item.MarketItem;
+import api.longpoll.bots.model.objects.media.MarketItem;
+import api.longpoll.bots.model.objects.additional.Price;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
