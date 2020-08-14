@@ -1,6 +1,6 @@
 package parse.response.message;
 
-import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.events.EventObject;
@@ -20,7 +20,7 @@ public class MessageReplyParseTest extends AbstractParseTest {
 	@Test
 	public void test1_messageEdit() throws IOException {
 		JsonObject jsonObject = readJson("json/response/message_reply/message_reply_sample_5_110.json");
-		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
 		Assert.assertNotNull(getEventsResult);
 		Assert.assertEquals(Integer.valueOf(2610), getEventsResult.getTs());
 

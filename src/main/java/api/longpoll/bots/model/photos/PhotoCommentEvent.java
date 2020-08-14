@@ -1,9 +1,9 @@
 package api.longpoll.bots.model.photos;
 
-import api.longpoll.bots.model.wall.reply.WallReply;
+import api.longpoll.bots.model.wall.reply.WallComment;
 import com.google.gson.annotations.SerializedName;
 
-public class PhotoCommentEvent extends WallReply {
+public class PhotoCommentEvent extends WallComment {
 	@SerializedName("photo_id")
 	private Integer photoId;
 	@SerializedName("photo_owner_id")

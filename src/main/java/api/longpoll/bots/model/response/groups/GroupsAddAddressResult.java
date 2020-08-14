@@ -7,15 +7,6 @@ public class GroupsAddAddressResult {
 	@SerializedName("response")
 	private Response response;
 
-	public Response getResponse() {
-		return response;
-	}
-
-	public GroupsAddAddressResult setResponse(Response response) {
-		this.response = response;
-		return this;
-	}
-
 	public class Response {
 		@SerializedName("group_id")
 		private Integer groupId;
@@ -160,5 +151,14 @@ public class GroupsAddAddressResult {
 			this.mainAddress = mainAddress;
 			return this;
 		}
+	}
+
+	public Response getResponse() {
+		return response;
+	}
+
+	public GroupsAddAddressResult setResponse(Response response) {
+		this.response = response;
+		return this;
 	}
 }

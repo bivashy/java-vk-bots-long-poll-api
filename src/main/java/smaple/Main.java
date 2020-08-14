@@ -25,11 +25,10 @@ public class Main {
 			try {
 				File photo = new File("screenshot.png");
 //381980625,49385182
-				GroupsAddCallbackServerResult result = new GroupsAddCallbackServer(this)
-						.setGroupId(getGroupId())
-						.setSecretKey("html")
-						.setTitle("test")
-						.setUrl("https://google.com")
+				MessagesSendResult result = new MessagesSend(this)
+						.setPeerId(messageUpdate.getMessage().getPeerId())
+						.attachDoc(photo)
+						.setMessage("Answer.")
 						.execute();
 
 				System.out.println(result);

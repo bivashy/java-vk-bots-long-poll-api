@@ -1,11 +1,11 @@
 package api.longpoll.bots.model.audio.message;
 
-import api.longpoll.bots.model.attachment.MediaObject;
+import api.longpoll.bots.model.objects.media.Attachable;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class AudioMessage extends MediaObject {
+public class AudioMessage implements Attachable {
 	@SerializedName("id")
 	private Integer id;
 	@SerializedName("owner_id")

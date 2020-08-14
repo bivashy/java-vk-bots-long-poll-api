@@ -3,7 +3,7 @@ package api.longpoll.bots.model.photos;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
-public class PhotoCommentDeleteEvent extends EventObject {
+public class PhotoCommentDeleteEvent implements EventObject {
 	@SerializedName("owner_id")
 	private Integer ownerId;
 	@SerializedName("id")

@@ -3,7 +3,7 @@ package api.longpoll.bots.model.board;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
-public class BoardPostDeleteEvent extends EventObject {
+public class BoardPostDeleteEvent implements EventObject {
 	@SerializedName("topic_owner_id")
 	private Integer topicOwnerId;
 	@SerializedName("id")

@@ -1,6 +1,6 @@
 package parse.response.video;
 
-import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
@@ -21,7 +21,7 @@ public class VideoCommentRestoreParseTest extends AbstractParseTest {
 	@Test
 	public void test1_videoCommentRestore() throws IOException {
 		JsonObject jsonObject = readJson("json/response/video_comment_restore/video_comment_restore_sample_5_110.json");
-		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
 		Assert.assertNotNull(getEventsResult);
 		Assert.assertEquals(Integer.valueOf(2625), getEventsResult.getTs());
 

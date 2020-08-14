@@ -4,23 +4,13 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.PostMethod;
 import api.longpoll.bots.model.response.other.UploadDocResult;
+import org.jsoup.Connection;
 
 import java.io.File;
+import java.util.stream.Stream;
 
 public class UploadDoc extends PostMethod<UploadDocResult> {
-	private static final String FILE = "file";
-
 	private String uploadUrl;
-
-	public UploadDoc setUploadUrl(String uploadUrl) {
-		this.uploadUrl = uploadUrl;
-		return this;
-	}
-
-	public UploadDoc setDoc(File doc) {
-		setFile(doc);
-		return this;
-	}
 
 	@Override
 	protected String getApi() {
@@ -33,7 +23,30 @@ public class UploadDoc extends PostMethod<UploadDocResult> {
 	}
 
 	@Override
+	protected Stream<Connection.KeyVal> getKeyValStream() {
+		return Stream.of();
+	}
+
+	@Override
 	protected String getType() {
-		return FILE;
+		return "file";
+	}
+
+	public String getUploadUrl() {
+		return uploadUrl;
+	}
+
+	public UploadDoc setUploadUrl(String uploadUrl) {
+		this.uploadUrl = uploadUrl;
+		return this;
+	}
+
+	public UploadDoc setDoc(File doc) {
+		setFile(doc);
+		return this;
+	}
+
+	public File getDoc() {
+		return getFile();
 	}
 }

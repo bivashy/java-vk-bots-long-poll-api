@@ -6,15 +6,6 @@ public class GroupsGetLongPollServerResult {
 	@SerializedName("response")
 	private Response response;
 
-	public Response getResponse() {
-		return response;
-	}
-
-	public GroupsGetLongPollServerResult setResponse(Response response) {
-		this.response = response;
-		return this;
-	}
-
 	public class Response {
 		@SerializedName("key")
 		private String key;
@@ -49,5 +40,14 @@ public class GroupsGetLongPollServerResult {
 			this.ts = ts;
 			return this;
 		}
+	}
+
+	public Response getResponse() {
+		return response;
+	}
+
+	public GroupsGetLongPollServerResult setResponse(Response response) {
+		this.response = response;
+		return this;
 	}
 }

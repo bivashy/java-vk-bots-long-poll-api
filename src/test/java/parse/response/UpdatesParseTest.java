@@ -1,6 +1,6 @@
 package parse.response;
 
-import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import com.google.gson.JsonObject;
@@ -17,7 +17,7 @@ public class UpdatesParseTest extends AbstractParseTest {
 	@Test
 	public void test1_emptyUpdatesParse() throws IOException {
 		JsonObject jsonObject = readJson("json/response/empty_updates_sample_5_110.json");
-		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
 		Assert.assertNotNull(getEventsResult);
 		Assert.assertEquals(Integer.valueOf(2587), getEventsResult.getTs());
 
@@ -29,7 +29,7 @@ public class UpdatesParseTest extends AbstractParseTest {
 	@Test
 	public void test2_updatesFailed1() throws IOException {
 		JsonObject jsonObject = readJson("json/response/get_updates_failed_1_5_110.json");
-		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
 		Assert.assertNotNull(getEventsResult);
 		Assert.assertEquals(Integer.valueOf(2593), getEventsResult.getTs());
 	}

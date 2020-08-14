@@ -3,7 +3,7 @@ package api.longpoll.bots.model.other;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
-public class AppPayload extends EventObject {
+public class AppPayload implements EventObject {
 	@SerializedName("user_id")
 	private Integer userId;
 	@SerializedName("app_id")

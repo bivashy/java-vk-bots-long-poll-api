@@ -3,7 +3,7 @@ package api.longpoll.bots.model.likes;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
-public class LikeEvent extends EventObject {
+public class LikeEvent implements EventObject {
 	@SerializedName("liker_id")
 	private Integer likerId;
 	@SerializedName("object_type")

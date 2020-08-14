@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.board;
 
 import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.attachment.Attachment;
+import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class TopicComment extends EventObject {
+public class TopicComment implements EventObject {
 	@SerializedName("id")
 	private Integer id;
 	@SerializedName("from_id")

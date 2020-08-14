@@ -3,7 +3,7 @@ package api.longpoll.bots.model.users;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
-public class GroupJoinEvent extends EventObject {
+public class GroupJoinEvent implements EventObject {
 	@SerializedName("user_id")
 	private Integer userId;
 	@SerializedName("join_type")

@@ -6,26 +6,14 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.other.IntegerResult;
+import org.jsoup.Connection;
+
+import java.util.stream.Stream;
 
 public class BoardDeleteComment extends GetMethod<IntegerResult> {
-	private static final String GROUP_ID = "group_id";
-	private static final String TOPIC_ID = "topic_id";
-	private static final String COMMENT_ID = "comment_id";
-
-	public BoardDeleteComment setGroupId(int groupId) {
-		params.put(GROUP_ID, groupId);
-		return this;
-	}
-
-	public BoardDeleteComment setTopicId(int topicId) {
-		params.put(TOPIC_ID, topicId);
-		return this;
-	}
-
-	public BoardDeleteComment setCommentId(int commentId) {
-		params.put(COMMENT_ID, commentId);
-		return this;
-	}
+	private Integer groupId;
+	private Integer topicId;
+	private Integer commentId;
 
 	public BoardDeleteComment(LongPollBot bot) {
 		super(bot);
@@ -39,5 +27,41 @@ public class BoardDeleteComment extends GetMethod<IntegerResult> {
 	@Override
 	protected JsonToPojoConverter<IntegerResult> getConverter() {
 		return GenericConverterFactory.get(IntegerResult.class);
+	}
+
+	@Override
+	protected Stream<Connection.KeyVal> getKeyValStream() {
+		return Stream.of(
+				keyVal("group_id", groupId),
+				keyVal("topic_id", topicId),
+				keyVal("comment_id", commentId)
+		);
+	}
+
+	public Integer getGroupId() {
+		return groupId;
+	}
+
+	public BoardDeleteComment setGroupId(Integer groupId) {
+		this.groupId = groupId;
+		return this;
+	}
+
+	public Integer getTopicId() {
+		return topicId;
+	}
+
+	public BoardDeleteComment setTopicId(Integer topicId) {
+		this.topicId = topicId;
+		return this;
+	}
+
+	public Integer getCommentId() {
+		return commentId;
+	}
+
+	public BoardDeleteComment setCommentId(Integer commentId) {
+		this.commentId = commentId;
+		return this;
 	}
 }

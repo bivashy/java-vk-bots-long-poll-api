@@ -1,11 +1,11 @@
 package api.longpoll.bots.model.sticker;
 
-import api.longpoll.bots.model.attachment.MediaObject;
+import api.longpoll.bots.model.objects.media.Attachable;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Sticker extends MediaObject {
+public class Sticker implements Attachable {
 	@SerializedName("product_id")
 	private Integer productId;
 	@SerializedName("sticker_id")

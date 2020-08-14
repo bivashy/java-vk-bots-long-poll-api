@@ -6,29 +6,17 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
+import org.jsoup.Connection;
+
+import java.util.stream.Stream;
 
 public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoResult> {
-	private static final String PHOTO = "photo";
-	private static final String SERVER = "server";
-	private static final String HASH = "hash";
+	private String photo;
+	private Integer server;
+	private String hash;
 
 	public PhotosSaveMessagesPhoto(LongPollBot bot) {
 		super(bot);
-	}
-
-	public PhotosSaveMessagesPhoto setPhoto(String photo) {
-		params.put(PHOTO, photo);
-		return this;
-	}
-
-	public PhotosSaveMessagesPhoto setServer(int server) {
-		params.put(SERVER, server);
-		return this;
-	}
-
-	public PhotosSaveMessagesPhoto setHash(String hash) {
-		params.put(HASH, hash);
-		return this;
 	}
 
 	@Override
@@ -39,5 +27,41 @@ public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoRe
 	@Override
 	protected JsonToPojoConverter<PhotosSaveMessagesPhotoResult> getConverter() {
 		return GenericConverterFactory.get(PhotosSaveMessagesPhotoResult.class);
+	}
+
+	@Override
+	protected Stream<Connection.KeyVal> getKeyValStream() {
+		return Stream.of(
+				keyVal("photo", photo),
+				keyVal("server", server),
+				keyVal("hash", hash)
+		);
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public PhotosSaveMessagesPhoto setPhoto(String photo) {
+		this.photo = photo;
+		return this;
+	}
+
+	public Integer getServer() {
+		return server;
+	}
+
+	public PhotosSaveMessagesPhoto setServer(Integer server) {
+		this.server = server;
+		return this;
+	}
+
+	public String getHash() {
+		return hash;
+	}
+
+	public PhotosSaveMessagesPhoto setHash(String hash) {
+		this.hash = hash;
+		return this;
 	}
 }

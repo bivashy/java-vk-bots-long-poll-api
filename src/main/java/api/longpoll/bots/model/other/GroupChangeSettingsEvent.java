@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Map;
 
-public class GroupChangeSettingsEvent extends EventObject {
+public class GroupChangeSettingsEvent implements EventObject {
 	@SerializedName("user_id")
 	private Integer userId;
 	@SerializedName("changes")

@@ -1,13 +1,13 @@
 package api.longpoll.bots.model.video;
 
 import api.longpoll.bots.adapters.BoolIntAdapter;
-import api.longpoll.bots.model.attachment.MediaObject;
+import api.longpoll.bots.model.objects.media.Attachable;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Video extends MediaObject {
+public class Video implements Attachable {
 	@SerializedName("id")
 	private Integer id;
 	@SerializedName("owner_id")

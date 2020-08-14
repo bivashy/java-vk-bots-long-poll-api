@@ -1,9 +1,9 @@
 package api.longpoll.bots.model.video;
 
-import api.longpoll.bots.model.wall.reply.WallReply;
+import api.longpoll.bots.model.wall.reply.WallComment;
 import com.google.gson.annotations.SerializedName;
 
-public class VideoCommentEvent extends WallReply {
+public class VideoCommentEvent extends WallComment {
 	@SerializedName("video_id")
 	private Integer videoId;
 	@SerializedName("video_owner_id")

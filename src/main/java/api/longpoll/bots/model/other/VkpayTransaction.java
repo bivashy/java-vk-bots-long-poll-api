@@ -3,7 +3,7 @@ package api.longpoll.bots.model.other;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
-public class VkpayTransaction extends EventObject {
+public class VkpayTransaction implements EventObject {
 	@SerializedName("from_id")
 	private Integer fromId;
 	@SerializedName("amount")

@@ -3,10 +3,10 @@ package api.longpoll.bots.methods;
 import api.longpoll.bots.converters.Converter;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.StringToJsonConverterImpl;
-import api.longpoll.bots.validators.Validator;
-import api.longpoll.bots.validators.impl.ResponseValidator;
 import api.longpoll.bots.exceptions.ApiException;
 import api.longpoll.bots.exceptions.ApiHttpException;
+import api.longpoll.bots.validators.Validator;
+import api.longpoll.bots.validators.impl.ResponseValidator;
 import com.google.gson.JsonObject;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -15,18 +15,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public abstract class Method<Result> {
 	private static final Logger log = LoggerFactory.getLogger(Method.class);
 
 	private Converter<String, JsonObject> jsonConverter = new StringToJsonConverterImpl();
 	private Validator validator = new ResponseValidator();
-
-	protected Map<String, Object> params = new HashMap<>();
 
 	public Result execute() throws ApiHttpException {
 		return execute(getConverter());
@@ -77,17 +75,29 @@ public abstract class Method<Result> {
 	}
 
 	protected List<Connection.KeyVal> getData() {
-		return params.entrySet()
-				.stream()
-				.map(entry -> keyVal(entry.getKey(), entry.getValue()))
+		return getKeyValStream()
+				.filter(Objects::nonNull)
 				.collect(Collectors.toList());
 	}
 
-	protected Connection.KeyVal keyVal(String key, Object value) {
+	protected Connection.KeyVal keyVal(String key, Object value, boolean boolint) {
+		if (value == null) {
+			return null;
+		}
+
 		if (value instanceof List) {
 			value = ((List) value).stream().map(String::valueOf).collect(Collectors.joining(","));
 		}
+
+		if (boolint && value instanceof Boolean) {
+			value = (Boolean) value ? 1 : 0;
+		}
+
 		return HttpConnection.KeyVal.create(key, String.valueOf(value));
+	}
+
+	protected Connection.KeyVal keyVal(String key, Object value) {
+		return keyVal(key, value, false);
 	}
 
 	protected abstract String getApi();
@@ -95,4 +105,6 @@ public abstract class Method<Result> {
 	protected abstract Connection.Method getMethod();
 
 	protected abstract JsonToPojoConverter<Result> getConverter();
+
+	protected abstract Stream<Connection.KeyVal> getKeyValStream();
 }

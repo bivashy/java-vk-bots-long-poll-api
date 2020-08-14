@@ -7,89 +7,27 @@ import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsAddAddressResult;
 import com.google.gson.JsonObject;
+import org.jsoup.Connection;
+
+import java.util.stream.Stream;
 
 public class GroupsAddAddress extends GetMethod<GroupsAddAddressResult> {
-	private static final String GROUP_ID = "group_id";
-	private static final String TITLE = "title";
-	private static final String ADDRESS = "address";
-	private static final String ADDITIONAL_ADDRESS = "additional_address";
-	private static final String COUNTRY_ID = "country_id";
-	private static final String CITY_ID = "city_id";
-	private static final String METRO_ID = "metro_id";
-	private static final String LATITUDE = "latitude";
-	private static final String LONGITUDE = "longitude";
-	private static final String PHONE = "phone";
-	private static final String WORK_INFO_STATUS = "work_info_status";
-	private static final String IS_MAIN_ADDRESS = "is_main_address";
-	private static final String TIMETABLE = "timetable";
+	private Integer groupId;
+	private String title;
+	private String address;
+	private String additionalAddress;
+	private Integer countryId;
+	private Integer cityId;
+	private Integer metroId;
+	private Float latitude;
+	private Float longitude;
+	private String phone;
+	private String workInfoStatus;
+	private JsonObject timeTable;
+	private Boolean mainAddress;
 
 	public GroupsAddAddress(LongPollBot bot) {
 		super(bot);
-	}
-
-	public GroupsAddAddress setGroupId(int groupId) {
-		params.put(GROUP_ID, groupId);
-		return this;
-	}
-
-	public GroupsAddAddress setTitle(String title) {
-		params.put(TITLE, title);
-		return this;
-	}
-
-	public GroupsAddAddress setAddress(String address) {
-		params.put(ADDRESS, address);
-		return this;
-	}
-
-	public GroupsAddAddress setAdditionalAddress(String additionalAddress) {
-		params.put(ADDITIONAL_ADDRESS, additionalAddress);
-		return this;
-	}
-
-	public GroupsAddAddress setCountryId(int countryId) {
-		params.put(COUNTRY_ID, countryId);
-		return this;
-	}
-
-	public GroupsAddAddress setCityId(int cityId) {
-		params.put(CITY_ID, cityId);
-		return this;
-	}
-
-	public GroupsAddAddress setMetroId(int metroId) {
-		params.put(METRO_ID, metroId);
-		return this;
-	}
-
-	public GroupsAddAddress setLatitude(float latitude) {
-		params.put(LATITUDE, latitude);
-		return this;
-	}
-
-	public GroupsAddAddress setLongitude(float longitude) {
-		params.put(LONGITUDE, longitude);
-		return this;
-	}
-
-	public GroupsAddAddress setPhone(String phone) {
-		params.put(PHONE, phone);
-		return this;
-	}
-
-	public GroupsAddAddress setWorkInfoStatus(String workInfoStatus) {
-		params.put(WORK_INFO_STATUS, workInfoStatus);
-		return this;
-	}
-
-	public GroupsAddAddress setMainAddress(boolean mainAddress) {
-		params.put(IS_MAIN_ADDRESS, mainAddress ? 1 : 0);
-		return this;
-	}
-
-	public GroupsAddAddress setTimetable(JsonObject timetable) {
-		params.put(TIMETABLE, timetable);
-		return this;
 	}
 
 	@Override
@@ -100,5 +38,141 @@ public class GroupsAddAddress extends GetMethod<GroupsAddAddressResult> {
 	@Override
 	protected JsonToPojoConverter<GroupsAddAddressResult> getConverter() {
 		return GenericConverterFactory.get(GroupsAddAddressResult.class);
+	}
+
+	@Override
+	protected Stream<Connection.KeyVal> getKeyValStream() {
+		return Stream.of(
+				keyVal("group_id", groupId),
+				keyVal("title", title),
+				keyVal("address", address),
+				keyVal("additional_address", additionalAddress),
+				keyVal("country_id", countryId),
+				keyVal("city_id", cityId),
+				keyVal("metro_id", metroId),
+				keyVal("latitude", latitude),
+				keyVal("longitude", longitude),
+				keyVal("phone", phone),
+				keyVal("work_info_status", workInfoStatus),
+				keyVal("timetable", timeTable),
+				keyVal("is_main_address", mainAddress, true)
+		);
+	}
+
+	public Integer getGroupId() {
+		return groupId;
+	}
+
+	public GroupsAddAddress setGroupId(Integer groupId) {
+		this.groupId = groupId;
+		return this;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public GroupsAddAddress setTitle(String title) {
+		this.title = title;
+		return this;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public GroupsAddAddress setAddress(String address) {
+		this.address = address;
+		return this;
+	}
+
+	public String getAdditionalAddress() {
+		return additionalAddress;
+	}
+
+	public GroupsAddAddress setAdditionalAddress(String additionalAddress) {
+		this.additionalAddress = additionalAddress;
+		return this;
+	}
+
+	public Integer getCountryId() {
+		return countryId;
+	}
+
+	public GroupsAddAddress setCountryId(Integer countryId) {
+		this.countryId = countryId;
+		return this;
+	}
+
+	public Integer getCityId() {
+		return cityId;
+	}
+
+	public GroupsAddAddress setCityId(Integer cityId) {
+		this.cityId = cityId;
+		return this;
+	}
+
+	public Integer getMetroId() {
+		return metroId;
+	}
+
+	public GroupsAddAddress setMetroId(Integer metroId) {
+		this.metroId = metroId;
+		return this;
+	}
+
+	public Float getLatitude() {
+		return latitude;
+	}
+
+	public GroupsAddAddress setLatitude(Float latitude) {
+		this.latitude = latitude;
+		return this;
+	}
+
+	public Float getLongitude() {
+		return longitude;
+	}
+
+	public GroupsAddAddress setLongitude(Float longitude) {
+		this.longitude = longitude;
+		return this;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public GroupsAddAddress setPhone(String phone) {
+		this.phone = phone;
+		return this;
+	}
+
+	public String getWorkInfoStatus() {
+		return workInfoStatus;
+	}
+
+	public GroupsAddAddress setWorkInfoStatus(String workInfoStatus) {
+		this.workInfoStatus = workInfoStatus;
+		return this;
+	}
+
+	public JsonObject getTimeTable() {
+		return timeTable;
+	}
+
+	public GroupsAddAddress setTimeTable(JsonObject timeTable) {
+		this.timeTable = timeTable;
+		return this;
+	}
+
+	public Boolean getMainAddress() {
+		return mainAddress;
+	}
+
+	public GroupsAddAddress setMainAddress(Boolean mainAddress) {
+		this.mainAddress = mainAddress;
+		return this;
 	}
 }

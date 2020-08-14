@@ -1,6 +1,6 @@
 package parse.response.wall;
 
-import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
@@ -21,7 +21,7 @@ public class WallPostNewParseTest extends AbstractParseTest {
 	@Test
 	public void test1_wallPostNew() throws IOException {
 		JsonObject jsonObject = readJson("json/response/wall_post_new/wall_post_new_sample_5_110.json");
-		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
 		Assert.assertNotNull(getEventsResult);
 		Assert.assertEquals(Integer.valueOf(2626), getEventsResult.getTs());
 

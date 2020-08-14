@@ -4,7 +4,7 @@ import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.photos.Photo;
 import com.google.gson.annotations.SerializedName;
 
-public class GroupChangePhotoEvent extends EventObject {
+public class GroupChangePhotoEvent implements EventObject {
 	@SerializedName("user_id")
 	private Integer userId;
 	@SerializedName("photo")

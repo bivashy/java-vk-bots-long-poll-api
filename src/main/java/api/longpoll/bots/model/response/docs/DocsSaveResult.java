@@ -1,28 +1,16 @@
 package api.longpoll.bots.model.response.docs;
 
-import api.longpoll.bots.model.document.Document;
+import api.longpoll.bots.model.objects.media.Attachable;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 public class DocsSaveResult {
 	@SerializedName("response")
-	private List<Response> responses;
-
-	public List<Response> getResponses() {
-		return responses;
-	}
-
-	public DocsSaveResult setResponses(List<Response> responses) {
-		this.responses = responses;
-		return this;
-	}
+	private Response response;
 
 	public class Response {
 		@SerializedName("type")
 		private String type;
-		@SerializedName("doc")
-		private Document object;
+		private Attachable attachable;
 
 		public String getType() {
 			return type;
@@ -33,14 +21,23 @@ public class DocsSaveResult {
 			return this;
 		}
 
-		public Document getObject() {
-			return object;
+		public Attachable getAttachable() {
+			return attachable;
 		}
 
-		public Response setObject(Document object) {
-			this.object = object;
+		public Response setAttachable(Attachable attachable) {
+			this.attachable = attachable;
 			return this;
 		}
+	}
+
+	public Response getResponse() {
+		return response;
+	}
+
+	public DocsSaveResult setResponse(Response response) {
+		this.response = response;
+		return this;
 	}
 }
 

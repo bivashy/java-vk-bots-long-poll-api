@@ -3,7 +3,7 @@ package api.longpoll.bots.model.wall.reply;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
-public class WallReplyDeleteEvent extends EventObject {
+public class WallReplyDeleteEvent implements EventObject {
 	@SerializedName("owner_id")
 	private Integer ownerId;
 	@SerializedName("id")

@@ -1,7 +1,7 @@
 package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.attachment.Attachment;
+import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.objects.additional.Geo;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/message">Private Message</a>
  */
-public class Message extends EventObject {
+public class Message implements EventObject {
 	/**
 	 * Message ID.
 	 */
@@ -99,6 +99,235 @@ public class Message extends EventObject {
 	// TODO: 12.08.2020 find out javadoc
 	@SerializedName("conversation_message_id")
 	private Integer conversationMessageId;
+
+	/**
+	 * Contains information about service action with conversation.
+	 */
+	public class Action {
+		/**
+		 * Action type. Possible values:
+		 * <ul>
+		 * <li><i>chat_photo_update</i> — conversation photo updated;</li>
+		 * <li><i>chat_photo_remove</i> — conversation photo deleted;</li>
+		 * <li><i>chat_create</i> — conversation created;</li>
+		 * <li><i>chat_title_update</i> — conversation title updated;</li>
+		 * <li><i>chat_invite_user</i> — user invited;</li>
+		 * <li><i>chat_kick_user</i> — user kicked;</li>
+		 * <li><i>chat_pin_message</i> — message pinned;</li>
+		 * <li><i>chat_unpin_message</i> — message unpinned;</li>
+		 * <li><i>chat_invite_user_by_link</i> — user joined the conversation by link.</li>
+		 * </ul>
+		 */
+		@SerializedName("type")
+		private String type;
+
+		/**
+		 * User ID (positive) or email (negative) has been invited or kicked (for service messages with <b>type</b> = chat_invite_user, chat_invite_user_by_link or chat_kick_user). user ID, who pinned/unpinned message (<b>action</b> = chat_pin_message or chat_unpin_message).
+		 */
+		@SerializedName("member_id")
+		private Integer memberId;
+
+		/**
+		 * Conversation title (for service messages with type = chat_create or chat_title_update).
+		 */
+		@SerializedName("text")
+		private String text;
+
+		/**
+		 * Email has been invited or kicked (for service messages with <b>type</b> = chat_invite_user or chat_kick_user and negative <b>member_id</b>).
+		 */
+		@SerializedName("email")
+		private String email;
+
+		/**
+		 * Conversation cover image.
+		 */
+		@SerializedName("photo")
+		private Photo photo;
+
+		/**
+		 * Gets action type.
+		 *
+		 * @return action type.
+		 */
+		public String getType() {
+			return type;
+		}
+
+		/**
+		 * Sets action type.
+		 *
+		 * @param type action type.
+		 * @return this Action.
+		 */
+		public Action setType(String type) {
+			this.type = type;
+			return this;
+		}
+
+		/**
+		 * Gets user ID.
+		 *
+		 * @return user ID.
+		 */
+		public Integer getMemberId() {
+			return memberId;
+		}
+
+		/**
+		 * Sets user ID.
+		 *
+		 * @param memberId user ID.
+		 * @return this Action.
+		 */
+		public Action setMemberId(Integer memberId) {
+			this.memberId = memberId;
+			return this;
+		}
+
+		/**
+		 * Gets conversation title.
+		 *
+		 * @return conversation title.
+		 */
+		public String getText() {
+			return text;
+		}
+
+		/**
+		 * Sets conversation title.
+		 *
+		 * @param text conversation title.
+		 * @return this Action.
+		 */
+		public Action setText(String text) {
+			this.text = text;
+			return this;
+		}
+
+		/**
+		 * Gets email.
+		 *
+		 * @return email.
+		 */
+		public String getEmail() {
+			return email;
+		}
+
+		/**
+		 * Sets email.
+		 *
+		 * @param email email.
+		 * @return this Action.
+		 */
+		public Action setEmail(String email) {
+			this.email = email;
+			return this;
+		}
+
+		/**
+		 * Gets conversation cover image.
+		 *
+		 * @return conversation cover image.
+		 */
+		public Photo getPhoto() {
+			return photo;
+		}
+
+		/**
+		 * Sets conversation cover image.
+		 *
+		 * @param photo conversation cover image.
+		 * @return this Action.
+		 */
+		public Action setPhoto(Photo photo) {
+			this.photo = photo;
+			return this;
+		}
+
+		/**
+		 * Contains conversation cover image.
+		 */
+		public class Photo {
+			/**
+			 * URL of conversation image with width size of 50 px.
+			 */
+			@SerializedName("photo_50")
+			private String photo50;
+
+			/**
+			 * URL of conversation image with width size of 100 px.
+			 */
+			@SerializedName("photo_100")
+			private String photo100;
+
+			/**
+			 * URL of conversation image with width size of 200 px.
+			 */
+			@SerializedName("photo_200")
+			private String photo200;
+
+			/**
+			 * Gets URL of conversation image with width size of 50 px.
+			 *
+			 * @return URL of conversation image with width size of 50 px.
+			 */
+			public String getPhoto50() {
+				return photo50;
+			}
+
+			/**
+			 * Sets URL of conversation image with width size of 50 px.
+			 *
+			 * @param photo50 URL of conversation image with width size of 50 px.
+			 * @return this Photo.
+			 */
+			public Photo setPhoto50(String photo50) {
+				this.photo50 = photo50;
+				return this;
+			}
+
+			/**
+			 * Gets URL of conversation image with width size of 100 px.
+			 *
+			 * @return URL of conversation image with width size of 100 px.
+			 */
+			public String getPhoto100() {
+				return photo100;
+			}
+
+			/**
+			 * Sets URL of conversation image with width size of 100 px.
+			 *
+			 * @param photo100 URL of conversation image with width size of 100 px.
+			 * @return this Photo.
+			 */
+			public Photo setPhoto100(String photo100) {
+				this.photo100 = photo100;
+				return this;
+			}
+
+			/**
+			 * Gets URL of conversation image with width size of 200 px.
+			 *
+			 * @return URL of conversation image with width size of 200 px.
+			 */
+			public String getPhoto200() {
+				return photo200;
+			}
+
+			/**
+			 * Sets URL of conversation image with width size of 200 px.
+			 *
+			 * @param photo200 URL of conversation image with width size of 200 px.
+			 * @return this Photo.
+			 */
+			public Photo setPhoto200(String photo200) {
+				this.photo200 = photo200;
+				return this;
+			}
+		}
+	}
 
 	/**
 	 * Checks wether message has text.
@@ -425,234 +654,5 @@ public class Message extends EventObject {
 	public Message setHidden(boolean hidden) {
 		this.hidden = hidden;
 		return this;
-	}
-
-	/**
-	 * Contains information about service action with conversation.
-	 */
-	public class Action {
-		/**
-		 * Action type. Possible values:
-		 * <ul>
-		 * <li><i>chat_photo_update</i> — conversation photo updated;</li>
-		 * <li><i>chat_photo_remove</i> — conversation photo deleted;</li>
-		 * <li><i>chat_create</i> — conversation created;</li>
-		 * <li><i>chat_title_update</i> — conversation title updated;</li>
-		 * <li><i>chat_invite_user</i> — user invited;</li>
-		 * <li><i>chat_kick_user</i> — user kicked;</li>
-		 * <li><i>chat_pin_message</i> — message pinned;</li>
-		 * <li><i>chat_unpin_message</i> — message unpinned;</li>
-		 * <li><i>chat_invite_user_by_link</i> — user joined the conversation by link.</li>
-		 * </ul>
-		 */
-		@SerializedName("type")
-		private String type;
-
-		/**
-		 * User ID (positive) or email (negative) has been invited or kicked (for service messages with <b>type</b> = chat_invite_user, chat_invite_user_by_link or chat_kick_user). user ID, who pinned/unpinned message (<b>action</b> = chat_pin_message or chat_unpin_message).
-		 */
-		@SerializedName("member_id")
-		private Integer memberId;
-
-		/**
-		 * Conversation title (for service messages with type = chat_create or chat_title_update).
-		 */
-		@SerializedName("text")
-		private String text;
-
-		/**
-		 * Email has been invited or kicked (for service messages with <b>type</b> = chat_invite_user or chat_kick_user and negative <b>member_id</b>).
-		 */
-		@SerializedName("email")
-		private String email;
-
-		/**
-		 * Conversation cover image.
-		 */
-		@SerializedName("photo")
-		private Photo photo;
-
-		/**
-		 * Gets action type.
-		 *
-		 * @return action type.
-		 */
-		public String getType() {
-			return type;
-		}
-
-		/**
-		 * Sets action type.
-		 *
-		 * @param type action type.
-		 * @return this Action.
-		 */
-		public Action setType(String type) {
-			this.type = type;
-			return this;
-		}
-
-		/**
-		 * Gets user ID.
-		 *
-		 * @return user ID.
-		 */
-		public Integer getMemberId() {
-			return memberId;
-		}
-
-		/**
-		 * Sets user ID.
-		 *
-		 * @param memberId user ID.
-		 * @return this Action.
-		 */
-		public Action setMemberId(Integer memberId) {
-			this.memberId = memberId;
-			return this;
-		}
-
-		/**
-		 * Gets conversation title.
-		 *
-		 * @return conversation title.
-		 */
-		public String getText() {
-			return text;
-		}
-
-		/**
-		 * Sets conversation title.
-		 *
-		 * @param text conversation title.
-		 * @return this Action.
-		 */
-		public Action setText(String text) {
-			this.text = text;
-			return this;
-		}
-
-		/**
-		 * Gets email.
-		 *
-		 * @return email.
-		 */
-		public String getEmail() {
-			return email;
-		}
-
-		/**
-		 * Sets email.
-		 *
-		 * @param email email.
-		 * @return this Action.
-		 */
-		public Action setEmail(String email) {
-			this.email = email;
-			return this;
-		}
-
-		/**
-		 * Gets conversation cover image.
-		 *
-		 * @return conversation cover image.
-		 */
-		public Photo getPhoto() {
-			return photo;
-		}
-
-		/**
-		 * Sets conversation cover image.
-		 *
-		 * @param photo conversation cover image.
-		 * @return this Action.
-		 */
-		public Action setPhoto(Photo photo) {
-			this.photo = photo;
-			return this;
-		}
-
-		/**
-		 * Contains conversation cover image.
-		 */
-		public class Photo {
-			/**
-			 * URL of conversation image with width size of 50 px.
-			 */
-			@SerializedName("photo_50")
-			private String photo50;
-
-			/**
-			 * URL of conversation image with width size of 100 px.
-			 */
-			@SerializedName("photo_100")
-			private String photo100;
-
-			/**
-			 * URL of conversation image with width size of 200 px.
-			 */
-			@SerializedName("photo_200")
-			private String photo200;
-
-			/**
-			 * Gets URL of conversation image with width size of 50 px.
-			 *
-			 * @return URL of conversation image with width size of 50 px.
-			 */
-			public String getPhoto50() {
-				return photo50;
-			}
-
-			/**
-			 * Sets URL of conversation image with width size of 50 px.
-			 *
-			 * @param photo50 URL of conversation image with width size of 50 px.
-			 * @return this Photo.
-			 */
-			public Photo setPhoto50(String photo50) {
-				this.photo50 = photo50;
-				return this;
-			}
-
-			/**
-			 * Gets URL of conversation image with width size of 100 px.
-			 *
-			 * @return URL of conversation image with width size of 100 px.
-			 */
-			public String getPhoto100() {
-				return photo100;
-			}
-
-			/**
-			 * Sets URL of conversation image with width size of 100 px.
-			 *
-			 * @param photo100 URL of conversation image with width size of 100 px.
-			 * @return this Photo.
-			 */
-			public Photo setPhoto100(String photo100) {
-				this.photo100 = photo100;
-				return this;
-			}
-
-			/**
-			 * Gets URL of conversation image with width size of 200 px.
-			 *
-			 * @return URL of conversation image with width size of 200 px.
-			 */
-			public String getPhoto200() {
-				return photo200;
-			}
-
-			/**
-			 * Sets URL of conversation image with width size of 200 px.
-			 *
-			 * @param photo200 URL of conversation image with width size of 200 px.
-			 * @return this Photo.
-			 */
-			public Photo setPhoto200(String photo200) {
-				this.photo200 = photo200;
-				return this;
-			}
-		}
 	}
 }

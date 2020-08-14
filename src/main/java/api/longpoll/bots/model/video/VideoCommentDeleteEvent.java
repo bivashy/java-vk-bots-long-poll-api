@@ -3,7 +3,7 @@ package api.longpoll.bots.model.video;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
-public class VideoCommentDeleteEvent extends EventObject {
+public class VideoCommentDeleteEvent implements EventObject {
 	@SerializedName("id")
 	private Integer id;
 	@SerializedName("owner_id")

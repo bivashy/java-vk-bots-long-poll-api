@@ -1,6 +1,6 @@
 package parse.response.likes;
 
-import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
 import api.longpoll.bots.model.likes.LikeEvent;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
@@ -20,7 +20,7 @@ public class LikeAddParseTest extends AbstractParseTest {
 	@Test
 	public void test1_likeAdd() throws IOException {
 		JsonObject jsonObject = readJson("json/response/like_add/like_add_sample_5_110.json");
-		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
 		Assert.assertNotNull(getEventsResult);
 		Assert.assertEquals(Integer.valueOf(2629), getEventsResult.getTs());
 

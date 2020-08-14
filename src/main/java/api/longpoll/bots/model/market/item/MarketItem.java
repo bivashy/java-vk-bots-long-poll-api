@@ -1,10 +1,10 @@
 package api.longpoll.bots.model.market.item;
 
-import api.longpoll.bots.model.attachment.MediaObject;
 import api.longpoll.bots.model.market.item.category.Category;
+import api.longpoll.bots.model.objects.media.Attachable;
 import com.google.gson.annotations.SerializedName;
 
-public class MarketItem extends MediaObject {
+public class MarketItem implements Attachable {
 	@SerializedName("id")
 	private Integer id;
 	@SerializedName("owner_id")

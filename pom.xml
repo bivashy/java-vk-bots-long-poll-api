@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.yvasyliev</groupId>
-    <artifactId>java-vk-bots-long-poll-api</artifactId>
+    <artifactId>java-vk-bots-longpoll-api</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 

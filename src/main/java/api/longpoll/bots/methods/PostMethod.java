@@ -2,10 +2,7 @@ package api.longpoll.bots.methods;
 
 import org.jsoup.Connection;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public abstract class PostMethod<Response> extends Method<Response> {
 	private File file;
@@ -21,10 +18,14 @@ public abstract class PostMethod<Response> extends Method<Response> {
 
 	@Override
 	protected Connection.Response execute(Connection connection) throws IOException {
-		try (InputStream inputStream = new FileInputStream(file)) {
-			connection.data(getType(), file.getName(), inputStream);
-			return super.execute(connection);
+		if (file != null) {
+			try (InputStream inputStream = new FileInputStream(file)) {
+				connection.data(getType(), file.getName(), inputStream);
+				return super.execute(connection);
+			}
 		}
+
+		return super.execute(connection);
 	}
 
 	@Override

@@ -6,17 +6,15 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResult;
+import org.jsoup.Connection;
+
+import java.util.stream.Stream;
 
 public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerResult> {
-	private static final String GROUP_ID_FIELD = "group_id";
+	private Integer groupId;
 
 	public GroupsGetLongPollServer(LongPollBot bot) {
 		super(bot);
-	}
-
-	public GroupsGetLongPollServer setGroupId(int groupId) {
-		params.put(GROUP_ID_FIELD, groupId);
-		return this;
 	}
 
 	@Override
@@ -25,7 +23,21 @@ public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerRe
 	}
 
 	@Override
+	protected Stream<Connection.KeyVal> getKeyValStream() {
+		return Stream.of(keyVal("group_id", groupId));
+	}
+
+	@Override
 	protected String getApi() {
 		return VkApi.Groups.GET_LONG_POLL_SERVER;
+	}
+
+	public Integer getGroupId() {
+		return groupId;
+	}
+
+	public GroupsGetLongPollServer setGroupId(Integer groupId) {
+		this.groupId = groupId;
+		return this;
 	}
 }

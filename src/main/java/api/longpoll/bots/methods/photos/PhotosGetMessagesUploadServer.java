@@ -6,14 +6,12 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
+import org.jsoup.Connection;
+
+import java.util.stream.Stream;
 
 public class PhotosGetMessagesUploadServer extends GetMethod<PhotosGetMessagesUploadServerResult> {
-	private static final String PEER_ID = "peer_id";
-
-	public PhotosGetMessagesUploadServer setPeerId(int peerId) {
-		params.put(PEER_ID, peerId);
-		return this;
-	}
+	private Integer peerId;
 
 	public PhotosGetMessagesUploadServer(LongPollBot bot) {
 		super(bot);
@@ -27,5 +25,19 @@ public class PhotosGetMessagesUploadServer extends GetMethod<PhotosGetMessagesUp
 	@Override
 	protected JsonToPojoConverter<PhotosGetMessagesUploadServerResult> getConverter() {
 		return GenericConverterFactory.get(PhotosGetMessagesUploadServerResult.class);
+	}
+
+	@Override
+	protected Stream<Connection.KeyVal> getKeyValStream() {
+		return Stream.of(keyVal("peer_id", peerId));
+	}
+
+	public Integer getPeerId() {
+		return peerId;
+	}
+
+	public PhotosGetMessagesUploadServer setPeerId(Integer peerId) {
+		this.peerId = peerId;
+		return this;
 	}
 }

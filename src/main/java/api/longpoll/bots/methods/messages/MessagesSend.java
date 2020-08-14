@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.messages.MessagesSendResultConverterIpml;
+import api.longpoll.bots.converters.response.messages.MessagesSendResultConverterIpml;
 import api.longpoll.bots.exceptions.ApiHttpException;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
@@ -12,83 +12,210 @@ import api.longpoll.bots.methods.other.UploadDoc;
 import api.longpoll.bots.methods.other.UploadPhoto;
 import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
 import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
+import api.longpoll.bots.model.objects.media.Doc;
+import api.longpoll.bots.model.photos.Photo;
 import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
-import api.longpoll.bots.model.document.Document;
-import api.longpoll.bots.model.market.item.MarketItem;
+import api.longpoll.bots.model.response.messages.MessagesSendResult;
 import api.longpoll.bots.model.response.other.UploadDocResult;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
-import api.longpoll.bots.model.response.messages.MessagesSendResult;
-import api.longpoll.bots.model.photos.Photo;
 import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
 import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
-import api.longpoll.bots.model.video.Video;
-import api.longpoll.bots.model.wall.post.WallPost;
 import org.jsoup.Connection;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class MessagesSend extends GetMethod<MessagesSendResult> {
-	private static final String RANDOM_ID = "random_id";
-	private static final String PEER_ID = "peer_id";
-	private static final String DOMAIN = "domain";
-	private static final String USER_IDS = "user_ids";
-	private static final String MESSAGE = "message";
-	private static final String LATITUDE = "lat";
-	private static final String LONGITUDE = "long";
-	private static final String ATTACHMENT = "attachment";
-	private static final String PHOTO = "photo";
-	private static final String DOC = "doc";
-	private static final String VIDEO = "video";
-	private static final String WALL_POST = "wall";
-	private static final String MARKET_ITEM = "market";
-	private static final String REPLY_TO = "reply_to";
-	private static final String FORWARD_MESSAGES = "forward_messages";
-	private static final String STICKER_ID = "sticker_id";
-	private static final String DONT_PARSE_LINKS = "dont_parse_links";
-	private static final String DISABLE_MENTIONS = "disable_mentions";
-
-
-	private List<String> attachments = new ArrayList<>();
+	private Integer userId;
+	private Integer randomId = Long.valueOf(System.currentTimeMillis()).intValue();
+	private Integer peerId;
+	private String domain;
+	private Integer chatId;
+	private List<Integer> userIds;
+	private String message;
+	private Float latitude;
+	private Float longitude;
+	private List<String> attachments;
+	private Integer replyTo;
+	private List<Integer> forwardMessages;
+	private Integer stickerId;
+	private Boolean dontParseLinks;
+	private Boolean disableMentions;
 
 	public MessagesSend(LongPollBot bot) {
 		super(bot);
-		setRandomId(Long.valueOf(System.currentTimeMillis()).intValue());
 	}
 
-	public MessagesSend setRandomId(int randomId) {
-		params.put(RANDOM_ID, randomId);
+	@Override
+	protected String getApi() {
+		return VkApi.Messages.SEND;
+	}
+
+	@Override
+	protected JsonToPojoConverter<MessagesSendResult> getConverter() {
+		return new MessagesSendResultConverterIpml();
+	}
+
+	@Override
+	protected Stream<Connection.KeyVal> getKeyValStream() {
+		return Stream.of(
+				keyVal("user_id", userId),
+				keyVal("random_id", randomId),
+				keyVal("peer_id", peerId),
+				keyVal("domain", domain),
+				keyVal("user_ids", userId),
+				keyVal("user_ids", userIds),
+				keyVal("message", message),
+				keyVal("lat", latitude),
+				keyVal("long", longitude),
+				keyVal("attachment", attachments),
+				keyVal("reply_to", replyTo),
+				keyVal("forward_messages", forwardMessages),
+				keyVal("sticker_id", stickerId),
+				keyVal("dont_parse_links", dontParseLinks, true),
+				keyVal("disable_mentions", disableMentions, true)
+		);
+	}
+
+	private String attachment(String type, Integer ownerId, Integer mediaId, String accessKey) {
+		return type + ownerId + "_" + mediaId + (accessKey == null ? "" : "_" + accessKey);
+	}
+
+	private MessagesSend attach(String type, Integer ownerId, Integer mediaId, String accessKey) {
+		if (attachments == null) {
+			attachments = new ArrayList<>();
+		}
+		attachments.add(attachment(type, ownerId, mediaId, accessKey));
 		return this;
 	}
 
-	public MessagesSend setPeerId(int peerId) {
-		params.put(PEER_ID, peerId);
+	public MessagesSend attachPhoto(Photo photo) {
+		return attach("photo", photo.getOwnerId(), photo.getId(), photo.getAccessKey());
+	}
+
+	public MessagesSend attachPhoto(File photo) throws ApiHttpException {
+		PhotosGetMessagesUploadServerResult.Response uploadServer = new PhotosGetMessagesUploadServer(bot)
+				.setPeerId(peerId)
+				.execute()
+				.getResponse();
+		UploadPhotoResult uploadPhoto = new UploadPhoto()
+				.setUploadUrl(uploadServer.getUploadUrl())
+				.setPhoto(photo)
+				.execute();
+		PhotosSaveMessagesPhotoResult.Response savePhoto = new PhotosSaveMessagesPhoto(bot)
+				.setHash(uploadPhoto.getHash())
+				.setPhoto(uploadPhoto.getPhoto())
+				.setServer(uploadPhoto.getServer())
+				.execute()
+				.getResponse()
+				.get(0);
+
+		return attach("photo", savePhoto.getOwnerId(), savePhoto.getId(), savePhoto.getAccessKey());
+	}
+
+	public MessagesSend attachDoc(Doc doc) {
+		return attach("doc", doc.getOwnerId(), doc.getId(), doc.getAccessKey());
+	}
+
+	public MessagesSend attachDoc(File doc) throws ApiHttpException {
+		DocsGetUploadServerResult.Response uploadServer = new DocsGetMessagesUploadServer(bot)
+				.setType("doc")
+				.setPeerId(peerId)
+				.execute()
+				.getResponse();
+		UploadDocResult uploadDoc = new UploadDoc()
+				.setUploadUrl(uploadServer.getUploadUrl())
+				.setDoc(doc)
+				.execute();
+		Doc uploadedDoc = (Doc) new DocsSave(bot)
+				.setFile(uploadDoc.getFile())
+				.execute()
+				.getResponse()
+				.getAttachable();
+
+		return attach("doc", uploadedDoc.getOwnerId(), uploadedDoc.getId(), uploadedDoc.getAccessKey());
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public MessagesSend setUserId(Integer userId) {
+		this.userId = userId;
 		return this;
+	}
+
+	public Integer getRandomId() {
+		return randomId;
+	}
+
+	public MessagesSend setRandomId(Integer randomId) {
+		this.randomId = randomId;
+		return this;
+	}
+
+	public Integer getPeerId() {
+		return peerId;
+	}
+
+	public MessagesSend setPeerId(Integer peerId) {
+		this.peerId = peerId;
+		return this;
+	}
+
+	public String getDomain() {
+		return domain;
 	}
 
 	public MessagesSend setDomain(String domain) {
-		params.put(DOMAIN, domain);
+		this.domain = domain;
 		return this;
+	}
+
+	public Integer getChatId() {
+		return chatId;
+	}
+
+	public MessagesSend setChatId(Integer chatId) {
+		this.chatId = chatId;
+		return this;
+	}
+
+	public List<Integer> getUserIds() {
+		return userIds;
 	}
 
 	public MessagesSend setUserIds(List<Integer> userIds) {
-		params.put(USER_IDS, userIds);
+		this.userIds = userIds;
 		return this;
+	}
+
+	public String getMessage() {
+		return message;
 	}
 
 	public MessagesSend setMessage(String message) {
-		params.put(MESSAGE, message);
+		this.message = message;
 		return this;
 	}
 
-	public MessagesSend setLatitude(float latitude) {
-		params.put(LATITUDE, latitude);
+	public Float getLatitude() {
+		return latitude;
+	}
+
+	public MessagesSend setLatitude(Float latitude) {
+		this.latitude = latitude;
 		return this;
 	}
 
-	public MessagesSend setLongtitude(float longitude) {
-		params.put(LONGITUDE, longitude);
+	public Float getLongitude() {
+		return longitude;
+	}
+
+	public MessagesSend setLongitude(Float longitude) {
+		this.longitude = longitude;
 		return this;
 	}
 
@@ -101,122 +228,48 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 		return this;
 	}
 
-	public MessagesSend addPhoto(File photo) throws ApiHttpException {
-		PhotosGetMessagesUploadServer photosGetMessagesUploadServer = new PhotosGetMessagesUploadServer(bot);
-		if (params.containsKey(PEER_ID)) {
-			photosGetMessagesUploadServer.setPeerId((int) params.get(PEER_ID));
-		}
+	public Integer getReplyTo() {
+		return replyTo;
+	}
 
-		PhotosGetMessagesUploadServerResult.Response response = photosGetMessagesUploadServer.execute().getResponse();
-		UploadPhotoResult uploadPhotoResult = new UploadPhoto()
-				.setUploadUrl(response.getUploadUrl())
-				.setPhoto(photo)
-				.execute();
-
-		PhotosSaveMessagesPhotoResult.Response uploadedPhoto = new PhotosSaveMessagesPhoto(bot)
-				.setHash(uploadPhotoResult.getHash())
-				.setPhoto(uploadPhotoResult.getPhoto())
-				.setServer(uploadPhotoResult.getServer())
-				.execute()
-				.getResponse()
-				.get(0);
-
-		attachments.add(attachment(PHOTO, uploadedPhoto.getOwnerId(), uploadedPhoto.getId()));
-
+	public MessagesSend setReplyTo(Integer replyTo) {
+		this.replyTo = replyTo;
 		return this;
 	}
 
-	public MessagesSend addPhoto(Photo photo) {
-		attachments.add(attachment(PHOTO, photo.getOwnerId(), photo.getId()));
-		return this;
-	}
-
-	public MessagesSend addDoc(File doc) throws ApiHttpException {
-		DocsGetUploadServerResult.Response response = new DocsGetMessagesUploadServer(bot)
-				.setPeerId((int) params.get(PEER_ID))
-				.setType(DOC)
-				.execute()
-				.getResponse();
-
-		UploadDocResult uploadDocResponse = new UploadDoc()
-				.setUploadUrl(response.getUploadUrl())
-				.setDoc(doc)
-				.execute();
-
-		Document document = new DocsSave(bot)
-				.setTitle(doc.getName())
-				.setFile(uploadDocResponse.getFile())
-				.execute()
-				.getResponses()
-				.get(0)
-				.getObject();
-
-		attachments.add(attachment(DOC, document.getOwnerId(), document.getId()));
-		return this;
-	}
-
-	public MessagesSend addDoc(Document document) {
-		attachments.add(attachment(DOC, document.getOwnerId(), document.getId()));
-		return this;
-	}
-
-	public MessagesSend addVideo(Video video) {
-		attachments.add(attachment(VIDEO, video.getOwnerId(), video.getId()));
-		return this;
-	}
-
-	public MessagesSend addWallPost(WallPost wallPost) {
-		attachments.add(attachment(WALL_POST, wallPost.getOwnerId(), wallPost.getId()));
-		return this;
-	}
-
-	public MessagesSend addMarketItem(MarketItem marketItem) {
-		attachments.add(attachment(MARKET_ITEM, marketItem.getOwnerId(), marketItem.getId()));
-		return this;
-	}
-
-	private String attachment(String type, Integer ownerId, Integer mediaId) {
-		return type + ownerId + "_" + mediaId;
-	}
-
-	public MessagesSend setReplyTo(int replyTo) {
-		params.put(REPLY_TO, replyTo);
-		return this;
+	public List<Integer> getForwardMessages() {
+		return forwardMessages;
 	}
 
 	public MessagesSend setForwardMessages(List<Integer> forwardMessages) {
-		params.put(FORWARD_MESSAGES, forwardMessages);
+		this.forwardMessages = forwardMessages;
 		return this;
 	}
 
-	public MessagesSend setStickerId(int stickerId) {
-		params.put(STICKER_ID, stickerId);
+	public Integer getStickerId() {
+		return stickerId;
+	}
+
+	public MessagesSend setStickerId(Integer stickerId) {
+		this.stickerId = stickerId;
 		return this;
 	}
 
-	public MessagesSend setDontParseLinks(boolean dontParseLinks) {
-		params.put(DONT_PARSE_LINKS, dontParseLinks ? 1 : 0);
+	public Boolean getDontParseLinks() {
+		return dontParseLinks;
+	}
+
+	public MessagesSend setDontParseLinks(Boolean dontParseLinks) {
+		this.dontParseLinks = dontParseLinks;
 		return this;
 	}
 
-	public MessagesSend setDisableMentions(boolean disableMentions) {
-		params.put(DISABLE_MENTIONS, disableMentions ? 1 : 0);
+	public Boolean getDisableMentions() {
+		return disableMentions;
+	}
+
+	public MessagesSend setDisableMentions(Boolean disableMentions) {
+		this.disableMentions = disableMentions;
 		return this;
-	}
-
-	@Override
-	protected List<Connection.KeyVal> getData() {
-		params.put(ATTACHMENT, attachments);
-		return super.getData();
-	}
-
-	@Override
-	protected String getApi() {
-		return VkApi.Messages.SEND;
-	}
-
-	@Override
-	protected JsonToPojoConverter<MessagesSendResult> getConverter() {
-		return new MessagesSendResultConverterIpml();
 	}
 }

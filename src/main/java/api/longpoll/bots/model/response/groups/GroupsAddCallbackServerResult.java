@@ -6,15 +6,6 @@ public class GroupsAddCallbackServerResult {
 	@SerializedName("response")
 	private Response response;
 
-	public Response getResponse() {
-		return response;
-	}
-
-	public GroupsAddCallbackServerResult setResponse(Response response) {
-		this.response = response;
-		return this;
-	}
-
 	public class Response {
 		@SerializedName("server_id")
 		private Integer serverId;
@@ -27,5 +18,14 @@ public class GroupsAddCallbackServerResult {
 			this.serverId = serverId;
 			return this;
 		}
+	}
+
+	public Response getResponse() {
+		return response;
+	}
+
+	public GroupsAddCallbackServerResult setResponse(Response response) {
+		this.response = response;
+		return this;
 	}
 }

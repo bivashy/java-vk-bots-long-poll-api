@@ -1,9 +1,9 @@
 package api.longpoll.bots.model.market.item;
 
-import api.longpoll.bots.model.wall.reply.WallReply;
+import api.longpoll.bots.model.wall.reply.WallComment;
 import com.google.gson.annotations.SerializedName;
 
-public class MarketCommentEvent extends WallReply {
+public class MarketCommentEvent extends WallComment {
 	@SerializedName("market_owner_id")
 	private Integer marketOwnerId;
 	@SerializedName("item_id")

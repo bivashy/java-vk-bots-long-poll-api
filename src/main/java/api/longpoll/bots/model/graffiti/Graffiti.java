@@ -1,9 +1,9 @@
 package api.longpoll.bots.model.graffiti;
 
-import api.longpoll.bots.model.attachment.MediaObject;
+import api.longpoll.bots.model.objects.media.Attachable;
 import com.google.gson.annotations.SerializedName;
 
-public class Graffiti extends MediaObject {
+public class Graffiti implements Attachable {
 	@SerializedName("id")
 	private Integer id;
 	@SerializedName("owner_id")

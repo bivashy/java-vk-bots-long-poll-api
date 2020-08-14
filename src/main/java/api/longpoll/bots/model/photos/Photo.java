@@ -1,11 +1,11 @@
 package api.longpoll.bots.model.photos;
 
-import api.longpoll.bots.model.attachment.MediaObject;
+import api.longpoll.bots.model.objects.media.Attachable;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Photo extends MediaObject {
+public class Photo implements Attachable {
 	@SerializedName("id")
 	private Integer id;
 	@SerializedName("album_id")

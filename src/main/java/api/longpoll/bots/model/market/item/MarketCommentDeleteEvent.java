@@ -3,7 +3,7 @@ package api.longpoll.bots.model.market.item;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
-public class MarketCommentDeleteEvent extends EventObject {
+public class MarketCommentDeleteEvent implements EventObject {
 	@SerializedName("owner_id")
 	private Integer ownerId;
 	@SerializedName("id")

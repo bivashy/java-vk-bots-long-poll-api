@@ -6,20 +6,13 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.other.IntegerResult;
+import org.jsoup.Connection;
+
+import java.util.stream.Stream;
 
 public class GroupsDeleteAddress extends GetMethod<IntegerResult> {
-	private static final String GROUP_ID = "group_id";
-	private static final String ADDRESS_ID = "address_id";
-
-	public GroupsDeleteAddress setGroupId(int groupId) {
-		params.put(GROUP_ID, groupId);
-		return this;
-	}
-
-	public GroupsDeleteAddress setAddressId(int addressId) {
-		params.put(ADDRESS_ID, addressId);
-		return this;
-	}
+	private Integer groupId;
+	private Integer addressId;
 
 	public GroupsDeleteAddress(LongPollBot bot) {
 		super(bot);
@@ -33,5 +26,31 @@ public class GroupsDeleteAddress extends GetMethod<IntegerResult> {
 	@Override
 	protected JsonToPojoConverter<IntegerResult> getConverter() {
 		return GenericConverterFactory.get(IntegerResult.class);
+	}
+
+	@Override
+	protected Stream<Connection.KeyVal> getKeyValStream() {
+		return Stream.of(
+				keyVal("group_id", groupId),
+				keyVal("address_id", addressId)
+		);
+	}
+
+	public Integer getGroupId() {
+		return groupId;
+	}
+
+	public GroupsDeleteAddress setGroupId(Integer groupId) {
+		this.groupId = groupId;
+		return this;
+	}
+
+	public Integer getAddressId() {
+		return addressId;
+	}
+
+	public GroupsDeleteAddress setAddressId(Integer addressId) {
+		this.addressId = addressId;
+		return this;
 	}
 }

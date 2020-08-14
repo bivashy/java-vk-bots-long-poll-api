@@ -25,66 +25,6 @@ public class Geo {
 	private Place place;
 
 	/**
-	 * Gets location type.
-	 *
-	 * @return location type.
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * Sets location type.
-	 *
-	 * @param type location type.
-	 * @return this Geo.
-	 */
-	public Geo setType(String type) {
-		this.type = type;
-		return this;
-	}
-
-	/**
-	 * Gets location coordinates.
-	 *
-	 * @return location coordinates.
-	 */
-	public Coordinates getCoordinates() {
-		return coordinates;
-	}
-
-	/**
-	 * Sets location coordinates.
-	 *
-	 * @param coordinates location coordinates
-	 * @return this Geo.
-	 */
-	public Geo setCoordinates(Coordinates coordinates) {
-		this.coordinates = coordinates;
-		return this;
-	}
-
-	/**
-	 * Gets place description.
-	 *
-	 * @return place description.
-	 */
-	public Place getPlace() {
-		return place;
-	}
-
-	/**
-	 * Sets place description.
-	 *
-	 * @param place place description.
-	 * @return this Geo.
-	 */
-	public Geo setPlace(Place place) {
-		this.place = place;
-		return this;
-	}
-
-	/**
 	 * A class describing location coordinates.
 	 */
 	public class Coordinates {
@@ -352,5 +292,65 @@ public class Geo {
 			this.city = city;
 			return this;
 		}
+	}
+
+	/**
+	 * Gets location type.
+	 *
+	 * @return location type.
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * Sets location type.
+	 *
+	 * @param type location type.
+	 * @return this Geo.
+	 */
+	public Geo setType(String type) {
+		this.type = type;
+		return this;
+	}
+
+	/**
+	 * Gets location coordinates.
+	 *
+	 * @return location coordinates.
+	 */
+	public Coordinates getCoordinates() {
+		return coordinates;
+	}
+
+	/**
+	 * Sets location coordinates.
+	 *
+	 * @param coordinates location coordinates
+	 * @return this Geo.
+	 */
+	public Geo setCoordinates(Coordinates coordinates) {
+		this.coordinates = coordinates;
+		return this;
+	}
+
+	/**
+	 * Gets place description.
+	 *
+	 * @return place description.
+	 */
+	public Place getPlace() {
+		return place;
+	}
+
+	/**
+	 * Sets place description.
+	 *
+	 * @param place place description.
+	 * @return this Geo.
+	 */
+	public Geo setPlace(Place place) {
+		this.place = place;
+		return this;
 	}
 }

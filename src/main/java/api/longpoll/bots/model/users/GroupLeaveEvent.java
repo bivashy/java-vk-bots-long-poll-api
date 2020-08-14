@@ -5,7 +5,7 @@ import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
-public class GroupLeaveEvent extends EventObject {
+public class GroupLeaveEvent implements EventObject {
 	@SerializedName("user_id")
 	private Integer userId;
 	@SerializedName("self")

@@ -2,7 +2,7 @@ package api.longpoll.bots.model.wall.reply;
 
 import com.google.gson.annotations.SerializedName;
 
-public class WallReplyEvent extends WallReply {
+public class WallReplyEvent extends WallComment {
 	@SerializedName("post_owner_id")
 	private Integer postOwnerId;
 

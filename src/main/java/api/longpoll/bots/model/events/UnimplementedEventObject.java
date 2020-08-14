@@ -2,7 +2,7 @@ package api.longpoll.bots.model.events;
 
 import com.google.gson.JsonObject;
 
-public class UnimplementedEventObject extends EventObject {
+public class UnimplementedEventObject implements EventObject {
 	private JsonObject jsonObject;
 
 	public JsonObject getJsonObject() {

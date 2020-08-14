@@ -6,15 +6,6 @@ public class DocsGetUploadServerResult {
 	@SerializedName("response")
 	private Response response;
 
-	public Response getResponse() {
-		return response;
-	}
-
-	public DocsGetUploadServerResult setResponse(Response response) {
-		this.response = response;
-		return this;
-	}
-
 	public class Response {
 		@SerializedName("upload_url")
 		private String uploadUrl;
@@ -27,5 +18,14 @@ public class DocsGetUploadServerResult {
 			this.uploadUrl = uploadUrl;
 			return this;
 		}
+	}
+
+	public Response getResponse() {
+		return response;
+	}
+
+	public DocsGetUploadServerResult setResponse(Response response) {
+		this.response = response;
+		return this;
 	}
 }

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MarketOrder extends EventObject {
+public class MarketOrder implements EventObject {
 	@SerializedName("id")
 	private Integer id;
 	@SerializedName("group_id")

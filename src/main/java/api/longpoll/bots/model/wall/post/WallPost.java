@@ -1,15 +1,15 @@
 package api.longpoll.bots.model.wall.post;
 
 import api.longpoll.bots.adapters.BoolIntAdapter;
-import api.longpoll.bots.model.attachment.Attachment;
-import api.longpoll.bots.model.attachment.MediaObject;
+import api.longpoll.bots.model.objects.media.Attachable;
+import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.objects.additional.Geo;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class WallPost extends MediaObject {
+public class WallPost implements Attachable {
 	@SerializedName("id")
 	private Integer id;
 	@SerializedName("owner_id")

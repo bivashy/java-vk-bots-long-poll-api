@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.response.docs;
 
-import api.longpoll.bots.model.document.Document;
+import api.longpoll.bots.model.objects.media.Doc;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -9,20 +9,11 @@ public class DocsSearchResult {
 	@SerializedName("response")
 	private Response response;
 
-	public Response getResponse() {
-		return response;
-	}
-
-	public DocsSearchResult setResponse(Response response) {
-		this.response = response;
-		return this;
-	}
-
 	public class Response {
 		@SerializedName("count")
 		private Integer count;
 		@SerializedName("items")
-		List<Document> items;
+		List<Doc> items;
 
 		public Integer getCount() {
 			return count;
@@ -33,13 +24,22 @@ public class DocsSearchResult {
 			return this;
 		}
 
-		public List<Document> getItems() {
+		public List<Doc> getItems() {
 			return items;
 		}
 
-		public Response setItems(List<Document> items) {
+		public Response setItems(List<Doc> items) {
 			this.items = items;
 			return this;
 		}
+	}
+
+	public Response getResponse() {
+		return response;
+	}
+
+	public DocsSearchResult setResponse(Response response) {
+		this.response = response;
+		return this;
 	}
 }

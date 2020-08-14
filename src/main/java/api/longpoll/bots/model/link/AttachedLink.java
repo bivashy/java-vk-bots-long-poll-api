@@ -3,12 +3,12 @@ package api.longpoll.bots.model.link;
 import api.longpoll.bots.adapters.BoolIntAdapter;
 import api.longpoll.bots.model.link.button.Button;
 import api.longpoll.bots.model.link.product.Product;
+import api.longpoll.bots.model.objects.media.Attachable;
 import api.longpoll.bots.model.photos.Photo;
-import api.longpoll.bots.model.attachment.MediaObject;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
-public class AttachedLink extends MediaObject {
+public class AttachedLink implements Attachable {
 	@SerializedName("url")
 	private String url;
 	@SerializedName("title")

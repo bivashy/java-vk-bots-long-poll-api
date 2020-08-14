@@ -1,6 +1,6 @@
 package parse.response.other;
 
-import api.longpoll.bots.converters.updates.UpdateResponseConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
 import api.longpoll.bots.model.other.Change;
 import api.longpoll.bots.model.other.GroupChangeSettingsEvent;
 import api.longpoll.bots.model.events.Event;
@@ -22,7 +22,7 @@ public class GroupChangeSettingsParseTest extends AbstractParseTest {
 	@Test
 	public void test1_likeAdd() throws IOException {
 		JsonObject jsonObject = readJson("json/response/group_change_settings/group_change_settings_sample_5_110.json");
-		GetEventsResult getEventsResult = new UpdateResponseConverterImpl().convert(jsonObject);
+		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
 		Assert.assertNotNull(getEventsResult);
 		Assert.assertEquals(Integer.valueOf(2644), getEventsResult.getTs());
 
