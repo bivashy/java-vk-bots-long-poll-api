@@ -1,6 +1,5 @@
 package api.longpoll.bots.model.objects.media;
 
-import api.longpoll.bots.model.photos.Photo;
 import com.google.gson.annotations.SerializedName;
 
 /**

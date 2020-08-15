@@ -9,6 +9,7 @@ import java.util.Map;
 
 /**
  * Describes document.
+ * @see <a href="https://vk.com/dev/objects/doc">Document</a>
  */
 public class Doc implements Attachable {
 	/**

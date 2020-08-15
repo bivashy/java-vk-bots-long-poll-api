@@ -5,14 +5,10 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.basic.WallCommentConverterImpl;
 import api.longpoll.bots.converters.basic.WallPostConverterImpl;
-import api.longpoll.bots.model.objects.media.Attachable;
-import api.longpoll.bots.model.objects.media.Attachment;
-import api.longpoll.bots.model.objects.media.Audio;
-import api.longpoll.bots.model.objects.media.AudioMessage;
-import api.longpoll.bots.model.objects.media.Graffiti;
-import api.longpoll.bots.model.photos.Photo;
-import api.longpoll.bots.model.sticker.Sticker;
-import api.longpoll.bots.model.video.Video;
+import api.longpoll.bots.model.objects.media.*;
+import api.longpoll.bots.model.objects.media.Photo;
+import api.longpoll.bots.model.objects.media.Sticker;
+import api.longpoll.bots.model.objects.media.Video;
 import com.google.gson.JsonObject;
 
 public class AttachmentConverterImpl extends JsonToPojoConverter<Attachment> {
@@ -25,6 +21,9 @@ public class AttachmentConverterImpl extends JsonToPojoConverter<Attachment> {
 	private static final String STICKER_FIELD = "sticker";
 	private static final String WALL_FIELD = "wall";
 	private static final String WALL_REPLY_FIELD = "wall_reply";
+	private static final String LINK_FIELD = "link";
+	private static final String MARKET_ALBUM_FIELD = "market_album";
+	private static final String MARKET_FIELD = "market";
 
 	@Override
 	public Attachment convert(JsonObject source) {
@@ -57,6 +56,15 @@ public class AttachmentConverterImpl extends JsonToPojoConverter<Attachment> {
 
 			case AttachmentTypes.WALL_REPLY:
 				return attachment.setAttachable(new WallCommentConverterImpl().convert(source.getAsJsonObject(WALL_REPLY_FIELD)));
+
+			case AttachmentTypes.LINK:
+				return attachment.setAttachable(GenericConverterFactory.get(AttachedLink.class).convert(source.getAsJsonObject(LINK_FIELD)));
+
+			case AttachmentTypes.MARKET_ALBUM:
+				return attachment.setAttachable(GenericConverterFactory.get(MarketCollection.class).convert(source.getAsJsonObject(MARKET_ALBUM_FIELD)));
+
+			case AttachmentTypes.MARKET:
+				return attachment.setAttachable(GenericConverterFactory.get(MarketItem.class).convert(source.getAsJsonObject(MARKET_FIELD)));
 
 			default:
 				return null;

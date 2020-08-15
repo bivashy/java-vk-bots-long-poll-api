@@ -1,8 +1,7 @@
 package parse.response.other;
 
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
-import api.longpoll.bots.model.other.Change;
-import api.longpoll.bots.model.other.GroupChangeSettingsEvent;
+import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
@@ -43,12 +42,12 @@ public class GroupChangeSettingsParseTest extends AbstractParseTest {
 		GroupChangeSettingsEvent groupChangeSettingsUpdate = (GroupChangeSettingsEvent) eventObject;
 		Assert.assertEquals(Integer.valueOf(381980625), groupChangeSettingsUpdate.getUserId());
 
-		Map<String, Change> changes = groupChangeSettingsUpdate.getChanges();
+		Map<String, GroupChangeSettingsEvent.Change> changes = groupChangeSettingsUpdate.getChanges();
 		Assert.assertNotNull(changes);
 		Assert.assertFalse(changes.isEmpty());
 		Assert.assertTrue(changes.containsKey("description"));
 
-		Change change = changes.get("description");
+		GroupChangeSettingsEvent.Change change = changes.get("description");
 		Assert.assertNotNull(change);
 		Assert.assertEquals("test", change.getOldValue());
 		Assert.assertEquals("test1", change.getNewValue());

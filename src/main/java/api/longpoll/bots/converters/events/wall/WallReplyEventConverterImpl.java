@@ -3,7 +3,7 @@ package api.longpoll.bots.converters.events.wall;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.media.AttachmentConverterImpl;
 import api.longpoll.bots.model.objects.media.Attachment;
-import api.longpoll.bots.model.wall.reply.WallReplyEvent;
+import api.longpoll.bots.model.events.wall.comments.WallReplyEvent;
 import com.google.gson.FieldAttributes;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

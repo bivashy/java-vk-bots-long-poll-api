@@ -4,7 +4,7 @@ import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
-import api.longpoll.bots.model.video.VideoCommentDeleteEvent;
+import api.longpoll.bots.model.events.video.VideoCommentDeleteEvent;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;

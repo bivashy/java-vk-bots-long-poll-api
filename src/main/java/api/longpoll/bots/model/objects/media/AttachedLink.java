@@ -2,7 +2,6 @@ package api.longpoll.bots.model.objects.media;
 
 import api.longpoll.bots.adapters.BoolIntAdapter;
 import api.longpoll.bots.model.objects.additional.Price;
-import api.longpoll.bots.model.photos.Photo;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 

@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.events.market;
 
-import api.longpoll.bots.model.wall.reply.WallComment;
+import api.longpoll.bots.model.objects.basic.WallComment;
 import com.google.gson.annotations.SerializedName;
 
 /**

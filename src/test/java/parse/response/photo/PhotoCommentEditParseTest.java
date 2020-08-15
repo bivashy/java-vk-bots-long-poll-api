@@ -1,8 +1,8 @@
 package parse.response.photo;
 
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
-import api.longpoll.bots.model.wall.reply.Thread;
-import api.longpoll.bots.model.photos.PhotoCommentEvent;
+import api.longpoll.bots.model.objects.basic.WallComment;
+import api.longpoll.bots.model.events.photos.PhotoCommentEvent;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
@@ -48,7 +48,7 @@ public class PhotoCommentEditParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(-168975658), photoCommentUpdate.getPhotoOwnerId());
 		Assert.assertEquals(Integer.valueOf(457239017), photoCommentUpdate.getPhotoId());
 
-		Thread thread = photoCommentUpdate.getThread();
+		WallComment.Thread thread = photoCommentUpdate.getThread();
 		Assert.assertNotNull(thread);
 		Assert.assertEquals(Integer.valueOf(0), thread.getCount());
 	}

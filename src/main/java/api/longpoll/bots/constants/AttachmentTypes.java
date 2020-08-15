@@ -10,4 +10,7 @@ public class AttachmentTypes {
 	public static final String STICKER = "sticker";
 	public static final String WALL_POST = "wall";
 	public static final String WALL_REPLY = "wall_reply";
+	public static final String LINK = "link";
+	public static final String MARKET_ALBUM = "market_album";
+	public static final String MARKET = "market";
 }

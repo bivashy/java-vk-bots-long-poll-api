@@ -2,7 +2,7 @@ package parse.response.photo;
 
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
 import api.longpoll.bots.model.events.Event;
-import api.longpoll.bots.model.photos.PhotoCommentDeleteEvent;
+import api.longpoll.bots.model.events.photos.PhotoCommentDeleteEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import com.google.gson.JsonObject;

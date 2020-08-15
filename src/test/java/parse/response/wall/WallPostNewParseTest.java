@@ -4,8 +4,7 @@ import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
-import api.longpoll.bots.model.wall.post.Comments;
-import api.longpoll.bots.model.wall.post.WallPost;
+import api.longpoll.bots.model.objects.basic.WallPost;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -52,7 +51,7 @@ public class WallPostNewParseTest extends AbstractParseTest {
 		Assert.assertTrue(wallPost.isCanDelete());
 		Assert.assertFalse(wallPost.isFavourite());
 
-		Comments comments = wallPost.getComments();
+		WallPost.Comments comments = wallPost.getComments();
 		Assert.assertNotNull(comments);
 		Assert.assertEquals(Integer.valueOf(0), comments.getCount());
 	}

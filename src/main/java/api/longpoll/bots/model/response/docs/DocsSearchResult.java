@@ -1,45 +1,25 @@
 package api.longpoll.bots.model.response.docs;
 
+import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.media.Doc;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
+/**
+ * Response to <b>docs.search</b> request.
+ */
 public class DocsSearchResult {
+	/**
+	 * List of documents.
+	 */
 	@SerializedName("response")
-	private Response response;
+	private VkList<Doc> docList;
 
-	public class Response {
-		@SerializedName("count")
-		private Integer count;
-		@SerializedName("items")
-		List<Doc> items;
-
-		public Integer getCount() {
-			return count;
-		}
-
-		public Response setCount(Integer count) {
-			this.count = count;
-			return this;
-		}
-
-		public List<Doc> getItems() {
-			return items;
-		}
-
-		public Response setItems(List<Doc> items) {
-			this.items = items;
-			return this;
-		}
+	public VkList<Doc> getDocList() {
+		return docList;
 	}
 
-	public Response getResponse() {
-		return response;
-	}
-
-	public DocsSearchResult setResponse(Response response) {
-		this.response = response;
+	public DocsSearchResult setDocList(VkList<Doc> docList) {
+		this.docList = docList;
 		return this;
 	}
 }

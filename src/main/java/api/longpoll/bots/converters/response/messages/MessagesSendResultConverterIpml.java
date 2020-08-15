@@ -2,10 +2,10 @@ package api.longpoll.bots.converters.response.messages;
 
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.model.response.messages.MessagesSendResult;
-import com.google.common.reflect.TypeToken;
 import com.google.gson.FieldAttributes;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 

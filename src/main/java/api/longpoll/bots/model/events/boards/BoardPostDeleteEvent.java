@@ -4,7 +4,7 @@ import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Describes <b>deleting a board comment</b> event objects.
+ * Describes <b>board_post_delete</b> event objects.
  */
 public class BoardPostDeleteEvent implements EventObject {
 	/**

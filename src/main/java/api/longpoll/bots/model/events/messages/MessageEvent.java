@@ -6,7 +6,7 @@ import api.longpoll.bots.model.objects.basic.Message;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Describes <b>new message received</b> and <b>new message sent</b> event objects.
+ * Describes <b>message_new</b>, <b>message_reply</b> and <b>message_edit</b> event objects.
  */
 public class MessageEvent implements EventObject {
 	/**

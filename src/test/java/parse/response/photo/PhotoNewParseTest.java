@@ -1,8 +1,8 @@
 package parse.response.photo;
 
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
-import api.longpoll.bots.model.photos.Photo;
-import api.longpoll.bots.model.photos.Size;
+import api.longpoll.bots.model.objects.media.Photo;
+import api.longpoll.bots.model.objects.additional.PhotoSize;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
@@ -48,8 +48,8 @@ public class PhotoNewParseTest extends AbstractParseTest {
 		Assert.assertFalse(photo.hasText());
 		Assert.assertEquals(Integer.valueOf(100), photo.getUserId());
 
-		List<Size> sizes = photo.getSizes();
+		List<PhotoSize> photoSizes = photo.getPhotoSizes();
 		Assert.assertNotNull(photo);
-		Assert.assertFalse(sizes.isEmpty());
+		Assert.assertFalse(photoSizes.isEmpty());
 	}
 }

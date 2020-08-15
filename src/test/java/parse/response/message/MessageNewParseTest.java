@@ -14,16 +14,14 @@ import api.longpoll.bots.model.objects.additional.ClientInfo;
 import api.longpoll.bots.model.objects.additional.Geo;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.media.Doc;
-import api.longpoll.bots.model.photos.Photo;
-import api.longpoll.bots.model.photos.Size;
+import api.longpoll.bots.model.objects.media.Photo;
+import api.longpoll.bots.model.objects.additional.PhotoSize;
 import api.longpoll.bots.model.response.events.GetEventsResult;
-import api.longpoll.bots.model.sticker.Image;
-import api.longpoll.bots.model.sticker.Sticker;
-import api.longpoll.bots.model.video.Video;
-import api.longpoll.bots.model.video.VideoImage;
-import api.longpoll.bots.model.wall.post.*;
-import api.longpoll.bots.model.wall.reply.WallComment;
-import api.longpoll.bots.model.wall.reply.WallReplyLikes;
+
+import api.longpoll.bots.model.objects.media.Sticker;
+import api.longpoll.bots.model.objects.media.Video;
+import api.longpoll.bots.model.objects.basic.WallPost;
+import api.longpoll.bots.model.objects.basic.WallComment;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -143,16 +141,16 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(457247057), photo.getId());
 		Assert.assertEquals(Integer.valueOf(381980625), photo.getOwnerId());
 
-		List<Size> sizes = photo.getSizes();
-		Assert.assertNotNull(sizes);
-		Assert.assertFalse(sizes.isEmpty());
+		List<PhotoSize> photoSizes = photo.getPhotoSizes();
+		Assert.assertNotNull(photoSizes);
+		Assert.assertFalse(photoSizes.isEmpty());
 
-		Size size = sizes.get(0);
-		Assert.assertNotNull(size);
-		Assert.assertEquals(Integer.valueOf(130), size.getHeight());
-		Assert.assertEquals(Integer.valueOf(130), size.getWidth());
-		Assert.assertEquals("m", size.getType());
-		Assert.assertEquals("https://sun9-49.userapi.com/m0bXxRbjkI0X2SAClsqAZsRYVpiSgc6MEBAVtA/2VVGupYl8uM.jpg", size.getUrl());
+		PhotoSize photoSize = photoSizes.get(0);
+		Assert.assertNotNull(photoSize);
+		Assert.assertEquals(Integer.valueOf(130), photoSize.getHeight());
+		Assert.assertEquals(Integer.valueOf(130), photoSize.getWidth());
+		Assert.assertEquals("m", photoSize.getType());
+		Assert.assertEquals("https://sun9-49.userapi.com/m0bXxRbjkI0X2SAClsqAZsRYVpiSgc6MEBAVtA/2VVGupYl8uM.jpg", photoSize.getUrl());
 	}
 
 	@Test
@@ -183,11 +181,11 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(0), video.getLocalViews());
 		Assert.assertEquals("YouTube", video.getPlatform());
 
-		List<VideoImage> images = video.getImage();
+		List<Video.Image> images = video.getImage();
 		Assert.assertNotNull(images);
 		Assert.assertFalse(images.isEmpty());
 
-		VideoImage image = images.get(0);
+		Video.Image image = images.get(0);
 		Assert.assertNotNull(image);
 		Assert.assertEquals(Integer.valueOf(96), image.getHeight());
 		Assert.assertEquals(Integer.valueOf(130), image.getWidth());
@@ -328,11 +326,11 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(279), sticker.getProductId());
 		Assert.assertEquals(Integer.valueOf(9012), sticker.getStickerId());
 
-		List<Image> images = sticker.getImages();
+		List<Sticker.Image> images = sticker.getImages();
 		Assert.assertNotNull(images);
 		Assert.assertFalse(images.isEmpty());
 
-		Image image = images.get(0);
+		Sticker.Image image = images.get(0);
 		Assert.assertNotNull(image);
 		Assert.assertFalse(image.getUrl().isEmpty());
 		Assert.assertEquals(Integer.valueOf(64), image.getHeight());
@@ -382,23 +380,23 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertNotNull(attachable);
 		Assert.assertTrue(attachable instanceof Photo);
 
-		Comments comments = wallPost.getComments();
+		WallPost.Comments comments = wallPost.getComments();
 		Assert.assertNotNull(comments);
 		Assert.assertEquals(Integer.valueOf(7), comments.getCount());
 
-		WallPostLikes wallPostLikes = wallPost.getWallPostLikes();
+		WallPost.Likes wallPostLikes = wallPost.getLikes();
 		Assert.assertNotNull(wallPostLikes);
 		Assert.assertEquals(Integer.valueOf(98), wallPostLikes.getCount());
 
-		Views views = wallPost.getViews();
+		WallPost.Views views = wallPost.getViews();
 		Assert.assertNotNull(views);
 		Assert.assertEquals(Integer.valueOf(2597), views.getCount());
 
-		Reposts reposts = wallPost.getReposts();
+		WallPost.Reposts reposts = wallPost.getReposts();
 		Assert.assertNotNull(reposts);
 		Assert.assertEquals(Integer.valueOf(0), reposts.getCount());
 
-		From from = wallPost.getFrom();
+		WallPost.From from = wallPost.getFrom();
 		Assert.assertNotNull(from);
 		Assert.assertEquals(Integer.valueOf(153395656), from.getId());
 	}
@@ -433,7 +431,7 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertNotNull(integer);
 		Assert.assertEquals(110930, integer.intValue());
 
-		WallReplyLikes likes = wallReply.getLikes();
+		WallComment.Likes likes = wallReply.getLikes();
 		Assert.assertNotNull(likes);
 		Assert.assertEquals(Integer.valueOf(1), likes.getCount());
 		Assert.assertFalse(likes.isUserLikes());

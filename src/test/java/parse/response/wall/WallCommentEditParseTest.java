@@ -3,9 +3,9 @@ package parse.response.wall;
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.objects.basic.WallComment;
 import api.longpoll.bots.model.response.events.GetEventsResult;
-import api.longpoll.bots.model.wall.reply.Thread;
-import api.longpoll.bots.model.wall.reply.WallReplyEvent;
+import api.longpoll.bots.model.events.wall.comments.WallReplyEvent;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -47,7 +47,7 @@ public class WallCommentEditParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(-168975658), wallReplyUpdate.getPostOwnerId());
 		Assert.assertEquals("test1", wallReplyUpdate.getText());
 
-		Thread thread = wallReplyUpdate.getThread();
+		WallComment.Thread thread = wallReplyUpdate.getThread();
 		Assert.assertNotNull(thread);
 		Assert.assertEquals(Integer.valueOf(0), thread.getCount());
 	}

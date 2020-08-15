@@ -13,7 +13,7 @@ import api.longpoll.bots.methods.other.UploadPhoto;
 import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
 import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
 import api.longpoll.bots.model.objects.media.Doc;
-import api.longpoll.bots.model.photos.Photo;
+import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
 import api.longpoll.bots.model.response.messages.MessagesSendResult;
 import api.longpoll.bots.model.response.other.UploadDocResult;

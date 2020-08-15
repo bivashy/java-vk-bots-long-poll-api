@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.response.photos;
 
-import api.longpoll.bots.model.photos.Size;
+import api.longpoll.bots.model.objects.additional.PhotoSize;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -31,8 +31,8 @@ public class PhotosSaveMessagesPhotoResult {
 		private Boolean hasTags;
 		@SerializedName("access_key")
 		private String accessKey;
-		@SerializedName("sizes")
-		private List<Size> sizes;
+		@SerializedName("photoSizes")
+		private List<PhotoSize> photoSizes;
 
 		public Integer getAlbumId() {
 			return albumId;
@@ -88,12 +88,12 @@ public class PhotosSaveMessagesPhotoResult {
 			return this;
 		}
 
-		public List<Size> getSizes() {
-			return sizes;
+		public List<PhotoSize> getPhotoSizes() {
+			return photoSizes;
 		}
 
-		public Response setSizes(List<Size> sizes) {
-			this.sizes = sizes;
+		public Response setPhotoSizes(List<PhotoSize> photoSizes) {
+			this.photoSizes = photoSizes;
 			return this;
 		}
 	}

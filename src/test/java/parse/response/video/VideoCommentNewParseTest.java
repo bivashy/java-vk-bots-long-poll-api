@@ -3,9 +3,9 @@ package parse.response.video;
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.objects.basic.WallComment;
 import api.longpoll.bots.model.response.events.GetEventsResult;
-import api.longpoll.bots.model.video.VideoCommentEvent;
-import api.longpoll.bots.model.wall.reply.Thread;
+import api.longpoll.bots.model.events.video.VideoCommentEvent;
 import com.google.gson.JsonObject;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -47,7 +47,7 @@ public class VideoCommentNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(-168975658), videoCommentUpdate.getVideoOwnerId());
 		Assert.assertEquals(Integer.valueOf(456239017), videoCommentUpdate.getVideoId());
 
-		Thread thread = videoCommentUpdate.getThread();
+		WallComment.Thread thread = videoCommentUpdate.getThread();
 		Assert.assertNotNull(thread);
 		Assert.assertEquals(Integer.valueOf(0), thread.getCount());
 	}

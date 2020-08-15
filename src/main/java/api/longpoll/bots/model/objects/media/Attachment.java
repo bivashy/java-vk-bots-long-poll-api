@@ -2,9 +2,19 @@ package api.longpoll.bots.model.objects.media;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Describes attachment.
+ */
 public class Attachment {
+	/**
+	 * Attachment type.
+	 */
 	@SerializedName("type")
 	private String type;
+
+	/**
+	 * Attachment object.
+	 */
 	private Attachable attachable;
 
 	public String getType() {

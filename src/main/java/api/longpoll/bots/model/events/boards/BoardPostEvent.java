@@ -4,7 +4,7 @@ import api.longpoll.bots.model.objects.basic.TopicComment;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Describes <b>new comment in a board</b>, <b>editing a board comment</b> and <b>restoring a board comment</b> event objects.
+ * Describes <b>board_post_new</b>, <b>board_post_edit</b> and <b>board_post_restore</b> event objects.
  */
 public class BoardPostEvent extends TopicComment {
 	/**
