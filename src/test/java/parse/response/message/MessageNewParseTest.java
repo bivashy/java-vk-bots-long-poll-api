@@ -2,6 +2,7 @@ package parse.response.message;
 
 import api.longpoll.bots.constants.DocumentTypes;
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.model.objects.additional.Image;
 import api.longpoll.bots.model.objects.media.Attachable;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.objects.media.Audio;
@@ -181,11 +182,11 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(0), video.getLocalViews());
 		Assert.assertEquals("YouTube", video.getPlatform());
 
-		List<Video.Image> images = video.getImage();
+		List<Video.VideoImage> images = video.getImage();
 		Assert.assertNotNull(images);
 		Assert.assertFalse(images.isEmpty());
 
-		Video.Image image = images.get(0);
+		Video.VideoImage image = images.get(0);
 		Assert.assertNotNull(image);
 		Assert.assertEquals(Integer.valueOf(96), image.getHeight());
 		Assert.assertEquals(Integer.valueOf(130), image.getWidth());
@@ -326,11 +327,11 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(279), sticker.getProductId());
 		Assert.assertEquals(Integer.valueOf(9012), sticker.getStickerId());
 
-		List<Sticker.Image> images = sticker.getImages();
+		List<Image> images = sticker.getImages();
 		Assert.assertNotNull(images);
 		Assert.assertFalse(images.isEmpty());
 
-		Sticker.Image image = images.get(0);
+		Image image = images.get(0);
 		Assert.assertNotNull(image);
 		Assert.assertFalse(image.getUrl().isEmpty());
 		Assert.assertEquals(Integer.valueOf(64), image.getHeight());

@@ -192,13 +192,13 @@ public class Doc implements Attachable {
 		private String src;
 
 		/**
-		 * Image width in pixels.
+		 * VideoImage width in pixels.
 		 */
 		@SerializedName("width")
 		private Integer width;
 
 		/**
-		 * Image height in pixels.
+		 * VideoImage height in pixels.
 		 */
 		@SerializedName("height")
 		private Integer height;

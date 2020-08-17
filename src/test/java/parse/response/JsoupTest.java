@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class JsoupTest {
@@ -35,5 +36,8 @@ public class JsoupTest {
 //		System.out.println(body);
 //		System.out.println(response.contentType());
 //		System.out.println(response.statusCode());
+		if (body == null) {
+			
+		}
 	}
 }

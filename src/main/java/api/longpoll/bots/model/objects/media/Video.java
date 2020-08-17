@@ -1,6 +1,7 @@
 package api.longpoll.bots.model.objects.media;
 
 import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.model.objects.additional.Image;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -52,7 +53,7 @@ public class Video implements Attachable {
 	@SerializedName("is_favorite")
 	private boolean isFavourite;
 	@SerializedName("image")
-	private List<Image> image;
+	private List<VideoImage> image;
 	@SerializedName("track_code")
 	private String trackCode;
 	@SerializedName("type")
@@ -60,7 +61,7 @@ public class Video implements Attachable {
 	@SerializedName("local_views")
 	private Integer localViews;
 
-	public class Image extends Sticker.Image {
+	public class VideoImage extends Image {
 		@SerializedName("with_padding")
 		@JsonAdapter(BoolIntAdapter.class)
 		private boolean withPadding;
@@ -69,7 +70,7 @@ public class Video implements Attachable {
 			return withPadding;
 		}
 
-		public Image setWithPadding(boolean withPadding) {
+		public VideoImage setWithPadding(boolean withPadding) {
 			this.withPadding = withPadding;
 			return this;
 		}
@@ -246,12 +247,12 @@ public class Video implements Attachable {
 		return this;
 	}
 
-	public List<Image> getImage() {
+	public List<VideoImage> getImage() {
 		return image;
 	}
 
-	public Video setImage(List<Image> image) {
-		this.image = image;
+	public Video setImage(List<VideoImage> videoImage) {
+		this.image = videoImage;
 		return this;
 	}
 
