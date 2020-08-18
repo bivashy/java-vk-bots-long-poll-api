@@ -20,6 +20,14 @@ public class VkApi {
 		public static final String SEND = METHOD.concat("send");
 		public static final String CREATE_CHAT = METHOD.concat("createChat");
 		public static final String DELETE = METHOD.concat("delete");
+		public static final String DELETE_CHAT_PHOTO = METHOD.concat("deleteChatPhoto");
+		public static final String DELETE_CONVERSATION = METHOD.concat("deleteConversation");
+		public static final String EDIT = METHOD.concat("edit");
+		public static final String GET_BY_CONVERSATION_MESSAGE_ID = METHOD.concat("getByConversationMessageId");
+		public static final String EDIT_CHAT = METHOD.concat("editChat");
+		public static final String GET_BY_ID = METHOD.concat("getById");
+		public static final String GET_CONVERSATION_MEMBERS = METHOD.concat("getConversationMembers");
+		public static final String GET_CONVERSATIONS = METHOD.concat("getConversations");
 	}
 
 	public static class Photos {

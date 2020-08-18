@@ -5,7 +5,7 @@ import org.jsoup.Connection;
 
 import java.util.List;
 
-public abstract class GetMethod<Response> extends DefaultGetMethod<Response> {
+public abstract class GetMethod<Response> extends Method<Response> {
 	private static final String ACCESS_TOKEN = "access_token";
 	private static final String VERSION = "v";
 	private static final String VERSION_NUMBER = "5.110";
@@ -24,5 +24,10 @@ public abstract class GetMethod<Response> extends DefaultGetMethod<Response> {
 		requestParams.add(keyVal(VERSION, VERSION_NUMBER));
 
 		return requestParams;
+	}
+
+	@Override
+	protected Connection.Method getMethod() {
+		return Connection.Method.GET;
 	}
 }
