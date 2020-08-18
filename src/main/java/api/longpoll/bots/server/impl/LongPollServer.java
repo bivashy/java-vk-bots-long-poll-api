@@ -74,7 +74,7 @@ public class LongPollServer implements Server {
 				.execute()
 				.getResponse();
 
-		getEvents = new GetEvents(bot)
+		getEvents = new GetEvents()
 				.setServer(response.getServer())
 				.setKey(response.getKey())
 				.setTs(response.getTs());

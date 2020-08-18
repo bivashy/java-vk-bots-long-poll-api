@@ -1,22 +1,17 @@
 package api.longpoll.bots.methods.events;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.methods.DefaultGetMethod;
 import api.longpoll.bots.model.response.events.GetEventsResult;
-import api.longpoll.bots.methods.GetMethod;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
-public class GetEvents extends GetMethod<GetEventsResult> {
+public class GetEvents extends DefaultGetMethod<GetEventsResult> {
 	private String server;
 	private String key;
 	private Integer ts;
-
-	public GetEvents(LongPollBot bot) {
-		super(bot);
-	}
 
 	@Override
 	protected JsonToPojoConverter<GetEventsResult> getConverter() {

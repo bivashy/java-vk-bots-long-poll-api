@@ -9,11 +9,17 @@ public class VkApi {
 		public static final String ADD_ADDRESS = METHOD.concat("addAddress");
 		public static final String DELETE_ADDRESS = METHOD.concat("deleteAddress");
 		public static final String ADD_CALLBACK_SERVER = METHOD.concat("addCallbackServer");
+		public static final String GET_BANNED = METHOD.concat("getBanned");
+		public static final String GET_BY_ID = METHOD.concat("getById");
+		public static final String GET_MEMBERS = METHOD.concat("getMembers");
+		public static final String IS_MEMBER = METHOD.concat("isMember");
 	}
 
 	public static class Messages {
 		private static final String METHOD = URL.concat("messages.");
 		public static final String SEND = METHOD.concat("send");
+		public static final String CREATE_CHAT = METHOD.concat("createChat");
+		public static final String DELETE = METHOD.concat("delete");
 	}
 
 	public static class Photos {

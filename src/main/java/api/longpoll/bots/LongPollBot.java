@@ -31,8 +31,6 @@ import api.longpoll.bots.model.events.wall.comments.WallReplyEvent;
 public abstract class LongPollBot {
 	public abstract String getAccessToken();
 
-	public abstract String getApiVersion();
-
 	public abstract int getGroupId();
 
 	public void onUnimplementedUpdate(UnimplementedEventObject updateObject) {
