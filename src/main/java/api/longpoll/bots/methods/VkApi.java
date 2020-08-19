@@ -28,6 +28,14 @@ public class VkApi {
 		public static final String GET_BY_ID = METHOD.concat("getById");
 		public static final String GET_CONVERSATION_MEMBERS = METHOD.concat("getConversationMembers");
 		public static final String GET_CONVERSATIONS = METHOD.concat("getConversations");
+		public static final String GET_CONVERSATIONS_BY_ID = METHOD.concat("getConversationsById");
+		public static final String GET_HISTORY = METHOD.concat("getHistory");
+		public static final String GET_HISTORY_ATTACHMENTS = METHOD.concat("getHistoryAttachments");
+		public static final String GET_INVITE_LINK = METHOD.concat("getInviteLink");
+		public static final String PIN = METHOD.concat("pin");
+		public static final String RESTORE = METHOD.concat("restore");
+		public static final String REMOVE_CHAT_USER = METHOD.concat("removeChatUser");
+		public static final String SEARCH_CONVERSATIONS = METHOD.concat("searchConversations");
 	}
 
 	public static class Photos {

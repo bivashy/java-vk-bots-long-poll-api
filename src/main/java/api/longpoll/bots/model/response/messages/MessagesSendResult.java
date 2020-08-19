@@ -15,7 +15,7 @@ public class MessagesSendResult {
 		return this;
 	}
 
-	public class Response {
+	public static class Response {
 		@SerializedName("peer_id")
 		private Integer peerId;
 		@SerializedName("message_id")

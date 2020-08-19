@@ -5,12 +5,12 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.messages.MessageDeleteChatPhotoResult;
+import api.longpoll.bots.model.response.messages.MessagesDeleteChatPhotoResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
-public class MessagesDeleteChatPhoto extends GetMethod<MessageDeleteChatPhotoResult> {
+public class MessagesDeleteChatPhoto extends GetMethod<MessagesDeleteChatPhotoResult> {
     private Integer chatId;
     private Integer groupId;
 
@@ -24,8 +24,8 @@ public class MessagesDeleteChatPhoto extends GetMethod<MessageDeleteChatPhotoRes
     }
 
     @Override
-    protected JsonToPojoConverter<MessageDeleteChatPhotoResult> getConverter() {
-        return GenericConverterFactory.get(MessageDeleteChatPhotoResult.class);
+    protected JsonToPojoConverter<MessagesDeleteChatPhotoResult> getConverter() {
+        return GenericConverterFactory.get(MessagesDeleteChatPhotoResult.class);
     }
 
     @Override

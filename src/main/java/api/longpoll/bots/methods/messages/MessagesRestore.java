@@ -11,17 +11,17 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
-public class MessagesEditChat extends GetMethod<GenericResult<Integer>> {
-    private Integer chatId;
-    private String title;
+public class MessagesRestore extends GetMethod<GenericResult<Integer>> {
+    private Integer messageId;
+    private Integer groupId;
 
-    public MessagesEditChat(LongPollBot bot) {
+    public MessagesRestore(LongPollBot bot) {
         super(bot);
     }
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.EDIT_CHAT;
+        return VkApi.Messages.RESTORE;
     }
 
     @Override
@@ -32,26 +32,26 @@ public class MessagesEditChat extends GetMethod<GenericResult<Integer>> {
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                keyVal("chat_id", chatId),
-                keyVal("title", title)
+                keyVal("message_id", messageId),
+                keyVal("group_id", groupId)
         );
     }
 
-    public Integer getChatId() {
-        return chatId;
+    public Integer getMessageId() {
+        return messageId;
     }
 
-    public MessagesEditChat setChatId(Integer chatId) {
-        this.chatId = chatId;
+    public MessagesRestore setMessageId(Integer messageId) {
+        this.messageId = messageId;
         return this;
     }
 
-    public String getTitle() {
-        return title;
+    public Integer getGroupId() {
+        return groupId;
     }
 
-    public MessagesEditChat setTitle(String title) {
-        this.title = title;
+    public MessagesRestore setGroupId(Integer groupId) {
+        this.groupId = groupId;
         return this;
     }
 }

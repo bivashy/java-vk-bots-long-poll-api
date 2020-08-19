@@ -5,12 +5,13 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.other.IntegerResult;
+import api.longpoll.bots.model.response.other.GenericResult;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
-public class BoardRestoreComment extends GetMethod<IntegerResult> {
+public class BoardRestoreComment extends GetMethod<GenericResult<Integer>> {
 	private Integer groupId;
 	private Integer topicId;
 	private Integer commentId;
@@ -25,8 +26,8 @@ public class BoardRestoreComment extends GetMethod<IntegerResult> {
 	}
 
 	@Override
-	protected JsonToPojoConverter<IntegerResult> getConverter() {
-		return GenericConverterFactory.get(IntegerResult.class);
+	protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
+		return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
 	}
 
 	@Override

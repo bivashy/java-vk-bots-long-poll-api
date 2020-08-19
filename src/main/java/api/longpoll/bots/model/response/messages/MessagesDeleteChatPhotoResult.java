@@ -3,7 +3,7 @@ package api.longpoll.bots.model.response.messages;
 import api.longpoll.bots.model.objects.basic.Chat;
 import com.google.gson.annotations.SerializedName;
 
-public class MessageDeleteChatPhotoResult {
+public class MessagesDeleteChatPhotoResult {
     @SerializedName("response")
     private Response response;
 
@@ -36,7 +36,7 @@ public class MessageDeleteChatPhotoResult {
         return response;
     }
 
-    public MessageDeleteChatPhotoResult setResponse(Response response) {
+    public MessagesDeleteChatPhotoResult setResponse(Response response) {
         this.response = response;
         return this;
     }

@@ -11,17 +11,18 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
-public class MessagesEditChat extends GetMethod<GenericResult<Integer>> {
+public class MessagesRemoveChatUser extends GetMethod<GenericResult<Integer>> {
     private Integer chatId;
-    private String title;
+    private Integer userId;
+    private Integer memberId;
 
-    public MessagesEditChat(LongPollBot bot) {
+    public MessagesRemoveChatUser(LongPollBot bot) {
         super(bot);
     }
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.EDIT_CHAT;
+        return VkApi.Messages.REMOVE_CHAT_USER;
     }
 
     @Override
@@ -33,7 +34,8 @@ public class MessagesEditChat extends GetMethod<GenericResult<Integer>> {
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("chat_id", chatId),
-                keyVal("title", title)
+                keyVal("user_id", userId),
+                keyVal("member_id", memberId)
         );
     }
 
@@ -41,17 +43,26 @@ public class MessagesEditChat extends GetMethod<GenericResult<Integer>> {
         return chatId;
     }
 
-    public MessagesEditChat setChatId(Integer chatId) {
+    public MessagesRemoveChatUser setChatId(Integer chatId) {
         this.chatId = chatId;
         return this;
     }
 
-    public String getTitle() {
-        return title;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public MessagesEditChat setTitle(String title) {
-        this.title = title;
+    public MessagesRemoveChatUser setUserId(Integer userId) {
+        this.userId = userId;
+        return this;
+    }
+
+    public Integer getMemberId() {
+        return memberId;
+    }
+
+    public MessagesRemoveChatUser setMemberId(Integer memberId) {
+        this.memberId = memberId;
         return this;
     }
 }

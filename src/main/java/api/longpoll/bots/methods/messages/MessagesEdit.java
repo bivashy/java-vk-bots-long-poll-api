@@ -15,11 +15,12 @@ import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
-import api.longpoll.bots.model.response.other.IntegerResult;
+import api.longpoll.bots.model.response.other.GenericResult;
 import api.longpoll.bots.model.response.other.UploadDocResult;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
 import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
 import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.io.File;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class MessagesEdit extends GetMethod<IntegerResult> {
+public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
     private Integer peerId;
     private String message;
     private float latitude;
@@ -50,8 +51,8 @@ public class MessagesEdit extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected JsonToPojoConverter<IntegerResult> getConverter() {
-        return GenericConverterFactory.get(IntegerResult.class);
+    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
     }
 
     @Override

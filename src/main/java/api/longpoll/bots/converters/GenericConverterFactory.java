@@ -14,12 +14,12 @@ public class GenericConverterFactory {
 		};
 	}
 
-//	public static <T> JsonToPojoConverter<T> get(Type type) {
-//		return new JsonToPojoConverter<T>() {
-//			@Override
-//			public T convert(JsonObject jsonObject) {
-//				return gson.fromJson(jsonObject, type);
-//			}
-//		};
-//	}
+	public static <T> JsonToPojoConverter<T> get(Type type) {
+		return new JsonToPojoConverter<T>() {
+			@Override
+			public T convert(JsonObject jsonObject) {
+				return gson.fromJson(jsonObject, type);
+			}
+		};
+	}
 }
