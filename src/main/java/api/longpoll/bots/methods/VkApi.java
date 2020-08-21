@@ -36,12 +36,17 @@ public class VkApi {
 		public static final String RESTORE = METHOD.concat("restore");
 		public static final String REMOVE_CHAT_USER = METHOD.concat("removeChatUser");
 		public static final String SEARCH_CONVERSATIONS = METHOD.concat("searchConversations");
+		public static final String MARK_AS_ANSWERED_CONVERSATION = METHOD.concat("markAsAnsweredConversation");
+		public static final String MARK_AS_IMPORTANT_CONVERSATION = METHOD.concat("markAsImportantConversation");
+		public static final String MARK_AS_READ = METHOD.concat("markAsRead");
 	}
 
 	public static class Photos {
 		private static final String METHOD = URL.concat("photos.");
 		public static final String GET_MESSAGE_UPLOAD_SERVER = METHOD.concat("getMessagesUploadServer");
 		public static final String SAVE_MESSAGES_PHOTO = METHOD.concat("saveMessagesPhoto");
+		public static final String GET_OWNER_COVER_PHOTO_UPLOAD_SERVER = METHOD.concat("getOwnerCoverPhotoUploadServer");
+		public static final String SAVE_OWNER_COVER_PHOTO = METHOD.concat("saveOwnerCoverPhoto");
 	}
 
 	public static class Docs {
@@ -56,5 +61,17 @@ public class VkApi {
 		private static final String METHOD = URL.concat("board.");
 		public static final String DELETE_COMMENT = METHOD.concat("deleteComment");
 		public static final String RESTORE_COMMENT = METHOD.concat("restoreComment");
+	}
+
+	public static class Wall {
+		private static final String METHOD = URL.concat("wall.");
+		public static final String CLOSE_COMMENTS = METHOD.concat("closeComments");
+		public static final String OPEN_COMMENTS = METHOD.concat("openComments");
+		public static final String CREATE_COMMENT = METHOD.concat("createComment");
+	}
+
+	public static class Users {
+		private static final String METHOD = URL.concat("users.");
+		public static final String GET = METHOD.concat("get");
 	}
 }
