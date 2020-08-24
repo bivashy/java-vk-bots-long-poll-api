@@ -21,7 +21,7 @@ public class MessagesRestore extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.RESTORE;
+        return VkApi.getInstance().messagesRestore();
     }
 
     @Override

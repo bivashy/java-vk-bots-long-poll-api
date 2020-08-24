@@ -21,7 +21,7 @@ public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoRe
 
 	@Override
 	protected String getApi() {
-		return VkApi.Photos.SAVE_MESSAGES_PHOTO;
+		return VkApi.getInstance().photosSaveMessagesPhoto();
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class GroupsDeleteAddress extends GetMethod<GenericResult<Integer>> {
 
 	@Override
 	protected String getApi() {
-		return VkApi.Groups.DELETE_ADDRESS;
+		return VkApi.getInstance().groupsDeleteAddress();
 	}
 
 	@Override

@@ -22,7 +22,7 @@ public class MessagesMarkAsImportantConversation extends GetMethod<GenericResult
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.MARK_AS_IMPORTANT_CONVERSATION;
+        return VkApi.getInstance().messagesMarkAsImportantConversation();
     }
 
     @Override

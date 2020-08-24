@@ -24,7 +24,7 @@ public class MessagesSearchConversations extends GetMethod<MessagesSearchConvers
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.SEARCH_CONVERSATIONS;
+        return VkApi.getInstance().messagesSearchConversations();
     }
 
     @Override

@@ -23,7 +23,7 @@ public class GroupsIsMember extends GetMethod<GroupsIsMemberResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.Groups.IS_MEMBER;
+        return VkApi.getInstance().groupsIsMember();
     }
 
     @Override

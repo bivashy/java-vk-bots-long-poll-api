@@ -23,7 +23,7 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwn
 
     @Override
     protected String getApi() {
-        return VkApi.Photos.GET_OWNER_COVER_PHOTO_UPLOAD_SERVER;
+        return VkApi.getInstance().photosGetOwnerCoverPhotoUploadServer();
     }
 
     @Override

@@ -25,7 +25,7 @@ public class GroupsGetMembers extends GetMethod<GroupsGetMembersResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.Groups.GET_MEMBERS;
+        return VkApi.getInstance().groupsGetMembers();
     }
 
     @Override

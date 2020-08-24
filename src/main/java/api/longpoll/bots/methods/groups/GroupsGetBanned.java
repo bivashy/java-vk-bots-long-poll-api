@@ -26,7 +26,7 @@ public class GroupsGetBanned extends GetMethod<GroupsGetBannedResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.Groups.GET_BANNED;
+        return VkApi.getInstance().groupsGetBanned();
     }
 
     @Override

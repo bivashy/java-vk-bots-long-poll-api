@@ -21,7 +21,7 @@ public class MessagesDeleteConversation extends GetMethod<MessagesDeleteConversa
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.DELETE_CONVERSATION;
+        return VkApi.getInstance().messagesDeleteConversation();
     }
 
     @Override

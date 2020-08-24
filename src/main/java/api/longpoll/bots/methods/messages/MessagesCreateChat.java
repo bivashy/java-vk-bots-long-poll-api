@@ -23,7 +23,7 @@ public class MessagesCreateChat extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.CREATE_CHAT;
+        return VkApi.getInstance().messagesCreateChat();
     }
 
     @Override

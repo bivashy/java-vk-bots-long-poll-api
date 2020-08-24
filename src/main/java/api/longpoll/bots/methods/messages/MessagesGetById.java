@@ -27,7 +27,7 @@ public class MessagesGetById extends GetMethod<GenericResult<VkList<Message>>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.GET_BY_ID;
+        return VkApi.getInstance().messagesGetById();
     }
 
     @Override

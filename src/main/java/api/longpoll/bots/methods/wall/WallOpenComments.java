@@ -21,7 +21,7 @@ public class WallOpenComments extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Wall.CLOSE_COMMENTS;
+        return VkApi.getInstance().wallOpenComments();
     }
 
     @Override

@@ -22,7 +22,7 @@ public class BoardRestoreComment extends GetMethod<GenericResult<Integer>> {
 
 	@Override
 	protected String getApi() {
-		return VkApi.Board.RESTORE_COMMENT;
+		return VkApi.getInstance().boardRestoreComment();
 	}
 
 	@Override

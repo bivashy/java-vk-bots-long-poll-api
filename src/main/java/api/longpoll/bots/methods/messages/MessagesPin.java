@@ -22,7 +22,7 @@ public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.PIN;
+        return VkApi.getInstance().messagesPin();
     }
 
     @Override

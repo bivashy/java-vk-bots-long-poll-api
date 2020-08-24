@@ -18,7 +18,7 @@ import api.longpoll.bots.model.events.UnimplementedEventObject;
 import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
-import api.longpoll.bots.model.events.market.MarketOrder;
+import api.longpoll.bots.model.objects.basic.MarketOrder;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
 import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;

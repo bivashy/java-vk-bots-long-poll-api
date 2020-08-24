@@ -22,7 +22,7 @@ public class DocsSave extends GetMethod<DocsSaveResult> {
 
 	@Override
 	protected String getApi() {
-		return VkApi.Docs.SAVE;
+		return VkApi.getInstance().docsSave();
 	}
 
 	@Override

@@ -28,7 +28,7 @@ public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.GET_HISTORY;
+        return VkApi.getInstance().messagesGetHistory();
     }
 
     @Override

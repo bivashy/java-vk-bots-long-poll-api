@@ -22,7 +22,7 @@ public class MessagesGetConversationMembers extends GetMethod<MessagesGetConvers
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.GET_CONVERSATION_MEMBERS;
+        return VkApi.getInstance().messagesGetConversationMembers();
     }
 
     @Override

@@ -32,7 +32,7 @@ public class GroupsAddCallbackServer extends GetMethod<GroupsAddCallbackServerRe
 
 	@Override
 	protected String getApi() {
-		return VkApi.Groups.ADD_CALLBACK_SERVER;
+		return VkApi.getInstance().groupsAddCallbackServer();
 	}
 
 	@Override

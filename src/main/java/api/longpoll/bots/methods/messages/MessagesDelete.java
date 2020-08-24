@@ -24,7 +24,7 @@ public class MessagesDelete extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.DELETE;
+        return VkApi.getInstance().messagesDelete();
     }
 
     @Override

@@ -20,7 +20,7 @@ public class MessagesDeleteChatPhoto extends GetMethod<MessagesDeleteChatPhotoRe
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.DELETE_CHAT_PHOTO;
+        return VkApi.getInstance().messagesDeleteChatPhoto();
     }
 
     @Override

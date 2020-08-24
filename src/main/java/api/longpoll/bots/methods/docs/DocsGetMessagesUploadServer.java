@@ -20,7 +20,7 @@ public class DocsGetMessagesUploadServer extends GetMethod<DocsGetUploadServerRe
 
 	@Override
 	protected String getApi() {
-		return VkApi.Docs.GET_MESSAGES_UPLOAD_SERVER;
+		return VkApi.getInstance().docsGetMessagesUploadServer();
 	}
 
 	@Override

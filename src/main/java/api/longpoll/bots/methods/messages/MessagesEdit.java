@@ -47,7 +47,7 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.EDIT;
+        return VkApi.getInstance().messagesEdit();
     }
 
     @Override

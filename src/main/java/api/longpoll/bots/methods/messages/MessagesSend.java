@@ -50,7 +50,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 
 	@Override
 	protected String getApi() {
-		return VkApi.Messages.SEND;
+		return VkApi.getInstance().messagesSend();
 	}
 
 	@Override

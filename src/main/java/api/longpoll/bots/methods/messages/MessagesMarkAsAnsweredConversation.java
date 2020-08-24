@@ -22,7 +22,7 @@ public class MessagesMarkAsAnsweredConversation extends GetMethod<GenericResult<
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.MARK_AS_ANSWERED_CONVERSATION;
+        return VkApi.getInstance().messagesMarkAsAnsweredConversation();
     }
 
     @Override

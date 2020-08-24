@@ -24,7 +24,7 @@ public class UsersGet extends GetMethod<GenericResult<List<User>>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Users.GET;
+        return VkApi.getInstance().usersGet();
     }
 
     @Override

@@ -22,7 +22,7 @@ public class MessagesRemoveChatUser extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.REMOVE_CHAT_USER;
+        return VkApi.getInstance().messagesRemoveChatUser();
     }
 
     @Override

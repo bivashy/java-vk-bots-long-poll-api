@@ -28,7 +28,7 @@ public class MessagesGetHistoryAttachments extends GetMethod<MessagesGetHistoryA
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.GET_HISTORY_ATTACHMENTS;
+        return VkApi.getInstance().messagesGetHistoryAttachments();
     }
 
     @Override

@@ -23,7 +23,7 @@ public class MessagesGetConversationsById extends GetMethod<MessagesGetConversat
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.GET_CONVERSATIONS_BY_ID;
+        return VkApi.getInstance().messagesGetConversationsById();
     }
 
     @Override

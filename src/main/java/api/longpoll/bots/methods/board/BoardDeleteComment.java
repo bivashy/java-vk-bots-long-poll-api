@@ -22,7 +22,7 @@ public class BoardDeleteComment extends GetMethod<GenericResult<Integer>> {
 
 	@Override
 	protected String getApi() {
-		return VkApi.Board.DELETE_COMMENT;
+		return VkApi.getInstance().boardDeleteComment();
 	}
 
 	@Override

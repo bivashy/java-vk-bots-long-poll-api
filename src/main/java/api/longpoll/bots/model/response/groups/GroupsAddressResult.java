@@ -3,13 +3,13 @@ package api.longpoll.bots.model.response.groups;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
-public class GroupsAddAddressResult {
+public class GroupsAddressResult {
 	@SerializedName("response")
 	private Response response;
 
-	public class Response {
-		@SerializedName("group_id")
-		private Integer groupId;
+	public static class Response {
+		@SerializedName("id")
+		private Integer id;
 		@SerializedName("title")
 		private String title;
 		@SerializedName("address")
@@ -20,8 +20,8 @@ public class GroupsAddAddressResult {
 		private Integer countryId;
 		@SerializedName("city_id")
 		private Integer cityId;
-		@SerializedName("metro_id")
-		private Integer metroId;
+		@SerializedName("metro_station_id")
+		private Integer metroStationId;
 		@SerializedName("latitude")
 		private Float latitude;
 		@SerializedName("longitude")
@@ -35,12 +35,12 @@ public class GroupsAddAddressResult {
 		@SerializedName("is_main_address")
 		private Boolean mainAddress;
 
-		public Integer getGroupId() {
-			return groupId;
+		public Integer getId() {
+			return id;
 		}
 
-		public Response setGroupId(Integer groupId) {
-			this.groupId = groupId;
+		public Response setId(Integer id) {
+			this.id = id;
 			return this;
 		}
 
@@ -89,12 +89,12 @@ public class GroupsAddAddressResult {
 			return this;
 		}
 
-		public Integer getMetroId() {
-			return metroId;
+		public Integer getMetroStationId() {
+			return metroStationId;
 		}
 
-		public Response setMetroId(Integer metroId) {
-			this.metroId = metroId;
+		public Response setMetroStationId(Integer metroStationId) {
+			this.metroStationId = metroStationId;
 			return this;
 		}
 
@@ -157,7 +157,7 @@ public class GroupsAddAddressResult {
 		return response;
 	}
 
-	public GroupsAddAddressResult setResponse(Response response) {
+	public GroupsAddressResult setResponse(Response response) {
 		this.response = response;
 		return this;
 	}

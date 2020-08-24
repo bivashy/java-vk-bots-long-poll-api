@@ -1,4 +1,4 @@
-package api.longpoll.bots.model.events.market;
+package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.objects.media.MarketItem;

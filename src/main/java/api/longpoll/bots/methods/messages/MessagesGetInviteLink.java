@@ -21,7 +21,7 @@ public class MessagesGetInviteLink extends GetMethod<MessagesGetInviteLinkResult
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.GET_INVITE_LINK;
+        return VkApi.getInstance().messagesGetInviteLink();
     }
 
     @Override

@@ -27,7 +27,7 @@ public class MessagesGetByConversationMessageId extends GetMethod<GenericResult<
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.GET_BY_CONVERSATION_MESSAGE_ID;
+        return VkApi.getInstance().messagesGetByConversationMessageId();
     }
 
     @Override

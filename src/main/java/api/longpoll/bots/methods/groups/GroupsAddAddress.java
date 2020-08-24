@@ -5,13 +5,13 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.groups.GroupsAddAddressResult;
+import api.longpoll.bots.model.response.groups.GroupsAddressResult;
 import com.google.gson.JsonObject;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
-public class GroupsAddAddress extends GetMethod<GroupsAddAddressResult> {
+public class GroupsAddAddress extends GetMethod<GroupsAddressResult> {
 	private Integer groupId;
 	private String title;
 	private String address;
@@ -32,12 +32,12 @@ public class GroupsAddAddress extends GetMethod<GroupsAddAddressResult> {
 
 	@Override
 	protected String getApi() {
-		return VkApi.Groups.ADD_ADDRESS;
+		return VkApi.getInstance().groupsAddAddress();
 	}
 
 	@Override
-	protected JsonToPojoConverter<GroupsAddAddressResult> getConverter() {
-		return GenericConverterFactory.get(GroupsAddAddressResult.class);
+	protected JsonToPojoConverter<GroupsAddressResult> getConverter() {
+		return GenericConverterFactory.get(GroupsAddressResult.class);
 	}
 
 	@Override

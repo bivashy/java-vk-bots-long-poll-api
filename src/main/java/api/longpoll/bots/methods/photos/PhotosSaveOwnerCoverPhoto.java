@@ -20,7 +20,7 @@ public class PhotosSaveOwnerCoverPhoto extends GetMethod<PhotosSaveOwnerCoverPho
 
     @Override
     protected String getApi() {
-        return VkApi.Photos.SAVE_OWNER_COVER_PHOTO;
+        return VkApi.getInstance().photosSaveOwnerCoverPhoto();
     }
 
     @Override

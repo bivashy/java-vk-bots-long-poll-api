@@ -1,77 +1,284 @@
 package api.longpoll.bots.methods;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class VkApi {
-	private static final String URL = "https://api.vk.com/method/";
+	private static final Logger log = LoggerFactory.getLogger(VkApi.class);
+	private static final String PROPERTIES_FILE = "api/vk/API.properties";
+	private static final VkApi instance = new VkApi();
+	private final Properties properties = new Properties();
 
-	public static class Groups {
-		private static final String METHOD = URL.concat("groups.");
-		public static final String GET_LONG_POLL_SERVER = METHOD.concat("getLongPollServer");
-		public static final String ADD_ADDRESS = METHOD.concat("addAddress");
-		public static final String DELETE_ADDRESS = METHOD.concat("deleteAddress");
-		public static final String ADD_CALLBACK_SERVER = METHOD.concat("addCallbackServer");
-		public static final String GET_BANNED = METHOD.concat("getBanned");
-		public static final String GET_BY_ID = METHOD.concat("getById");
-		public static final String GET_MEMBERS = METHOD.concat("getMembers");
-		public static final String IS_MEMBER = METHOD.concat("isMember");
+	private VkApi() {
+		try (InputStream inputStream = new FileInputStream(PROPERTIES_FILE)) {
+			properties.load(inputStream);
+		} catch (IOException e) {
+			log.error("Failed to read {}.", PROPERTIES_FILE, e);
+		}
 	}
 
-	public static class Messages {
-		private static final String METHOD = URL.concat("messages.");
-		public static final String SEND = METHOD.concat("send");
-		public static final String CREATE_CHAT = METHOD.concat("createChat");
-		public static final String DELETE = METHOD.concat("delete");
-		public static final String DELETE_CHAT_PHOTO = METHOD.concat("deleteChatPhoto");
-		public static final String DELETE_CONVERSATION = METHOD.concat("deleteConversation");
-		public static final String EDIT = METHOD.concat("edit");
-		public static final String GET_BY_CONVERSATION_MESSAGE_ID = METHOD.concat("getByConversationMessageId");
-		public static final String EDIT_CHAT = METHOD.concat("editChat");
-		public static final String GET_BY_ID = METHOD.concat("getById");
-		public static final String GET_CONVERSATION_MEMBERS = METHOD.concat("getConversationMembers");
-		public static final String GET_CONVERSATIONS = METHOD.concat("getConversations");
-		public static final String GET_CONVERSATIONS_BY_ID = METHOD.concat("getConversationsById");
-		public static final String GET_HISTORY = METHOD.concat("getHistory");
-		public static final String GET_HISTORY_ATTACHMENTS = METHOD.concat("getHistoryAttachments");
-		public static final String GET_INVITE_LINK = METHOD.concat("getInviteLink");
-		public static final String PIN = METHOD.concat("pin");
-		public static final String RESTORE = METHOD.concat("restore");
-		public static final String REMOVE_CHAT_USER = METHOD.concat("removeChatUser");
-		public static final String SEARCH_CONVERSATIONS = METHOD.concat("searchConversations");
-		public static final String MARK_AS_ANSWERED_CONVERSATION = METHOD.concat("markAsAnsweredConversation");
-		public static final String MARK_AS_IMPORTANT_CONVERSATION = METHOD.concat("markAsImportantConversation");
-		public static final String MARK_AS_READ = METHOD.concat("markAsRead");
+	public static VkApi getInstance() {
+		return instance;
 	}
 
-	public static class Photos {
-		private static final String METHOD = URL.concat("photos.");
-		public static final String GET_MESSAGE_UPLOAD_SERVER = METHOD.concat("getMessagesUploadServer");
-		public static final String SAVE_MESSAGES_PHOTO = METHOD.concat("saveMessagesPhoto");
-		public static final String GET_OWNER_COVER_PHOTO_UPLOAD_SERVER = METHOD.concat("getOwnerCoverPhotoUploadServer");
-		public static final String SAVE_OWNER_COVER_PHOTO = METHOD.concat("saveOwnerCoverPhoto");
+	public String boardDeleteComment() {
+		return properties.getProperty("board.deleteComment");
 	}
 
-	public static class Docs {
-		private static final String METHOD = URL.concat("docs.");
-		public static final String GET_MESSAGES_UPLOAD_SERVER = METHOD.concat("getMessagesUploadServer");
-		public static final String SAVE = METHOD.concat("save");
-		public static final String GET_WALL_UPLOAD_SERVER = METHOD.concat("getWallUploadServer");
-		public static final String SEARCH = METHOD.concat("search");
+	public String boardRestoreComment() {
+		return properties.getProperty("board.restoreComment");
 	}
 
-	public static class Board {
-		private static final String METHOD = URL.concat("board.");
-		public static final String DELETE_COMMENT = METHOD.concat("deleteComment");
-		public static final String RESTORE_COMMENT = METHOD.concat("restoreComment");
+	public String docsGetMessagesUploadServer() {
+		return properties.getProperty("docs.getMessagesUploadServer");
 	}
 
-	public static class Wall {
-		private static final String METHOD = URL.concat("wall.");
-		public static final String CLOSE_COMMENTS = METHOD.concat("closeComments");
-		public static final String OPEN_COMMENTS = METHOD.concat("openComments");
-		public static final String CREATE_COMMENT = METHOD.concat("createComment");
+	public String docsGetWallUploadServer() {
+		return properties.getProperty("docs.getWallUploadServer");
 	}
 
-	public static class Users {
-		private static final String METHOD = URL.concat("users.");
-		public static final String GET = METHOD.concat("get");
+	public String docsSave() {
+		return properties.getProperty("docs.save");
+	}
+
+	public String docsSearch() {
+		return properties.getProperty("docs.search");
+	}
+
+	public String groupsAddAddress() {
+		return properties.getProperty("groups.addAddress");
+	}
+
+	public String groupsAddCallbackServer() {
+		return properties.getProperty("groups.addCallbackServer");
+	}
+
+	public String groupsDeleteAddress() {
+		return properties.getProperty("groups.deleteAddress");
+	}
+
+	public String groupsDeleteCallbackServer() {
+		return properties.getProperty("groups.deleteCallbackServer");
+	}
+
+	public String groupsDisableOnline() {
+		return properties.getProperty("groups.disableOnline");
+	}
+
+	public String groupsEditAddress() {
+		return properties.getProperty("groups.editAddress");
+	}
+
+	public String groupsEditCallbackServer() {
+		return properties.getProperty("groups.editCallbackServer");
+	}
+
+	public String groupsEnableOnline() {
+		return properties.getProperty("groups.enableOnline");
+	}
+
+	public String groupsGetBanned() {
+		return properties.getProperty("groups.getBanned");
+	}
+
+	public String groupsGetById() {
+		return properties.getProperty("groups.getById");
+	}
+
+	public String groupsGetCallbackConfirmationCode() {
+		return properties.getProperty("groups.getCallbackConfirmationCode");
+	}
+
+	public String groupsGetCallbackServers() {
+		return properties.getProperty("groups.getCallbackServers");
+	}
+
+	public String groupsGetCallbackSettings() {
+		return properties.getProperty("groups.getCallbackSettings");
+	}
+
+	public String groupsGetLongPollServer() {
+		return properties.getProperty("groups.getLongPollServer");
+	}
+
+	public String groupsGetLongPollSettings() {
+		return properties.getProperty("groups.getLongPollSettings");
+	}
+
+	public String groupsGetMembers() {
+		return properties.getProperty("groups.getMembers");
+	}
+
+	public String groupsGetOnlineStatus() {
+		return properties.getProperty("groups.getOnlineStatus");
+	}
+
+	public String groupsGetTokenPermissions() {
+		return properties.getProperty("groups.getTokenPermissions");
+	}
+
+	public String groupsIsMember() {
+		return properties.getProperty("groups.isMember");
+	}
+
+	public String groupsSetCallbackSettings() {
+		return properties.getProperty("groups.setCallbackSettings");
+	}
+
+	public String groupsSetLongPollSettings() {
+		return properties.getProperty("groups.setLongPollSettings");
+	}
+
+	public String groupsSetSettings() {
+		return properties.getProperty("groups.setSettings");
+	}
+
+	public String marketGetGroupOrders() {
+		return properties.getProperty("market.getGroupOrders");
+	}
+
+	public String messagesCreateChat() {
+		return properties.getProperty("messages.createChat");
+	}
+
+	public String messagesDelete() {
+		return properties.getProperty("messages.delete");
+	}
+
+	public String messagesDeleteChatPhoto() {
+		return properties.getProperty("messages.deleteChatPhoto");
+	}
+
+	public String messagesDeleteConversation() {
+		return properties.getProperty("messages.deleteConversation");
+	}
+
+	public String messagesEdit() {
+		return properties.getProperty("messages.edit");
+	}
+
+	public String messagesEditChat() {
+		return properties.getProperty("messages.editChat");
+	}
+
+	public String messagesGetByConversationMessageId() {
+		return properties.getProperty("messages.getByConversationMessageId");
+	}
+
+	public String messagesGetById() {
+		return properties.getProperty("messages.getById");
+	}
+
+	public String messagesGetConversationMembers() {
+		return properties.getProperty("messages.getConversationMembers");
+	}
+
+	public String messagesGetConversations() {
+		return properties.getProperty("messages.getConversations");
+	}
+
+	public String messagesGetConversationsById() {
+		return properties.getProperty("messages.getConversationsById");
+	}
+
+	public String messagesGetHistory() {
+		return properties.getProperty("messages.getHistory");
+	}
+
+	public String messagesGetHistoryAttachments() {
+		return properties.getProperty("messages.getHistoryAttachments");
+	}
+
+	public String messagesGetInviteLink() {
+		return properties.getProperty("messages.getInviteLink");
+	}
+
+	public String messagesMarkAsAnsweredConversation() {
+		return properties.getProperty("messages.markAsAnsweredConversation");
+	}
+
+	public String messagesMarkAsImportantConversation() {
+		return properties.getProperty("messages.markAsImportantConversation");
+	}
+
+	public String messagesMarkAsRead() {
+		return properties.getProperty("messages.markAsRead");
+	}
+
+	public String messagesPin() {
+		return properties.getProperty("messages.pin");
+	}
+
+	public String messagesRemoveChatUser() {
+		return properties.getProperty("messages.removeChatUser");
+	}
+
+	public String messagesRestore() {
+		return properties.getProperty("messages.restore");
+	}
+
+	public String messagesSearchConversations() {
+		return properties.getProperty("messages.searchConversations");
+	}
+
+	public String messagesSend() {
+		return properties.getProperty("messages.send");
+	}
+
+	public String photosGetMessagesUploadServer() {
+		return properties.getProperty("photos.getMessagesUploadServer");
+	}
+
+	public String photosGetOwnerCoverPhotoUploadServer() {
+		return properties.getProperty("photos.getOwnerCoverPhotoUploadServer");
+	}
+
+	public String photosSaveMessagesPhoto() {
+		return properties.getProperty("photos.saveMessagesPhoto");
+	}
+
+	public String photosSaveOwnerCoverPhoto() {
+		return properties.getProperty("photos.saveOwnerCoverPhoto");
+	}
+
+	public String usersGet() {
+		return properties.getProperty("users.get");
+	}
+
+	public String utilsCheckLink() {
+		return properties.getProperty("utils.checkLink");
+	}
+
+	public String utilsGetLinkStats() {
+		return properties.getProperty("utils.getLinkStats");
+	}
+
+	public String utilsGetServerTime() {
+		return properties.getProperty("utils.getServerTime");
+	}
+
+	public String utilsGetShortLink() {
+		return properties.getProperty("utils.getShortLink");
+	}
+
+	public String utilsResolveScreenName() {
+		return properties.getProperty("utils.resolveScreenName");
+	}
+
+	public String wallCloseComments() {
+		return properties.getProperty("wall.closeComments");
+	}
+
+	public String wallCreateComment() {
+		return properties.getProperty("wall.createComment");
+	}
+
+	public String wallOpenComments() {
+		return properties.getProperty("wall.openComments");
 	}
 }

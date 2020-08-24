@@ -19,7 +19,7 @@ public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerResult
 
 	@Override
 	protected String getApi() {
-		return VkApi.Docs.GET_WALL_UPLOAD_SERVER;
+		return VkApi.getInstance().docsGetWallUploadServer();
 	}
 
 	@Override

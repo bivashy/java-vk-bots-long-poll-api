@@ -22,7 +22,7 @@ public class DocsSearch extends GetMethod<DocsSearchResult> {
 
 	@Override
 	protected String getApi() {
-		return VkApi.Docs.SEARCH;
+		return VkApi.getInstance().docsSearch();
 	}
 
 	@Override

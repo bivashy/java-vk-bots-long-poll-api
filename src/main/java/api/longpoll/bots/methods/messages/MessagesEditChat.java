@@ -21,7 +21,7 @@ public class MessagesEditChat extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.EDIT_CHAT;
+        return VkApi.getInstance().messagesEditChat();
     }
 
     @Override

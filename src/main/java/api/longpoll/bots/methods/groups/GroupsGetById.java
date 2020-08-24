@@ -22,7 +22,7 @@ public class GroupsGetById extends GetMethod<GroupsGetByIdResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.Groups.GET_BY_ID;
+        return VkApi.getInstance().groupsGetById();
     }
 
     @Override

@@ -19,7 +19,7 @@ public class PhotosGetMessagesUploadServer extends GetMethod<PhotosGetMessagesUp
 
 	@Override
 	protected String getApi() {
-		return VkApi.Photos.GET_MESSAGE_UPLOAD_SERVER;
+		return VkApi.getInstance().photosGetMessagesUploadServer();
 	}
 
 	@Override

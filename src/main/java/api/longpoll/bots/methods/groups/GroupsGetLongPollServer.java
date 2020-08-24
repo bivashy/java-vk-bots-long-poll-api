@@ -29,7 +29,7 @@ public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerRe
 
 	@Override
 	protected String getApi() {
-		return VkApi.Groups.GET_LONG_POLL_SERVER;
+		return VkApi.getInstance().groupsGetLongPollServer();
 	}
 
 	public Integer getGroupId() {

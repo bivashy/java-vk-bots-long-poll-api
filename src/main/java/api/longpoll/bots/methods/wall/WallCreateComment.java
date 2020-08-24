@@ -30,7 +30,7 @@ public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.Wall.CREATE_COMMENT;
+        return VkApi.getInstance().wallCreateComment();
     }
 
     @Override

@@ -6,7 +6,7 @@ import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
 import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
-import api.longpoll.bots.model.events.market.MarketOrder;
+import api.longpoll.bots.model.objects.basic.MarketOrder;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
 import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;

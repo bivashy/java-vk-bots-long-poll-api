@@ -25,7 +25,7 @@ public class MessagesMarkAsRead extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected String getApi() {
-        return VkApi.Messages.MARK_AS_READ;
+        return VkApi.getInstance().messagesMarkAsRead();
     }
 
     @Override
