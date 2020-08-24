@@ -13,7 +13,9 @@ public class BoardPostDeleteEvent implements EventObject {
 	@SerializedName("topic_owner_id")
 	private Integer topicOwnerId;
 
-	// TODO: 14.08.2020 find out javadoc
+	/**
+	 * Comment ID.
+	 */
 	@SerializedName("id")
 	private Integer id;
 
@@ -27,26 +29,23 @@ public class BoardPostDeleteEvent implements EventObject {
 		return topicOwnerId;
 	}
 
-	public BoardPostDeleteEvent setTopicOwnerId(Integer topicOwnerId) {
+	public void setTopicOwnerId(Integer topicOwnerId) {
 		this.topicOwnerId = topicOwnerId;
-		return this;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public BoardPostDeleteEvent setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getTopicId() {
 		return topicId;
 	}
 
-	public BoardPostDeleteEvent setTopicId(Integer topicId) {
+	public void setTopicId(Integer topicId) {
 		this.topicId = topicId;
-		return this;
 	}
 }

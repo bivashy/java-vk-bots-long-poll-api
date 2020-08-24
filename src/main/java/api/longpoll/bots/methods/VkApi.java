@@ -11,8 +11,8 @@ import java.util.Properties;
 public class VkApi {
 	private static final Logger log = LoggerFactory.getLogger(VkApi.class);
 	private static final String PROPERTIES_FILE = "api/vk/API.properties";
-	private static final VkApi instance = new VkApi();
-	private final Properties properties = new Properties();
+	private static VkApi instance = new VkApi();
+	private Properties properties = new Properties();
 
 	private VkApi() {
 		try (InputStream inputStream = new FileInputStream(PROPERTIES_FILE)) {

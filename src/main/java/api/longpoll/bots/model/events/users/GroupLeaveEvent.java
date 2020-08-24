@@ -5,9 +5,19 @@ import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Describes <b>group_leave</b> event objects.
+ */
 public class GroupLeaveEvent implements EventObject {
+	/**
+	 * User ID.
+	 */
 	@SerializedName("user_id")
 	private Integer userId;
+
+	/**
+	 * <b>true</b>, if a user has left on his own.
+	 */
 	@SerializedName("self")
 	@JsonAdapter(BoolIntAdapter.class)
 	private Boolean self;
@@ -16,17 +26,15 @@ public class GroupLeaveEvent implements EventObject {
 		return userId;
 	}
 
-	public GroupLeaveEvent setUserId(Integer userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
-		return this;
 	}
 
 	public Boolean getSelf() {
 		return self;
 	}
 
-	public GroupLeaveEvent setSelf(Boolean self) {
+	public void setSelf(Boolean self) {
 		this.self = self;
-		return this;
 	}
 }

@@ -3,34 +3,33 @@ package api.longpoll.bots;
 import api.longpoll.bots.constants.EventTypes;
 import api.longpoll.bots.exceptions.ApiHttpException;
 import api.longpoll.bots.exceptions.handlers.ApiHttpExceptionHandler;
-import api.longpoll.bots.model.events.likes.LikeEvent;
-import api.longpoll.bots.model.objects.media.Audio;
+import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
 import api.longpoll.bots.model.events.boards.BoardPostEvent;
+import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
-import api.longpoll.bots.model.objects.basic.MarketOrder;
+import api.longpoll.bots.model.events.messages.MessageEvent;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
 import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
 import api.longpoll.bots.model.events.other.VkpayTransaction;
-import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.objects.basic.Message;
-import api.longpoll.bots.model.events.messages.MessageEvent;
 import api.longpoll.bots.model.events.photos.PhotoCommentDeleteEvent;
 import api.longpoll.bots.model.events.photos.PhotoCommentEvent;
-import api.longpoll.bots.model.events.UnimplementedEventObject;
-import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.users.GroupJoinEvent;
 import api.longpoll.bots.model.events.users.GroupLeaveEvent;
 import api.longpoll.bots.model.events.users.UserBlockEvent;
 import api.longpoll.bots.model.events.users.UserUnblockEvent;
-import api.longpoll.bots.model.objects.media.Video;
 import api.longpoll.bots.model.events.video.VideoCommentDeleteEvent;
 import api.longpoll.bots.model.events.video.VideoCommentEvent;
-import api.longpoll.bots.model.objects.basic.WallPost;
 import api.longpoll.bots.model.events.wall.comments.WallReplyDeleteEvent;
 import api.longpoll.bots.model.events.wall.comments.WallReplyEvent;
+import api.longpoll.bots.model.objects.basic.MarketOrder;
+import api.longpoll.bots.model.objects.basic.Message;
+import api.longpoll.bots.model.objects.basic.WallPost;
+import api.longpoll.bots.model.objects.media.Audio;
+import api.longpoll.bots.model.objects.media.Photo;
+import api.longpoll.bots.model.objects.media.Video;
 import api.longpoll.bots.server.Server;
 import api.longpoll.bots.server.impl.LongPollServer;
 import org.slf4j.Logger;
@@ -41,8 +40,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BotsLongPoll implements Runnable {
 	private static final Logger log = LoggerFactory.getLogger(BotsLongPoll.class);
-	private LongPollBot bot;
-	private AtomicBoolean running = new AtomicBoolean(true);
+	private final LongPollBot bot;
+	private final AtomicBoolean running = new AtomicBoolean(true);
 	private ApiHttpExceptionHandler apiHttpExceptionHandler = e -> log.error("Error while bot running.", e);
 
 	public BotsLongPoll(LongPollBot bot) {
@@ -223,10 +222,6 @@ public class BotsLongPoll implements Runnable {
 
 				case EventTypes.APP_PAYLOAD:
 					bot.onAppPayload((AppPayload) update.getObject());
-					break;
-
-				default:
-					bot.onUnimplementedUpdate((UnimplementedEventObject) update.getObject());
 					break;
 			}
 		});

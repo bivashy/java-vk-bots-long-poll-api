@@ -9,29 +9,28 @@ import api.longpoll.bots.converters.events.messages.MessageEventConverterImpl;
 import api.longpoll.bots.converters.events.photos.PhotoCommentEventConverterImpl;
 import api.longpoll.bots.converters.events.video.VideoCommentEventConverterImpl;
 import api.longpoll.bots.converters.events.wall.WallReplyEventConverterImpl;
-import api.longpoll.bots.model.objects.media.Audio;
-import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
-import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.events.UnimplementedEventObject;
+import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
+import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
-import api.longpoll.bots.model.objects.basic.MarketOrder;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
 import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
 import api.longpoll.bots.model.events.other.VkpayTransaction;
-import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.events.photos.PhotoCommentDeleteEvent;
 import api.longpoll.bots.model.events.users.GroupJoinEvent;
 import api.longpoll.bots.model.events.users.GroupLeaveEvent;
 import api.longpoll.bots.model.events.users.UserBlockEvent;
 import api.longpoll.bots.model.events.users.UserUnblockEvent;
-import api.longpoll.bots.model.objects.media.Video;
 import api.longpoll.bots.model.events.video.VideoCommentDeleteEvent;
 import api.longpoll.bots.model.events.wall.comments.WallReplyDeleteEvent;
+import api.longpoll.bots.model.objects.basic.MarketOrder;
+import api.longpoll.bots.model.objects.media.Audio;
+import api.longpoll.bots.model.objects.media.Photo;
+import api.longpoll.bots.model.objects.media.Video;
 import com.google.gson.FieldAttributes;
 import com.google.gson.JsonObject;
 
@@ -138,7 +137,7 @@ public class EventConverterImpl extends JsonToPojoConverter<Event> {
 				return event.setObject(GenericConverterFactory.get(AppPayload.class).convert(jsonUpdateObject));
 
 			default:
-				return event.setObject(new UnimplementedEventObject().setJsonObject(jsonUpdateObject));
+				return null;
 		}
 	}
 

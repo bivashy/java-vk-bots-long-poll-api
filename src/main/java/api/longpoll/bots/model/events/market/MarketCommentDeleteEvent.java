@@ -41,44 +41,39 @@ public class MarketCommentDeleteEvent implements EventObject {
 		return ownerId;
 	}
 
-	public MarketCommentDeleteEvent setOwnerId(Integer ownerId) {
+	public void setOwnerId(Integer ownerId) {
 		this.ownerId = ownerId;
-		return this;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public MarketCommentDeleteEvent setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getUserId() {
 		return userId;
 	}
 
-	public MarketCommentDeleteEvent setUserId(Integer userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
-		return this;
 	}
 
 	public Integer getDeleterId() {
 		return deleterId;
 	}
 
-	public MarketCommentDeleteEvent setDeleterId(Integer deleterId) {
+	public void setDeleterId(Integer deleterId) {
 		this.deleterId = deleterId;
-		return this;
 	}
 
 	public Integer getItemId() {
 		return itemId;
 	}
 
-	public MarketCommentDeleteEvent setItemId(Integer itemId) {
+	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
-		return this;
 	}
 }

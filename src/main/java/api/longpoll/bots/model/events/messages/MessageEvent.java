@@ -21,45 +21,19 @@ public class MessageEvent implements EventObject {
 	@SerializedName("client_info")
 	private ClientInfo clientInfo;
 
-	/**
-	 * Gets message.
-	 *
-	 * @return message object.
-	 */
 	public Message getMessage() {
 		return message;
 	}
 
-	/**
-	 * Sets message.
-	 *
-	 * @param message message object.
-	 * @return this MessageEvent.
-	 */
-	public MessageEvent setMessage(Message message) {
+	public void setMessage(Message message) {
 		this.message = message;
-		return this;
 	}
 
-	/**
-	 * Gets available user features.
-	 *
-	 * @return available user features.
-	 */
 	public ClientInfo getClientInfo() {
 		return clientInfo;
 	}
 
-	/**
-	 * Sets available user features.
-	 *
-	 * @param clientInfo available user features.
-	 * @return this MessageEvent.
-	 */
-	public MessageEvent setClientInfo(ClientInfo clientInfo) {
+	public void setClientInfo(ClientInfo clientInfo) {
 		this.clientInfo = clientInfo;
-		return this;
 	}
-
-
 }

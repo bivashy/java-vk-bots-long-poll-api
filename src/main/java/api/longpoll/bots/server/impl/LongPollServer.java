@@ -23,9 +23,9 @@ public class LongPollServer implements Server {
 	private static final String TS_FIELD = "ts";
 	private static final String FAILED_FIELD = "failed";
 
-	private LongPollBot bot;
+	private final LongPollBot bot;
 	private GetEvents getEvents;
-	private Converter<String, JsonObject> converter = new StringToJsonConverterImpl();
+	private final Converter<String, JsonObject> converter = new StringToJsonConverterImpl();
 
 	public LongPollServer(LongPollBot bot) {
 		this.bot = bot;

@@ -5,19 +5,50 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Describes Pinned Message.
+ * @see <a href="https://vk.com/dev/objects/pinned_message">Pinned Message</a>
+ */
 public class PinnedMessage {
+    /**
+     * Message ID.
+     */
     @SerializedName("id")
     private Integer id;
+
+    /**
+     * Message sent time in Unixtime.
+     */
     @SerializedName("date")
     private Integer date;
+
+    /**
+     * Sender ID.
+     */
     @SerializedName("from_id")
     private Integer fromId;
+
+    /**
+     * Message text.
+     */
     @SerializedName("text")
     private String text;
+
+    /**
+     * Message attachments.
+     */
     @SerializedName("attachments")
     private List<String> attachments;
+
+    /**
+     * Location information.
+     */
     @SerializedName("geo")
     private Geo geo;
+
+    /**
+     * Forwarded messages.
+     */
     @SerializedName("fwd_messages")
     private List<Message> fwdMessages;
 

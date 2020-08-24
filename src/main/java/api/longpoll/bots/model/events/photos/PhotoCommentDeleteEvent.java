@@ -41,44 +41,39 @@ public class PhotoCommentDeleteEvent implements EventObject {
 		return ownerId;
 	}
 
-	public PhotoCommentDeleteEvent setOwnerId(Integer ownerId) {
+	public void setOwnerId(Integer ownerId) {
 		this.ownerId = ownerId;
-		return this;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public PhotoCommentDeleteEvent setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getDeleterId() {
 		return deleterId;
 	}
 
-	public PhotoCommentDeleteEvent setDeleterId(Integer deleterId) {
+	public void setDeleterId(Integer deleterId) {
 		this.deleterId = deleterId;
-		return this;
 	}
 
 	public Integer getPhotoId() {
 		return photoId;
 	}
 
-	public PhotoCommentDeleteEvent setPhotoId(Integer photoId) {
+	public void setPhotoId(Integer photoId) {
 		this.photoId = photoId;
-		return this;
 	}
 
 	public Integer getUserId() {
 		return userId;
 	}
 
-	public PhotoCommentDeleteEvent setUserId(Integer userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
-		return this;
 	}
 }

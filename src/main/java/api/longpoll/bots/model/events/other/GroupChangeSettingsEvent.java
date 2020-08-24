@@ -35,7 +35,7 @@ public class GroupChangeSettingsEvent implements EventObject {
 	/**
 	 * Describes changes.
 	 */
-	public class Change {
+	public static class Change {
 		/**
 		 * Old value.
 		 */
@@ -52,18 +52,16 @@ public class GroupChangeSettingsEvent implements EventObject {
 			return oldValue;
 		}
 
-		public Change setOldValue(String oldValue) {
+		public void setOldValue(String oldValue) {
 			this.oldValue = oldValue;
-			return this;
 		}
 
 		public String getNewValue() {
 			return newValue;
 		}
 
-		public Change setNewValue(String newValue) {
+		public void setNewValue(String newValue) {
 			this.newValue = newValue;
-			return this;
 		}
 	}
 
@@ -71,17 +69,15 @@ public class GroupChangeSettingsEvent implements EventObject {
 		return userId;
 	}
 
-	public GroupChangeSettingsEvent setUserId(Integer userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
-		return this;
 	}
 
 	public Map<String, Change> getChanges() {
 		return changes;
 	}
 
-	public GroupChangeSettingsEvent setChanges(Map<String, Change> changes) {
+	public void setChanges(Map<String, Change> changes) {
 		this.changes = changes;
-		return this;
 	}
 }

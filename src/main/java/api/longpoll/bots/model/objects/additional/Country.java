@@ -2,27 +2,37 @@ package api.longpoll.bots.model.objects.additional;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Describes country objects.
+ */
 public class Country {
-		@SerializedName("id")
-		private Integer id;
-		@SerializedName("title")
-		private String title;
+    /**
+     * Country ID.
+     */
+    @SerializedName("id")
+    private Integer id;
 
-		public Integer getId() {
-			return id;
-		}
+    /**
+     * Country name.
+     */
+    @SerializedName("title")
+    private String title;
 
-		public Country setId(Integer id) {
-			this.id = id;
-			return this;
-		}
+    public Integer getId() {
+        return id;
+    }
 
-		public String getTitle() {
-			return title;
-		}
+    public Country setId(Integer id) {
+        this.id = id;
+        return this;
+    }
 
-		public Country setTitle(String title) {
-			this.title = title;
-			return this;
-		}
-	}
+    public String getTitle() {
+        return title;
+    }
+
+    public Country setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+}

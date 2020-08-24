@@ -35,35 +35,31 @@ public class AppPayload implements EventObject {
 		return userId;
 	}
 
-	public AppPayload setUserId(Integer userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
-		return this;
 	}
 
 	public Integer getAppId() {
 		return appId;
 	}
 
-	public AppPayload setAppId(Integer appId) {
+	public void setAppId(Integer appId) {
 		this.appId = appId;
-		return this;
 	}
 
 	public String getPayload() {
 		return payload;
 	}
 
-	public AppPayload setPayload(String payload) {
+	public void setPayload(String payload) {
 		this.payload = payload;
-		return this;
 	}
 
 	public Integer getGroupId() {
 		return groupId;
 	}
 
-	public AppPayload setGroupId(Integer groupId) {
+	public void setGroupId(Integer groupId) {
 		this.groupId = groupId;
-		return this;
 	}
 }

@@ -3,85 +3,117 @@ package api.longpoll.bots.model.objects.additional;
 import api.longpoll.bots.model.objects.media.Photo;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Data about points used for cropping of photo.
+ */
 public class CropPhoto {
-		@SerializedName("photo")
-		private Photo photo;
-		@SerializedName("crop")
-		private Crop crop;
-		@SerializedName("rect")
-		private Crop rect;
+    /**
+     * Photo object with user photo used for cropping.
+     */
+    @SerializedName("photo")
+    private Photo photo;
 
-		public class Crop {
-			@SerializedName("x")
-			private Float x;
-			@SerializedName("y")
-			private Float y;
-			@SerializedName("x2")
-			private Float x2;
-			@SerializedName("y2")
-			private Float y2;
+    /**
+     * Cropped photo.
+     */
+    @SerializedName("crop")
+    private Crop crop;
 
-			public Float getX() {
-				return x;
-			}
+    /**
+     * Preview square photo cropped from crop photo.
+     */
+    @SerializedName("rect")
+    private Crop rect;
 
-			public Crop setX(Float x) {
-				this.x = x;
-				return this;
-			}
+    /**
+     * Describes cropped photo.
+     */
+    public static class Crop {
+        /**
+         * X coordinate for the left upper corner, %.
+         */
+        @SerializedName("x")
+        private Float x;
 
-			public Float getY() {
-				return y;
-			}
+        /**
+         * Y coordinate for the left upper corner, %.
+         */
+        @SerializedName("y")
+        private Float y;
 
-			public Crop setY(Float y) {
-				this.y = y;
-				return this;
-			}
+        /**
+         * X coordinate for the right bottom corner, %.
+         */
+        @SerializedName("x2")
+        private Float x2;
 
-			public Float getX2() {
-				return x2;
-			}
+        /**
+         * Y coordinate for the right bottom corner, %.
+         */
+        @SerializedName("y2")
+        private Float y2;
 
-			public Crop setX2(Float x2) {
-				this.x2 = x2;
-				return this;
-			}
+        public Float getX() {
+            return x;
+        }
 
-			public Float getY2() {
-				return y2;
-			}
+        public Crop setX(Float x) {
+            this.x = x;
+            return this;
+        }
 
-			public Crop setY2(Float y2) {
-				this.y2 = y2;
-				return this;
-			}
-		}
+        public Float getY() {
+            return y;
+        }
 
-		public Photo getPhoto() {
-			return photo;
-		}
+        public Crop setY(Float y) {
+            this.y = y;
+            return this;
+        }
 
-		public CropPhoto setPhoto(Photo photo) {
-			this.photo = photo;
-			return this;
-		}
+        public Float getX2() {
+            return x2;
+        }
 
-		public Crop getCrop() {
-			return crop;
-		}
+        public Crop setX2(Float x2) {
+            this.x2 = x2;
+            return this;
+        }
 
-		public CropPhoto setCrop(Crop crop) {
-			this.crop = crop;
-			return this;
-		}
+        public Float getY2() {
+            return y2;
+        }
 
-		public Crop getRect() {
-			return rect;
-		}
+        public Crop setY2(Float y2) {
+            this.y2 = y2;
+            return this;
+        }
+    }
 
-		public CropPhoto setRect(Crop rect) {
-			this.rect = rect;
-			return this;
-		}
-	}
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public CropPhoto setPhoto(Photo photo) {
+        this.photo = photo;
+        return this;
+    }
+
+    public Crop getCrop() {
+        return crop;
+    }
+
+    public CropPhoto setCrop(Crop crop) {
+        this.crop = crop;
+        return this;
+    }
+
+    public Crop getRect() {
+        return rect;
+    }
+
+    public CropPhoto setRect(Crop rect) {
+        this.rect = rect;
+        return this;
+    }
+}

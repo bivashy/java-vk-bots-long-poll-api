@@ -23,17 +23,15 @@ public class MarketCommentEvent extends WallComment {
 		return marketOwnerId;
 	}
 
-	public MarketCommentEvent setMarketOwnerId(Integer marketOwnerId) {
+	public void setMarketOwnerId(Integer marketOwnerId) {
 		this.marketOwnerId = marketOwnerId;
-		return this;
 	}
 
 	public Integer getItemId() {
 		return itemId;
 	}
 
-	public MarketCommentEvent setItemId(Integer itemId) {
+	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
-		return this;
 	}
 }

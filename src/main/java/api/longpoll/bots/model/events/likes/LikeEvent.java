@@ -58,53 +58,47 @@ public class LikeEvent implements EventObject {
 		return likerId;
 	}
 
-	public LikeEvent setLikerId(Integer likerId) {
+	public void setLikerId(Integer likerId) {
 		this.likerId = likerId;
-		return this;
 	}
 
 	public String getObjectType() {
 		return objectType;
 	}
 
-	public LikeEvent setObjectType(String objectType) {
+	public void setObjectType(String objectType) {
 		this.objectType = objectType;
-		return this;
 	}
 
 	public Integer getObjectOwnerId() {
 		return objectOwnerId;
 	}
 
-	public LikeEvent setObjectOwnerId(Integer objectOwnerId) {
+	public void setObjectOwnerId(Integer objectOwnerId) {
 		this.objectOwnerId = objectOwnerId;
-		return this;
 	}
 
 	public Integer getObjectId() {
 		return objectId;
 	}
 
-	public LikeEvent setObjectId(Integer objectId) {
+	public void setObjectId(Integer objectId) {
 		this.objectId = objectId;
-		return this;
 	}
 
 	public Integer getThreadReplyId() {
 		return threadReplyId;
 	}
 
-	public LikeEvent setThreadReplyId(Integer threadReplyId) {
+	public void setThreadReplyId(Integer threadReplyId) {
 		this.threadReplyId = threadReplyId;
-		return this;
 	}
 
 	public Integer getPostId() {
 		return postId;
 	}
 
-	public LikeEvent setPostId(Integer postId) {
+	public void setPostId(Integer postId) {
 		this.postId = postId;
-		return this;
 	}
 }

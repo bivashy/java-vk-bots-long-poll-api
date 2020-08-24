@@ -3,9 +3,19 @@ package api.longpoll.bots.model.events.users;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Describes <b>group_join</b> event objects.
+ */
 public class GroupJoinEvent implements EventObject {
+	/**
+	 * User ID.
+	 */
 	@SerializedName("user_id")
 	private Integer userId;
+
+	/**
+	 * Shows how exactly the user has joined.
+	 */
 	@SerializedName("join_type")
 	private String joinType;
 
@@ -13,17 +23,15 @@ public class GroupJoinEvent implements EventObject {
 		return userId;
 	}
 
-	public GroupJoinEvent setUserId(Integer userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
-		return this;
 	}
 
 	public String getJoinType() {
 		return joinType;
 	}
 
-	public GroupJoinEvent setJoinType(String joinType) {
+	public void setJoinType(String joinType) {
 		this.joinType = joinType;
-		return this;
 	}
 }

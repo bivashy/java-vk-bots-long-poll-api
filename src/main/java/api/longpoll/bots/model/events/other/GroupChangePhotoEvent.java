@@ -24,7 +24,15 @@ public class GroupChangePhotoEvent implements EventObject {
 		return userId;
 	}
 
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
 	public Photo getPhoto() {
 		return photo;
+	}
+
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
 	}
 }

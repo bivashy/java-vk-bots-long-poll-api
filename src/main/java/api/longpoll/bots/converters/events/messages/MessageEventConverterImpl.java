@@ -8,18 +8,19 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.JsonObject;
 
 public class MessageEventConverterImpl extends JsonToPojoConverter<MessageEvent> {
-	private static final String MESSAGE_FIELD = "message";
+    private static final String MESSAGE_FIELD = "message";
 
-	@Override
-	public MessageEvent convert(JsonObject jsonObject) {
-		return gson.fromJson(jsonObject, MessageEvent.class)
-				.setMessage(new MessageConverterImpl().convert(jsonObject.getAsJsonObject(MESSAGE_FIELD)));
-	}
+    @Override
+    public MessageEvent convert(JsonObject jsonObject) {
+        MessageEvent messageEvent = gson.fromJson(jsonObject, MessageEvent.class);
+        messageEvent.setMessage(new MessageConverterImpl().convert(jsonObject.getAsJsonObject(MESSAGE_FIELD)));
+        return messageEvent;
+    }
 
-	@Override
-	protected boolean shouldSkipField(FieldAttributes fieldAttributes) {
-		return MessageEvent.class.equals(fieldAttributes.getDeclaringClass())
-				&& Message.class.equals(fieldAttributes.getDeclaredClass())
-				&& MESSAGE_FIELD.equals(fieldAttributes.getName());
-	}
+    @Override
+    protected boolean shouldSkipField(FieldAttributes fieldAttributes) {
+        return MessageEvent.class.equals(fieldAttributes.getDeclaringClass())
+                && Message.class.equals(fieldAttributes.getDeclaredClass())
+                && MESSAGE_FIELD.equals(fieldAttributes.getName());
+    }
 }

@@ -23,17 +23,15 @@ public class PhotoCommentEvent extends WallComment {
 		return photoId;
 	}
 
-	public PhotoCommentEvent setPhotoId(Integer photoId) {
+	public void setPhotoId(Integer photoId) {
 		this.photoId = photoId;
-		return this;
 	}
 
 	public Integer getPhotoOwnerId() {
 		return photoOwnerId;
 	}
 
-	public PhotoCommentEvent setPhotoOwnerId(Integer photoOwnerId) {
+	public void setPhotoOwnerId(Integer photoOwnerId) {
 		this.photoOwnerId = photoOwnerId;
-		return this;
 	}
 }

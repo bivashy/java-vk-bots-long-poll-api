@@ -27,7 +27,7 @@ public class Geo {
 	/**
 	 * A class describing location coordinates.
 	 */
-	public class Coordinates {
+	public static class Coordinates {
 		/**
 		 * Geographical latitude.
 		 */
@@ -84,7 +84,7 @@ public class Geo {
 	/**
 	 * Contains place description.
 	 */
-	public class Place {
+	public static class Place {
 		/**
 		 * Place ID (if available).
 		 */

@@ -23,17 +23,15 @@ public class BoardPostEvent extends TopicComment {
 		return topicId;
 	}
 
-	public BoardPostEvent setTopicId(Integer topicId) {
+	public void setTopicId(Integer topicId) {
 		this.topicId = topicId;
-		return this;
 	}
 
 	public Integer getTopicOwnerId() {
 		return topicOwnerId;
 	}
 
-	public BoardPostEvent setTopicOwnerId(Integer topicOwnerId) {
+	public void setTopicOwnerId(Integer topicOwnerId) {
 		this.topicOwnerId = topicOwnerId;
-		return this;
 	}
 }

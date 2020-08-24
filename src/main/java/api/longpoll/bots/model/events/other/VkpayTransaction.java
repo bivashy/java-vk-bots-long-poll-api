@@ -35,35 +35,31 @@ public class VkpayTransaction implements EventObject {
 		return fromId;
 	}
 
-	public VkpayTransaction setFromId(Integer fromId) {
+	public void setFromId(Integer fromId) {
 		this.fromId = fromId;
-		return this;
 	}
 
 	public Integer getAmount() {
 		return amount;
 	}
 
-	public VkpayTransaction setAmount(Integer amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
-		return this;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
-	public VkpayTransaction setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
-		return this;
 	}
 
 	public Integer getDate() {
 		return date;
 	}
 
-	public VkpayTransaction setDate(Integer date) {
+	public void setDate(Integer date) {
 		this.date = date;
-		return this;
 	}
 }
