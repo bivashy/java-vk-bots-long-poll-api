@@ -20,36 +20,32 @@ public class UtilsGetShortLinkResult {
             return shortUrl;
         }
 
-        public Response setShortUrl(String shortUrl) {
+        public void setShortUrl(String shortUrl) {
             this.shortUrl = shortUrl;
-            return this;
         }
 
         public String getAccessKey() {
             return accessKey;
         }
 
-        public Response setAccessKey(String accessKey) {
+        public void setAccessKey(String accessKey) {
             this.accessKey = accessKey;
-            return this;
         }
 
         public String getKey() {
             return key;
         }
 
-        public Response setKey(String key) {
+        public void setKey(String key) {
             this.key = key;
-            return this;
         }
 
         public String getUrl() {
             return url;
         }
 
-        public Response setUrl(String url) {
+        public void setUrl(String url) {
             this.url = url;
-            return this;
         }
     }
 
@@ -57,8 +53,7 @@ public class UtilsGetShortLinkResult {
         return response;
     }
 
-    public UtilsGetShortLinkResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

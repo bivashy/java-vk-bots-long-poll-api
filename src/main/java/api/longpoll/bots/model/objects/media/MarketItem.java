@@ -76,7 +76,7 @@ public class MarketItem implements Attachable {
 	/**
 	 * Describes item price.
 	 */
-	public class ItemPrice extends Price {
+	public static class ItemPrice extends Price {
 		/**
 		 * Old price value multiplied by 100.
 		 */
@@ -87,16 +87,15 @@ public class MarketItem implements Attachable {
 			return oldAmount;
 		}
 
-		public ItemPrice setOldAmount(Integer oldAmount) {
+		public void setOldAmount(Integer oldAmount) {
 			this.oldAmount = oldAmount;
-			return this;
 		}
 	}
 
 	/**
 	 * Describes item category.
 	 */
-	public class Category {
+	public static class Category {
 		/**
 		 * Category ID.
 		 */
@@ -118,7 +117,7 @@ public class MarketItem implements Attachable {
 		/**
 		 * Describes category section.
 		 */
-		public class Section {
+		public static class Section {
 			/**
 			 * Section ID.
 			 */
@@ -135,18 +134,16 @@ public class MarketItem implements Attachable {
 				return id;
 			}
 
-			public Section setId(Integer id) {
+			public void setId(Integer id) {
 				this.id = id;
-				return this;
 			}
 
 			public String getName() {
 				return name;
 			}
 
-			public Section setName(String name) {
+			public void setName(String name) {
 				this.name = name;
-				return this;
 			}
 		}
 
@@ -154,27 +151,24 @@ public class MarketItem implements Attachable {
 			return id;
 		}
 
-		public Category setId(Integer id) {
+		public void setId(Integer id) {
 			this.id = id;
-			return this;
 		}
 
 		public String getName() {
 			return name;
 		}
 
-		public Category setName(String name) {
+		public void setName(String name) {
 			this.name = name;
-			return this;
 		}
 
 		public Section getSection() {
 			return section;
 		}
 
-		public Category setSection(Section section) {
+		public void setSection(Section section) {
 			this.section = section;
-			return this;
 		}
 	}
 
@@ -182,89 +176,79 @@ public class MarketItem implements Attachable {
 		return id;
 	}
 
-	public MarketItem setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getOwnerId() {
 		return ownerId;
 	}
 
-	public MarketItem setOwnerId(Integer ownerId) {
+	public void setOwnerId(Integer ownerId) {
 		this.ownerId = ownerId;
-		return this;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public MarketItem setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
-		return this;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
-	public MarketItem setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
-		return this;
 	}
 
 	public ItemPrice getPrice() {
 		return price;
 	}
 
-	public MarketItem setPrice(ItemPrice price) {
+	public void setPrice(ItemPrice price) {
 		this.price = price;
-		return this;
 	}
 
 	public Category getCategory() {
 		return category;
 	}
 
-	public MarketItem setCategory(Category category) {
+	public void setCategory(Category category) {
 		this.category = category;
-		return this;
 	}
 
 	public String getThumbPhoto() {
 		return thumbPhoto;
 	}
 
-	public MarketItem setThumbPhoto(String thumbPhoto) {
+	public void setThumbPhoto(String thumbPhoto) {
 		this.thumbPhoto = thumbPhoto;
-		return this;
 	}
 
 	public Integer getDate() {
 		return date;
 	}
 
-	public MarketItem setDate(Integer date) {
+	public void setDate(Integer date) {
 		this.date = date;
-		return this;
 	}
 
 	public Integer getAvailability() {
 		return availability;
 	}
 
-	public MarketItem setAvailability(Integer availability) {
+	public void setAvailability(Integer availability) {
 		this.availability = availability;
-		return this;
 	}
 
 	public boolean isFavourite() {
 		return favourite;
 	}
 
-	public MarketItem setFavourite(boolean favourite) {
+	public void setFavourite(boolean favourite) {
 		this.favourite = favourite;
-		return this;
 	}
 }

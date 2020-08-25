@@ -82,7 +82,7 @@ public class Chat {
 	/**
 	 * Describes push settings.
 	 */
-	public class PushSettings {
+	public static class PushSettings {
 		/**
 		 * <b>true</b>, if the sound is enabled.
 		 */
@@ -100,18 +100,16 @@ public class Chat {
 			return soundEnabled;
 		}
 
-		public PushSettings setSoundEnabled(boolean soundEnabled) {
+		public void setSoundEnabled(boolean soundEnabled) {
 			this.soundEnabled = soundEnabled;
-			return this;
 		}
 
 		public Integer getDisabledUntil() {
 			return disabledUntil;
 		}
 
-		public PushSettings setDisabledUntil(Integer disabledUntil) {
+		public void setDisabledUntil(Integer disabledUntil) {
 			this.disabledUntil = disabledUntil;
-			return this;
 		}
 	}
 
@@ -119,98 +117,87 @@ public class Chat {
 		return id;
 	}
 
-	public Chat setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public String getType() {
 		return type;
 	}
 
-	public Chat setType(String type) {
+	public void setType(String type) {
 		this.type = type;
-		return this;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public Chat setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
-		return this;
 	}
 
 	public Integer getAdminId() {
 		return adminId;
 	}
 
-	public Chat setAdminId(Integer adminId) {
+	public void setAdminId(Integer adminId) {
 		this.adminId = adminId;
-		return this;
 	}
 
 	public List<Integer> getUsers() {
 		return users;
 	}
 
-	public Chat setUsers(List<Integer> users) {
+	public void setUsers(List<Integer> users) {
 		this.users = users;
-		return this;
 	}
 
 	public PushSettings getPushSettings() {
 		return pushSettings;
 	}
 
-	public Chat setPushSettings(PushSettings pushSettings) {
+	public void setPushSettings(PushSettings pushSettings) {
 		this.pushSettings = pushSettings;
-		return this;
 	}
 
 	public String getPhoto50() {
 		return photo50;
 	}
 
-	public Chat setPhoto50(String photo50) {
+	public void setPhoto50(String photo50) {
 		this.photo50 = photo50;
-		return this;
 	}
 
 	public String getPhoto100() {
 		return photo100;
 	}
 
-	public Chat setPhoto100(String photo100) {
+	public void setPhoto100(String photo100) {
 		this.photo100 = photo100;
-		return this;
 	}
 
 	public String getPhoto200() {
 		return photo200;
 	}
 
-	public Chat setPhoto200(String photo200) {
+	public void setPhoto200(String photo200) {
 		this.photo200 = photo200;
-		return this;
 	}
 
 	public boolean isLeft() {
 		return left;
 	}
 
-	public Chat setLeft(boolean left) {
+	public void setLeft(boolean left) {
 		this.left = left;
-		return this;
 	}
 
 	public boolean isKicked() {
 		return kicked;
 	}
 
-	public Chat setKicked(boolean kicked) {
+	public void setKicked(boolean kicked) {
 		this.kicked = kicked;
-		return this;
 	}
 }

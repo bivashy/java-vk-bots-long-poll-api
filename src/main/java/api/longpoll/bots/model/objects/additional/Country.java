@@ -22,17 +22,15 @@ public class Country {
         return id;
     }
 
-    public Country setId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
-        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public Country setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
-        return this;
     }
 }

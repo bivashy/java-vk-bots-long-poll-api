@@ -39,35 +39,31 @@ public class PhotoSize {
 		return url;
 	}
 
-	public PhotoSize setUrl(String url) {
+	public void setUrl(String url) {
 		this.url = url;
-		return this;
 	}
 
 	public Integer getWidth() {
 		return width;
 	}
 
-	public PhotoSize setWidth(Integer width) {
+	public void setWidth(Integer width) {
 		this.width = width;
-		return this;
 	}
 
 	public Integer getHeight() {
 		return height;
 	}
 
-	public PhotoSize setHeight(Integer height) {
+	public void setHeight(Integer height) {
 		this.height = height;
-		return this;
 	}
 
 	public String getType() {
 		return type;
 	}
 
-	public PhotoSize setType(String type) {
+	public void setType(String type) {
 		this.type = type;
-		return this;
 	}
 }

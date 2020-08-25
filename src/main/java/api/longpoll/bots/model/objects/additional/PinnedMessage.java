@@ -56,62 +56,55 @@ public class PinnedMessage {
         return id;
     }
 
-    public PinnedMessage setId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
-        return this;
     }
 
     public Integer getDate() {
         return date;
     }
 
-    public PinnedMessage setDate(Integer date) {
+    public void setDate(Integer date) {
         this.date = date;
-        return this;
     }
 
     public Integer getFromId() {
         return fromId;
     }
 
-    public PinnedMessage setFromId(Integer fromId) {
+    public void setFromId(Integer fromId) {
         this.fromId = fromId;
-        return this;
     }
 
     public String getText() {
         return text;
     }
 
-    public PinnedMessage setText(String text) {
+    public void setText(String text) {
         this.text = text;
-        return this;
     }
 
     public List<String> getAttachments() {
         return attachments;
     }
 
-    public PinnedMessage setAttachments(List<String> attachments) {
+    public void setAttachments(List<String> attachments) {
         this.attachments = attachments;
-        return this;
     }
 
     public Geo getGeo() {
         return geo;
     }
 
-    public PinnedMessage setGeo(Geo geo) {
+    public void setGeo(Geo geo) {
         this.geo = geo;
-        return this;
     }
 
     public List<Message> getFwdMessages() {
         return fwdMessages;
     }
 
-    public PinnedMessage setFwdMessages(List<Message> fwdMessages) {
+    public void setFwdMessages(List<Message> fwdMessages) {
         this.fwdMessages = fwdMessages;
-        return this;
     }
 }

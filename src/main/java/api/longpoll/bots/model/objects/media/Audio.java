@@ -87,107 +87,95 @@ public class Audio implements Attachable {
 		return id;
 	}
 
-	public Audio setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getOwnerId() {
 		return ownerId;
 	}
 
-	public Audio setOwnerId(Integer ownerId) {
+	public void setOwnerId(Integer ownerId) {
 		this.ownerId = ownerId;
-		return this;
 	}
 
 	public String getArtist() {
 		return artist;
 	}
 
-	public Audio setArtist(String artist) {
+	public void setArtist(String artist) {
 		this.artist = artist;
-		return this;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public Audio setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
-		return this;
 	}
 
 	public Integer getDuration() {
 		return duration;
 	}
 
-	public Audio setDuration(Integer duration) {
+	public void setDuration(Integer duration) {
 		this.duration = duration;
-		return this;
 	}
 
 	public String getUrl() {
 		return url;
 	}
 
-	public Audio setUrl(String url) {
+	public void setUrl(String url) {
 		this.url = url;
-		return this;
 	}
 
 	public Integer getLyricsId() {
 		return lyricsId;
 	}
 
-	public Audio setLyricsId(Integer lyricsId) {
+	public void setLyricsId(Integer lyricsId) {
 		this.lyricsId = lyricsId;
-		return this;
 	}
 
 	public Integer getAlbumId() {
 		return albumId;
 	}
 
-	public Audio setAlbumId(Integer albumId) {
+	public void setAlbumId(Integer albumId) {
 		this.albumId = albumId;
-		return this;
 	}
 
 	public Integer getGenre() {
 		return genre;
 	}
 
-	public Audio setGenre(Integer genre) {
+	public void setGenre(Integer genre) {
 		this.genre = genre;
-		return this;
 	}
 
 	public Integer getDate() {
 		return date;
 	}
 
-	public Audio setDate(Integer date) {
+	public void setDate(Integer date) {
 		this.date = date;
-		return this;
 	}
 
 	public boolean isNoSearch() {
 		return noSearch;
 	}
 
-	public Audio setNoSearch(boolean noSearch) {
+	public void setNoSearch(boolean noSearch) {
 		this.noSearch = noSearch;
-		return this;
 	}
 
 	public boolean isHq() {
 		return hq;
 	}
 
-	public Audio setHq(boolean hq) {
+	public void setHq(boolean hq) {
 		this.hq = hq;
-		return this;
 	}
 }

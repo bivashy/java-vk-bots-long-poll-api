@@ -17,18 +17,16 @@ public class MessagesDeleteChatPhotoResult {
             return messageId;
         }
 
-        public Response setMessageId(Object messageId) {
+        public void setMessageId(Object messageId) {
             this.messageId = messageId;
-            return this;
         }
 
         public Chat getChat() {
             return chat;
         }
 
-        public Response setChat(Chat chat) {
+        public void setChat(Chat chat) {
             this.chat = chat;
-            return this;
         }
     }
 
@@ -36,8 +34,7 @@ public class MessagesDeleteChatPhotoResult {
         return response;
     }
 
-    public MessagesDeleteChatPhotoResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

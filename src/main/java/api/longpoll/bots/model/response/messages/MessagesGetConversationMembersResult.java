@@ -21,18 +21,16 @@ public class MessagesGetConversationMembersResult {
             return profiles;
         }
 
-        public Response setProfiles(List<User> profiles) {
+        public void setProfiles(List<User> profiles) {
             this.profiles = profiles;
-            return this;
         }
 
         public List<Community> getGroups() {
             return groups;
         }
 
-        public Response setGroups(List<Community> groups) {
+        public void setGroups(List<Community> groups) {
             this.groups = groups;
-            return this;
         }
     }
 
@@ -52,45 +50,40 @@ public class MessagesGetConversationMembersResult {
             return memberId;
         }
 
-        public Item setMemberId(Integer memberId) {
+        public void setMemberId(Integer memberId) {
             this.memberId = memberId;
-            return this;
         }
 
         public Integer getInvitedBy() {
             return invitedBy;
         }
 
-        public Item setInvitedBy(Integer invitedBy) {
+        public void setInvitedBy(Integer invitedBy) {
             this.invitedBy = invitedBy;
-            return this;
         }
 
         public Integer getJoinDate() {
             return joinDate;
         }
 
-        public Item setJoinDate(Integer joinDate) {
+        public void setJoinDate(Integer joinDate) {
             this.joinDate = joinDate;
-            return this;
         }
 
         public Boolean getAdmin() {
             return admin;
         }
 
-        public Item setAdmin(Boolean admin) {
+        public void setAdmin(Boolean admin) {
             this.admin = admin;
-            return this;
         }
 
         public Boolean getCanKick() {
             return canKick;
         }
 
-        public Item setCanKick(Boolean canKick) {
+        public void setCanKick(Boolean canKick) {
             this.canKick = canKick;
-            return this;
         }
     }
 
@@ -98,8 +91,7 @@ public class MessagesGetConversationMembersResult {
         return response;
     }
 
-    public MessagesGetConversationMembersResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

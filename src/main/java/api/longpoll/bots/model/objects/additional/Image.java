@@ -27,26 +27,23 @@ public class Image {
         return url;
     }
 
-    public Image setUrl(String url) {
+    public void setUrl(String url) {
         this.url = url;
-        return this;
     }
 
     public Integer getWidth() {
         return width;
     }
 
-    public Image setWidth(Integer width) {
+    public void setWidth(Integer width) {
         this.width = width;
-        return this;
     }
 
     public Integer getHeight() {
         return height;
     }
 
-    public Image setHeight(Integer height) {
+    public void setHeight(Integer height) {
         this.height = height;
-        return this;
     }
 }

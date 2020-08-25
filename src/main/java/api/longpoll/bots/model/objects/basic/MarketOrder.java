@@ -120,7 +120,7 @@ public class MarketOrder implements EventObject {
 	/**
 	 * Describes order property.
 	 */
-	public class PropertyValue {
+	public static class PropertyValue {
 		/**
 		 * Variant ID.
 		 */
@@ -143,34 +143,31 @@ public class MarketOrder implements EventObject {
 			return variantId;
 		}
 
-		public PropertyValue setVariantId(Integer variantId) {
+		public void setVariantId(Integer variantId) {
 			this.variantId = variantId;
-			return this;
 		}
 
 		public String getVariantName() {
 			return variantName;
 		}
 
-		public PropertyValue setVariantName(String variantName) {
+		public void setVariantName(String variantName) {
 			this.variantName = variantName;
-			return this;
 		}
 
 		public String getPropertyName() {
 			return propertyName;
 		}
 
-		public PropertyValue setPropertyName(String propertyName) {
+		public void setPropertyName(String propertyName) {
 			this.propertyName = propertyName;
-			return this;
 		}
 	}
 
 	/**
 	 * Describes delivery info.
 	 */
-	public class Delivery {
+	public static class Delivery {
 		/**
 		 * Delivery address.
 		 */
@@ -199,43 +196,39 @@ public class MarketOrder implements EventObject {
 			return address;
 		}
 
-		public Delivery setAddress(String address) {
+		public void setAddress(String address) {
 			this.address = address;
-			return this;
 		}
 
 		public String getType() {
 			return type;
 		}
 
-		public Delivery setType(String type) {
+		public void setType(String type) {
 			this.type = type;
-			return this;
 		}
 
 		public String getTrackNumber() {
 			return trackNumber;
 		}
 
-		public Delivery setTrackNumber(String trackNumber) {
+		public void setTrackNumber(String trackNumber) {
 			this.trackNumber = trackNumber;
-			return this;
 		}
 
 		public String getTrackLink() {
 			return trackLink;
 		}
 
-		public Delivery setTrackLink(String trackLink) {
+		public void setTrackLink(String trackLink) {
 			this.trackLink = trackLink;
-			return this;
 		}
 	}
 
 	/**
 	 * Describes recipient info.
 	 */
-	public class Recipient {
+	public static class Recipient {
 		/**
 		 * Recipient name.
 		 */
@@ -258,27 +251,24 @@ public class MarketOrder implements EventObject {
 			return name;
 		}
 
-		public Recipient setName(String name) {
+		public void setName(String name) {
 			this.name = name;
-			return this;
 		}
 
 		public String getPhone() {
 			return phone;
 		}
 
-		public Recipient setPhone(String phone) {
+		public void setPhone(String phone) {
 			this.phone = phone;
-			return this;
 		}
 
 		public String getDisplay_text() {
 			return display_text;
 		}
 
-		public Recipient setDisplay_text(String display_text) {
+		public void setDisplay_text(String display_text) {
 			this.display_text = display_text;
-			return this;
 		}
 	}
 
@@ -286,143 +276,127 @@ public class MarketOrder implements EventObject {
 		return id;
 	}
 
-	public MarketOrder setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getGroupId() {
 		return groupId;
 	}
 
-	public MarketOrder setGroupId(Integer groupId) {
+	public void setGroupId(Integer groupId) {
 		this.groupId = groupId;
-		return this;
 	}
 
 	public Integer getUserId() {
 		return userId;
 	}
 
-	public MarketOrder setUserId(Integer userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
-		return this;
 	}
 
 	public Integer getDate() {
 		return date;
 	}
 
-	public MarketOrder setDate(Integer date) {
+	public void setDate(Integer date) {
 		this.date = date;
-		return this;
 	}
 
 	public Integer getVariantsGroupingId() {
 		return variantsGroupingId;
 	}
 
-	public MarketOrder setVariantsGroupingId(Integer variantsGroupingId) {
+	public void setVariantsGroupingId(Integer variantsGroupingId) {
 		this.variantsGroupingId = variantsGroupingId;
-		return this;
 	}
 
 	public Boolean getMainVariant() {
 		return mainVariant;
 	}
 
-	public MarketOrder setMainVariant(Boolean mainVariant) {
+	public void setMainVariant(Boolean mainVariant) {
 		this.mainVariant = mainVariant;
-		return this;
 	}
 
 	public List<PropertyValue> getPropertyValues() {
 		return propertyValues;
 	}
 
-	public MarketOrder setPropertyValues(List<PropertyValue> propertyValues) {
+	public void setPropertyValues(List<PropertyValue> propertyValues) {
 		this.propertyValues = propertyValues;
-		return this;
 	}
 
 	public Integer getCartQuantity() {
 		return cartQuantity;
 	}
 
-	public MarketOrder setCartQuantity(Integer cartQuantity) {
+	public void setCartQuantity(Integer cartQuantity) {
 		this.cartQuantity = cartQuantity;
-		return this;
 	}
 
 	public Integer getStatus() {
 		return status;
 	}
 
-	public MarketOrder setStatus(Integer status) {
+	public void setStatus(Integer status) {
 		this.status = status;
-		return this;
 	}
 
 	public Integer getItemsCount() {
 		return itemsCount;
 	}
 
-	public MarketOrder setItemsCount(Integer itemsCount) {
+	public void setItemsCount(Integer itemsCount) {
 		this.itemsCount = itemsCount;
-		return this;
 	}
 
 	public Price getTotalPrice() {
 		return totalPrice;
 	}
 
-	public MarketOrder setTotalPrice(Price totalPrice) {
+	public void setTotalPrice(Price totalPrice) {
 		this.totalPrice = totalPrice;
-		return this;
 	}
 
 	public String getDisplayOrderId() {
 		return displayOrderId;
 	}
 
-	public MarketOrder setDisplayOrderId(String displayOrderId) {
+	public void setDisplayOrderId(String displayOrderId) {
 		this.displayOrderId = displayOrderId;
-		return this;
 	}
 
 	public String getComment() {
 		return comment;
 	}
 
-	public MarketOrder setComment(String comment) {
+	public void setComment(String comment) {
 		this.comment = comment;
-		return this;
 	}
 
 	public List<MarketItem> getPreviewOrderItems() {
 		return previewOrderItems;
 	}
 
-	public MarketOrder setPreviewOrderItems(List<MarketItem> previewOrderItems) {
+	public void setPreviewOrderItems(List<MarketItem> previewOrderItems) {
 		this.previewOrderItems = previewOrderItems;
-		return this;
 	}
 
 	public Delivery getDelivery() {
 		return delivery;
 	}
 
-	public MarketOrder setDelivery(Delivery delivery) {
+	public void setDelivery(Delivery delivery) {
 		this.delivery = delivery;
-		return this;
 	}
 
 	public Recipient getRecipient() {
 		return recipient;
 	}
 
-	public MarketOrder setRecipient(Recipient recipient) {
+	public void setRecipient(Recipient recipient) {
 		this.recipient = recipient;
-		return this;
 	}
 }

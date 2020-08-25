@@ -16,18 +16,16 @@ public class GroupsGetOnlineStatusResult {
             return status;
         }
 
-        public Response setStatus(String status) {
+        public void setStatus(String status) {
             this.status = status;
-            return this;
         }
 
         public Integer getMinutes() {
             return minutes;
         }
 
-        public Response setMinutes(Integer minutes) {
+        public void setMinutes(Integer minutes) {
             this.minutes = minutes;
-            return this;
         }
     }
 
@@ -35,8 +33,7 @@ public class GroupsGetOnlineStatusResult {
         return response;
     }
 
-    public GroupsGetOnlineStatusResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

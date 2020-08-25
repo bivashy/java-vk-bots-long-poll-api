@@ -38,27 +38,24 @@ public class UtilsGetLinkStatsResult {
                     return ageRange;
                 }
 
-                public SexAge setAgeRange(String ageRange) {
+                public void setAgeRange(String ageRange) {
                     this.ageRange = ageRange;
-                    return this;
                 }
 
                 public Integer getFemale() {
                     return female;
                 }
 
-                public SexAge setFemale(Integer female) {
+                public void setFemale(Integer female) {
                     this.female = female;
-                    return this;
                 }
 
                 public Integer getMale() {
                     return male;
                 }
 
-                public SexAge setMale(Integer male) {
+                public void setMale(Integer male) {
                     this.male = male;
-                    return this;
                 }
             }
 
@@ -72,18 +69,16 @@ public class UtilsGetLinkStatsResult {
                     return countryId;
                 }
 
-                public Country setCountryId(Integer countryId) {
+                public void setCountryId(Integer countryId) {
                     this.countryId = countryId;
-                    return this;
                 }
 
                 public Integer getViews() {
                     return views;
                 }
 
-                public Country setViews(Integer views) {
+                public void setViews(Integer views) {
                     this.views = views;
-                    return this;
                 }
             }
 
@@ -97,18 +92,16 @@ public class UtilsGetLinkStatsResult {
                     return cityId;
                 }
 
-                public City setCityId(Integer cityId) {
+                public void setCityId(Integer cityId) {
                     this.cityId = cityId;
-                    return this;
                 }
 
                 public Integer getViews() {
                     return views;
                 }
 
-                public City setViews(Integer views) {
+                public void setViews(Integer views) {
                     this.views = views;
-                    return this;
                 }
             }
 
@@ -116,45 +109,40 @@ public class UtilsGetLinkStatsResult {
                 return timestamp;
             }
 
-            public Stat setTimestamp(Integer timestamp) {
+            public void setTimestamp(Integer timestamp) {
                 this.timestamp = timestamp;
-                return this;
             }
 
             public Integer getViews() {
                 return views;
             }
 
-            public Stat setViews(Integer views) {
+            public void setViews(Integer views) {
                 this.views = views;
-                return this;
             }
 
             public List<SexAge> getSexAges() {
                 return sexAges;
             }
 
-            public Stat setSexAges(List<SexAge> sexAges) {
+            public void setSexAges(List<SexAge> sexAges) {
                 this.sexAges = sexAges;
-                return this;
             }
 
             public List<Country> getCountries() {
                 return countries;
             }
 
-            public Stat setCountries(List<Country> countries) {
+            public void setCountries(List<Country> countries) {
                 this.countries = countries;
-                return this;
             }
 
             public List<City> getCities() {
                 return cities;
             }
 
-            public Stat setCities(List<City> cities) {
+            public void setCities(List<City> cities) {
                 this.cities = cities;
-                return this;
             }
         }
 
@@ -162,18 +150,16 @@ public class UtilsGetLinkStatsResult {
             return key;
         }
 
-        public Response setKey(String key) {
+        public void setKey(String key) {
             this.key = key;
-            return this;
         }
 
         public List<Stat> getStats() {
             return stats;
         }
 
-        public Response setStats(List<Stat> stats) {
+        public void setStats(List<Stat> stats) {
             this.stats = stats;
-            return this;
         }
     }
 
@@ -181,8 +167,7 @@ public class UtilsGetLinkStatsResult {
         return response;
     }
 
-    public UtilsGetLinkStatsResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

@@ -14,26 +14,23 @@ public class UploadPhotoResult {
 		return server;
 	}
 
-	public UploadPhotoResult setServer(Integer server) {
+	public void setServer(Integer server) {
 		this.server = server;
-		return this;
 	}
 
 	public String getPhoto() {
 		return photo;
 	}
 
-	public UploadPhotoResult setPhoto(String photo) {
+	public void setPhoto(String photo) {
 		this.photo = photo;
-		return this;
 	}
 
 	public String getHash() {
 		return hash;
 	}
 
-	public UploadPhotoResult setHash(String hash) {
+	public void setHash(String hash) {
 		this.hash = hash;
-		return this;
 	}
 }

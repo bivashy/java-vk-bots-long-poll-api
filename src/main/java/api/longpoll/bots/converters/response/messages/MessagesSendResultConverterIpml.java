@@ -16,9 +16,11 @@ public class MessagesSendResultConverterIpml extends JsonToPojoConverter<Message
 	public MessagesSendResult convert(JsonObject jsonObject) {
 		MessagesSendResult messagesSendResult = gson.fromJson(jsonObject, MessagesSendResult.class);
 		JsonElement element = jsonObject.get(RESPONSE_FIELD);
-		return messagesSendResult.setResponse(element.isJsonPrimitive()
+		Object response = element.isJsonPrimitive()
 				? element.getAsInt()
-				: gson.fromJson(element, new TypeToken<List<MessagesSendResult.Response>>(){}.getType()));
+				: gson.fromJson(element, new TypeToken<List<MessagesSendResult.Response>>() {}.getType());
+		messagesSendResult.setResponse(response);
+		return messagesSendResult;
 	}
 
 	@Override

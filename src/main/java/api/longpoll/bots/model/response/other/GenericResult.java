@@ -10,8 +10,7 @@ public class GenericResult<T> {
         return response;
     }
 
-    public GenericResult<T> setResponse(T response) {
+    public void setResponse(T response) {
         this.response = response;
-        return this;
     }
 }

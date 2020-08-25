@@ -37,27 +37,24 @@ public class Conversation {
             return id;
         }
 
-        public Peer setId(Integer id) {
+        public void setId(Integer id) {
             this.id = id;
-            return this;
         }
 
         public String getType() {
             return type;
         }
 
-        public Peer setType(String type) {
+        public void setType(String type) {
             this.type = type;
-            return this;
         }
 
         public Integer getLocalId() {
             return localId;
         }
 
-        public Peer setLocalId(Integer localId) {
+        public void setLocalId(Integer localId) {
             this.localId = localId;
-            return this;
         }
     }
 
@@ -73,27 +70,24 @@ public class Conversation {
             return disabledUntil;
         }
 
-        public PushSettings setDisabledUntil(Integer disabledUntil) {
+        public void setDisabledUntil(Integer disabledUntil) {
             this.disabledUntil = disabledUntil;
-            return this;
         }
 
         public Boolean getDisableForever() {
             return disableForever;
         }
 
-        public PushSettings setDisableForever(Boolean disableForever) {
+        public void setDisableForever(Boolean disableForever) {
             this.disableForever = disableForever;
-            return this;
         }
 
         public Boolean getNoSound() {
             return noSound;
         }
 
-        public PushSettings setNoSound(Boolean noSound) {
+        public void setNoSound(Boolean noSound) {
             this.noSound = noSound;
-            return this;
         }
     }
 
@@ -107,18 +101,16 @@ public class Conversation {
             return allowed;
         }
 
-        public CanWrite setAllowed(Boolean allowed) {
+        public void setAllowed(Boolean allowed) {
             this.allowed = allowed;
-            return this;
         }
 
         public Integer getReason() {
             return reason;
         }
 
-        public CanWrite setReason(Integer reason) {
+        public void setReason(Integer reason) {
             this.reason = reason;
-            return this;
         }
     }
 
@@ -150,27 +142,24 @@ public class Conversation {
                 return photo50;
             }
 
-            public Photo setPhoto50(String photo50) {
+            public void setPhoto50(String photo50) {
                 this.photo50 = photo50;
-                return this;
             }
 
             public String getPhoto100() {
                 return photo100;
             }
 
-            public Photo setPhoto100(String photo100) {
+            public void setPhoto100(String photo100) {
                 this.photo100 = photo100;
-                return this;
             }
 
             public String getPhoto200() {
                 return photo200;
             }
 
-            public Photo setPhoto200(String photo200) {
+            public void setPhoto200(String photo200) {
                 this.photo200 = photo200;
-                return this;
             }
         }
 
@@ -178,63 +167,56 @@ public class Conversation {
             return membersCount;
         }
 
-        public ChatSettings setMembersCount(Integer membersCount) {
+        public void setMembersCount(Integer membersCount) {
             this.membersCount = membersCount;
-            return this;
         }
 
         public String getTitle() {
             return title;
         }
 
-        public ChatSettings setTitle(String title) {
+        public void setTitle(String title) {
             this.title = title;
-            return this;
         }
 
         public PinnedMessage getPinnedMessage() {
             return pinnedMessage;
         }
 
-        public ChatSettings setPinnedMessage(PinnedMessage pinnedMessage) {
+        public void setPinnedMessage(PinnedMessage pinnedMessage) {
             this.pinnedMessage = pinnedMessage;
-            return this;
         }
 
         public String getState() {
             return state;
         }
 
-        public ChatSettings setState(String state) {
+        public void setState(String state) {
             this.state = state;
-            return this;
         }
 
         public Photo getPhoto() {
             return photo;
         }
 
-        public ChatSettings setPhoto(Photo photo) {
+        public void setPhoto(Photo photo) {
             this.photo = photo;
-            return this;
         }
 
         public List<Integer> getActiveIds() {
             return activeIds;
         }
 
-        public ChatSettings setActiveIds(List<Integer> activeIds) {
+        public void setActiveIds(List<Integer> activeIds) {
             this.activeIds = activeIds;
-            return this;
         }
 
         public Boolean getGroupChannel() {
             return groupChannel;
         }
 
-        public ChatSettings setGroupChannel(Boolean groupChannel) {
+        public void setGroupChannel(Boolean groupChannel) {
             this.groupChannel = groupChannel;
-            return this;
         }
     }
 
@@ -242,80 +224,71 @@ public class Conversation {
         return peer;
     }
 
-    public Conversation setPeer(Peer peer) {
+    public void setPeer(Peer peer) {
         this.peer = peer;
-        return this;
     }
 
     public Integer getInRead() {
         return inRead;
     }
 
-    public Conversation setInRead(Integer inRead) {
+    public void setInRead(Integer inRead) {
         this.inRead = inRead;
-        return this;
     }
 
     public Integer getOutRead() {
         return outRead;
     }
 
-    public Conversation setOutRead(Integer outRead) {
+    public void setOutRead(Integer outRead) {
         this.outRead = outRead;
-        return this;
     }
 
     public Integer getUnreadAmount() {
         return unreadAmount;
     }
 
-    public Conversation setUnreadAmount(Integer unreadAmount) {
+    public void setUnreadAmount(Integer unreadAmount) {
         this.unreadAmount = unreadAmount;
-        return this;
     }
 
     public Boolean getImportant() {
         return important;
     }
 
-    public Conversation setImportant(Boolean important) {
+    public void setImportant(Boolean important) {
         this.important = important;
-        return this;
     }
 
     public Boolean getUnanswered() {
         return unanswered;
     }
 
-    public Conversation setUnanswered(Boolean unanswered) {
+    public void setUnanswered(Boolean unanswered) {
         this.unanswered = unanswered;
-        return this;
     }
 
     public PushSettings getPushSettings() {
         return pushSettings;
     }
 
-    public Conversation setPushSettings(PushSettings pushSettings) {
+    public void setPushSettings(PushSettings pushSettings) {
         this.pushSettings = pushSettings;
-        return this;
     }
 
     public CanWrite getCanWrite() {
         return canWrite;
     }
 
-    public Conversation setCanWrite(CanWrite canWrite) {
+    public void setCanWrite(CanWrite canWrite) {
         this.canWrite = canWrite;
-        return this;
     }
 
     public ChatSettings getChatSettings() {
         return chatSettings;
     }
 
-    public Conversation setChatSettings(ChatSettings chatSettings) {
+    public void setChatSettings(ChatSettings chatSettings) {
         this.chatSettings = chatSettings;
-        return this;
     }
 }

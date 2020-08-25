@@ -22,17 +22,15 @@ public class Currency {
         return id;
     }
 
-    public Currency setId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public Currency setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 }

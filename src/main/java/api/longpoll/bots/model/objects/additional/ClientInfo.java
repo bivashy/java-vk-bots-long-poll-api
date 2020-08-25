@@ -40,103 +40,43 @@ public class ClientInfo {
 	@SerializedName("lang_id")
 	private Integer langId;
 
-	/**
-	 * Sets button actions.
-	 *
-	 * @param buttonActions button actions.
-	 * @return this ClientInfo
-	 */
-	public ClientInfo setButtonActions(List<String> buttonActions) {
-		this.buttonActions = buttonActions;
-		return this;
-	}
-
-	/**
-	 * Sets keyboard allowed.
-	 *
-	 * @param keyboardAllowed keyboard_allowed.
-	 * @return this ClientInfo.
-	 */
-	public ClientInfo setKeyboardAllowed(boolean keyboardAllowed) {
-		this.keyboardAllowed = keyboardAllowed;
-		return this;
-	}
-
-	/**
-	 * Sets inline keyboard allowed.
-	 *
-	 * @param inlineKeyboardAllowed inline keyboard allowed.
-	 * @return this ClientInfo.
-	 */
-	public ClientInfo setInlineKeyboardAllowed(boolean inlineKeyboardAllowed) {
-		this.inlineKeyboardAllowed = inlineKeyboardAllowed;
-		return this;
-	}
-
-	/**
-	 * Sets carousel allowed.
-	 *
-	 * @param carouselAllowed carousel allowed.
-	 * @return this ClientInfo.
-	 */
-	public ClientInfo setCarouselAllowed(boolean carouselAllowed) {
-		this.carouselAllowed = carouselAllowed;
-		return this;
-	}
-
-	/**
-	 * Sets id of the language.
-	 *
-	 * @param langId id of the language.
-	 * @return this ClientInfo.
-	 */
-	public ClientInfo setLangId(Integer langId) {
-		this.langId = langId;
-		return this;
-	}
-
-	/**
-	 * Gets button actions.
-	 *
-	 * @return button actions.
-	 */
 	public List<String> getButtonActions() {
 		return buttonActions;
 	}
 
-	/**
-	 * Gets keyboard allowed.
-	 *
-	 * @return true if keyboard allowed.
-	 */
+	public void setButtonActions(List<String> buttonActions) {
+		this.buttonActions = buttonActions;
+	}
+
 	public boolean isKeyboardAllowed() {
 		return keyboardAllowed;
 	}
 
-	/**
-	 * Get inline keyboard allowed.
-	 *
-	 * @return true if inline keyboard allowed.
-	 */
+	public void setKeyboardAllowed(boolean keyboardAllowed) {
+		this.keyboardAllowed = keyboardAllowed;
+	}
+
 	public boolean isInlineKeyboardAllowed() {
 		return inlineKeyboardAllowed;
 	}
 
-	/**
-	 * Gets carousel allowed.
-	 *
-	 * @return true carousel allowed.
-	 */
+	public void setInlineKeyboardAllowed(boolean inlineKeyboardAllowed) {
+		this.inlineKeyboardAllowed = inlineKeyboardAllowed;
+	}
+
 	public boolean isCarouselAllowed() {
 		return carouselAllowed;
 	}
 
-	/**
-	 * Gets id of the language.
-	 *
-	 * @return id of the language.
-	 */
+	public void setCarouselAllowed(boolean carouselAllowed) {
+		this.carouselAllowed = carouselAllowed;
+	}
+
 	public Integer getLangId() {
 		return langId;
+	}
+
+	public void setLangId(Integer langId) {
+		this.langId = langId;
 	}
 }

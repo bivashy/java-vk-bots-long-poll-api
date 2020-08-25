@@ -66,7 +66,7 @@ public class User {
     @SerializedName("common_count")
     private Integer commonCount;
     @SerializedName("connections")
-    private Map<String, String> connections; //todo check https://vk.com/support?act=show&id=37960706
+    private Map<String, String> connections;
     @SerializedName("contacts")
     private Contacts contacts;
     @SerializedName("counters")
@@ -208,79 +208,68 @@ public class User {
         @SerializedName("position")
         private String position;
 
-        public Career() {
-        }
-
         public Integer getGroupId() {
             return groupId;
         }
 
-        public Career setGroupId(Integer groupId) {
+        public void setGroupId(Integer groupId) {
             this.groupId = groupId;
-            return this;
         }
 
         public String getCompany() {
             return company;
         }
 
-        public Career setCompany(String company) {
+        public void setCompany(String company) {
             this.company = company;
-            return this;
         }
 
         public Integer getCountryId() {
             return countryId;
         }
 
-        public Career setCountryId(Integer countryId) {
+        public void setCountryId(Integer countryId) {
             this.countryId = countryId;
-            return this;
         }
 
         public Integer getCityId() {
             return cityId;
         }
 
-        public Career setCityId(Integer cityId) {
+        public void setCityId(Integer cityId) {
             this.cityId = cityId;
-            return this;
         }
 
         public Integer getCityName() {
             return cityName;
         }
 
-        public Career setCityName(Integer cityName) {
+        public void setCityName(Integer cityName) {
             this.cityName = cityName;
-            return this;
         }
 
         public Integer getFrom() {
             return from;
         }
 
-        public Career setFrom(Integer from) {
+        public void setFrom(Integer from) {
             this.from = from;
-            return this;
         }
 
         public Integer getUntil() {
             return until;
         }
 
-        public Career setUntil(Integer until) {
+        public void setUntil(Integer until) {
             this.until = until;
-            return this;
         }
 
         public String getPosition() {
             return position;
         }
 
-        public Career setPosition(String position) {
+        public void setPosition(String position) {
             this.position = position;
-            return this;
         }
     }
 
@@ -294,18 +283,16 @@ public class User {
             return id;
         }
 
-        public City setId(Integer id) {
+        public void setId(Integer id) {
             this.id = id;
-            return this;
         }
 
         public String getTitle() {
             return title;
         }
 
-        public City setTitle(String title) {
+        public void setTitle(String title) {
             this.title = title;
-            return this;
         }
     }
 
@@ -319,18 +306,16 @@ public class User {
             return mobilePhone;
         }
 
-        public Contacts setMobilePhone(String mobilePhone) {
+        public void setMobilePhone(String mobilePhone) {
             this.mobilePhone = mobilePhone;
-            return this;
         }
 
         public String getHomePhone() {
             return homePhone;
         }
 
-        public Contacts setHomePhone(String homePhone) {
+        public void setHomePhone(String homePhone) {
             this.homePhone = homePhone;
-            return this;
         }
     }
 
@@ -364,108 +349,96 @@ public class User {
             return albums;
         }
 
-        public Counters setAlbums(Integer albums) {
+        public void setAlbums(Integer albums) {
             this.albums = albums;
-            return this;
         }
 
         public Integer getVideos() {
             return videos;
         }
 
-        public Counters setVideos(Integer videos) {
+        public void setVideos(Integer videos) {
             this.videos = videos;
-            return this;
         }
 
         public Integer getAudios() {
             return audios;
         }
 
-        public Counters setAudios(Integer audios) {
+        public void setAudios(Integer audios) {
             this.audios = audios;
-            return this;
         }
 
         public Integer getPhotos() {
             return photos;
         }
 
-        public Counters setPhotos(Integer photos) {
+        public void setPhotos(Integer photos) {
             this.photos = photos;
-            return this;
         }
 
         public Integer getNotes() {
             return notes;
         }
 
-        public Counters setNotes(Integer notes) {
+        public void setNotes(Integer notes) {
             this.notes = notes;
-            return this;
         }
 
         public Integer getFriends() {
             return friends;
         }
 
-        public Counters setFriends(Integer friends) {
+        public void setFriends(Integer friends) {
             this.friends = friends;
-            return this;
         }
 
         public Integer getGroups() {
             return groups;
         }
 
-        public Counters setGroups(Integer groups) {
+        public void setGroups(Integer groups) {
             this.groups = groups;
-            return this;
         }
 
         public Integer getOnlineFriends() {
             return onlineFriends;
         }
 
-        public Counters setOnlineFriends(Integer onlineFriends) {
+        public void setOnlineFriends(Integer onlineFriends) {
             this.onlineFriends = onlineFriends;
-            return this;
         }
 
         public Integer getMutualFriends() {
             return mutualFriends;
         }
 
-        public Counters setMutualFriends(Integer mutualFriends) {
+        public void setMutualFriends(Integer mutualFriends) {
             this.mutualFriends = mutualFriends;
-            return this;
         }
 
         public Integer getUserVideos() {
             return userVideos;
         }
 
-        public Counters setUserVideos(Integer userVideos) {
+        public void setUserVideos(Integer userVideos) {
             this.userVideos = userVideos;
-            return this;
         }
 
         public Integer getFollowers() {
             return followers;
         }
 
-        public Counters setFollowers(Integer followers) {
+        public void setFollowers(Integer followers) {
             this.followers = followers;
-            return this;
         }
 
         public Integer getPages() {
             return pages;
         }
 
-        public Counters setPages(Integer pages) {
+        public void setPages(Integer pages) {
             this.pages = pages;
-            return this;
         }
     }
 
@@ -485,45 +458,40 @@ public class User {
             return university;
         }
 
-        public Education setUniversity(Integer university) {
+        public void setUniversity(Integer university) {
             this.university = university;
-            return this;
         }
 
         public String getUniversityName() {
             return universityName;
         }
 
-        public Education setUniversityName(String universityName) {
+        public void setUniversityName(String universityName) {
             this.universityName = universityName;
-            return this;
         }
 
         public Integer getFaculty() {
             return faculty;
         }
 
-        public Education setFaculty(Integer faculty) {
+        public void setFaculty(Integer faculty) {
             this.faculty = faculty;
-            return this;
         }
 
         public String getFacultyName() {
             return facultyName;
         }
 
-        public Education setFacultyName(String facultyName) {
+        public void setFacultyName(String facultyName) {
             this.facultyName = facultyName;
-            return this;
         }
 
         public Integer getGraduation() {
             return graduation;
         }
 
-        public Education setGraduation(Integer graduation) {
+        public void setGraduation(Integer graduation) {
             this.graduation = graduation;
-            return this;
         }
     }
 
@@ -537,18 +505,16 @@ public class User {
             return time;
         }
 
-        public LastSeen setTime(Integer time) {
+        public void setTime(Integer time) {
             this.time = time;
-            return this;
         }
 
         public Integer getPlatform() {
             return platform;
         }
 
-        public LastSeen setPlatform(Integer platform) {
+        public void setPlatform(Integer platform) {
             this.platform = platform;
-            return this;
         }
     }
 
@@ -568,45 +534,40 @@ public class User {
             return unit;
         }
 
-        public Military setUnit(String unit) {
+        public void setUnit(String unit) {
             this.unit = unit;
-            return this;
         }
 
         public Integer getUnitId() {
             return unitId;
         }
 
-        public Military setUnitId(Integer unitId) {
+        public void setUnitId(Integer unitId) {
             this.unitId = unitId;
-            return this;
         }
 
         public Integer getCountyId() {
             return countyId;
         }
 
-        public Military setCountyId(Integer countyId) {
+        public void setCountyId(Integer countyId) {
             this.countyId = countyId;
-            return this;
         }
 
         public Integer getFrom() {
             return from;
         }
 
-        public Military setFrom(Integer from) {
+        public void setFrom(Integer from) {
             this.from = from;
-            return this;
         }
 
         public Integer getUntil() {
             return until;
         }
 
-        public Military setUntil(Integer until) {
+        public void setUntil(Integer until) {
             this.until = until;
-            return this;
         }
     }
 
@@ -622,27 +583,24 @@ public class User {
             return type;
         }
 
-        public Occupation setType(String type) {
+        public void setType(String type) {
             this.type = type;
-            return this;
         }
 
         public Integer getId() {
             return id;
         }
 
-        public Occupation setId(Integer id) {
+        public void setId(Integer id) {
             this.id = id;
-            return this;
         }
 
         public String getName() {
             return name;
         }
 
-        public Occupation setName(String name) {
+        public void setName(String name) {
             this.name = name;
-            return this;
         }
     }
 
@@ -668,72 +626,64 @@ public class User {
             return political;
         }
 
-        public Personal setPolitical(Integer political) {
+        public void setPolitical(Integer political) {
             this.political = political;
-            return this;
         }
 
         public List<String> getLangs() {
             return langs;
         }
 
-        public Personal setLangs(List<String> langs) {
+        public void setLangs(List<String> langs) {
             this.langs = langs;
-            return this;
         }
 
         public String getReligion() {
             return religion;
         }
 
-        public Personal setReligion(String religion) {
+        public void setReligion(String religion) {
             this.religion = religion;
-            return this;
         }
 
         public String getInspired_by() {
             return inspired_by;
         }
 
-        public Personal setInspired_by(String inspired_by) {
+        public void setInspired_by(String inspired_by) {
             this.inspired_by = inspired_by;
-            return this;
         }
 
         public Integer getPeople_main() {
             return people_main;
         }
 
-        public Personal setPeople_main(Integer people_main) {
+        public void setPeople_main(Integer people_main) {
             this.people_main = people_main;
-            return this;
         }
 
         public Integer getLife_main() {
             return life_main;
         }
 
-        public Personal setLife_main(Integer life_main) {
+        public void setLife_main(Integer life_main) {
             this.life_main = life_main;
-            return this;
         }
 
         public Integer getSmoking() {
             return smoking;
         }
 
-        public Personal setSmoking(Integer smoking) {
+        public void setSmoking(Integer smoking) {
             this.smoking = smoking;
-            return this;
         }
 
         public Integer getAlcohol() {
             return alcohol;
         }
 
-        public Personal setAlcohol(Integer alcohol) {
+        public void setAlcohol(Integer alcohol) {
             this.alcohol = alcohol;
-            return this;
         }
     }
 
@@ -749,27 +699,24 @@ public class User {
             return id;
         }
 
-        public Relative setId(Integer id) {
+        public void setId(Integer id) {
             this.id = id;
-            return this;
         }
 
         public String getName() {
             return name;
         }
 
-        public Relative setName(String name) {
+        public void setName(String name) {
             this.name = name;
-            return this;
         }
 
         public String getType() {
             return type;
         }
 
-        public Relative setType(String type) {
+        public void setType(String type) {
             this.type = type;
-            return this;
         }
     }
 
@@ -801,99 +748,88 @@ public class User {
             return id;
         }
 
-        public School setId(Integer id) {
+        public void setId(Integer id) {
             this.id = id;
-            return this;
         }
 
         public Integer getCountry() {
             return country;
         }
 
-        public School setCountry(Integer country) {
+        public void setCountry(Integer country) {
             this.country = country;
-            return this;
         }
 
         public Integer getCity() {
             return city;
         }
 
-        public School setCity(Integer city) {
+        public void setCity(Integer city) {
             this.city = city;
-            return this;
         }
 
         public String getName() {
             return name;
         }
 
-        public School setName(String name) {
+        public void setName(String name) {
             this.name = name;
-            return this;
         }
 
         public Integer getYearFrom() {
             return yearFrom;
         }
 
-        public School setYearFrom(Integer yearFrom) {
+        public void setYearFrom(Integer yearFrom) {
             this.yearFrom = yearFrom;
-            return this;
         }
 
         public Integer getYearTo() {
             return yearTo;
         }
 
-        public School setYearTo(Integer yearTo) {
+        public void setYearTo(Integer yearTo) {
             this.yearTo = yearTo;
-            return this;
         }
 
         public Integer getYearGraduated() {
             return yearGraduated;
         }
 
-        public School setYearGraduated(Integer yearGraduated) {
+        public void setYearGraduated(Integer yearGraduated) {
             this.yearGraduated = yearGraduated;
-            return this;
         }
 
         public String getClassName() {
             return className;
         }
 
-        public School setClassName(String className) {
+        public void setClassName(String className) {
             this.className = className;
-            return this;
         }
 
         public String getSpeciality() {
             return speciality;
         }
 
-        public School setSpeciality(String speciality) {
+        public void setSpeciality(String speciality) {
             this.speciality = speciality;
-            return this;
         }
 
         public Integer getType() {
             return type;
         }
 
-        public School setType(Integer type) {
+        public void setType(Integer type) {
             this.type = type;
-            return this;
         }
 
         public String getType_str() {
             return type_str;
         }
 
-        public School setType_str(String type_str) {
+        public void setType_str(String type_str) {
             this.type_str = type_str;
-            return this;
         }
     }
 
@@ -925,99 +861,88 @@ public class User {
             return id;
         }
 
-        public University setId(Integer id) {
+        public void setId(Integer id) {
             this.id = id;
-            return this;
         }
 
         public Integer getCountry() {
             return country;
         }
 
-        public University setCountry(Integer country) {
+        public void setCountry(Integer country) {
             this.country = country;
-            return this;
         }
 
         public Integer getCity() {
             return city;
         }
 
-        public University setCity(Integer city) {
+        public void setCity(Integer city) {
             this.city = city;
-            return this;
         }
 
         public String getName() {
             return name;
         }
 
-        public University setName(String name) {
+        public void setName(String name) {
             this.name = name;
-            return this;
         }
 
         public Integer getFaculty() {
             return faculty;
         }
 
-        public University setFaculty(Integer faculty) {
+        public void setFaculty(Integer faculty) {
             this.faculty = faculty;
-            return this;
         }
 
         public String getFaculty_name() {
             return faculty_name;
         }
 
-        public University setFaculty_name(String faculty_name) {
+        public void setFaculty_name(String faculty_name) {
             this.faculty_name = faculty_name;
-            return this;
         }
 
         public String getChair() {
             return chair;
         }
 
-        public University setChair(String chair) {
+        public void setChair(String chair) {
             this.chair = chair;
-            return this;
         }
 
         public String getChair_name() {
             return chair_name;
         }
 
-        public University setChair_name(String chair_name) {
+        public void setChair_name(String chair_name) {
             this.chair_name = chair_name;
-            return this;
         }
 
         public Integer getGraduation() {
             return graduation;
         }
 
-        public University setGraduation(Integer graduation) {
+        public void setGraduation(Integer graduation) {
             this.graduation = graduation;
-            return this;
         }
 
         public String getEducation_form() {
             return education_form;
         }
 
-        public University setEducation_form(String education_form) {
+        public void setEducation_form(String education_form) {
             this.education_form = education_form;
-            return this;
         }
 
         public String getEducation_status() {
             return education_status;
         }
 
-        public University setEducation_status(String education_status) {
+        public void setEducation_status(String education_status) {
             this.education_status = education_status;
-            return this;
         }
     }
 
@@ -1025,737 +950,655 @@ public class User {
         return id;
     }
 
-    public User setId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
-        return this;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public User setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
-        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public User setLastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
-        return this;
     }
 
     public String getDeactivated() {
         return deactivated;
     }
 
-    public User setDeactivated(String deactivated) {
+    public void setDeactivated(String deactivated) {
         this.deactivated = deactivated;
-        return this;
     }
 
     public Boolean getClosed() {
         return closed;
     }
 
-    public User setClosed(Boolean closed) {
+    public void setClosed(Boolean closed) {
         this.closed = closed;
-        return this;
     }
 
     public Boolean getCanAccessClosed() {
         return canAccessClosed;
     }
 
-    public User setCanAccessClosed(Boolean canAccessClosed) {
+    public void setCanAccessClosed(Boolean canAccessClosed) {
         this.canAccessClosed = canAccessClosed;
-        return this;
     }
 
     public String getAbout() {
         return about;
     }
 
-    public User setAbout(String about) {
+    public void setAbout(String about) {
         this.about = about;
-        return this;
     }
 
     public String getActivities() {
         return activities;
     }
 
-    public User setActivities(String activities) {
+    public void setActivities(String activities) {
         this.activities = activities;
-        return this;
     }
 
     public String getBirthDate() {
         return birthDate;
     }
 
-    public User setBirthDate(String birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
-        return this;
     }
 
     public Boolean getBlacklisted() {
         return blacklisted;
     }
 
-    public User setBlacklisted(Boolean blacklisted) {
+    public void setBlacklisted(Boolean blacklisted) {
         this.blacklisted = blacklisted;
-        return this;
     }
 
     public Boolean getBlacklistedByMe() {
         return blacklistedByMe;
     }
 
-    public User setBlacklistedByMe(Boolean blacklistedByMe) {
+    public void setBlacklistedByMe(Boolean blacklistedByMe) {
         this.blacklistedByMe = blacklistedByMe;
-        return this;
     }
 
     public String getBooks() {
         return books;
     }
 
-    public User setBooks(String books) {
+    public void setBooks(String books) {
         this.books = books;
-        return this;
     }
 
     public Boolean getCanPost() {
         return canPost;
     }
 
-    public User setCanPost(Boolean canPost) {
+    public void setCanPost(Boolean canPost) {
         this.canPost = canPost;
-        return this;
     }
 
     public Boolean getCanSeeAllPosts() {
         return canSeeAllPosts;
     }
 
-    public User setCanSeeAllPosts(Boolean canSeeAllPosts) {
+    public void setCanSeeAllPosts(Boolean canSeeAllPosts) {
         this.canSeeAllPosts = canSeeAllPosts;
-        return this;
     }
 
     public Boolean getCanSeeAudio() {
         return canSeeAudio;
     }
 
-    public User setCanSeeAudio(Boolean canSeeAudio) {
+    public void setCanSeeAudio(Boolean canSeeAudio) {
         this.canSeeAudio = canSeeAudio;
-        return this;
     }
 
     public Boolean getCanSendFriendRequest() {
         return canSendFriendRequest;
     }
 
-    public User setCanSendFriendRequest(Boolean canSendFriendRequest) {
+    public void setCanSendFriendRequest(Boolean canSendFriendRequest) {
         this.canSendFriendRequest = canSendFriendRequest;
-        return this;
     }
 
     public Boolean getCanWritePrivateMessage() {
         return canWritePrivateMessage;
     }
 
-    public User setCanWritePrivateMessage(Boolean canWritePrivateMessage) {
+    public void setCanWritePrivateMessage(Boolean canWritePrivateMessage) {
         this.canWritePrivateMessage = canWritePrivateMessage;
-        return this;
     }
 
     public Career getCareer() {
         return career;
     }
 
-    public User setCareer(Career career) {
+    public void setCareer(Career career) {
         this.career = career;
-        return this;
     }
 
     public Military getMilitary() {
         return military;
     }
 
-    public User setMilitary(Military military) {
+    public void setMilitary(Military military) {
         this.military = military;
-        return this;
     }
 
     public String getMovies() {
         return movies;
     }
 
-    public User setMovies(String movies) {
+    public void setMovies(String movies) {
         this.movies = movies;
-        return this;
     }
 
     public String getMusic() {
         return music;
     }
 
-    public User setMusic(String music) {
+    public void setMusic(String music) {
         this.music = music;
-        return this;
     }
 
     public String getNickname() {
         return nickname;
     }
 
-    public User setNickname(String nickname) {
+    public void setNickname(String nickname) {
         this.nickname = nickname;
-        return this;
     }
 
     public String getCity() {
         return city;
     }
 
-    public User setCity(String city) {
+    public void setCity(String city) {
         this.city = city;
-        return this;
     }
 
     public Integer getCommonCount() {
         return commonCount;
     }
 
-    public User setCommonCount(Integer commonCount) {
+    public void setCommonCount(Integer commonCount) {
         this.commonCount = commonCount;
-        return this;
     }
 
     public Map<String, String> getConnections() {
         return connections;
     }
 
-    public User setConnections(Map<String, String> connections) {
+    public void setConnections(Map<String, String> connections) {
         this.connections = connections;
-        return this;
     }
 
     public Contacts getContacts() {
         return contacts;
     }
 
-    public User setContacts(Contacts contacts) {
+    public void setContacts(Contacts contacts) {
         this.contacts = contacts;
-        return this;
     }
 
     public Counters getCounters() {
         return counters;
     }
 
-    public User setCounters(Counters counters) {
+    public void setCounters(Counters counters) {
         this.counters = counters;
-        return this;
     }
 
     public Country getCountry() {
         return country;
     }
 
-    public User setCountry(Country country) {
+    public void setCountry(Country country) {
         this.country = country;
-        return this;
     }
 
     public CropPhoto getCropPhoto() {
         return cropPhoto;
     }
 
-    public User setCropPhoto(CropPhoto cropPhoto) {
+    public void setCropPhoto(CropPhoto cropPhoto) {
         this.cropPhoto = cropPhoto;
-        return this;
     }
 
     public String getDomain() {
         return domain;
     }
 
-    public User setDomain(String domain) {
+    public void setDomain(String domain) {
         this.domain = domain;
-        return this;
     }
 
     public Education getEducation() {
         return education;
     }
 
-    public User setEducation(Education education) {
+    public void setEducation(Education education) {
         this.education = education;
-        return this;
     }
 
     public String getExports() {
         return exports;
     }
 
-    public User setExports(String exports) {
+    public void setExports(String exports) {
         this.exports = exports;
-        return this;
     }
 
     public String getFirstNameNom() {
         return firstNameNom;
     }
 
-    public User setFirstNameNom(String firstNameNom) {
+    public void setFirstNameNom(String firstNameNom) {
         this.firstNameNom = firstNameNom;
-        return this;
     }
 
     public String getFirstNameGen() {
         return firstNameGen;
     }
 
-    public User setFirstNameGen(String firstNameGen) {
+    public void setFirstNameGen(String firstNameGen) {
         this.firstNameGen = firstNameGen;
-        return this;
     }
 
     public String getFirstNameDat() {
         return firstNameDat;
     }
 
-    public User setFirstNameDat(String firstNameDat) {
+    public void setFirstNameDat(String firstNameDat) {
         this.firstNameDat = firstNameDat;
-        return this;
     }
 
     public String getFirstNameAcc() {
         return firstNameAcc;
     }
 
-    public User setFirstNameAcc(String firstNameAcc) {
+    public void setFirstNameAcc(String firstNameAcc) {
         this.firstNameAcc = firstNameAcc;
-        return this;
     }
 
     public String getFirstNameIns() {
         return firstNameIns;
     }
 
-    public User setFirstNameIns(String firstNameIns) {
+    public void setFirstNameIns(String firstNameIns) {
         this.firstNameIns = firstNameIns;
-        return this;
     }
 
     public String getFirstNameAbl() {
         return firstNameAbl;
     }
 
-    public User setFirstNameAbl(String firstNameAbl) {
+    public void setFirstNameAbl(String firstNameAbl) {
         this.firstNameAbl = firstNameAbl;
-        return this;
     }
 
     public Integer getFollowersCount() {
         return followersCount;
     }
 
-    public User setFollowersCount(Integer followersCount) {
+    public void setFollowersCount(Integer followersCount) {
         this.followersCount = followersCount;
-        return this;
     }
 
     public Integer getFriendStatus() {
         return friendStatus;
     }
 
-    public User setFriendStatus(Integer friendStatus) {
+    public void setFriendStatus(Integer friendStatus) {
         this.friendStatus = friendStatus;
-        return this;
     }
 
     public String getGames() {
         return games;
     }
 
-    public User setGames(String games) {
+    public void setGames(String games) {
         this.games = games;
-        return this;
     }
 
     public Boolean getHasMobile() {
         return hasMobile;
     }
 
-    public User setHasMobile(Boolean hasMobile) {
+    public void setHasMobile(Boolean hasMobile) {
         this.hasMobile = hasMobile;
-        return this;
     }
 
     public Boolean getHasPhoto() {
         return hasPhoto;
     }
 
-    public User setHasPhoto(Boolean hasPhoto) {
+    public void setHasPhoto(Boolean hasPhoto) {
         this.hasPhoto = hasPhoto;
-        return this;
     }
 
     public String getHomeTown() {
         return homeTown;
     }
 
-    public User setHomeTown(String homeTown) {
+    public void setHomeTown(String homeTown) {
         this.homeTown = homeTown;
-        return this;
     }
 
     public String getInterests() {
         return interests;
     }
 
-    public User setInterests(String interests) {
+    public void setInterests(String interests) {
         this.interests = interests;
-        return this;
     }
 
     public Boolean getFavorite() {
         return favorite;
     }
 
-    public User setFavorite(Boolean favorite) {
+    public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
-        return this;
     }
 
     public Boolean getFriend() {
         return friend;
     }
 
-    public User setFriend(Boolean friend) {
+    public void setFriend(Boolean friend) {
         this.friend = friend;
-        return this;
     }
 
     public Boolean getHiddenFromFeed() {
         return hiddenFromFeed;
     }
 
-    public User setHiddenFromFeed(Boolean hiddenFromFeed) {
+    public void setHiddenFromFeed(Boolean hiddenFromFeed) {
         this.hiddenFromFeed = hiddenFromFeed;
-        return this;
     }
 
     public String getLastNameNom() {
         return lastNameNom;
     }
 
-    public User setLastNameNom(String lastNameNom) {
+    public void setLastNameNom(String lastNameNom) {
         this.lastNameNom = lastNameNom;
-        return this;
     }
 
     public String getLastNameGen() {
         return lastNameGen;
     }
 
-    public User setLastNameGen(String lastNameGen) {
+    public void setLastNameGen(String lastNameGen) {
         this.lastNameGen = lastNameGen;
-        return this;
     }
 
     public String getLastNameDat() {
         return lastNameDat;
     }
 
-    public User setLastNameDat(String lastNameDat) {
+    public void setLastNameDat(String lastNameDat) {
         this.lastNameDat = lastNameDat;
-        return this;
     }
 
     public String getLastNameAcc() {
         return lastNameAcc;
     }
 
-    public User setLastNameAcc(String lastNameAcc) {
+    public void setLastNameAcc(String lastNameAcc) {
         this.lastNameAcc = lastNameAcc;
-        return this;
     }
 
     public String getLastNameIns() {
         return lastNameIns;
     }
 
-    public User setLastNameIns(String lastNameIns) {
+    public void setLastNameIns(String lastNameIns) {
         this.lastNameIns = lastNameIns;
-        return this;
     }
 
     public String getLastNameAbl() {
         return lastNameAbl;
     }
 
-    public User setLastNameAbl(String lastNameAbl) {
+    public void setLastNameAbl(String lastNameAbl) {
         this.lastNameAbl = lastNameAbl;
-        return this;
     }
 
     public LastSeen getLastSeen() {
         return lastSeen;
     }
 
-    public User setLastSeen(LastSeen lastSeen) {
+    public void setLastSeen(LastSeen lastSeen) {
         this.lastSeen = lastSeen;
-        return this;
     }
 
     public String getLists() {
         return lists;
     }
 
-    public User setLists(String lists) {
+    public void setLists(String lists) {
         this.lists = lists;
-        return this;
     }
 
     public String getMaidenName() {
         return maidenName;
     }
 
-    public User setMaidenName(String maidenName) {
+    public void setMaidenName(String maidenName) {
         this.maidenName = maidenName;
-        return this;
     }
 
     public Occupation getOccupation() {
         return occupation;
     }
 
-    public User setOccupation(Occupation occupation) {
+    public void setOccupation(Occupation occupation) {
         this.occupation = occupation;
-        return this;
     }
 
     public Boolean getOnline() {
         return online;
     }
 
-    public User setOnline(Boolean online) {
+    public void setOnline(Boolean online) {
         this.online = online;
-        return this;
     }
 
     public Personal getPersonal() {
         return personal;
     }
 
-    public User setPersonal(Personal personal) {
+    public void setPersonal(Personal personal) {
         this.personal = personal;
-        return this;
     }
 
     public String getPhoto_50() {
         return photo_50;
     }
 
-    public User setPhoto_50(String photo_50) {
+    public void setPhoto_50(String photo_50) {
         this.photo_50 = photo_50;
-        return this;
     }
 
     public String getPhoto_100() {
         return photo_100;
     }
 
-    public User setPhoto_100(String photo_100) {
+    public void setPhoto_100(String photo_100) {
         this.photo_100 = photo_100;
-        return this;
     }
 
     public String getPhoto_200_orig() {
         return photo_200_orig;
     }
 
-    public User setPhoto_200_orig(String photo_200_orig) {
+    public void setPhoto_200_orig(String photo_200_orig) {
         this.photo_200_orig = photo_200_orig;
-        return this;
     }
 
     public String getPhoto_200() {
         return photo_200;
     }
 
-    public User setPhoto_200(String photo_200) {
+    public void setPhoto_200(String photo_200) {
         this.photo_200 = photo_200;
-        return this;
     }
 
     public String getPhoto_400_orig() {
         return photo_400_orig;
     }
 
-    public User setPhoto_400_orig(String photo_400_orig) {
+    public void setPhoto_400_orig(String photo_400_orig) {
         this.photo_400_orig = photo_400_orig;
-        return this;
     }
 
     public String getPhoto_id() {
         return photo_id;
     }
 
-    public User setPhoto_id(String photo_id) {
+    public void setPhoto_id(String photo_id) {
         this.photo_id = photo_id;
-        return this;
     }
 
     public String getPhoto_max() {
         return photo_max;
     }
 
-    public User setPhoto_max(String photo_max) {
+    public void setPhoto_max(String photo_max) {
         this.photo_max = photo_max;
-        return this;
     }
 
     public String getPhoto_max_orig() {
         return photo_max_orig;
     }
 
-    public User setPhoto_max_orig(String photo_max_orig) {
+    public void setPhoto_max_orig(String photo_max_orig) {
         this.photo_max_orig = photo_max_orig;
-        return this;
     }
 
     public String getQuotes() {
         return quotes;
     }
 
-    public User setQuotes(String quotes) {
+    public void setQuotes(String quotes) {
         this.quotes = quotes;
-        return this;
     }
 
     public List<Relative> getRelatives() {
         return relatives;
     }
 
-    public User setRelatives(List<Relative> relatives) {
+    public void setRelatives(List<Relative> relatives) {
         this.relatives = relatives;
-        return this;
     }
 
     public Integer getRelation() {
         return relation;
     }
 
-    public User setRelation(Integer relation) {
+    public void setRelation(Integer relation) {
         this.relation = relation;
-        return this;
     }
 
     public List<School> getSchools() {
         return schools;
     }
 
-    public User setSchools(List<School> schools) {
+    public void setSchools(List<School> schools) {
         this.schools = schools;
-        return this;
     }
 
     public String getScreen_name() {
         return screen_name;
     }
 
-    public User setScreen_name(String screen_name) {
+    public void setScreen_name(String screen_name) {
         this.screen_name = screen_name;
-        return this;
     }
 
     public Integer getSex() {
         return sex;
     }
 
-    public User setSex(Integer sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
-        return this;
     }
 
     public String getSite() {
         return site;
     }
 
-    public User setSite(String site) {
+    public void setSite(String site) {
         this.site = site;
-        return this;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public User setStatus(String status) {
+    public void setStatus(String status) {
         this.status = status;
-        return this;
     }
 
     public Integer getTimezone() {
         return timezone;
     }
 
-    public User setTimezone(Integer timezone) {
+    public void setTimezone(Integer timezone) {
         this.timezone = timezone;
-        return this;
     }
 
     public Boolean getTrending() {
         return trending;
     }
 
-    public User setTrending(Boolean trending) {
+    public void setTrending(Boolean trending) {
         this.trending = trending;
-        return this;
     }
 
     public String getTv() {
         return tv;
     }
 
-    public User setTv(String tv) {
+    public void setTv(String tv) {
         this.tv = tv;
-        return this;
     }
 
     public List<University> getUniversities() {
         return universities;
     }
 
-    public User setUniversities(List<University> universities) {
+    public void setUniversities(List<University> universities) {
         this.universities = universities;
-        return this;
     }
 
     public Boolean getVerified() {
         return verified;
     }
 
-    public User setVerified(Boolean verified) {
+    public void setVerified(Boolean verified) {
         this.verified = verified;
-        return this;
     }
 
     public String getWall_default() {
         return wall_default;
     }
 
-    public User setWall_default(String wall_default) {
+    public void setWall_default(String wall_default) {
         this.wall_default = wall_default;
-        return this;
     }
 }

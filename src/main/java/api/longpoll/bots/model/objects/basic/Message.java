@@ -86,24 +86,22 @@ public class Message implements EventObject {
 	@SerializedName("reply_message")
 	private Message replyMessage;
 
-	// TODO: 12.08.2020 find out javadoc
-	@SerializedName("hidden")
-	private boolean hidden;
-
 	/**
 	 * Information about service action with conversation
 	 */
 	@SerializedName("action")
 	private Action action;
 
-	// TODO: 12.08.2020 find out javadoc
+	/**
+	 * Conversation message ID.
+	 */
 	@SerializedName("conversation_message_id")
 	private Integer conversationMessageId;
 
 	/**
 	 * Contains information about service action with conversation.
 	 */
-	public class Action {
+	public static class Action {
 		/**
 		 * Action type. Possible values:
 		 * <ul>
@@ -146,109 +144,9 @@ public class Message implements EventObject {
 		private Photo photo;
 
 		/**
-		 * Gets action type.
-		 *
-		 * @return action type.
-		 */
-		public String getType() {
-			return type;
-		}
-
-		/**
-		 * Sets action type.
-		 *
-		 * @param type action type.
-		 * @return this Action.
-		 */
-		public Action setType(String type) {
-			this.type = type;
-			return this;
-		}
-
-		/**
-		 * Gets user ID.
-		 *
-		 * @return user ID.
-		 */
-		public Integer getMemberId() {
-			return memberId;
-		}
-
-		/**
-		 * Sets user ID.
-		 *
-		 * @param memberId user ID.
-		 * @return this Action.
-		 */
-		public Action setMemberId(Integer memberId) {
-			this.memberId = memberId;
-			return this;
-		}
-
-		/**
-		 * Gets conversation title.
-		 *
-		 * @return conversation title.
-		 */
-		public String getText() {
-			return text;
-		}
-
-		/**
-		 * Sets conversation title.
-		 *
-		 * @param text conversation title.
-		 * @return this Action.
-		 */
-		public Action setText(String text) {
-			this.text = text;
-			return this;
-		}
-
-		/**
-		 * Gets email.
-		 *
-		 * @return email.
-		 */
-		public String getEmail() {
-			return email;
-		}
-
-		/**
-		 * Sets email.
-		 *
-		 * @param email email.
-		 * @return this Action.
-		 */
-		public Action setEmail(String email) {
-			this.email = email;
-			return this;
-		}
-
-		/**
-		 * Gets conversation cover image.
-		 *
-		 * @return conversation cover image.
-		 */
-		public Photo getPhoto() {
-			return photo;
-		}
-
-		/**
-		 * Sets conversation cover image.
-		 *
-		 * @param photo conversation cover image.
-		 * @return this Action.
-		 */
-		public Action setPhoto(Photo photo) {
-			this.photo = photo;
-			return this;
-		}
-
-		/**
 		 * Contains conversation cover image.
 		 */
-		public class Photo {
+		public static class Photo {
 			/**
 			 * URL of conversation image with width size of 50 px.
 			 */
@@ -267,392 +165,201 @@ public class Message implements EventObject {
 			@SerializedName("photo_200")
 			private String photo200;
 
-			/**
-			 * Gets URL of conversation image with width size of 50 px.
-			 *
-			 * @return URL of conversation image with width size of 50 px.
-			 */
 			public String getPhoto50() {
 				return photo50;
 			}
 
-			/**
-			 * Sets URL of conversation image with width size of 50 px.
-			 *
-			 * @param photo50 URL of conversation image with width size of 50 px.
-			 * @return this Photo.
-			 */
-			public Photo setPhoto50(String photo50) {
+			public void setPhoto50(String photo50) {
 				this.photo50 = photo50;
-				return this;
 			}
 
-			/**
-			 * Gets URL of conversation image with width size of 100 px.
-			 *
-			 * @return URL of conversation image with width size of 100 px.
-			 */
 			public String getPhoto100() {
 				return photo100;
 			}
 
-			/**
-			 * Sets URL of conversation image with width size of 100 px.
-			 *
-			 * @param photo100 URL of conversation image with width size of 100 px.
-			 * @return this Photo.
-			 */
-			public Photo setPhoto100(String photo100) {
+			public void setPhoto100(String photo100) {
 				this.photo100 = photo100;
-				return this;
 			}
 
-			/**
-			 * Gets URL of conversation image with width size of 200 px.
-			 *
-			 * @return URL of conversation image with width size of 200 px.
-			 */
 			public String getPhoto200() {
 				return photo200;
 			}
 
-			/**
-			 * Sets URL of conversation image with width size of 200 px.
-			 *
-			 * @param photo200 URL of conversation image with width size of 200 px.
-			 * @return this Photo.
-			 */
-			public Photo setPhoto200(String photo200) {
+			public void setPhoto200(String photo200) {
 				this.photo200 = photo200;
-				return this;
 			}
+		}
+
+		public String getType() {
+			return type;
+		}
+
+		public void setType(String type) {
+			this.type = type;
+		}
+
+		public Integer getMemberId() {
+			return memberId;
+		}
+
+		public void setMemberId(Integer memberId) {
+			this.memberId = memberId;
+		}
+
+		public String getText() {
+			return text;
+		}
+
+		public void setText(String text) {
+			this.text = text;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public Photo getPhoto() {
+			return photo;
+		}
+
+		public void setPhoto(Photo photo) {
+			this.photo = photo;
 		}
 	}
 
-	/**
-	 * Checks wether message has text.
-	 *
-	 * @return true if message has text.
-	 */
 	public boolean hasText() {
 		return text != null && !text.isEmpty();
 	}
 
-	/**
-	 * Checks wether message has attachments.
-	 *
-	 * @return true if massage has attachments.
-	 */
 	public boolean hasAttachments() {
 		return attachments != null && !attachments.isEmpty();
 	}
 
-	/**
-	 * Checks wether message has Geo objects.
-	 *
-	 * @return true if message has Geo objects.
-	 */
 	public boolean hasGeo() {
 		return geo != null;
 	}
 
-	/**
-	 * Checks wether message has forwarded messages.
-	 *
-	 * @return true if message has forwarded messages.
-	 */
 	public boolean hasFwdMessages() {
 		return fwdMessages != null && !fwdMessages.isEmpty();
 	}
 
-	/**
-	 * Checks wether message has reply message.
-	 *
-	 * @return true if message has reply message.
-	 */
 	public boolean hasReplyMessage() {
 		return replyMessage != null;
 	}
 
-	/**
-	 * Sets message id.
-	 *
-	 * @param id message id.
-	 * @return this Message.
-	 */
-	public Message setId(Integer id) {
-		this.id = id;
-		return this;
-	}
-
-	/**
-	 * Sets message date.
-	 *
-	 * @param date message date.
-	 * @return this Message.
-	 */
-	public Message setDate(Integer date) {
-		this.date = date;
-		return this;
-	}
-
-	/**
-	 * sets message peer_id.
-	 *
-	 * @param peerId message peer_id.
-	 * @return this Message.
-	 */
-	public Message setPeerId(Integer peerId) {
-		this.peerId = peerId;
-		return this;
-	}
-
-	/**
-	 * Sets message from_id;
-	 *
-	 * @param fromId message from_id.
-	 * @return this Message.
-	 */
-	public Message setFromId(Integer fromId) {
-		this.fromId = fromId;
-		return this;
-	}
-
-	/**
-	 * Sets message text.
-	 *
-	 * @param text message text.
-	 * @return this Message.
-	 */
-	public Message setText(String text) {
-		this.text = text;
-		return this;
-	}
-
-	/**
-	 * Sets message random_id.
-	 *
-	 * @param randomId message random_id.
-	 * @return this Message.
-	 */
-	public Message setRandomId(Integer randomId) {
-		this.randomId = randomId;
-		return this;
-	}
-
-	/**
-	 * Sets message attachments.
-	 *
-	 * @param attachments list of message attachments.
-	 * @return this Message.
-	 */
-	public Message setAttachments(List<Attachment> attachments) {
-		this.attachments = attachments;
-		return this;
-	}
-
-	/**
-	 * Sets message important
-	 *
-	 * @param important message important
-	 * @return this Message.
-	 */
-	public Message setImportant(boolean important) {
-		this.important = important;
-		return this;
-	}
-
-	/**
-	 * Sets message geo.
-	 *
-	 * @param geo message geo.
-	 * @return this Message.
-	 */
-	public Message setGeo(Geo geo) {
-		this.geo = geo;
-		return this;
-	}
-
-	/**
-	 * Sets message payload.
-	 *
-	 * @param payload message payload.
-	 * @return this Message.
-	 */
-	public Message setPayload(String payload) {
-		this.payload = payload;
-		return this;
-	}
-
-	/**
-	 * Sets message fwd_messages.
-	 *
-	 * @param fwdMessages list of forwarded messages.
-	 * @return this Message.
-	 */
-	public Message setFwdMessages(List<Message> fwdMessages) {
-		this.fwdMessages = fwdMessages;
-		return this;
-	}
-
-	/**
-	 * Sets message action.
-	 *
-	 * @param action message action.
-	 * @return this Message.
-	 */
-	public Message setAction(Action action) {
-		this.action = action;
-		return this;
-	}
-
-	/**
-	 * Gets message id.
-	 *
-	 * @return message id.
-	 */
 	public Integer getId() {
 		return id;
 	}
 
-	/**
-	 * Gets message date.
-	 *
-	 * @return message date.
-	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public Integer getDate() {
 		return date;
 	}
 
-	/**
-	 * Gets message peer_id.
-	 *
-	 * @return message peer_id.
-	 */
+	public void setDate(Integer date) {
+		this.date = date;
+	}
+
 	public Integer getPeerId() {
 		return peerId;
 	}
 
-	/**
-	 * Gets message from_id.
-	 *
-	 * @return message from_id.
-	 */
+	public void setPeerId(Integer peerId) {
+		this.peerId = peerId;
+	}
+
 	public Integer getFromId() {
 		return fromId;
 	}
 
-	/**
-	 * Gets message text.
-	 *
-	 * @return message text.
-	 */
+	public void setFromId(Integer fromId) {
+		this.fromId = fromId;
+	}
+
 	public String getText() {
 		return text;
 	}
 
-	/**
-	 * Gets message random_id.
-	 *
-	 * @return message random_id.
-	 */
+	public void setText(String text) {
+		this.text = text;
+	}
+
 	public Integer getRandomId() {
 		return randomId;
 	}
 
-	/**
-	 * Gets message attachments.
-	 *
-	 * @return list of message attachments.
-	 */
+	public void setRandomId(Integer randomId) {
+		this.randomId = randomId;
+	}
+
 	public List<Attachment> getAttachments() {
 		return attachments;
 	}
 
-	/**
-	 * Gets message importance.
-	 *
-	 * @return true if message is important.
-	 */
+	public void setAttachments(List<Attachment> attachments) {
+		this.attachments = attachments;
+	}
+
 	public boolean isImportant() {
 		return important;
 	}
 
-	/**
-	 * Gets message geo.
-	 *
-	 * @return message geo.
-	 */
+	public void setImportant(boolean important) {
+		this.important = important;
+	}
+
 	public Geo getGeo() {
 		return geo;
 	}
 
-	/**
-	 * Gets message payload.
-	 *
-	 * @return message payload.
-	 */
+	public void setGeo(Geo geo) {
+		this.geo = geo;
+	}
+
 	public String getPayload() {
 		return payload;
 	}
 
-	/**
-	 * Gets message fwd_messages.
-	 *
-	 * @return list of forwarded messages.
-	 */
+	public void setPayload(String payload) {
+		this.payload = payload;
+	}
+
 	public List<Message> getFwdMessages() {
 		return fwdMessages;
 	}
 
-	/**
-	 * Gets message action.
-	 *
-	 * @return message action.
-	 */
-	public Action getAction() {
-		return action;
+	public void setFwdMessages(List<Message> fwdMessages) {
+		this.fwdMessages = fwdMessages;
 	}
 
-	/**
-	 * Gets message reply_message.
-	 *
-	 * @return message reply_message.
-	 */
 	public Message getReplyMessage() {
 		return replyMessage;
 	}
 
-	/**
-	 * Sets message reply_message.
-	 *
-	 * @param replyMessage reply to message.
-	 * @return this Message.
-	 */
-	public Message setReplyMessage(Message replyMessage) {
+	public void setReplyMessage(Message replyMessage) {
 		this.replyMessage = replyMessage;
-		return this;
 	}
 
-	// TODO: 12.08.2020 find out javadoc
+	public Action getAction() {
+		return action;
+	}
+
+	public void setAction(Action action) {
+		this.action = action;
+	}
+
 	public Integer getConversationMessageId() {
 		return conversationMessageId;
 	}
 
-	// TODO: 12.08.2020 find out javadoc
-	public Message setConversationMessageId(Integer conversationMessageId) {
+	public void setConversationMessageId(Integer conversationMessageId) {
 		this.conversationMessageId = conversationMessageId;
-		return this;
-	}
-
-	// TODO: 12.08.2020 find out javadoc
-	public boolean isHidden() {
-		return hidden;
-	}
-
-	// TODO: 12.08.2020 find out javadoc
-	public Message setHidden(boolean hidden) {
-		this.hidden = hidden;
-		return this;
 	}
 }

@@ -52,7 +52,7 @@ public class TopicComment implements EventObject {
 	/**
 	 * Describes topic comment likes.
 	 */
-	public class Likes {
+	public static class Likes {
 		/**
 		 * Likes count.
 		 */
@@ -77,27 +77,24 @@ public class TopicComment implements EventObject {
 			return count;
 		}
 
-		public Likes setCount(Integer count) {
+		public void setCount(Integer count) {
 			this.count = count;
-			return this;
 		}
 
 		public Boolean getUserLikes() {
 			return userLikes;
 		}
 
-		public Likes setUserLikes(Boolean userLikes) {
+		public void setUserLikes(Boolean userLikes) {
 			this.userLikes = userLikes;
-			return this;
 		}
 
 		public Boolean getCanLike() {
 			return canLike;
 		}
 
-		public Likes setCanLike(Boolean canLike) {
+		public void setCanLike(Boolean canLike) {
 			this.canLike = canLike;
-			return this;
 		}
 	}
 
@@ -105,53 +102,47 @@ public class TopicComment implements EventObject {
 		return id;
 	}
 
-	public TopicComment setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getFromId() {
 		return fromId;
 	}
 
-	public TopicComment setFromId(Integer fromId) {
+	public void setFromId(Integer fromId) {
 		this.fromId = fromId;
-		return this;
 	}
 
 	public Integer getDate() {
 		return date;
 	}
 
-	public TopicComment setDate(Integer date) {
+	public void setDate(Integer date) {
 		this.date = date;
-		return this;
 	}
 
 	public String getText() {
 		return text;
 	}
 
-	public TopicComment setText(String text) {
+	public void setText(String text) {
 		this.text = text;
-		return this;
 	}
 
 	public List<Attachment> getAttachments() {
 		return attachments;
 	}
 
-	public TopicComment setAttachments(List<Attachment> attachments) {
+	public void setAttachments(List<Attachment> attachments) {
 		this.attachments = attachments;
-		return this;
 	}
 
 	public Likes getLikes() {
 		return likes;
 	}
 
-	public TopicComment setLikes(Likes likes) {
+	public void setLikes(Likes likes) {
 		this.likes = likes;
-		return this;
 	}
 }

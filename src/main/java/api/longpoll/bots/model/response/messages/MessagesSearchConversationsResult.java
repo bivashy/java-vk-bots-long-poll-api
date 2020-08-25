@@ -22,18 +22,16 @@ public class MessagesSearchConversationsResult {
             return profiles;
         }
 
-        public Response setProfiles(List<User> profiles) {
+        public void setProfiles(List<User> profiles) {
             this.profiles = profiles;
-            return this;
         }
 
         public List<Community> getGroups() {
             return groups;
         }
 
-        public Response setGroups(List<Community> groups) {
+        public void setGroups(List<Community> groups) {
             this.groups = groups;
-            return this;
         }
     }
 
@@ -41,8 +39,7 @@ public class MessagesSearchConversationsResult {
         return response;
     }
 
-    public MessagesSearchConversationsResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

@@ -61,7 +61,7 @@ public class Video implements Attachable {
 	@SerializedName("local_views")
 	private Integer localViews;
 
-	public class VideoImage extends Image {
+	public static class VideoImage extends Image {
 		@SerializedName("with_padding")
 		@JsonAdapter(BoolIntAdapter.class)
 		private boolean withPadding;
@@ -70,9 +70,8 @@ public class Video implements Attachable {
 			return withPadding;
 		}
 
-		public VideoImage setWithPadding(boolean withPadding) {
+		public void setWithPadding(boolean withPadding) {
 			this.withPadding = withPadding;
-			return this;
 		}
 	}
 
@@ -80,206 +79,183 @@ public class Video implements Attachable {
 		return id;
 	}
 
-	public Video setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getOwnerId() {
 		return ownerId;
 	}
 
-	public Video setOwnerId(Integer ownerId) {
+	public void setOwnerId(Integer ownerId) {
 		this.ownerId = ownerId;
-		return this;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public Video setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
-		return this;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
-	public Video setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
-		return this;
 	}
 
 	public Integer getDuration() {
 		return duration;
 	}
 
-	public Video setDuration(Integer duration) {
+	public void setDuration(Integer duration) {
 		this.duration = duration;
-		return this;
 	}
 
 	public Integer getDate() {
 		return date;
 	}
 
-	public Video setDate(Integer date) {
+	public void setDate(Integer date) {
 		this.date = date;
-		return this;
 	}
 
 	public Integer getAddingDate() {
 		return addingDate;
 	}
 
-	public Video setAddingDate(Integer addingDate) {
+	public void setAddingDate(Integer addingDate) {
 		this.addingDate = addingDate;
-		return this;
 	}
 
 	public Integer getViews() {
 		return views;
 	}
 
-	public Video setViews(Integer views) {
+	public void setViews(Integer views) {
 		this.views = views;
-		return this;
 	}
 
 	public Integer getCommentsAmount() {
 		return commentsAmount;
 	}
 
-	public Video setCommentsAmount(Integer commentsAmount) {
+	public void setCommentsAmount(Integer commentsAmount) {
 		this.commentsAmount = commentsAmount;
-		return this;
 	}
 
 	public String getPlayer() {
 		return player;
 	}
 
-	public Video setPlayer(String player) {
+	public void setPlayer(String player) {
 		this.player = player;
-		return this;
 	}
 
 	public String getPlatform() {
 		return platform;
 	}
 
-	public Video setPlatform(String platform) {
+	public void setPlatform(String platform) {
 		this.platform = platform;
-		return this;
 	}
 
 	public boolean isCanEdit() {
 		return canEdit;
 	}
 
-	public Video setCanEdit(boolean canEdit) {
+	public void setCanEdit(boolean canEdit) {
 		this.canEdit = canEdit;
-		return this;
 	}
 
 	public boolean isCanAdd() {
 		return canAdd;
 	}
 
-	public Video setCanAdd(boolean canAdd) {
+	public void setCanAdd(boolean canAdd) {
 		this.canAdd = canAdd;
-		return this;
 	}
 
 	public boolean isPrivate() {
 		return isPrivate;
 	}
 
-	public Video setPrivate(boolean aPrivate) {
+	public void setPrivate(boolean aPrivate) {
 		isPrivate = aPrivate;
-		return this;
 	}
 
 	public String getAccessKey() {
 		return accessKey;
 	}
 
-	public Video setAccessKey(String accessKey) {
+	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
-		return this;
 	}
 
 	public boolean isProcessing() {
 		return processing;
 	}
 
-	public Video setProcessing(boolean processing) {
+	public void setProcessing(boolean processing) {
 		this.processing = processing;
-		return this;
 	}
 
 	public boolean isLive() {
 		return live;
 	}
 
-	public Video setLive(boolean live) {
+	public void setLive(boolean live) {
 		this.live = live;
-		return this;
 	}
 
 	public boolean isUpcoming() {
 		return upcoming;
 	}
 
-	public Video setUpcoming(boolean upcoming) {
+	public void setUpcoming(boolean upcoming) {
 		this.upcoming = upcoming;
-		return this;
 	}
 
 	public boolean isFavourite() {
 		return isFavourite;
 	}
 
-	public Video setFavourite(boolean favourite) {
+	public void setFavourite(boolean favourite) {
 		isFavourite = favourite;
-		return this;
 	}
 
 	public List<VideoImage> getImage() {
 		return image;
 	}
 
-	public Video setImage(List<VideoImage> videoImage) {
-		this.image = videoImage;
-		return this;
+	public void setImage(List<VideoImage> image) {
+		this.image = image;
 	}
 
 	public String getTrackCode() {
 		return trackCode;
 	}
 
-	public Video setTrackCode(String trackCode) {
+	public void setTrackCode(String trackCode) {
 		this.trackCode = trackCode;
-		return this;
 	}
 
 	public String getType() {
 		return type;
 	}
 
-	public Video setType(String type) {
+	public void setType(String type) {
 		this.type = type;
-		return this;
 	}
 
 	public Integer getLocalViews() {
 		return localViews;
 	}
 
-	public Video setLocalViews(Integer localViews) {
+	public void setLocalViews(Integer localViews) {
 		this.localViews = localViews;
-		return this;
 	}
 }

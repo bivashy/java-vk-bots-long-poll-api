@@ -14,9 +14,8 @@ public class PhotosGetOwnerCoverPhotoUploadServerResult {
             return uploadUrl;
         }
 
-        public Response setUploadUrl(String uploadUrl) {
+        public void setUploadUrl(String uploadUrl) {
             this.uploadUrl = uploadUrl;
-            return this;
         }
     }
 
@@ -24,8 +23,7 @@ public class PhotosGetOwnerCoverPhotoUploadServerResult {
         return response;
     }
 
-    public PhotosGetOwnerCoverPhotoUploadServerResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

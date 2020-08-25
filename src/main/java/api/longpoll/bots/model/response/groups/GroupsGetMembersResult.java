@@ -16,9 +16,8 @@ public class GroupsGetMembersResult {
             return role;
         }
 
-        public Item setRole(String role) {
+        public void setRole(String role) {
             this.role = role;
-            return this;
         }
     }
 
@@ -26,8 +25,7 @@ public class GroupsGetMembersResult {
         return response;
     }
 
-    public GroupsGetMembersResult setResponse(VkList<Object> response) {
+    public void setResponse(VkList<Object> response) {
         this.response = response;
-        return this;
     }
 }

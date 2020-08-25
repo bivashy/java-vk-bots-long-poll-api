@@ -25,17 +25,15 @@ public class VkList<T> {
 		return count;
 	}
 
-	public VkList<T> setCount(Integer count) {
+	public void setCount(Integer count) {
 		this.count = count;
-		return this;
 	}
 
 	public List<T> getItems() {
 		return items;
 	}
 
-	public VkList<T> setItems(List<T> items) {
+	public void setItems(List<T> items) {
 		this.items = items;
-		return this;
 	}
 }

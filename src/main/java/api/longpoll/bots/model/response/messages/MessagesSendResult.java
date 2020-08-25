@@ -6,15 +6,6 @@ public class MessagesSendResult {
 	@SerializedName("response")
 	private Object response;
 
-	public Object getResponse() {
-		return response;
-	}
-
-	public MessagesSendResult setResponse(Object response) {
-		this.response = response;
-		return this;
-	}
-
 	public static class Response {
 		@SerializedName("peer_id")
 		private Integer peerId;
@@ -27,27 +18,32 @@ public class MessagesSendResult {
 			return peerId;
 		}
 
-		public Response setPeerId(Integer peerId) {
+		public void setPeerId(Integer peerId) {
 			this.peerId = peerId;
-			return this;
 		}
 
 		public Integer getMessageId() {
 			return messageId;
 		}
 
-		public Response setMessageId(Integer messageId) {
+		public void setMessageId(Integer messageId) {
 			this.messageId = messageId;
-			return this;
 		}
 
 		public String getError() {
 			return error;
 		}
 
-		public Response setError(String error) {
+		public void setError(String error) {
 			this.error = error;
-			return this;
 		}
+	}
+
+	public Object getResponse() {
+		return response;
+	}
+
+	public void setResponse(Object response) {
+		this.response = response;
 	}
 }

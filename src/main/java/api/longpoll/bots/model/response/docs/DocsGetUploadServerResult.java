@@ -15,7 +15,7 @@ public class DocsGetUploadServerResult {
 	/**
 	 * Describes response object.
 	 */
-	public class Response {
+	public static class Response {
 		/**
 		 * Link to which the document can be uploaded.
 		 */
@@ -26,9 +26,8 @@ public class DocsGetUploadServerResult {
 			return uploadUrl;
 		}
 
-		public Response setUploadUrl(String uploadUrl) {
+		public void setUploadUrl(String uploadUrl) {
 			this.uploadUrl = uploadUrl;
-			return this;
 		}
 	}
 
@@ -36,8 +35,7 @@ public class DocsGetUploadServerResult {
 		return response;
 	}
 
-	public DocsGetUploadServerResult setResponse(Response response) {
+	public void setResponse(Response response) {
 		this.response = response;
-		return this;
 	}
 }

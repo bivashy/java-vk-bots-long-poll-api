@@ -16,18 +16,16 @@ public class UtilsCheckLinkResult {
             return status;
         }
 
-        public Response setStatus(String status) {
+        public void setStatus(String status) {
             this.status = status;
-            return this;
         }
 
         public String getLink() {
             return link;
         }
 
-        public Response setLink(String link) {
+        public void setLink(String link) {
             this.link = link;
-            return this;
         }
     }
 
@@ -35,8 +33,7 @@ public class UtilsCheckLinkResult {
         return response;
     }
 
-    public UtilsCheckLinkResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

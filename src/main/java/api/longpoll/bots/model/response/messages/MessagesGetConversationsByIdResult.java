@@ -19,9 +19,8 @@ public class MessagesGetConversationsByIdResult {
             return profiles;
         }
 
-        public Item setProfiles(List<User> profiles) {
+        public void setProfiles(List<User> profiles) {
             this.profiles = profiles;
-            return this;
         }
     }
 
@@ -29,8 +28,7 @@ public class MessagesGetConversationsByIdResult {
         return response;
     }
 
-    public MessagesGetConversationsByIdResult setResponse(VkList<Item> response) {
+    public void setResponse(VkList<Item> response) {
         this.response = response;
-        return this;
     }
 }

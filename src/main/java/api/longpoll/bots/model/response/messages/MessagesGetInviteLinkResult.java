@@ -14,9 +14,8 @@ public class MessagesGetInviteLinkResult {
             return link;
         }
 
-        public Response setLink(String link) {
+        public void setLink(String link) {
             this.link = link;
-            return this;
         }
     }
 
@@ -24,8 +23,7 @@ public class MessagesGetInviteLinkResult {
         return response;
     }
 
-    public MessagesGetInviteLinkResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

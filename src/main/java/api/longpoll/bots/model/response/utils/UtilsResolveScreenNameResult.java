@@ -16,18 +16,16 @@ public class UtilsResolveScreenNameResult {
             return type;
         }
 
-        public Response setType(String type) {
+        public void setType(String type) {
             this.type = type;
-            return this;
         }
 
         public Integer getObjectId() {
             return objectId;
         }
 
-        public Response setObjectId(Integer objectId) {
+        public void setObjectId(Integer objectId) {
             this.objectId = objectId;
-            return this;
         }
     }
 
@@ -35,8 +33,7 @@ public class UtilsResolveScreenNameResult {
         return response;
     }
 
-    public UtilsResolveScreenNameResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

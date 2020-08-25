@@ -24,18 +24,16 @@ public class GroupsGetTokenPermissionsResult {
                 return setting;
             }
 
-            public Setting setSetting(Integer setting) {
+            public void setSetting(Integer setting) {
                 this.setting = setting;
-                return this;
             }
 
             public String getName() {
                 return name;
             }
 
-            public Setting setName(String name) {
+            public void setName(String name) {
                 this.name = name;
-                return this;
             }
         }
 
@@ -43,18 +41,16 @@ public class GroupsGetTokenPermissionsResult {
             return mask;
         }
 
-        public Response setMask(Integer mask) {
+        public void setMask(Integer mask) {
             this.mask = mask;
-            return this;
         }
 
         public List<Setting> getSettings() {
             return settings;
         }
 
-        public Response setSettings(List<Setting> settings) {
+        public void setSettings(List<Setting> settings) {
             this.settings = settings;
-            return this;
         }
     }
 
@@ -62,8 +58,7 @@ public class GroupsGetTokenPermissionsResult {
         return response;
     }
 
-    public GroupsGetTokenPermissionsResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

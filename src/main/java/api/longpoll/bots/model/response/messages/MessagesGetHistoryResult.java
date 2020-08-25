@@ -24,27 +24,24 @@ public class MessagesGetHistoryResult {
             return unread;
         }
 
-        public Response setUnread(Integer unread) {
+        public void setUnread(Integer unread) {
             this.unread = unread;
-            return this;
         }
 
         public List<Conversation> getConversations() {
             return conversations;
         }
 
-        public Response setConversations(List<Conversation> conversations) {
+        public void setConversations(List<Conversation> conversations) {
             this.conversations = conversations;
-            return this;
         }
 
         public List<User> getProfiles() {
             return profiles;
         }
 
-        public Response setProfiles(List<User> profiles) {
+        public void setProfiles(List<User> profiles) {
             this.profiles = profiles;
-            return this;
         }
     }
 
@@ -52,8 +49,7 @@ public class MessagesGetHistoryResult {
         return response;
     }
 
-    public MessagesGetHistoryResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

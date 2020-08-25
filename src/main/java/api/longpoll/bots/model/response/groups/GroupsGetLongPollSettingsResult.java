@@ -14,9 +14,8 @@ public class GroupsGetLongPollSettingsResult {
             return enabled;
         }
 
-        public Response setEnabled(Boolean enabled) {
+        public void setEnabled(Boolean enabled) {
             this.enabled = enabled;
-            return this;
         }
     }
 
@@ -24,8 +23,7 @@ public class GroupsGetLongPollSettingsResult {
         return response;
     }
 
-    public GroupsGetLongPollSettingsResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

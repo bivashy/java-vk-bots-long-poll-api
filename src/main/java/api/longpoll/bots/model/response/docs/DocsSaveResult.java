@@ -16,7 +16,7 @@ public class DocsSaveResult {
 	/**
 	 * Describes response object.
 	 */
-	public class Response {
+	public static class Response {
 		/**
 		 * Type of document. Possible values:
 		 * <ul>
@@ -37,18 +37,16 @@ public class DocsSaveResult {
 			return type;
 		}
 
-		public Response setType(String type) {
+		public void setType(String type) {
 			this.type = type;
-			return this;
 		}
 
 		public Attachable getAttachable() {
 			return attachable;
 		}
 
-		public Response setAttachable(Attachable attachable) {
+		public void setAttachable(Attachable attachable) {
 			this.attachable = attachable;
-			return this;
 		}
 	}
 
@@ -56,10 +54,7 @@ public class DocsSaveResult {
 		return response;
 	}
 
-	public DocsSaveResult setResponse(Response response) {
+	public void setResponse(Response response) {
 		this.response = response;
-		return this;
 	}
 }
-
-// TODO: 13.08.2020 update according to https://vk.com/dev/docs.save

@@ -5,12 +5,14 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.docs.DocsSearchResult;
+import api.longpoll.bots.model.objects.additional.VkList;
+import api.longpoll.bots.model.objects.media.Doc;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
-public class DocsSearch extends GetMethod<DocsSearchResult> {
+public class DocsSearch extends GetMethod<VkList<Doc>> {
 	private String q;
 	private Integer count;
 	private Integer offset;
@@ -26,8 +28,8 @@ public class DocsSearch extends GetMethod<DocsSearchResult> {
 	}
 
 	@Override
-	protected JsonToPojoConverter<DocsSearchResult> getConverter() {
-		return GenericConverterFactory.get(DocsSearchResult.class);
+	protected JsonToPojoConverter<VkList<Doc>> getConverter() {
+		return GenericConverterFactory.get(new TypeToken<VkList<Doc>>(){}.getType());
 	}
 
 	@Override

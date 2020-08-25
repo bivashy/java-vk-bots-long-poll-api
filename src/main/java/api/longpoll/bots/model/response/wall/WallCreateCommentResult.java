@@ -18,18 +18,16 @@ public class WallCreateCommentResult {
             return commentId;
         }
 
-        public Response setCommentId(Integer commentId) {
+        public void setCommentId(Integer commentId) {
             this.commentId = commentId;
-            return this;
         }
 
         public List<Integer> getParentStack() {
             return parentStack;
         }
 
-        public Response setParentStack(List<Integer> parentStack) {
+        public void setParentStack(List<Integer> parentStack) {
             this.parentStack = parentStack;
-            return this;
         }
     }
 
@@ -37,8 +35,7 @@ public class WallCreateCommentResult {
         return response;
     }
 
-    public WallCreateCommentResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

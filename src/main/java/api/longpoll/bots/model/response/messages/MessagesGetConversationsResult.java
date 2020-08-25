@@ -25,27 +25,24 @@ public class MessagesGetConversationsResult {
             return unreadCount;
         }
 
-        public Response setUnreadCount(Integer unreadCount) {
+        public void setUnreadCount(Integer unreadCount) {
             this.unreadCount = unreadCount;
-            return this;
         }
 
         public List<User> getProfiles() {
             return profiles;
         }
 
-        public Response setProfiles(List<User> profiles) {
+        public void setProfiles(List<User> profiles) {
             this.profiles = profiles;
-            return this;
         }
 
         public List<Community> getGroups() {
             return groups;
         }
 
-        public Response setGroups(List<Community> groups) {
+        public void setGroups(List<Community> groups) {
             this.groups = groups;
-            return this;
         }
     }
 
@@ -59,18 +56,16 @@ public class MessagesGetConversationsResult {
             return chat;
         }
 
-        public Item setChat(Chat chat) {
+        public void setChat(Chat chat) {
             this.chat = chat;
-            return this;
         }
 
         public Message getMessage() {
             return message;
         }
 
-        public Item setMessage(Message message) {
+        public void setMessage(Message message) {
             this.message = message;
-            return this;
         }
     }
 
@@ -78,8 +73,7 @@ public class MessagesGetConversationsResult {
         return response;
     }
 
-    public MessagesGetConversationsResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

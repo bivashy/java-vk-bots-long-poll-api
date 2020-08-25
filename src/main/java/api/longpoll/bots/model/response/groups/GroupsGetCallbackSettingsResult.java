@@ -131,333 +131,296 @@ public class GroupsGetCallbackSettingsResult {
                 return messageNew;
             }
 
-            public Events setMessageNew(Boolean messageNew) {
+            public void setMessageNew(Boolean messageNew) {
                 this.messageNew = messageNew;
-                return this;
             }
 
             public Boolean getMessageReply() {
                 return messageReply;
             }
 
-            public Events setMessageReply(Boolean messageReply) {
+            public void setMessageReply(Boolean messageReply) {
                 this.messageReply = messageReply;
-                return this;
             }
 
             public Boolean getMessageEdit() {
                 return messageEdit;
             }
 
-            public Events setMessageEdit(Boolean messageEdit) {
+            public void setMessageEdit(Boolean messageEdit) {
                 this.messageEdit = messageEdit;
-                return this;
             }
 
             public Boolean getMessageAllow() {
                 return messageAllow;
             }
 
-            public Events setMessageAllow(Boolean messageAllow) {
+            public void setMessageAllow(Boolean messageAllow) {
                 this.messageAllow = messageAllow;
-                return this;
             }
 
             public Boolean getMessageDeny() {
                 return messageDeny;
             }
 
-            public Events setMessageDeny(Boolean messageDeny) {
+            public void setMessageDeny(Boolean messageDeny) {
                 this.messageDeny = messageDeny;
-                return this;
             }
 
             public Boolean getPhotoNew() {
                 return photoNew;
             }
 
-            public Events setPhotoNew(Boolean photoNew) {
+            public void setPhotoNew(Boolean photoNew) {
                 this.photoNew = photoNew;
-                return this;
             }
 
             public Boolean getAudioNew() {
                 return audioNew;
             }
 
-            public Events setAudioNew(Boolean audioNew) {
+            public void setAudioNew(Boolean audioNew) {
                 this.audioNew = audioNew;
-                return this;
             }
 
             public Boolean getVideoNew() {
                 return videoNew;
             }
 
-            public Events setVideoNew(Boolean videoNew) {
+            public void setVideoNew(Boolean videoNew) {
                 this.videoNew = videoNew;
-                return this;
             }
 
             public Boolean getWallReplyNew() {
                 return wallReplyNew;
             }
 
-            public Events setWallReplyNew(Boolean wallReplyNew) {
+            public void setWallReplyNew(Boolean wallReplyNew) {
                 this.wallReplyNew = wallReplyNew;
-                return this;
             }
 
             public Boolean getWallReplyEdit() {
                 return wallReplyEdit;
             }
 
-            public Events setWallReplyEdit(Boolean wallReplyEdit) {
+            public void setWallReplyEdit(Boolean wallReplyEdit) {
                 this.wallReplyEdit = wallReplyEdit;
-                return this;
             }
 
             public Boolean getWallReplyDelete() {
                 return wallReplyDelete;
             }
 
-            public Events setWallReplyDelete(Boolean wallReplyDelete) {
+            public void setWallReplyDelete(Boolean wallReplyDelete) {
                 this.wallReplyDelete = wallReplyDelete;
-                return this;
             }
 
             public Boolean getWallPostNew() {
                 return wallPostNew;
             }
 
-            public Events setWallPostNew(Boolean wallPostNew) {
+            public void setWallPostNew(Boolean wallPostNew) {
                 this.wallPostNew = wallPostNew;
-                return this;
             }
 
             public Boolean getWallRepost() {
                 return wallRepost;
             }
 
-            public Events setWallRepost(Boolean wallRepost) {
+            public void setWallRepost(Boolean wallRepost) {
                 this.wallRepost = wallRepost;
-                return this;
             }
 
             public Boolean getBoardPostNew() {
                 return boardPostNew;
             }
 
-            public Events setBoardPostNew(Boolean boardPostNew) {
+            public void setBoardPostNew(Boolean boardPostNew) {
                 this.boardPostNew = boardPostNew;
-                return this;
             }
 
             public Boolean getBoardPostEdit() {
                 return boardPostEdit;
             }
 
-            public Events setBoardPostEdit(Boolean boardPostEdit) {
+            public void setBoardPostEdit(Boolean boardPostEdit) {
                 this.boardPostEdit = boardPostEdit;
-                return this;
             }
 
             public Boolean getBoardPostDelete() {
                 return boardPostDelete;
             }
 
-            public Events setBoardPostDelete(Boolean boardPostDelete) {
+            public void setBoardPostDelete(Boolean boardPostDelete) {
                 this.boardPostDelete = boardPostDelete;
-                return this;
             }
 
             public Boolean getBoardPostRestore() {
                 return boardPostRestore;
             }
 
-            public Events setBoardPostRestore(Boolean boardPostRestore) {
+            public void setBoardPostRestore(Boolean boardPostRestore) {
                 this.boardPostRestore = boardPostRestore;
-                return this;
             }
 
             public Boolean getPhotoCommentNew() {
                 return PhotoCommentNew;
             }
 
-            public Events setPhotoCommentNew(Boolean photoCommentNew) {
+            public void setPhotoCommentNew(Boolean photoCommentNew) {
                 PhotoCommentNew = photoCommentNew;
-                return this;
             }
 
             public Boolean getPhotoCommentEdit() {
                 return photoCommentEdit;
             }
 
-            public Events setPhotoCommentEdit(Boolean photoCommentEdit) {
+            public void setPhotoCommentEdit(Boolean photoCommentEdit) {
                 this.photoCommentEdit = photoCommentEdit;
-                return this;
             }
 
             public Boolean getPhotoCommentDelete() {
                 return photoCommentDelete;
             }
 
-            public Events setPhotoCommentDelete(Boolean photoCommentDelete) {
+            public void setPhotoCommentDelete(Boolean photoCommentDelete) {
                 this.photoCommentDelete = photoCommentDelete;
-                return this;
             }
 
             public Boolean getPhotoCommentRestore() {
                 return photoCommentRestore;
             }
 
-            public Events setPhotoCommentRestore(Boolean photoCommentRestore) {
+            public void setPhotoCommentRestore(Boolean photoCommentRestore) {
                 this.photoCommentRestore = photoCommentRestore;
-                return this;
             }
 
             public Boolean getVideoCommentNew() {
                 return videoCommentNew;
             }
 
-            public Events setVideoCommentNew(Boolean videoCommentNew) {
+            public void setVideoCommentNew(Boolean videoCommentNew) {
                 this.videoCommentNew = videoCommentNew;
-                return this;
             }
 
             public Boolean getVideoCommentEdit() {
                 return videoCommentEdit;
             }
 
-            public Events setVideoCommentEdit(Boolean videoCommentEdit) {
+            public void setVideoCommentEdit(Boolean videoCommentEdit) {
                 this.videoCommentEdit = videoCommentEdit;
-                return this;
             }
 
             public Boolean getVideoCommentDelete() {
                 return videoCommentDelete;
             }
 
-            public Events setVideoCommentDelete(Boolean videoCommentDelete) {
+            public void setVideoCommentDelete(Boolean videoCommentDelete) {
                 this.videoCommentDelete = videoCommentDelete;
-                return this;
             }
 
             public Boolean getVideoCommentRestore() {
                 return videoCommentRestore;
             }
 
-            public Events setVideoCommentRestore(Boolean videoCommentRestore) {
+            public void setVideoCommentRestore(Boolean videoCommentRestore) {
                 this.videoCommentRestore = videoCommentRestore;
-                return this;
             }
 
             public Boolean getMarketCommentNew() {
                 return marketCommentNew;
             }
 
-            public Events setMarketCommentNew(Boolean marketCommentNew) {
+            public void setMarketCommentNew(Boolean marketCommentNew) {
                 this.marketCommentNew = marketCommentNew;
-                return this;
             }
 
             public Boolean getMarketCommentEdit() {
                 return marketCommentEdit;
             }
 
-            public Events setMarketCommentEdit(Boolean marketCommentEdit) {
+            public void setMarketCommentEdit(Boolean marketCommentEdit) {
                 this.marketCommentEdit = marketCommentEdit;
-                return this;
             }
 
             public Boolean getMarketCommentDelete() {
                 return marketCommentDelete;
             }
 
-            public Events setMarketCommentDelete(Boolean marketCommentDelete) {
+            public void setMarketCommentDelete(Boolean marketCommentDelete) {
                 this.marketCommentDelete = marketCommentDelete;
-                return this;
             }
 
             public Boolean getMarketCommentRestore() {
                 return marketCommentRestore;
             }
 
-            public Events setMarketCommentRestore(Boolean marketCommentRestore) {
+            public void setMarketCommentRestore(Boolean marketCommentRestore) {
                 this.marketCommentRestore = marketCommentRestore;
-                return this;
             }
 
             public Boolean getPollVoteNew() {
                 return pollVoteNew;
             }
 
-            public Events setPollVoteNew(Boolean pollVoteNew) {
+            public void setPollVoteNew(Boolean pollVoteNew) {
                 this.pollVoteNew = pollVoteNew;
-                return this;
             }
 
             public Boolean getGroupJoin() {
                 return groupJoin;
             }
 
-            public Events setGroupJoin(Boolean groupJoin) {
+            public void setGroupJoin(Boolean groupJoin) {
                 this.groupJoin = groupJoin;
-                return this;
             }
 
             public Boolean getGroupLeave() {
                 return groupLeave;
             }
 
-            public Events setGroupLeave(Boolean groupLeave) {
+            public void setGroupLeave(Boolean groupLeave) {
                 this.groupLeave = groupLeave;
-                return this;
             }
 
             public Boolean getUserBlock() {
                 return userBlock;
             }
 
-            public Events setUserBlock(Boolean userBlock) {
+            public void setUserBlock(Boolean userBlock) {
                 this.userBlock = userBlock;
-                return this;
             }
 
             public Boolean getUserUnblock() {
                 return userUnblock;
             }
 
-            public Events setUserUnblock(Boolean userUnblock) {
+            public void setUserUnblock(Boolean userUnblock) {
                 this.userUnblock = userUnblock;
-                return this;
             }
 
             public Boolean getGroupChangeSettings() {
                 return groupChangeSettings;
             }
 
-            public Events setGroupChangeSettings(Boolean groupChangeSettings) {
+            public void setGroupChangeSettings(Boolean groupChangeSettings) {
                 this.groupChangeSettings = groupChangeSettings;
-                return this;
             }
 
             public Boolean getGroupChangePhoto() {
                 return groupChangePhoto;
             }
 
-            public Events setGroupChangePhoto(Boolean groupChangePhoto) {
+            public void setGroupChangePhoto(Boolean groupChangePhoto) {
                 this.groupChangePhoto = groupChangePhoto;
-                return this;
             }
 
             public Boolean getGroupOfficersEdit() {
                 return groupOfficersEdit;
             }
 
-            public Events setGroupOfficersEdit(Boolean groupOfficersEdit) {
+            public void setGroupOfficersEdit(Boolean groupOfficersEdit) {
                 this.groupOfficersEdit = groupOfficersEdit;
-                return this;
             }
         }
 
@@ -465,18 +428,16 @@ public class GroupsGetCallbackSettingsResult {
             return apiVersion;
         }
 
-        public Response setApiVersion(String apiVersion) {
+        public void setApiVersion(String apiVersion) {
             this.apiVersion = apiVersion;
-            return this;
         }
 
         public Events getEvents() {
             return events;
         }
 
-        public Response setEvents(Events events) {
+        public void setEvents(Events events) {
             this.events = events;
-            return this;
         }
     }
 
@@ -484,8 +445,7 @@ public class GroupsGetCallbackSettingsResult {
         return response;
     }
 
-    public GroupsGetCallbackSettingsResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

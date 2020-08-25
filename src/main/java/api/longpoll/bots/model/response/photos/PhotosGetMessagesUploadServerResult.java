@@ -6,16 +6,7 @@ public class PhotosGetMessagesUploadServerResult {
 	@SerializedName("response")
 	private Response response;
 
-	public Response getResponse() {
-		return response;
-	}
-
-	public PhotosGetMessagesUploadServerResult setResponse(Response response) {
-		this.response = response;
-		return this;
-	}
-
-	public class Response {
+	public static class Response {
 		@SerializedName("upload_url")
 		private String uploadUrl;
 		@SerializedName("album_id")
@@ -27,27 +18,32 @@ public class PhotosGetMessagesUploadServerResult {
 			return uploadUrl;
 		}
 
-		public Response setUploadUrl(String uploadUrl) {
+		public void setUploadUrl(String uploadUrl) {
 			this.uploadUrl = uploadUrl;
-			return this;
 		}
 
 		public Integer getAlbumId() {
 			return albumId;
 		}
 
-		public Response setAlbumId(Integer albumId) {
+		public void setAlbumId(Integer albumId) {
 			this.albumId = albumId;
-			return this;
 		}
 
 		public Integer getGroupId() {
 			return groupId;
 		}
 
-		public Response setGroupId(Integer groupId) {
+		public void setGroupId(Integer groupId) {
 			this.groupId = groupId;
-			return this;
 		}
+	}
+
+	public Response getResponse() {
+		return response;
+	}
+
+	public void setResponse(Response response) {
+		this.response = response;
 	}
 }

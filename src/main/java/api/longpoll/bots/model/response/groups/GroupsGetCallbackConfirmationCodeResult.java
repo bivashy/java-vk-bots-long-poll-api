@@ -14,9 +14,8 @@ public class GroupsGetCallbackConfirmationCodeResult {
             return code;
         }
 
-        public Response setCode(String code) {
+        public void setCode(String code) {
             this.code = code;
-            return this;
         }
     }
 
@@ -24,8 +23,7 @@ public class GroupsGetCallbackConfirmationCodeResult {
         return response;
     }
 
-    public GroupsGetCallbackConfirmationCodeResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

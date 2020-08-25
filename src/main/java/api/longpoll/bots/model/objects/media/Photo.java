@@ -62,75 +62,67 @@ public class Photo implements Attachable {
 		return text != null && !text.isEmpty();
 	}
 
-	public Photo setId(Integer id) {
-		this.id = id;
-		return this;
-	}
-
-	public Photo setAlbumId(Integer albumId) {
-		this.albumId = albumId;
-		return this;
-	}
-
-	public Photo setOwnerId(Integer ownerId) {
-		this.ownerId = ownerId;
-		return this;
-	}
-
-	public Photo setUserId(Integer userId) {
-		this.userId = userId;
-		return this;
-	}
-
-	public Photo setText(String text) {
-		this.text = text;
-		return this;
-	}
-
-	public Photo setDate(Integer date) {
-		this.date = date;
-		return this;
-	}
-
-	public Photo setPhotoSizes(List<PhotoSize> photoSizes) {
-		this.photoSizes = photoSizes;
-		return this;
-	}
-
 	public Integer getId() {
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Integer getAlbumId() {
 		return albumId;
 	}
 
+	public void setAlbumId(Integer albumId) {
+		this.albumId = albumId;
+	}
+
 	public Integer getOwnerId() {
 		return ownerId;
+	}
+
+	public void setOwnerId(Integer ownerId) {
+		this.ownerId = ownerId;
 	}
 
 	public Integer getUserId() {
 		return userId;
 	}
 
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
 	public String getText() {
 		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	public Integer getDate() {
 		return date;
 	}
 
+	public void setDate(Integer date) {
+		this.date = date;
+	}
+
 	public List<PhotoSize> getPhotoSizes() {
 		return photoSizes;
+	}
+
+	public void setPhotoSizes(List<PhotoSize> photoSizes) {
+		this.photoSizes = photoSizes;
 	}
 
 	public String getAccessKey() {
 		return accessKey;
 	}
 
-	public Photo setAccessKey(String accessKey) {
+	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
-		return this;
 	}
 }

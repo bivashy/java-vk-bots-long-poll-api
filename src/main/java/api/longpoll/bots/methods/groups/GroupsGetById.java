@@ -5,13 +5,14 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.groups.GroupsGetByIdResult;
+import api.longpoll.bots.model.objects.basic.Community;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
 import java.util.stream.Stream;
 
-public class GroupsGetById extends GetMethod<GroupsGetByIdResult> {
+public class GroupsGetById extends GetMethod<List<Community>> {
     private List<String> groupIds;
     private String groupId;
     private List<String> fields;
@@ -26,8 +27,8 @@ public class GroupsGetById extends GetMethod<GroupsGetByIdResult> {
     }
 
     @Override
-    protected JsonToPojoConverter<GroupsGetByIdResult> getConverter() {
-        return GenericConverterFactory.get(GroupsGetByIdResult.class);
+    protected JsonToPojoConverter<List<Community>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<List<Community>>(){}.getType());
     }
 
     @Override

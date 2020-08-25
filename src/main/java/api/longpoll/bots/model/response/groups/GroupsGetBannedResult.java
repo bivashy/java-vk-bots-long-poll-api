@@ -35,45 +35,40 @@ public class GroupsGetBannedResult {
 				return adminId;
 			}
 
-			public BanInfo setAdminId(Integer adminId) {
+			public void setAdminId(Integer adminId) {
 				this.adminId = adminId;
-				return this;
 			}
 
 			public Integer getDate() {
 				return date;
 			}
 
-			public BanInfo setDate(Integer date) {
+			public void setDate(Integer date) {
 				this.date = date;
-				return this;
 			}
 
 			public Integer getReason() {
 				return reason;
 			}
 
-			public BanInfo setReason(Integer reason) {
+			public void setReason(Integer reason) {
 				this.reason = reason;
-				return this;
 			}
 
 			public String getComment() {
 				return comment;
 			}
 
-			public BanInfo setComment(String comment) {
+			public void setComment(String comment) {
 				this.comment = comment;
-				return this;
 			}
 
 			public Integer getEndDate() {
 				return endDate;
 			}
 
-			public BanInfo setEndDate(Integer endDate) {
+			public void setEndDate(Integer endDate) {
 				this.endDate = endDate;
-				return this;
 			}
 		}
 
@@ -81,36 +76,32 @@ public class GroupsGetBannedResult {
 			return type;
 		}
 
-		public Item setType(String type) {
+		public void setType(String type) {
 			this.type = type;
-			return this;
 		}
 
 		public Community getGroup() {
 			return group;
 		}
 
-		public Item setGroup(Community group) {
+		public void setGroup(Community group) {
 			this.group = group;
-			return this;
 		}
 
 		public User getProfile() {
 			return profile;
 		}
 
-		public Item setProfile(User profile) {
+		public void setProfile(User profile) {
 			this.profile = profile;
-			return this;
 		}
 
 		public BanInfo getBanInfo() {
 			return banInfo;
 		}
 
-		public Item setBanInfo(BanInfo banInfo) {
+		public void setBanInfo(BanInfo banInfo) {
 			this.banInfo = banInfo;
-			return this;
 		}
 	}
 
@@ -118,8 +109,7 @@ public class GroupsGetBannedResult {
 		return response;
 	}
 
-	public GroupsGetBannedResult setResponse(VkList<Item> response) {
+	public void setResponse(VkList<Item> response) {
 		this.response = response;
-		return this;
 	}
 }

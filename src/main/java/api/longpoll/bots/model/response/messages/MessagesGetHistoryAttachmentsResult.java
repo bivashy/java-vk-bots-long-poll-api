@@ -25,18 +25,16 @@ public class MessagesGetHistoryAttachmentsResult {
                 return messageId;
             }
 
-            public Item setMessageId(Integer messageId) {
+            public void setMessageId(Integer messageId) {
                 this.messageId = messageId;
-                return this;
             }
 
             public Attachment getAttachment() {
                 return attachment;
             }
 
-            public Item setAttachment(Attachment attachment) {
+            public void setAttachment(Attachment attachment) {
                 this.attachment = attachment;
-                return this;
             }
         }
 
@@ -44,18 +42,16 @@ public class MessagesGetHistoryAttachmentsResult {
             return items;
         }
 
-        public Response setItems(List<Item> items) {
+        public void setItems(List<Item> items) {
             this.items = items;
-            return this;
         }
 
         public String getNextFrom() {
             return nextFrom;
         }
 
-        public Response setNextFrom(String nextFrom) {
+        public void setNextFrom(String nextFrom) {
             this.nextFrom = nextFrom;
-            return this;
         }
     }
 
@@ -63,8 +59,7 @@ public class MessagesGetHistoryAttachmentsResult {
         return response;
     }
 
-    public MessagesGetHistoryAttachmentsResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

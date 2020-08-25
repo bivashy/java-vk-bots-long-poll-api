@@ -79,7 +79,7 @@ public class WallPost implements Attachable {
 	@SerializedName("post_source")
 	private PostSource postSource;
 
-	public class Comments {
+	public static class Comments {
 		@SerializedName("count")
 		private Integer count;
 		@SerializedName("can_post")
@@ -97,49 +97,44 @@ public class WallPost implements Attachable {
 			return count;
 		}
 
-		public Comments setCount(Integer count) {
+		public void setCount(Integer count) {
 			this.count = count;
-			return this;
 		}
 
 		public boolean isCanPost() {
 			return canPost;
 		}
 
-		public Comments setCanPost(boolean canPost) {
+		public void setCanPost(boolean canPost) {
 			this.canPost = canPost;
-			return this;
 		}
 
 		public boolean isGroupsCanPost() {
 			return groupsCanPost;
 		}
 
-		public Comments setGroupsCanPost(boolean groupsCanPost) {
+		public void setGroupsCanPost(boolean groupsCanPost) {
 			this.groupsCanPost = groupsCanPost;
-			return this;
 		}
 
 		public boolean isCanClose() {
 			return canClose;
 		}
 
-		public Comments setCanClose(boolean canClose) {
+		public void setCanClose(boolean canClose) {
 			this.canClose = canClose;
-			return this;
 		}
 
 		public boolean isCanOpen() {
 			return canOpen;
 		}
 
-		public Comments setCanOpen(boolean canOpen) {
+		public void setCanOpen(boolean canOpen) {
 			this.canOpen = canOpen;
-			return this;
 		}
 	}
 
-	public class From {
+	public static class From {
 		@SerializedName("id")
 		private Integer id;
 		@SerializedName("name")
@@ -158,58 +153,52 @@ public class WallPost implements Attachable {
 			return id;
 		}
 
-		public From setId(Integer id) {
+		public void setId(Integer id) {
 			this.id = id;
-			return this;
 		}
 
 		public String getName() {
 			return name;
 		}
 
-		public From setName(String name) {
+		public void setName(String name) {
 			this.name = name;
-			return this;
 		}
 
 		public boolean isClosed() {
 			return closed;
 		}
 
-		public From setClosed(boolean closed) {
+		public void setClosed(boolean closed) {
 			this.closed = closed;
-			return this;
 		}
 
 		public String getType() {
 			return type;
 		}
 
-		public From setType(String type) {
+		public void setType(String type) {
 			this.type = type;
-			return this;
 		}
 
 		public String getPhoto50() {
 			return photo50;
 		}
 
-		public From setPhoto50(String photo50) {
+		public void setPhoto50(String photo50) {
 			this.photo50 = photo50;
-			return this;
 		}
 
 		public String getPhoto100() {
 			return photo100;
 		}
 
-		public From setPhoto100(String photo100) {
+		public void setPhoto100(String photo100) {
 			this.photo100 = photo100;
-			return this;
 		}
 	}
 
-	public class Likes extends WallComment.Likes {
+	public static class Likes extends WallComment.Likes {
 		@SerializedName("can_publish")
 		@JsonAdapter(BoolIntAdapter.class)
 		private boolean canPublish;
@@ -218,13 +207,12 @@ public class WallPost implements Attachable {
 			return canPublish;
 		}
 
-		public Likes setCanPublish(boolean canPublish) {
+		public void setCanPublish(boolean canPublish) {
 			this.canPublish = canPublish;
-			return this;
 		}
 	}
 
-	public class Reposts {
+	public static class Reposts {
 		@SerializedName("count")
 		private Integer count;
 		@SerializedName("user_reposted")
@@ -235,22 +223,20 @@ public class WallPost implements Attachable {
 			return count;
 		}
 
-		public Reposts setCount(Integer count) {
+		public void setCount(Integer count) {
 			this.count = count;
-			return this;
 		}
 
 		public boolean isUserReposted() {
 			return userReposted;
 		}
 
-		public Reposts setUserReposted(boolean userReposted) {
+		public void setUserReposted(boolean userReposted) {
 			this.userReposted = userReposted;
-			return this;
 		}
 	}
 
-	public class Views {
+	public static class Views {
 		@SerializedName("count")
 		private Integer count;
 
@@ -258,13 +244,12 @@ public class WallPost implements Attachable {
 			return count;
 		}
 
-		public Views setCount(Integer count) {
+		public void setCount(Integer count) {
 			this.count = count;
-			return this;
 		}
 	}
 
-	public class PostSource {
+	public static class PostSource {
 		@SerializedName("type")
 		private String type;
 		@SerializedName("platform")
@@ -278,36 +263,32 @@ public class WallPost implements Attachable {
 			return type;
 		}
 
-		public PostSource setType(String type) {
+		public void setType(String type) {
 			this.type = type;
-			return this;
 		}
 
 		public String getPlatform() {
 			return platform;
 		}
 
-		public PostSource setPlatform(String platform) {
+		public void setPlatform(String platform) {
 			this.platform = platform;
-			return this;
 		}
 
 		public String getData() {
 			return data;
 		}
 
-		public PostSource setData(String data) {
+		public void setData(String data) {
 			this.data = data;
-			return this;
 		}
 
 		public String getUrl() {
 			return url;
 		}
 
-		public PostSource setUrl(String url) {
+		public void setUrl(String url) {
 			this.url = url;
-			return this;
 		}
 	}
 
@@ -315,278 +296,247 @@ public class WallPost implements Attachable {
 		return id;
 	}
 
-	public WallPost setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getOwnerId() {
 		return ownerId;
 	}
 
-	public WallPost setOwnerId(Integer ownerId) {
+	public void setOwnerId(Integer ownerId) {
 		this.ownerId = ownerId;
-		return this;
-	}
-
-	public From getFrom() {
-		return from;
-	}
-
-	public WallPost setFrom(From from) {
-		this.from = from;
-		return this;
-	}
-
-	public Integer getCreatedBy() {
-		return createdBy;
-	}
-
-	public WallPost setCreatedBy(Integer createdBy) {
-		this.createdBy = createdBy;
-		return this;
-	}
-
-	public Integer getDate() {
-		return date;
-	}
-
-	public WallPost setDate(Integer date) {
-		this.date = date;
-		return this;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public WallPost setText(String text) {
-		this.text = text;
-		return this;
-	}
-
-	public Integer getReplyOwnerId() {
-		return replyOwnerId;
-	}
-
-	public WallPost setReplyOwnerId(Integer replyOwnerId) {
-		this.replyOwnerId = replyOwnerId;
-		return this;
-	}
-
-	public Integer getReplyPostId() {
-		return replyPostId;
-	}
-
-	public WallPost setReplyPostId(Integer replyPostId) {
-		this.replyPostId = replyPostId;
-		return this;
-	}
-
-	public boolean isFriendsOnly() {
-		return friendsOnly;
-	}
-
-	public WallPost setFriendsOnly(boolean friendsOnly) {
-		this.friendsOnly = friendsOnly;
-		return this;
-	}
-
-	public Comments getComments() {
-		return comments;
-	}
-
-	public WallPost setComments(Comments comments) {
-		this.comments = comments;
-		return this;
-	}
-
-	public String getCopyright() {
-		return copyright;
-	}
-
-	public WallPost setCopyright(String copyright) {
-		this.copyright = copyright;
-		return this;
-	}
-
-	public Likes getLikes() {
-		return likes;
-	}
-
-	public WallPost setLikes(Likes likes) {
-		this.likes = likes;
-		return this;
-	}
-
-	public Reposts getReposts() {
-		return reposts;
-	}
-
-	public WallPost setReposts(Reposts reposts) {
-		this.reposts = reposts;
-		return this;
-	}
-
-	public Views getViews() {
-		return views;
-	}
-
-	public WallPost setViews(Views views) {
-		this.views = views;
-		return this;
-	}
-
-	public String getPostType() {
-		return postType;
-	}
-
-	public WallPost setPostType(String postType) {
-		this.postType = postType;
-		return this;
-	}
-
-	public List<Attachment> getAttachments() {
-		return attachments;
-	}
-
-	public WallPost setAttachments(List<Attachment> attachments) {
-		this.attachments = attachments;
-		return this;
-	}
-
-	public Geo getGeo() {
-		return geo;
-	}
-
-	public WallPost setGeo(Geo geo) {
-		this.geo = geo;
-		return this;
-	}
-
-	public Integer getSignerId() {
-		return signerId;
-	}
-
-	public WallPost setSignerId(Integer signerId) {
-		this.signerId = signerId;
-		return this;
-	}
-
-	public List<WallPost> getCopyHistory() {
-		return copyHistory;
-	}
-
-	public WallPost setCopyHistory(List<WallPost> copyHistory) {
-		this.copyHistory = copyHistory;
-		return this;
-	}
-
-	public boolean isCanPin() {
-		return canPin;
-	}
-
-	public WallPost setCanPin(boolean canPin) {
-		this.canPin = canPin;
-		return this;
-	}
-
-	public boolean isCanDelete() {
-		return canDelete;
-	}
-
-	public WallPost setCanDelete(boolean canDelete) {
-		this.canDelete = canDelete;
-		return this;
-	}
-
-	public boolean isCanEdit() {
-		return canEdit;
-	}
-
-	public WallPost setCanEdit(boolean canEdit) {
-		this.canEdit = canEdit;
-		return this;
-	}
-
-	public boolean isPinned() {
-		return pinned;
-	}
-
-	public WallPost setPinned(boolean pinned) {
-		this.pinned = pinned;
-		return this;
-	}
-
-	public boolean isMarkedAsAds() {
-		return markedAsAds;
-	}
-
-	public WallPost setMarkedAsAds(boolean markedAsAds) {
-		this.markedAsAds = markedAsAds;
-		return this;
-	}
-
-	public boolean isFavourite() {
-		return favourite;
-	}
-
-	public WallPost setFavourite(boolean favourite) {
-		this.favourite = favourite;
-		return this;
-	}
-
-	public Integer getPostponedId() {
-		return postponedId;
-	}
-
-	public WallPost setPostponedId(Integer postponedId) {
-		this.postponedId = postponedId;
-		return this;
-	}
-
-	public Integer getToId() {
-		return toId;
-	}
-
-	public WallPost setToId(Integer toId) {
-		this.toId = toId;
-		return this;
 	}
 
 	public Integer getFromId() {
 		return fromId;
 	}
 
-	public WallPost setFromId(Integer fromId) {
+	public void setFromId(Integer fromId) {
 		this.fromId = fromId;
-		return this;
+	}
+
+	public From getFrom() {
+		return from;
+	}
+
+	public void setFrom(From from) {
+		this.from = from;
+	}
+
+	public Integer getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Integer createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Integer getToId() {
+		return toId;
+	}
+
+	public void setToId(Integer toId) {
+		this.toId = toId;
+	}
+
+	public Integer getDate() {
+		return date;
+	}
+
+	public void setDate(Integer date) {
+		this.date = date;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Integer getReplyOwnerId() {
+		return replyOwnerId;
+	}
+
+	public void setReplyOwnerId(Integer replyOwnerId) {
+		this.replyOwnerId = replyOwnerId;
+	}
+
+	public Integer getReplyPostId() {
+		return replyPostId;
+	}
+
+	public void setReplyPostId(Integer replyPostId) {
+		this.replyPostId = replyPostId;
+	}
+
+	public boolean isFriendsOnly() {
+		return friendsOnly;
+	}
+
+	public void setFriendsOnly(boolean friendsOnly) {
+		this.friendsOnly = friendsOnly;
+	}
+
+	public Comments getComments() {
+		return comments;
+	}
+
+	public void setComments(Comments comments) {
+		this.comments = comments;
+	}
+
+	public String getCopyright() {
+		return copyright;
+	}
+
+	public void setCopyright(String copyright) {
+		this.copyright = copyright;
+	}
+
+	public Likes getLikes() {
+		return likes;
+	}
+
+	public void setLikes(Likes likes) {
+		this.likes = likes;
+	}
+
+	public Reposts getReposts() {
+		return reposts;
+	}
+
+	public void setReposts(Reposts reposts) {
+		this.reposts = reposts;
+	}
+
+	public Views getViews() {
+		return views;
+	}
+
+	public void setViews(Views views) {
+		this.views = views;
+	}
+
+	public String getPostType() {
+		return postType;
+	}
+
+	public void setPostType(String postType) {
+		this.postType = postType;
+	}
+
+	public List<Attachment> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<Attachment> attachments) {
+		this.attachments = attachments;
+	}
+
+	public Geo getGeo() {
+		return geo;
+	}
+
+	public void setGeo(Geo geo) {
+		this.geo = geo;
+	}
+
+	public Integer getSignerId() {
+		return signerId;
+	}
+
+	public void setSignerId(Integer signerId) {
+		this.signerId = signerId;
+	}
+
+	public List<WallPost> getCopyHistory() {
+		return copyHistory;
+	}
+
+	public void setCopyHistory(List<WallPost> copyHistory) {
+		this.copyHistory = copyHistory;
+	}
+
+	public boolean isCanPin() {
+		return canPin;
+	}
+
+	public void setCanPin(boolean canPin) {
+		this.canPin = canPin;
+	}
+
+	public boolean isCanDelete() {
+		return canDelete;
+	}
+
+	public void setCanDelete(boolean canDelete) {
+		this.canDelete = canDelete;
+	}
+
+	public boolean isCanEdit() {
+		return canEdit;
+	}
+
+	public void setCanEdit(boolean canEdit) {
+		this.canEdit = canEdit;
+	}
+
+	public boolean isPinned() {
+		return pinned;
+	}
+
+	public void setPinned(boolean pinned) {
+		this.pinned = pinned;
+	}
+
+	public boolean isMarkedAsAds() {
+		return markedAsAds;
+	}
+
+	public void setMarkedAsAds(boolean markedAsAds) {
+		this.markedAsAds = markedAsAds;
+	}
+
+	public boolean isFavourite() {
+		return favourite;
+	}
+
+	public void setFavourite(boolean favourite) {
+		this.favourite = favourite;
+	}
+
+	public Integer getPostponedId() {
+		return postponedId;
+	}
+
+	public void setPostponedId(Integer postponedId) {
+		this.postponedId = postponedId;
 	}
 
 	public boolean isCanArchive() {
 		return canArchive;
 	}
 
-	public WallPost setCanArchive(boolean canArchive) {
+	public void setCanArchive(boolean canArchive) {
 		this.canArchive = canArchive;
-		return this;
 	}
 
 	public boolean isArchived() {
 		return archived;
 	}
 
-	public WallPost setArchived(boolean archived) {
+	public void setArchived(boolean archived) {
 		this.archived = archived;
-		return this;
 	}
 
 	public PostSource getPostSource() {
 		return postSource;
 	}
 
-	public WallPost setPostSource(PostSource postSource) {
+	public void setPostSource(PostSource postSource) {
 		this.postSource = postSource;
-		return this;
 	}
 }

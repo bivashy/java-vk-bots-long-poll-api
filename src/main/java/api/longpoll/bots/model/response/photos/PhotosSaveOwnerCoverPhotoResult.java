@@ -17,9 +17,8 @@ public class PhotosSaveOwnerCoverPhotoResult {
             return images;
         }
 
-        public Response setImages(List<Image> images) {
+        public void setImages(List<Image> images) {
             this.images = images;
-            return this;
         }
     }
 
@@ -27,8 +26,7 @@ public class PhotosSaveOwnerCoverPhotoResult {
         return response;
     }
 
-    public PhotosSaveOwnerCoverPhotoResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 import java.util.Map;
 
-// TODO: 14.08.2020 https://vk.com/support?act=show&id=37960706
-
 /**
  * Describes document.
  * @see <a href="https://vk.com/dev/objects/doc">Document</a>
@@ -91,7 +89,7 @@ public class Doc implements Attachable {
 	/**
 	 * Describes document photo preview data.
 	 */
-	public class Photo implements Preview {
+	public static class Photo implements Preview {
 		/**
 		 * Array with the photo copies of different sizes.
 		 */
@@ -101,7 +99,7 @@ public class Doc implements Attachable {
 		/**
 		 * Describes photo size.
 		 */
-		public class Size {
+		public static class Size {
 			/**
 			 * Photo URL.
 			 */
@@ -134,40 +132,36 @@ public class Doc implements Attachable {
 			@SerializedName("type")
 			private String type;
 
-			public Integer getWidth() {
-				return width;
-			}
-
 			public String getSrc() {
 				return src;
 			}
 
-			public Size setSrc(String src) {
+			public void setSrc(String src) {
 				this.src = src;
-				return this;
 			}
 
-			public Size setWidth(Integer width) {
+			public Integer getWidth() {
+				return width;
+			}
+
+			public void setWidth(Integer width) {
 				this.width = width;
-				return this;
 			}
 
 			public Integer getHeight() {
 				return height;
 			}
 
-			public Size setHeight(Integer height) {
+			public void setHeight(Integer height) {
 				this.height = height;
-				return this;
 			}
 
 			public String getType() {
 				return type;
 			}
 
-			public Size setType(String type) {
+			public void setType(String type) {
 				this.type = type;
-				return this;
 			}
 		}
 
@@ -175,16 +169,15 @@ public class Doc implements Attachable {
 			return sizes;
 		}
 
-		public Photo setSizes(List<Size> sizes) {
+		public void setSizes(List<Size> sizes) {
 			this.sizes = sizes;
-			return this;
 		}
 	}
 
 	/**
 	 * Describes document graffiti preview data.
 	 */
-	public class Graffiti implements Preview {
+	public static class Graffiti implements Preview {
 		/**
 		 * Doc URL with graffiti
 		 */
@@ -207,34 +200,31 @@ public class Doc implements Attachable {
 			return src;
 		}
 
-		public Graffiti setSrc(String src) {
+		public void setSrc(String src) {
 			this.src = src;
-			return this;
 		}
 
 		public Integer getWidth() {
 			return width;
 		}
 
-		public Graffiti setWidth(Integer width) {
+		public void setWidth(Integer width) {
 			this.width = width;
-			return this;
 		}
 
 		public Integer getHeight() {
 			return height;
 		}
 
-		public Graffiti setHeight(Integer height) {
+		public void setHeight(Integer height) {
 			this.height = height;
-			return this;
 		}
 	}
 
 	/**
 	 * Describes document audio message preview data.
 	 */
-	public class AudioMessage implements Preview {
+	public static class AudioMessage implements Preview {
 		/**
 		 * Audio message duration in seconds.
 		 */
@@ -260,36 +250,32 @@ public class Doc implements Attachable {
 			return duration;
 		}
 
-		public AudioMessage setDuration(Integer duration) {
+		public void setDuration(Integer duration) {
 			this.duration = duration;
-			return this;
 		}
 
 		public List<Integer> getWaveform() {
 			return waveform;
 		}
 
-		public AudioMessage setWaveform(List<Integer> waveform) {
+		public void setWaveform(List<Integer> waveform) {
 			this.waveform = waveform;
-			return this;
 		}
 
 		public String getLinkOgg() {
 			return linkOgg;
 		}
 
-		public AudioMessage setLinkOgg(String linkOgg) {
+		public void setLinkOgg(String linkOgg) {
 			this.linkOgg = linkOgg;
-			return this;
 		}
 
 		public String getLinkMp3() {
 			return linkMp3;
 		}
 
-		public AudioMessage setLinkMp3(String linkMp3) {
+		public void setLinkMp3(String linkMp3) {
 			this.linkMp3 = linkMp3;
-			return this;
 		}
 	}
 
@@ -297,89 +283,79 @@ public class Doc implements Attachable {
 		return id;
 	}
 
-	public Doc setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getOwnerId() {
 		return ownerId;
 	}
 
-	public Doc setOwnerId(Integer ownerId) {
+	public void setOwnerId(Integer ownerId) {
 		this.ownerId = ownerId;
-		return this;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public Doc setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
-		return this;
 	}
 
 	public Integer getSize() {
 		return size;
 	}
 
-	public Doc setSize(Integer size) {
+	public void setSize(Integer size) {
 		this.size = size;
-		return this;
 	}
 
 	public String getExt() {
 		return ext;
 	}
 
-	public Doc setExt(String ext) {
+	public void setExt(String ext) {
 		this.ext = ext;
-		return this;
 	}
 
 	public String getUrl() {
 		return url;
 	}
 
-	public Doc setUrl(String url) {
+	public void setUrl(String url) {
 		this.url = url;
-		return this;
 	}
 
 	public Integer getDate() {
 		return date;
 	}
 
-	public Doc setDate(Integer date) {
+	public void setDate(Integer date) {
 		this.date = date;
-		return this;
 	}
 
 	public Integer getType() {
 		return type;
 	}
 
-	public Doc setType(Integer type) {
+	public void setType(Integer type) {
 		this.type = type;
-		return this;
 	}
 
 	public Map<String, Preview> getPreview() {
 		return preview;
 	}
 
-	public Doc setPreview(Map<String, Preview> preview) {
+	public void setPreview(Map<String, Preview> preview) {
 		this.preview = preview;
-		return this;
 	}
 
 	public String getAccessKey() {
 		return accessKey;
 	}
 
-	public Doc setAccessKey(String accessKey) {
+	public void setAccessKey(String accessKey) {
 		this.accessKey = accessKey;
-		return this;
 	}
 }

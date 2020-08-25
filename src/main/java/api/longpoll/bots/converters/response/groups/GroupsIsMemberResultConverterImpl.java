@@ -23,7 +23,9 @@ public class GroupsIsMemberResultConverterImpl extends JsonToPojoConverter<Group
         } else {
             response = gson.fromJson(jsonElement, new TypeToken<List<GroupsIsMemberResult.Response>>() {}.getType());
         }
-        return new GroupsIsMemberResult().setResponse(response);
+        GroupsIsMemberResult result = new GroupsIsMemberResult();
+        result.setResponse(response);
+        return result;
     }
 
     @Override

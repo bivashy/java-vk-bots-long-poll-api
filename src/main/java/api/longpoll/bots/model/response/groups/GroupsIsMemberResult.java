@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 public class GroupsIsMemberResult {
     private Object response;
 
-    public class Response {
+    public static class Response {
         @SerializedName("member")
         @JsonAdapter(BoolIntAdapter.class)
         private Boolean member;
@@ -30,54 +30,48 @@ public class GroupsIsMemberResult {
             return member;
         }
 
-        public Response setMember(Boolean member) {
+        public void setMember(Boolean member) {
             this.member = member;
-            return this;
         }
 
         public Boolean getRequest() {
             return request;
         }
 
-        public Response setRequest(Boolean request) {
+        public void setRequest(Boolean request) {
             this.request = request;
-            return this;
         }
 
         public Boolean getInvitation() {
             return invitation;
         }
 
-        public Response setInvitation(Boolean invitation) {
+        public void setInvitation(Boolean invitation) {
             this.invitation = invitation;
-            return this;
         }
 
         public Boolean getCanInvite() {
             return canInvite;
         }
 
-        public Response setCanInvite(Boolean canInvite) {
+        public void setCanInvite(Boolean canInvite) {
             this.canInvite = canInvite;
-            return this;
         }
 
         public Boolean getCanRecall() {
             return canRecall;
         }
 
-        public Response setCanRecall(Boolean canRecall) {
+        public void setCanRecall(Boolean canRecall) {
             this.canRecall = canRecall;
-            return this;
         }
 
         public Integer getUserId() {
             return userId;
         }
 
-        public Response setUserId(Integer userId) {
+        public void setUserId(Integer userId) {
             this.userId = userId;
-            return this;
         }
     }
 
@@ -85,8 +79,7 @@ public class GroupsIsMemberResult {
         return response;
     }
 
-    public GroupsIsMemberResult setResponse(Object response) {
+    public void setResponse(Object response) {
         this.response = response;
-        return this;
     }
 }

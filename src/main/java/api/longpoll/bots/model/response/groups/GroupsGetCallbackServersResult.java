@@ -25,54 +25,48 @@ public class GroupsGetCallbackServersResult {
             return id;
         }
 
-        public Item setId(Integer id) {
+        public void setId(Integer id) {
             this.id = id;
-            return this;
         }
 
         public String getTitle() {
             return title;
         }
 
-        public Item setTitle(String title) {
+        public void setTitle(String title) {
             this.title = title;
-            return this;
         }
 
         public Integer getCreatorId() {
             return creatorId;
         }
 
-        public Item setCreatorId(Integer creatorId) {
+        public void setCreatorId(Integer creatorId) {
             this.creatorId = creatorId;
-            return this;
         }
 
         public String getUrl() {
             return url;
         }
 
-        public Item setUrl(String url) {
+        public void setUrl(String url) {
             this.url = url;
-            return this;
         }
 
         public String getSecretKey() {
             return secretKey;
         }
 
-        public Item setSecretKey(String secretKey) {
+        public void setSecretKey(String secretKey) {
             this.secretKey = secretKey;
-            return this;
         }
 
         public String getStatus() {
             return status;
         }
 
-        public Item setStatus(String status) {
+        public void setStatus(String status) {
             this.status = status;
-            return this;
         }
     }
 
@@ -80,8 +74,7 @@ public class GroupsGetCallbackServersResult {
         return response;
     }
 
-    public GroupsGetCallbackServersResult setResponse(VkList<Item> response) {
+    public void setResponse(VkList<Item> response) {
         this.response = response;
-        return this;
     }
 }

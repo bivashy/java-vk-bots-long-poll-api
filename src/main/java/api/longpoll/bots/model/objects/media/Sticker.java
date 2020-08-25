@@ -19,35 +19,31 @@ public class Sticker implements Attachable {
 		return productId;
 	}
 
-	public Sticker setProductId(Integer productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
-		return this;
 	}
 
 	public Integer getStickerId() {
 		return stickerId;
 	}
 
-	public Sticker setStickerId(Integer stickerId) {
+	public void setStickerId(Integer stickerId) {
 		this.stickerId = stickerId;
-		return this;
 	}
 
 	public List<Image> getImages() {
 		return images;
 	}
 
-	public Sticker setImages(List<Image> images) {
+	public void setImages(List<Image> images) {
 		this.images = images;
-		return this;
 	}
 
 	public List<Image> getImagesWithBackground() {
 		return imagesWithBackground;
 	}
 
-	public Sticker setImagesWithBackground(List<Image> imagesWithBackground) {
+	public void setImagesWithBackground(List<Image> imagesWithBackground) {
 		this.imagesWithBackground = imagesWithBackground;
-		return this;
 	}
 }

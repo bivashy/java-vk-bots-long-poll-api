@@ -38,7 +38,8 @@ public class DocConverterImpl extends JsonToPojoConverter<Doc> {
 							break;
 					}
 				});
-		return doc.setPreview(preview);
+		doc.setPreview(preview);
+		return doc;
 	}
 
 	@Override

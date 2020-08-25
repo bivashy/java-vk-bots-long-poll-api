@@ -47,53 +47,47 @@ public class MarketCollection implements Attachable {
 		return id;
 	}
 
-	public MarketCollection setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getOwnerId() {
 		return ownerId;
 	}
 
-	public MarketCollection setOwnerId(Integer ownerId) {
+	public void setOwnerId(Integer ownerId) {
 		this.ownerId = ownerId;
-		return this;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public MarketCollection setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
-		return this;
 	}
 
 	public Photo getPhoto() {
 		return photo;
 	}
 
-	public MarketCollection setPhoto(Photo photo) {
+	public void setPhoto(Photo photo) {
 		this.photo = photo;
-		return this;
 	}
 
 	public Integer getCount() {
 		return count;
 	}
 
-	public MarketCollection setCount(Integer count) {
+	public void setCount(Integer count) {
 		this.count = count;
-		return this;
 	}
 
 	public Integer getUpdatedTime() {
 		return updatedTime;
 	}
 
-	public MarketCollection setUpdatedTime(Integer updatedTime) {
+	public void setUpdatedTime(Integer updatedTime) {
 		this.updatedTime = updatedTime;
-		return this;
 	}
 }

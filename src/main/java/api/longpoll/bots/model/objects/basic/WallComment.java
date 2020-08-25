@@ -34,7 +34,7 @@ public class WallComment implements Attachable {
 	@SerializedName("likes")
 	private Likes likes;
 
-	public class Thread {
+	public static class Thread {
 		@SerializedName("count")
 		private Integer count;
 		@SerializedName("can_post")
@@ -51,36 +51,32 @@ public class WallComment implements Attachable {
 			return count;
 		}
 
-		public Thread setCount(Integer count) {
+		public void setCount(Integer count) {
 			this.count = count;
-			return this;
 		}
 
 		public boolean isCanPost() {
 			return canPost;
 		}
 
-		public Thread setCanPost(boolean canPost) {
+		public void setCanPost(boolean canPost) {
 			this.canPost = canPost;
-			return this;
 		}
 
 		public boolean isShowReplyButton() {
 			return showReplyButton;
 		}
 
-		public Thread setShowReplyButton(boolean showReplyButton) {
+		public void setShowReplyButton(boolean showReplyButton) {
 			this.showReplyButton = showReplyButton;
-			return this;
 		}
 
 		public boolean isGroupsCanPost() {
 			return groupsCanPost;
 		}
 
-		public Thread setGroupsCanPost(boolean groupsCanPost) {
+		public void setGroupsCanPost(boolean groupsCanPost) {
 			this.groupsCanPost = groupsCanPost;
-			return this;
 		}
 	}
 
@@ -98,27 +94,24 @@ public class WallComment implements Attachable {
 			return count;
 		}
 
-		public Likes setCount(Integer count) {
+		public void setCount(Integer count) {
 			this.count = count;
-			return this;
 		}
 
 		public boolean isUserLikes() {
 			return userLikes;
 		}
 
-		public Likes setUserLikes(boolean userLikes) {
+		public void setUserLikes(boolean userLikes) {
 			this.userLikes = userLikes;
-			return this;
 		}
 
 		public boolean isCanLike() {
 			return canLike;
 		}
 
-		public Likes setCanLike(boolean canLike) {
+		public void setCanLike(boolean canLike) {
 			this.canLike = canLike;
-			return this;
 		}
 	}
 
@@ -150,107 +143,95 @@ public class WallComment implements Attachable {
 		return id;
 	}
 
-	public WallComment setId(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
-		return this;
 	}
 
 	public Integer getFromId() {
 		return fromId;
 	}
 
-	public WallComment setFromId(Integer fromId) {
+	public void setFromId(Integer fromId) {
 		this.fromId = fromId;
-		return this;
 	}
 
 	public Integer getDate() {
 		return date;
 	}
 
-	public WallComment setDate(Integer date) {
+	public void setDate(Integer date) {
 		this.date = date;
-		return this;
 	}
 
 	public String getText() {
 		return text;
 	}
 
-	public WallComment setText(String text) {
+	public void setText(String text) {
 		this.text = text;
-		return this;
 	}
 
 	public Integer getReplyToUser() {
 		return replyToUser;
 	}
 
-	public WallComment setReplyToUser(Integer replyToUser) {
+	public void setReplyToUser(Integer replyToUser) {
 		this.replyToUser = replyToUser;
-		return this;
 	}
 
 	public Integer getReplyToComment() {
 		return replyToComment;
 	}
 
-	public WallComment setReplyToComment(Integer replyToComment) {
+	public void setReplyToComment(Integer replyToComment) {
 		this.replyToComment = replyToComment;
-		return this;
 	}
 
 	public List<Attachment> getAttachments() {
 		return attachments;
 	}
 
-	public WallComment setAttachments(List<Attachment> attachments) {
+	public void setAttachments(List<Attachment> attachments) {
 		this.attachments = attachments;
-		return this;
 	}
 
 	public List<Integer> getParentsStack() {
 		return parentsStack;
 	}
 
-	public WallComment setParentsStack(List<Integer> parentsStack) {
+	public void setParentsStack(List<Integer> parentsStack) {
 		this.parentsStack = parentsStack;
-		return this;
 	}
 
 	public Thread getThread() {
 		return thread;
 	}
 
-	public WallComment setThread(Thread thread) {
+	public void setThread(Thread thread) {
 		this.thread = thread;
-		return this;
 	}
 
 	public Integer getPostId() {
 		return postId;
 	}
 
-	public WallComment setPostId(Integer postId) {
+	public void setPostId(Integer postId) {
 		this.postId = postId;
-		return this;
 	}
 
 	public Integer getOwnerId() {
 		return ownerId;
 	}
 
-	public WallComment setOwnerId(Integer ownerId) {
+	public void setOwnerId(Integer ownerId) {
 		this.ownerId = ownerId;
-		return this;
 	}
 
 	public Likes getLikes() {
 		return likes;
 	}
 
-	public WallComment setLikes(Likes likes) {
+	public void setLikes(Likes likes) {
 		this.likes = likes;
-		return this;
 	}
 }

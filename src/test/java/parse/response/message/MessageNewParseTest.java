@@ -71,7 +71,6 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(4392), message.getConversationMessageId());
 		Assert.assertFalse(message.isImportant());
 		Assert.assertEquals(Integer.valueOf(0), message.getRandomId());
-		Assert.assertFalse(message.isHidden());
 
 		ClientInfo clientInfo = messageUpdate.getClientInfo();
 		Assert.assertNotNull(clientInfo);

@@ -48,6 +48,5 @@ public class MessageReplyParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(261), message.getConversationMessageId());
 		Assert.assertFalse(message.isImportant());
 		Assert.assertEquals(Integer.valueOf(0), message.getRandomId());
-		Assert.assertFalse(message.isHidden());
 	}
 }

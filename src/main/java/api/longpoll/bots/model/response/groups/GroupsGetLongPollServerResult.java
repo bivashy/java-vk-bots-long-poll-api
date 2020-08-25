@@ -6,7 +6,7 @@ public class GroupsGetLongPollServerResult {
 	@SerializedName("response")
 	private Response response;
 
-	public class Response {
+	public static class Response {
 		@SerializedName("key")
 		private String key;
 		@SerializedName("server")
@@ -18,27 +18,24 @@ public class GroupsGetLongPollServerResult {
 			return key;
 		}
 
-		public Response setKey(String key) {
+		public void setKey(String key) {
 			this.key = key;
-			return this;
 		}
 
 		public String getServer() {
 			return server;
 		}
 
-		public Response setServer(String server) {
+		public void setServer(String server) {
 			this.server = server;
-			return this;
 		}
 
 		public Integer getTs() {
 			return ts;
 		}
 
-		public Response setTs(Integer ts) {
+		public void setTs(Integer ts) {
 			this.ts = ts;
-			return this;
 		}
 	}
 
@@ -46,8 +43,7 @@ public class GroupsGetLongPollServerResult {
 		return response;
 	}
 
-	public GroupsGetLongPollServerResult setResponse(Response response) {
+	public void setResponse(Response response) {
 		this.response = response;
-		return this;
 	}
 }

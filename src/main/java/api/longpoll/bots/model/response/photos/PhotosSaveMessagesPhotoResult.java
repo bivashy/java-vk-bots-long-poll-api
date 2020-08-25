@@ -9,16 +9,7 @@ public class PhotosSaveMessagesPhotoResult {
 	@SerializedName("response")
 	private List<Response> response;
 
-	public List<Response> getResponse() {
-		return response;
-	}
-
-	public PhotosSaveMessagesPhotoResult setResponse(List<Response> response) {
-		this.response = response;
-		return this;
-	}
-
-	public class Response {
+	public static class Response {
 		@SerializedName("album_id")
 		private Integer albumId;
 		@SerializedName("date")
@@ -38,63 +29,64 @@ public class PhotosSaveMessagesPhotoResult {
 			return albumId;
 		}
 
-		public Response setAlbumId(Integer albumId) {
+		public void setAlbumId(Integer albumId) {
 			this.albumId = albumId;
-			return this;
 		}
 
 		public Integer getDate() {
 			return date;
 		}
 
-		public Response setDate(Integer date) {
+		public void setDate(Integer date) {
 			this.date = date;
-			return this;
 		}
 
 		public Integer getId() {
 			return id;
 		}
 
-		public Response setId(Integer id) {
+		public void setId(Integer id) {
 			this.id = id;
-			return this;
 		}
 
 		public Integer getOwnerId() {
 			return ownerId;
 		}
 
-		public Response setOwnerId(Integer ownerId) {
+		public void setOwnerId(Integer ownerId) {
 			this.ownerId = ownerId;
-			return this;
 		}
 
 		public Boolean getHasTags() {
 			return hasTags;
 		}
 
-		public Response setHasTags(Boolean hasTags) {
+		public void setHasTags(Boolean hasTags) {
 			this.hasTags = hasTags;
-			return this;
 		}
 
 		public String getAccessKey() {
 			return accessKey;
 		}
 
-		public Response setAccessKey(String accessKey) {
+		public void setAccessKey(String accessKey) {
 			this.accessKey = accessKey;
-			return this;
 		}
 
 		public List<PhotoSize> getPhotoSizes() {
 			return photoSizes;
 		}
 
-		public Response setPhotoSizes(List<PhotoSize> photoSizes) {
+		public void setPhotoSizes(List<PhotoSize> photoSizes) {
 			this.photoSizes = photoSizes;
-			return this;
 		}
+	}
+
+	public List<Response> getResponse() {
+		return response;
+	}
+
+	public void setResponse(List<Response> response) {
+		this.response = response;
 	}
 }

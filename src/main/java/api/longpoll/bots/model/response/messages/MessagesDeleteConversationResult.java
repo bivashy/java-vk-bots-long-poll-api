@@ -14,9 +14,8 @@ public class MessagesDeleteConversationResult {
             return lastDeletedId;
         }
 
-        public Response setLastDeletedId(Integer lastDeletedId) {
+        public void setLastDeletedId(Integer lastDeletedId) {
             this.lastDeletedId = lastDeletedId;
-            return this;
         }
     }
 
@@ -24,8 +23,7 @@ public class MessagesDeleteConversationResult {
         return response;
     }
 
-    public MessagesDeleteConversationResult setResponse(Response response) {
+    public void setResponse(Response response) {
         this.response = response;
-        return this;
     }
 }

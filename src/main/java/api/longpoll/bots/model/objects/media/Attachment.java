@@ -21,17 +21,15 @@ public class Attachment {
 		return type;
 	}
 
-	public Attachment setType(String type) {
+	public void setType(String type) {
 		this.type = type;
-		return this;
 	}
 
 	public Attachable getAttachable() {
 		return attachable;
 	}
 
-	public Attachment setAttachable(Attachable attachable) {
+	public void setAttachable(Attachable attachable) {
 		this.attachable = attachable;
-		return this;
 	}
 }

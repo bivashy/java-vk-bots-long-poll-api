@@ -75,24 +75,19 @@ public class AttachedLink implements Attachable {
 	 * Describes product.
 	 * @see <a href="https://vk.com/dev/link_product">Product</a>
 	 */
-	public class Product {
+	public static class Product {
 		/**
 		 * Product price.
 		 */
 		@SerializedName("price")
 		private Price price;
 
-		public boolean hasPrice() {
-			return price != null;
-		}
-
 		public Price getPrice() {
 			return price;
 		}
 
-		public Product setPrice(Price price) {
+		public void setPrice(Price price) {
 			this.price = price;
-			return this;
 		}
 	}
 
@@ -100,7 +95,7 @@ public class AttachedLink implements Attachable {
 	 * Describes link button.
 	 * @see <a href="https://vk.com/dev/link_button">Link Button</a>
 	 */
-	public class Button {
+	public static class Button {
 		/**
 		 * Button title.
 		 */
@@ -116,7 +111,7 @@ public class AttachedLink implements Attachable {
 		/**
 		 * Describes button action.
 		 */
-		public class Action {
+		public static class Action {
 			/**
 			 * Action type. Possible values:
 			 * <ul>
@@ -136,18 +131,16 @@ public class AttachedLink implements Attachable {
 				return type;
 			}
 
-			public Action setType(String type) {
+			public void setType(String type) {
 				this.type = type;
-				return this;
 			}
 
 			public String getUrl() {
 				return url;
 			}
 
-			public Action setUrl(String url) {
+			public void setUrl(String url) {
 				this.url = url;
-				return this;
 			}
 		}
 
@@ -155,18 +148,16 @@ public class AttachedLink implements Attachable {
 			return title;
 		}
 
-		public Button setTitle(String title) {
+		public void setTitle(String title) {
 			this.title = title;
-			return this;
 		}
 
 		public Action getAction() {
 			return action;
 		}
 
-		public Button setAction(Action action) {
+		public void setAction(Action action) {
 			this.action = action;
-			return this;
 		}
 	}
 
@@ -174,89 +165,79 @@ public class AttachedLink implements Attachable {
 		return url;
 	}
 
-	public AttachedLink setUrl(String url) {
+	public void setUrl(String url) {
 		this.url = url;
-		return this;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public AttachedLink setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
-		return this;
 	}
 
 	public String getCaption() {
 		return caption;
 	}
 
-	public AttachedLink setCaption(String caption) {
+	public void setCaption(String caption) {
 		this.caption = caption;
-		return this;
 	}
 
 	public String getDescription() {
 		return description;
 	}
 
-	public AttachedLink setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
-		return this;
 	}
 
 	public Photo getPhoto() {
 		return photo;
 	}
 
-	public AttachedLink setPhoto(Photo photo) {
+	public void setPhoto(Photo photo) {
 		this.photo = photo;
-		return this;
 	}
 
 	public Product getProduct() {
 		return product;
 	}
 
-	public AttachedLink setProduct(Product product) {
+	public void setProduct(Product product) {
 		this.product = product;
-		return this;
 	}
 
 	public Button getButton() {
 		return button;
 	}
 
-	public AttachedLink setButton(Button button) {
+	public void setButton(Button button) {
 		this.button = button;
-		return this;
 	}
 
 	public String getPreviewPage() {
 		return previewPage;
 	}
 
-	public AttachedLink setPreviewPage(String previewPage) {
+	public void setPreviewPage(String previewPage) {
 		this.previewPage = previewPage;
-		return this;
 	}
 
 	public String getPreviewUrl() {
 		return previewUrl;
 	}
 
-	public AttachedLink setPreviewUrl(String previewUrl) {
+	public void setPreviewUrl(String previewUrl) {
 		this.previewUrl = previewUrl;
-		return this;
 	}
 
 	public boolean isExternal() {
 		return external;
 	}
 
-	public AttachedLink setExternal(boolean external) {
+	public void setExternal(boolean external) {
 		this.external = external;
-		return this;
 	}
 }

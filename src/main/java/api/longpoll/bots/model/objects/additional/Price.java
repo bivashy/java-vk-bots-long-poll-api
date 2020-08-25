@@ -30,26 +30,23 @@ public class Price {
 		return amount;
 	}
 
-	public Price setAmount(Integer amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
-		return this;
 	}
 
 	public Currency getCurrency() {
 		return currency;
 	}
 
-	public Price setCurrency(Currency currency) {
+	public void setCurrency(Currency currency) {
 		this.currency = currency;
-		return this;
 	}
 
 	public String getText() {
 		return text;
 	}
 
-	public Price setText(String text) {
+	public void setText(String text) {
 		this.text = text;
-		return this;
 	}
 }

@@ -10,8 +10,7 @@ public class UploadDocResult {
 		return file;
 	}
 
-	public UploadDocResult setFile(String file) {
+	public void setFile(String file) {
 		this.file = file;
-		return this;
 	}
 }
