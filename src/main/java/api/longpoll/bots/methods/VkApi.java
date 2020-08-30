@@ -8,10 +8,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * Stores VK API method links.
+ */
 public class VkApi {
+	/**
+	 * Logger object.
+	 */
 	private static final Logger log = LoggerFactory.getLogger(VkApi.class);
+
+	/**
+	 * Path to .properties file which contains VK API method links.
+	 */
 	private static final String PROPERTIES_FILE = "api/vk/API.properties";
+
+	/**
+	 * VkApi instance.
+	 */
 	private static VkApi instance = new VkApi();
+
+	/**
+	 * Properties object.
+	 */
 	private Properties properties = new Properties();
 
 	private VkApi() {

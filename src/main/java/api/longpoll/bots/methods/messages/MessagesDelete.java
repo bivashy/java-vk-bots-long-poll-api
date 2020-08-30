@@ -12,27 +12,55 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.delete</b> method.
+* @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
+*/
 public class MessagesDelete extends GetMethod<GenericResult<Integer>> {
+    /**
+     * Message IDs.
+     */
     private List<Integer> messageIds;
+
+    /**
+     * <b>true</b> to mark message as spam.
+     */
     private Boolean spam;
+
+    /**
+     * Group ID.
+     */
     private Integer groupId;
+
+    /**
+     * <b>true</b> to delete message for recipient.
+     */
     private Boolean deleteForAll;
 
     public MessagesDelete(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesDelete();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("message_ids", messageIds),

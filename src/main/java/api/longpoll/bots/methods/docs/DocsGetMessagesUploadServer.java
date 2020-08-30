@@ -10,24 +10,44 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>docs.getMessagesUploadServer</b> method.
+* @see <a href="https://vk.com/dev/docs.getMessagesUploadServer">https://vk.com/dev/docs.getMessagesUploadServer</a>
+*/
 public class DocsGetMessagesUploadServer extends GetMethod<DocsGetUploadServerResult> {
+	/**
+	 * Document type.
+	 */
 	private String type;
+
+	/**
+	 * Destination ID.
+	 */
 	private Integer peerId;
 
 	public DocsGetMessagesUploadServer(LongPollBot bot) {
 		super(bot);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected String getApi() {
 		return VkApi.getInstance().docsGetMessagesUploadServer();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected JsonToPojoConverter<DocsGetUploadServerResult> getConverter() {
 		return GenericConverterFactory.get(DocsGetUploadServerResult.class);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected Stream<Connection.KeyVal> getKeyValStream() {
 		return Stream.of(

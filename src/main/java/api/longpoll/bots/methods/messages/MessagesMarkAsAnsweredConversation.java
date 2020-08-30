@@ -11,26 +11,50 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.markAsAnsweredConversation</b> method.
+* @see <a href="https://vk.com/dev/messages.markAsAnsweredConversation">https://vk.com/dev/messages.markAsAnsweredConversation</a>
+*/
 public class MessagesMarkAsAnsweredConversation extends GetMethod<GenericResult<Integer>> {
+    /**
+     * Peer Id.
+     */
     private Integer peerId;
+
+    /**
+     * Answered.
+     */
     private Boolean answered;
+
+    /**
+     * Group ID.
+     */
     private Integer groupId;
 
     public MessagesMarkAsAnsweredConversation(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesMarkAsAnsweredConversation();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),

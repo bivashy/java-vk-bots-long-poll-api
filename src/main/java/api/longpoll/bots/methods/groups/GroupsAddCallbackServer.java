@@ -10,16 +10,38 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.addCallbackServer</b> method.
+* @see <a href="https://vk.com/dev/groups.addCallbackServer">https://vk.com/dev/groups.addCallbackServer</a>
+*/
 public class GroupsAddCallbackServer extends GetMethod<GroupsAddCallbackServerResult> {
+	/**
+	 * Community ID.
+	 */
 	private Integer groupId;
+
+	/**
+	 * Server URL.
+	 */
 	private String url;
+
+	/**
+	 * Server title.
+	 */
 	private String title;
+
+	/**
+	 * Server secret key.
+	 */
 	private String secretKey;
 
 	public GroupsAddCallbackServer(LongPollBot bot) {
 		super(bot);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected Stream<Connection.KeyVal> getKeyValStream() {
 		return Stream.of(
@@ -30,11 +52,17 @@ public class GroupsAddCallbackServer extends GetMethod<GroupsAddCallbackServerRe
 		);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected String getApi() {
 		return VkApi.getInstance().groupsAddCallbackServer();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected JsonToPojoConverter<GroupsAddCallbackServerResult> getConverter() {
 		return GenericConverterFactory.get(GroupsAddCallbackServerResult.class);

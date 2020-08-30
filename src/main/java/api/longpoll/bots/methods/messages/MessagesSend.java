@@ -27,37 +27,109 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.send</b> method.
+* @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
+*/
 public class MessagesSend extends GetMethod<MessagesSendResult> {
+	/**
+	 * User ID.
+	 */
 	private Integer userId;
+
+	/**
+	 * Unique identifier to avoid resending the message.
+	 */
 	private Integer randomId = Long.valueOf(System.currentTimeMillis()).intValue();
+
+	/**
+	 * Destination ID.
+	 */
 	private Integer peerId;
+
+	/**
+	 * User's short address (for example, illarionov).
+	 */
 	private String domain;
+
+	/**
+	 * ID of conversation the message will relate to.
+	 */
 	private Integer chatId;
+
+	/**
+	 * IDs of message recipients (if new conversation shall be started).
+	 */
 	private List<Integer> userIds;
+
+	/**
+	 * Text of the message.
+	 */
 	private String message;
+
+	/**
+	 * Geographical latitude of a check-in, in degrees (from -90 to 90).
+	 */
 	private Float latitude;
+
+	/**
+	 * Geographical longitude of a check-in, in degrees (from -180 to 180).
+	 */
 	private Float longitude;
+
+	/**
+	 * List of objects attached to the message.
+	 */
 	private List<String> attachments;
+
+	/**
+	 * Id of replied message.
+	 */
 	private Integer replyTo;
+
+	/**
+	 * ID of forwarded messages.
+	 */
 	private List<Integer> forwardMessages;
+
+	/**
+	 * Sticker id.
+	 */
 	private Integer stickerId;
+
+	/**
+	 * <b>true</b> - links will not attach snippet.
+	 */
 	private Boolean dontParseLinks;
+
+	/**
+	 * <b>true</b> - mention of user will not generate notification for him.
+	 */
 	private Boolean disableMentions;
 
 	public MessagesSend(LongPollBot bot) {
 		super(bot);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected String getApi() {
 		return VkApi.getInstance().messagesSend();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected JsonToPojoConverter<MessagesSendResult> getConverter() {
 		return new MessagesSendResultConverterIpml();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected Stream<Connection.KeyVal> getKeyValStream() {
 		return Stream.of(

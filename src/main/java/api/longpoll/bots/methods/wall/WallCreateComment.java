@@ -14,31 +14,75 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>wall.createComment</b> method.
+* @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
+*/
 public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
+    /**
+     * User ID or community ID.
+     */
     private Integer ownerId;
+
+    /**
+     * Post ID.
+     */
     private Integer postId;
+
+    /**
+     * ID of the community from which name the comment will be created.
+     */
     private Integer fromGroupId;
+
+    /**
+     * Text of the comment.
+     */
     private String message;
+
+    /**
+     * ID of comment to reply.
+     */
     private Integer replyToComment;
+
+    /**
+     * List of media objects attached to the comment.
+     */
     private List<String> attachments;
+
+    /**
+     * Sticker ID.
+     */
     private Integer stickerId;
+
+    /**
+     * Unique identifier to avoid repeated comments.
+     */
     private String guid;
 
     public WallCreateComment(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().wallCreateComment();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<WallCreateCommentResult> getConverter() {
         return GenericConverterFactory.get(WallCreateCommentResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return null;
     }

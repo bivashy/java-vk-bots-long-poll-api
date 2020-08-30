@@ -9,20 +9,40 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+ * Gets update events from VK server.
+ */
 public class GetEvents extends GetMethod<GetEventsResult> {
+	/**
+	 * Server URL.
+	 */
 	private String server;
+
+	/**
+	 * Key.
+	 */
 	private String key;
+
+	/**
+	 * Timestamp.
+	 */
 	private Integer ts;
 
 	public GetEvents(LongPollBot bot) {
 		super(bot);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected JsonToPojoConverter<GetEventsResult> getConverter() {
 		return new GetEventsResultConverterImpl();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected Stream<Connection.KeyVal> getKeyValStream() {
 		return Stream.of(
@@ -33,6 +53,9 @@ public class GetEvents extends GetMethod<GetEventsResult> {
 		);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected String getApi() {
 		return server;

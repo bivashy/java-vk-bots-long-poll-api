@@ -14,28 +14,60 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.getByConversationMessageId</b> method.
+* @see <a href="https://vk.com/dev/messages.getByConversationMessageId">https://vk.com/dev/messages.getByConversationMessageId</a>
+*/
 public class MessagesGetByConversationMessageId extends GetMethod<GenericResult<VkList<Message>>> {
+    /**
+     * Peer Id.
+     */
     private Integer peerId;
+
+    /**
+     * Conversation Message IDs.
+     */
     private List<Integer> conversationMessageIds;
+
+    /**
+     * Extended.
+     */
     private Boolean extended;
+
+    /**
+     * Additional fields.
+     */
     private List<String> fields;
+
+    /**
+     * Community ID.
+     */
     private Integer groupId;
 
     public MessagesGetByConversationMessageId(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetByConversationMessageId();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<VkList<Message>>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<VkList<Message>>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
               keyVal("peer_id", peerId),

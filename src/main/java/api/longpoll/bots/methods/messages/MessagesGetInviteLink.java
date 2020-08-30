@@ -10,26 +10,50 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.getInviteLink</b> method.
+* @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
+*/
 public class MessagesGetInviteLink extends GetMethod<MessagesGetInviteLinkResult> {
+    /**
+     * Destination ID.
+     */
     private Integer peerId;
+
+    /**
+     * <b>true</b> — to generate new link.
+     */
     private Boolean reset;
+
+    /**
+     * Group ID.
+     */
     private Integer groupId;
 
     public MessagesGetInviteLink(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetInviteLink();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<MessagesGetInviteLinkResult> getConverter() {
         return GenericConverterFactory.get(MessagesGetInviteLinkResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),

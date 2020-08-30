@@ -11,28 +11,60 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.editCallbackServer</b> method.
+* @see <a href="https://vk.com/dev/groups.editCallbackServer">https://vk.com/dev/groups.editCallbackServer</a>
+*/
 public class GroupsEditCallbackServer extends GetMethod<GenericResult<Integer>> {
+    /**
+     * Community ID.
+     */
     private Integer groupId;
+
+    /**
+     * Server ID.
+     */
     private Integer serverId;
+
+    /**
+     * Server's new URL.
+     */
     private String url;
+
+    /**
+     * Server's new title.
+     */
     private String title;
+
+    /**
+     * Server's new secret key.
+     */
     private String secretKey;
 
     public GroupsEditCallbackServer(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsEditCallbackServer();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

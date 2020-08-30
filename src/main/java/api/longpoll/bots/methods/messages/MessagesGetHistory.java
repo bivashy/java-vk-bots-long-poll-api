@@ -11,32 +11,80 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.getHistory</b> method.
+* @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
+*/
 public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
+    /**
+     * Offset needed to return a specific subset of messages.
+     */
     private Integer offset;
+
+    /**
+     * Number of messages to return.
+     */
     private Integer count;
+
+    /**
+     * ID of the user whose message history you want to return.
+     */
     private String userId;
+
+    /**
+     * Peer ID.
+     */
     private Integer peerId;
+
+    /**
+     * ID of the user whose message history you want to return.
+     */
     private Integer startMessageId;
+
+    /**
+     * Sort order.
+     */
     private Boolean rev;
+
+    /**
+     * Extended.
+     */
     private Boolean extended;
+
+    /**
+     * Additional fields.
+     */
     private List<String> fields;
+
+    /**
+     * Group ID.
+     */
     private Integer groupId;
 
     public MessagesGetHistory(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetHistory();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<MessagesGetHistoryResult> getConverter() {
         return GenericConverterFactory.get(MessagesGetHistoryResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("offset", offset),

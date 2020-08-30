@@ -10,24 +10,40 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.getOnlineStatus</b> method.
+* @see <a href="https://vk.com/dev/groups.getOnlineStatus">https://vk.com/dev/groups.getOnlineStatus</a>
+*/
 public class GroupsGetOnlineStatus extends GetMethod<GroupsGetOnlineStatusResult> {
+    /**
+     * Community ID.
+     */
     private Integer groupId;
 
     public GroupsGetOnlineStatus(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetOnlineStatus();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GroupsGetOnlineStatusResult> getConverter() {
         return GenericConverterFactory.get(GroupsGetOnlineStatusResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(keyVal("group_id", groupId));
     }

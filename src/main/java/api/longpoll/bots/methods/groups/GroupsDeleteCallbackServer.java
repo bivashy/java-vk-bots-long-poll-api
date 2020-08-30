@@ -11,25 +11,45 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.deleteCallbackServer</b> method.
+* @see <a href="https://vk.com/dev/groups.deleteCallbackServer">https://vk.com/dev/groups.deleteCallbackServer</a>
+*/
 public class GroupsDeleteCallbackServer extends GetMethod<GenericResult<Integer>> {
+    /**
+     * Community ID.
+     */
     private Integer groupId;
+
+    /**
+     * Server ID.
+     */
     private Integer serverId;
 
     public GroupsDeleteCallbackServer(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsDeleteCallbackServer();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

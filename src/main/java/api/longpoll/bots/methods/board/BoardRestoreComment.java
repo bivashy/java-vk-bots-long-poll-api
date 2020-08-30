@@ -11,25 +11,49 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+ * Implements <b>board.deleteComment</b> method.
+ * @see <a href="https://vk.com/dev/board.deleteComment">https://vk.com/dev/board.deleteComment</a>
+ */
 public class BoardRestoreComment extends GetMethod<GenericResult<Integer>> {
+	/**
+	 * ID of the community that owns the discussion board.
+	 */
 	private Integer groupId;
+
+	/**
+	 * Topic ID.
+	 */
 	private Integer topicId;
+
+	/**
+	 * Comment ID.
+	 */
 	private Integer commentId;
 
 	public BoardRestoreComment(LongPollBot bot) {
 		super(bot);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected String getApi() {
 		return VkApi.getInstance().boardRestoreComment();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
 		return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected Stream<Connection.KeyVal> getKeyValStream() {
 		return Stream.of(

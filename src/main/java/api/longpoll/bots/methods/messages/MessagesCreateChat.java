@@ -12,26 +12,50 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.createChat</b> method.
+* @see <a href="https://vk.com/dev/messages.createChat">https://vk.com/dev/messages.createChat</a>
+*/
 public class MessagesCreateChat extends GetMethod<GenericResult<Integer>> {
+    /**
+     * IDs of the users to be added to the chat.
+     */
     private List<Integer> userIds;
+
+    /**
+     * Chat title.
+     */
     private String title;
+
+    /**
+     * Community ID.
+     */
     private Integer groupId;
 
     public MessagesCreateChat(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesCreateChat();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("user_ids", userIds),

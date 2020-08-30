@@ -12,25 +12,45 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.pin</b> method.
+* @see <a href="https://vk.com/dev/messages.pin">https://vk.com/dev/messages.pin</a>
+*/
 public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
+    /**
+     * Peer ID.
+     */
     private Integer peerId;
+
+    /**
+     * Message Id.
+     */
     private Integer messageId;
 
     public MessagesPin(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesPin();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<PinnedMessage>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<PinnedMessage>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),

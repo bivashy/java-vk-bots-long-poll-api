@@ -11,29 +11,65 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.getMembers</b> method.
+* @see <a href="https://vk.com/dev/groups.getMembers">https://vk.com/dev/groups.getMembers</a>
+*/
 public class GroupsGetMembers extends GetMethod<GroupsGetMembersResult> {
+    /**
+     * ID or screen name of the community.
+     */
     private String groupId;
+
+    /**
+     * Sort order. Available values: id_asc, id_desc, time_asc, time_desc.
+     */
     private String sort;
+
+    /**
+     * Offset needed to return a specific subset of community members.
+     */
     private Integer offset;
+
+    /**
+     * Number of community members to return.
+     */
     private Integer count;
+
+    /**
+     * List of additional fields to be returned.
+     */
     private List<String> fields;
+
+    /**
+     * User filter.
+     */
     private String filter;
 
     public GroupsGetMembers(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetMembers();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GroupsGetMembersResult> getConverter() {
         return new GroupsGetMembersResultConverterImpl();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

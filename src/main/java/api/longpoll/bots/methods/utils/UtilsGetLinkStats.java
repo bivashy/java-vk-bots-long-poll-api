@@ -10,29 +10,65 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>utils.getLinkStats</b> method.
+* @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
+*/
 public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
+    /**
+     * Part of the link after "vk.cc/".
+     */
     private String key;
+
+    /**
+     * Source.
+     */
     private String source;
+
+    /**
+     * Access key for private link stats.
+     */
     private String accessKey;
+
+    /**
+     * Interval.
+     */
     private String interval;
+
+    /**
+     * Number of intervals to return.
+     */
     private Integer intervalsCount;
+
+    /**
+     * <b>true</b> — to return extended stats data (sex, age, geo).
+     */
     private Boolean extended;
 
     public UtilsGetLinkStats(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().utilsGetLinkStats();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<UtilsGetLinkStatsResult> getConverter() {
         return GenericConverterFactory.get(UtilsGetLinkStatsResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("key", key),

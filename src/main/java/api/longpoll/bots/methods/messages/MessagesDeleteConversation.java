@@ -10,26 +10,50 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.deleteConversation</b> method.
+* @see <a href="https://vk.com/dev/messages.deleteConversation">https://vk.com/dev/messages.deleteConversation</a>
+*/
 public class MessagesDeleteConversation extends GetMethod<MessagesDeleteConversationResult> {
+    /**
+     * User ID.
+     */
     private String userId;
+
+    /**
+     * Destination ID.
+     */
     private Integer peerId;
+
+    /**
+     * Community ID.
+     */
     private Integer groupId;
 
     public MessagesDeleteConversation(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesDeleteConversation();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<MessagesDeleteConversationResult> getConverter() {
         return GenericConverterFactory.get(MessagesDeleteConversationResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("user_id", userId),

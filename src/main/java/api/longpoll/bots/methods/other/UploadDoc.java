@@ -9,24 +9,42 @@ import org.jsoup.Connection;
 import java.io.File;
 import java.util.stream.Stream;
 
+/**
+ * Implements uploading document in VK API.
+ */
 public class UploadDoc extends PostMethod<UploadDocResult> {
+	/**
+	 * Upload URL.
+	 */
 	private String uploadUrl;
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected String getApi() {
 		return uploadUrl;
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected JsonToPojoConverter<UploadDocResult> getConverter() {
 		return GenericConverterFactory.get(UploadDocResult.class);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected Stream<Connection.KeyVal> getKeyValStream() {
 		return Stream.of();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected String getType() {
 		return "file";

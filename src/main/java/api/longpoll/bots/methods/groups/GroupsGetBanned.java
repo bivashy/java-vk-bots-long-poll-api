@@ -13,28 +13,60 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.getBanned</b> method.
+* @see <a href="https://vk.com/dev/groups.getBanned">https://vk.com/dev/groups.getBanned</a>
+*/
 public class GroupsGetBanned extends GetMethod<GroupsGetBannedResult> {
+    /**
+     * Community ID.
+     */
     private Integer groupId;
+
+    /**
+     * Offset needed to return a specific subset of users.
+     */
     private Integer offset;
+
+    /**
+     * Number of users to return.
+     */
     private Integer count;
+
+    /**
+     * List of fields of groups and profiles to return.
+     */
     private List<String> fields;
+
+    /**
+     * User or community ID from the blacklist to return information about.
+     */
     private Integer ownerId;
 
     public GroupsGetBanned(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetBanned();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GroupsGetBannedResult> getConverter() {
         return GenericConverterFactory.get(GroupsGetBannedResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

@@ -11,26 +11,50 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.getConversationMembers</b> method.
+* @see <a href="https://vk.com/dev/messages.getConversationMembers">https://vk.com/dev/messages.getConversationMembers</a>
+*/
 public class MessagesGetConversationMembers extends GetMethod<MessagesGetConversationMembersResult> {
+    /**
+     * Destination ID.
+     */
     private Integer peerId;
+
+    /**
+     * List of additional fields for users and communities.
+     */
     private List<String> fields;
+
+    /**
+     * Group ID.
+     */
     private Integer groupId;
 
     public MessagesGetConversationMembers(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetConversationMembers();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<MessagesGetConversationMembersResult> getConverter() {
         return GenericConverterFactory.get(MessagesGetConversationMembersResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),

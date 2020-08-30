@@ -11,26 +11,50 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.removeChatUser</b> method.
+* @see <a href="https://vk.com/dev/messages.removeChatUser">https://vk.com/dev/messages.removeChatUser</a>
+*/
 public class MessagesRemoveChatUser extends GetMethod<GenericResult<Integer>> {
+    /**
+     * Chat ID.
+     */
     private Integer chatId;
+
+    /**
+     * ID of the user to be removed from the chat.
+     */
     private Integer userId;
+
+    /**
+     * ID of the member to be removed. For communities: -group_id.
+     */
     private Integer memberId;
 
     public MessagesRemoveChatUser(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesRemoveChatUser();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("chat_id", chatId),

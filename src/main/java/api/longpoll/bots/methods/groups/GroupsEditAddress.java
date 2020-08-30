@@ -10,37 +10,105 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.editAddress</b> method.
+* @see <a href="https://vk.com/dev/groups.editAddress">https://vk.com/dev/groups.editAddress</a>
+*/
 public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
+    /**
+     * Community ID.
+     */
     private Integer groupId;
+
+    /**
+     * Address ID.
+     */
     private Integer addressId;
+
+    /**
+     * Address name.
+     */
     private String title;
+
+    /**
+     * Address string.
+     */
     private String address;
+
+    /**
+     * Additional address.
+     */
     private String additionalAddress;
+
+    /**
+     * County ID.
+     */
     private Integer countryId;
+    
+    /**
+     * City ID.
+     */
     private Integer cityId;
+
+    /**
+     * Metro station ID.
+     */
     private Integer metroId;
+
+    /**
+     * Geographical latitude.
+     */
     private Float latitude;
+
+    /**
+     * Geographical longitude.
+     */
     private Float longitude;
+
+    /**
+     * Phone number.
+     */
     private String phone;
+
+    /**
+     * Working status.
+     */
     private String workInfoStatus;
+
+    /**
+     * Work timetable.
+     */
     private JsonObject timeTable;
+
+    /**
+     * <b>true</b> if address is main.
+     */
     private Boolean mainAddress;
 
     public GroupsEditAddress(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsEditAddress();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GroupsEditAddress> getConverter() {
         return GenericConverterFactory.get(GroupsEditAddress.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

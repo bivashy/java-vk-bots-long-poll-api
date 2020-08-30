@@ -10,25 +10,45 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.getCallbackSettings</b> method.
+* @see <a href="https://vk.com/dev/groups.getCallbackSettings">https://vk.com/dev/groups.getCallbackSettings</a>
+*/
 public class GroupsGetCallbackSettings extends GetMethod<GroupsGetCallbackSettingsResult> {
+    /**
+     * Community ID.
+     */
     private Integer groupId;
+
+    /**
+     * Server ID.
+     */
     private Integer serverId;
 
     public GroupsGetCallbackSettings(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetCallbackSettings();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GroupsGetCallbackSettingsResult> getConverter() {
         return GenericConverterFactory.get(GroupsGetCallbackSettingsResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

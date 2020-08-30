@@ -28,34 +28,90 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.edit</b> method.
+* @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
+*/
 public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
+    /**
+     * Destination ID.
+     */
     private Integer peerId;
+
+    /**
+     * Text of the message.
+     */
     private String message;
-    private float latitude;
-    private float longitude;
+
+    /**
+     * Geographical latitude of a check-in, in degrees (from -90 to 90).
+     */
+    private Float latitude;
+
+    /**
+     * Geographical longitude of a check-in, in degrees (from -180 to 180).
+     */
+    private Float longitude;
+
+    /**
+     * List of objects attached to the message.
+     */
     private List<String> attachments;
+
+    /**
+     * <b>true</b> to keep forwarded, messages.
+     */
     private Boolean keepForwardMessages;
+
+    /**
+     * <b>true</b> to keep attached snippets.
+     */
     private Boolean keepSnippets;
+
+    /**
+     * Community ID.
+     */
     private Integer groupId;
+
+    /**
+     * <b>true</b> not to parse links.
+     */
     private Boolean dontParseLinks;
+
+    /**
+     * Message ID.
+     */
     private Integer messageId;
+
+    /**
+     * Conversation message ID.
+     */
     private Integer conversationMessageId;
 
     public MessagesEdit(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesEdit();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
@@ -149,20 +205,20 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public float getLatitude() {
+    public Float getLatitude() {
         return latitude;
     }
 
-    public MessagesEdit setLatitude(float latitude) {
+    public MessagesEdit setLatitude(Float latitude) {
         this.latitude = latitude;
         return this;
     }
 
-    public float getLongitude() {
+    public Float getLongitude() {
         return longitude;
     }
 
-    public MessagesEdit setLongitude(float longitude) {
+    public MessagesEdit setLongitude(Float longitude) {
         this.longitude = longitude;
         return this;
     }

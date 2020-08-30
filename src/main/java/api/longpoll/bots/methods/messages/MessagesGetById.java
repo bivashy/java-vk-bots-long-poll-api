@@ -14,28 +14,60 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.getById</b> method.
+* @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
+*/
 public class MessagesGetById extends GetMethod<GenericResult<VkList<Message>>> {
+    /**
+     * Message IDs.
+     */
     private List<Integer> messageIds;
+
+    /**
+     * Number of characters after which to truncate a previewed message.
+     */
     private Integer previewLength;
+
+    /**
+     * Extended.
+     */
     private Boolean extended;
+
+    /**
+     * Additional field.
+     */
     private List<String> fields;
+
+    /**
+     * Community ID.
+     */
     private Integer groupId;
 
     public MessagesGetById(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetById();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<VkList<Message>>> getConverter() {
         return  GenericConverterFactory.get(new TypeToken<GenericResult<VkList<Message>>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("message_ids", messageIds),

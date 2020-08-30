@@ -13,26 +13,50 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>users.get</b> method.
+* @see <a href="https://vk.com/dev/users.get">https://vk.com/dev/users.get</a>
+*/
 public class UsersGet extends GetMethod<GenericResult<List<User>>> {
+    /**
+     * User IDs or screen names (screen_name).
+     */
     private List<String> userIds;
+
+    /**
+     * Profile fields to return.
+     */
     private List<String> fields;
+
+    /**
+     * Case for declension of user name and surname.
+     */
     private String nameCase;
 
     public UsersGet(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().usersGet();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<List<User>>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<List<User>>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("user_ids", userIds),

@@ -10,24 +10,40 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
-public class UtilsCheckUrl extends GetMethod<UtilsCheckLinkResult> {
+/**
+* Implements <b>utils.checkLink</b> method.
+* @see <a href="https://vk.com/dev/utils.checkLink">https://vk.com/dev/utils.checkLink</a>
+*/
+public class UtilsCheckLink extends GetMethod<UtilsCheckLinkResult> {
+    /**
+     * Link to check (e.g., http://google.com).
+     */
     private String url;
 
-    public UtilsCheckUrl(LongPollBot bot) {
+    public UtilsCheckLink(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().utilsCheckLink();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<UtilsCheckLinkResult> getConverter() {
         return GenericConverterFactory.get(UtilsCheckLinkResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(keyVal("url", url));
     }
@@ -36,7 +52,7 @@ public class UtilsCheckUrl extends GetMethod<UtilsCheckLinkResult> {
         return url;
     }
 
-    public UtilsCheckUrl setUrl(String url) {
+    public UtilsCheckLink setUrl(String url) {
         this.url = url;
         return this;
     }

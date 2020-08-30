@@ -11,32 +11,80 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.getHistoryAttachments</b> method.
+* @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
+*/
 public class MessagesGetHistoryAttachments extends GetMethod<MessagesGetHistoryAttachmentsResult> {
+    /**
+     * Peer ID.
+     */
     private Integer peerId;
+
+    /**
+     * Type of media files to return.
+     */
     private String mediaType;
+
+    /**
+     * Message ID to start return results from.
+     */
     private String startFrom;
+
+    /**
+     * Number of objects to return.
+     */
     private Integer count;
+
+    /**
+     * <b>true</b> — to return photo sizes in a special format.
+     */
     private Boolean photoSizes;
+
+    /**
+     * Additional profile fields to return.
+     */
     private List<String> fields;
+
+    /**
+     * Group ID.
+     */
     private Integer groupId;
+
+    /**
+     * Preserve order.
+     */
     private Boolean preserveOrder;
+
+    /**
+     * Maximum forwards level.
+     */
     private Integer maxForwardsLevel;
 
     public MessagesGetHistoryAttachments(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetHistoryAttachments();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<MessagesGetHistoryAttachmentsResult> getConverter() {
         return new MessagesGetHistoryAttachmentsResultConverterImpl();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),

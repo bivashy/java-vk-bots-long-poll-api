@@ -11,26 +11,50 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.markAsImportantConversation</b> method.
+* @see <a href="https://vk.com/dev/messages.markAsImportantConversation">https://vk.com/dev/messages.markAsImportantConversation</a>
+*/
 public class MessagesMarkAsImportantConversation extends GetMethod<GenericResult<Integer>> {
+    /**
+     * Peer Id.
+     */
     private Integer peerId;
+
+    /**
+     * Answered.
+     */
     private Boolean answered;
+
+    /**
+     * Group ID.
+     */
     private Integer groupId;
 
     public MessagesMarkAsImportantConversation(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesMarkAsImportantConversation();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),

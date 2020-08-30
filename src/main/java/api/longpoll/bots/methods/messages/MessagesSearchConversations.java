@@ -11,28 +11,60 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.searchConversations</b> method.
+* @see <a href="https://vk.com/dev/messages.searchConversations">https://vk.com/dev/messages.searchConversations</a>
+*/
 public class MessagesSearchConversations extends GetMethod<MessagesSearchConversationsResult> {
+    /**
+     * Search query string.
+     */
     private String q;
+
+    /**
+     * Maximum number of results.
+     */
     private Integer count;
+
+    /**
+     * <b>true</b> – return additional fields.
+     */
     private Boolean extended;
+
+    /**
+     * List of additional fields for users and communities.
+     */
     private List<String> fields;
+
+    /**
+     * Group ID.
+     */
     private Integer groupId;
 
     public MessagesSearchConversations(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().messagesSearchConversations();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<MessagesSearchConversationsResult> getConverter() {
         return GenericConverterFactory.get(MessagesSearchConversationsResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("q", q),

@@ -10,24 +10,40 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>utils.resolveScreenName</b> method.
+* @see <a href="https://vk.com/dev/utils.resolveScreenName">https://vk.com/dev/utils.resolveScreenName</a>
+*/
 public class UtilsResolveScreenName extends GetMethod<UtilsResolveScreenNameResult> {
+    /**
+     * Screen name of the user, community (e.g., apiclub, andrew, or rules_of_war), or application.
+     */
     private String screenName;
 
     public UtilsResolveScreenName(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().utilsResolveScreenName();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<UtilsResolveScreenNameResult> getConverter() {
         return GenericConverterFactory.get(UtilsResolveScreenNameResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(keyVal("screen_name", screenName));
     }

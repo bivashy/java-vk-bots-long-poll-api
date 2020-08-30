@@ -11,68 +11,260 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.setCallbackSettings</b> method.
+* @see <a href="https://vk.com/dev/groups.setCallbackSettings">https://vk.com/dev/groups.setCallbackSettings</a>
+*/
 public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>> {
+    /**
+     * Community ID.
+     */
     private Integer groupId;
+
+    /**
+     * Server ID.
+     */
     private Integer serverId;
+
+    /**
+     * API version.
+     */
     private String apiVersion;
+
+    /**
+     * A new incoming message has been received.
+     */
     private Boolean messageNew;
+
+    /**
+     * A new outcoming message has been sent.
+     */
     private Boolean messageReply;
+
+    /**
+     * A new user consent to messages sending has been received.
+     */
     private Boolean messageAllow;
+
+    /**
+     * Message was edited.
+     */
     private Boolean messageEdit;
+
+    /**
+     * A new user prohibition to messages sending has been received.
+     */
     private Boolean messageDeny;
+
+    /**
+     * Message is typing.
+     */
     private Boolean messageTypingState;
+
+    /**
+     * A new photo has been added.
+     */
     private Boolean photoNew;
+
+    /**
+     * A new audio has been added.
+     */
     private Boolean audioNew;
+
+    /**
+     * A new video has been added.
+     */
     private Boolean videoNew;
+
+    /**
+     * A new wall comment has been added.
+     */
     private Boolean wallReplyNew;
+
+    /**
+     * A wall comment has been edited.
+     */
     private Boolean wallReplyEdit;
+
+    /**
+     * A wall comment has been deleted.
+     */
     private Boolean wallReplyDelete;
+
+    /**
+     * A wall comment has been restored.
+     */
     private Boolean wallReplyRestore;
+
+    /**
+     * A new post on wall has been added.
+     */
     private Boolean wallPostNew;
+
+    /**
+     * A new repost form the community wall has been done.
+     */
     private Boolean wallPostRepost;
+
+    /**
+     * A new board post has been added.
+     */
     private Boolean boardPostNew;
+
+    /**
+     * A board post has been edited.
+     */
     private Boolean boardPostEdit;
+
+    /**
+     * A board post has been restored
+     */
     private Boolean boardPostRestore;
+
+    /**
+     * A board post has been deleted.
+     */
     private Boolean boardPostDelete;
+
+    /**
+     * A new photo comment has been added.
+     */
     private Boolean photoCommentNew;
+
+    /**
+     * A photo comment has been edited.
+     */
     private Boolean photoCommentEdit;
+
+    /**
+     * A photo comment has been deleted.
+     */
     private Boolean photoCommentDelete;
+
+    /**
+     * A photo comment has been restored.
+     */
     private Boolean photoCommentRestore;
+
+    /**
+     * A new video comment has been added.
+     */
     private Boolean videoCommentNew;
+
+    /**
+     * A video comment has been edited.
+     */
     private Boolean videoCommentEdit;
+
+    /**
+     * A video comment has been deleted.
+     */
     private Boolean videoCommentDelete;
+
+    /**
+     * A video comment has been restored.
+     */
     private Boolean videoCommentRestore;
+
+    /**
+     * A new market comment has been added.
+     */
     private Boolean marketCommentNew;
+
+    /**
+     * A market comment has been edited.
+     */
     private Boolean marketCommentEdit;
+
+    /**
+     * A market comment has been deleted.
+     */
     private Boolean marketCommentDelete;
+
+    /**
+     * A market comment has been restored.
+     */
     private Boolean marketCommentRestore;
+
+    /**
+     * A vote in a public poll has been added.
+     */
     private Boolean pollVoteNew;
+
+    /**
+     * A new member has been joined the community.
+     */
     private Boolean groupJoin;
+
+    /**
+     * A member has been left the community.
+     */
     private Boolean groupLeave;
+
+    /**
+     * Community settings have been changed.
+     */
     private Boolean groupChangeSettings;
+
+    /**
+     * Community main photo has been changed.
+     */
     private Boolean groupChangePhoto;
+
+    /**
+     * Community officers list has been changed.
+     */
     private Boolean groupOfficersEdit;
+
+    /**
+     * A new user in the community's blacklist.
+     */
     private Boolean userBlock;
+
+    /**
+     * A user has been deleted from the community's blacklist.
+     */
     private Boolean userUnblock;
+
+    /**
+     * Form filled.
+     */
     private Boolean leadFormsNew;
+
+    /**
+     * Like added.
+     */
     private Boolean likeAdd;
+
+    /**
+     * Like removed.
+     */
     private Boolean likeRemove;
 
     public GroupsSetCallbackSettings(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsSetCallbackSettings();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

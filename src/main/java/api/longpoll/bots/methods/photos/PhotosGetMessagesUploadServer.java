@@ -10,23 +10,39 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>photos.getMessagesUploadServer</b> method.
+* @see <a href="https://vk.com/dev/photos.getMessagesUploadServer">https://vk.com/dev/photos.getMessagesUploadServer</a>
+*/
 public class PhotosGetMessagesUploadServer extends GetMethod<PhotosGetMessagesUploadServerResult> {
+	/**
+	 * User ID.
+	 */
 	private Integer peerId;
 
 	public PhotosGetMessagesUploadServer(LongPollBot bot) {
 		super(bot);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected String getApi() {
 		return VkApi.getInstance().photosGetMessagesUploadServer();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected JsonToPojoConverter<PhotosGetMessagesUploadServerResult> getConverter() {
 		return GenericConverterFactory.get(PhotosGetMessagesUploadServerResult.class);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected Stream<Connection.KeyVal> getKeyValStream() {
 		return Stream.of(keyVal("peer_id", peerId));

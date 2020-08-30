@@ -10,26 +10,54 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>docs.save</b> method.
+* @see <a href="https://vk.com/dev/docs.save">https://vk.com/dev/docs.save</a>
+*/
 public class DocsSave extends GetMethod<DocsSaveResult> {
+	/**
+	 * This parameter is returned when the file is uploaded to the server.
+	 */
 	private String file;
+
+	/**
+	 * Document title.
+	 */
 	private String title;
+
+	/**
+	 * Document tags.
+	 */
 	private String tags;
+
+	/**
+	 * <b>true</b> if flags should be returned.
+	 */
 	private Boolean returnTags;
 
 	public DocsSave(LongPollBot bot) {
 		super(bot);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected String getApi() {
 		return VkApi.getInstance().docsSave();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected JsonToPojoConverter<DocsSaveResult> getConverter() {
 		return new DocsSaveResultConverterImpl();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected Stream<Connection.KeyVal> getKeyValStream() {
 		return Stream.of(

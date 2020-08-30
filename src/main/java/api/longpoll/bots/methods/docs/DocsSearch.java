@@ -12,26 +12,54 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>docs.search</b> method.
+* @see <a href="https://vk.com/dev/docs.search">https://vk.com/dev/docs.search</a>
+*/
 public class DocsSearch extends GetMethod<VkList<Doc>> {
+	/**
+	 * Search query.
+	 */
 	private String q;
+
+	/**
+	 * Number of results to return.
+	 */
 	private Integer count;
+
+	/**
+	 * Offset needed to return a specific subset of results.
+	 */
 	private Integer offset;
+
+	/**
+	 * <b>true</b> if flags should be returned.
+	 */
 	private Boolean returnTags;
 
 	public DocsSearch(LongPollBot bot) {
 		super(bot);
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected String getApi() {
 		return VkApi.getInstance().docsSearch();
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected JsonToPojoConverter<VkList<Doc>> getConverter() {
 		return GenericConverterFactory.get(new TypeToken<VkList<Doc>>(){}.getType());
 	}
 
+	/**
+	* {@inheritDoc}
+	*/
 	@Override
 	protected Stream<Connection.KeyVal> getKeyValStream() {
 		return Stream.of(

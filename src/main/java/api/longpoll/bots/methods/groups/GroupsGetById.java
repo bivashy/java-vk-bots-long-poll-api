@@ -12,26 +12,50 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.getById</b> method.
+* @see <a href="https://vk.com/dev/groups.getById">https://vk.com/dev/groups.getById</a>
+*/
 public class GroupsGetById extends GetMethod<List<Community>> {
+    /**
+     * IDs or screen names of communities.
+     */
     private List<String> groupIds;
+
+    /**
+     * ID or screen name of the community.
+     */
     private String groupId;
+
+    /**
+     * Group fields to return.
+     */
     private List<String> fields;
 
     public GroupsGetById(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetById();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<List<Community>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<List<Community>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_ids", groupIds),

@@ -11,27 +11,55 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.isMember</b> method.
+* @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
+*/
 public class GroupsIsMember extends GetMethod<GroupsIsMemberResult> {
+    /**
+     * ID or screen name of the community.
+     */
     private String groupId;
+
+    /**
+     * User ID.
+     */
     private Integer userId;
+
+    /**
+     * User IDs.
+     */
     private List<Integer> userIds;
+
+    /**
+     * <b>true</b> to return an extended response with additional fields.
+     */
     private Boolean extended;
 
     public GroupsIsMember(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsIsMember();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GroupsIsMemberResult> getConverter() {
         return new GroupsIsMemberResultConverterImpl();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

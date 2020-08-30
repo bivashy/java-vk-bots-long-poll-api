@@ -10,24 +10,40 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.getCallbackConfirmationCode</b> method.
+* @see <a href="https://vk.com/dev/groups.getCallbackConfirmationCode">https://vk.com/dev/groups.getCallbackConfirmationCode</a>
+*/
 public class GroupsGetCallbackConfirmationCode extends GetMethod<GroupsGetCallbackConfirmationCodeResult> {
+    /**
+     * Community ID.
+     */
     private Integer groupId;
 
     public GroupsGetCallbackConfirmationCode(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetCallbackConfirmationCode();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GroupsGetCallbackConfirmationCodeResult> getConverter() {
         return GenericConverterFactory.get(GroupsGetCallbackConfirmationCodeResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(keyVal("group_id", groupId));
     }

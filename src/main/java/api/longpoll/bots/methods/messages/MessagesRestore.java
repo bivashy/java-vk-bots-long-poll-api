@@ -11,8 +11,19 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.restore</b> method.
+* @see <a href="https://vk.com/dev/messages.restore">https://vk.com/dev/messages.restore</a>
+*/
 public class MessagesRestore extends GetMethod<GenericResult<Integer>> {
+    /**
+     * ID of a previously-deleted message to restore.
+     */
     private Integer messageId;
+
+    /**
+     * Group ID.
+     */
     private Integer groupId;
 
     public MessagesRestore(LongPollBot bot) {

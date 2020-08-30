@@ -4,7 +4,14 @@ import org.jsoup.Connection;
 
 import java.io.*;
 
+/**
+ * Implementation of POST HTTP method. Used in loading files.
+ * @param <Response> response type.
+ */
 public abstract class PostMethod<Response> extends Method<Response> {
+	/**
+	 * File to be uploaded.
+	 */
 	private File file;
 
 	protected File getFile() {
@@ -16,6 +23,9 @@ public abstract class PostMethod<Response> extends Method<Response> {
 		return this;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Connection.Response execute(Connection connection) throws IOException {
 		if (file != null) {
@@ -28,10 +38,17 @@ public abstract class PostMethod<Response> extends Method<Response> {
 		return super.execute(connection);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected Connection.Method getMethod() {
 		return Connection.Method.POST;
 	}
 
+	/**
+	 * Gets file type.
+	 * @return file type.
+	 */
 	protected abstract String getType();
 }

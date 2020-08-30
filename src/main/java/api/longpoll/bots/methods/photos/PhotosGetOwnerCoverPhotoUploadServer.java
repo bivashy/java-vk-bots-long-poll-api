@@ -10,28 +10,60 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>photos.getOwnerCoverPhotoUploadServer</b> method.
+* @see <a href="https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer">https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer</a>
+*/
 public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwnerCoverPhotoUploadServerResult> {
+    /**
+     * Community ID.
+     */
     private Integer groupId;
+
+    /**
+     * X coordinate of the left-upper corner.
+     */
     private Integer cropX;
+
+    /**
+     * Y coordinate of the left-upper corner.
+     */
     private Integer cropY;
+
+    /**
+     * X coordinate of the right-bottom corner.
+     */
     private Integer cropX2;
+
+    /**
+     * Y coordinate of the right-bottom corner.
+     */
     private Integer cropY2;
 
     public PhotosGetOwnerCoverPhotoUploadServer(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().photosGetOwnerCoverPhotoUploadServer();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<PhotosGetOwnerCoverPhotoUploadServerResult> getConverter() {
         return GenericConverterFactory.get(PhotosGetOwnerCoverPhotoUploadServerResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

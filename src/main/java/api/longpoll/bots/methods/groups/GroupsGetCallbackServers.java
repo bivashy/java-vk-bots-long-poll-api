@@ -11,25 +11,45 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.getCallbackServers</b> method.
+* @see <a href="https://vk.com/dev/groups.getCallbackServers">https://vk.com/dev/groups.getCallbackServers</a>
+*/
 public class GroupsGetCallbackServers extends GetMethod<GroupsGetCallbackServersResult> {
+    /**
+     * Community ID.
+     */
     private Integer groupId;
+
+    /**
+     * Servers IDs to return.
+     */
     private List<Integer> serverIds;
 
     public GroupsGetCallbackServers(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetCallbackServers();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GroupsGetCallbackServersResult> getConverter() {
         return GenericConverterFactory.get(GroupsGetCallbackServersResult.class);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

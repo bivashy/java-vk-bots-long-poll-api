@@ -12,11 +12,34 @@ import org.jsoup.Connection;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+* Implements <b>messages.markAsRead</b> method.
+* @see <a href="https://vk.com/dev/messages.markAsRead">https://vk.com/dev/messages.markAsRead</a>
+*/
 public class MessagesMarkAsRead extends GetMethod<GenericResult<Integer>> {
+    /**
+     * IDs of messages to mark as read.
+     */
     private List<Integer> messageIds;
+
+    /**
+     * Destination ID.
+     */
     private String peerId;
+
+    /**
+     * Message ID to start from.
+     */
     private Integer startMessageId;
+
+    /**
+     * Group ID.
+     */
     private Integer groupId;
+
+    /**
+     * <b>true</b> to mark as read.
+     */
     private Boolean markConversationAsRead;
 
     public MessagesMarkAsRead(LongPollBot bot) {

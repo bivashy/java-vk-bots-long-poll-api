@@ -13,26 +13,50 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>market.getGroupOrders</b> method.
+* @see <a href="https://vk.com/dev/market.getGroupOrders">https://vk.com/dev/market.getGroupOrders</a>
+*/
 public class MarketGetGroupOrders extends GetMethod<GenericResult<VkList<MarketOrder>>> {
+    /**
+     * ID of the community that owns the items market.
+     */
     private Integer groupId;
+
+    /**
+     * Offset needed to return a specific subset of orders.
+     */
     private Integer offset;
+
+    /**
+     * Number of orders to return.
+     */
     private Integer count;
 
     public MarketGetGroupOrders(LongPollBot bot) {
         super(bot);
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected String getApi() {
         return VkApi.getInstance().marketGetGroupOrders();
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected JsonToPojoConverter<GenericResult<VkList<MarketOrder>>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<VkList<MarketOrder>>>(){}.getType());
     }
 
-    @Override
+    /**
+	* {@inheritDoc}
+	*/
+	@Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

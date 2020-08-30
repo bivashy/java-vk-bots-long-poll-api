@@ -10,7 +10,14 @@ import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
+/**
+* Implements <b>groups.getLongPollServer</b> method.
+* @see <a href="https://vk.com/dev/groups.getLongPollServer">https://vk.com/dev/groups.getLongPollServer</a>
+*/
 public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerResult> {
+	/**
+	 * Community ID.
+	 */
 	private Integer groupId;
 
 	public GroupsGetLongPollServer(LongPollBot bot) {
