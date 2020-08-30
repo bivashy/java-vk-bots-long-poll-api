@@ -9,31 +9,31 @@ import com.google.gson.annotations.SerializedName;
  * Describes <b>message_new</b>, <b>message_reply</b> and <b>message_edit</b> event objects.
  */
 public class MessageEvent implements EventObject {
-	/**
-	 * Message object.
-	 */
-	@SerializedName("messages")
-	private Message message;
+    /**
+     * Message object.
+     */
+    @SerializedName("messages")
+    private Message message;
 
-	/**
-	 * Information about features available to the user.
-	 */
-	@SerializedName("client_info")
-	private ClientInfo clientInfo;
+    /**
+     * Information about features available to the user.
+     */
+    @SerializedName("client_info")
+    private ClientInfo clientInfo;
 
-	public Message getMessage() {
-		return message;
-	}
+    public Message getMessage() {
+        return message;
+    }
 
-	public void setMessage(Message message) {
-		this.message = message;
-	}
+    public void setMessage(Message message) {
+        this.message = message;
+    }
 
-	public ClientInfo getClientInfo() {
-		return clientInfo;
-	}
+    public ClientInfo getClientInfo() {
+        return clientInfo;
+    }
 
-	public void setClientInfo(ClientInfo clientInfo) {
-		this.clientInfo = clientInfo;
-	}
+    public void setClientInfo(ClientInfo clientInfo) {
+        this.clientInfo = clientInfo;
+    }
 }

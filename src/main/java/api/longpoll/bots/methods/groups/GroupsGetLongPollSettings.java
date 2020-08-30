@@ -11,9 +11,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>groups.getLongPollSettings</b> method.
-* @see <a href="https://vk.com/dev/groups.getLongPollSettings">https://vk.com/dev/groups.getLongPollSettings</a>
-*/
+ * Implements <b>groups.getLongPollSettings</b> method.
+ *
+ * @see <a href="https://vk.com/dev/groups.getLongPollSettings">https://vk.com/dev/groups.getLongPollSettings</a>
+ */
 public class GroupsGetLongPollSettings extends GetMethod<GroupsGetLongPollSettingsResult> {
     /**
      * Community ID.

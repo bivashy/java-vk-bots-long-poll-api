@@ -13,9 +13,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.pin</b> method.
-* @see <a href="https://vk.com/dev/messages.pin">https://vk.com/dev/messages.pin</a>
-*/
+ * Implements <b>messages.pin</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.pin">https://vk.com/dev/messages.pin</a>
+ */
 public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
     /**
      * Peer ID.
@@ -32,25 +33,25 @@ public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesPin();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GenericResult<PinnedMessage>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<PinnedMessage>>(){}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<PinnedMessage>>() {}.getType());
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),

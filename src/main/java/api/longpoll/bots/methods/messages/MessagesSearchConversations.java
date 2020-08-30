@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.searchConversations</b> method.
-* @see <a href="https://vk.com/dev/messages.searchConversations">https://vk.com/dev/messages.searchConversations</a>
-*/
+ * Implements <b>messages.searchConversations</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.searchConversations">https://vk.com/dev/messages.searchConversations</a>
+ */
 public class MessagesSearchConversations extends GetMethod<MessagesSearchConversationsResult> {
     /**
      * Search query string.
@@ -46,25 +47,25 @@ public class MessagesSearchConversations extends GetMethod<MessagesSearchConvers
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesSearchConversations();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<MessagesSearchConversationsResult> getConverter() {
         return GenericConverterFactory.get(MessagesSearchConversationsResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("q", q),

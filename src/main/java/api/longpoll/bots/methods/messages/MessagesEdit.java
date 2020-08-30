@@ -29,9 +29,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.edit</b> method.
-* @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
-*/
+ * Implements <b>messages.edit</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
+ */
 public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
     /**
      * Destination ID.
@@ -93,25 +94,25 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesEdit();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),

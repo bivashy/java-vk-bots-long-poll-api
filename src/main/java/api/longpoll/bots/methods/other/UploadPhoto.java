@@ -13,58 +13,58 @@ import java.util.stream.Stream;
  * Implements uploading photo in VK API.
  */
 public class UploadPhoto extends PostMethod<UploadPhotoResult> {
-	/**
-	 * Upload URL.
-	 */
-	private String uploadUrl;
+    /**
+     * Upload URL.
+     */
+    private String uploadUrl;
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected String getApi() {
-		return uploadUrl;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected String getApi() {
+        return uploadUrl;
+    }
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected JsonToPojoConverter<UploadPhotoResult> getConverter() {
-		return GenericConverterFactory.get(UploadPhotoResult.class);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected JsonToPojoConverter<UploadPhotoResult> getConverter() {
+        return GenericConverterFactory.get(UploadPhotoResult.class);
+    }
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected Stream<Connection.KeyVal> getKeyValStream() {
-		return Stream.of();
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Stream<Connection.KeyVal> getKeyValStream() {
+        return Stream.of();
+    }
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected String getType() {
-		return "photo";
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected String getType() {
+        return "photo";
+    }
 
-	public String getUploadUrl() {
-		return uploadUrl;
-	}
+    public String getUploadUrl() {
+        return uploadUrl;
+    }
 
-	public UploadPhoto setUploadUrl(String uploadUrl) {
-		this.uploadUrl = uploadUrl;
-		return this;
-	}
+    public UploadPhoto setUploadUrl(String uploadUrl) {
+        this.uploadUrl = uploadUrl;
+        return this;
+    }
 
-	public UploadPhoto setPhoto(File photo) {
-		setFile(photo);
-		return this;
-	}
+    public UploadPhoto setPhoto(File photo) {
+        setFile(photo);
+        return this;
+    }
 
-	public File getPhoto() {
-		return getFile();
-	}
+    public File getPhoto() {
+        return getFile();
+    }
 }

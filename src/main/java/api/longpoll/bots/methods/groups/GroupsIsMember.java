@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>groups.isMember</b> method.
-* @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
-*/
+ * Implements <b>groups.isMember</b> method.
+ *
+ * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
+ */
 public class GroupsIsMember extends GetMethod<GroupsIsMemberResult> {
     /**
      * ID or screen name of the community.
@@ -41,25 +42,25 @@ public class GroupsIsMember extends GetMethod<GroupsIsMemberResult> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().groupsIsMember();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GroupsIsMemberResult> getConverter() {
         return new GroupsIsMemberResultConverterImpl();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

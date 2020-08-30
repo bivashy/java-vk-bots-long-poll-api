@@ -8,31 +8,31 @@ import com.google.gson.annotations.SerializedName;
  * Describes <b>group_change_photo</b> event objects.
  */
 public class GroupChangePhotoEvent implements EventObject {
-	/**
-	 * ID of the user who made changes.
-	 */
-	@SerializedName("user_id")
-	private Integer userId;
+    /**
+     * ID of the user who made changes.
+     */
+    @SerializedName("user_id")
+    private Integer userId;
 
-	/**
-	 * Photo object.
-	 */
-	@SerializedName("photo")
-	private Photo photo;
+    /**
+     * Photo object.
+     */
+    @SerializedName("photo")
+    private Photo photo;
 
-	public Integer getUserId() {
-		return userId;
-	}
+    public Integer getUserId() {
+        return userId;
+    }
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-	public Photo getPhoto() {
-		return photo;
-	}
+    public Photo getPhoto() {
+        return photo;
+    }
 
-	public void setPhoto(Photo photo) {
-		this.photo = photo;
-	}
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
+    }
 }

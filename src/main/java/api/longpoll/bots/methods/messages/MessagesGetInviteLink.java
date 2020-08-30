@@ -11,9 +11,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.getInviteLink</b> method.
-* @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
-*/
+ * Implements <b>messages.getInviteLink</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
+ */
 public class MessagesGetInviteLink extends GetMethod<MessagesGetInviteLinkResult> {
     /**
      * Destination ID.
@@ -35,25 +36,25 @@ public class MessagesGetInviteLink extends GetMethod<MessagesGetInviteLinkResult
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetInviteLink();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<MessagesGetInviteLinkResult> getConverter() {
         return GenericConverterFactory.get(MessagesGetInviteLinkResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),

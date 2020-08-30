@@ -7,73 +7,73 @@ import com.google.gson.annotations.SerializedName;
  * Describes <b>market_comment_delete</b> event objects.
  */
 public class MarketCommentDeleteEvent implements EventObject {
-	/**
-	 * Market owner ID.
-	 */
-	@SerializedName("owner_id")
-	private Integer ownerId;
+    /**
+     * Market owner ID.
+     */
+    @SerializedName("owner_id")
+    private Integer ownerId;
 
-	/**
-	 * Comment ID.
-	 */
-	@SerializedName("id")
-	private Integer id;
+    /**
+     * Comment ID.
+     */
+    @SerializedName("id")
+    private Integer id;
 
-	/**
-	 * Comment author ID.
-	 */
-	@SerializedName("user_id")
-	private Integer userId;
+    /**
+     * Comment author ID.
+     */
+    @SerializedName("user_id")
+    private Integer userId;
 
-	/**
-	 * ID of the user who deleted a comment.
-	 */
-	@SerializedName("deleter_id")
-	private Integer deleterId;
+    /**
+     * ID of the user who deleted a comment.
+     */
+    @SerializedName("deleter_id")
+    private Integer deleterId;
 
-	/**
-	 * Market item ID.
-	 */
-	@SerializedName("item_id")
-	private Integer itemId;
+    /**
+     * Market item ID.
+     */
+    @SerializedName("item_id")
+    private Integer itemId;
 
-	public Integer getOwnerId() {
-		return ownerId;
-	}
+    public Integer getOwnerId() {
+        return ownerId;
+    }
 
-	public void setOwnerId(Integer ownerId) {
-		this.ownerId = ownerId;
-	}
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Integer getUserId() {
-		return userId;
-	}
+    public Integer getUserId() {
+        return userId;
+    }
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-	public Integer getDeleterId() {
-		return deleterId;
-	}
+    public Integer getDeleterId() {
+        return deleterId;
+    }
 
-	public void setDeleterId(Integer deleterId) {
-		this.deleterId = deleterId;
-	}
+    public void setDeleterId(Integer deleterId) {
+        this.deleterId = deleterId;
+    }
 
-	public Integer getItemId() {
-		return itemId;
-	}
+    public Integer getItemId() {
+        return itemId;
+    }
 
-	public void setItemId(Integer itemId) {
-		this.itemId = itemId;
-	}
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
+    }
 }

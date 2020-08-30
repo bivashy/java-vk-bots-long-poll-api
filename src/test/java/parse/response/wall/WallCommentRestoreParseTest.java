@@ -18,37 +18,37 @@ import java.util.List;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class WallCommentRestoreParseTest extends AbstractParseTest {
-	@Test
-	public void test1_wallReplyRestore() throws IOException {
-		JsonObject jsonObject = readJson("json/response/wall_reply_restore/wall_reply_restore_sample_5_110.json");
-		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(getEventsResult);
-		Assert.assertEquals(Integer.valueOf(2634), getEventsResult.getTs());
+    @Test
+    public void test1_wallReplyRestore() throws IOException {
+        JsonObject jsonObject = readJson("json/response/wall_reply_restore/wall_reply_restore_sample_5_110.json");
+        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        Assert.assertNotNull(getEventsResult);
+        Assert.assertEquals(Integer.valueOf(2634), getEventsResult.getTs());
 
-		List<Event> events = getEventsResult.getEvents();
-		Assert.assertNotNull(events);
-		Assert.assertFalse(events.isEmpty());
+        List<Event> events = getEventsResult.getEvents();
+        Assert.assertNotNull(events);
+        Assert.assertFalse(events.isEmpty());
 
-		Event event = events.get(0);
-		Assert.assertNotNull(event);
-		Assert.assertEquals("wall_reply_restore", event.getType());
-		Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
-		Assert.assertEquals("aaa", event.getEventId());
+        Event event = events.get(0);
+        Assert.assertNotNull(event);
+        Assert.assertEquals("wall_reply_restore", event.getType());
+        Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
+        Assert.assertEquals("aaa", event.getEventId());
 
-		EventObject eventObject = event.getObject();
-		Assert.assertTrue(eventObject instanceof WallReplyEvent);
+        EventObject eventObject = event.getObject();
+        Assert.assertTrue(eventObject instanceof WallReplyEvent);
 
-		WallReplyEvent wallReplyUpdate = (WallReplyEvent) eventObject;
-		Assert.assertEquals(Integer.valueOf(4), wallReplyUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(111), wallReplyUpdate.getFromId());
-		Assert.assertEquals(Integer.valueOf(3), wallReplyUpdate.getPostId());
-		Assert.assertEquals(Integer.valueOf(-222), wallReplyUpdate.getOwnerId());
-		Assert.assertEquals(Integer.valueOf(1594972082), wallReplyUpdate.getDate());
-		Assert.assertEquals(Integer.valueOf(-333), wallReplyUpdate.getPostOwnerId());
-		Assert.assertEquals("test1", wallReplyUpdate.getText());
+        WallReplyEvent wallReplyUpdate = (WallReplyEvent) eventObject;
+        Assert.assertEquals(Integer.valueOf(4), wallReplyUpdate.getId());
+        Assert.assertEquals(Integer.valueOf(111), wallReplyUpdate.getFromId());
+        Assert.assertEquals(Integer.valueOf(3), wallReplyUpdate.getPostId());
+        Assert.assertEquals(Integer.valueOf(-222), wallReplyUpdate.getOwnerId());
+        Assert.assertEquals(Integer.valueOf(1594972082), wallReplyUpdate.getDate());
+        Assert.assertEquals(Integer.valueOf(-333), wallReplyUpdate.getPostOwnerId());
+        Assert.assertEquals("test1", wallReplyUpdate.getText());
 
-		WallComment.Thread thread = wallReplyUpdate.getThread();
-		Assert.assertNotNull(thread);
-		Assert.assertEquals(Integer.valueOf(0), thread.getCount());
-	}
+        WallComment.Thread thread = wallReplyUpdate.getThread();
+        Assert.assertNotNull(thread);
+        Assert.assertEquals(Integer.valueOf(0), thread.getCount());
+    }
 }

@@ -11,9 +11,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>photos.saveOwnerCoverPhoto</b> method.
-* @see <a href="https://vk.com/dev/photos.saveOwnerCoverPhoto">https://vk.com/dev/photos.saveOwnerCoverPhoto</a>
-*/
+ * Implements <b>photos.saveOwnerCoverPhoto</b> method.
+ *
+ * @see <a href="https://vk.com/dev/photos.saveOwnerCoverPhoto">https://vk.com/dev/photos.saveOwnerCoverPhoto</a>
+ */
 public class PhotosSaveOwnerCoverPhoto extends GetMethod<PhotosSaveOwnerCoverPhotoResult> {
     /**
      * Parameter returned when photo is uploaded to server.
@@ -30,25 +31,25 @@ public class PhotosSaveOwnerCoverPhoto extends GetMethod<PhotosSaveOwnerCoverPho
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().photosSaveOwnerCoverPhoto();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<PhotosSaveOwnerCoverPhotoResult> getConverter() {
         return GenericConverterFactory.get(PhotosSaveOwnerCoverPhotoResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("hash", hash),

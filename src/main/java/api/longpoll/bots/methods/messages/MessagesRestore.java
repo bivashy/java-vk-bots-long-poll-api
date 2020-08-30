@@ -12,9 +12,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.restore</b> method.
-* @see <a href="https://vk.com/dev/messages.restore">https://vk.com/dev/messages.restore</a>
-*/
+ * Implements <b>messages.restore</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.restore">https://vk.com/dev/messages.restore</a>
+ */
 public class MessagesRestore extends GetMethod<GenericResult<Integer>> {
     /**
      * ID of a previously-deleted message to restore.
@@ -37,7 +38,7 @@ public class MessagesRestore extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
     }
 
     @Override

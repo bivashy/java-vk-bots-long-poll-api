@@ -12,9 +12,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>wall.closeComments</b> method.
-* @see <a href="https://vk.com/dev/wall.closeComments">https://vk.com/dev/wall.closeComments</a>
-*/
+ * Implements <b>wall.closeComments</b> method.
+ *
+ * @see <a href="https://vk.com/dev/wall.closeComments">https://vk.com/dev/wall.closeComments</a>
+ */
 public class WallCloseComments extends GetMethod<GenericResult<Integer>> {
     /**
      * Wall owner ID.
@@ -31,25 +32,25 @@ public class WallCloseComments extends GetMethod<GenericResult<Integer>> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().wallCloseComments();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),

@@ -11,9 +11,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>utils.getLinkStats</b> method.
-* @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
-*/
+ * Implements <b>utils.getLinkStats</b> method.
+ *
+ * @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
+ */
 public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
     /**
      * Part of the link after "vk.cc/".
@@ -50,25 +51,25 @@ public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().utilsGetLinkStats();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<UtilsGetLinkStatsResult> getConverter() {
         return GenericConverterFactory.get(UtilsGetLinkStatsResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("key", key),

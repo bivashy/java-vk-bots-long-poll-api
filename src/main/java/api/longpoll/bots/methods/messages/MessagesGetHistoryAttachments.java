@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.getHistoryAttachments</b> method.
-* @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
-*/
+ * Implements <b>messages.getHistoryAttachments</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
+ */
 public class MessagesGetHistoryAttachments extends GetMethod<MessagesGetHistoryAttachmentsResult> {
     /**
      * Peer ID.
@@ -66,25 +67,25 @@ public class MessagesGetHistoryAttachments extends GetMethod<MessagesGetHistoryA
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetHistoryAttachments();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<MessagesGetHistoryAttachmentsResult> getConverter() {
         return new MessagesGetHistoryAttachmentsResultConverterImpl();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),

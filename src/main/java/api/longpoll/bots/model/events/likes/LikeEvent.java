@@ -7,98 +7,98 @@ import com.google.gson.annotations.SerializedName;
  * Describes <b>like_add</b> event objects.
  */
 public class LikeEvent implements EventObject {
-	/**
-	 * User ID.
-	 */
-	@SerializedName("liker_id")
-	private Integer likerId;
+    /**
+     * User ID.
+     */
+    @SerializedName("liker_id")
+    private Integer likerId;
 
-	/**
-	 * What was liked. Possible values:
-	 * <ul>
-	 *     <li>video</li>
-	 *     <li>photo</li>
-	 *     <li>comment</li>
-	 *     <li>note</li>
-	 *     <li>topic_comment</li>
-	 *     <li>photo_comment</li>
-	 *     <li>video_comment</li>
-	 *     <li>market</li>
-	 *     <li>market_comment</li>
-	 * </ul>
-	 */
-	@SerializedName("object_type")
-	private String objectType;
+    /**
+     * What was liked. Possible values:
+     * <ul>
+     *     <li>video</li>
+     *     <li>photo</li>
+     *     <li>comment</li>
+     *     <li>note</li>
+     *     <li>topic_comment</li>
+     *     <li>photo_comment</li>
+     *     <li>video_comment</li>
+     *     <li>market</li>
+     *     <li>market_comment</li>
+     * </ul>
+     */
+    @SerializedName("object_type")
+    private String objectType;
 
-	/**
-	 * Liked object owner ID.
-	 */
-	@SerializedName("object_owner_id")
-	private Integer objectOwnerId;
+    /**
+     * Liked object owner ID.
+     */
+    @SerializedName("object_owner_id")
+    private Integer objectOwnerId;
 
-	/**
-	 * Liked object ID.
-	 */
-	@SerializedName("object_id")
-	private Integer objectId;
+    /**
+     * Liked object ID.
+     */
+    @SerializedName("object_id")
+    private Integer objectId;
 
-	/**
-	 * Parent object ID.
-	 */
-	@SerializedName("thread_reply_id")
-	private Integer threadReplyId;
+    /**
+     * Parent object ID.
+     */
+    @SerializedName("thread_reply_id")
+    private Integer threadReplyId;
 
-	/**
-	 * Post ID.
-	 */
-	@SerializedName("post_id")
-	private Integer postId;
+    /**
+     * Post ID.
+     */
+    @SerializedName("post_id")
+    private Integer postId;
 
-	public Integer getLikerId() {
-		return likerId;
-	}
+    public Integer getLikerId() {
+        return likerId;
+    }
 
-	public void setLikerId(Integer likerId) {
-		this.likerId = likerId;
-	}
+    public void setLikerId(Integer likerId) {
+        this.likerId = likerId;
+    }
 
-	public String getObjectType() {
-		return objectType;
-	}
+    public String getObjectType() {
+        return objectType;
+    }
 
-	public void setObjectType(String objectType) {
-		this.objectType = objectType;
-	}
+    public void setObjectType(String objectType) {
+        this.objectType = objectType;
+    }
 
-	public Integer getObjectOwnerId() {
-		return objectOwnerId;
-	}
+    public Integer getObjectOwnerId() {
+        return objectOwnerId;
+    }
 
-	public void setObjectOwnerId(Integer objectOwnerId) {
-		this.objectOwnerId = objectOwnerId;
-	}
+    public void setObjectOwnerId(Integer objectOwnerId) {
+        this.objectOwnerId = objectOwnerId;
+    }
 
-	public Integer getObjectId() {
-		return objectId;
-	}
+    public Integer getObjectId() {
+        return objectId;
+    }
 
-	public void setObjectId(Integer objectId) {
-		this.objectId = objectId;
-	}
+    public void setObjectId(Integer objectId) {
+        this.objectId = objectId;
+    }
 
-	public Integer getThreadReplyId() {
-		return threadReplyId;
-	}
+    public Integer getThreadReplyId() {
+        return threadReplyId;
+    }
 
-	public void setThreadReplyId(Integer threadReplyId) {
-		this.threadReplyId = threadReplyId;
-	}
+    public void setThreadReplyId(Integer threadReplyId) {
+        this.threadReplyId = threadReplyId;
+    }
 
-	public Integer getPostId() {
-		return postId;
-	}
+    public Integer getPostId() {
+        return postId;
+    }
 
-	public void setPostId(Integer postId) {
-		this.postId = postId;
-	}
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
 }

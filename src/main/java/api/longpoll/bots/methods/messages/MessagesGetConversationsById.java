@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.getConversationsById</b> method.
-* @see <a href="https://vk.com/dev/messages.getConversationsById">https://vk.com/dev/messages.getConversationsById</a>
-*/
+ * Implements <b>messages.getConversationsById</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.getConversationsById">https://vk.com/dev/messages.getConversationsById</a>
+ */
 public class MessagesGetConversationsById extends GetMethod<MessagesGetConversationsByIdResult> {
     /**
      * List of destination IDs.
@@ -41,25 +42,25 @@ public class MessagesGetConversationsById extends GetMethod<MessagesGetConversat
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetConversationsById();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<MessagesGetConversationsByIdResult> getConverter() {
         return GenericConverterFactory.get(MessagesGetConversationsByIdResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_ids", peerIds),

@@ -17,33 +17,33 @@ import java.util.List;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BoardReplyNewParseTest extends AbstractParseTest {
-	@Test
-	public void test1_boardReplyNew() throws IOException {
-		JsonObject jsonObject = readJson("json/response/board_post_new/board_post_new_sample_5_110.json");
-		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(getEventsResult);
-		Assert.assertEquals(Integer.valueOf(2635), getEventsResult.getTs());
+    @Test
+    public void test1_boardReplyNew() throws IOException {
+        JsonObject jsonObject = readJson("json/response/board_post_new/board_post_new_sample_5_110.json");
+        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        Assert.assertNotNull(getEventsResult);
+        Assert.assertEquals(Integer.valueOf(2635), getEventsResult.getTs());
 
-		List<Event> events = getEventsResult.getEvents();
-		Assert.assertNotNull(events);
-		Assert.assertEquals(1, events.size());
+        List<Event> events = getEventsResult.getEvents();
+        Assert.assertNotNull(events);
+        Assert.assertEquals(1, events.size());
 
-		Event event = events.get(0);
-		Assert.assertNotNull(event);
-		Assert.assertEquals("board_post_new", event.getType());
-		Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
-		Assert.assertEquals("aaa", event.getEventId());
+        Event event = events.get(0);
+        Assert.assertNotNull(event);
+        Assert.assertEquals("board_post_new", event.getType());
+        Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
+        Assert.assertEquals("aaa", event.getEventId());
 
-		EventObject eventObject = event.getObject();
-		Assert.assertNotNull(eventObject);
+        EventObject eventObject = event.getObject();
+        Assert.assertNotNull(eventObject);
 
-		Assert.assertTrue(eventObject instanceof BoardPostEvent);
-		BoardPostEvent boardPostUpdate = (BoardPostEvent) eventObject;
-		Assert.assertEquals(Integer.valueOf(2), boardPostUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(111), boardPostUpdate.getFromId());
-		Assert.assertEquals(Integer.valueOf(1595841380), boardPostUpdate.getDate());
-		Assert.assertEquals("test", boardPostUpdate.getText());
-		Assert.assertEquals(Integer.valueOf(-222), boardPostUpdate.getTopicOwnerId());
-		Assert.assertEquals(Integer.valueOf(333), boardPostUpdate.getTopicId());
-	}
+        Assert.assertTrue(eventObject instanceof BoardPostEvent);
+        BoardPostEvent boardPostUpdate = (BoardPostEvent) eventObject;
+        Assert.assertEquals(Integer.valueOf(2), boardPostUpdate.getId());
+        Assert.assertEquals(Integer.valueOf(111), boardPostUpdate.getFromId());
+        Assert.assertEquals(Integer.valueOf(1595841380), boardPostUpdate.getDate());
+        Assert.assertEquals("test", boardPostUpdate.getText());
+        Assert.assertEquals(Integer.valueOf(-222), boardPostUpdate.getTopicOwnerId());
+        Assert.assertEquals(Integer.valueOf(333), boardPostUpdate.getTopicId());
+    }
 }

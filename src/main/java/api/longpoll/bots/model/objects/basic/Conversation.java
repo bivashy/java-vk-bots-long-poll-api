@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Describes conversation.
+ *
  * @see <a href="https://vk.com/dev/objects/conversation">Conversation</a>
  */
 public class Conversation {
@@ -226,7 +227,7 @@ public class Conversation {
         private Photo photo;
 
         /**
-         *  IDs of the last users who wrote to the conversation.
+         * IDs of the last users who wrote to the conversation.
          */
         @SerializedName("active_ids")
         private List<Integer> activeIds;

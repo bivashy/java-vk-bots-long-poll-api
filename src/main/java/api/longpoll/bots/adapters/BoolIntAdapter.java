@@ -8,8 +8,8 @@ import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 
 public class BoolIntAdapter implements JsonDeserializer<Boolean> {
-	@Override
-	public Boolean deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-		return jsonElement.getAsInt() == 1;
-	}
+    @Override
+    public Boolean deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        return jsonElement.getAsInt() == 1;
+    }
 }

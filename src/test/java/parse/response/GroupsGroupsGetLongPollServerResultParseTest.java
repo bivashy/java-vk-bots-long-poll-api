@@ -13,19 +13,19 @@ import java.io.IOException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GroupsGroupsGetLongPollServerResultParseTest extends AbstractParseTest {
-	@Test
-	public void test1_getLongPollServerResponseSuccessParse() throws IOException {
-		JsonObject jsonObject = new StringToJsonConverterImpl().convert(readJson("json/response/get_long_poll_server_response_sample_5_110.json").toString());
-		GroupsGetLongPollServerResult groupsGetLongPollServerResult = GenericConverterFactory.get(GroupsGetLongPollServerResult.class)
-				.convert(jsonObject);
-		Assert.assertNotNull(groupsGetLongPollServerResult);
+    @Test
+    public void test1_getLongPollServerResponseSuccessParse() throws IOException {
+        JsonObject jsonObject = new StringToJsonConverterImpl().convert(readJson("json/response/get_long_poll_server_response_sample_5_110.json").toString());
+        GroupsGetLongPollServerResult groupsGetLongPollServerResult = GenericConverterFactory.get(GroupsGetLongPollServerResult.class)
+                .convert(jsonObject);
+        Assert.assertNotNull(groupsGetLongPollServerResult);
 
-		GroupsGetLongPollServerResult.Response response = groupsGetLongPollServerResult.getResponse();
-		Assert.assertNotNull(response);
-		Assert.assertEquals("aaa", response.getKey());
-		Assert.assertEquals("bbb", response.getServer());
-		Assert.assertEquals(Integer.valueOf(2587), response.getTs());
-	}
+        GroupsGetLongPollServerResult.Response response = groupsGetLongPollServerResult.getResponse();
+        Assert.assertNotNull(response);
+        Assert.assertEquals("aaa", response.getKey());
+        Assert.assertEquals("bbb", response.getServer());
+        Assert.assertEquals(Integer.valueOf(2587), response.getTs());
+    }
 
 
 }

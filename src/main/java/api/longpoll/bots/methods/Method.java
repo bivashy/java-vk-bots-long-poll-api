@@ -22,158 +22,170 @@ import java.util.stream.Stream;
 
 /**
  * Generic method which executes requests to VK API.
+ *
  * @param <Result> VK API response type.
  */
 public abstract class Method<Result> {
-	/**
-	 * Logger object.
-	 */
-	private static final Logger log = LoggerFactory.getLogger(Method.class);
+    /**
+     * Logger object.
+     */
+    private static final Logger log = LoggerFactory.getLogger(Method.class);
 
-	/**
-	 * Converter object that converts String to JsonObject.
-	 */
-	private Converter<String, JsonObject> jsonConverter = new StringToJsonConverterImpl();
+    /**
+     * Converter object that converts String to JsonObject.
+     */
+    private Converter<String, JsonObject> jsonConverter = new StringToJsonConverterImpl();
 
-	/**
-	 * Validator that checks VK API response.
-	 */
-	private Validator validator = new ResponseValidator();
+    /**
+     * Validator that checks VK API response.
+     */
+    private Validator validator = new ResponseValidator();
 
-	/**
-	 * Executes request to VK API.
-	 * @return VK API response.
-	 * @throws ApiHttpException if error occurs.
-	 */
-	public Result execute() throws ApiHttpException {
-		return execute(getConverter());
-	}
+    /**
+     * Executes request to VK API.
+     *
+     * @return VK API response.
+     * @throws ApiHttpException if error occurs.
+     */
+    public Result execute() throws ApiHttpException {
+        return execute(getConverter());
+    }
 
-	/**
-	 * Executes request to VK API.
-	 * @param converter converter which converts JsonObject to required Result type.
-	 * @return VK API response.
-	 * @throws ApiHttpException if error occurs.
-	 */
-	private Result execute(JsonToPojoConverter<Result> converter) throws ApiHttpException {
-		String stringResponse = sendRequest();
+    /**
+     * Executes request to VK API.
+     *
+     * @param converter converter which converts JsonObject to required Result type.
+     * @return VK API response.
+     * @throws ApiHttpException if error occurs.
+     */
+    private Result execute(JsonToPojoConverter<Result> converter) throws ApiHttpException {
+        String stringResponse = sendRequest();
 
-		JsonObject responseJson = jsonConverter.convert(stringResponse);
+        JsonObject responseJson = jsonConverter.convert(stringResponse);
 
-		if (validator.isValid(responseJson)) {
-			return converter.convert(responseJson);
-		}
+        if (validator.isValid(responseJson)) {
+            return converter.convert(responseJson);
+        }
 
-		throw new ApiException(responseJson.toString());
-	}
+        throw new ApiException(responseJson.toString());
+    }
 
-	/**
-	 * Sends HTTP request.
-	 * @return String response.
-	 * @throws ApiHttpException if error occurs.
-	 */
-	private String sendRequest() throws ApiHttpException {
-		try {
-			String api = getApi();
-			Connection.Method method = getMethod();
-			List<Connection.KeyVal> data = getData();
+    /**
+     * Sends HTTP request.
+     *
+     * @return String response.
+     * @throws ApiHttpException if error occurs.
+     */
+    private String sendRequest() throws ApiHttpException {
+        try {
+            String api = getApi();
+            Connection.Method method = getMethod();
+            List<Connection.KeyVal> data = getData();
 
-			log.debug("Sending: method={}, api={}, data={}", method, api, data);
+            log.debug("Sending: method={}, api={}, data={}", method, api, data);
 
-			Connection connection = Jsoup.connect(api)
-					.ignoreContentType(true)
-					.timeout(0)
-					.method(method);
+            Connection connection = Jsoup.connect(api)
+                    .ignoreContentType(true)
+                    .timeout(0)
+                    .method(method);
 
-			if (!data.isEmpty()) {
-				connection.data(data);
-			}
+            if (!data.isEmpty()) {
+                connection.data(data);
+            }
 
-			String body = execute(connection).body();
+            String body = execute(connection).body();
 
-			log.debug("Received: {}", body);
+            log.debug("Received: {}", body);
 
-			return body;
-		} catch (IOException e) {
-			log.error("Failed to send request {}.", getMethod(), e);
-			throw new ApiHttpException(e);
-		}
-	}
+            return body;
+        } catch (IOException e) {
+            log.error("Failed to send request {}.", getMethod(), e);
+            throw new ApiHttpException(e);
+        }
+    }
 
-	/**
-	 * Executes HTTP request.
-	 * @param connection destination params.
-	 * @return HTTP response.
-	 * @throws IOException if error occurs.
-	 */
-	protected Connection.Response execute(Connection connection) throws IOException {
-		return connection.execute();
-	}
+    /**
+     * Executes HTTP request.
+     *
+     * @param connection destination params.
+     * @return HTTP response.
+     * @throws IOException if error occurs.
+     */
+    protected Connection.Response execute(Connection connection) throws IOException {
+        return connection.execute();
+    }
 
-	/**
-	 * Collects request params.
-	 * @return list of request params.
-	 */
-	protected List<Connection.KeyVal> getData() {
-		return getKeyValStream()
-				.filter(Objects::nonNull)
-				.collect(Collectors.toList());
-	}
+    /**
+     * Collects request params.
+     *
+     * @return list of request params.
+     */
+    protected List<Connection.KeyVal> getData() {
+        return getKeyValStream()
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+    }
 
-	/**
-	 * Creates request parameter.
-	 * @param key parameter name.
-	 * @param value parameter value.
-	 * @param boolint <b>true</b> if boolean value should be represented as 0 or 1.
-	 * @return request parameter.
-	 */
-	protected Connection.KeyVal keyVal(String key, Object value, boolean boolint) {
-		if (value == null) {
-			return null;
-		}
+    /**
+     * Creates request parameter.
+     *
+     * @param key     parameter name.
+     * @param value   parameter value.
+     * @param boolint <b>true</b> if boolean value should be represented as 0 or 1.
+     * @return request parameter.
+     */
+    protected Connection.KeyVal keyVal(String key, Object value, boolean boolint) {
+        if (value == null) {
+            return null;
+        }
 
-		if (value instanceof List) {
-			value = ((List) value).stream().map(String::valueOf).collect(Collectors.joining(","));
-		}
+        if (value instanceof List) {
+            value = ((List) value).stream().map(String::valueOf).collect(Collectors.joining(","));
+        }
 
-		if (boolint && value instanceof Boolean) {
-			value = (Boolean) value ? 1 : 0;
-		}
+        if (boolint && value instanceof Boolean) {
+            value = (Boolean) value ? 1 : 0;
+        }
 
-		return HttpConnection.KeyVal.create(key, String.valueOf(value));
-	}
+        return HttpConnection.KeyVal.create(key, String.valueOf(value));
+    }
 
-	/**
-	 * Creates request parameter.
-	 * @param key parameter name.
-	 * @param value parameter value.
-	 * @return request parameter.
-	 */
-	protected Connection.KeyVal keyVal(String key, Object value) {
-		return keyVal(key, value, false);
-	}
+    /**
+     * Creates request parameter.
+     *
+     * @param key   parameter name.
+     * @param value parameter value.
+     * @return request parameter.
+     */
+    protected Connection.KeyVal keyVal(String key, Object value) {
+        return keyVal(key, value, false);
+    }
 
-	/**
-	 * Gets VK API method URL.
-	 * @return method URL.
-	 */
-	protected abstract String getApi();
+    /**
+     * Gets VK API method URL.
+     *
+     * @return method URL.
+     */
+    protected abstract String getApi();
 
-	/**
-	 * Gets request method type.
-	 * @return request method type.
-	 */
-	protected abstract Connection.Method getMethod();
+    /**
+     * Gets request method type.
+     *
+     * @return request method type.
+     */
+    protected abstract Connection.Method getMethod();
 
-	/**
-	 * Gets JsonObject to POJO converter.
-	 * @return JsonObject to POJO converter.
-	 */
-	protected abstract JsonToPojoConverter<Result> getConverter();
+    /**
+     * Gets JsonObject to POJO converter.
+     *
+     * @return JsonObject to POJO converter.
+     */
+    protected abstract JsonToPojoConverter<Result> getConverter();
 
-	/**
-	 * Get stream of request parameters.
-	 * @return stream of request parameters.
-	 */
-	protected abstract Stream<Connection.KeyVal> getKeyValStream();
+    /**
+     * Get stream of request parameters.
+     *
+     * @return stream of request parameters.
+     */
+    protected abstract Stream<Connection.KeyVal> getKeyValStream();
 }

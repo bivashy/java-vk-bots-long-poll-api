@@ -13,10 +13,10 @@ import java.io.IOException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MessagesSendParseTest extends AbstractParseTest {
-	@Test
-	public void test1_responses() throws IOException {
-		JsonObject jsonObject = readJson("json/response/messages_send/message_send_responses_sample_5_110.json");
-		MessagesSendResult response = GenericConverterFactory.get(MessagesSendResult.class).convert(jsonObject);
-		Assert.assertNotNull(response);
-	}
+    @Test
+    public void test1_responses() throws IOException {
+        JsonObject jsonObject = readJson("json/response/messages_send/message_send_responses_sample_5_110.json");
+        MessagesSendResult response = GenericConverterFactory.get(MessagesSendResult.class).convert(jsonObject);
+        Assert.assertNotNull(response);
+    }
 }

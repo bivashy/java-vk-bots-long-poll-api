@@ -7,73 +7,73 @@ import com.google.gson.annotations.SerializedName;
  * Describes <b>user_block</b> event objects.
  */
 public class UserBlockEvent implements EventObject {
-	/**
-	 * Administrator ID.
-	 */
-	@SerializedName("admin_id")
-	private Integer adminId;
+    /**
+     * Administrator ID.
+     */
+    @SerializedName("admin_id")
+    private Integer adminId;
 
-	/**
-	 * User ID.
-	 */
-	@SerializedName("user_id")
-	private Integer userId;
+    /**
+     * User ID.
+     */
+    @SerializedName("user_id")
+    private Integer userId;
 
-	/**
-	 * Date when the user will be unblocked.
-	 */
-	@SerializedName("unblock_date")
-	private Integer unblockDate;
+    /**
+     * Date when the user will be unblocked.
+     */
+    @SerializedName("unblock_date")
+    private Integer unblockDate;
 
-	/**
-	 * Ban reason.
-	 */
-	@SerializedName("reason")
-	private Integer reason;
+    /**
+     * Ban reason.
+     */
+    @SerializedName("reason")
+    private Integer reason;
 
-	/**
-	 * Text of the comment to the ban.
-	 */
-	@SerializedName("comment")
-	private Integer comment;
+    /**
+     * Text of the comment to the ban.
+     */
+    @SerializedName("comment")
+    private Integer comment;
 
-	public Integer getAdminId() {
-		return adminId;
-	}
+    public Integer getAdminId() {
+        return adminId;
+    }
 
-	public void setAdminId(Integer adminId) {
-		this.adminId = adminId;
-	}
+    public void setAdminId(Integer adminId) {
+        this.adminId = adminId;
+    }
 
-	public Integer getUserId() {
-		return userId;
-	}
+    public Integer getUserId() {
+        return userId;
+    }
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
-	public Integer getUnblockDate() {
-		return unblockDate;
-	}
+    public Integer getUnblockDate() {
+        return unblockDate;
+    }
 
-	public void setUnblockDate(Integer unblockDate) {
-		this.unblockDate = unblockDate;
-	}
+    public void setUnblockDate(Integer unblockDate) {
+        this.unblockDate = unblockDate;
+    }
 
-	public Integer getReason() {
-		return reason;
-	}
+    public Integer getReason() {
+        return reason;
+    }
 
-	public void setReason(Integer reason) {
-		this.reason = reason;
-	}
+    public void setReason(Integer reason) {
+        this.reason = reason;
+    }
 
-	public Integer getComment() {
-		return comment;
-	}
+    public Integer getComment() {
+        return comment;
+    }
 
-	public void setComment(Integer comment) {
-		this.comment = comment;
-	}
+    public void setComment(Integer comment) {
+        this.comment = comment;
+    }
 }

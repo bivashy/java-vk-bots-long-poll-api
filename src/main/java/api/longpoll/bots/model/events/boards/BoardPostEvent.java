@@ -7,31 +7,31 @@ import com.google.gson.annotations.SerializedName;
  * Describes <b>board_post_new</b>, <b>board_post_edit</b> and <b>board_post_restore</b> event objects.
  */
 public class BoardPostEvent extends TopicComment {
-	/**
-	 * Topic ID.
-	 */
-	@SerializedName("topic_id")
-	private Integer topicId;
+    /**
+     * Topic ID.
+     */
+    @SerializedName("topic_id")
+    private Integer topicId;
 
-	/**
-	 * Topic owner ID.
-	 */
-	@SerializedName("topic_owner_id")
-	private Integer topicOwnerId;
+    /**
+     * Topic owner ID.
+     */
+    @SerializedName("topic_owner_id")
+    private Integer topicOwnerId;
 
-	public Integer getTopicId() {
-		return topicId;
-	}
+    public Integer getTopicId() {
+        return topicId;
+    }
 
-	public void setTopicId(Integer topicId) {
-		this.topicId = topicId;
-	}
+    public void setTopicId(Integer topicId) {
+        this.topicId = topicId;
+    }
 
-	public Integer getTopicOwnerId() {
-		return topicOwnerId;
-	}
+    public Integer getTopicOwnerId() {
+        return topicOwnerId;
+    }
 
-	public void setTopicOwnerId(Integer topicOwnerId) {
-		this.topicOwnerId = topicOwnerId;
-	}
+    public void setTopicOwnerId(Integer topicOwnerId) {
+        this.topicOwnerId = topicOwnerId;
+    }
 }

@@ -10,139 +10,140 @@ import java.util.List;
 
 /**
  * Describes topic comment.
+ *
  * @see <a href="https://vk.com/dev/objects/comment_board">Topic Comment</a>
  */
 public class TopicComment implements EventObject {
-	/**
-	 * Comment ID.
-	 */
-	@SerializedName("id")
-	private Integer id;
+    /**
+     * Comment ID.
+     */
+    @SerializedName("id")
+    private Integer id;
 
-	/**
-	 * Comment author ID.
-	 */
-	@SerializedName("from_id")
-	private Integer fromId;
+    /**
+     * Comment author ID.
+     */
+    @SerializedName("from_id")
+    private Integer fromId;
 
-	/**
-	 * Date when the comment has been added in Unixtime.
-	 */
-	@SerializedName("date")
-	private Integer date;
+    /**
+     * Date when the comment has been added in Unixtime.
+     */
+    @SerializedName("date")
+    private Integer date;
 
-	/**
-	 * Comment text.
-	 */
-	@SerializedName("text")
-	private String text;
+    /**
+     * Comment text.
+     */
+    @SerializedName("text")
+    private String text;
 
-	/**
-	 * Information about attachments in the comments (photos, links, etc).
-	 */
-	@SerializedName("attachments")
-	private List<Attachment> attachments;
+    /**
+     * Information about attachments in the comments (photos, links, etc).
+     */
+    @SerializedName("attachments")
+    private List<Attachment> attachments;
 
-	/**
-	 * Information about likes.
-	 */
-	@SerializedName("likes")
-	private Likes likes;
+    /**
+     * Information about likes.
+     */
+    @SerializedName("likes")
+    private Likes likes;
 
-	/**
-	 * Describes topic comment likes.
-	 */
-	public static class Likes {
-		/**
-		 * Likes count.
-		 */
-		@SerializedName("count")
-		private Integer count;
+    /**
+     * Describes topic comment likes.
+     */
+    public static class Likes {
+        /**
+         * Likes count.
+         */
+        @SerializedName("count")
+        private Integer count;
 
-		/**
-		 * <b>true</b>, if current user likes the comment.
-		 */
-		@SerializedName("user_likes")
-		@JsonAdapter(BoolIntAdapter.class)
-		private Boolean userLikes;
+        /**
+         * <b>true</b>, if current user likes the comment.
+         */
+        @SerializedName("user_likes")
+        @JsonAdapter(BoolIntAdapter.class)
+        private Boolean userLikes;
 
-		/**
-		 * <b>true</b>, if current user can like the comment.
-		 */
-		@SerializedName("can_like")
-		@JsonAdapter(BoolIntAdapter.class)
-		private Boolean canLike;
+        /**
+         * <b>true</b>, if current user can like the comment.
+         */
+        @SerializedName("can_like")
+        @JsonAdapter(BoolIntAdapter.class)
+        private Boolean canLike;
 
-		public Integer getCount() {
-			return count;
-		}
+        public Integer getCount() {
+            return count;
+        }
 
-		public void setCount(Integer count) {
-			this.count = count;
-		}
+        public void setCount(Integer count) {
+            this.count = count;
+        }
 
-		public Boolean getUserLikes() {
-			return userLikes;
-		}
+        public Boolean getUserLikes() {
+            return userLikes;
+        }
 
-		public void setUserLikes(Boolean userLikes) {
-			this.userLikes = userLikes;
-		}
+        public void setUserLikes(Boolean userLikes) {
+            this.userLikes = userLikes;
+        }
 
-		public Boolean getCanLike() {
-			return canLike;
-		}
+        public Boolean getCanLike() {
+            return canLike;
+        }
 
-		public void setCanLike(Boolean canLike) {
-			this.canLike = canLike;
-		}
-	}
+        public void setCanLike(Boolean canLike) {
+            this.canLike = canLike;
+        }
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Integer getFromId() {
-		return fromId;
-	}
+    public Integer getFromId() {
+        return fromId;
+    }
 
-	public void setFromId(Integer fromId) {
-		this.fromId = fromId;
-	}
+    public void setFromId(Integer fromId) {
+        this.fromId = fromId;
+    }
 
-	public Integer getDate() {
-		return date;
-	}
+    public Integer getDate() {
+        return date;
+    }
 
-	public void setDate(Integer date) {
-		this.date = date;
-	}
+    public void setDate(Integer date) {
+        this.date = date;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	public List<Attachment> getAttachments() {
-		return attachments;
-	}
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
 
-	public void setAttachments(List<Attachment> attachments) {
-		this.attachments = attachments;
-	}
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
+    }
 
-	public Likes getLikes() {
-		return likes;
-	}
+    public Likes getLikes() {
+        return likes;
+    }
 
-	public void setLikes(Likes likes) {
-		this.likes = likes;
-	}
+    public void setLikes(Likes likes) {
+        this.likes = likes;
+    }
 }

@@ -11,9 +11,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.deleteConversation</b> method.
-* @see <a href="https://vk.com/dev/messages.deleteConversation">https://vk.com/dev/messages.deleteConversation</a>
-*/
+ * Implements <b>messages.deleteConversation</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.deleteConversation">https://vk.com/dev/messages.deleteConversation</a>
+ */
 public class MessagesDeleteConversation extends GetMethod<MessagesDeleteConversationResult> {
     /**
      * User ID.
@@ -35,25 +36,25 @@ public class MessagesDeleteConversation extends GetMethod<MessagesDeleteConversa
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesDeleteConversation();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<MessagesDeleteConversationResult> getConverter() {
         return GenericConverterFactory.get(MessagesDeleteConversationResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("user_id", userId),

@@ -11,9 +11,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>utils.getShortLink</b> method.
-* @see <a href="https://vk.com/dev/utils.getShortLink">https://vk.com/dev/utils.getShortLink</a>
-*/
+ * Implements <b>utils.getShortLink</b> method.
+ *
+ * @see <a href="https://vk.com/dev/utils.getShortLink">https://vk.com/dev/utils.getShortLink</a>
+ */
 public class UtilsGetShortLink extends GetMethod<UtilsGetShortLinkResult> {
     /**
      * URL to be shortened.
@@ -30,25 +31,25 @@ public class UtilsGetShortLink extends GetMethod<UtilsGetShortLinkResult> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().utilsGetShortLink();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<UtilsGetShortLinkResult> getConverter() {
         return GenericConverterFactory.get(UtilsGetShortLinkResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("url", url),

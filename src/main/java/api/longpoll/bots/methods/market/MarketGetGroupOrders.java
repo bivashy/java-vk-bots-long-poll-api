@@ -14,9 +14,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>market.getGroupOrders</b> method.
-* @see <a href="https://vk.com/dev/market.getGroupOrders">https://vk.com/dev/market.getGroupOrders</a>
-*/
+ * Implements <b>market.getGroupOrders</b> method.
+ *
+ * @see <a href="https://vk.com/dev/market.getGroupOrders">https://vk.com/dev/market.getGroupOrders</a>
+ */
 public class MarketGetGroupOrders extends GetMethod<GenericResult<VkList<MarketOrder>>> {
     /**
      * ID of the community that owns the items market.
@@ -38,25 +39,25 @@ public class MarketGetGroupOrders extends GetMethod<GenericResult<VkList<MarketO
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().marketGetGroupOrders();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GenericResult<VkList<MarketOrder>>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<VkList<MarketOrder>>>(){}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<VkList<MarketOrder>>>() {}.getType());
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

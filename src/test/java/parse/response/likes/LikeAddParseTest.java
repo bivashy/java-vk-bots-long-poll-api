@@ -17,33 +17,33 @@ import java.util.List;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class LikeAddParseTest extends AbstractParseTest {
-	@Test
-	public void test1_likeAdd() throws IOException {
-		JsonObject jsonObject = readJson("json/response/like_add/like_add_sample_5_110.json");
-		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(getEventsResult);
-		Assert.assertEquals(Integer.valueOf(2629), getEventsResult.getTs());
+    @Test
+    public void test1_likeAdd() throws IOException {
+        JsonObject jsonObject = readJson("json/response/like_add/like_add_sample_5_110.json");
+        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        Assert.assertNotNull(getEventsResult);
+        Assert.assertEquals(Integer.valueOf(2629), getEventsResult.getTs());
 
-		List<Event> events = getEventsResult.getEvents();
-		Assert.assertNotNull(events);
-		Assert.assertEquals(1, events.size());
+        List<Event> events = getEventsResult.getEvents();
+        Assert.assertNotNull(events);
+        Assert.assertEquals(1, events.size());
 
-		Event event = events.get(0);
-		Assert.assertNotNull(event);
-		Assert.assertEquals("like_add", event.getType());
-		Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
-		Assert.assertEquals("aaa", event.getEventId());
+        Event event = events.get(0);
+        Assert.assertNotNull(event);
+        Assert.assertEquals("like_add", event.getType());
+        Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
+        Assert.assertEquals("aaa", event.getEventId());
 
-		EventObject eventObject = event.getObject();
-		Assert.assertNotNull(eventObject);
+        EventObject eventObject = event.getObject();
+        Assert.assertNotNull(eventObject);
 
-		Assert.assertTrue(eventObject instanceof LikeEvent);
-		LikeEvent audio = (LikeEvent) eventObject;
-		Assert.assertEquals(Integer.valueOf(111), audio.getLikerId());
-		Assert.assertEquals("post", audio.getObjectType());
-		Assert.assertEquals(Integer.valueOf(-222), audio.getObjectOwnerId());
-		Assert.assertEquals(Integer.valueOf(3), audio.getObjectId());
-		Assert.assertEquals(Integer.valueOf(0), audio.getThreadReplyId());
-		Assert.assertEquals(Integer.valueOf(0), audio.getPostId());
-	}
+        Assert.assertTrue(eventObject instanceof LikeEvent);
+        LikeEvent audio = (LikeEvent) eventObject;
+        Assert.assertEquals(Integer.valueOf(111), audio.getLikerId());
+        Assert.assertEquals("post", audio.getObjectType());
+        Assert.assertEquals(Integer.valueOf(-222), audio.getObjectOwnerId());
+        Assert.assertEquals(Integer.valueOf(3), audio.getObjectId());
+        Assert.assertEquals(Integer.valueOf(0), audio.getThreadReplyId());
+        Assert.assertEquals(Integer.valueOf(0), audio.getPostId());
+    }
 }

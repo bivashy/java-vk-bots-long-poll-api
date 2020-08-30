@@ -18,37 +18,37 @@ import java.util.List;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class VideoCommentNewParseTest extends AbstractParseTest {
-	@Test
-	public void test1_videoCommentNew() throws IOException {
-		JsonObject jsonObject = readJson("json/response/video_comment_new/video_comment_new_sample_5_110.json");
-		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(getEventsResult);
-		Assert.assertEquals(Integer.valueOf(2619), getEventsResult.getTs());
+    @Test
+    public void test1_videoCommentNew() throws IOException {
+        JsonObject jsonObject = readJson("json/response/video_comment_new/video_comment_new_sample_5_110.json");
+        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        Assert.assertNotNull(getEventsResult);
+        Assert.assertEquals(Integer.valueOf(2619), getEventsResult.getTs());
 
-		List<Event> events = getEventsResult.getEvents();
-		Assert.assertNotNull(events);
-		Assert.assertEquals(1, events.size());
+        List<Event> events = getEventsResult.getEvents();
+        Assert.assertNotNull(events);
+        Assert.assertEquals(1, events.size());
 
-		Event event = events.get(0);
-		Assert.assertNotNull(event);
-		Assert.assertEquals("video_comment_new", event.getType());
-		Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
-		Assert.assertEquals("aaa", event.getEventId());
+        Event event = events.get(0);
+        Assert.assertNotNull(event);
+        Assert.assertEquals("video_comment_new", event.getType());
+        Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
+        Assert.assertEquals("aaa", event.getEventId());
 
-		EventObject eventObject = event.getObject();
-		Assert.assertNotNull(eventObject);
+        EventObject eventObject = event.getObject();
+        Assert.assertNotNull(eventObject);
 
-		Assert.assertTrue(eventObject instanceof VideoCommentEvent);
-		VideoCommentEvent videoCommentUpdate = (VideoCommentEvent) eventObject;
-		Assert.assertEquals(Integer.valueOf(1), videoCommentUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(111), videoCommentUpdate.getFromId());
-		Assert.assertEquals(Integer.valueOf(1594823317), videoCommentUpdate.getDate());
-		Assert.assertEquals("check", videoCommentUpdate.getText());
-		Assert.assertEquals(Integer.valueOf(-222), videoCommentUpdate.getVideoOwnerId());
-		Assert.assertEquals(Integer.valueOf(333), videoCommentUpdate.getVideoId());
+        Assert.assertTrue(eventObject instanceof VideoCommentEvent);
+        VideoCommentEvent videoCommentUpdate = (VideoCommentEvent) eventObject;
+        Assert.assertEquals(Integer.valueOf(1), videoCommentUpdate.getId());
+        Assert.assertEquals(Integer.valueOf(111), videoCommentUpdate.getFromId());
+        Assert.assertEquals(Integer.valueOf(1594823317), videoCommentUpdate.getDate());
+        Assert.assertEquals("check", videoCommentUpdate.getText());
+        Assert.assertEquals(Integer.valueOf(-222), videoCommentUpdate.getVideoOwnerId());
+        Assert.assertEquals(Integer.valueOf(333), videoCommentUpdate.getVideoId());
 
-		WallComment.Thread thread = videoCommentUpdate.getThread();
-		Assert.assertNotNull(thread);
-		Assert.assertEquals(Integer.valueOf(0), thread.getCount());
-	}
+        WallComment.Thread thread = videoCommentUpdate.getThread();
+        Assert.assertNotNull(thread);
+        Assert.assertEquals(Integer.valueOf(0), thread.getCount());
+    }
 }

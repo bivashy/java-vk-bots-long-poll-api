@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Describes Pinned Message.
+ *
  * @see <a href="https://vk.com/dev/objects/pinned_message">Pinned Message</a>
  */
 public class PinnedMessage {

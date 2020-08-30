@@ -13,9 +13,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.delete</b> method.
-* @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
-*/
+ * Implements <b>messages.delete</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
+ */
 public class MessagesDelete extends GetMethod<GenericResult<Integer>> {
     /**
      * Message IDs.
@@ -42,25 +43,25 @@ public class MessagesDelete extends GetMethod<GenericResult<Integer>> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesDelete();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("message_ids", messageIds),

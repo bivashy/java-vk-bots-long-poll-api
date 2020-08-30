@@ -9,31 +9,31 @@ import java.util.List;
  * Contains list of events that occur on VK server.
  */
 public class GetEventsResult {
-	/**
-	 * The number of the last event.
-	 */
-	@SerializedName("ts")
-	private Integer ts;
+    /**
+     * The number of the last event.
+     */
+    @SerializedName("ts")
+    private Integer ts;
 
-	/**
-	 * List of events.
-	 */
-	@SerializedName("updates")
-	private List<Event> events;
+    /**
+     * List of events.
+     */
+    @SerializedName("updates")
+    private List<Event> events;
 
-	public Integer getTs() {
-		return ts;
-	}
+    public Integer getTs() {
+        return ts;
+    }
 
-	public void setTs(Integer ts) {
-		this.ts = ts;
-	}
+    public void setTs(Integer ts) {
+        this.ts = ts;
+    }
 
-	public List<Event> getEvents() {
-		return events;
-	}
+    public List<Event> getEvents() {
+        return events;
+    }
 
-	public void setEvents(List<Event> events) {
-		this.events = events;
-	}
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
 }

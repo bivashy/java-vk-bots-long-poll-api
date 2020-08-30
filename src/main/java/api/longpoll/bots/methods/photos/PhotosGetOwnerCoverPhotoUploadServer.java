@@ -11,9 +11,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>photos.getOwnerCoverPhotoUploadServer</b> method.
-* @see <a href="https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer">https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer</a>
-*/
+ * Implements <b>photos.getOwnerCoverPhotoUploadServer</b> method.
+ *
+ * @see <a href="https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer">https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer</a>
+ */
 public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwnerCoverPhotoUploadServerResult> {
     /**
      * Community ID.
@@ -45,25 +46,25 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwn
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().photosGetOwnerCoverPhotoUploadServer();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<PhotosGetOwnerCoverPhotoUploadServerResult> getConverter() {
         return GenericConverterFactory.get(PhotosGetOwnerCoverPhotoUploadServerResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

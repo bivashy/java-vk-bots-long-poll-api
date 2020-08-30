@@ -8,19 +8,19 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class AbstractParseTest {
-	private static Gson gson = new Gson();
+    private static Gson gson = new Gson();
 
-	protected static JsonObject readJson(String path) throws IOException {
-		return gson.fromJson(readFile(path), JsonObject.class);
-	}
+    protected static JsonObject readJson(String path) throws IOException {
+        return gson.fromJson(readFile(path), JsonObject.class);
+    }
 
-	protected static String readFile(String relativePath) throws IOException {
-		return FileUtils.readFileToString(
-				getFile(relativePath),
-				"UTF-8");
-	}
+    protected static String readFile(String relativePath) throws IOException {
+        return FileUtils.readFileToString(
+                getFile(relativePath),
+                "UTF-8");
+    }
 
-	private static File getFile(String relativePath) {
-		return new File("src/test/resource/".concat(relativePath));
-	}
+    private static File getFile(String relativePath) {
+        return new File("src/test/resource/".concat(relativePath));
+    }
 }

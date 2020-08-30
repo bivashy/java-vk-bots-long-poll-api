@@ -11,9 +11,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>groups.getOnlineStatus</b> method.
-* @see <a href="https://vk.com/dev/groups.getOnlineStatus">https://vk.com/dev/groups.getOnlineStatus</a>
-*/
+ * Implements <b>groups.getOnlineStatus</b> method.
+ *
+ * @see <a href="https://vk.com/dev/groups.getOnlineStatus">https://vk.com/dev/groups.getOnlineStatus</a>
+ */
 public class GroupsGetOnlineStatus extends GetMethod<GroupsGetOnlineStatusResult> {
     /**
      * Community ID.
@@ -25,25 +26,25 @@ public class GroupsGetOnlineStatus extends GetMethod<GroupsGetOnlineStatusResult
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetOnlineStatus();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GroupsGetOnlineStatusResult> getConverter() {
         return GenericConverterFactory.get(GroupsGetOnlineStatusResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(keyVal("group_id", groupId));
     }

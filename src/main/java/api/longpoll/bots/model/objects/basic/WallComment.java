@@ -10,287 +10,288 @@ import java.util.List;
 
 /**
  * Describes Wall Comment.
+ *
  * @see <a href="https://vk.com/dev/objects/comment">Wall Comment</a>
  */
 public class WallComment implements Attachable {
-	/**
-	 * Comment ID.
-	 */
-	@SerializedName("id")
-	private Integer id;
+    /**
+     * Comment ID.
+     */
+    @SerializedName("id")
+    private Integer id;
 
-	/**
-	 * Comment author ID.
-	 */
-	@SerializedName("from_id")
-	private Integer fromId;
+    /**
+     * Comment author ID.
+     */
+    @SerializedName("from_id")
+    private Integer fromId;
 
-	/**
-	 * Date when the comment has been added in Unixtime.
-	 */
-	@SerializedName("date")
-	private Integer date;
+    /**
+     * Date when the comment has been added in Unixtime.
+     */
+    @SerializedName("date")
+    private Integer date;
 
-	/**
-	 * Comment text.
-	 */
-	@SerializedName("text")
-	private String text;
+    /**
+     * Comment text.
+     */
+    @SerializedName("text")
+    private String text;
 
-	/**
-	 * ID of the user or community to whom the reply is addressed (if the comment is a reply to another comment).
-	 */
-	@SerializedName("reply_to_user")
-	private Integer replyToUser;
+    /**
+     * ID of the user or community to whom the reply is addressed (if the comment is a reply to another comment).
+     */
+    @SerializedName("reply_to_user")
+    private Integer replyToUser;
 
-	/**
-	 * ID of the comment the reply to which is represented by the current comment (if the comment is a reply to another comment).
-	 */
-	@SerializedName("reply_to_comment")
-	private Integer replyToComment;
+    /**
+     * ID of the comment the reply to which is represented by the current comment (if the comment is a reply to another comment).
+     */
+    @SerializedName("reply_to_comment")
+    private Integer replyToComment;
 
-	/**
-	 * List of attachments in the comments (photos, links, etc.)
-	 */
-	@SerializedName("attachments")
-	private List<Attachment> attachments;
+    /**
+     * List of attachments in the comments (photos, links, etc.)
+     */
+    @SerializedName("attachments")
+    private List<Attachment> attachments;
 
-	/**
-	 * Parent comments IDs.
-	 */
-	@SerializedName("parents_stack")
-	private List<Integer> parentsStack;
+    /**
+     * Parent comments IDs.
+     */
+    @SerializedName("parents_stack")
+    private List<Integer> parentsStack;
 
-	/**
-	 * Thread info.
-	 */
-	@SerializedName("thread")
-	private Thread thread;
+    /**
+     * Thread info.
+     */
+    @SerializedName("thread")
+    private Thread thread;
 
-	/**
-	 * Wall post ID.
-	 */
-	@SerializedName("post_id")
-	private Integer postId;
+    /**
+     * Wall post ID.
+     */
+    @SerializedName("post_id")
+    private Integer postId;
 
-	/**
-	 * Post owner ID.
-	 */
-	@SerializedName("owner_id")
-	private Integer ownerId;
+    /**
+     * Post owner ID.
+     */
+    @SerializedName("owner_id")
+    private Integer ownerId;
 
-	/**
-	 * Likes info.
-	 */
-	@SerializedName("likes")
-	private Likes likes;
+    /**
+     * Likes info.
+     */
+    @SerializedName("likes")
+    private Likes likes;
 
-	/**
-	 * Describes thread.
-	 */
-	public static class Thread {
-		/**
-		 * Number of comments.
-		 */
-		@SerializedName("count")
-		private Integer count;
+    /**
+     * Describes thread.
+     */
+    public static class Thread {
+        /**
+         * Number of comments.
+         */
+        @SerializedName("count")
+        private Integer count;
 
-		/**
-		 * <b>true</b> if current user can post comments in this thread.
-		 */
-		@SerializedName("can_post")
-		@JsonAdapter(BoolIntAdapter.class)
-		private Boolean canPost;
+        /**
+         * <b>true</b> if current user can post comments in this thread.
+         */
+        @SerializedName("can_post")
+        @JsonAdapter(BoolIntAdapter.class)
+        private Boolean canPost;
 
-		/**
-		 * <b>true</b> if it is recommended to display "reply" button.
-		 */
-		@SerializedName("show_reply_button")
-		@JsonAdapter(BoolIntAdapter.class)
-		private Boolean showReplyButton;
+        /**
+         * <b>true</b> if it is recommended to display "reply" button.
+         */
+        @SerializedName("show_reply_button")
+        @JsonAdapter(BoolIntAdapter.class)
+        private Boolean showReplyButton;
 
-		/**
-		 * <b>true</b> if groups can post comments in this thread.
-		 */
-		@SerializedName("groups_can_post")
-		@JsonAdapter(BoolIntAdapter.class)
-		private Boolean groupsCanPost;
+        /**
+         * <b>true</b> if groups can post comments in this thread.
+         */
+        @SerializedName("groups_can_post")
+        @JsonAdapter(BoolIntAdapter.class)
+        private Boolean groupsCanPost;
 
-		public Integer getCount() {
-			return count;
-		}
+        public Integer getCount() {
+            return count;
+        }
 
-		public void setCount(Integer count) {
-			this.count = count;
-		}
+        public void setCount(Integer count) {
+            this.count = count;
+        }
 
-		public Boolean getCanPost() {
-			return canPost;
-		}
+        public Boolean getCanPost() {
+            return canPost;
+        }
 
-		public void setCanPost(Boolean canPost) {
-			this.canPost = canPost;
-		}
+        public void setCanPost(Boolean canPost) {
+            this.canPost = canPost;
+        }
 
-		public Boolean getShowReplyButton() {
-			return showReplyButton;
-		}
+        public Boolean getShowReplyButton() {
+            return showReplyButton;
+        }
 
-		public void setShowReplyButton(Boolean showReplyButton) {
-			this.showReplyButton = showReplyButton;
-		}
+        public void setShowReplyButton(Boolean showReplyButton) {
+            this.showReplyButton = showReplyButton;
+        }
 
-		public Boolean getGroupsCanPost() {
-			return groupsCanPost;
-		}
+        public Boolean getGroupsCanPost() {
+            return groupsCanPost;
+        }
 
-		public void setGroupsCanPost(Boolean groupsCanPost) {
-			this.groupsCanPost = groupsCanPost;
-		}
-	}
+        public void setGroupsCanPost(Boolean groupsCanPost) {
+            this.groupsCanPost = groupsCanPost;
+        }
+    }
 
-	/**
-	 * Describes likes info.
-	 */
-	public static class Likes {
-		/**
-		 * Number of likes.
-		 */
-		@SerializedName("count")
-		private Integer count;
+    /**
+     * Describes likes info.
+     */
+    public static class Likes {
+        /**
+         * Number of likes.
+         */
+        @SerializedName("count")
+        private Integer count;
 
-		/**
-		 * <b>true</b> if current user likes the post.
-		 */
-		@SerializedName("user_likes")
-		@JsonAdapter(BoolIntAdapter.class)
-		private Boolean userLikes;
+        /**
+         * <b>true</b> if current user likes the post.
+         */
+        @SerializedName("user_likes")
+        @JsonAdapter(BoolIntAdapter.class)
+        private Boolean userLikes;
 
-		/**
-		 * <b>true</b> if current user can add like to the post.
-		 */
-		@SerializedName("can_like")
-		@JsonAdapter(BoolIntAdapter.class)
-		private Boolean canLike;
+        /**
+         * <b>true</b> if current user can add like to the post.
+         */
+        @SerializedName("can_like")
+        @JsonAdapter(BoolIntAdapter.class)
+        private Boolean canLike;
 
-		public Integer getCount() {
-			return count;
-		}
+        public Integer getCount() {
+            return count;
+        }
 
-		public void setCount(Integer count) {
-			this.count = count;
-		}
+        public void setCount(Integer count) {
+            this.count = count;
+        }
 
-		public Boolean getUserLikes() {
-			return userLikes;
-		}
+        public Boolean getUserLikes() {
+            return userLikes;
+        }
 
-		public void setUserLikes(Boolean userLikes) {
-			this.userLikes = userLikes;
-		}
+        public void setUserLikes(Boolean userLikes) {
+            this.userLikes = userLikes;
+        }
 
-		public Boolean getCanLike() {
-			return canLike;
-		}
+        public Boolean getCanLike() {
+            return canLike;
+        }
 
-		public void setCanLike(Boolean canLike) {
-			this.canLike = canLike;
-		}
-	}
+        public void setCanLike(Boolean canLike) {
+            this.canLike = canLike;
+        }
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Integer getFromId() {
-		return fromId;
-	}
+    public Integer getFromId() {
+        return fromId;
+    }
 
-	public void setFromId(Integer fromId) {
-		this.fromId = fromId;
-	}
+    public void setFromId(Integer fromId) {
+        this.fromId = fromId;
+    }
 
-	public Integer getDate() {
-		return date;
-	}
+    public Integer getDate() {
+        return date;
+    }
 
-	public void setDate(Integer date) {
-		this.date = date;
-	}
+    public void setDate(Integer date) {
+        this.date = date;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public String getText() {
+        return text;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	public Integer getReplyToUser() {
-		return replyToUser;
-	}
+    public Integer getReplyToUser() {
+        return replyToUser;
+    }
 
-	public void setReplyToUser(Integer replyToUser) {
-		this.replyToUser = replyToUser;
-	}
+    public void setReplyToUser(Integer replyToUser) {
+        this.replyToUser = replyToUser;
+    }
 
-	public Integer getReplyToComment() {
-		return replyToComment;
-	}
+    public Integer getReplyToComment() {
+        return replyToComment;
+    }
 
-	public void setReplyToComment(Integer replyToComment) {
-		this.replyToComment = replyToComment;
-	}
+    public void setReplyToComment(Integer replyToComment) {
+        this.replyToComment = replyToComment;
+    }
 
-	public List<Attachment> getAttachments() {
-		return attachments;
-	}
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
 
-	public void setAttachments(List<Attachment> attachments) {
-		this.attachments = attachments;
-	}
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
+    }
 
-	public List<Integer> getParentsStack() {
-		return parentsStack;
-	}
+    public List<Integer> getParentsStack() {
+        return parentsStack;
+    }
 
-	public void setParentsStack(List<Integer> parentsStack) {
-		this.parentsStack = parentsStack;
-	}
+    public void setParentsStack(List<Integer> parentsStack) {
+        this.parentsStack = parentsStack;
+    }
 
-	public Thread getThread() {
-		return thread;
-	}
+    public Thread getThread() {
+        return thread;
+    }
 
-	public void setThread(Thread thread) {
-		this.thread = thread;
-	}
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
 
-	public Integer getPostId() {
-		return postId;
-	}
+    public Integer getPostId() {
+        return postId;
+    }
 
-	public void setPostId(Integer postId) {
-		this.postId = postId;
-	}
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
 
-	public Integer getOwnerId() {
-		return ownerId;
-	}
+    public Integer getOwnerId() {
+        return ownerId;
+    }
 
-	public void setOwnerId(Integer ownerId) {
-		this.ownerId = ownerId;
-	}
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
 
-	public Likes getLikes() {
-		return likes;
-	}
+    public Likes getLikes() {
+        return likes;
+    }
 
-	public void setLikes(Likes likes) {
-		this.likes = likes;
-	}
+    public void setLikes(Likes likes) {
+        this.likes = likes;
+    }
 }

@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>groups.getMembers</b> method.
-* @see <a href="https://vk.com/dev/groups.getMembers">https://vk.com/dev/groups.getMembers</a>
-*/
+ * Implements <b>groups.getMembers</b> method.
+ *
+ * @see <a href="https://vk.com/dev/groups.getMembers">https://vk.com/dev/groups.getMembers</a>
+ */
 public class GroupsGetMembers extends GetMethod<GroupsGetMembersResult> {
     /**
      * ID or screen name of the community.
@@ -51,25 +52,25 @@ public class GroupsGetMembers extends GetMethod<GroupsGetMembersResult> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetMembers();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GroupsGetMembersResult> getConverter() {
         return new GroupsGetMembersResultConverterImpl();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

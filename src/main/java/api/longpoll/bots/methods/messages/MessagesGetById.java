@@ -15,9 +15,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.getById</b> method.
-* @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
-*/
+ * Implements <b>messages.getById</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
+ */
 public class MessagesGetById extends GetMethod<GenericResult<VkList<Message>>> {
     /**
      * Message IDs.
@@ -49,25 +50,25 @@ public class MessagesGetById extends GetMethod<GenericResult<VkList<Message>>> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetById();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GenericResult<VkList<Message>>> getConverter() {
-        return  GenericConverterFactory.get(new TypeToken<GenericResult<VkList<Message>>>(){}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<VkList<Message>>>() {}.getType());
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("message_ids", messageIds),

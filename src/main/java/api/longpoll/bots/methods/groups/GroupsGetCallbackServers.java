@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>groups.getCallbackServers</b> method.
-* @see <a href="https://vk.com/dev/groups.getCallbackServers">https://vk.com/dev/groups.getCallbackServers</a>
-*/
+ * Implements <b>groups.getCallbackServers</b> method.
+ *
+ * @see <a href="https://vk.com/dev/groups.getCallbackServers">https://vk.com/dev/groups.getCallbackServers</a>
+ */
 public class GroupsGetCallbackServers extends GetMethod<GroupsGetCallbackServersResult> {
     /**
      * Community ID.
@@ -31,25 +32,25 @@ public class GroupsGetCallbackServers extends GetMethod<GroupsGetCallbackServers
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetCallbackServers();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GroupsGetCallbackServersResult> getConverter() {
         return GenericConverterFactory.get(GroupsGetCallbackServersResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

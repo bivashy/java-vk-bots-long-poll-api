@@ -11,40 +11,41 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>groups.getLongPollServer</b> method.
-* @see <a href="https://vk.com/dev/groups.getLongPollServer">https://vk.com/dev/groups.getLongPollServer</a>
-*/
+ * Implements <b>groups.getLongPollServer</b> method.
+ *
+ * @see <a href="https://vk.com/dev/groups.getLongPollServer">https://vk.com/dev/groups.getLongPollServer</a>
+ */
 public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerResult> {
-	/**
-	 * Community ID.
-	 */
-	private Integer groupId;
+    /**
+     * Community ID.
+     */
+    private Integer groupId;
 
-	public GroupsGetLongPollServer(LongPollBot bot) {
-		super(bot);
-	}
+    public GroupsGetLongPollServer(LongPollBot bot) {
+        super(bot);
+    }
 
-	@Override
-	protected JsonToPojoConverter<GroupsGetLongPollServerResult> getConverter() {
-		return GenericConverterFactory.get(GroupsGetLongPollServerResult.class);
-	}
+    @Override
+    protected JsonToPojoConverter<GroupsGetLongPollServerResult> getConverter() {
+        return GenericConverterFactory.get(GroupsGetLongPollServerResult.class);
+    }
 
-	@Override
-	protected Stream<Connection.KeyVal> getKeyValStream() {
-		return Stream.of(keyVal("group_id", groupId));
-	}
+    @Override
+    protected Stream<Connection.KeyVal> getKeyValStream() {
+        return Stream.of(keyVal("group_id", groupId));
+    }
 
-	@Override
-	protected String getApi() {
-		return VkApi.getInstance().groupsGetLongPollServer();
-	}
+    @Override
+    protected String getApi() {
+        return VkApi.getInstance().groupsGetLongPollServer();
+    }
 
-	public Integer getGroupId() {
-		return groupId;
-	}
+    public Integer getGroupId() {
+        return groupId;
+    }
 
-	public GroupsGetLongPollServer setGroupId(Integer groupId) {
-		this.groupId = groupId;
-		return this;
-	}
+    public GroupsGetLongPollServer setGroupId(Integer groupId) {
+        this.groupId = groupId;
+        return this;
+    }
 }

@@ -12,26 +12,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WallPostConverterImpl extends JsonToPojoConverter<WallPost> {
-	private static final String ATTACHMENTS_FIELD = "attachments";
-	private AttachmentConverterImpl attachmentConverter = new AttachmentConverterImpl();
+    private static final String ATTACHMENTS_FIELD = "attachments";
+    private AttachmentConverterImpl attachmentConverter = new AttachmentConverterImpl();
 
-	@Override
-	public WallPost convert(JsonObject jsonObject) {
-		WallPost wallPost = gson.fromJson(jsonObject, WallPost.class);
+    @Override
+    public WallPost convert(JsonObject jsonObject) {
+        WallPost wallPost = gson.fromJson(jsonObject, WallPost.class);
 
-		if (jsonObject.has(ATTACHMENTS_FIELD)) {
-			JsonArray jsonAttachments = jsonObject.getAsJsonArray(ATTACHMENTS_FIELD);
-			List<Attachment> attachments = new ArrayList<>(jsonAttachments.size());
-			jsonAttachments.forEach(jsonAttachment -> attachments.add(attachmentConverter.convert(jsonAttachment.getAsJsonObject())));
-			wallPost.setAttachments(attachments);
-		}
+        if (jsonObject.has(ATTACHMENTS_FIELD)) {
+            JsonArray jsonAttachments = jsonObject.getAsJsonArray(ATTACHMENTS_FIELD);
+            List<Attachment> attachments = new ArrayList<>(jsonAttachments.size());
+            jsonAttachments.forEach(jsonAttachment -> attachments.add(attachmentConverter.convert(jsonAttachment.getAsJsonObject())));
+            wallPost.setAttachments(attachments);
+        }
 
-		return wallPost;
-	}
+        return wallPost;
+    }
 
-	@Override
-	protected boolean shouldSkipField(FieldAttributes fieldAttributes) {
-		return List.class.equals(fieldAttributes.getDeclaredClass())
-				&& ATTACHMENTS_FIELD.equals(fieldAttributes.getName());
-	}
+    @Override
+    protected boolean shouldSkipField(FieldAttributes fieldAttributes) {
+        return List.class.equals(fieldAttributes.getDeclaredClass())
+                && ATTACHMENTS_FIELD.equals(fieldAttributes.getName());
+    }
 }

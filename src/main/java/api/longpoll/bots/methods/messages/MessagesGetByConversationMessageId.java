@@ -15,9 +15,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.getByConversationMessageId</b> method.
-* @see <a href="https://vk.com/dev/messages.getByConversationMessageId">https://vk.com/dev/messages.getByConversationMessageId</a>
-*/
+ * Implements <b>messages.getByConversationMessageId</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.getByConversationMessageId">https://vk.com/dev/messages.getByConversationMessageId</a>
+ */
 public class MessagesGetByConversationMessageId extends GetMethod<GenericResult<VkList<Message>>> {
     /**
      * Peer Id.
@@ -49,28 +50,28 @@ public class MessagesGetByConversationMessageId extends GetMethod<GenericResult<
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetByConversationMessageId();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GenericResult<VkList<Message>>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<VkList<Message>>>(){}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<VkList<Message>>>() {}.getType());
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-              keyVal("peer_id", peerId),
+                keyVal("peer_id", peerId),
                 keyVal("conversation_message_ids", conversationMessageIds),
                 keyVal("extended", extended, true),
                 keyVal("fields", fields),

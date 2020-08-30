@@ -11,6 +11,7 @@ import java.util.Map;
 
 /**
  * Describes user.
+ *
  * @see <a href="https://vk.com/dev/objects/user">User</a>
  */
 public class User {
@@ -707,7 +708,7 @@ public class User {
     /**
      * Describes user's counters.
      */
-    public static  class Counters {
+    public static class Counters {
         /**
          * Number of photo albums.
          */

@@ -13,58 +13,58 @@ import java.util.stream.Stream;
  * Implements uploading document in VK API.
  */
 public class UploadDoc extends PostMethod<UploadDocResult> {
-	/**
-	 * Upload URL.
-	 */
-	private String uploadUrl;
+    /**
+     * Upload URL.
+     */
+    private String uploadUrl;
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected String getApi() {
-		return uploadUrl;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected String getApi() {
+        return uploadUrl;
+    }
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected JsonToPojoConverter<UploadDocResult> getConverter() {
-		return GenericConverterFactory.get(UploadDocResult.class);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected JsonToPojoConverter<UploadDocResult> getConverter() {
+        return GenericConverterFactory.get(UploadDocResult.class);
+    }
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected Stream<Connection.KeyVal> getKeyValStream() {
-		return Stream.of();
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Stream<Connection.KeyVal> getKeyValStream() {
+        return Stream.of();
+    }
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected String getType() {
-		return "file";
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected String getType() {
+        return "file";
+    }
 
-	public String getUploadUrl() {
-		return uploadUrl;
-	}
+    public String getUploadUrl() {
+        return uploadUrl;
+    }
 
-	public UploadDoc setUploadUrl(String uploadUrl) {
-		this.uploadUrl = uploadUrl;
-		return this;
-	}
+    public UploadDoc setUploadUrl(String uploadUrl) {
+        this.uploadUrl = uploadUrl;
+        return this;
+    }
 
-	public UploadDoc setDoc(File doc) {
-		setFile(doc);
-		return this;
-	}
+    public UploadDoc setDoc(File doc) {
+        setFile(doc);
+        return this;
+    }
 
-	public File getDoc() {
-		return getFile();
-	}
+    public File getDoc() {
+        return getFile();
+    }
 }

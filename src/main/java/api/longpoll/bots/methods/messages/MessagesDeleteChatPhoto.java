@@ -11,9 +11,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.deleteChatPhoto</b> method.
-* @see <a href="https://vk.com/dev/messages.deleteChatPhoto">https://vk.com/dev/messages.deleteChatPhoto</a>
-*/
+ * Implements <b>messages.deleteChatPhoto</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.deleteChatPhoto">https://vk.com/dev/messages.deleteChatPhoto</a>
+ */
 public class MessagesDeleteChatPhoto extends GetMethod<MessagesDeleteChatPhotoResult> {
     /**
      * Chat ID.
@@ -30,25 +31,25 @@ public class MessagesDeleteChatPhoto extends GetMethod<MessagesDeleteChatPhotoRe
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesDeleteChatPhoto();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<MessagesDeleteChatPhotoResult> getConverter() {
         return GenericConverterFactory.get(MessagesDeleteChatPhotoResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("chat_id", chatId),

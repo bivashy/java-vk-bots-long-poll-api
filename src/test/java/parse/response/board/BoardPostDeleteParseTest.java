@@ -17,30 +17,30 @@ import java.util.List;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BoardPostDeleteParseTest extends AbstractParseTest {
-	@Test
-	public void test1_boardReplyNew() throws IOException {
-		JsonObject jsonObject = readJson("json/response/board_post_delete/board_post_delete_sample_5_110.json");
-		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(getEventsResult);
-		Assert.assertEquals(Integer.valueOf(2638), getEventsResult.getTs());
+    @Test
+    public void test1_boardReplyNew() throws IOException {
+        JsonObject jsonObject = readJson("json/response/board_post_delete/board_post_delete_sample_5_110.json");
+        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        Assert.assertNotNull(getEventsResult);
+        Assert.assertEquals(Integer.valueOf(2638), getEventsResult.getTs());
 
-		List<Event> events = getEventsResult.getEvents();
-		Assert.assertNotNull(events);
-		Assert.assertEquals(1, events.size());
+        List<Event> events = getEventsResult.getEvents();
+        Assert.assertNotNull(events);
+        Assert.assertEquals(1, events.size());
 
-		Event event = events.get(0);
-		Assert.assertNotNull(event);
-		Assert.assertEquals("board_post_delete", event.getType());
-		Assert.assertEquals(Integer.valueOf(123), event.getGroupId());
-		Assert.assertEquals("aaa", event.getEventId());
+        Event event = events.get(0);
+        Assert.assertNotNull(event);
+        Assert.assertEquals("board_post_delete", event.getType());
+        Assert.assertEquals(Integer.valueOf(123), event.getGroupId());
+        Assert.assertEquals("aaa", event.getEventId());
 
-		EventObject eventObject = event.getObject();
-		Assert.assertNotNull(eventObject);
+        EventObject eventObject = event.getObject();
+        Assert.assertNotNull(eventObject);
 
-		Assert.assertTrue(eventObject instanceof BoardPostDeleteEvent);
-		BoardPostDeleteEvent boardPostDeleteUpdate = (BoardPostDeleteEvent) eventObject;
-		Assert.assertEquals(Integer.valueOf(-111), boardPostDeleteUpdate.getTopicOwnerId());
-		Assert.assertEquals(Integer.valueOf(3), boardPostDeleteUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(333), boardPostDeleteUpdate.getTopicId());
-	}
+        Assert.assertTrue(eventObject instanceof BoardPostDeleteEvent);
+        BoardPostDeleteEvent boardPostDeleteUpdate = (BoardPostDeleteEvent) eventObject;
+        Assert.assertEquals(Integer.valueOf(-111), boardPostDeleteUpdate.getTopicOwnerId());
+        Assert.assertEquals(Integer.valueOf(3), boardPostDeleteUpdate.getId());
+        Assert.assertEquals(Integer.valueOf(333), boardPostDeleteUpdate.getTopicId());
+    }
 }

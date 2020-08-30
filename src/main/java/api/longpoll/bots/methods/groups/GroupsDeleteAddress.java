@@ -12,66 +12,67 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>groups.deleteAddress</b> method.
-* @see <a href="https://vk.com/dev/groups.deleteAddress">https://vk.com/dev/groups.deleteAddress</a>
-*/
+ * Implements <b>groups.deleteAddress</b> method.
+ *
+ * @see <a href="https://vk.com/dev/groups.deleteAddress">https://vk.com/dev/groups.deleteAddress</a>
+ */
 public class GroupsDeleteAddress extends GetMethod<GenericResult<Integer>> {
-	/**
-	 * Community ID.
-	 */
-	private Integer groupId;
+    /**
+     * Community ID.
+     */
+    private Integer groupId;
 
-	/**
-	 * Address ID.
-	 */
-	private Integer addressId;
+    /**
+     * Address ID.
+     */
+    private Integer addressId;
 
-	public GroupsDeleteAddress(LongPollBot bot) {
-		super(bot);
-	}
+    public GroupsDeleteAddress(LongPollBot bot) {
+        super(bot);
+    }
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected String getApi() {
-		return VkApi.getInstance().groupsDeleteAddress();
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected String getApi() {
+        return VkApi.getInstance().groupsDeleteAddress();
+    }
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-		return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
+    }
 
-	/**
-	* {@inheritDoc}
-	*/
-	@Override
-	protected Stream<Connection.KeyVal> getKeyValStream() {
-		return Stream.of(
-				keyVal("group_id", groupId),
-				keyVal("address_id", addressId)
-		);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Stream<Connection.KeyVal> getKeyValStream() {
+        return Stream.of(
+                keyVal("group_id", groupId),
+                keyVal("address_id", addressId)
+        );
+    }
 
-	public Integer getGroupId() {
-		return groupId;
-	}
+    public Integer getGroupId() {
+        return groupId;
+    }
 
-	public GroupsDeleteAddress setGroupId(Integer groupId) {
-		this.groupId = groupId;
-		return this;
-	}
+    public GroupsDeleteAddress setGroupId(Integer groupId) {
+        this.groupId = groupId;
+        return this;
+    }
 
-	public Integer getAddressId() {
-		return addressId;
-	}
+    public Integer getAddressId() {
+        return addressId;
+    }
 
-	public GroupsDeleteAddress setAddressId(Integer addressId) {
-		this.addressId = addressId;
-		return this;
-	}
+    public GroupsDeleteAddress setAddressId(Integer addressId) {
+        this.addressId = addressId;
+        return this;
+    }
 }

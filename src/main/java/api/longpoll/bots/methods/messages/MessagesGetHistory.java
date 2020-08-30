@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.getHistory</b> method.
-* @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
-*/
+ * Implements <b>messages.getHistory</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
+ */
 public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
     /**
      * Offset needed to return a specific subset of messages.
@@ -66,25 +67,25 @@ public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetHistory();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<MessagesGetHistoryResult> getConverter() {
         return GenericConverterFactory.get(MessagesGetHistoryResult.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("offset", offset),

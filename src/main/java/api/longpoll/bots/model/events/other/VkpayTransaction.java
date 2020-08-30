@@ -7,59 +7,59 @@ import com.google.gson.annotations.SerializedName;
  * Describes <b>vkpay_transaction</b> event objects.
  */
 public class VkpayTransaction implements EventObject {
-	/**
-	 * User ID who initiated the transaction.
-	 */
-	@SerializedName("from_id")
-	private Integer fromId;
+    /**
+     * User ID who initiated the transaction.
+     */
+    @SerializedName("from_id")
+    private Integer fromId;
 
-	/**
-	 * Transaction amount in thousandths of rubles.
-	 */
-	@SerializedName("amount")
-	private Integer amount;
+    /**
+     * Transaction amount in thousandths of rubles.
+     */
+    @SerializedName("amount")
+    private Integer amount;
 
-	/**
-	 * Transaction comment.
-	 */
-	@SerializedName("description")
-	private String description;
+    /**
+     * Transaction comment.
+     */
+    @SerializedName("description")
+    private String description;
 
-	/**
-	 * Time of sending the transaction in Unixtime.
-	 */
-	@SerializedName("date")
-	private Integer date;
+    /**
+     * Time of sending the transaction in Unixtime.
+     */
+    @SerializedName("date")
+    private Integer date;
 
-	public Integer getFromId() {
-		return fromId;
-	}
+    public Integer getFromId() {
+        return fromId;
+    }
 
-	public void setFromId(Integer fromId) {
-		this.fromId = fromId;
-	}
+    public void setFromId(Integer fromId) {
+        this.fromId = fromId;
+    }
 
-	public Integer getAmount() {
-		return amount;
-	}
+    public Integer getAmount() {
+        return amount;
+    }
 
-	public void setAmount(Integer amount) {
-		this.amount = amount;
-	}
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public Integer getDate() {
-		return date;
-	}
+    public Integer getDate() {
+        return date;
+    }
 
-	public void setDate(Integer date) {
-		this.date = date;
-	}
+    public void setDate(Integer date) {
+        this.date = date;
+    }
 }

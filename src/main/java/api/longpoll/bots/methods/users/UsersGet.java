@@ -14,9 +14,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>users.get</b> method.
-* @see <a href="https://vk.com/dev/users.get">https://vk.com/dev/users.get</a>
-*/
+ * Implements <b>users.get</b> method.
+ *
+ * @see <a href="https://vk.com/dev/users.get">https://vk.com/dev/users.get</a>
+ */
 public class UsersGet extends GetMethod<GenericResult<List<User>>> {
     /**
      * User IDs or screen names (screen_name).
@@ -38,25 +39,25 @@ public class UsersGet extends GetMethod<GenericResult<List<User>>> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().usersGet();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GenericResult<List<User>>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<List<User>>>(){}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<List<User>>>() {}.getType());
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("user_ids", userIds),

@@ -13,9 +13,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>messages.markAsRead</b> method.
-* @see <a href="https://vk.com/dev/messages.markAsRead">https://vk.com/dev/messages.markAsRead</a>
-*/
+ * Implements <b>messages.markAsRead</b> method.
+ *
+ * @see <a href="https://vk.com/dev/messages.markAsRead">https://vk.com/dev/messages.markAsRead</a>
+ */
 public class MessagesMarkAsRead extends GetMethod<GenericResult<Integer>> {
     /**
      * IDs of messages to mark as read.
@@ -53,7 +54,7 @@ public class MessagesMarkAsRead extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
     }
 
     @Override

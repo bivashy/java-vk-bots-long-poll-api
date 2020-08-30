@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Generic response which contains only one field.
+ *
  * @param <T> field type.
  */
 public class GenericResult<T> {

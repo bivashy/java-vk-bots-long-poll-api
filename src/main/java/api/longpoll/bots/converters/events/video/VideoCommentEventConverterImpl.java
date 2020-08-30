@@ -12,25 +12,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VideoCommentEventConverterImpl extends JsonToPojoConverter<VideoCommentEvent> {
-	private static final String ATTACHMENTS_FIELD = "attachments";
-	private AttachmentConverterImpl attachmentConverter = new AttachmentConverterImpl();
+    private static final String ATTACHMENTS_FIELD = "attachments";
+    private AttachmentConverterImpl attachmentConverter = new AttachmentConverterImpl();
 
-	@Override
-	public VideoCommentEvent convert(JsonObject jsonObject) {
-		VideoCommentEvent videoCommentUpdate = gson.fromJson(jsonObject, VideoCommentEvent.class);
+    @Override
+    public VideoCommentEvent convert(JsonObject jsonObject) {
+        VideoCommentEvent videoCommentUpdate = gson.fromJson(jsonObject, VideoCommentEvent.class);
 
-		if (jsonObject.has(ATTACHMENTS_FIELD)) {
-			JsonArray jsonAttachments = jsonObject.getAsJsonArray(ATTACHMENTS_FIELD);
-			List<Attachment> attachments = new ArrayList<>(jsonAttachments.size());
-			jsonAttachments.forEach(jsonAttachment -> attachments.add(attachmentConverter.convert(jsonAttachment.getAsJsonObject())));
-			videoCommentUpdate.setAttachments(attachments);
-		}
-		return videoCommentUpdate;
-	}
+        if (jsonObject.has(ATTACHMENTS_FIELD)) {
+            JsonArray jsonAttachments = jsonObject.getAsJsonArray(ATTACHMENTS_FIELD);
+            List<Attachment> attachments = new ArrayList<>(jsonAttachments.size());
+            jsonAttachments.forEach(jsonAttachment -> attachments.add(attachmentConverter.convert(jsonAttachment.getAsJsonObject())));
+            videoCommentUpdate.setAttachments(attachments);
+        }
+        return videoCommentUpdate;
+    }
 
-	@Override
-	protected boolean shouldSkipField(FieldAttributes fieldAttributes) {
-		return List.class.equals(fieldAttributes.getDeclaredClass())
-				&& ATTACHMENTS_FIELD.equals(fieldAttributes.getName());
-	}
+    @Override
+    protected boolean shouldSkipField(FieldAttributes fieldAttributes) {
+        return List.class.equals(fieldAttributes.getDeclaredClass())
+                && ATTACHMENTS_FIELD.equals(fieldAttributes.getName());
+    }
 }

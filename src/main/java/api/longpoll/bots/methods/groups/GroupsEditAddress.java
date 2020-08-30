@@ -11,9 +11,10 @@ import org.jsoup.Connection;
 import java.util.stream.Stream;
 
 /**
-* Implements <b>groups.editAddress</b> method.
-* @see <a href="https://vk.com/dev/groups.editAddress">https://vk.com/dev/groups.editAddress</a>
-*/
+ * Implements <b>groups.editAddress</b> method.
+ *
+ * @see <a href="https://vk.com/dev/groups.editAddress">https://vk.com/dev/groups.editAddress</a>
+ */
 public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
     /**
      * Community ID.
@@ -44,7 +45,7 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
      * County ID.
      */
     private Integer countryId;
-    
+
     /**
      * City ID.
      */
@@ -90,25 +91,25 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected String getApi() {
         return VkApi.getInstance().groupsEditAddress();
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected JsonToPojoConverter<GroupsEditAddress> getConverter() {
         return GenericConverterFactory.get(GroupsEditAddress.class);
     }
 
     /**
-	* {@inheritDoc}
-	*/
-	@Override
+     * {@inheritDoc}
+     */
+    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),

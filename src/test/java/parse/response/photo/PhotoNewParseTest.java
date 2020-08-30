@@ -18,38 +18,38 @@ import java.util.List;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PhotoNewParseTest extends AbstractParseTest {
-	@Test
-	public void test1_messageEdit() throws IOException {
-		JsonObject jsonObject = readJson("json/response/photo_new/photo_new_sample_5_110.json");
-		GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
-		Assert.assertNotNull(getEventsResult);
-		Assert.assertEquals(Integer.valueOf(2612), getEventsResult.getTs());
+    @Test
+    public void test1_messageEdit() throws IOException {
+        JsonObject jsonObject = readJson("json/response/photo_new/photo_new_sample_5_110.json");
+        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        Assert.assertNotNull(getEventsResult);
+        Assert.assertEquals(Integer.valueOf(2612), getEventsResult.getTs());
 
-		List<Event> events = getEventsResult.getEvents();
-		Assert.assertNotNull(events);
-		Assert.assertEquals(1, events.size());
+        List<Event> events = getEventsResult.getEvents();
+        Assert.assertNotNull(events);
+        Assert.assertEquals(1, events.size());
 
-		Event event = events.get(0);
-		Assert.assertNotNull(event);
-		Assert.assertEquals("photo_new", event.getType());
-		Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
-		Assert.assertEquals("aaa", event.getEventId());
+        Event event = events.get(0);
+        Assert.assertNotNull(event);
+        Assert.assertEquals("photo_new", event.getType());
+        Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
+        Assert.assertEquals("aaa", event.getEventId());
 
-		EventObject eventObject = event.getObject();
-		Assert.assertNotNull(eventObject);
+        EventObject eventObject = event.getObject();
+        Assert.assertNotNull(eventObject);
 
-		Assert.assertTrue(eventObject instanceof Photo);
-		Photo photo = (Photo) eventObject;
-		Assert.assertNotNull(photo);
-		Assert.assertEquals(Integer.valueOf(111), photo.getAlbumId());
-		Assert.assertEquals(Integer.valueOf(1594284077), photo.getDate());
-		Assert.assertEquals(Integer.valueOf(222), photo.getId());
-		Assert.assertEquals(Integer.valueOf(-333), photo.getOwnerId());
-		Assert.assertFalse(photo.hasText());
-		Assert.assertEquals(Integer.valueOf(555), photo.getUserId());
+        Assert.assertTrue(eventObject instanceof Photo);
+        Photo photo = (Photo) eventObject;
+        Assert.assertNotNull(photo);
+        Assert.assertEquals(Integer.valueOf(111), photo.getAlbumId());
+        Assert.assertEquals(Integer.valueOf(1594284077), photo.getDate());
+        Assert.assertEquals(Integer.valueOf(222), photo.getId());
+        Assert.assertEquals(Integer.valueOf(-333), photo.getOwnerId());
+        Assert.assertFalse(photo.hasText());
+        Assert.assertEquals(Integer.valueOf(555), photo.getUserId());
 
-		List<PhotoSize> photoSizes = photo.getPhotoSizes();
-		Assert.assertNotNull(photo);
-		Assert.assertFalse(photoSizes.isEmpty());
-	}
+        List<PhotoSize> photoSizes = photo.getPhotoSizes();
+        Assert.assertNotNull(photo);
+        Assert.assertFalse(photoSizes.isEmpty());
+    }
 }
