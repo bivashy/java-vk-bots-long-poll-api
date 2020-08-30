@@ -6,10 +6,10 @@
       "object": {
         "message": {
           "date": 1593169377,
-          "from_id": 381980625,
+          "from_id": 111,
           "id": 0,
           "out": 0,
-          "peer_id": 2000000001,
+          "peer_id": 222,
           "text": "",
           "conversation_message_id": 4402,
           "fwd_messages": [],
@@ -19,8 +19,8 @@
             {
               "type": "audio_message",
               "audio_message": {
-                "id": 557103745,
-                "owner_id": 381980625,
+                "id": 333,
+                "owner_id": 444,
                 "duration": 2,
                 "waveform": [
                   0,
@@ -282,7 +282,7 @@
                 ],
                 "link_ogg": "https://psv4.userapi.com/c852724//u381980625/audiomsg/d3/4b080e5404.ogg",
                 "link_mp3": "https://psv4.userapi.com/c852724//u381980625/audiomsg/d3/4b080e5404.mp3",
-                "access_key": "2890301fe5e9f02f65"
+                "access_key": "aaa"
               }
             }
           ],
@@ -301,8 +301,8 @@
           "lang_id": 0
         }
       },
-      "group_id": 168975658,
-      "event_id": "c91dea9799c646c19eccbb65b46b456bd3938b4a"
+      "group_id": 555,
+      "event_id": "aaa"
     }
   ]
 }

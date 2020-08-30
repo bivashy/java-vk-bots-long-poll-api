@@ -5,18 +5,18 @@
       "type": "photo_comment_restore",
       "object": {
         "id": 3,
-        "from_id": 381980625,
+        "from_id": 111,
         "parents_stack": [],
         "date": 1594285508,
         "text": "tt",
         "thread": {
           "count": 0
         },
-        "photo_owner_id": -168975658,
-        "photo_id": 457239017
+        "photo_owner_id": -222,
+        "photo_id": 333
       },
-      "group_id": 168975658,
-      "event_id": "a55dd32045e3e4973b3d120d33acb6dd44b4a049"
+      "group_id": 444,
+      "event_id": "aaa"
     }
   ]
 }

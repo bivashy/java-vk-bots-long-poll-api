@@ -6,10 +6,10 @@
       "object": {
         "message": {
           "date": 1593095193,
-          "from_id": 381980625,
+          "from_id": 111,
           "id": 0,
           "out": 0,
-          "peer_id": 2000000001,
+          "peer_id": 222,
           "text": "",
           "conversation_message_id": 4395,
           "fwd_messages": [],
@@ -21,10 +21,10 @@
               "photo": {
                 "album_id": -3,
                 "date": 1593095192,
-                "id": 457247057,
-                "owner_id": 381980625,
+                "id": 333,
+                "owner_id": 444,
                 "has_tags": false,
-                "access_key": "421a672be7c6b20f67",
+                "access_key": "abc",
                 "sizes": [
                   {
                     "height": 130,
@@ -100,8 +100,8 @@
           "lang_id": 0
         }
       },
-      "group_id": 168975658,
-      "event_id": "fa5aa16333ea98a24a3dad53e72d2e3402182411"
+      "group_id": 555,
+      "event_id": "aaa"
     }
   ]
 }

@@ -5,14 +5,14 @@
       "type": "board_post_new",
       "object": {
         "id": 2,
-        "from_id": 381980625,
+        "from_id": 111,
         "date": 1595841380,
         "text": "test",
-        "topic_owner_id": -168975658,
-        "topic_id": 41499874
+        "topic_owner_id": -222,
+        "topic_id": 333
       },
-      "group_id": 168975658,
-      "event_id": "a46c51d058490718d21a1db87a8f88946410409e"
+      "group_id": 444,
+      "event_id": "aaa"
     }
   ]
 }

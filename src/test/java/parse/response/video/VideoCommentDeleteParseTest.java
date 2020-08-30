@@ -31,8 +31,8 @@ public class VideoCommentDeleteParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("video_comment_delete", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("c790943c674f5cd91396f351cbc0aa60285e3c86", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
@@ -40,8 +40,8 @@ public class VideoCommentDeleteParseTest extends AbstractParseTest {
 		Assert.assertTrue(eventObject instanceof VideoCommentDeleteEvent);
 		VideoCommentDeleteEvent videoCommentDeleteUpdate = (VideoCommentDeleteEvent) eventObject;
 		Assert.assertEquals(Integer.valueOf(1), videoCommentDeleteUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(-168975658), videoCommentDeleteUpdate.getOwnerId());
-		Assert.assertEquals(Integer.valueOf(381980625), videoCommentDeleteUpdate.getDeleterId());
-		Assert.assertEquals(Integer.valueOf(456239017), videoCommentDeleteUpdate.getVideoId());
+		Assert.assertEquals(Integer.valueOf(-111), videoCommentDeleteUpdate.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(222), videoCommentDeleteUpdate.getDeleterId());
+		Assert.assertEquals(Integer.valueOf(333), videoCommentDeleteUpdate.getVideoId());
 	}
 }

@@ -6,10 +6,10 @@
       "object": {
         "message": {
           "date": 1593165676,
-          "from_id": 381980625,
+          "from_id": 111,
           "id": 0,
           "out": 0,
-          "peer_id": 2000000001,
+          "peer_id": 222,
           "text": "",
           "conversation_message_id": 4399,
           "fwd_messages": [],
@@ -19,8 +19,8 @@
             {
               "type": "doc",
               "doc": {
-                "id": 557093429,
-                "owner_id": 381980625,
+                "id": 333,
+                "owner_id": 444,
                 "title": "x_fc4.png",
                 "size": 756010,
                 "ext": "png",
@@ -81,7 +81,7 @@
                     ]
                   }
                 },
-                "access_key": "f50012c2cfe171a4e7"
+                "access_key": "aaa"
               }
             }
           ],
@@ -100,8 +100,8 @@
           "lang_id": 0
         }
       },
-      "group_id": 168975658,
-      "event_id": "cdab414751229fc6dde638b6fbd784a355a50ea2"
+      "group_id": 444,
+      "event_id": "aaa"
     }
   ]
 }

@@ -31,8 +31,8 @@ public class WallPostNewParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("wall_post_new", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("a7908558beb83a61332f329e93ffea33598e361c", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
@@ -40,14 +40,14 @@ public class WallPostNewParseTest extends AbstractParseTest {
 		Assert.assertTrue(eventObject instanceof WallPost);
 		WallPost wallPost = (WallPost) eventObject;
 		Assert.assertEquals(Integer.valueOf(1), wallPost.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), wallPost.getFromId());
-		Assert.assertEquals(Integer.valueOf(-168975658), wallPost.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(111), wallPost.getFromId());
+		Assert.assertEquals(Integer.valueOf(-222), wallPost.getOwnerId());
 		Assert.assertEquals(Integer.valueOf(1594888935), wallPost.getDate());
 		Assert.assertFalse(wallPost.getMarkedAsAds());
 		Assert.assertEquals("post", wallPost.getPostType());
 		Assert.assertEquals("test", wallPost.getText());
 		Assert.assertTrue(wallPost.getCanEdit());
-		Assert.assertEquals(Integer.valueOf(381980625), wallPost.getCreatedBy());
+		Assert.assertEquals(Integer.valueOf(333), wallPost.getCreatedBy());
 		Assert.assertTrue(wallPost.getCanDelete());
 		Assert.assertFalse(wallPost.getFavourite());
 

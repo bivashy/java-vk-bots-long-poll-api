@@ -32,19 +32,19 @@ public class WallCommentRestoreParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("wall_reply_restore", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("e4266105ccd8fada43069cb23b7a96af453f4274", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertTrue(eventObject instanceof WallReplyEvent);
 
 		WallReplyEvent wallReplyUpdate = (WallReplyEvent) eventObject;
 		Assert.assertEquals(Integer.valueOf(4), wallReplyUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), wallReplyUpdate.getFromId());
+		Assert.assertEquals(Integer.valueOf(111), wallReplyUpdate.getFromId());
 		Assert.assertEquals(Integer.valueOf(3), wallReplyUpdate.getPostId());
-		Assert.assertEquals(Integer.valueOf(-168975658), wallReplyUpdate.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(-222), wallReplyUpdate.getOwnerId());
 		Assert.assertEquals(Integer.valueOf(1594972082), wallReplyUpdate.getDate());
-		Assert.assertEquals(Integer.valueOf(-168975658), wallReplyUpdate.getPostOwnerId());
+		Assert.assertEquals(Integer.valueOf(-333), wallReplyUpdate.getPostOwnerId());
 		Assert.assertEquals("test1", wallReplyUpdate.getText());
 
 		WallComment.Thread thread = wallReplyUpdate.getThread();

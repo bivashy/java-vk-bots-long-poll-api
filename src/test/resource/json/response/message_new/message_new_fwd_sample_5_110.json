@@ -6,21 +6,21 @@
       "object": {
         "message": {
           "date": 1593094646,
-          "from_id": 381980625,
+          "from_id": 111,
           "id": 0,
           "out": 0,
-          "peer_id": 2000000001,
+          "peer_id": 222,
           "text": "",
           "conversation_message_id": 4394,
           "fwd_messages": [
             {
               "date": 1590523631,
-              "from_id": 373295385,
+              "from_id": 333,
               "text": "testFwd",
               "attachments": [],
               "conversation_message_id": 102248,
-              "peer_id": 2000000072,
-              "id": 2104622
+              "peer_id": 444,
+              "id": 555
             }
           ],
           "important": false,
@@ -41,8 +41,8 @@
           "lang_id": 0
         }
       },
-      "group_id": 168975658,
-      "event_id": "c6ae173465515c9fd43486439ddfca06eb55e49b"
+      "group_id": 666,
+      "event_id": "aaa"
     }
   ]
 }

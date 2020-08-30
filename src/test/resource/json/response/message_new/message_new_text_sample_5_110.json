@@ -6,10 +6,10 @@
       "object": {
         "message": {
           "date": 1593092311,
-          "from_id": 381980621,
+          "from_id": 111,
           "id": 0,
           "out": 0,
-          "peer_id": 2000000001,
+          "peer_id": 222,
           "text": "test",
           "conversation_message_id": 4392,
           "fwd_messages": [],
@@ -31,8 +31,8 @@
           "lang_id": 0
         }
       },
-      "group_id": 1689756581,
-      "event_id": "4d6bfd7c8557496a48901a8fb981925ce0f01bdf1"
+      "group_id": 333,
+      "event_id": "aaa"
     }
   ]
 }

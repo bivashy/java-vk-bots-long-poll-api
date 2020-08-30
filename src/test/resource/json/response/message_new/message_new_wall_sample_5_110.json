@@ -6,10 +6,10 @@
       "object": {
         "message": {
           "date": 1594231784,
-          "from_id": 381980625,
+          "from_id": 111,
           "id": 0,
           "out": 0,
-          "peer_id": 2000000001,
+          "peer_id": 222,
           "text": "",
           "conversation_message_id": 4408,
           "fwd_messages": [],
@@ -19,9 +19,9 @@
             {
               "type": "wall",
               "wall": {
-                "id": 110926,
-                "from_id": -153395656,
-                "to_id": -153395656,
+                "id": 333,
+                "from_id": -444,
+                "to_id": -555,
                 "date": 1594228961,
                 "post_type": "post",
                 "text": "Фото со съёмок первого сезона.",
@@ -32,10 +32,10 @@
                     "photo": {
                       "album_id": -7,
                       "date": 1594228961,
-                      "id": 457255456,
-                      "owner_id": -153395656,
+                      "id": 555,
+                      "owner_id": -777,
                       "has_tags": false,
-                      "access_key": "319f6ebebba4c465e7",
+                      "access_key": "aaa",
                       "post_id": 110926,
                       "sizes": [
                         {
@@ -105,9 +105,9 @@
                   "count": 2597
                 },
                 "from": {
-                  "id": 153395656,
-                  "name": "Ведьмак",
-                  "screen_name": "thewitcher__netflix",
+                  "id": 888,
+                  "name": "dddd",
+                  "screen_name": "tasd",
                   "is_closed": 0,
                   "type": "group",
                   "photo_50": "https://sun9-6.userapi.com/c858416/v858416260/f14c7/xytSoV3R7eI.jpg?ava=1",
@@ -132,8 +132,8 @@
           "lang_id": 0
         }
       },
-      "group_id": 168975658,
-      "event_id": "89722633f164c3585452457bb70b382ff5329291"
+      "group_id": 666,
+      "event_id": "aaa"
     }
   ]
 }

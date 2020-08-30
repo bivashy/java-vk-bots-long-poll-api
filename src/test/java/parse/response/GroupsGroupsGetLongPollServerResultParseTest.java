@@ -22,8 +22,8 @@ public class GroupsGroupsGetLongPollServerResultParseTest extends AbstractParseT
 
 		GroupsGetLongPollServerResult.Response response = groupsGetLongPollServerResult.getResponse();
 		Assert.assertNotNull(response);
-		Assert.assertEquals("f843a2ef2cd226b90c6f0991c38be854836b8c611", response.getKey());
-		Assert.assertEquals("https://lp.vk.com/wh1689756588", response.getServer());
+		Assert.assertEquals("aaa", response.getKey());
+		Assert.assertEquals("bbb", response.getServer());
 		Assert.assertEquals(Integer.valueOf(2587), response.getTs());
 	}
 

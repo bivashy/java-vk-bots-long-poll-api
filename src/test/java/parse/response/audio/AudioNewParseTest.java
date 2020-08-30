@@ -31,8 +31,8 @@ public class AudioNewParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("audio_new", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("35a535e65e5b35837a0fc0c07f26e2d0cf11450a", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(123), event.getGroupId());
+		Assert.assertEquals("abc", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
@@ -41,7 +41,7 @@ public class AudioNewParseTest extends AbstractParseTest {
 		Audio audio = (Audio) eventObject;
 		Assert.assertEquals("Rick Astley", audio.getArtist());
 		Assert.assertEquals(Integer.valueOf(456239017), audio.getId());
-		Assert.assertEquals(Integer.valueOf(-168975658), audio.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(-111), audio.getOwnerId());
 		Assert.assertEquals("Never Gonna Give You Up", audio.getTitle());
 		Assert.assertEquals(Integer.valueOf(211), audio.getDuration());
 		Assert.assertTrue(audio.getUrl().isEmpty());

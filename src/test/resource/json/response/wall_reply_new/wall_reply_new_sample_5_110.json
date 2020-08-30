@@ -5,19 +5,19 @@
       "type": "wall_reply_new",
       "object": {
         "id": 4,
-        "from_id": 381980625,
+        "from_id": 111,
         "post_id": 3,
-        "owner_id": -168975658,
+        "owner_id": -222,
         "parents_stack": [],
         "date": 1594972082,
         "text": "test",
         "thread": {
           "count": 0
         },
-        "post_owner_id": -168975658
+        "post_owner_id": -333
       },
-      "group_id": 168975658,
-      "event_id": "e2c965e68afd50a9b1cfcc2a290b557ff4244337"
+      "group_id": 444,
+      "event_id": "aaa"
     }
   ]
 }

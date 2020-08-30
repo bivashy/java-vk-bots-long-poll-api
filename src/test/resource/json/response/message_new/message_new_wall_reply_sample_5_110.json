@@ -6,10 +6,10 @@
       "object": {
         "message": {
           "date": 1594235111,
-          "from_id": 381980625,
+          "from_id": 111,
           "id": 0,
           "out": 0,
-          "peer_id": 2000000001,
+          "peer_id": 222,
           "text": "",
           "conversation_message_id": 4410,
           "fwd_messages": [],
@@ -20,22 +20,22 @@
             {
               "type": "wall_reply",
               "wall_reply": {
-                "id": 110932,
-                "from_id": 10564569,
-                "post_id": 110926,
-                "owner_id": -153395656,
+                "id": 333,
+                "from_id": 444,
+                "post_id": 555,
+                "owner_id": -666,
                 "parents_stack": [
-                  110930
+                  777
                 ],
                 "date": 1594231450,
-                "text": "[id150408292|Луна], самой красивой машичкой же Францеска Финдебаир является. Или ты имеешь ввиду из сериальных магичек?",
+                "text": "abc",
                 "likes": {
                   "count": 1,
                   "user_likes": 0,
                   "can_like": 1
                 },
-                "reply_to_user": 150408292,
-                "reply_to_comment": 110930
+                "reply_to_user": 888,
+                "reply_to_comment": 999
               }
             }
           ],
@@ -55,8 +55,8 @@
           "lang_id": 0
         }
       },
-      "group_id": 168975658,
-      "event_id": "dcffab7b7c54607d00ed33c32e69e15f1b5e2079"
+      "group_id": 100,
+      "event_id": "aaa"
     }
   ]
 }

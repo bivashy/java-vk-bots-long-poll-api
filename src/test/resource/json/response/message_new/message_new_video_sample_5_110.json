@@ -6,10 +6,10 @@
       "object": {
         "message": {
           "date": 1593106821,
-          "from_id": 381980625,
+          "from_id": 111,
           "id": 0,
           "out": 0,
-          "peer_id": 2000000001,
+          "peer_id": 222,
           "text": "",
           "conversation_message_id": 4397,
           "fwd_messages": [],
@@ -19,7 +19,7 @@
             {
               "type": "video",
               "video": {
-                "access_key": "240114b02909e5852f",
+                "access_key": "aaa",
                 "can_add": 1,
                 "comments": 0,
                 "date": 1593106800,
@@ -51,8 +51,8 @@
                     "with_padding": 1
                   }
                 ],
-                "id": 456239346,
-                "owner_id": 381980625,
+                "id": 444,
+                "owner_id": 555,
                 "title": "20 MOST POPULAR TUNES EVER",
                 "track_code": "video_256ba954P2kSGl_8vz07hi_ca5fUH3K4T6fFDWDFSHsVqRznT-c9eiEibsWHDQ0",
                 "type": "video",
@@ -77,8 +77,8 @@
           "lang_id": 0
         }
       },
-      "group_id": 168975658,
-      "event_id": "a534741f53b227cc30b3b31e911fc422843ccd7d"
+      "group_id": 666,
+      "event_id": "aaa"
     }
   ]
 }

@@ -51,8 +51,8 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("message_new", event.getType());
-		Assert.assertEquals(Integer.valueOf(1689756581), event.getGroupId());
-		Assert.assertEquals("4d6bfd7c8557496a48901a8fb981925ce0f01bdf1", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
@@ -64,9 +64,9 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Message message = messageUpdate.getMessage();
 		Assert.assertNotNull(message);
 		Assert.assertEquals(Integer.valueOf(1593092311), message.getDate());
-		Assert.assertEquals(Integer.valueOf(381980621), message.getFromId());
+		Assert.assertEquals(Integer.valueOf(111), message.getFromId());
 		Assert.assertEquals(Integer.valueOf(0), message.getId());
-		Assert.assertEquals(Integer.valueOf(2000000001), message.getPeerId());
+		Assert.assertEquals(Integer.valueOf(222), message.getPeerId());
 		Assert.assertEquals("test", message.getText());
 		Assert.assertEquals(Integer.valueOf(4392), message.getConversationMessageId());
 		Assert.assertFalse(message.getImportant());
@@ -98,11 +98,11 @@ public class MessageNewParseTest extends AbstractParseTest {
 				.getReplyMessage();
 		Assert.assertNotNull(replyMessage);
 		Assert.assertEquals(Integer.valueOf(1593092313), replyMessage.getDate());
-		Assert.assertEquals(Integer.valueOf(381980625), replyMessage.getFromId());
+		Assert.assertEquals(Integer.valueOf(333), replyMessage.getFromId());
 		Assert.assertEquals("test", replyMessage.getText());
 		Assert.assertEquals(Integer.valueOf(4392), replyMessage.getConversationMessageId());
-		Assert.assertEquals(Integer.valueOf(2000000155), replyMessage.getPeerId());
-		Assert.assertEquals(Integer.valueOf(2182835), replyMessage.getId());
+		Assert.assertEquals(Integer.valueOf(444), replyMessage.getPeerId());
+		Assert.assertEquals(Integer.valueOf(555), replyMessage.getId());
 	}
 
 	@Test
@@ -115,11 +115,11 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Message message = fwdMessages.get(0);
 		Assert.assertNotNull(message);
 		Assert.assertEquals(Integer.valueOf(1590523631), message.getDate());
-		Assert.assertEquals(Integer.valueOf(373295385), message.getFromId());
+		Assert.assertEquals(Integer.valueOf(333), message.getFromId());
 		Assert.assertEquals("testFwd", message.getText());
 		Assert.assertEquals(Integer.valueOf(102248), message.getConversationMessageId());
-		Assert.assertEquals(Integer.valueOf(2000000072), message.getPeerId());
-		Assert.assertEquals(Integer.valueOf(2104622), message.getId());
+		Assert.assertEquals(Integer.valueOf(444), message.getPeerId());
+		Assert.assertEquals(Integer.valueOf(555), message.getId());
 	}
 
 	@Test
@@ -138,8 +138,8 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Photo photo = (Photo) attachable;
 		Assert.assertEquals(Integer.valueOf(-3), photo.getAlbumId());
 		Assert.assertEquals(Integer.valueOf(1593095192), photo.getDate());
-		Assert.assertEquals(Integer.valueOf(457247057), photo.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), photo.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(333), photo.getId());
+		Assert.assertEquals(Integer.valueOf(444), photo.getOwnerId());
 
 		List<PhotoSize> photoSizes = photo.getPhotoSizes();
 		Assert.assertNotNull(photoSizes);
@@ -166,14 +166,14 @@ public class MessageNewParseTest extends AbstractParseTest {
 
 		Video video = (Video) attachment.getAttachable();
 		Assert.assertNotNull(video);
-		Assert.assertEquals("240114b02909e5852f", video.getAccessKey());
+		Assert.assertEquals("aaa", video.getAccessKey());
 		Assert.assertTrue(video.getCanAdd());
 		Assert.assertEquals(Integer.valueOf(0), video.getCommentsAmount());
 		Assert.assertEquals(Integer.valueOf(1593106800), video.getDate());
 		Assert.assertFalse(video.getDescription().isEmpty());
 		Assert.assertEquals(Integer.valueOf(360), video.getDuration());
-		Assert.assertEquals(Integer.valueOf(456239346), video.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), video.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(444), video.getId());
+		Assert.assertEquals(Integer.valueOf(555), video.getOwnerId());
 		Assert.assertEquals("20 MOST POPULAR TUNES EVER", video.getTitle());
 		Assert.assertFalse(video.getTrackCode().isEmpty());
 		Assert.assertEquals("video", video.getType());
@@ -206,8 +206,8 @@ public class MessageNewParseTest extends AbstractParseTest {
 
 		Audio audio = (Audio) attachment.getAttachable();
 		Assert.assertEquals("Linkin Park", audio.getArtist());
-		Assert.assertEquals(Integer.valueOf(456289470), audio.getId());
-		Assert.assertEquals(Integer.valueOf(371745461), audio.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(333), audio.getId());
+		Assert.assertEquals(Integer.valueOf(444), audio.getOwnerId());
 		Assert.assertEquals("In the End",  audio.getTitle());
 		Assert.assertEquals(Integer.valueOf(219), audio.getDuration());
 		Assert.assertEquals(Integer.valueOf(1490105766), audio.getDate());
@@ -225,8 +225,8 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertEquals("doc", attachment.getType());
 
 		Doc doc = (Doc) attachment.getAttachable();
-		Assert.assertEquals(Integer.valueOf(557093429), doc.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), doc.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(333), doc.getId());
+		Assert.assertEquals(Integer.valueOf(444), doc.getOwnerId());
 		Assert.assertEquals("x_fc4.png", doc.getTitle());
 		Assert.assertEquals(Integer.valueOf(756010), doc.getSize());
 		Assert.assertEquals("png", doc.getExt());
@@ -267,8 +267,8 @@ public class MessageNewParseTest extends AbstractParseTest {
 
 		AudioMessage audioMessage = (AudioMessage) attachment.getAttachable();
 		Assert.assertNotNull(audioMessage);
-		Assert.assertEquals(Integer.valueOf(557103745), audioMessage.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), audioMessage.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(333), audioMessage.getId());
+		Assert.assertEquals(Integer.valueOf(444), audioMessage.getOwnerId());
 		Assert.assertEquals(Integer.valueOf(2), audioMessage.getDuration());
 		Assert.assertFalse(audioMessage.getLinkMp3().isEmpty());
 		Assert.assertFalse(audioMessage.getLinkOgg().isEmpty());
@@ -291,8 +291,8 @@ public class MessageNewParseTest extends AbstractParseTest {
 
 		Graffiti graffiti = (Graffiti) attachment.getAttachable();
 		Assert.assertNotNull(graffiti);
-		Assert.assertEquals(Integer.valueOf(538172633), graffiti.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), graffiti.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(333), graffiti.getId());
+		Assert.assertEquals(Integer.valueOf(444), graffiti.getOwnerId());
 		Assert.assertEquals(Integer.valueOf(720), graffiti.getWidth());
 		Assert.assertEquals(Integer.valueOf(714), graffiti.getHeight());
 	}
@@ -360,8 +360,8 @@ public class MessageNewParseTest extends AbstractParseTest {
 
 		WallPost wallPost = (WallPost) attachment.getAttachable();
 		Assert.assertNotNull(wallPost);
-		Assert.assertEquals(Integer.valueOf(110926), wallPost.getId());
-		Assert.assertEquals(Integer.valueOf(-153395656), wallPost.getFromId());
+		Assert.assertEquals(Integer.valueOf(333), wallPost.getId());
+		Assert.assertEquals(Integer.valueOf(-444), wallPost.getFromId());
 		Assert.assertEquals(Integer.valueOf(1594228961), wallPost.getDate());
 		Assert.assertEquals("post", wallPost.getPostType());
 		Assert.assertFalse(wallPost.getText().isEmpty());
@@ -409,14 +409,14 @@ public class MessageNewParseTest extends AbstractParseTest {
 
 		WallComment wallReply = (WallComment) attachment.getAttachable();
 		Assert.assertNotNull(wallReply);
-		Assert.assertEquals(Integer.valueOf(110932), wallReply.getId());
-		Assert.assertEquals(Integer.valueOf(10564569), wallReply.getFromId());
-		Assert.assertEquals(Integer.valueOf(110926), wallReply.getPostId());
-		Assert.assertEquals(Integer.valueOf(-153395656), wallReply.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(333), wallReply.getId());
+		Assert.assertEquals(Integer.valueOf(444), wallReply.getFromId());
+		Assert.assertEquals(Integer.valueOf(555), wallReply.getPostId());
+		Assert.assertEquals(Integer.valueOf(-666), wallReply.getOwnerId());
 		Assert.assertEquals(Integer.valueOf(1594231450), wallReply.getDate());
 		Assert.assertFalse(wallReply.getText().isEmpty());
-		Assert.assertEquals(new Integer(150408292), wallReply.getReplyToUser());
-		Assert.assertEquals(new Integer(110930), wallReply.getReplyToComment());
+		Assert.assertEquals(Integer.valueOf(888), wallReply.getReplyToUser());
+		Assert.assertEquals(Integer.valueOf(999), wallReply.getReplyToComment());
 
 		List<Integer> parentsStack = wallReply.getParentsStack();
 		Assert.assertNotNull(parentsStack);
@@ -424,7 +424,7 @@ public class MessageNewParseTest extends AbstractParseTest {
 
 		Integer integer = parentsStack.get(0);
 		Assert.assertNotNull(integer);
-		Assert.assertEquals(110930, integer.intValue());
+		Assert.assertEquals(Integer.valueOf(777), integer);
 
 		WallComment.Likes likes = wallReply.getLikes();
 		Assert.assertNotNull(likes);

@@ -32,15 +32,15 @@ public class GroupChangeSettingsParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("group_change_settings", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("e2a922b60f3002aa5e5098084c971107ec85e61a", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(222), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
 
 		Assert.assertTrue(eventObject instanceof GroupChangeSettingsEvent);
 		GroupChangeSettingsEvent groupChangeSettingsUpdate = (GroupChangeSettingsEvent) eventObject;
-		Assert.assertEquals(Integer.valueOf(381980625), groupChangeSettingsUpdate.getUserId());
+		Assert.assertEquals(Integer.valueOf(111), groupChangeSettingsUpdate.getUserId());
 
 		Map<String, GroupChangeSettingsEvent.Change> changes = groupChangeSettingsUpdate.getChanges();
 		Assert.assertNotNull(changes);

@@ -4,13 +4,13 @@
     {
       "type": "wall_reply_delete",
       "object": {
-        "owner_id": -168975658,
+        "owner_id": -111,
         "id": 4,
-        "deleter_id": 381980625,
+        "deleter_id": 222,
         "post_id": 3
       },
-      "group_id": 168975658,
-      "event_id": "c9acacdf064098f14c65b698290b4b103a4b9525"
+      "group_id": 333,
+      "event_id": "aaa"
     }
   ]
 }

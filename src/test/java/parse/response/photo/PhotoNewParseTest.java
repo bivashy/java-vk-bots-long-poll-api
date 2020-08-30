@@ -32,8 +32,8 @@ public class PhotoNewParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("photo_new", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("ddc5e5b73765f5a56eae81814be72889a4f511ea", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
@@ -41,12 +41,12 @@ public class PhotoNewParseTest extends AbstractParseTest {
 		Assert.assertTrue(eventObject instanceof Photo);
 		Photo photo = (Photo) eventObject;
 		Assert.assertNotNull(photo);
-		Assert.assertEquals(Integer.valueOf(255186642), photo.getAlbumId());
+		Assert.assertEquals(Integer.valueOf(111), photo.getAlbumId());
 		Assert.assertEquals(Integer.valueOf(1594284077), photo.getDate());
-		Assert.assertEquals(Integer.valueOf(457239017), photo.getId());
-		Assert.assertEquals(Integer.valueOf(-168975658), photo.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(222), photo.getId());
+		Assert.assertEquals(Integer.valueOf(-333), photo.getOwnerId());
 		Assert.assertFalse(photo.hasText());
-		Assert.assertEquals(Integer.valueOf(100), photo.getUserId());
+		Assert.assertEquals(Integer.valueOf(555), photo.getUserId());
 
 		List<PhotoSize> photoSizes = photo.getPhotoSizes();
 		Assert.assertNotNull(photo);

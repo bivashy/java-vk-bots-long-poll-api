@@ -32,8 +32,8 @@ public class PhotoCommentEditParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("photo_comment_edit", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("24c4fd1d5d9ad88cd714b91364e6737f2cff2814", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(555), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
@@ -41,12 +41,12 @@ public class PhotoCommentEditParseTest extends AbstractParseTest {
 		Assert.assertTrue(eventObject instanceof PhotoCommentEvent);
 		PhotoCommentEvent photoCommentUpdate = (PhotoCommentEvent) eventObject;
 		Assert.assertNotNull(photoCommentUpdate);
-		Assert.assertEquals(Integer.valueOf(3), photoCommentUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), photoCommentUpdate.getFromId());
+		Assert.assertEquals(Integer.valueOf(111), photoCommentUpdate.getId());
+		Assert.assertEquals(Integer.valueOf(222), photoCommentUpdate.getFromId());
 		Assert.assertEquals(Integer.valueOf(1594285508), photoCommentUpdate.getDate());
 		Assert.assertEquals("tt", photoCommentUpdate.getText());
-		Assert.assertEquals(Integer.valueOf(-168975658), photoCommentUpdate.getPhotoOwnerId());
-		Assert.assertEquals(Integer.valueOf(457239017), photoCommentUpdate.getPhotoId());
+		Assert.assertEquals(Integer.valueOf(-333), photoCommentUpdate.getPhotoOwnerId());
+		Assert.assertEquals(Integer.valueOf(444), photoCommentUpdate.getPhotoId());
 
 		WallComment.Thread thread = photoCommentUpdate.getThread();
 		Assert.assertNotNull(thread);

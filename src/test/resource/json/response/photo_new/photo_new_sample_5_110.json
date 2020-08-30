@@ -4,10 +4,10 @@
     {
       "type": "photo_new",
       "object": {
-        "album_id": 255186642,
+        "album_id": 111,
         "date": 1594284077,
-        "id": 457239017,
-        "owner_id": -168975658,
+        "id": 222,
+        "owner_id": -333,
         "has_tags": false,
         "sizes": [
           {
@@ -72,10 +72,10 @@
           }
         ],
         "text": "",
-        "user_id": 100
+        "user_id": 555
       },
-      "group_id": 168975658,
-      "event_id": "ddc5e5b73765f5a56eae81814be72889a4f511ea"
+      "group_id": 444,
+      "event_id": "aaa"
     }
   ]
 }

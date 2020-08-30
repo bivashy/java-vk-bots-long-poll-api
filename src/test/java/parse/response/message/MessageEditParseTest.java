@@ -31,8 +31,8 @@ public class MessageEditParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("message_edit", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("6517aa2171da46748a39a44166a7c775777b9f25", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
@@ -41,9 +41,9 @@ public class MessageEditParseTest extends AbstractParseTest {
 		Message message = (Message) eventObject;
 		Assert.assertNotNull(message);
 		Assert.assertEquals(Integer.valueOf(1594282377), message.getDate());
-		Assert.assertEquals(Integer.valueOf(-168975658), message.getFromId());
+		Assert.assertEquals(Integer.valueOf(-111), message.getFromId());
 		Assert.assertEquals(Integer.valueOf(276), message.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), message.getPeerId());
+		Assert.assertEquals(Integer.valueOf(222), message.getPeerId());
 		Assert.assertEquals("tests", message.getText());
 		Assert.assertEquals(Integer.valueOf(261), message.getConversationMessageId());
 		Assert.assertFalse(message.getImportant());

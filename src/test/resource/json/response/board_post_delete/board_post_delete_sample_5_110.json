@@ -4,12 +4,12 @@
     {
       "type": "board_post_delete",
       "object": {
-        "topic_owner_id": -168975658,
+        "topic_owner_id": -111,
         "id": 3,
-        "topic_id": 41499874
+        "topic_id": 333
       },
-      "group_id": 168975658,
-      "event_id": "af54f48154aac42f20b57f03d754ba2496497291"
+      "group_id": 123,
+      "event_id": "aaa"
     }
   ]
 }

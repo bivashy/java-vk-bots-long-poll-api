@@ -32,8 +32,8 @@ public class VideoCommentNewParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("video_comment_new", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("a4f2f918304676aeff8825cfe55a20f5a9a7547d", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
@@ -41,11 +41,11 @@ public class VideoCommentNewParseTest extends AbstractParseTest {
 		Assert.assertTrue(eventObject instanceof VideoCommentEvent);
 		VideoCommentEvent videoCommentUpdate = (VideoCommentEvent) eventObject;
 		Assert.assertEquals(Integer.valueOf(1), videoCommentUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), videoCommentUpdate.getFromId());
+		Assert.assertEquals(Integer.valueOf(111), videoCommentUpdate.getFromId());
 		Assert.assertEquals(Integer.valueOf(1594823317), videoCommentUpdate.getDate());
 		Assert.assertEquals("check", videoCommentUpdate.getText());
-		Assert.assertEquals(Integer.valueOf(-168975658), videoCommentUpdate.getVideoOwnerId());
-		Assert.assertEquals(Integer.valueOf(456239017), videoCommentUpdate.getVideoId());
+		Assert.assertEquals(Integer.valueOf(-222), videoCommentUpdate.getVideoOwnerId());
+		Assert.assertEquals(Integer.valueOf(333), videoCommentUpdate.getVideoId());
 
 		WallComment.Thread thread = videoCommentUpdate.getThread();
 		Assert.assertNotNull(thread);

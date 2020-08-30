@@ -31,16 +31,16 @@ public class BoardPostDeleteParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("board_post_delete", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("af54f48154aac42f20b57f03d754ba2496497291", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(123), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
 
 		Assert.assertTrue(eventObject instanceof BoardPostDeleteEvent);
 		BoardPostDeleteEvent boardPostDeleteUpdate = (BoardPostDeleteEvent) eventObject;
-		Assert.assertEquals(Integer.valueOf(-168975658), boardPostDeleteUpdate.getTopicOwnerId());
+		Assert.assertEquals(Integer.valueOf(-111), boardPostDeleteUpdate.getTopicOwnerId());
 		Assert.assertEquals(Integer.valueOf(3), boardPostDeleteUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(41499874), boardPostDeleteUpdate.getTopicId());
+		Assert.assertEquals(Integer.valueOf(333), boardPostDeleteUpdate.getTopicId());
 	}
 }

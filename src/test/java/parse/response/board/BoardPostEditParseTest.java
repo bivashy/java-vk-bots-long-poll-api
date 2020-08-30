@@ -31,8 +31,8 @@ public class BoardPostEditParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("board_post_edit", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("de3b67a449a7afad040c7465c6b8bf9f9615c8f2", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
@@ -40,10 +40,10 @@ public class BoardPostEditParseTest extends AbstractParseTest {
 		Assert.assertTrue(eventObject instanceof BoardPostEvent);
 		BoardPostEvent boardPostUpdate = (BoardPostEvent) eventObject;
 		Assert.assertEquals(Integer.valueOf(2), boardPostUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), boardPostUpdate.getFromId());
+		Assert.assertEquals(Integer.valueOf(123), boardPostUpdate.getFromId());
 		Assert.assertEquals(Integer.valueOf(1595841380), boardPostUpdate.getDate());
 		Assert.assertEquals("testtest", boardPostUpdate.getText());
-		Assert.assertEquals(Integer.valueOf(-168975658), boardPostUpdate.getTopicOwnerId());
-		Assert.assertEquals(Integer.valueOf(41499874), boardPostUpdate.getTopicId());
+		Assert.assertEquals(Integer.valueOf(-111), boardPostUpdate.getTopicOwnerId());
+		Assert.assertEquals(Integer.valueOf(222), boardPostUpdate.getTopicId());
 	}
 }

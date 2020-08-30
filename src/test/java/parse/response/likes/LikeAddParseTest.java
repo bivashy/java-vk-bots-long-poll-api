@@ -31,17 +31,17 @@ public class LikeAddParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("like_add", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("3118e7a0997ee58f62536cca69f2cff7bdbe9fd0", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertNotNull(eventObject);
 
 		Assert.assertTrue(eventObject instanceof LikeEvent);
 		LikeEvent audio = (LikeEvent) eventObject;
-		Assert.assertEquals(Integer.valueOf(381980625), audio.getLikerId());
+		Assert.assertEquals(Integer.valueOf(111), audio.getLikerId());
 		Assert.assertEquals("post", audio.getObjectType());
-		Assert.assertEquals(Integer.valueOf(-168975658), audio.getObjectOwnerId());
+		Assert.assertEquals(Integer.valueOf(-222), audio.getObjectOwnerId());
 		Assert.assertEquals(Integer.valueOf(3), audio.getObjectId());
 		Assert.assertEquals(Integer.valueOf(0), audio.getThreadReplyId());
 		Assert.assertEquals(Integer.valueOf(0), audio.getPostId());

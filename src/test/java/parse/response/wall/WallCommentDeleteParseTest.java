@@ -31,16 +31,16 @@ public class WallCommentDeleteParseTest extends AbstractParseTest {
 		Event event = events.get(0);
 		Assert.assertNotNull(event);
 		Assert.assertEquals("wall_reply_delete", event.getType());
-		Assert.assertEquals(Integer.valueOf(168975658), event.getGroupId());
-		Assert.assertEquals("c9acacdf064098f14c65b698290b4b103a4b9525", event.getEventId());
+		Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
+		Assert.assertEquals("aaa", event.getEventId());
 
 		EventObject eventObject = event.getObject();
 		Assert.assertTrue(eventObject instanceof WallReplyDeleteEvent);
 
 		WallReplyDeleteEvent wallReplyDeleteUpdate = (WallReplyDeleteEvent) eventObject;
-		Assert.assertEquals(Integer.valueOf(-168975658), wallReplyDeleteUpdate.getOwnerId());
+		Assert.assertEquals(Integer.valueOf(-111), wallReplyDeleteUpdate.getOwnerId());
 		Assert.assertEquals(Integer.valueOf(4), wallReplyDeleteUpdate.getId());
-		Assert.assertEquals(Integer.valueOf(381980625), wallReplyDeleteUpdate.getDeleterId());
+		Assert.assertEquals(Integer.valueOf(222), wallReplyDeleteUpdate.getDeleterId());
 		Assert.assertEquals(Integer.valueOf(3), wallReplyDeleteUpdate.getPostId());
 	}
 }

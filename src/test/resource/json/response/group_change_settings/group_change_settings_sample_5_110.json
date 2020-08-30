@@ -4,7 +4,7 @@
     {
       "type": "group_change_settings",
       "object": {
-        "user_id": 381980625,
+        "user_id": 111,
         "changes": {
           "description": {
             "old_value": "test",
@@ -12,8 +12,8 @@
           }
         }
       },
-      "group_id": 168975658,
-      "event_id": "e2a922b60f3002aa5e5098084c971107ec85e61a"
+      "group_id": 222,
+      "event_id": "aaa"
     }
   ]
 }

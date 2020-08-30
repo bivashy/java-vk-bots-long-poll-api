@@ -5,16 +5,16 @@
       "type": "wall_repost",
       "object": {
         "id": 34,
-        "from_id": 381980625,
-        "owner_id": 381980625,
+        "from_id": 111,
+        "owner_id": 222,
         "date": 1594890511,
         "post_type": "post",
         "text": "",
         "copy_history": [
           {
             "id": 3,
-            "owner_id": -168975658,
-            "from_id": -168975658,
+            "owner_id": -333,
+            "from_id": -444,
             "date": 1594890485,
             "post_type": "post",
             "text": "test",
@@ -30,8 +30,8 @@
         },
         "is_favorite": false
       },
-      "group_id": 168975658,
-      "event_id": "c8d1bb13eeb3da344a09fe901d112fc80a2abf30"
+      "group_id": 555,
+      "event_id": "aaa"
     }
   ]
 }
