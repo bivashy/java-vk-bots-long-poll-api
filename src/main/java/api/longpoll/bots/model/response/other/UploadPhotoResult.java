@@ -2,11 +2,25 @@ package api.longpoll.bots.model.response.other;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Result to photo upload.
+ */
 public class UploadPhotoResult {
+	/**
+	 * Server ID.
+	 */
 	@SerializedName("server")
 	private Integer server;
+
+	/**
+	 * Uploaded photo.
+	 */
 	@SerializedName("photo")
 	private String photo;
+
+	/**
+	 * Hash.
+	 */
 	@SerializedName("hash")
 	private String hash;
 

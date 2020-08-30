@@ -7,11 +7,23 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Response to <b>messages.getConversationsById</b> request.
+ */
 public class MessagesGetConversationsByIdResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private VkList<Item> response;
 
+    /**
+     * Describes VkList item.
+     */
     public static class Item extends Conversation {
+        /**
+         * List of users.
+         */
         @SerializedName("profiles")
         private List<User> profiles;
 

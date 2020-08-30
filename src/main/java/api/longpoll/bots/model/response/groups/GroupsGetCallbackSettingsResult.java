@@ -4,125 +4,291 @@ import api.longpoll.bots.adapters.BoolIntAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Response to <b>groups.getCallbackSettings</b> request.
+ */
 public class GroupsGetCallbackSettingsResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private Response response;
 
+    /**
+     * Describes response object.
+     */
     public static class Response {
+        /**
+         * API version.
+         */
         @SerializedName("api_version")
         private String apiVersion;
+
+        /**
+         * Server events.
+         */
         @SerializedName("events")
         private Events events;
 
+        /**
+         * Describes events.
+         */
         public static class Events {
+            /**
+             * New message.
+             */
             @SerializedName("message_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean messageNew;
+
+            /**
+             * New outcoming message.
+             */
             @SerializedName("message_reply")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean messageReply;
+
+            /**
+             * Message has been edited.
+             */
             @SerializedName("message_edit")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean messageEdit;
+
+            /**
+             * New user consent to messages sending.
+             */
             @SerializedName("message_allow")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean messageAllow;
+
+            /**
+             * New user prohibition to messages sending.
+             */
             @SerializedName("message_deny")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean messageDeny;
+
+            /**
+             * New photo.
+             */
             @SerializedName("photo_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean photoNew;
+
+            /**
+             * New audio.
+             */
             @SerializedName("audio_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean audioNew;
+
+            /**
+             * New video.
+             */
             @SerializedName("video_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean videoNew;
+
+            /**
+             * New comment on wall.
+             */
             @SerializedName("wall_reply_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean wallReplyNew;
+
+            /**
+             * Comment on wall has been edited.
+             */
             @SerializedName("wall_reply_edit")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean wallReplyEdit;
+
+            /**
+             * Comment on wall has been deleted.
+             */
             @SerializedName("wall_reply_delete")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean wallReplyDelete;
+
+            /**
+             * New post on the wall.
+             */
             @SerializedName("wall_post_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean wallPostNew;
+
+            /**
+             * New repost form the community.
+             */
             @SerializedName("wall_repost")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean wallRepost;
+
+            /**
+             * New comment in board.
+             */
             @SerializedName("board_post_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean boardPostNew;
+
+            /**
+             * Board comment has been edited.
+             */
             @SerializedName("board_post_edit")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean boardPostEdit;
+
+            /**
+             * Board comment has been deleted.
+             */
             @SerializedName("board_post_delete")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean boardPostDelete;
+
+            /**
+             * Board comment has been restored.
+             */
             @SerializedName("board_post_restore")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean boardPostRestore;
+
+            /**
+             * New comment to photo.
+             */
             @SerializedName("photo_comment_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean PhotoCommentNew;
+
+            /**
+             * Photo comment has been edited.
+             */
             @SerializedName("photo_comment_edit")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean photoCommentEdit;
+
+            /**
+             * Photo comment has been deleted.
+             */
             @SerializedName("photo_comment_delete")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean photoCommentDelete;
+
+            /**
+             * Photo comment has been restored.
+             */
             @SerializedName("photo_comment_restore")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean photoCommentRestore;
+
+            /**
+             * New comment to video.
+             */
             @SerializedName("video_comment_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean videoCommentNew;
+
+            /**
+             * Video comment has been edited.
+             */
             @SerializedName("video_comment_edit")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean videoCommentEdit;
+
+            /**
+             * Video comment has been deleted.
+             */
             @SerializedName("video_comment_delete")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean videoCommentDelete;
+
+            /**
+             * Video comment has been restored.
+             */
             @SerializedName("video_comment_restore")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean videoCommentRestore;
+
+            /**
+             * New comment to market item.
+             */
             @SerializedName("market_comment_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean marketCommentNew;
+
+            /**
+             * Market comment has been edited.
+             */
             @SerializedName("market_comment_edit")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean marketCommentEdit;
+
+            /**
+             * Market comment has been deleted.
+             */
             @SerializedName("market_comment_delete")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean marketCommentDelete;
+
+            /**
+             * Market comment has been restored.
+             */
             @SerializedName("market_comment_restore")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean marketCommentRestore;
+
+            /**
+             * New vote in a public poll has been adeed.
+             */
             @SerializedName("poll_vote_new")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean pollVoteNew;
+
+            /**
+             * Joined community.
+             */
             @SerializedName("group_join")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean groupJoin;
+
+            /**
+             * Left community.
+             */
             @SerializedName("group_leave")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean groupLeave;
+
+            /**
+             * New user in the community's blacklist.
+             */
             @SerializedName("user_block")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean userBlock;
+
+            /**
+             * A user has been deleted from the community's blacklist.
+             */
             @SerializedName("user_unblock")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean userUnblock;
+
+            /**
+             * Community settings have been changed.
+             */
             @SerializedName("group_change_settings")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean groupChangeSettings;
+
+            /**
+             * Community main photo has been changed.
+             */
             @SerializedName("group_change_photo")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean groupChangePhoto;
+
+            /**
+             * Community officers list has been changed.
+             */
             @SerializedName("group_officers_edit")
             @JsonAdapter(BoolIntAdapter.class)
             private Boolean groupOfficersEdit;

@@ -1,23 +1,40 @@
 package api.longpoll.bots.model.response.messages;
 
 import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.objects.basic.Chat;
-import api.longpoll.bots.model.objects.basic.Community;
-import api.longpoll.bots.model.objects.basic.Message;
-import api.longpoll.bots.model.objects.basic.User;
+import api.longpoll.bots.model.objects.basic.*;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Response to <b>messages.getConversations</b> request.
+ */
 public class MessagesGetConversationsResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private Response response;
 
+    /**
+     * Describes response.
+     */
     public static class Response extends VkList<Item> {
+        /**
+         * Number of unread conversations.
+         */
         @SerializedName("unread_count")
         private Integer unreadCount;
+
+        /**
+         * List of users.
+         */
         @SerializedName("profiles")
         private List<User> profiles;
+
+        /**
+         * List of communities.
+         */
         @SerializedName("groups")
         private List<Community> groups;
 
@@ -46,18 +63,28 @@ public class MessagesGetConversationsResult {
         }
     }
 
+    /**
+     * Describes VkList item.
+     */
     public static class Item {
+        /**
+         * Conversation object.
+         */
         @SerializedName("conversation")
-        private Chat chat;
+        private Conversation conversation;
+
+        /**
+         * Last message in conversation.
+         */
         @SerializedName("last_message")
         private Message message;
 
-        public Chat getChat() {
-            return chat;
+        public Conversation getConversation() {
+            return conversation;
         }
 
-        public void setChat(Chat chat) {
-            this.chat = chat;
+        public void setConversation(Conversation conversation) {
+            this.conversation = conversation;
         }
 
         public Message getMessage() {

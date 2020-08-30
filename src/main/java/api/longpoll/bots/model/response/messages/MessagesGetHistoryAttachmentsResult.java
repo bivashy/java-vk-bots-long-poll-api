@@ -5,19 +5,45 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Response to <b>messages.getHistoryAttachments</b> request.
+ */
 public class MessagesGetHistoryAttachmentsResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private Response response;
 
+    /**
+     * Describes response.
+     */
     public static class Response {
+        /**
+         * List of photo, video, audio or doc.
+         */
         @SerializedName("items")
         private List<Item> items;
+
+        /**
+         * Offset value.
+         */
         @SerializedName("next_from")
         private String nextFrom;
 
+        /**
+         * Describes list item.
+         */
         public static class Item {
+            /**
+             * Message ID.
+             */
             @SerializedName("message_id")
             private Integer messageId;
+
+            /**
+             * Attachment.
+             */
             @SerializedName("attachment")
             private Attachment attachment;
 

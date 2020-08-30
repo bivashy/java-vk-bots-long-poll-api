@@ -8,13 +8,29 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Response to <b>messages.searchConversations</b> request.
+ */
 public class MessagesSearchConversationsResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private Response response;
 
+    /**
+     * Describes response.
+     */
     public static class Response extends VkList<Conversation> {
+        /**
+         * List of users.
+         */
         @SerializedName("profiles")
         private List<User> profiles;
+
+        /**
+         * List of communities.
+         */
         @SerializedName("groups")
         private List<Community> groups;
 

@@ -60,14 +60,14 @@ public class TopicComment implements EventObject {
 		private Integer count;
 
 		/**
-		 * <b>true</b> if current user likes the comment.
+		 * <b>true</b>, if current user likes the comment.
 		 */
 		@SerializedName("user_likes")
 		@JsonAdapter(BoolIntAdapter.class)
 		private Boolean userLikes;
 
 		/**
-		 * <b>true</b> if current user can like the comment.
+		 * <b>true</b>, if current user can like the comment.
 		 */
 		@SerializedName("can_like")
 		@JsonAdapter(BoolIntAdapter.class)

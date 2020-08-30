@@ -4,19 +4,45 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Response to <b>groups.getTokenPermissions</b> request.
+ */
 public class GroupsGetTokenPermissionsResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private Response response;
 
+    /**
+     * Describes response object.
+     */
     public static class Response {
+        /**
+         * <i>access_token</i> permissions bit mask.
+         */
         @SerializedName("mask")
         private Integer mask;
+
+        /**
+         * List of permissions.
+         */
         @SerializedName("settings")
         private List<Setting> settings;
 
+        /**
+         * Describes permissions.
+         */
         public static class Setting {
+            /**
+             * Permission's bit mask.
+             */
             @SerializedName("setting")
             private Integer setting;
+
+            /**
+             * Permission's name.
+             */
             @SerializedName("name")
             private String name;
 

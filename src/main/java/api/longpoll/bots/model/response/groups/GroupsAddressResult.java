@@ -3,35 +3,95 @@ package api.longpoll.bots.model.response.groups;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Response to <b>groups.addAddress</b> request.
+ */
 public class GroupsAddressResult {
+	/**
+	 * Response object.
+	 */
 	@SerializedName("response")
 	private Response response;
 
+	/**
+	 * Describes response object.
+	 */
 	public static class Response {
+		/**
+		 * Address ID.
+		 */
 		@SerializedName("id")
 		private Integer id;
+
+		/**
+		 * Address title.
+		 */
 		@SerializedName("title")
 		private String title;
+
+		/**
+		 * Address.
+		 */
 		@SerializedName("address")
 		private String address;
+
+		/**
+		 * Additional address description.
+		 */
 		@SerializedName("additional_address")
 		private String additionalAddress;
+
+		/**
+		 * Country ID.
+		 */
 		@SerializedName("country_id")
 		private Integer countryId;
+
+		/**
+		 * City ID.
+		 */
 		@SerializedName("city_id")
 		private Integer cityId;
+
+		/**
+		 * Metro station ID.
+		 */
 		@SerializedName("metro_station_id")
 		private Integer metroStationId;
+
+		/**
+		 * Geographical latitude.
+		 */
 		@SerializedName("latitude")
 		private Float latitude;
+
+		/**
+		 * geographical longitude.
+		 */
 		@SerializedName("longitude")
 		private Float longitude;
+
+		/**
+		 * Phone number.
+		 */
 		@SerializedName("phone")
 		private String phone;
+
+		/**
+		 * Schedule type.
+		 */
 		@SerializedName("work_info_status")
 		private String workInfoStatus;
+
+		/**
+		 * Schedule.
+		 */
 		@SerializedName("timetable")
 		private JsonObject timetable;
+
+		/**
+		 * Whether address is main.
+		 */
 		@SerializedName("is_main_address")
 		private Boolean mainAddress;
 

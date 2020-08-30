@@ -4,13 +4,29 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Response to <b>wall.createComment</b> request.
+ */
 public class WallCreateCommentResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private Response response;
 
+    /**
+     * Describes response.
+     */
     public static class Response {
+        /**
+         * Added comment ID.
+         */
         @SerializedName("comment_id")
         private Integer commentId;
+
+        /**
+         * List of parent comments.
+         */
         @SerializedName("parent_stack")
         private List<Integer> parentStack;
 

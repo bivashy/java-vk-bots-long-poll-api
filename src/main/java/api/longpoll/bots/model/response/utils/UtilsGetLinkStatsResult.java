@@ -4,33 +4,85 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Response to <b>utils.getLinkStats</b> request.
+ */
 public class UtilsGetLinkStatsResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private Response response;
 
+    /**
+     * Describes response.
+     */
     public static class Response {
+        /**
+         * Key.
+         */
         @SerializedName("key")
         private String key;
+
+        /**
+         * List of stats.
+         */
         @SerializedName("stats")
         private List<Stat> stats;
 
+        /**
+         * Describes stat.
+         */
         public static class Stat {
+            /**
+             * Timestamp.
+             */
             @SerializedName("timestamp")
             private Integer timestamp;
+
+            /**
+             * Number of views.
+             */
             @SerializedName("views")
             private Integer views;
+
+            /**
+             * List of sex_age.
+             */
             @SerializedName("sex_age")
             private List<SexAge> sexAges;
+
+            /**
+             * List of countries.
+             */
             @SerializedName("countries")
             private List<Country> countries;
+
+            /**
+             * List of cities.
+             */
             @SerializedName("cities")
             private List<City> cities;
 
+            /**
+             * Describes sex_age.
+             */
             public static class SexAge {
+                /**
+                 * Ae denotation.
+                 */
                 @SerializedName("age_range")
                 private String ageRange;
+
+                /**
+                 * Views by female users.
+                 */
                 @SerializedName("female")
                 private Integer female;
+
+                /**
+                 * Views by male users.
+                 */
                 @SerializedName("male")
                 private Integer male;
 
@@ -59,9 +111,19 @@ public class UtilsGetLinkStatsResult {
                 }
             }
 
+            /**
+             * Describes country.
+             */
             public static class Country {
+                /**
+                 * Country ID.
+                 */
                 @SerializedName("country_id")
                 private Integer countryId;
+
+                /**
+                 * Views number.
+                 */
                 @SerializedName("views")
                 private Integer views;
 
@@ -82,9 +144,19 @@ public class UtilsGetLinkStatsResult {
                 }
             }
 
+            /**
+             * Describes City.
+             */
             public static class City {
+                /**
+                 * City ID.
+                 */
                 @SerializedName("city_id")
                 private Integer cityId;
+
+                /**
+                 * Views number.
+                 */
                 @SerializedName("views")
                 private Integer views;
 

@@ -9,202 +9,567 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Describes user.
+ * @see <a href="https://vk.com/dev/objects/user">User</a>
+ */
 public class User {
+    /**
+     * User ID.
+     */
     @SerializedName("id")
     private Integer id;
+
+    /**
+     * First name.
+     */
     @SerializedName("first_name")
     private String firstName;
+
+    /**
+     * Last name.
+     */
     @SerializedName("last_name")
     private String lastName;
+
+    /**
+     * Returns if a profile is deleted or blocked.
+     */
     @SerializedName("deactivated")
     private String deactivated;
+
+    /**
+     * <b>true</b>, if user profile is closed by his privacy settings.
+     */
     @SerializedName("is_closed")
     private Boolean closed;
+
+    /**
+     * <b>true</b>, if current user can see user profile.
+     */
     @SerializedName("can_access_closed")
     private Boolean canAccessClosed;
+
+    /**
+     * "About me".
+     */
     @SerializedName("about")
     private String about;
+
+    /**
+     * Activities.
+     */
     @SerializedName("activities")
     private String activities;
+
+    /**
+     * User's date of birth.  Returned as DD.MM.YYYY or DD.MM (if birth year is hidden). If the whole date is hidden, no field is returned.
+     */
     @SerializedName("bdate")
     private String birthDate;
+
+    /**
+     * <b>true</b> if a current user is in the requested user's blacklist.
+     */
     @SerializedName("blacklisted")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean blacklisted;
+
+    /**
+     * <b>true</b> if a user is in the current user's blacklist.
+     */
     @SerializedName("blacklisted_by_me")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean blacklistedByMe;
+
+    /**
+     * Favorite books.
+     */
     @SerializedName("books")
     private String books;
+
+    /**
+     * Whether current user can post on the wall.
+     */
     @SerializedName("can_post")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean canPost;
+
+    /**
+     * Whether current user can see other users' posts on the wall.
+     */
     @SerializedName("can_see_all_posts")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean canSeeAllPosts;
+
+    /**
+     * Whether current user can see users' audio.
+     */
     @SerializedName("can_see_audio")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean canSeeAudio;
+
+    /**
+     * Whether current user can send friend request to a user.
+     */
     @SerializedName("can_send_friend_request")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean canSendFriendRequest;
+
+    /**
+     * Whether current user can write private messages to a user.
+     */
     @SerializedName("can_write_private_message")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean canWritePrivateMessage;
+
+    /**
+     * Information about user's career.
+     */
     @SerializedName("career")
     private Career career;
+
+    /**
+     * Information about user's military service.
+     */
     @SerializedName("military")
     private Military military;
+
+    /**
+     * Favorite movies.
+     */
     @SerializedName("movies")
     private String movies;
+
+    /**
+     * Favorite music.
+     */
     @SerializedName("music")
     private String music;
+
+    /**
+     * Nickname.
+     */
     @SerializedName("nickname")
     private String nickname;
+
+    /**
+     * City specified on user's page in "Contacts" section.
+     */
     @SerializedName("city")
     private String city;
+
+    /**
+     * Number of common friends with current user.
+     */
     @SerializedName("common_count")
     private Integer commonCount;
+
+    /**
+     * Returns specified services such as: skype, facebook, twitter, livejournal, instagram.
+     */
     @SerializedName("connections")
     private Map<String, String> connections;
+
+    /**
+     * Information about user's phone numbers.
+     */
     @SerializedName("contacts")
     private Contacts contacts;
+
+    /**
+     * Number of various objects the user has.
+     */
     @SerializedName("counters")
     private Counters counters;
+
+    /**
+     * Country specified on user's page in "Contacts" section.
+     */
     @SerializedName("country")
     private Country country;
+
+    /**
+     * Data about points used for cropping of profile and preview user photos.
+     */
     @SerializedName("crop_photo")
     private CropPhoto cropPhoto;
+
+    /**
+     * Page screen name.
+     */
     @SerializedName("domain")
     private String domain;
+
+    /**
+     * Information about user's higher education institution.
+     */
     @SerializedName("education")
     private Education education;
+
+    /**
+     * External services with export configured (twitter, facebook, livejournal, instagram).
+     */
     @SerializedName("exports")
     private String exports;
+
+    /**
+     * First name in nominative case.
+     */
     @SerializedName("first_name_nom")
     private String firstNameNom;
+
+    /**
+     * First name in genitive case.
+     */
     @SerializedName("first_name_gen")
     private String firstNameGen;
+
+    /**
+     * First name in dative case.
+     */
     @SerializedName("first_name_dat")
     private String firstNameDat;
+
+    /**
+     * First name in accusative case.
+     */
     @SerializedName("first_name_acc")
     private String firstNameAcc;
+
+    /**
+     * First name in instrumental case.
+     */
     @SerializedName("first_name_ins")
     private String firstNameIns;
+
+    /**
+     * First name in prepositional case.
+     */
     @SerializedName("first_name_abl")
     private String firstNameAbl;
+
+    /**
+     * Number of followers.
+     */
     @SerializedName("followers_count")
     private Integer followersCount;
+
+    /**
+     * Friend status with a current user.
+     */
     @SerializedName("friend_status")
     private Integer friendStatus;
+
+    /**
+     * Favorite games.
+     */
     @SerializedName("games")
     private String games;
+
+    /**
+     * Whether the user's mobile phone number is available.
+     */
     @SerializedName("has_mobile")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean hasMobile;
+
+    /**
+     * Whether the user has profile photo.
+     */
     @SerializedName("has_photo")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean hasPhoto;
+
+    /**
+     * User's home town name.
+     */
     @SerializedName("home_town")
     private String homeTown;
+
+    /**
+     * Interests.
+     */
     @SerializedName("interests")
     private String interests;
+
+    /**
+     * Whether the user is in faves of current user.
+     */
     @SerializedName("is_favorite")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean favorite;
+
+    /**
+     * Whether the user is a friend of current user.
+     */
     @SerializedName("is_friend")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean friend;
+
+    /**
+     * Whether the user is hidden from current user's feed.
+     */
     @SerializedName("is_hidden_from_feed")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean hiddenFromFeed;
+
+    /**
+     * Last name in nominative case.
+     */
     @SerializedName("last_name_nom")
     private String lastNameNom;
+
+    /**
+     * Last name in genitive case.
+     */
     @SerializedName("last_name_gen")
     private String lastNameGen;
+
+    /**
+     * Last name in dative case.
+     */
     @SerializedName("last_name_dat")
     private String lastNameDat;
+
+    /**
+     * Last name in accusative case.
+     */
     @SerializedName("last_name_acc")
     private String lastNameAcc;
+
+    /**
+     * Last name in instrumental case.
+     */
     @SerializedName("last_name_ins")
     private String lastNameIns;
+
+    /**
+     * Last name in prepositional case.
+     */
     @SerializedName("last_name_abl")
     private String lastNameAbl;
+
+    /**
+     * Last visit date.
+     */
     @SerializedName("last_seen")
     private LastSeen lastSeen;
+
+    /**
+     * Comma-separated friend lists IDs the user is included to.
+     */
     @SerializedName("lists")
     private String lists;
+
+    /**
+     * Maiden name.
+     */
     @SerializedName("maiden_name")
     private String maidenName;
+
+    /**
+     * User's occupation.
+     */
     @SerializedName("occupation")
     private Occupation occupation;
+
+    /**
+     * Whether the user is online.
+     */
     @SerializedName("online")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean online;
+
+    /**
+     * Information from the "Personal views" section.
+     */
     @SerializedName("personal")
     private Personal personal;
+
+    /**
+     * URL of square photo of the user with 50 pixels in width.
+     */
     @SerializedName("photo_50")
     private String photo_50;
+
+    /**
+     * URL of square photo of the user with 100 pixels in width.
+     */
     @SerializedName("photo_100")
     private String photo_100;
+
+    /**
+     * URL of user's photo with 200 pixels in width.
+     */
     @SerializedName("photo_200_orig")
     private String photo_200_orig;
+
+    /**
+     * URL of square photo of the user with 200 pixels in width.
+     */
     @SerializedName("photo_200")
     private String photo_200;
+
+    /**
+     * URL of user's photo with 400 pixels in width.
+     */
     @SerializedName("photo_400_orig")
     private String photo_400_orig;
+
+    /**
+     * String ID of the main profile photo in format {user_id}_{photo_id}, e.g., 6492_192164258.
+     */
     @SerializedName("photo_id")
     private String photo_id;
+
+    /**
+     * URL of square photo of the user with maximum width.
+     */
     @SerializedName("photo_max")
     private String photo_max;
+
+    /**
+     * URL of user's photo of maximum size.
+     */
     @SerializedName("photo_max_orig")
     private String photo_max_orig;
+
+    /**
+     * Favorite quotes.
+     */
     @SerializedName("quotes")
     private String quotes;
+
+    /**
+     * Current user's relatives list.
+     */
     @SerializedName("relatives")
     private List<Relative> relatives;
+
+    /**
+     * User relationship status.
+     */
     @SerializedName("relation")
     private Integer relation;
+
+    /**
+     * List of schools where user studied.
+     */
     @SerializedName("schools")
     private List<School> schools;
+
+    /**
+     * User page's screen name.
+     */
     @SerializedName("screen_name")
     private String screen_name;
+
+    /**
+     * User sex.
+     */
     @SerializedName("sex")
     private Integer sex;
+
+    /**
+     * Returns a website address from a user profile.
+     */
     @SerializedName("site")
     private String site;
+
+    /**
+     * User status.
+     */
     @SerializedName("status")
     private String status;
+
+    /**
+     * User time zone.
+     */
     @SerializedName("timezone")
     private Integer timezone;
+
+    /**
+     * Whether the user a "fire" pictogram.
+     */
     @SerializedName("trending")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean trending;
+
+    /**
+     * Favorite TV shows.
+     */
     @SerializedName("tv")
     private String tv;
+
+    /**
+     * List of higher education institutions where user studied.
+     */
     @SerializedName("universities")
     private List<University> universities;
+
+    /**
+     * <b>true</b> if the profile is verified.
+     */
     @SerializedName("verified")
     @JsonAdapter(BoolIntAdapter.class)
     private Boolean verified;
+
+    /**
+     * Wall default.
+     */
     @SerializedName("wall_default")
     private String wall_default;
 
+    /**
+     * Describes career.
+     */
     public static class Career {
+        /**
+         * Community ID.
+         */
         @SerializedName("group_id")
         private Integer groupId;
+
+        /**
+         * Company name.
+         */
         @SerializedName("company")
         private String company;
+
+        /**
+         * Country ID.
+         */
         @SerializedName("country_id")
         private Integer countryId;
+
+        /**
+         * City ID.
+         */
         @SerializedName("city_id")
         private Integer cityId;
+
+        /**
+         * City name.
+         */
         @SerializedName("city_name")
         private Integer cityName;
+
+        /**
+         * Career beginning year.
+         */
         @SerializedName("from")
         private Integer from;
+
+        /**
+         * Career ending year.
+         */
         @SerializedName("until")
         private Integer until;
+
+        /**
+         * Position.
+         */
         @SerializedName("position")
         private String position;
 
@@ -273,9 +638,19 @@ public class User {
         }
     }
 
+    /**
+     * Describes city.
+     */
     public static class City {
+        /**
+         * City ID.
+         */
         @SerializedName("id")
         private Integer id;
+
+        /**
+         * City name.
+         */
         @SerializedName("title")
         private String title;
 
@@ -296,9 +671,19 @@ public class User {
         }
     }
 
+    /**
+     * Describes user's phone numbers.
+     */
     public static class Contacts {
+        /**
+         * User's mobile phone number.
+         */
         @SerializedName("mobile_phone")
         private String mobilePhone;
+
+        /**
+         * User's additional phone number.
+         */
         @SerializedName("home_phone")
         private String homePhone;
 
@@ -319,29 +704,79 @@ public class User {
         }
     }
 
+    /**
+     * Describes user's counters.
+     */
     public static  class Counters {
+        /**
+         * Number of photo albums.
+         */
         @SerializedName("albums")
         private Integer albums;
+
+        /**
+         * Number of videos.
+         */
         @SerializedName("videos")
         private Integer videos;
+
+        /**
+         * Number of audios.
+         */
         @SerializedName("audios")
         private Integer audios;
+
+        /**
+         * Number of photos.
+         */
         @SerializedName("photos")
         private Integer photos;
+
+        /**
+         * Number of notes.
+         */
         @SerializedName("notes")
         private Integer notes;
+
+        /**
+         * Number of friends.
+         */
         @SerializedName("friends")
         private Integer friends;
+
+        /**
+         * Number of communities.
+         */
         @SerializedName("groups")
         private Integer groups;
+
+        /**
+         * Number of online friends.
+         */
         @SerializedName("online_friends")
         private Integer onlineFriends;
+
+        /**
+         * Number of mutual friends.
+         */
         @SerializedName("mutual_friends")
         private Integer mutualFriends;
+
+        /**
+         * Number of videos the user is tagged on.
+         */
         @SerializedName("user_videos")
         private Integer userVideos;
+
+        /**
+         * Number of followers.
+         */
         @SerializedName("followers")
         private Integer followers;
+
+        /**
+         * Number of subscriptions.
+         */
         @SerializedName("pages")
         private Integer pages;
 
@@ -442,15 +877,37 @@ public class User {
         }
     }
 
+    /**
+     * Describes higher education institution.
+     */
     public static class Education {
+        /**
+         * University ID.
+         */
         @SerializedName("university")
         private Integer university;
+
+        /**
+         * University name.
+         */
         @SerializedName("university_name")
         private String universityName;
+
+        /**
+         * Faculty ID.
+         */
         @SerializedName("faculty")
         private Integer faculty;
+
+        /**
+         * Faculty name.
+         */
         @SerializedName("faculty_name")
         private String facultyName;
+
+        /**
+         * Graduation year.
+         */
         @SerializedName("graduation")
         private Integer graduation;
 
@@ -495,9 +952,19 @@ public class User {
         }
     }
 
+    /**
+     * Describes last_seen object.
+     */
     public static class LastSeen {
+        /**
+         * Last visit date (in Unixtime).
+         */
         @SerializedName("time")
         private Integer time;
+
+        /**
+         * Type of the platform that used for the last authorization.
+         */
         @SerializedName("platform")
         private Integer platform;
 
@@ -518,15 +985,37 @@ public class User {
         }
     }
 
+    /**
+     * Describes military service.
+     */
     public static class Military {
+        /**
+         * Unit number.
+         */
         @SerializedName("unit")
         private String unit;
+
+        /**
+         * Unit ID.
+         */
         @SerializedName("unit_id")
         private Integer unitId;
+
+        /**
+         * Country ID.
+         */
         @SerializedName("country_id")
         private Integer countyId;
+
+        /**
+         * Service starting year.
+         */
         @SerializedName("from")
         private Integer from;
+
+        /**
+         * Service ending year.
+         */
         @SerializedName("until")
         private Integer until;
 
@@ -571,11 +1060,25 @@ public class User {
         }
     }
 
+    /**
+     * Describes occupation.
+     */
     public static class Occupation {
+        /**
+         * Possible values: work, school, university.
+         */
         @SerializedName("type")
         private String type;
+
+        /**
+         * ID of school, university, company group.
+         */
         @SerializedName("id")
         private Integer id;
+
+        /**
+         * Name of school, university or work place.
+         */
         @SerializedName("name")
         private String name;
 
@@ -604,21 +1107,55 @@ public class User {
         }
     }
 
+    /**
+     * Describes "Personal views" section.
+     */
     public static class Personal {
+        /**
+         * Political views.
+         */
         @SerializedName("political")
         private Integer political;
+
+        /**
+         * Languages.
+         */
         @SerializedName("langs")
-        private List<String> langs; //todo https://vk.com/support?act=show&id=37960706
+        private List<String> langs;
+
+        /**
+         * World view.
+         */
         @SerializedName("religion")
         private String religion;
+
+        /**
+         * Inspired by.
+         */
         @SerializedName("inspired_by")
         private String inspired_by;
+
+        /**
+         * Improtant in others.
+         */
         @SerializedName("people_main")
         private Integer people_main;
+
+        /**
+         * Personal priority.
+         */
         @SerializedName("life_main")
         private Integer life_main;
+
+        /**
+         * Views on smoking.
+         */
         @SerializedName("smoking")
         private Integer smoking;
+
+        /**
+         * Views on alcohol.
+         */
         @SerializedName("alcohol")
         private Integer alcohol;
 
@@ -687,11 +1224,25 @@ public class User {
         }
     }
 
+    /**
+     * Describes relative.
+     */
     public static class Relative {
+        /**
+         * Relative id.
+         */
         @SerializedName("id")
         private Integer id;
+
+        /**
+         * Relative name.
+         */
         @SerializedName("name")
         private String name;
+
+        /**
+         * Relationship type.
+         */
         @SerializedName("type")
         private String type;
 
@@ -720,27 +1271,73 @@ public class User {
         }
     }
 
+    /**
+     * Describes school.
+     */
     public static class School {
+        /**
+         * School ID.
+         */
         @SerializedName("id")
         private Integer id;
+
+        /**
+         * ID of the country the school is located in.
+         */
         @SerializedName("country")
         private Integer country;
+
+        /**
+         * ID of the city the school is located in
+         */
         @SerializedName("city")
         private Integer city;
+
+        /**
+         * School name.
+         */
         @SerializedName("name")
         private String name;
+
+        /**
+         * Year the user started to study.
+         */
         @SerializedName("year_from")
         private Integer yearFrom;
+
+        /**
+         * Year the user finished to study.
+         */
         @SerializedName("year_to")
         private Integer yearTo;
+
+        /**
+         * Graduation year.
+         */
         @SerializedName("year_graduated")
         private Integer yearGraduated;
+
+        /**
+         * School class letter.
+         */
         @SerializedName("class")
         private String className;
+
+        /**
+         * Speciality.
+         */
         @SerializedName("speciality")
         private String speciality;
+
+        /**
+         * Type ID.
+         */
         @SerializedName("type")
         private Integer type;
+
+        /**
+         * Type name.
+         */
         @SerializedName("type_str")
         private String type_str;
 
@@ -833,27 +1430,73 @@ public class User {
         }
     }
 
+    /**
+     * Describes higher education institution.
+     */
     public static class University {
+        /**
+         * University ID.
+         */
         @SerializedName("id")
         private Integer id;
+
+        /**
+         * ID of the country the university is located in.
+         */
         @SerializedName("country")
         private Integer country;
+
+        /**
+         * ID of the city the university is located in.
+         */
         @SerializedName("city")
         private Integer city;
+
+        /**
+         * University name.
+         */
         @SerializedName("name")
         private String name;
+
+        /**
+         * Faculty ID.
+         */
         @SerializedName("faculty")
         private Integer faculty;
+
+        /**
+         * Faculty name.
+         */
         @SerializedName("faculty_name")
         private String faculty_name;
+
+        /**
+         * University chair ID.
+         */
         @SerializedName("chair")
         private String chair;
+
+        /**
+         * Chair name.
+         */
         @SerializedName("chair_name")
         private String chair_name;
+
+        /**
+         * Graduation year.
+         */
         @SerializedName("graduation")
         private Integer graduation;
+
+        /**
+         * Eucation form.
+         */
         @SerializedName("education_form")
         private String education_form;
+
+        /**
+         * Status.
+         */
         @SerializedName("education_status")
         private String education_status;
 

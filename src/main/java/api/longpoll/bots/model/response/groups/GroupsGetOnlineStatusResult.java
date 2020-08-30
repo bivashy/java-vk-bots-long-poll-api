@@ -2,13 +2,29 @@ package api.longpoll.bots.model.response.groups;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Response to <b>groups.getOnlineStatus</b> request.
+ */
 public class GroupsGetOnlineStatusResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private Response response;
 
+    /**
+     * Describes response object.
+     */
     public static class Response {
+        /**
+         * Community's status.
+         */
         @SerializedName("status")
         private String status;
+
+        /**
+         * Estimated time in minutes (for status = answer_mark).
+         */
         @SerializedName("minutes")
         private Integer minutes;
 

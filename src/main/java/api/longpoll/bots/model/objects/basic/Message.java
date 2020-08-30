@@ -60,7 +60,7 @@ public class Message implements EventObject {
 	 * true, whether the messages is marked as important.
 	 */
 	@SerializedName("important")
-	private boolean important;
+	private Boolean important;
 
 	/**
 	 * Information about location.
@@ -231,23 +231,23 @@ public class Message implements EventObject {
 		}
 	}
 
-	public boolean hasText() {
+	public Boolean hasText() {
 		return text != null && !text.isEmpty();
 	}
 
-	public boolean hasAttachments() {
+	public Boolean hasAttachments() {
 		return attachments != null && !attachments.isEmpty();
 	}
 
-	public boolean hasGeo() {
+	public Boolean hasGeo() {
 		return geo != null;
 	}
 
-	public boolean hasFwdMessages() {
+	public Boolean hasFwdMessages() {
 		return fwdMessages != null && !fwdMessages.isEmpty();
 	}
 
-	public boolean hasReplyMessage() {
+	public Boolean hasReplyMessage() {
 		return replyMessage != null;
 	}
 
@@ -307,11 +307,11 @@ public class Message implements EventObject {
 		this.attachments = attachments;
 	}
 
-	public boolean isImportant() {
+	public Boolean getImportant() {
 		return important;
 	}
 
-	public void setImportant(boolean important) {
+	public void setImportant(Boolean important) {
 		this.important = important;
 	}
 

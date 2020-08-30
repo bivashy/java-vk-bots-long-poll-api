@@ -45,9 +45,9 @@ public class WallRepostParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(1594890511), wallPost.getDate());
 		Assert.assertEquals("post", wallPost.getPostType());
 		Assert.assertEquals("", wallPost.getText());
-		Assert.assertTrue(wallPost.isCanArchive());
-		Assert.assertFalse(wallPost.isArchived());
-		Assert.assertFalse(wallPost.isFavourite());
+		Assert.assertTrue(wallPost.getCanArchive());
+		Assert.assertFalse(wallPost.getArchived());
+		Assert.assertFalse(wallPost.getFavourite());
 
 		WallPost.Comments comments = wallPost.getComments();
 		Assert.assertNotNull(comments);

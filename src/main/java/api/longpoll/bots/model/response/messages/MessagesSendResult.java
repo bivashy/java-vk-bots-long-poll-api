@@ -2,15 +2,35 @@ package api.longpoll.bots.model.response.messages;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Response to <b>messages.send</b> request.
+ */
 public class MessagesSendResult {
+	/**
+	 * Response object.
+	 */
 	@SerializedName("response")
 	private Object response;
 
+	/**
+	 * Describes response.
+	 */
 	public static class Response {
+		/**
+		 * Peer ID.
+		 */
 		@SerializedName("peer_id")
 		private Integer peerId;
+
+		/**
+		 * Message ID.
+		 */
 		@SerializedName("message_id")
 		private Integer messageId;
+
+		/**
+		 * Error message, if message is not delivered.
+		 */
 		@SerializedName("error")
 		private String error;
 

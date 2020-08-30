@@ -70,14 +70,14 @@ public class Chat {
 	 */
 	@SerializedName("left")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean left;
+	private Boolean left;
 
 	/**
 	 * <b>true</b>, user has been kicked from the chat.
 	 */
 	@SerializedName("kicked")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean kicked;
+	private Boolean kicked;
 
 	/**
 	 * Describes push settings.
@@ -88,7 +88,7 @@ public class Chat {
 		 */
 		@SerializedName("sound")
 		@JsonAdapter(BoolIntAdapter.class)
-		private boolean soundEnabled;
+		private Boolean soundEnabled;
 
 		/**
 		 * Time until notifications is disabled. -1 — forever.
@@ -96,11 +96,11 @@ public class Chat {
 		@SerializedName("disabled_until")
 		private Integer disabledUntil;
 
-		public boolean isSoundEnabled() {
+		public Boolean getSoundEnabled() {
 			return soundEnabled;
 		}
 
-		public void setSoundEnabled(boolean soundEnabled) {
+		public void setSoundEnabled(Boolean soundEnabled) {
 			this.soundEnabled = soundEnabled;
 		}
 
@@ -185,19 +185,19 @@ public class Chat {
 		this.photo200 = photo200;
 	}
 
-	public boolean isLeft() {
+	public Boolean getLeft() {
 		return left;
 	}
 
-	public void setLeft(boolean left) {
+	public void setLeft(Boolean left) {
 		this.left = left;
 	}
 
-	public boolean isKicked() {
+	public Boolean getKicked() {
 		return kicked;
 	}
 
-	public void setKicked(boolean kicked) {
+	public void setKicked(Boolean kicked) {
 		this.kicked = kicked;
 	}
 }

@@ -7,13 +7,29 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Response to <b>messages.getConversationMembers</b> request.
+ */
 public class MessagesGetConversationMembersResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private Response response;
 
+    /**
+     * Describes response.
+     */
     public static class Response extends VkList<Item> {
+        /**
+         * List of users.
+         */
         @SerializedName("profiles")
         private List<User> profiles;
+
+        /**
+         * List of communities.
+         */
         @SerializedName("groups")
         private List<Community> groups;
 
@@ -34,15 +50,37 @@ public class MessagesGetConversationMembersResult {
         }
     }
 
+    /**
+     * Describes VkList item.
+     */
     public static class Item {
+        /**
+         * Conversation member ID.
+         */
         @SerializedName("member_id")
         private Integer memberId;
+
+        /**
+         * ID of the user who invited this member to the conversation.
+         */
         @SerializedName("invited_by")
         private Integer invitedBy;
+
+        /**
+         * Date of joining the conversation.
+         */
         @SerializedName("join_date")
         private Integer joinDate;
+
+        /**
+         * Whether the user is conversation admin.
+         */
         @SerializedName("is_admin")
         private Boolean admin;
+
+        /**
+         * Whether the user can kick.
+         */
         @SerializedName("can_kick")
         private Boolean canKick;
 

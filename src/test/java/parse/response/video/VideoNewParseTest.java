@@ -39,8 +39,8 @@ public class VideoNewParseTest extends AbstractParseTest {
 
 		Assert.assertTrue(eventObject instanceof Video);
 		Video video = (Video) eventObject;
-		Assert.assertTrue(video.isCanEdit());
-		Assert.assertTrue(video.isCanAdd());
+		Assert.assertTrue(video.getCanEdit());
+		Assert.assertTrue(video.getCanAdd());
 		Assert.assertEquals(Integer.valueOf(0), video.getCommentsAmount());
 		Assert.assertEquals(Integer.valueOf(1594821406), video.getDate());
 		Assert.assertFalse(video.getDescription().isEmpty());
@@ -48,7 +48,7 @@ public class VideoNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(456239017), video.getId());
 		Assert.assertEquals(Integer.valueOf(-168975658), video.getOwnerId());
 		Assert.assertFalse(video.getTitle().isEmpty());
-		Assert.assertFalse(video.isFavourite());
+		Assert.assertFalse(video.getFavourite());
 		Assert.assertEquals("video", video.getType());
 		Assert.assertEquals(Integer.valueOf(1), video.getViews());
 		Assert.assertEquals(Integer.valueOf(0), video.getLocalViews());

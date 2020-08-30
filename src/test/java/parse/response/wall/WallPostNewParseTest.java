@@ -43,13 +43,13 @@ public class WallPostNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(381980625), wallPost.getFromId());
 		Assert.assertEquals(Integer.valueOf(-168975658), wallPost.getOwnerId());
 		Assert.assertEquals(Integer.valueOf(1594888935), wallPost.getDate());
-		Assert.assertFalse(wallPost.isMarkedAsAds());
+		Assert.assertFalse(wallPost.getMarkedAsAds());
 		Assert.assertEquals("post", wallPost.getPostType());
 		Assert.assertEquals("test", wallPost.getText());
-		Assert.assertTrue(wallPost.isCanEdit());
+		Assert.assertTrue(wallPost.getCanEdit());
 		Assert.assertEquals(Integer.valueOf(381980625), wallPost.getCreatedBy());
-		Assert.assertTrue(wallPost.isCanDelete());
-		Assert.assertFalse(wallPost.isFavourite());
+		Assert.assertTrue(wallPost.getCanDelete());
+		Assert.assertFalse(wallPost.getFavourite());
 
 		WallPost.Comments comments = wallPost.getComments();
 		Assert.assertNotNull(comments);

@@ -5,23 +5,59 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Response to <b>photos.saveMessagesPhoto</b> request.
+ */
 public class PhotosSaveMessagesPhotoResult {
+	/**
+	 * Response object.
+	 */
 	@SerializedName("response")
 	private List<Response> response;
 
+	/**
+	 * Describes response.
+	 */
 	public static class Response {
+		/**
+		 * Album ID.
+		 */
 		@SerializedName("album_id")
 		private Integer albumId;
+
+		/**
+		 * Saved date.
+		 */
 		@SerializedName("date")
 		private Integer date;
+
+		/**
+		 * Photo ID.
+		 */
 		@SerializedName("id")
 		private Integer id;
+
+		/**
+		 * Photo owner ID.
+		 */
 		@SerializedName("owner_id")
 		private Integer ownerId;
+
+		/**
+		 * <b>true</b> if photo has tags.
+		 */
 		@SerializedName("has_tags")
 		private Boolean hasTags;
+
+		/**
+		 * Access key.
+		 */
 		@SerializedName("access_key")
 		private String accessKey;
+
+		/**
+		 * Photo copies.
+		 */
 		@SerializedName("photoSizes")
 		private List<PhotoSize> photoSizes;
 

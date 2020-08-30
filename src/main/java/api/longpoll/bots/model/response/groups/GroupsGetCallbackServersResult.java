@@ -3,21 +3,53 @@ package api.longpoll.bots.model.response.groups;
 import api.longpoll.bots.model.objects.additional.VkList;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Response to <b>groups.getCallbackServers</b> request.
+ */
 public class GroupsGetCallbackServersResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private VkList<Item> response;
 
+    /**
+     * Describes VkList item.
+     */
     public static class Item {
+        /**
+         * Server ID.
+         */
         @SerializedName("id")
         private Integer id;
+
+        /**
+         * Server title.
+         */
         @SerializedName("title")
         private String title;
+
+        /**
+         * ID of the user who had added the server.
+         */
         @SerializedName("creator_id")
         private Integer creatorId;
+
+        /**
+         * Server URL.
+         */
         @SerializedName("url")
         private String url;
+
+        /**
+         * Server secret key.
+         */
         @SerializedName("secret_key")
         private String secretKey;
+
+        /**
+         * Server status.
+         */
         @SerializedName("status")
         private String status;
 

@@ -74,14 +74,14 @@ public class Audio implements Attachable {
 	 */
 	@SerializedName("no_search")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean noSearch;
+	private Boolean noSearch;
 
 	/**
 	 * <b>true</b> if audio is in a high quality.
 	 */
 	@SerializedName("is_hq")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean hq;
+	private Boolean hq;
 
 	public Integer getId() {
 		return id;
@@ -163,19 +163,19 @@ public class Audio implements Attachable {
 		this.date = date;
 	}
 
-	public boolean isNoSearch() {
+	public Boolean getNoSearch() {
 		return noSearch;
 	}
 
-	public void setNoSearch(boolean noSearch) {
+	public void setNoSearch(Boolean noSearch) {
 		this.noSearch = noSearch;
 	}
 
-	public boolean isHq() {
+	public Boolean getHq() {
 		return hq;
 	}
 
-	public void setHq(boolean hq) {
+	public void setHq(Boolean hq) {
 		this.hq = hq;
 	}
 }

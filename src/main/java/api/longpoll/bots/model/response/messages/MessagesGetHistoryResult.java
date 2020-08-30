@@ -8,15 +8,35 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Response to <b>messages.getHistory</b> request.
+ */
 public class MessagesGetHistoryResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private Response response;
 
+    /**
+     * Describes response.
+     */
     public static class Response extends VkList<Message> {
+        /**
+         * Number of unread messages.
+         */
         @SerializedName("unread")
         private Integer unread;
+
+        /**
+         * List of conversations.
+         */
         @SerializedName("conversations")
         private List<Conversation> conversations;
+
+        /**
+         * List of users.
+         */
         @SerializedName("profiles")
         private List<User> profiles;
 

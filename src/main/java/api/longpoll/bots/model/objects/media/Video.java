@@ -7,51 +7,134 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Describes video.
+ * @see <a href="https://vk.com/dev/objects/video">Video</a>
+ */
 public class Video implements Attachable {
+	/**
+	 * Video ID.
+	 */
 	@SerializedName("id")
 	private Integer id;
+
+	/**
+	 * ID of the user or community that owns the video.
+	 */
 	@SerializedName("owner_id")
 	private Integer ownerId;
+
+	/**
+	 * Video title.
+	 */
 	@SerializedName("title")
 	private String title;
+
+	/**
+	 * Description of the video.
+	 */
 	@SerializedName("description")
 	private String description;
+
+	/**
+	 * Duration of the video, in seconds.
+	 */
 	@SerializedName("duration")
 	private Integer duration;
+
+	/**
+	 * Date (in Unixtime) the video has been uploaded.
+	 */
 	@SerializedName("date")
 	private Integer date;
+
+	/**
+	 * Date (in Unixtime) the video has been added.
+	 */
 	@SerializedName("adding_date")
 	private Integer addingDate;
+
+	/**
+	 * Views count.
+	 */
 	@SerializedName("views")
 	private Integer views;
+
+	/**
+	 * Comments count.
+	 */
 	@SerializedName("comments")
 	private Integer commentsAmount;
+
+	/**
+	 * URL of the page with a player that can be used to play the video in the browser.
+	 */
 	@SerializedName("player")
 	private String player;
+
+	/**
+	 * Platform name.
+	 */
 	@SerializedName("platform")
 	private String platform;
+
+	/**
+	 * <b>true</b> if current user can edit video.
+	 */
 	@SerializedName("can_edit")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean canEdit;
+	private Boolean canEdit;
+
+	/**
+	 * <b>true</b> if current user can add video.
+	 */
 	@SerializedName("can_add")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean canAdd;
+	private Boolean canAdd;
+
+	/**
+	 * <b>true</b> if video is private.
+	 */
 	@SerializedName("is_private")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean isPrivate;
+	private Boolean isPrivate;
+
+	/**
+	 * Access key for an object.
+	 */
 	@SerializedName("access_key")
 	private String accessKey;
+
+	/**
+	 * <b>true</b> if the video is processing.
+	 */
 	@SerializedName("processing")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean processing;
+	private Boolean processing;
+
+	/**
+	 * <b>true</b> if the video is live.
+	 */
 	@SerializedName("live")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean live;
+	private Boolean live;
+
+	/**
+	 * <b>true</b> if translation will start soon.
+	 */
 	@SerializedName("upcoming")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean upcoming;
+	private Boolean upcoming;
+
+	/**
+	 * <b>true</b> if object is added to favorites by current users.
+	 */
 	@SerializedName("is_favorite")
-	private boolean isFavourite;
+	private Boolean isFavourite;
+
+	/**
+	 * Video preview image.
+	 */
 	@SerializedName("image")
 	private List<VideoImage> image;
 	@SerializedName("track_code")
@@ -61,16 +144,19 @@ public class Video implements Attachable {
 	@SerializedName("local_views")
 	private Integer localViews;
 
+	/**
+	 * Describes video preview image.
+	 */
 	public static class VideoImage extends Image {
 		@SerializedName("with_padding")
 		@JsonAdapter(BoolIntAdapter.class)
-		private boolean withPadding;
+		private Boolean withPadding;
 
-		public boolean isWithPadding() {
+		public Boolean getWithPadding() {
 			return withPadding;
 		}
 
-		public void setWithPadding(boolean withPadding) {
+		public void setWithPadding(Boolean withPadding) {
 			this.withPadding = withPadding;
 		}
 	}
@@ -163,27 +249,27 @@ public class Video implements Attachable {
 		this.platform = platform;
 	}
 
-	public boolean isCanEdit() {
+	public Boolean getCanEdit() {
 		return canEdit;
 	}
 
-	public void setCanEdit(boolean canEdit) {
+	public void setCanEdit(Boolean canEdit) {
 		this.canEdit = canEdit;
 	}
 
-	public boolean isCanAdd() {
+	public Boolean getCanAdd() {
 		return canAdd;
 	}
 
-	public void setCanAdd(boolean canAdd) {
+	public void setCanAdd(Boolean canAdd) {
 		this.canAdd = canAdd;
 	}
 
-	public boolean isPrivate() {
+	public Boolean getPrivate() {
 		return isPrivate;
 	}
 
-	public void setPrivate(boolean aPrivate) {
+	public void setPrivate(Boolean aPrivate) {
 		isPrivate = aPrivate;
 	}
 
@@ -195,35 +281,35 @@ public class Video implements Attachable {
 		this.accessKey = accessKey;
 	}
 
-	public boolean isProcessing() {
+	public Boolean getProcessing() {
 		return processing;
 	}
 
-	public void setProcessing(boolean processing) {
+	public void setProcessing(Boolean processing) {
 		this.processing = processing;
 	}
 
-	public boolean isLive() {
+	public Boolean getLive() {
 		return live;
 	}
 
-	public void setLive(boolean live) {
+	public void setLive(Boolean live) {
 		this.live = live;
 	}
 
-	public boolean isUpcoming() {
+	public Boolean getUpcoming() {
 		return upcoming;
 	}
 
-	public void setUpcoming(boolean upcoming) {
+	public void setUpcoming(Boolean upcoming) {
 		this.upcoming = upcoming;
 	}
 
-	public boolean isFavourite() {
+	public Boolean getFavourite() {
 		return isFavourite;
 	}
 
-	public void setFavourite(boolean favourite) {
+	public void setFavourite(Boolean favourite) {
 		isFavourite = favourite;
 	}
 

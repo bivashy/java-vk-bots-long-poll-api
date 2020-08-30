@@ -69,7 +69,7 @@ public class AttachedLink implements Attachable {
 	 */
 	@SerializedName("is_external")
 	@JsonAdapter(BoolIntAdapter.class)
-	private boolean external;
+	private Boolean external;
 
 	/**
 	 * Describes product.
@@ -233,11 +233,11 @@ public class AttachedLink implements Attachable {
 		this.previewUrl = previewUrl;
 	}
 
-	public boolean isExternal() {
+	public Boolean getExternal() {
 		return external;
 	}
 
-	public void setExternal(boolean external) {
+	public void setExternal(Boolean external) {
 		this.external = external;
 	}
 }

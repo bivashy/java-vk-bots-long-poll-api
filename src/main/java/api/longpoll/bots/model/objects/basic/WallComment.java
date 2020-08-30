@@ -8,44 +8,113 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Describes Wall Comment.
+ * @see <a href="https://vk.com/dev/objects/comment">Wall Comment</a>
+ */
 public class WallComment implements Attachable {
+	/**
+	 * Comment ID.
+	 */
 	@SerializedName("id")
 	private Integer id;
+
+	/**
+	 * Comment author ID.
+	 */
 	@SerializedName("from_id")
 	private Integer fromId;
+
+	/**
+	 * Date when the comment has been added in Unixtime.
+	 */
 	@SerializedName("date")
 	private Integer date;
+
+	/**
+	 * Comment text.
+	 */
 	@SerializedName("text")
 	private String text;
+
+	/**
+	 * ID of the user or community to whom the reply is addressed (if the comment is a reply to another comment).
+	 */
 	@SerializedName("reply_to_user")
 	private Integer replyToUser;
+
+	/**
+	 * ID of the comment the reply to which is represented by the current comment (if the comment is a reply to another comment).
+	 */
 	@SerializedName("reply_to_comment")
 	private Integer replyToComment;
+
+	/**
+	 * List of attachments in the comments (photos, links, etc.)
+	 */
 	@SerializedName("attachments")
 	private List<Attachment> attachments;
+
+	/**
+	 * Parent comments IDs.
+	 */
 	@SerializedName("parents_stack")
 	private List<Integer> parentsStack;
+
+	/**
+	 * Thread info.
+	 */
 	@SerializedName("thread")
 	private Thread thread;
+
+	/**
+	 * Wall post ID.
+	 */
 	@SerializedName("post_id")
 	private Integer postId;
+
+	/**
+	 * Post owner ID.
+	 */
 	@SerializedName("owner_id")
 	private Integer ownerId;
+
+	/**
+	 * Likes info.
+	 */
 	@SerializedName("likes")
 	private Likes likes;
 
+	/**
+	 * Describes thread.
+	 */
 	public static class Thread {
+		/**
+		 * Number of comments.
+		 */
 		@SerializedName("count")
 		private Integer count;
+
+		/**
+		 * <b>true</b> if current user can post comments in this thread.
+		 */
 		@SerializedName("can_post")
 		@JsonAdapter(BoolIntAdapter.class)
-		private boolean canPost;
+		private Boolean canPost;
+
+		/**
+		 * <b>true</b> if it is recommended to display "reply" button.
+		 */
 		@SerializedName("show_reply_button")
 		@JsonAdapter(BoolIntAdapter.class)
-		private boolean showReplyButton;
+		private Boolean showReplyButton;
+
+		/**
+		 * <b>true</b> if groups can post comments in this thread.
+		 */
 		@SerializedName("groups_can_post")
 		@JsonAdapter(BoolIntAdapter.class)
-		private boolean groupsCanPost;
+		private Boolean groupsCanPost;
 
 		public Integer getCount() {
 			return count;
@@ -55,40 +124,54 @@ public class WallComment implements Attachable {
 			this.count = count;
 		}
 
-		public boolean isCanPost() {
+		public Boolean getCanPost() {
 			return canPost;
 		}
 
-		public void setCanPost(boolean canPost) {
+		public void setCanPost(Boolean canPost) {
 			this.canPost = canPost;
 		}
 
-		public boolean isShowReplyButton() {
+		public Boolean getShowReplyButton() {
 			return showReplyButton;
 		}
 
-		public void setShowReplyButton(boolean showReplyButton) {
+		public void setShowReplyButton(Boolean showReplyButton) {
 			this.showReplyButton = showReplyButton;
 		}
 
-		public boolean isGroupsCanPost() {
+		public Boolean getGroupsCanPost() {
 			return groupsCanPost;
 		}
 
-		public void setGroupsCanPost(boolean groupsCanPost) {
+		public void setGroupsCanPost(Boolean groupsCanPost) {
 			this.groupsCanPost = groupsCanPost;
 		}
 	}
 
+	/**
+	 * Describes likes info.
+	 */
 	public static class Likes {
+		/**
+		 * Number of likes.
+		 */
 		@SerializedName("count")
 		private Integer count;
+
+		/**
+		 * <b>true</b> if current user likes the post.
+		 */
 		@SerializedName("user_likes")
 		@JsonAdapter(BoolIntAdapter.class)
-		private boolean userLikes;
+		private Boolean userLikes;
+
+		/**
+		 * <b>true</b> if current user can add like to the post.
+		 */
 		@SerializedName("can_like")
 		@JsonAdapter(BoolIntAdapter.class)
-		private boolean canLike;
+		private Boolean canLike;
 
 		public Integer getCount() {
 			return count;
@@ -98,45 +181,21 @@ public class WallComment implements Attachable {
 			this.count = count;
 		}
 
-		public boolean isUserLikes() {
+		public Boolean getUserLikes() {
 			return userLikes;
 		}
 
-		public void setUserLikes(boolean userLikes) {
+		public void setUserLikes(Boolean userLikes) {
 			this.userLikes = userLikes;
 		}
 
-		public boolean isCanLike() {
+		public Boolean getCanLike() {
 			return canLike;
 		}
 
-		public void setCanLike(boolean canLike) {
+		public void setCanLike(Boolean canLike) {
 			this.canLike = canLike;
 		}
-	}
-
-	public boolean hasText() {
-		return text != null && !text.isEmpty();
-	}
-
-	private boolean hasReplyToUser() {
-		return replyToUser != null;
-	}
-
-	private boolean hasReplyToComment() {
-		return replyToComment != null;
-	}
-
-	private boolean hasAttachments() {
-		return attachments != null && !attachments.isEmpty();
-	}
-
-	private boolean hasParentsStack() {
-		return parentsStack != null && !parentsStack.isEmpty();
-	}
-
-	private boolean hasThread() {
-		return thread != null;
 	}
 
 	public Integer getId() {

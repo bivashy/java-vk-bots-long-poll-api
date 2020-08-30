@@ -5,31 +5,84 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Describes conversation.
+ * @see <a href="https://vk.com/dev/objects/conversation">Conversation</a>
+ */
 public class Conversation {
+    /**
+     * Information about location.
+     */
     @SerializedName("peer")
     private Peer peer;
+
+    /**
+     * ID of the last read incoming message.
+     */
     @SerializedName("in_read")
     private Integer inRead;
+
+    /**
+     * ID of the last read outcoming message.
+     */
     @SerializedName("out_read")
     private Integer outRead;
+
+    /**
+     * Number of unread messages.
+     */
     @SerializedName("unread_count")
     private Integer unreadAmount;
+
+    /**
+     * <b>true</b>, if the conversation marked as important (only for community messages).
+     */
     @SerializedName("important")
     private Boolean important;
+
+    /**
+     * <b>true</b>, if the conversation marked as unanswered (only for community messages).
+     */
     @SerializedName("unanswered")
     private Boolean unanswered;
+
+    /**
+     * Push-notifications settings.
+     */
     @SerializedName("push_settings")
     private PushSettings pushSettings;
+
+    /**
+     * Whether current user can send message to the conversation.
+     */
     @SerializedName("can_write")
     private CanWrite canWrite;
+
+    /**
+     * Conversation settings.
+     */
     @SerializedName("chat_settings")
     private ChatSettings chatSettings;
 
+    /**
+     * Describes location.
+     */
     public static class Peer {
+        /**
+         * Destination ID.
+         */
         @SerializedName("id")
         private Integer id;
+
+        /**
+         * Conversation type.
+         */
         @SerializedName("type")
         private String type;
+
+        /**
+         * Local destination ID.
+         */
         @SerializedName("local_id")
         private Integer localId;
 
@@ -58,11 +111,25 @@ public class Conversation {
         }
     }
 
+    /**
+     * Describes push-notifications settings.
+     */
     public static class PushSettings {
+        /**
+         * Timestamp, to which notification are disables.
+         */
         @SerializedName("disabled_until")
         private Integer disabledUntil;
+
+        /**
+         * <b>true</b>, if notifications are disabled totally.
+         */
         @SerializedName("disabled_forever")
         private Boolean disableForever;
+
+        /**
+         * <b>true</b>, if notification alert sound is disabled.
+         */
         @SerializedName("no_sound")
         private Boolean noSound;
 
@@ -91,9 +158,19 @@ public class Conversation {
         }
     }
 
+    /**
+     * Information whether current user can send message to the conversation.
+     */
     public static class CanWrite {
+        /**
+         * <b>true</b>, if the user can send message to the conversation.
+         */
         @SerializedName("allowed")
         private Boolean allowed;
+
+        /**
+         * Reason number.
+         */
         @SerializedName("reason")
         private Integer reason;
 
@@ -114,27 +191,71 @@ public class Conversation {
         }
     }
 
+    /**
+     * Describes conversation settings.
+     */
     public static class ChatSettings {
+        /**
+         * Conversation members number.
+         */
         @SerializedName("members_count")
         private Integer membersCount;
+
+        /**
+         * Conversation title.
+         */
         @SerializedName("title")
         private String title;
+
+        /**
+         * Pinned message.
+         */
         @SerializedName("pinned_message")
         private PinnedMessage pinnedMessage;
+
+        /**
+         * Current user state.
+         */
         @SerializedName("state")
         private String state;
+
+        /**
+         * Conversation cover image.
+         */
         @SerializedName("photo")
         private Photo photo;
+
+        /**
+         *  IDs of the last users who wrote to the conversation.
+         */
         @SerializedName("active_ids")
         private List<Integer> activeIds;
+
+        /**
+         * Whether the conversation is a community channel.
+         */
         @SerializedName("is_group_channel")
         private Boolean groupChannel;
 
+        /**
+         * Describes conversation cover image.
+         */
         public static class Photo {
+            /**
+             * URL of conversation image with width size of 50 px.
+             */
             @SerializedName("photo_50")
             private String photo50;
+
+            /**
+             * URL of conversation image with width size of 100 px.
+             */
             @SerializedName("photo_100")
             private String photo100;
+
+            /**
+             * URL of conversation image with width size of 200 px.
+             */
             @SerializedName("photo_200")
             private String photo200;
 

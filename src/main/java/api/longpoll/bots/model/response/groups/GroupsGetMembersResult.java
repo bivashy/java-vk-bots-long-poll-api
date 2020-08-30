@@ -4,11 +4,23 @@ import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.User;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Response to <b>groups.getMembers</b> request.
+ */
 public class GroupsGetMembersResult {
+    /**
+     * Response object.
+     */
     @SerializedName("response")
     private VkList<Object> response;
 
+    /**
+     * Describes VkList item.
+     */
     public static class Item extends User {
+        /**
+         * Group role.
+         */
         @SerializedName("role")
         private String role;
 

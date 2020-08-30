@@ -69,7 +69,7 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(2000000001), message.getPeerId());
 		Assert.assertEquals("test", message.getText());
 		Assert.assertEquals(Integer.valueOf(4392), message.getConversationMessageId());
-		Assert.assertFalse(message.isImportant());
+		Assert.assertFalse(message.getImportant());
 		Assert.assertEquals(Integer.valueOf(0), message.getRandomId());
 
 		ClientInfo clientInfo = messageUpdate.getClientInfo();
@@ -167,7 +167,7 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Video video = (Video) attachment.getAttachable();
 		Assert.assertNotNull(video);
 		Assert.assertEquals("240114b02909e5852f", video.getAccessKey());
-		Assert.assertTrue(video.isCanAdd());
+		Assert.assertTrue(video.getCanAdd());
 		Assert.assertEquals(Integer.valueOf(0), video.getCommentsAmount());
 		Assert.assertEquals(Integer.valueOf(1593106800), video.getDate());
 		Assert.assertFalse(video.getDescription().isEmpty());
@@ -190,7 +190,7 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertEquals(Integer.valueOf(96), image.getHeight());
 		Assert.assertEquals(Integer.valueOf(130), image.getWidth());
 		Assert.assertFalse(image.getUrl().isEmpty());
-		Assert.assertTrue(image.isWithPadding());
+		Assert.assertTrue(image.getWithPadding());
 	}
 
 	@Test
@@ -362,11 +362,10 @@ public class MessageNewParseTest extends AbstractParseTest {
 		Assert.assertNotNull(wallPost);
 		Assert.assertEquals(Integer.valueOf(110926), wallPost.getId());
 		Assert.assertEquals(Integer.valueOf(-153395656), wallPost.getFromId());
-		Assert.assertEquals(Integer.valueOf(-153395656), wallPost.getToId());
 		Assert.assertEquals(Integer.valueOf(1594228961), wallPost.getDate());
 		Assert.assertEquals("post", wallPost.getPostType());
 		Assert.assertFalse(wallPost.getText().isEmpty());
-		Assert.assertFalse(wallPost.isMarkedAsAds());
+		Assert.assertFalse(wallPost.getMarkedAsAds());
 
 		List<Attachment> wallAttachments = wallPost.getAttachments();
 		Assert.assertNotNull(wallAttachments);
@@ -395,10 +394,6 @@ public class MessageNewParseTest extends AbstractParseTest {
 		WallPost.Reposts reposts = wallPost.getReposts();
 		Assert.assertNotNull(reposts);
 		Assert.assertEquals(Integer.valueOf(0), reposts.getCount());
-
-		WallPost.From from = wallPost.getFrom();
-		Assert.assertNotNull(from);
-		Assert.assertEquals(Integer.valueOf(153395656), from.getId());
 	}
 
 	@Test
@@ -434,7 +429,7 @@ public class MessageNewParseTest extends AbstractParseTest {
 		WallComment.Likes likes = wallReply.getLikes();
 		Assert.assertNotNull(likes);
 		Assert.assertEquals(Integer.valueOf(1), likes.getCount());
-		Assert.assertFalse(likes.isUserLikes());
-		Assert.assertTrue(likes.isCanLike());
+		Assert.assertFalse(likes.getUserLikes());
+		Assert.assertTrue(likes.getCanLike());
 	}
 }
