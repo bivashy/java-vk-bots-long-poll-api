@@ -1,0 +1,60 @@
+{
+  "ts": "2594",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1593164510,
+          "from_id": 111,
+          "id": 0,
+          "out": 0,
+          "peer_id": 222,
+          "text": "",
+          "conversation_message_id": 4398,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "audio",
+              "audio": {
+                "artist": "Linkin Park",
+                "id": 333,
+                "owner_id": 444,
+                "title": "In the End",
+                "duration": 219,
+                "track_code": "8ac27ee1cgHOcmlmj29hKOoadzN5ij-Y_-E",
+                "url": "",
+                "date": 1490105766,
+                "content_restricted": 2,
+                "main_artists": [
+                  {
+                    "name": "Linkin Park",
+                    "domain": "67550258036106963",
+                    "id": "67550258036106963"
+                  }
+                ]
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "lang_id": 0
+        }
+      },
+      "group_id": 555,
+      "event_id": "aaa"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "ts": "2606",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1594235111,
+          "from_id": 111,
+          "id": 0,
+          "out": 0,
+          "peer_id": 222,
+          "text": "",
+          "conversation_message_id": 4410,
+          "fwd_messages": [],
+          "ref": "single",
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "wall_reply",
+              "wall_reply": {
+                "id": 333,
+                "from_id": 444,
+                "post_id": 555,
+                "owner_id": -666,
+                "parents_stack": [
+                  777
+                ],
+                "date": 1594231450,
+                "text": "abc",
+                "likes": {
+                  "count": 1,
+                  "user_likes": 0,
+                  "can_like": 1
+                },
+                "reply_to_user": 888,
+                "reply_to_comment": 999
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": false,
+          "lang_id": 0
+        }
+      },
+      "group_id": 100,
+      "event_id": "aaa"
+    }
+  ]
+}

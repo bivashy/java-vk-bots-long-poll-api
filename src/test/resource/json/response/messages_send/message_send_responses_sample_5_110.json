@@ -1,0 +1,12 @@
+{
+  "response": [
+    {
+      "peer_id": 111,
+      "message_id": 287
+    },
+    {
+      "peer_id": 222,
+      "message_id": 288
+    }
+  ]
+}

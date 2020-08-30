@@ -1,0 +1,107 @@
+{
+  "ts": "2591",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1593095193,
+          "from_id": 111,
+          "id": 0,
+          "out": 0,
+          "peer_id": 222,
+          "text": "",
+          "conversation_message_id": 4395,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "photo",
+              "photo": {
+                "album_id": -3,
+                "date": 1593095192,
+                "id": 333,
+                "owner_id": 444,
+                "has_tags": false,
+                "access_key": "abc",
+                "sizes": [
+                  {
+                    "height": 130,
+                    "url": "https://sun9-49.userapi.com/m0bXxRbjkI0X2SAClsqAZsRYVpiSgc6MEBAVtA/2VVGupYl8uM.jpg",
+                    "type": "m",
+                    "width": 130
+                  },
+                  {
+                    "height": 130,
+                    "url": "https://sun9-49.userapi.com/m0bXxRbjkI0X2SAClsqAZsRYVpiSgc6MEBAVtA/2VVGupYl8uM.jpg",
+                    "type": "o",
+                    "width": 130
+                  },
+                  {
+                    "height": 200,
+                    "url": "https://sun9-43.userapi.com/Ihdpx0CItEuSYv30423O1YJgQ4MPtAnhJ9XCNw/_1mJYLs57rs.jpg",
+                    "type": "p",
+                    "width": 200
+                  },
+                  {
+                    "height": 319,
+                    "url": "https://sun9-16.userapi.com/HPmp55Xgd_gqDRADUB7IsEb0gTd5OeWbo-acjw/JiRzLaSpurI.jpg",
+                    "type": "q",
+                    "width": 320
+                  },
+                  {
+                    "height": 509,
+                    "url": "https://sun9-29.userapi.com/dRWB8uxmg5W_9Pd37ZYzTihmgXuNqgw_JjYfuA/mc_-4OyocpQ.jpg",
+                    "type": "r",
+                    "width": 510
+                  },
+                  {
+                    "height": 75,
+                    "url": "https://sun9-7.userapi.com/9Wgf7Kz1VACxNf8zjrK_eRJg8pGJbSl1eWFBww/qABikYsPlZg.jpg",
+                    "type": "s",
+                    "width": 75
+                  },
+                  {
+                    "height": 603,
+                    "url": "https://sun9-27.userapi.com/uG0dCKSfxdeYtcEe-R2bOKaMBpQQChJ-b-sTEA/C7cD6Zv-slI.jpg",
+                    "type": "x",
+                    "width": 604
+                  },
+                  {
+                    "height": 806,
+                    "url": "https://sun9-59.userapi.com/b0Or6H4bWj113JhIx9hq4Svhxt1sWo-2tE0sMQ/dXWpm0ArUZ0.jpg",
+                    "type": "y",
+                    "width": 807
+                  },
+                  {
+                    "height": 1078,
+                    "url": "https://sun9-13.userapi.com/Bue-eUHzRJ-awcwbYWQYyC_cfyYn2aV1pjwjmw/eBjFGonNLMg.jpg",
+                    "type": "z",
+                    "width": 1080
+                  }
+                ],
+                "text": ""
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "lang_id": 0
+        }
+      },
+      "group_id": 555,
+      "event_id": "aaa"
+    }
+  ]
+}

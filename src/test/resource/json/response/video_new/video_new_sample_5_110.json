@@ -1,0 +1,53 @@
+{
+  "ts": "2617",
+  "updates": [
+    {
+      "type": "video_new",
+      "object": {
+        "can_edit": 1,
+        "can_add": 1,
+        "can_attach_link": 1,
+        "comments": 0,
+        "date": 1594821406,
+        "description": "We've re-mast.",
+        "duration": 314,
+        "image": [
+          {
+            "height": 96,
+            "url": "https://sun9-49.userapi.com/voqT9K4xzblZ_r1WIshNyXz0KRSdIIJTcOkL0g/SrGx51lLpU0.jpg",
+            "width": 130,
+            "with_padding": 1
+          },
+          {
+            "height": 120,
+            "url": "https://sun9-46.userapi.com/3PVKOgGViqbEBQsUPaWu7wdBBcHliGZdTjgdBg/eX00PsuxhzA.jpg",
+            "width": 160,
+            "with_padding": 1
+          },
+          {
+            "height": 240,
+            "url": "https://sun9-20.userapi.com/VDYzOTpHre2ei7PWXIc-xlJCiOeHj_6nieA-tQ/F_-6fyYJOUg.jpg",
+            "width": 320,
+            "with_padding": 1
+          },
+          {
+            "height": 450,
+            "url": "https://sun9-12.userapi.com/avVLbdHAhRxzVCn4i3-4dm0-UtJ2LIhD2jc4Ew/CBc1tAlG6cw.jpg",
+            "width": 800,
+            "with_padding": 1
+          }
+        ],
+        "id": 111,
+        "owner_id": -222,
+        "title": "abc",
+        "is_favorite": false,
+        "type": "video",
+        "views": 1,
+        "local_views": 0,
+        "platform": "YouTube"
+      },
+      "group_id": 333,
+      "event_id": "aaa"
+    }
+  ]
+}

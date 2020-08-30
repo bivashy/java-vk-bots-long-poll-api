@@ -1,0 +1,81 @@
+{
+  "ts": "2612",
+  "updates": [
+    {
+      "type": "photo_new",
+      "object": {
+        "album_id": 111,
+        "date": 1594284077,
+        "id": 222,
+        "owner_id": -333,
+        "has_tags": false,
+        "sizes": [
+          {
+            "height": 42,
+            "url": "https://sun1-29.userapi.com/CrPEpJm2ng7Tooh6RqNQH5sTWP6oBCWAcWFj6g/0-2wnue9uu0.jpg",
+            "type": "s",
+            "width": 75
+          },
+          {
+            "height": 73,
+            "url": "https://sun1-97.userapi.com/Jw7v6usj_VBAzTXNhxca7z6H1VnXFp-eVWMuNQ/JIAT_yldA1A.jpg",
+            "type": "m",
+            "width": 130
+          },
+          {
+            "height": 340,
+            "url": "https://sun1-24.userapi.com/vxwhk4kZin6HWSW-BEfc8828J7TwFhZs0SbOPA/XNKQZeXTGRA.jpg",
+            "type": "x",
+            "width": 604
+          },
+          {
+            "height": 454,
+            "url": "https://sun1-88.userapi.com/LhvEyWx1dhrkYenFhefDlWXuiONogRW7joIXfw/BcDbPe9Wrzc.jpg",
+            "type": "y",
+            "width": 807
+          },
+          {
+            "height": 720,
+            "url": "https://sun1-16.userapi.com/OGeDi2B5Z4BctyiqdAvVYY6rd4DohL8Tgzf2Pg/d-LlO9y601A.jpg",
+            "type": "z",
+            "width": 1280
+          },
+          {
+            "height": 1080,
+            "url": "https://sun1-21.userapi.com/53qEJ5DrkGtW7XFKRvSayvTwI2Nl1cCzu2MwJQ/RvoEorop2Co.jpg",
+            "type": "w",
+            "width": 1920
+          },
+          {
+            "height": 87,
+            "url": "https://sun1-89.userapi.com/860zJfvdPmaoUVdFzcYW6eKFFu61vsOd3rA0LQ/2PyDAfDAoSI.jpg",
+            "type": "o",
+            "width": 130
+          },
+          {
+            "height": 133,
+            "url": "https://sun1-22.userapi.com/wRIdqmveXlnZ36CATRcG0hHj0SZef_F1XYXpzQ/xEXa4yDbZMU.jpg",
+            "type": "p",
+            "width": 200
+          },
+          {
+            "height": 213,
+            "url": "https://sun1-47.userapi.com/nGYtHxqQ9rAGoBHxonxA5tRgqKpiwngCX-ptnA/7iSklBytPyA.jpg",
+            "type": "q",
+            "width": 320
+          },
+          {
+            "height": 340,
+            "url": "https://sun1-22.userapi.com/FELkVd_DpiGGNlnUA7bQjPWmeQxAA5i5wMvOHA/OxjQ78c2NvE.jpg",
+            "type": "r",
+            "width": 510
+          }
+        ],
+        "text": "",
+        "user_id": 555
+      },
+      "group_id": 444,
+      "event_id": "aaa"
+    }
+  ]
+}

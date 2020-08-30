@@ -1,0 +1,50 @@
+{
+  "ts": "2597",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1593168730,
+          "from_id": 111,
+          "id": 0,
+          "out": 0,
+          "peer_id": 222,
+          "text": "",
+          "conversation_message_id": 4401,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "graffiti",
+              "graffiti": {
+                "id": 333,
+                "owner_id": 444,
+                "url": "https://vk.com/doc381980625_538172633?hash=491cc01048edeb58f8&dl=GA:1593168730:3aaaa5d7bddbfa19d9&api=1&no_preview=1",
+                "width": 720,
+                "height": 714,
+                "access_key": "aaa"
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "lang_id": 0
+        }
+      },
+      "group_id": 555,
+      "event_id": "aaa"
+    }
+  ]
+}

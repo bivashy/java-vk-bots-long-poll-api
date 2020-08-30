@@ -1,0 +1,101 @@
+{
+  "ts": "2603",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1594230151,
+          "from_id": 111,
+          "id": 0,
+          "out": 0,
+          "peer_id": 222,
+          "text": "",
+          "conversation_message_id": 4407,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "sticker",
+              "sticker": {
+                "product_id": 279,
+                "sticker_id": 9012,
+                "images": [
+                  {
+                    "url": "https://vk.com/sticker/1-9012-64",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://vk.com/sticker/1-9012-128",
+                    "width": 128,
+                    "height": 128
+                  },
+                  {
+                    "url": "https://vk.com/sticker/1-9012-256",
+                    "width": 256,
+                    "height": 256
+                  },
+                  {
+                    "url": "https://vk.com/sticker/1-9012-352",
+                    "width": 352,
+                    "height": 352
+                  },
+                  {
+                    "url": "https://vk.com/sticker/1-9012-512",
+                    "width": 512,
+                    "height": 512
+                  }
+                ],
+                "images_with_background": [
+                  {
+                    "url": "https://vk.com/sticker/1-9012-64b",
+                    "width": 64,
+                    "height": 64
+                  },
+                  {
+                    "url": "https://vk.com/sticker/1-9012-128b",
+                    "width": 128,
+                    "height": 128
+                  },
+                  {
+                    "url": "https://vk.com/sticker/1-9012-256b",
+                    "width": 256,
+                    "height": 256
+                  },
+                  {
+                    "url": "https://vk.com/sticker/1-9012-352b",
+                    "width": 352,
+                    "height": 352
+                  },
+                  {
+                    "url": "https://vk.com/sticker/1-9012-512b",
+                    "width": 512,
+                    "height": 512
+                  }
+                ]
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": false,
+          "lang_id": 0
+        }
+      },
+      "group_id": 444,
+      "event_id": "aaa"
+    }
+  ]
+}

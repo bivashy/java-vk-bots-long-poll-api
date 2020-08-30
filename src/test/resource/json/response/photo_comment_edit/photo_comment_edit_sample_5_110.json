@@ -1,0 +1,22 @@
+{
+  "ts": "2614",
+  "updates": [
+    {
+      "type": "photo_comment_edit",
+      "object": {
+        "id": 111,
+        "from_id": 222,
+        "parents_stack": [],
+        "date": 1594285508,
+        "text": "tt",
+        "thread": {
+          "count": 0
+        },
+        "photo_owner_id": -333,
+        "photo_id": 444
+      },
+      "group_id": 555,
+      "event_id": "aaa"
+    }
+  ]
+}

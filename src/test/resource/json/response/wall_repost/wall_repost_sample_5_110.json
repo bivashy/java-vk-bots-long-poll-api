@@ -1,0 +1,37 @@
+{
+  "ts": "2628",
+  "updates": [
+    {
+      "type": "wall_repost",
+      "object": {
+        "id": 34,
+        "from_id": 111,
+        "owner_id": 222,
+        "date": 1594890511,
+        "post_type": "post",
+        "text": "",
+        "copy_history": [
+          {
+            "id": 3,
+            "owner_id": -333,
+            "from_id": -444,
+            "date": 1594890485,
+            "post_type": "post",
+            "text": "test",
+            "post_source": {
+              "type": "vk"
+            }
+          }
+        ],
+        "can_archive": true,
+        "is_archived": false,
+        "comments": {
+          "count": 0
+        },
+        "is_favorite": false
+      },
+      "group_id": 555,
+      "event_id": "aaa"
+    }
+  ]
+}

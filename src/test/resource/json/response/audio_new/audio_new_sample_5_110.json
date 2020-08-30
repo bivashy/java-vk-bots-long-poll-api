@@ -1,0 +1,24 @@
+{
+  "ts": "2618",
+  "updates": [
+    {
+      "type": "audio_new",
+      "object": {
+        "artist": "Rick Astley",
+        "id": 456239017,
+        "owner_id": -111,
+        "title": "Never Gonna Give You Up",
+        "duration": 211,
+        "is_explicit": false,
+        "is_focus_track": false,
+        "track_code": "aaa",
+        "url": "",
+        "date": 1594822421,
+        "short_videos_allowed": false,
+        "stories_allowed": false
+      },
+      "group_id": 123,
+      "event_id": "abc"
+    }
+  ]
+}

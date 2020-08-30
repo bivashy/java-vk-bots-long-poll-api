@@ -1,0 +1,26 @@
+{
+  "ts": "2611",
+  "updates": [
+    {
+      "type": "message_edit",
+      "object": {
+        "date": 1594282377,
+        "from_id": -111,
+        "id": 276,
+        "out": 1,
+        "peer_id": 222,
+        "text": "tests",
+        "conversation_message_id": 261,
+        "fwd_messages": [],
+        "important": false,
+        "random_id": 0,
+        "attachments": [],
+        "admin_author_id": 333,
+        "is_hidden": false,
+        "update_time": 1594282377
+      },
+      "group_id": 444,
+      "event_id": "aaa"
+    }
+  ]
+}

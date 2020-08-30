@@ -1,0 +1,15 @@
+{
+  "ts": "2638",
+  "updates": [
+    {
+      "type": "board_post_delete",
+      "object": {
+        "topic_owner_id": -111,
+        "id": 3,
+        "topic_id": 333
+      },
+      "group_id": 123,
+      "event_id": "aaa"
+    }
+  ]
+}

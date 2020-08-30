@@ -1,0 +1,139 @@
+{
+  "ts": "2604",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1594231784,
+          "from_id": 111,
+          "id": 0,
+          "out": 0,
+          "peer_id": 222,
+          "text": "",
+          "conversation_message_id": 4408,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "wall",
+              "wall": {
+                "id": 333,
+                "from_id": -444,
+                "to_id": -555,
+                "date": 1594228961,
+                "post_type": "post",
+                "text": "Фото со съёмок первого сезона.",
+                "marked_as_ads": 0,
+                "attachments": [
+                  {
+                    "type": "photo",
+                    "photo": {
+                      "album_id": -7,
+                      "date": 1594228961,
+                      "id": 555,
+                      "owner_id": -777,
+                      "has_tags": false,
+                      "access_key": "aaa",
+                      "post_id": 110926,
+                      "sizes": [
+                        {
+                          "height": 130,
+                          "url": "https://sun9-15.userapi.com/c854220/v854220946/245f78/x-qp0GBB1xY.jpg",
+                          "type": "m",
+                          "width": 130
+                        },
+                        {
+                          "height": 130,
+                          "url": "https://sun9-55.userapi.com/c854220/v854220946/245f7b/1HsBtvk3fHA.jpg",
+                          "type": "o",
+                          "width": 130
+                        },
+                        {
+                          "height": 200,
+                          "url": "https://sun9-6.userapi.com/c854220/v854220946/245f7c/gj1WzsATR2c.jpg",
+                          "type": "p",
+                          "width": 200
+                        },
+                        {
+                          "height": 320,
+                          "url": "https://sun9-55.userapi.com/c854220/v854220946/245f7d/0AzF9KS4kQk.jpg",
+                          "type": "q",
+                          "width": 320
+                        },
+                        {
+                          "height": 509,
+                          "url": "https://sun9-28.userapi.com/c854220/v854220946/245f7e/bXSDV31vPgY.jpg",
+                          "type": "r",
+                          "width": 510
+                        },
+                        {
+                          "height": 75,
+                          "url": "https://sun9-57.userapi.com/c854220/v854220946/245f77/RLETULCstVQ.jpg",
+                          "type": "s",
+                          "width": 75
+                        },
+                        {
+                          "height": 603,
+                          "url": "https://sun9-12.userapi.com/c854220/v854220946/245f79/pfzYgtFbuhA.jpg",
+                          "type": "x",
+                          "width": 604
+                        },
+                        {
+                          "height": 711,
+                          "url": "https://sun9-32.userapi.com/c854220/v854220946/245f7a/Gmno_LDk5Po.jpg",
+                          "type": "y",
+                          "width": 712
+                        }
+                      ],
+                      "text": "",
+                      "user_id": 100
+                    }
+                  }
+                ],
+                "comments": {
+                  "count": 7
+                },
+                "likes": {
+                  "count": 98
+                },
+                "reposts": {
+                  "count": 0
+                },
+                "views": {
+                  "count": 2597
+                },
+                "from": {
+                  "id": 888,
+                  "name": "dddd",
+                  "screen_name": "tasd",
+                  "is_closed": 0,
+                  "type": "group",
+                  "photo_50": "https://sun9-6.userapi.com/c858416/v858416260/f14c7/xytSoV3R7eI.jpg?ava=1",
+                  "photo_100": "https://sun9-3.userapi.com/c858416/v858416260/f14c6/4-M7vDqD6bc.jpg?ava=1"
+                }
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": false,
+          "lang_id": 0
+        }
+      },
+      "group_id": 666,
+      "event_id": "aaa"
+    }
+  ]
+}

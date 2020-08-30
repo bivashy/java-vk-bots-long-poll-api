@@ -1,0 +1,18 @@
+{
+  "ts": "2635",
+  "updates": [
+    {
+      "type": "board_post_new",
+      "object": {
+        "id": 2,
+        "from_id": 111,
+        "date": 1595841380,
+        "text": "test",
+        "topic_owner_id": -222,
+        "topic_id": 333
+      },
+      "group_id": 444,
+      "event_id": "aaa"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "error": {
+    "error_code": 5,
+    "error_msg": "User authorization failed: no access_token passed.",
+    "request_params": [
+      {
+        "key": "group_id",
+        "value": "111"
+      },
+      {
+        "key": "v",
+        "value": "5.107"
+      },
+      {
+        "key": "method",
+        "value": "groups.getLongPollServer"
+      },
+      {
+        "key": "oauth",
+        "value": "1"
+      }
+    ]
+  }
+}

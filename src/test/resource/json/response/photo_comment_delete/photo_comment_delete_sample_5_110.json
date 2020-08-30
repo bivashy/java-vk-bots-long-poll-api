@@ -1,0 +1,17 @@
+{
+  "ts": "2615",
+  "updates": [
+    {
+      "type": "photo_comment_delete",
+      "object": {
+        "owner_id": -111,
+        "id": 333,
+        "deleter_id": 222,
+        "photo_id": 444,
+        "user_id": 555
+      },
+      "group_id": 666,
+      "event_id": "aaa"
+    }
+  ]
+}

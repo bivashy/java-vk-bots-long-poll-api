@@ -1,0 +1,25 @@
+{
+  "ts": "2610",
+  "updates": [
+    {
+      "type": "message_reply",
+      "object": {
+        "date": 1594282112,
+        "from_id": 111,
+        "id": 222,
+        "out": 1,
+        "peer_id": 333,
+        "text": "test",
+        "conversation_message_id": 261,
+        "fwd_messages": [],
+        "important": false,
+        "random_id": 0,
+        "attachments": [],
+        "admin_author_id": 444,
+        "is_hidden": false
+      },
+      "group_id": 555,
+      "event_id": "aaa"
+    }
+  ]
+}

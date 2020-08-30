@@ -1,0 +1,22 @@
+{
+  "ts": "2619",
+  "updates": [
+    {
+      "type": "video_comment_new",
+      "object": {
+        "id": 1,
+        "from_id": 111,
+        "parents_stack": [],
+        "date": 1594823317,
+        "text": "check",
+        "thread": {
+          "count": 0
+        },
+        "video_owner_id": -222,
+        "video_id": 333
+      },
+      "group_id": 444,
+      "event_id": "aaa"
+    }
+  ]
+}

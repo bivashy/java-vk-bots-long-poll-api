@@ -1,0 +1,16 @@
+{
+  "ts": "2633",
+  "updates": [
+    {
+      "type": "wall_reply_delete",
+      "object": {
+        "owner_id": -111,
+        "id": 4,
+        "deleter_id": 222,
+        "post_id": 3
+      },
+      "group_id": 333,
+      "event_id": "aaa"
+    }
+  ]
+}

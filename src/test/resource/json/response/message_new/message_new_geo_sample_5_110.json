@@ -1,0 +1,46 @@
+{
+  "ts": "2602",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1594229206,
+          "from_id": 111,
+          "id": 0,
+          "out": 0,
+          "peer_id": 222,
+          "text": "",
+          "conversation_message_id": 4406,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [],
+          "geo": {
+            "type": "point",
+            "coordinates": {
+              "latitude": 23.431881,
+              "longitude": 7.031246
+            }
+          },
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": false,
+          "lang_id": 0
+        }
+      },
+      "group_id": 333,
+      "event_id": "aaa"
+    }
+  ]
+}

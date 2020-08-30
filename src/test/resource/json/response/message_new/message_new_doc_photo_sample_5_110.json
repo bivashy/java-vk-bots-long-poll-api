@@ -1,0 +1,107 @@
+{
+  "ts": "2595",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1593165676,
+          "from_id": 111,
+          "id": 0,
+          "out": 0,
+          "peer_id": 222,
+          "text": "",
+          "conversation_message_id": 4399,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "doc",
+              "doc": {
+                "id": 333,
+                "owner_id": 444,
+                "title": "x_fc4.png",
+                "size": 756010,
+                "ext": "png",
+                "date": 1593165675,
+                "type": 4,
+                "url": "https://vk.com/doc381980625_557093429?hash=46bff12eac084545e2&dl=GA:1593165676:56fbdd97c9bf7546f2&api=1&no_preview=1",
+                "preview": {
+                  "photo": {
+                    "sizes": [
+                      {
+                        "src": "https://sun9-52.userapi.com/c856320/u381980625/d13/-3/m_70b8bbc437.jpg",
+                        "width": 130,
+                        "height": 100,
+                        "type": "m"
+                      },
+                      {
+                        "src": "https://sun9-18.userapi.com/c856320/u381980625/d13/-3/s_70b8bbc437.jpg",
+                        "width": 100,
+                        "height": 75,
+                        "type": "s"
+                      },
+                      {
+                        "src": "https://sun9-60.userapi.com/c856320/u381980625/d13/-3/x_70b8bbc437.jpg",
+                        "width": 604,
+                        "height": 603,
+                        "type": "x"
+                      },
+                      {
+                        "src": "https://sun9-8.userapi.com/c856320/u381980625/d13/-3/y_70b8bbc437.jpg",
+                        "width": 807,
+                        "height": 806,
+                        "type": "y"
+                      },
+                      {
+                        "src": "https://sun9-33.userapi.com/c856320/u381980625/d13/-3/z_70b8bbc437.jpg",
+                        "width": 1280,
+                        "height": 1278,
+                        "type": "z"
+                      },
+                      {
+                        "src": "https://sun9-59.userapi.com/c856320/u381980625/d13/-3/o_70b8bbc437.jpg",
+                        "width": 1080,
+                        "height": 1078,
+                        "type": "o"
+                      },
+                      {
+                        "src": "https://sun9-33.userapi.com/impc/c856320/u381980625/d13/-3/z_70b8bbc437.jpg?size=288x288&quality=90&sign=7c00b170a53cb5b1c23c92804988eea4&c_uniq_tag=J8nJ1tDhtMjrmM7qtRstKresmI1x_uMRNkXo4ytX9kc",
+                        "width": 288,
+                        "height": 288,
+                        "type": "i"
+                      },
+                      {
+                        "src": "https://sun9-33.userapi.com/impc/c856320/u381980625/d13/-3/z_70b8bbc437.jpg?size=192x192&quality=90&sign=10d15935d190b578418ea32c3cc00471&c_uniq_tag=fDPe9cRIomF4Z6vEjU8baVTEKCdu1dZP8ND8iK9HAIM",
+                        "width": 192,
+                        "height": 192,
+                        "type": "d"
+                      }
+                    ]
+                  }
+                },
+                "access_key": "aaa"
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "lang_id": 0
+        }
+      },
+      "group_id": 444,
+      "event_id": "aaa"
+    }
+  ]
+}

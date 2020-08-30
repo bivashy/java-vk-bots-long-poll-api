@@ -1,0 +1,26 @@
+{
+  "ts": "2626",
+  "updates": [
+    {
+      "type": "wall_post_new",
+      "object": {
+        "id": 1,
+        "from_id": 111,
+        "owner_id": -222,
+        "date": 1594888935,
+        "marked_as_ads": 0,
+        "post_type": "post",
+        "text": "test",
+        "can_edit": 1,
+        "created_by": 333,
+        "can_delete": 1,
+        "comments": {
+          "count": 0
+        },
+        "is_favorite": false
+      },
+      "group_id": 444,
+      "event_id": "aaa"
+    }
+  ]
+}

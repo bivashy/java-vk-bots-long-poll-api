@@ -1,0 +1,84 @@
+{
+  "ts": "2593",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1593106821,
+          "from_id": 111,
+          "id": 0,
+          "out": 0,
+          "peer_id": 222,
+          "text": "",
+          "conversation_message_id": 4397,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "video",
+              "video": {
+                "access_key": "aaa",
+                "can_add": 1,
+                "comments": 0,
+                "date": 1593106800,
+                "description": "♫ SHEETS ► https://pianox.ru/product/74/\n♫ MIDI ► https://www.patreon.com/Piano_X\n🔥 Learn piano easily ► https://tinyurl.com/pianoX-flowkey\n● Subscribe to my channel and click the 🔔bell \n==================================================\n►VK https://vk.com/pianox\n►FACEBOOK https://www.facebook.com/PianoX-171439100330707/\n►INSTAGRAM https://www.instagram.com/pianoxtutorial\n►PATREON https://www.patreon.com/Piano_X\n=================================================\n● Сollaboration / advertising - pianoxtutorial",
+                "duration": 360,
+                "image": [
+                  {
+                    "height": 96,
+                    "url": "https://sun9-72.userapi.com/j5aM6YP0v5kpzZreeymNwwVLudFv69Ef0SKTPQ/hCh1Bmq1H40.jpg",
+                    "width": 130,
+                    "with_padding": 1
+                  },
+                  {
+                    "height": 120,
+                    "url": "https://sun9-16.userapi.com/BtdrDQ0sbVxbtCtsVXNOSJDhbEngXXUXzx8UBw/H8eiGdjCzVU.jpg",
+                    "width": 160,
+                    "with_padding": 1
+                  },
+                  {
+                    "height": 240,
+                    "url": "https://sun9-52.userapi.com/tdWaAKWFUHGa6ZAnF4Nz9kpdIJ_Qqbh1IjHEZw/jLkWz3sqIzQ.jpg",
+                    "width": 320,
+                    "with_padding": 1
+                  },
+                  {
+                    "height": 450,
+                    "url": "https://sun9-53.userapi.com/BVC_QL7TDTJgy_6liIdNnw_M5sinGPbM6ueq_w/C0LaqSF7SQU.jpg",
+                    "width": 800,
+                    "with_padding": 1
+                  }
+                ],
+                "id": 444,
+                "owner_id": 555,
+                "title": "20 MOST POPULAR TUNES EVER",
+                "track_code": "video_256ba954P2kSGl_8vz07hi_ca5fUH3K4T6fFDWDFSHsVqRznT-c9eiEibsWHDQ0",
+                "type": "video",
+                "views": 1,
+                "local_views": 0,
+                "platform": "YouTube"
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "lang_id": 0
+        }
+      },
+      "group_id": 666,
+      "event_id": "aaa"
+    }
+  ]
+}
