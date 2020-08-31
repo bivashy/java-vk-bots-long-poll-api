@@ -32,7 +32,7 @@ public class VkApi {
      */
     private Properties properties = new Properties();
 
-    private VkApi() {
+    private void loadProperties() {
         try (InputStream inputStream = new FileInputStream(PROPERTIES_FILE)) {
             properties.load(inputStream);
         } catch (IOException e) {
@@ -41,6 +41,9 @@ public class VkApi {
     }
 
     public static VkApi getInstance() {
+        if (instance.properties.isEmpty()) {
+            instance.loadProperties();
+        }
         return instance;
     }
 
