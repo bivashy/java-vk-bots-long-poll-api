@@ -5,7 +5,7 @@
     <groupId>com.github.yvasyliev</groupId>
     <artifactId>java-vk-bots-longpoll-api</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.19-beta-SNAPSHOT</version>
+    <version>1.0.19-beta</version>
 
     <name>Java VK Bots Long Poll API</name>
     <description>A Java library to create VK bots using Bots Long Poll API</description>
@@ -43,6 +43,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <fork>true</fork>
                     <executable>C:\Program Files\Java\jdk1.8.0_261\bin\javac</executable>
                 </configuration>
             </plugin>
