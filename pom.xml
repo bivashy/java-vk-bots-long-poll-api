@@ -170,8 +170,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/yvasyliev/java-vk-bots-long-poll-api.git</connection>
-        <developerConnection>scm:git:ssh://github.com:yvasyliev/java-vk-bots-long-poll-api.git</developerConnection>
+        <connection>git@github.com:yvasyliev/java-vk-bots-long-poll-api.git</connection>
+        <developerConnection>git@github.com:yvasyliev/java-vk-bots-long-poll-api.git</developerConnection>
         <url>http://github.com/yvasyliev/java-vk-bots-long-poll-api</url>
   </scm>
 
