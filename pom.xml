@@ -5,7 +5,7 @@
     <groupId>com.github.yvasyliev</groupId>
     <artifactId>java-vk-bots-longpoll-api</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.27-beta</version>
+    <version>1.0.27-beta-SNAPSHOT</version>
 
     <name>Java VK Bots Long Poll API</name>
     <description>A Java library to create VK bots using Bots Long Poll API</description>
@@ -170,8 +170,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:ssh://github.com/yvasyliev/java-vk-bots-long-poll-api.git</connection>
-        <developerConnection>scm:git:ssh://github.com/yvasyliev/java-vk-bots-long-poll-api.git</developerConnection>
+        <connection>scm:git:ssh://git@github.com/yvasyliev/java-vk-bots-long-poll-api.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/yvasyliev/java-vk-bots-long-poll-api.git</developerConnection>
         <url>http://github.com/yvasyliev/java-vk-bots-long-poll-api</url>
     <tag>java-vk-bots-longpoll-api-1.0.27-beta</tag>
   </scm>
