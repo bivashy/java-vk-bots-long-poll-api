@@ -20,7 +20,7 @@ public class VkApi {
     /**
      * Path to .properties file which contains VK API method links.
      */
-    private static final String PROPERTIES_FILE = "vk/API.properties";
+    private static final String PROPERTIES_FILE = "/vk/API.properties";
 
     /**
      * VkApi instance.
@@ -36,7 +36,7 @@ public class VkApi {
     }
 
     private void loadProperties() {
-        try (InputStream inputStream = new FileInputStream(PROPERTIES_FILE)) {
+        try (InputStream inputStream = getClass().getResourceAsStream(PROPERTIES_FILE)) {
             properties.load(inputStream);
         } catch (IOException e) {
             log.error("Failed to read {}.", PROPERTIES_FILE, e);
