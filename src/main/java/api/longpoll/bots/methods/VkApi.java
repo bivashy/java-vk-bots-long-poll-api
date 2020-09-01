@@ -20,7 +20,7 @@ public class VkApi {
     /**
      * Path to .properties file which contains VK API method links.
      */
-    private static final String PROPERTIES_FILE = "api/vk/API.properties";
+    private static final String PROPERTIES_FILE = "vk/API.properties";
 
     /**
      * VkApi instance.
@@ -31,6 +31,9 @@ public class VkApi {
      * Properties object.
      */
     private Properties properties = new Properties();
+
+    private VkApi() {
+    }
 
     private void loadProperties() {
         try (InputStream inputStream = new FileInputStream(PROPERTIES_FILE)) {
