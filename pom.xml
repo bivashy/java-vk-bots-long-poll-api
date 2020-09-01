@@ -159,9 +159,9 @@
     </dependencies>
 
     <scm>
-        <connection>scm:git:ssh://github.com/yvasyliev/java-vk-bots-long-poll-api.git</connection>
-        <developerConnection>scm:git:ssh://github.com/yvasyliev/java-vk-bots-long-poll-api.git</developerConnection>
-        <url>http://github.com/yvasyliev/java-vk-bots-long-poll-api</url>
+        <connection>scm:git:ssh://github.com/yvasyliev/java-vk-botslong-poll-api.git</connection>
+        <developerConnection>scm:git:ssh://github.com/yvasyliev/java-vk-botslong-poll-api.git</developerConnection>
+        <url>http://github.com/yvasyliev/java-vk-bots-longpoll-api</url>
     </scm>
 
     <developers>
