@@ -18,6 +18,9 @@ This library uses the next third-party dependecies:
 * Jsoup
 
 ## Quickstart
+### Prerequesites
+It is needed to create VK community to retreive `group_id` and `access_token`. The details can be found [here](https://vk.com/dev/access_token).
+
 1. Add the library to your project using Maven:
 ```xml
 <dependency>
