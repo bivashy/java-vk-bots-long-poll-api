@@ -1,4 +1,4 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.yvasyliev/java-vk-bots-longpoll-api/badge.svg)](https://search.maven.org/artifact/com.github.yvasyliev/java-vk-bots-longpoll-api)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.yvasyliev/java-vk-bots-longpoll-api/badge.svg?&kill_cache=1)](https://search.maven.org/artifact/com.github.yvasyliev/java-vk-bots-longpoll-api)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/yvasyliev/java-vk-bots-long-poll-api/blob/master/LICENSE)
 
 # Java VK Bots Long Poll API
@@ -17,10 +17,12 @@ This library uses the next third-party dependecies:
 * SLF4J
 * Jsoup
 
-## Quickstart
-### Prerequesites
-It is needed to create VK community to retreive `group_id` and `access_token`. The details can be found [here](https://vk.com/dev/access_token).
+## Requirements
+1. Java 8+
+2. Maven (or other build tool)
+3. VK community to retrieve `group_id` and `access_token`. The details can be found [here](https://vk.com/dev/access_token).
 
+## Quickstart
 1. Add the library to your project using Maven:
 ```xml
 <dependency>
