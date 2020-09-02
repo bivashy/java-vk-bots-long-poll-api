@@ -38,11 +38,11 @@ public class MyBot extends LongPollBot {
     public void onMessageNew(MessageEvent messageEvent) {
         Message message = messageEvent.getMessage();
         if (message.hasText()) {
-            String format = String.format("Hello! Received your message: %s", message.getText());
+            String response = "Hello! Received your message: " + message.getText();
             try {
                 new MessagesSend(this)
                         .setPeerId(message.getPeerId())
-                        .setMessage(format)
+                        .setMessage(response)
                         .execute();
             } catch (ApiHttpException e) {
                 e.printStackTrace();
