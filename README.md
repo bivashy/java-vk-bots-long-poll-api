@@ -17,10 +17,12 @@ This library uses the next third-party dependecies:
 * SLF4J
 * Jsoup
 
-## Quickstart
-### Prerequesites
-It is needed to create VK community to retreive `group_id` and `access_token`. The details can be found [here](https://vk.com/dev/access_token).
+## Requirements
+1. Java 8+
+2. Maven (or other build tool)
+3. VK community to retrieve `group_id` and `access_token`. The details can be found [here](https://vk.com/dev/access_token).
 
+## Quickstart
 1. Add the library to your project using Maven:
 ```xml
 <dependency>
