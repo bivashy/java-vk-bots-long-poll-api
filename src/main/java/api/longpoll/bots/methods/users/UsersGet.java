@@ -6,7 +6,7 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.basic.User;
-import api.longpoll.bots.model.response.other.GenericResult;
+import api.longpoll.bots.model.response.GenericResult;
 import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 

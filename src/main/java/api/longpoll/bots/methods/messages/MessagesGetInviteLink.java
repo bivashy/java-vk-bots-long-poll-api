@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.messages.MessagesGetInviteLinkResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.messages.MessagesGetInviteLinkResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
  */
-public class MessagesGetInviteLink extends GetMethod<MessagesGetInviteLinkResult> {
+public class MessagesGetInviteLink extends GetMethod<GenericResult<MessagesGetInviteLinkResponse>> {
     /**
      * Destination ID.
      */
@@ -47,8 +49,8 @@ public class MessagesGetInviteLink extends GetMethod<MessagesGetInviteLinkResult
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<MessagesGetInviteLinkResult> getConverter() {
-        return GenericConverterFactory.get(MessagesGetInviteLinkResult.class);
+    protected JsonToPojoConverter<GenericResult<MessagesGetInviteLinkResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<MessagesGetInviteLinkResponse>>(){}.getType());
     }
 
     /**

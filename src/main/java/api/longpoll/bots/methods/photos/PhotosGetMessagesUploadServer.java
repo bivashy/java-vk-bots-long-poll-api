@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/photos.getMessagesUploadServer">https://vk.com/dev/photos.getMessagesUploadServer</a>
  */
-public class PhotosGetMessagesUploadServer extends GetMethod<PhotosGetMessagesUploadServerResult> {
+public class PhotosGetMessagesUploadServer extends GetMethod<GenericResult<PhotosGetMessagesUploadServerResponse>> {
     /**
      * User ID.
      */
@@ -37,8 +39,8 @@ public class PhotosGetMessagesUploadServer extends GetMethod<PhotosGetMessagesUp
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<PhotosGetMessagesUploadServerResult> getConverter() {
-        return GenericConverterFactory.get(PhotosGetMessagesUploadServerResult.class);
+    protected JsonToPojoConverter<GenericResult<PhotosGetMessagesUploadServerResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<PhotosGetMessagesUploadServerResponse>>(){}.getType());
     }
 
     /**

@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getLongPollServer">https://vk.com/dev/groups.getLongPollServer</a>
  */
-public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerResult> {
+public class GroupsGetLongPollServer extends GetMethod<GenericResult<GroupsGetLongPollServerResponse>> {
     /**
      * Community ID.
      */
@@ -26,8 +28,8 @@ public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerRe
     }
 
     @Override
-    protected JsonToPojoConverter<GroupsGetLongPollServerResult> getConverter() {
-        return GenericConverterFactory.get(GroupsGetLongPollServerResult.class);
+    protected JsonToPojoConverter<GenericResult<GroupsGetLongPollServerResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<GroupsGetLongPollServerResponse>>(){}.getType());
     }
 
     @Override

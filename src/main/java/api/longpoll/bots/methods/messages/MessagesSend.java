@@ -14,12 +14,12 @@ import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
 import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
-import api.longpoll.bots.model.response.messages.MessagesSendResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
 import api.longpoll.bots.model.response.other.UploadDocResult;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
-import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
-import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
+import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResponse;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
 import org.jsoup.Connection;
 
 import java.io.File;
@@ -32,7 +32,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
-public class MessagesSend extends GetMethod<MessagesSendResult> {
+public class MessagesSend extends GetMethod<GenericResult<Object>> {
     /**
      * User ID.
      */
@@ -124,7 +124,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<MessagesSendResult> getConverter() {
+    protected JsonToPojoConverter<GenericResult<Object>> getConverter() {
         return new MessagesSendResultConverterImpl();
     }
 
@@ -169,7 +169,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
     }
 
     public MessagesSend attachPhoto(File photo) throws ApiHttpException {
-        PhotosGetMessagesUploadServerResult.Response uploadServer = new PhotosGetMessagesUploadServer(bot)
+        PhotosGetMessagesUploadServerResponse uploadServer = new PhotosGetMessagesUploadServer(bot)
                 .setPeerId(peerId)
                 .execute()
                 .getResponse();
@@ -177,7 +177,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
                 .setUploadUrl(uploadServer.getUploadUrl())
                 .setPhoto(photo)
                 .execute();
-        PhotosSaveMessagesPhotoResult.Response savePhoto = new PhotosSaveMessagesPhoto(bot)
+        PhotosSaveMessagesPhotoResponse savePhoto = new PhotosSaveMessagesPhoto(bot)
                 .setHash(uploadPhoto.getHash())
                 .setPhoto(uploadPhoto.getPhoto())
                 .setServer(uploadPhoto.getServer())
@@ -193,7 +193,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
     }
 
     public MessagesSend attachDoc(File doc) throws ApiHttpException {
-        DocsGetUploadServerResult.Response uploadServer = new DocsGetMessagesUploadServer(bot)
+        DocsGetUploadServerResponse uploadServer = new DocsGetMessagesUploadServer(bot)
                 .setType("doc")
                 .setPeerId(peerId)
                 .execute()

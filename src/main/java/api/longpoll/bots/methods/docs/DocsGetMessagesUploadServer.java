@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
+import api.longpoll.bots.model.response.GenericResult;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/docs.getMessagesUploadServer">https://vk.com/dev/docs.getMessagesUploadServer</a>
  */
-public class DocsGetMessagesUploadServer extends GetMethod<DocsGetUploadServerResult> {
+public class DocsGetMessagesUploadServer extends GetMethod<GenericResult<DocsGetUploadServerResponse>> {
     /**
      * Document type.
      */
@@ -42,8 +44,8 @@ public class DocsGetMessagesUploadServer extends GetMethod<DocsGetUploadServerRe
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<DocsGetUploadServerResult> getConverter() {
-        return GenericConverterFactory.get(DocsGetUploadServerResult.class);
+    protected JsonToPojoConverter<GenericResult<DocsGetUploadServerResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<DocsGetUploadServerResponse>>(){}.getType());
     }
 
     /**

@@ -14,12 +14,12 @@ import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
 import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
-import api.longpoll.bots.model.response.other.GenericResult;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
+import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.other.UploadDocResult;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
-import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
-import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
+import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResponse;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
 import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
@@ -106,7 +106,8 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
      */
     @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
+        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {
+        }.getType());
     }
 
     /**
@@ -146,7 +147,7 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
     }
 
     public MessagesEdit attachPhoto(File photo) throws ApiHttpException {
-        PhotosGetMessagesUploadServerResult.Response uploadServer = new PhotosGetMessagesUploadServer(bot)
+        PhotosGetMessagesUploadServerResponse uploadServer = new PhotosGetMessagesUploadServer(bot)
                 .setPeerId(peerId)
                 .execute()
                 .getResponse();
@@ -154,7 +155,7 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
                 .setUploadUrl(uploadServer.getUploadUrl())
                 .setPhoto(photo)
                 .execute();
-        PhotosSaveMessagesPhotoResult.Response savePhoto = new PhotosSaveMessagesPhoto(bot)
+        PhotosSaveMessagesPhotoResponse savePhoto = new PhotosSaveMessagesPhoto(bot)
                 .setHash(uploadPhoto.getHash())
                 .setPhoto(uploadPhoto.getPhoto())
                 .setServer(uploadPhoto.getServer())
@@ -170,7 +171,7 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
     }
 
     public MessagesEdit attachDoc(File doc) throws ApiHttpException {
-        DocsGetUploadServerResult.Response uploadServer = new DocsGetMessagesUploadServer(bot)
+        DocsGetUploadServerResponse uploadServer = new DocsGetMessagesUploadServer(bot)
                 .setType("doc")
                 .setPeerId(peerId)
                 .execute()

@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.photos.PhotosGetOwnerCoverPhotoUploadServerResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.photos.PhotosGetOwnerCoverPhotoUploadServerResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer">https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer</a>
  */
-public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwnerCoverPhotoUploadServerResult> {
+public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>> {
     /**
      * Community ID.
      */
@@ -57,8 +59,8 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwn
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<PhotosGetOwnerCoverPhotoUploadServerResult> getConverter() {
-        return GenericConverterFactory.get(PhotosGetOwnerCoverPhotoUploadServerResult.class);
+    protected JsonToPojoConverter<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>>(){}.getType());
     }
 
     /**

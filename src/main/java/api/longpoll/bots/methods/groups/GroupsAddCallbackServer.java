@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.groups.GroupsAddCallbackServerResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.groups.GroupsAddCallbackServerResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.addCallbackServer">https://vk.com/dev/groups.addCallbackServer</a>
  */
-public class GroupsAddCallbackServer extends GetMethod<GroupsAddCallbackServerResult> {
+public class GroupsAddCallbackServer extends GetMethod<GenericResult<GroupsAddCallbackServerResponse>> {
     /**
      * Community ID.
      */
@@ -65,8 +67,8 @@ public class GroupsAddCallbackServer extends GetMethod<GroupsAddCallbackServerRe
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<GroupsAddCallbackServerResult> getConverter() {
-        return GenericConverterFactory.get(GroupsAddCallbackServerResult.class);
+    protected JsonToPojoConverter<GenericResult<GroupsAddCallbackServerResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<GroupsAddCallbackServerResponse>>(){}.getType());
     }
 
     public Integer getGroupId() {

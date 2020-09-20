@@ -8,7 +8,7 @@ import api.longpoll.bots.exceptions.ApiException;
 import api.longpoll.bots.exceptions.ApiHttpException;
 import api.longpoll.bots.methods.groups.GroupsGetLongPollServer;
 import api.longpoll.bots.methods.events.GetEvents;
-import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResult;
+import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResponse;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import com.google.gson.JsonObject;
@@ -69,7 +69,7 @@ public class LongPollServer implements Server {
     }
 
     private void init() throws ApiHttpException {
-        GroupsGetLongPollServerResult.Response response = new GroupsGetLongPollServer(bot)
+        GroupsGetLongPollServerResponse response = new GroupsGetLongPollServer(bot)
                 .setGroupId(bot.getGroupId())
                 .execute()
                 .getResponse();

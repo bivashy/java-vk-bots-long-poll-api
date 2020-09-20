@@ -6,20 +6,22 @@ import api.longpoll.bots.converters.media.DocConverterImpl;
 import api.longpoll.bots.model.objects.media.AudioMessage;
 import api.longpoll.bots.model.objects.media.Graffiti;
 import api.longpoll.bots.model.objects.media.Attachable;
-import api.longpoll.bots.model.response.docs.DocsSaveResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.docs.DocsSaveResponse;
 import com.google.gson.FieldAttributes;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 
-public class DocsSaveResultConverterImpl extends JsonToPojoConverter<DocsSaveResult> {
+public class DocsSaveResultConverterImpl extends JsonToPojoConverter<GenericResult<DocsSaveResponse>> {
     private static final String RESPONSE_FIELD = "response";
     private static final String DOC_FIELD = "doc";
     private static final String GRAFFITI_FIELD = "graffiti";
     private static final String AUDIO_MESSAGE_FIELD = "audio_message";
 
     @Override
-    public DocsSaveResult convert(JsonObject jsonObject) {
-        DocsSaveResult docsSaveResult = gson.fromJson(jsonObject, DocsSaveResult.class);
-        DocsSaveResult.Response response = docsSaveResult.getResponse();
+    public GenericResult<DocsSaveResponse> convert(JsonObject jsonObject) {
+        GenericResult<DocsSaveResponse> docsSaveResponse = gson.fromJson(jsonObject, new TypeToken<GenericResult<DocsSaveResponse>>(){}.getType());
+        DocsSaveResponse response = docsSaveResponse.getResponse();
         Attachable attachable = null;
 
         JsonObject jsonResponse = jsonObject.getAsJsonObject(RESPONSE_FIELD);
@@ -38,7 +40,7 @@ public class DocsSaveResultConverterImpl extends JsonToPojoConverter<DocsSaveRes
         }
 
         response.setAttachable(attachable);
-        return docsSaveResult;
+        return docsSaveResponse;
     }
 
     @Override

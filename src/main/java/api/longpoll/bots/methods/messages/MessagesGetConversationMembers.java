@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.messages.MessagesGetConversationMembersResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.messages.MessagesGetConversationMembersResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getConversationMembers">https://vk.com/dev/messages.getConversationMembers</a>
  */
-public class MessagesGetConversationMembers extends GetMethod<MessagesGetConversationMembersResult> {
+public class MessagesGetConversationMembers extends GetMethod<GenericResult<MessagesGetConversationMembersResponse>> {
     /**
      * Destination ID.
      */
@@ -48,8 +50,8 @@ public class MessagesGetConversationMembers extends GetMethod<MessagesGetConvers
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<MessagesGetConversationMembersResult> getConverter() {
-        return GenericConverterFactory.get(MessagesGetConversationMembersResult.class);
+    protected JsonToPojoConverter<GenericResult<MessagesGetConversationMembersResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<MessagesGetConversationMembersResponse>>(){}.getType());
     }
 
     /**

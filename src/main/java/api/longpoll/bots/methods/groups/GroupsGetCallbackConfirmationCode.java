@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.groups.GroupsGetCallbackConfirmationCodeResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.groups.GroupsGetCallbackConfirmationCodeResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getCallbackConfirmationCode">https://vk.com/dev/groups.getCallbackConfirmationCode</a>
  */
-public class GroupsGetCallbackConfirmationCode extends GetMethod<GroupsGetCallbackConfirmationCodeResult> {
+public class GroupsGetCallbackConfirmationCode extends GetMethod<GenericResult<GroupsGetCallbackConfirmationCodeResponse>> {
     /**
      * Community ID.
      */
@@ -37,8 +39,8 @@ public class GroupsGetCallbackConfirmationCode extends GetMethod<GroupsGetCallba
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<GroupsGetCallbackConfirmationCodeResult> getConverter() {
-        return GenericConverterFactory.get(GroupsGetCallbackConfirmationCodeResult.class);
+    protected JsonToPojoConverter<GenericResult<GroupsGetCallbackConfirmationCodeResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<GroupsGetCallbackConfirmationCodeResponse>>(){}.getType());
     }
 
     /**
