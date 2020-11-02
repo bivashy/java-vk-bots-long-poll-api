@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.objects.basic;
 
-import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -70,14 +70,14 @@ public class Chat {
      * <b>true</b>, if user has been left the chat.
      */
     @SerializedName("left")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean left;
 
     /**
      * <b>true</b>, user has been kicked from the chat.
      */
     @SerializedName("kicked")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean kicked;
 
     /**
@@ -88,7 +88,7 @@ public class Chat {
          * <b>true</b>, if the sound is enabled.
          */
         @SerializedName("sound")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean soundEnabled;
 
         /**

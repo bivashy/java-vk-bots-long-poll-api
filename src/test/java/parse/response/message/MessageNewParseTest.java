@@ -2,6 +2,7 @@ package parse.response.message;
 
 import api.longpoll.bots.constants.DocumentTypes;
 import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.model.events.messages.MessageNewEvent;
 import api.longpoll.bots.model.objects.additional.Image;
 import api.longpoll.bots.model.objects.media.Attachable;
 import api.longpoll.bots.model.objects.media.Attachment;
@@ -9,7 +10,6 @@ import api.longpoll.bots.model.objects.media.Audio;
 import api.longpoll.bots.model.objects.media.AudioMessage;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.events.messages.MessageEvent;
 import api.longpoll.bots.model.objects.media.Graffiti;
 import api.longpoll.bots.model.objects.additional.ClientInfo;
 import api.longpoll.bots.model.objects.additional.Geo;
@@ -57,8 +57,8 @@ public class MessageNewParseTest extends AbstractParseTest {
         EventObject eventObject = event.getObject();
         Assert.assertNotNull(eventObject);
 
-        Assert.assertTrue(eventObject instanceof MessageEvent);
-        MessageEvent messageUpdate = (MessageEvent) eventObject;
+        Assert.assertTrue(eventObject instanceof MessageNewEvent);
+        MessageNewEvent messageUpdate = (MessageNewEvent) eventObject;
         Assert.assertNotNull(messageUpdate);
 
         Message message = messageUpdate.getMessage();
@@ -93,7 +93,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     public void test2_messageNewReply() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_reply_sample_5_110.json");
         GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
-        Message replyMessage = ((MessageEvent) getEventsResult.getEvents().get(0).getObject())
+        Message replyMessage = ((MessageNewEvent) getEventsResult.getEvents().get(0).getObject())
                 .getMessage()
                 .getReplyMessage();
         Assert.assertNotNull(replyMessage);
@@ -108,7 +108,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test3_messageNewFwd() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_fwd_sample_5_110.json");
-        List<Message> fwdMessages = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getFwdMessages();
+        List<Message> fwdMessages = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getFwdMessages();
         Assert.assertNotNull(fwdMessages);
         Assert.assertEquals(1, fwdMessages.size());
 
@@ -125,7 +125,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test4_messageNewPhoto() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_photo_sample_5_110.json");
-        List<Attachment> attachments = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
+        List<Attachment> attachments = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
         Assert.assertNotNull(attachments);
         Assert.assertEquals(1, attachments.size());
 
@@ -156,7 +156,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test5_messageNewVideo() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_video_sample_5_110.json");
-        List<Attachment> attachments = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
+        List<Attachment> attachments = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
         Assert.assertNotNull(attachments);
         Assert.assertEquals(1, attachments.size());
 
@@ -196,7 +196,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test6_messageNewAudio() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_audio_sample_5_110.json");
-        List<Attachment> attachments = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
+        List<Attachment> attachments = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
         Assert.assertNotNull(attachments);
         Assert.assertEquals(1, attachments.size());
 
@@ -216,7 +216,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test7_messageNewDocPhoto() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_doc_photo_sample_5_110.json");
-        List<Attachment> attachments = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
+        List<Attachment> attachments = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
         Assert.assertNotNull(attachments);
         Assert.assertEquals(1, attachments.size());
 
@@ -257,7 +257,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test8_messageNewAudioMessage() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_audio_message_sample_5_110.json");
-        List<Attachment> attachments = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
+        List<Attachment> attachments = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
         Assert.assertNotNull(attachments);
         Assert.assertEquals(1, attachments.size());
 
@@ -281,7 +281,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test9_messageNewGraffiti() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_graffiti_sample_5_110.json");
-        List<Attachment> attachments = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
+        List<Attachment> attachments = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
         Assert.assertNotNull(attachments);
         Assert.assertEquals(1, attachments.size());
 
@@ -300,7 +300,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test10_messageNewGeo() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_geo_sample_5_110.json");
-        Geo geo = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getGeo();
+        Geo geo = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getGeo();
         Assert.assertNotNull(geo);
         Assert.assertEquals("point", geo.getType());
 
@@ -313,7 +313,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test11_messageNewSticker() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_sticker_sample_5_110.json");
-        List<Attachment> attachments = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
+        List<Attachment> attachments = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
         Assert.assertNotNull(attachments);
         Assert.assertEquals(1, attachments.size());
 
@@ -350,7 +350,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test12_messageNewWall() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_wall_sample_5_110.json");
-        List<Attachment> attachments = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
+        List<Attachment> attachments = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
         Assert.assertNotNull(attachments);
         Assert.assertEquals(1, attachments.size());
 
@@ -399,7 +399,7 @@ public class MessageNewParseTest extends AbstractParseTest {
     @Test
     public void test13_messageNewWallReply() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_new/message_new_wall_reply_sample_5_110.json");
-        List<Attachment> attachments = ((MessageEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
+        List<Attachment> attachments = ((MessageNewEvent) new GetEventsResultConverterImpl().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
         Assert.assertNotNull(attachments);
         Assert.assertEquals(1, attachments.size());
 

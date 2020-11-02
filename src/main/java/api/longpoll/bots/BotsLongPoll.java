@@ -10,6 +10,7 @@ import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
 import api.longpoll.bots.model.events.messages.MessageEvent;
+import api.longpoll.bots.model.events.messages.MessageNewEvent;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
 import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
@@ -65,7 +66,7 @@ public class BotsLongPoll implements Runnable {
         events.forEach(update -> {
             switch (update.getType()) {
                 case EventTypes.MESSAGE_NEW:
-                    bot.onMessageNew((MessageEvent) update.getObject());
+                    bot.onMessageNew((MessageNewEvent) update.getObject());
                     break;
 
                 case EventTypes.MESSAGE_REPLY:
@@ -74,6 +75,10 @@ public class BotsLongPoll implements Runnable {
 
                 case EventTypes.MESSAGE_EDIT:
                     bot.onMessageEdit((Message) update.getObject());
+                    break;
+
+                case EventTypes.MESSAGE_EVENT:
+                    bot.onMessageEvent((MessageEvent) update.getObject());
                     break;
 
                 case EventTypes.PHOTO_NEW:

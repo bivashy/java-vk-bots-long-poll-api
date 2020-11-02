@@ -16,6 +16,7 @@ import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
+import api.longpoll.bots.model.events.messages.MessageEvent;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
 import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
@@ -50,6 +51,9 @@ public class EventConverterImpl extends JsonToPojoConverter<Event> {
             case EventTypes.MESSAGE_REPLY:
             case EventTypes.MESSAGE_EDIT:
                 return event.setObject(new MessageConverterImpl().convert(jsonUpdateObject));
+
+            case EventTypes.MESSAGE_EVENT:
+                return event.setObject(GenericConverterFactory.get(MessageEvent.class).convert(jsonUpdateObject));
 
             case EventTypes.PHOTO_NEW:
                 return event.setObject(GenericConverterFactory.get(Photo.class).convert(jsonUpdateObject));

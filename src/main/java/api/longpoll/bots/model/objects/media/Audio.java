@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.objects.media;
 
-import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -74,14 +74,14 @@ public class Audio implements Attachable {
      * <b>true</b> if "No search" option is enabled.
      */
     @SerializedName("no_search")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean noSearch;
 
     /**
      * <b>true</b> if audio is in a high quality.
      */
     @SerializedName("is_hq")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean hq;
 
     public Integer getId() {

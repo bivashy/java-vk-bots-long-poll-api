@@ -253,6 +253,10 @@ public class VkApi {
         return properties.getProperty("messages.send");
     }
 
+    public String messagesSendMessageEventAnswer() {
+        return properties.getProperty("messages.sendMessageEventAnswer");
+    }
+
     public String photosGetMessagesUploadServer() {
         return properties.getProperty("photos.getMessagesUploadServer");
     }

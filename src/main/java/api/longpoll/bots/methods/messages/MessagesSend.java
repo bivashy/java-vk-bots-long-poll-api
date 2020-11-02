@@ -12,6 +12,8 @@ import api.longpoll.bots.methods.other.UploadDoc;
 import api.longpoll.bots.methods.other.UploadPhoto;
 import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
 import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
+import api.longpoll.bots.model.objects.additional.Keyboard;
+import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.GenericResult;
@@ -99,6 +101,16 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
     private Integer stickerId;
 
     /**
+     * Keyboard object.
+     */
+    private Keyboard keyboard;
+
+    /**
+     * Template object.
+     */
+    private Template template;
+
+    /**
      * <b>true</b> - links will not attach snippet.
      */
     private Boolean dontParseLinks;
@@ -148,7 +160,9 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
                 keyVal("forward_messages", forwardMessages),
                 keyVal("sticker_id", stickerId),
                 keyVal("dont_parse_links", dontParseLinks, true),
-                keyVal("disable_mentions", disableMentions, true)
+                keyVal("disable_mentions", disableMentions, true),
+                keyVal("keyboard", keyboard),
+                keyVal("template", template)
         );
     }
 
@@ -343,6 +357,24 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
 
     public MessagesSend setDisableMentions(Boolean disableMentions) {
         this.disableMentions = disableMentions;
+        return this;
+    }
+
+    public Keyboard getKeyboard() {
+        return keyboard;
+    }
+
+    public MessagesSend setKeyboard(Keyboard keyboard) {
+        this.keyboard = keyboard;
+        return this;
+    }
+
+    public Template getTemplate() {
+        return template;
+    }
+
+    public MessagesSend setTemplate(Template template) {
+        this.template = template;
         return this;
     }
 }

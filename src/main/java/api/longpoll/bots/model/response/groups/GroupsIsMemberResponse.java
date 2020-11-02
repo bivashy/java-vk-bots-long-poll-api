@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.response.groups;
 
-import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,35 +12,35 @@ public class GroupsIsMemberResponse {
      * Whether the user is a member of the community.
      */
     @SerializedName("member")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean member;
 
     /**
      * Whether the user left a request to join the group, which can be declined by the groups.leave method.
      */
     @SerializedName("request")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean request;
 
     /**
      * Whether the user is invited to join the group or event.
      */
     @SerializedName("invitation")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean invitation;
 
     /**
      * Whether user can invite others.
      */
     @SerializedName("can_invite")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canInvite;
 
     /**
      * Whether user can deny invitation.
      */
     @SerializedName("can_recall")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canRecall;
 
     /**

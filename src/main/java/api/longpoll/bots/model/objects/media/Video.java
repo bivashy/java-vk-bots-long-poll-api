@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.objects.media;
 
-import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.objects.additional.Image;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -83,21 +83,21 @@ public class Video implements Attachable {
      * <b>true</b> if current user can edit video.
      */
     @SerializedName("can_edit")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canEdit;
 
     /**
      * <b>true</b> if current user can add video.
      */
     @SerializedName("can_add")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canAdd;
 
     /**
      * <b>true</b> if video is private.
      */
     @SerializedName("is_private")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean isPrivate;
 
     /**
@@ -110,21 +110,21 @@ public class Video implements Attachable {
      * <b>true</b> if the video is processing.
      */
     @SerializedName("processing")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean processing;
 
     /**
      * <b>true</b> if the video is live.
      */
     @SerializedName("live")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean live;
 
     /**
      * <b>true</b> if translation will start soon.
      */
     @SerializedName("upcoming")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean upcoming;
 
     /**
@@ -150,7 +150,7 @@ public class Video implements Attachable {
      */
     public static class VideoImage extends Image {
         @SerializedName("with_padding")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean withPadding;
 
         public Boolean getWithPadding() {

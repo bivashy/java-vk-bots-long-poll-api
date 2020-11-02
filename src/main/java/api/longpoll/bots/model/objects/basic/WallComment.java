@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.objects.basic;
 
-import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.objects.media.Attachable;
 import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.JsonAdapter;
@@ -100,21 +100,21 @@ public class WallComment implements Attachable {
          * <b>true</b> if current user can post comments in this thread.
          */
         @SerializedName("can_post")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean canPost;
 
         /**
          * <b>true</b> if it is recommended to display "reply" button.
          */
         @SerializedName("show_reply_button")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean showReplyButton;
 
         /**
          * <b>true</b> if groups can post comments in this thread.
          */
         @SerializedName("groups_can_post")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean groupsCanPost;
 
         public Integer getCount() {
@@ -164,14 +164,14 @@ public class WallComment implements Attachable {
          * <b>true</b> if current user likes the post.
          */
         @SerializedName("user_likes")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean userLikes;
 
         /**
          * <b>true</b> if current user can add like to the post.
          */
         @SerializedName("can_like")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean canLike;
 
         public Integer getCount() {
