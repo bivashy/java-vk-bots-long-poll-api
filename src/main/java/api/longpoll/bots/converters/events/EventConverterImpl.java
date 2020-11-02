@@ -35,114 +35,82 @@ import api.longpoll.bots.model.objects.media.Video;
 import com.google.gson.FieldAttributes;
 import com.google.gson.JsonObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EventConverterImpl extends JsonToPojoConverter<Event> {
     private static final String OBJECT_FIELD = "object";
+
+    private static final Map<String, JsonToPojoConverter<? extends EventObject>> CONVERTERS = new HashMap<>();
+
+    static {
+        CONVERTERS.put(EventTypes.APP_PAYLOAD, GenericConverterFactory.get(AppPayload.class));
+
+        CONVERTERS.put(EventTypes.AUDIO_NEW, GenericConverterFactory.get(Audio.class));
+
+        CONVERTERS.put(EventTypes.BOARD_POST_DELETE, GenericConverterFactory.get(BoardPostDeleteEvent.class));
+        CONVERTERS.put(EventTypes.BOARD_POST_EDIT, GenericConverterFactory.get(BoardPostEvent.class));
+        CONVERTERS.put(EventTypes.BOARD_POST_NEW, GenericConverterFactory.get(BoardPostEvent.class));
+        CONVERTERS.put(EventTypes.BOARD_POST_RESTORE, GenericConverterFactory.get(BoardPostEvent.class));
+
+        CONVERTERS.put(EventTypes.GROUP_CHANGE_PHOTO, GenericConverterFactory.get(GroupChangePhotoEvent.class));
+        CONVERTERS.put(EventTypes.GROUP_CHANGE_SETTINGS, GenericConverterFactory.get(GroupChangeSettingsEvent.class));
+        CONVERTERS.put(EventTypes.GROUP_JOIN, GenericConverterFactory.get(GroupJoinEvent.class));
+        CONVERTERS.put(EventTypes.GROUP_LEAVE, GenericConverterFactory.get(GroupLeaveEvent.class));
+
+        CONVERTERS.put(EventTypes.MARKET_COMMENT_DELETE, GenericConverterFactory.get(MarketCommentDeleteEvent.class));
+        CONVERTERS.put(EventTypes.MARKET_COMMENT_EDIT, GenericConverterFactory.get(MarketCommentEvent.class));
+        CONVERTERS.put(EventTypes.MARKET_COMMENT_NEW, GenericConverterFactory.get(MarketCommentEvent.class));
+        CONVERTERS.put(EventTypes.MARKET_COMMENT_RESTORE, GenericConverterFactory.get(MarketCommentEvent.class));
+        CONVERTERS.put(EventTypes.MARKET_ORDER_EDIT, GenericConverterFactory.get(MarketOrder.class));
+        CONVERTERS.put(EventTypes.MARKET_ORDER_NEW, GenericConverterFactory.get(MarketOrder.class));
+
+        CONVERTERS.put(EventTypes.MESSAGE_EDIT, new MessageConverterImpl());
+        CONVERTERS.put(EventTypes.MESSAGE_EVENT, GenericConverterFactory.get(MessageEvent.class));
+        CONVERTERS.put(EventTypes.MESSAGE_NEW, new MessageEventConverterImpl());
+        CONVERTERS.put(EventTypes.MESSAGE_REPLY, new MessageConverterImpl());
+
+        CONVERTERS.put(EventTypes.LIKE_ADD, GenericConverterFactory.get(LikeEvent.class));
+        CONVERTERS.put(EventTypes.LIKE_REMOVE, GenericConverterFactory.get(LikeEvent.class));
+
+        CONVERTERS.put(EventTypes.PHOTO_COMMENT_DELETE, GenericConverterFactory.get(PhotoCommentDeleteEvent.class));
+        CONVERTERS.put(EventTypes.PHOTO_COMMENT_EDIT, new PhotoCommentEventConverterImpl());
+        CONVERTERS.put(EventTypes.PHOTO_COMMENT_NEW, new PhotoCommentEventConverterImpl());
+        CONVERTERS.put(EventTypes.PHOTO_COMMENT_RESTORE, new PhotoCommentEventConverterImpl());
+        CONVERTERS.put(EventTypes.PHOTO_NEW, GenericConverterFactory.get(Photo.class));
+
+        CONVERTERS.put(EventTypes.USER_BLOCK, GenericConverterFactory.get(UserBlockEvent.class));
+        CONVERTERS.put(EventTypes.USER_UNBLOCK, GenericConverterFactory.get(UserUnblockEvent.class));
+
+        CONVERTERS.put(EventTypes.VIDEO_COMMENT_DELETE, GenericConverterFactory.get(VideoCommentDeleteEvent.class));
+        CONVERTERS.put(EventTypes.VIDEO_COMMENT_EDIT, new VideoCommentEventConverterImpl());
+        CONVERTERS.put(EventTypes.VIDEO_COMMENT_NEW, new VideoCommentEventConverterImpl());
+        CONVERTERS.put(EventTypes.VIDEO_COMMENT_RESTORE, new VideoCommentEventConverterImpl());
+        CONVERTERS.put(EventTypes.VIDEO_NEW, GenericConverterFactory.get(Video.class));
+
+        CONVERTERS.put(EventTypes.WALL_POST_NEW, new WallPostConverterImpl());
+        CONVERTERS.put(EventTypes.WALL_REPLY_DELETE, GenericConverterFactory.get(WallReplyDeleteEvent.class));
+        CONVERTERS.put(EventTypes.WALL_REPLY_EDIT, new WallReplyEventConverterImpl());
+        CONVERTERS.put(EventTypes.WALL_REPLY_NEW, new WallReplyEventConverterImpl());
+        CONVERTERS.put(EventTypes.WALL_REPLY_RESTORE, new WallReplyEventConverterImpl());
+        CONVERTERS.put(EventTypes.WALL_REPOST, new WallPostConverterImpl());
+
+        CONVERTERS.put(EventTypes.VKPAY_TRANSACTION, GenericConverterFactory.get(VkpayTransaction.class));
+    }
 
     @Override
     public Event convert(JsonObject jsonObject) {
         Event event = gson.fromJson(jsonObject, Event.class);
 
         JsonObject jsonUpdateObject = jsonObject.getAsJsonObject(OBJECT_FIELD);
+        String type = event.getType();
 
-        switch (event.getType()) {
-            case EventTypes.MESSAGE_NEW:
-                return event.setObject(new MessageEventConverterImpl().convert(jsonUpdateObject));
-
-            case EventTypes.MESSAGE_REPLY:
-            case EventTypes.MESSAGE_EDIT:
-                return event.setObject(new MessageConverterImpl().convert(jsonUpdateObject));
-
-            case EventTypes.MESSAGE_EVENT:
-                return event.setObject(GenericConverterFactory.get(MessageEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.PHOTO_NEW:
-                return event.setObject(GenericConverterFactory.get(Photo.class).convert(jsonUpdateObject));
-
-            case EventTypes.PHOTO_COMMENT_NEW:
-            case EventTypes.PHOTO_COMMENT_EDIT:
-            case EventTypes.PHOTO_COMMENT_RESTORE:
-                return event.setObject(new PhotoCommentEventConverterImpl().convert(jsonUpdateObject));
-
-            case EventTypes.PHOTO_COMMENT_DELETE:
-                return event.setObject(GenericConverterFactory.get(PhotoCommentDeleteEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.AUDIO_NEW:
-                return event.setObject(GenericConverterFactory.get(Audio.class).convert(jsonUpdateObject));
-
-            case EventTypes.VIDEO_NEW:
-                return event.setObject(GenericConverterFactory.get(Video.class).convert(jsonUpdateObject));
-
-            case EventTypes.VIDEO_COMMENT_NEW:
-            case EventTypes.VIDEO_COMMENT_EDIT:
-            case EventTypes.VIDEO_COMMENT_RESTORE:
-                return event.setObject(new VideoCommentEventConverterImpl().convert(jsonUpdateObject));
-
-            case EventTypes.VIDEO_COMMENT_DELETE:
-                return event.setObject(GenericConverterFactory.get(VideoCommentDeleteEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.WALL_POST_NEW:
-            case EventTypes.WALL_REPOST:
-                return event.setObject(new WallPostConverterImpl().convert(jsonUpdateObject));
-
-            case EventTypes.LIKE_ADD:
-            case EventTypes.LIKE_REMOVE:
-                return event.setObject(GenericConverterFactory.get(LikeEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.WALL_REPLY_NEW:
-            case EventTypes.WALL_REPLY_EDIT:
-            case EventTypes.WALL_REPLY_RESTORE:
-                return event.setObject(new WallReplyEventConverterImpl().convert(jsonUpdateObject));
-
-            case EventTypes.WALL_REPLY_DELETE:
-                return event.setObject(GenericConverterFactory.get(WallReplyDeleteEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.BOARD_POST_NEW:
-            case EventTypes.BOARD_POST_EDIT:
-            case EventTypes.BOARD_POST_RESTORE:
-                return event.setObject(GenericConverterFactory.get(BoardPostEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.BOARD_POST_DELETE:
-                return event.setObject(GenericConverterFactory.get(BoardPostDeleteEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.MARKET_COMMENT_NEW:
-            case EventTypes.MARKET_COMMENT_EDIT:
-            case EventTypes.MARKET_COMMENT_RESTORE:
-                return event.setObject(GenericConverterFactory.get(MarketCommentEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.MARKET_COMMENT_DELETE:
-                return event.setObject(GenericConverterFactory.get(MarketCommentDeleteEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.MARKET_ORDER_NEW:
-            case EventTypes.MARKET_ORDER_EDIT:
-                return event.setObject(GenericConverterFactory.get(MarketOrder.class).convert(jsonUpdateObject));
-
-            case EventTypes.GROUP_LEAVE:
-                return event.setObject(GenericConverterFactory.get(GroupLeaveEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.GROUP_JOIN:
-                return event.setObject(GenericConverterFactory.get(GroupJoinEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.USER_BLOCK:
-                return event.setObject(GenericConverterFactory.get(UserBlockEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.USER_UNBLOCK:
-                return event.setObject(GenericConverterFactory.get(UserUnblockEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.GROUP_CHANGE_SETTINGS:
-                return event.setObject(GenericConverterFactory.get(GroupChangeSettingsEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.GROUP_CHANGE_PHOTO:
-                return event.setObject(GenericConverterFactory.get(GroupChangePhotoEvent.class).convert(jsonUpdateObject));
-
-            case EventTypes.VKPAY_TRANSACTION:
-                return event.setObject(GenericConverterFactory.get(VkpayTransaction.class).convert(jsonUpdateObject));
-
-            case EventTypes.APP_PAYLOAD:
-                return event.setObject(GenericConverterFactory.get(AppPayload.class).convert(jsonUpdateObject));
-
-            default:
-                return null;
+        if (CONVERTERS.containsKey(type)) {
+            event.setObject(CONVERTERS.get(type).convert(jsonUpdateObject));
+            return event;
         }
+
+        return null;
     }
 
     @Override

@@ -280,6 +280,67 @@ public class Doc implements Attachable {
         }
     }
 
+    /**
+     * Describes document video preview data.
+     */
+    public static class Video implements Preview {
+        /**
+         * Video link.
+         */
+        @SerializedName("src")
+        private String src;
+
+        /**
+         * Video width.
+         */
+        @SerializedName("width")
+        private Integer width;
+
+        /**
+         * Video height.
+         */
+        @SerializedName("height")
+        private Integer height;
+
+        /**
+         * Video size in bytes.
+         */
+        @SerializedName("file_size")
+        private Integer fileSize;
+
+        public String getSrc() {
+            return src;
+        }
+
+        public void setSrc(String src) {
+            this.src = src;
+        }
+
+        public Integer getWidth() {
+            return width;
+        }
+
+        public void setWidth(Integer width) {
+            this.width = width;
+        }
+
+        public Integer getHeight() {
+            return height;
+        }
+
+        public void setHeight(Integer height) {
+            this.height = height;
+        }
+
+        public Integer getFileSize() {
+            return fileSize;
+        }
+
+        public void setFileSize(Integer fileSize) {
+            this.fileSize = fileSize;
+        }
+    }
+
     public Integer getId() {
         return id;
     }

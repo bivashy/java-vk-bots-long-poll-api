@@ -14,6 +14,16 @@ public class DocConverterImpl extends JsonToPojoConverter<Doc> {
     private static final String PHOTO = "photo";
     private static final String GRAFFITI = "graffiti";
     private static final String AUDIO_MSG = "audio_msg";
+    private static final String VIDEO = "video";
+
+    private static final Map<String, JsonToPojoConverter<? extends Doc.Preview>> CONVERTERS = new HashMap<>();
+
+    static {
+        CONVERTERS.put(AUDIO_MSG, GenericConverterFactory.get(Doc.AudioMessage.class));
+        CONVERTERS.put(GRAFFITI, GenericConverterFactory.get(Doc.Graffiti.class));
+        CONVERTERS.put(PHOTO, GenericConverterFactory.get(Doc.Photo.class));
+        CONVERTERS.put(VIDEO, GenericConverterFactory.get(Doc.Video.class));
+    }
 
     @Override
     public Doc convert(JsonObject jsonObject) {
@@ -24,19 +34,7 @@ public class DocConverterImpl extends JsonToPojoConverter<Doc> {
                 .forEach(entry -> {
                     String key = entry.getKey();
                     JsonObject object = entry.getValue().getAsJsonObject();
-                    switch (key) {
-                        case PHOTO:
-                            preview.put(key, GenericConverterFactory.get(Doc.Photo.class).convert(object));
-                            break;
-
-                        case GRAFFITI:
-                            preview.put(key, GenericConverterFactory.get(Doc.Graffiti.class).convert(object));
-                            break;
-
-                        case AUDIO_MSG:
-                            preview.put(key, GenericConverterFactory.get(Doc.AudioMessage.class).convert(object));
-                            break;
-                    }
+                    preview.put(key, CONVERTERS.get(key).convert(object));
                 });
         doc.setPreview(preview);
         return doc;
