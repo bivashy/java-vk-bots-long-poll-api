@@ -5,7 +5,10 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.groups.GroupsGetBannedResult;
+import api.longpoll.bots.model.objects.additional.VkList;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.groups.GroupsGetBannedResponseItem;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -16,7 +19,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getBanned">https://vk.com/dev/groups.getBanned</a>
  */
-public class GroupsGetBanned extends GetMethod<GroupsGetBannedResult> {
+public class GroupsGetBanned extends GetMethod<GenericResult<VkList<GroupsGetBannedResponseItem>>> {
     /**
      * Community ID.
      */
@@ -58,8 +61,8 @@ public class GroupsGetBanned extends GetMethod<GroupsGetBannedResult> {
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<GroupsGetBannedResult> getConverter() {
-        return GenericConverterFactory.get(GroupsGetBannedResult.class);
+    protected JsonToPojoConverter<GenericResult<VkList<GroupsGetBannedResponseItem>>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<VkList<GroupsGetBannedResponseItem>>>(){}.getType());
     }
 
     /**

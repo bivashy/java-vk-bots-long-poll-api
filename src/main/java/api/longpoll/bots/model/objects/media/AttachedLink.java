@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.objects.media;
 
-import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.objects.additional.Price;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,7 +69,7 @@ public class AttachedLink implements Attachable {
      * Whether the link is external.
      */
     @SerializedName("is_external")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean external;
 
     /**

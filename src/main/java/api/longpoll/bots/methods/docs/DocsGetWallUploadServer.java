@@ -5,7 +5,7 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +15,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/docs.getWallUploadServer">https://vk.com/dev/docs.getWallUploadServer</a>
  */
-public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerResult> {
+public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerResponse> {
     /**
      * Community ID
      */
@@ -37,8 +37,8 @@ public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerResult
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<DocsGetUploadServerResult> getConverter() {
-        return GenericConverterFactory.get(DocsGetUploadServerResult.class);
+    protected JsonToPojoConverter<DocsGetUploadServerResponse> getConverter() {
+        return GenericConverterFactory.get(DocsGetUploadServerResponse.class);
     }
 
     /**

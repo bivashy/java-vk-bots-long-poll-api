@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.groups.GroupsGetOnlineStatusResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.groups.GroupsGetOnlineStatusResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getOnlineStatus">https://vk.com/dev/groups.getOnlineStatus</a>
  */
-public class GroupsGetOnlineStatus extends GetMethod<GroupsGetOnlineStatusResult> {
+public class GroupsGetOnlineStatus extends GetMethod<GenericResult<GroupsGetOnlineStatusResponse>> {
     /**
      * Community ID.
      */
@@ -37,8 +39,8 @@ public class GroupsGetOnlineStatus extends GetMethod<GroupsGetOnlineStatusResult
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<GroupsGetOnlineStatusResult> getConverter() {
-        return GenericConverterFactory.get(GroupsGetOnlineStatusResult.class);
+    protected JsonToPojoConverter<GenericResult<GroupsGetOnlineStatusResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<GroupsGetOnlineStatusResponse>>(){}.getType());
     }
 
     /**

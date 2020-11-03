@@ -18,74 +18,32 @@ import api.longpoll.bots.model.objects.media.Sticker;
 import api.longpoll.bots.model.objects.media.Video;
 import com.google.gson.JsonObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AttachmentConverterImpl extends JsonToPojoConverter<Attachment> {
-    private static final String PHOTO_FIELD = "photo";
-    private static final String VIDEO_FIELD = "video";
-    private static final String AUDIO_FIELD = "audio";
-    private static final String DOC_FIELD = "doc";
-    private static final String GRAFFITI_FIELD = "graffiti";
-    private static final String AUDIO_MESSAGE_FIELD = "audio_message";
-    private static final String STICKER_FIELD = "sticker";
-    private static final String WALL_FIELD = "wall";
-    private static final String WALL_REPLY_FIELD = "wall_reply";
-    private static final String LINK_FIELD = "link";
-    private static final String MARKET_ALBUM_FIELD = "market_album";
-    private static final String MARKET_FIELD = "market";
+    private static final Map<String, JsonToPojoConverter<? extends Attachable>> CONVERTERS = new HashMap<>();
+
+    static {
+        CONVERTERS.put(AttachmentTypes.AUDIO, GenericConverterFactory.get(Audio.class));
+        CONVERTERS.put(AttachmentTypes.AUDIO_MESSAGE, GenericConverterFactory.get(AudioMessage.class));
+        CONVERTERS.put(AttachmentTypes.DOCUMENT, new DocConverterImpl());
+        CONVERTERS.put(AttachmentTypes.GRAFFITI, GenericConverterFactory.get(Graffiti.class));
+        CONVERTERS.put(AttachmentTypes.LINK, GenericConverterFactory.get(AttachedLink.class));
+        CONVERTERS.put(AttachmentTypes.MARKET, GenericConverterFactory.get(MarketItem.class));
+        CONVERTERS.put(AttachmentTypes.MARKET_ALBUM, GenericConverterFactory.get(MarketCollection.class));
+        CONVERTERS.put(AttachmentTypes.PHOTO, GenericConverterFactory.get(Photo.class));
+        CONVERTERS.put(AttachmentTypes.STICKER, GenericConverterFactory.get(Sticker.class));
+        CONVERTERS.put(AttachmentTypes.VIDEO, GenericConverterFactory.get(Video.class));
+        CONVERTERS.put(AttachmentTypes.WALL_POST, new WallPostConverterImpl());
+        CONVERTERS.put(AttachmentTypes.WALL_REPLY, new WallCommentConverterImpl());
+    }
 
     @Override
     public Attachment convert(JsonObject source) {
         Attachment attachment = gson.fromJson(source, Attachment.class);
-
-        switch (attachment.getType()) {
-            case AttachmentTypes.PHOTO:
-                attachment.setAttachable(GenericConverterFactory.get(Photo.class).convert(source.getAsJsonObject(PHOTO_FIELD)));
-                break;
-
-            case AttachmentTypes.VIDEO:
-                attachment.setAttachable(GenericConverterFactory.get(Video.class).convert(source.getAsJsonObject(VIDEO_FIELD)));
-                break;
-
-            case AttachmentTypes.AUDIO:
-                attachment.setAttachable(GenericConverterFactory.get(Audio.class).convert(source.getAsJsonObject(AUDIO_FIELD)));
-                break;
-
-            case AttachmentTypes.DOCUMENT:
-                attachment.setAttachable(new DocConverterImpl().convert(source.getAsJsonObject(DOC_FIELD)));
-                break;
-
-            case AttachmentTypes.GRAFFITI:
-                attachment.setAttachable(GenericConverterFactory.get(Graffiti.class).convert(source.getAsJsonObject(GRAFFITI_FIELD)));
-                break;
-
-            case AttachmentTypes.AUDIO_MESSAGE:
-                attachment.setAttachable(GenericConverterFactory.get(AudioMessage.class).convert(source.getAsJsonObject(AUDIO_MESSAGE_FIELD)));
-                break;
-
-            case AttachmentTypes.STICKER:
-                attachment.setAttachable(GenericConverterFactory.get(Sticker.class).convert(source.getAsJsonObject(STICKER_FIELD)));
-                break;
-
-            case AttachmentTypes.WALL_POST:
-                attachment.setAttachable(new WallPostConverterImpl().convert(source.getAsJsonObject(WALL_FIELD)));
-                break;
-
-            case AttachmentTypes.WALL_REPLY:
-                attachment.setAttachable(new WallCommentConverterImpl().convert(source.getAsJsonObject(WALL_REPLY_FIELD)));
-                break;
-
-            case AttachmentTypes.LINK:
-                attachment.setAttachable(GenericConverterFactory.get(AttachedLink.class).convert(source.getAsJsonObject(LINK_FIELD)));
-                break;
-
-            case AttachmentTypes.MARKET_ALBUM:
-                attachment.setAttachable(GenericConverterFactory.get(MarketCollection.class).convert(source.getAsJsonObject(MARKET_ALBUM_FIELD)));
-                break;
-
-            case AttachmentTypes.MARKET:
-                attachment.setAttachable(GenericConverterFactory.get(MarketItem.class).convert(source.getAsJsonObject(MARKET_FIELD)));
-                break;
-        }
-
+        String type = attachment.getType();
+        attachment.setAttachable(CONVERTERS.get(type).convert(source.getAsJsonObject(type)));
         return attachment;
     }
 

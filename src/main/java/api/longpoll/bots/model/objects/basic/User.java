@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.objects.basic;
 
-import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.objects.additional.Country;
 import api.longpoll.bots.model.objects.additional.CropPhoto;
 import com.google.gson.annotations.JsonAdapter;
@@ -73,14 +73,14 @@ public class User {
      * <b>true</b> if a current user is in the requested user's blacklist.
      */
     @SerializedName("blacklisted")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean blacklisted;
 
     /**
      * <b>true</b> if a user is in the current user's blacklist.
      */
     @SerializedName("blacklisted_by_me")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean blacklistedByMe;
 
     /**
@@ -93,35 +93,35 @@ public class User {
      * Whether current user can post on the wall.
      */
     @SerializedName("can_post")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canPost;
 
     /**
      * Whether current user can see other users' posts on the wall.
      */
     @SerializedName("can_see_all_posts")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canSeeAllPosts;
 
     /**
      * Whether current user can see users' audio.
      */
     @SerializedName("can_see_audio")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canSeeAudio;
 
     /**
      * Whether current user can send friend request to a user.
      */
     @SerializedName("can_send_friend_request")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canSendFriendRequest;
 
     /**
      * Whether current user can write private messages to a user.
      */
     @SerializedName("can_write_private_message")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canWritePrivateMessage;
 
     /**
@@ -272,14 +272,14 @@ public class User {
      * Whether the user's mobile phone number is available.
      */
     @SerializedName("has_mobile")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean hasMobile;
 
     /**
      * Whether the user has profile photo.
      */
     @SerializedName("has_photo")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean hasPhoto;
 
     /**
@@ -298,21 +298,21 @@ public class User {
      * Whether the user is in faves of current user.
      */
     @SerializedName("is_favorite")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean favorite;
 
     /**
      * Whether the user is a friend of current user.
      */
     @SerializedName("is_friend")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean friend;
 
     /**
      * Whether the user is hidden from current user's feed.
      */
     @SerializedName("is_hidden_from_feed")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean hiddenFromFeed;
 
     /**
@@ -379,7 +379,7 @@ public class User {
      * Whether the user is online.
      */
     @SerializedName("online")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean online;
 
     /**
@@ -494,7 +494,7 @@ public class User {
      * Whether the user a "fire" pictogram.
      */
     @SerializedName("trending")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean trending;
 
     /**
@@ -513,7 +513,7 @@ public class User {
      * <b>true</b> if the profile is verified.
      */
     @SerializedName("verified")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean verified;
 
     /**

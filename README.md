@@ -11,7 +11,7 @@ This library does not promise to implement all possible public VK APIs. Uses API
 ## Note
 This library is in beta release. Feel free to create issues or pull requests.
 
-## Third-party dependecies
+## Third-party dependencies
 This library uses the next third-party dependecies:
 * Gson
 * SLF4J
@@ -35,8 +35,8 @@ This library uses the next third-party dependecies:
 ```java
 public class MyBot extends LongPollBot {
     @Override
-    public void onMessageNew(MessageEvent messageEvent) {
-        Message message = messageEvent.getMessage();
+    public void onMessageNew(MessageEvent messageNewEvent) {
+        Message message = messageNewEvent.getMessage();
         if (message.hasText()) {
             String response = "Hello! Received your message: " + message.getText();
             try {

@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.messages.MessagesDeleteChatPhotoResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.messages.MessagesDeleteChatPhotoResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.deleteChatPhoto">https://vk.com/dev/messages.deleteChatPhoto</a>
  */
-public class MessagesDeleteChatPhoto extends GetMethod<MessagesDeleteChatPhotoResult> {
+public class MessagesDeleteChatPhoto extends GetMethod<GenericResult<MessagesDeleteChatPhotoResponse>> {
     /**
      * Chat ID.
      */
@@ -42,8 +44,8 @@ public class MessagesDeleteChatPhoto extends GetMethod<MessagesDeleteChatPhotoRe
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<MessagesDeleteChatPhotoResult> getConverter() {
-        return GenericConverterFactory.get(MessagesDeleteChatPhotoResult.class);
+    protected JsonToPojoConverter<GenericResult<MessagesDeleteChatPhotoResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<MessagesDeleteChatPhotoResponse>>(){}.getType());
     }
 
     /**

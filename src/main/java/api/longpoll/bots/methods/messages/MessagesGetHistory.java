@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.messages.MessagesGetHistoryResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.messages.MessagesGetHistoryResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
  */
-public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
+public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHistoryResponse>> {
     /**
      * Offset needed to return a specific subset of messages.
      */
@@ -78,8 +80,8 @@ public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<MessagesGetHistoryResult> getConverter() {
-        return GenericConverterFactory.get(MessagesGetHistoryResult.class);
+    protected JsonToPojoConverter<GenericResult<MessagesGetHistoryResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<MessagesGetHistoryResponse>>(){}.getType());
     }
 
     /**

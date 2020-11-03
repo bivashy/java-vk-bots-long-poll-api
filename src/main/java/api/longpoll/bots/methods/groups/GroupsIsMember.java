@@ -5,7 +5,7 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.groups.GroupsIsMemberResultConverterImpl;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.groups.GroupsIsMemberResult;
+import api.longpoll.bots.model.response.GenericResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
  */
-public class GroupsIsMember extends GetMethod<GroupsIsMemberResult> {
+public class GroupsIsMember extends GetMethod<GenericResult<Object>> {
     /**
      * ID or screen name of the community.
      */
@@ -53,7 +53,7 @@ public class GroupsIsMember extends GetMethod<GroupsIsMemberResult> {
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<GroupsIsMemberResult> getConverter() {
+    protected JsonToPojoConverter<GenericResult<Object>> getConverter() {
         return new GroupsIsMemberResultConverterImpl();
     }
 

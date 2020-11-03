@@ -5,7 +5,8 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.docs.DocsSaveResultConverterImpl;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.docs.DocsSaveResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.docs.DocsSaveResponse;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +16,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/docs.save">https://vk.com/dev/docs.save</a>
  */
-public class DocsSave extends GetMethod<DocsSaveResult> {
+public class DocsSave extends GetMethod<GenericResult<DocsSaveResponse>> {
     /**
      * This parameter is returned when the file is uploaded to the server.
      */
@@ -52,7 +53,7 @@ public class DocsSave extends GetMethod<DocsSaveResult> {
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<DocsSaveResult> getConverter() {
+    protected JsonToPojoConverter<GenericResult<DocsSaveResponse>> getConverter() {
         return new DocsSaveResultConverterImpl();
     }
 

@@ -1,0 +1,40 @@
+{
+  "ts": "2961",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1604253831,
+          "from_id": 111111111,
+          "id": 459,
+          "out": 0,
+          "peer_id": 222222222,
+          "text": "Начать",
+          "conversation_message_id": 1,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [],
+          "payload": "{\"command\":\"start\"}",
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": false,
+          "lang_id": 0
+        }
+      },
+      "group_id": 333333333,
+      "event_id": "3a7298e4f23cf007a7d6709cc14323d7f2990349"
+    }
+  ]
+}

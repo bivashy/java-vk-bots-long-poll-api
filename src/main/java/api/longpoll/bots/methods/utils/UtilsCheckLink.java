@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.utils.UtilsCheckLinkResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.utils.UtilsCheckLinkResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/utils.checkLink">https://vk.com/dev/utils.checkLink</a>
  */
-public class UtilsCheckLink extends GetMethod<UtilsCheckLinkResult> {
+public class UtilsCheckLink extends GetMethod<GenericResult<UtilsCheckLinkResponse>> {
     /**
      * Link to check (e.g., http://google.com).
      */
@@ -37,8 +39,8 @@ public class UtilsCheckLink extends GetMethod<UtilsCheckLinkResult> {
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<UtilsCheckLinkResult> getConverter() {
-        return GenericConverterFactory.get(UtilsCheckLinkResult.class);
+    protected JsonToPojoConverter<GenericResult<UtilsCheckLinkResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<UtilsCheckLinkResponse>>(){}.getType());
     }
 
     /**

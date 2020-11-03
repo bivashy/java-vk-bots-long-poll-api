@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.objects.basic;
 
-import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.objects.media.Attachable;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.objects.additional.Geo;
@@ -67,7 +67,7 @@ public class WallPost implements Attachable {
      * <b>true</b> if a post is marked "Friends only".
      */
     @SerializedName("friends_only")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean friendsOnly;
 
     /**
@@ -128,35 +128,35 @@ public class WallPost implements Attachable {
      * <b>true</b> if current user can pin a post.
      */
     @SerializedName("can_pin")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canPin;
 
     /**
      * <b>true</b> if current user can delete the post.
      */
     @SerializedName("can_delete")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canDelete;
 
     /**
      * <b>true</b> if current user can edit the post.
      */
     @SerializedName("can_edit")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canEdit;
 
     /**
      * <b>true</b> if the post is pinned.
      */
     @SerializedName("is_pinned")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean pinned;
 
     /**
      * Whether the post is marked as ads.
      */
     @SerializedName("marked_as_ads")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean markedAsAds;
 
     /**
@@ -195,14 +195,14 @@ public class WallPost implements Attachable {
          * <b>true</b> if current user can comment the post.
          */
         @SerializedName("can_post")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean canPost;
 
         /**
          * Whether communities can comment this post.
          */
         @SerializedName("groups_can_post")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean groupsCanPost;
 
         /**
@@ -266,7 +266,7 @@ public class WallPost implements Attachable {
          * Whether the user can repost.
          */
         @SerializedName("can_publish")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean canPublish;
 
         public Boolean getCanPublish() {
@@ -292,7 +292,7 @@ public class WallPost implements Attachable {
          * Whether the user reposted the post.
          */
         @SerializedName("user_reposted")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean userReposted;
 
         public Integer getCount() {

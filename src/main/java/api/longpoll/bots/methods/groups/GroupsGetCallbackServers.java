@@ -5,7 +5,10 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.groups.GroupsGetCallbackServersResult;
+import api.longpoll.bots.model.objects.additional.VkList;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.groups.GroupsGetCallbackServersResponseItem;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -16,7 +19,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getCallbackServers">https://vk.com/dev/groups.getCallbackServers</a>
  */
-public class GroupsGetCallbackServers extends GetMethod<GroupsGetCallbackServersResult> {
+public class GroupsGetCallbackServers extends GetMethod<GenericResult<VkList<GroupsGetCallbackServersResponseItem>>> {
     /**
      * Community ID.
      */
@@ -43,8 +46,8 @@ public class GroupsGetCallbackServers extends GetMethod<GroupsGetCallbackServers
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<GroupsGetCallbackServersResult> getConverter() {
-        return GenericConverterFactory.get(GroupsGetCallbackServersResult.class);
+    protected JsonToPojoConverter<GenericResult<VkList<GroupsGetCallbackServersResponseItem>>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<VkList<GroupsGetCallbackServersResponseItem>>>(){}.getType());
     }
 
     /**

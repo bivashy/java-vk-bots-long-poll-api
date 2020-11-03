@@ -7,7 +7,7 @@ import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Message;
-import api.longpoll.bots.model.response.other.GenericResult;
+import api.longpoll.bots.model.response.GenericResult;
 import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 

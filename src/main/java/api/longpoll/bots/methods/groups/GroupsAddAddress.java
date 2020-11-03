@@ -5,8 +5,10 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.groups.GroupsAddressResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.groups.GroupsAddressResponse;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +18,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.addAddress">https://vk.com/dev/groups.addAddress</a>
  */
-public class GroupsAddAddress extends GetMethod<GroupsAddressResult> {
+public class GroupsAddAddress extends GetMethod<GenericResult<GroupsAddressResponse>> {
     /**
      * Group ID.
      */
@@ -98,8 +100,8 @@ public class GroupsAddAddress extends GetMethod<GroupsAddressResult> {
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<GroupsAddressResult> getConverter() {
-        return GenericConverterFactory.get(GroupsAddressResult.class);
+    protected JsonToPojoConverter<GenericResult<GroupsAddressResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<GroupsAddressResponse>>(){}.getType());
     }
 
     /**

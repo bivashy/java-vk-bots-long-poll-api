@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.objects.basic;
 
-import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.objects.additional.Country;
 import api.longpoll.bots.model.objects.additional.CropPhoto;
 import api.longpoll.bots.model.objects.additional.Currency;
@@ -50,7 +50,7 @@ public class Community {
      * Whether a user is the community manager.
      */
     @SerializedName("is_admin")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean admin;
 
     /**
@@ -63,14 +63,14 @@ public class Community {
      * Whether a user is a community member.
      */
     @SerializedName("is_member")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean member;
 
     /**
      * Whether the current user is an advertiser.
      */
     @SerializedName("is_advertiser")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean advertiser;
 
     /**
@@ -131,42 +131,42 @@ public class Community {
      * Whether current user can create discussion in the community.
      */
     @SerializedName("can_create_topic")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canCreateTopic;
 
     /**
      * Whether current user can send message to the community.
      */
     @SerializedName("can_message")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canMessage;
 
     /**
      * Whether current user can post on the community's wall.
      */
     @SerializedName("can_post")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canPost;
 
     /**
      * Whether current user can see all posts on the community's wall.
      */
     @SerializedName("can_see_all_posts")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canSeeAllPosts;
 
     /**
      * Whether current user can upload documents to the community.
      */
     @SerializedName("can_upload_doc")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canUploadDoc;
 
     /**
      * Whether current user can upload video to the community.
      */
     @SerializedName("can_upload_video")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean canUploadVideo;
 
     /**
@@ -221,28 +221,28 @@ public class Community {
      * Whether the community has a master photo.
      */
     @SerializedName("has_photo")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean hasPhoto;
 
     /**
      * Whether the community is in faves of current user.
      */
     @SerializedName("is_favorite")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean favorite;
 
     /**
      * Whether the community is hidden from feed of current user.
      */
     @SerializedName("is_hidden_from_feed")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean hiddenFromFeed;
 
     /**
      * Whether sending messages from community to current user is blocked.
      */
     @SerializedName("is_messages_blocked")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean messagesBlocked;
 
     /**
@@ -321,14 +321,14 @@ public class Community {
      * Whether the community has a "fire" pictogram.
      */
     @SerializedName("trending")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean trending;
 
     /**
      * Whether the community is verified.
      */
     @SerializedName("verified")
-    @JsonAdapter(BoolIntAdapter.class)
+    @JsonAdapter(BoolIntDeserializer.class)
     private Boolean verified;
 
     /**
@@ -600,7 +600,7 @@ public class Community {
          * Whether the cover is enabled.
          */
         @SerializedName("enabled")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean enabled;
 
         /**
@@ -723,7 +723,7 @@ public class Community {
          * Whether market block is enabled.
          */
         @SerializedName("enabled")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean enabled;
 
         /**

@@ -6,6 +6,7 @@ import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
 import api.longpoll.bots.model.events.messages.MessageEvent;
+import api.longpoll.bots.model.events.messages.MessageNewEvent;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
 import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
@@ -33,13 +34,16 @@ public abstract class LongPollBot {
     public abstract int getGroupId();
 
 
-    public void onMessageNew(MessageEvent messageEvent) {
+    public void onMessageNew(MessageNewEvent messageNewEvent) {
     }
 
     public void onMessageReply(Message message) {
     }
 
     public void onMessageEdit(Message message) {
+    }
+
+    public void onMessageEvent(MessageEvent messageEvent) {
     }
 
     public void onPhotoNew(Photo photo) {

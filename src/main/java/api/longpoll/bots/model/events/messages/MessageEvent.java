@@ -1,39 +1,79 @@
 package api.longpoll.bots.model.events.messages;
 
 import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.objects.additional.ClientInfo;
-import api.longpoll.bots.model.objects.basic.Message;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Describes <b>message_new</b>, <b>message_reply</b> and <b>message_edit</b> event objects.
+ * Action with message. Used to work with Callback buttons.
  */
 public class MessageEvent implements EventObject {
     /**
-     * Message object.
+     * User ID.
      */
-    @SerializedName("messages")
-    private Message message;
+    @SerializedName("user_id")
+    private Integer userId;
 
     /**
-     * Information about features available to the user.
+     * Dialog ID.
      */
-    @SerializedName("client_info")
-    private ClientInfo clientInfo;
+    @SerializedName("peer_id")
+    private Integer peerId;
 
-    public Message getMessage() {
-        return message;
+    /**
+     * Random string.
+     */
+    @SerializedName("event_id")
+    private String eventId;
+
+    /**
+     * Additional info.
+     */
+    @SerializedName("payload")
+    private String payload;
+
+    /**
+     * Message ID.
+     */
+    @SerializedName("conversation_message_id")
+    private String conversationMessageId;
+
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setMessage(Message message) {
-        this.message = message;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public ClientInfo getClientInfo() {
-        return clientInfo;
+    public Integer getPeerId() {
+        return peerId;
     }
 
-    public void setClientInfo(ClientInfo clientInfo) {
-        this.clientInfo = clientInfo;
+    public void setPeerId(Integer peerId) {
+        this.peerId = peerId;
+    }
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
+    public String getPayload() {
+        return payload;
+    }
+
+    public void setPayload(String payload) {
+        this.payload = payload;
+    }
+
+    public String getConversationMessageId() {
+        return conversationMessageId;
+    }
+
+    public void setConversationMessageId(String conversationMessageId) {
+        this.conversationMessageId = conversationMessageId;
     }
 }

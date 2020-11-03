@@ -7,7 +7,9 @@ import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.wall.WallCreateCommentResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.wall.WallCreateCommentResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
  */
-public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
+public class WallCreateComment extends GetMethod<GenericResult<WallCreateCommentResponse>> {
     /**
      * User ID or community ID.
      */
@@ -76,8 +78,8 @@ public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<WallCreateCommentResult> getConverter() {
-        return GenericConverterFactory.get(WallCreateCommentResult.class);
+    protected JsonToPojoConverter<GenericResult<WallCreateCommentResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<WallCreateCommentResponse>>(){}.getType());
     }
 
     /**

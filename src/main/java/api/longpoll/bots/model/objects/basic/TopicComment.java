@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.objects.basic;
 
-import api.longpoll.bots.adapters.BoolIntAdapter;
+import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.JsonAdapter;
@@ -64,14 +64,14 @@ public class TopicComment implements EventObject {
          * <b>true</b>, if current user likes the comment.
          */
         @SerializedName("user_likes")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean userLikes;
 
         /**
          * <b>true</b>, if current user can like the comment.
          */
         @SerializedName("can_like")
-        @JsonAdapter(BoolIntAdapter.class)
+        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean canLike;
 
         public Integer getCount() {

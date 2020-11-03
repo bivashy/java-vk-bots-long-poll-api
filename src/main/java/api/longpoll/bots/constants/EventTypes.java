@@ -4,6 +4,7 @@ public class EventTypes {
     public static final String MESSAGE_NEW = "message_new";
     public static final String MESSAGE_REPLY = "message_reply";
     public static final String MESSAGE_EDIT = "message_edit";
+    public static final String MESSAGE_EVENT = "message_event";
 
     public static final String PHOTO_NEW = "photo_new";
     public static final String PHOTO_COMMENT_NEW = "photo_comment_new";

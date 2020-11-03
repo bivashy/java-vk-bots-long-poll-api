@@ -32,83 +32,35 @@ public class Event {
     @SerializedName("event_id")
     private String eventId;
 
-    /**
-     * Gets event type.
-     *
-     * @return event type.
-     */
     public String getType() {
         return type;
     }
 
-    /**
-     * Sets event type.
-     *
-     * @param type event type.
-     * @return this Event.
-     */
-    public Event setType(String type) {
+    public void setType(String type) {
         this.type = type;
-        return this;
     }
 
-    /**
-     * Gets group ID.
-     *
-     * @return group ID.
-     */
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    /**
-     * Sets group ID.
-     *
-     * @param groupId group ID.
-     * @return this Event.
-     */
-    public Event setGroupId(Integer groupId) {
-        this.groupId = groupId;
-        return this;
-    }
-
-    /**
-     * Gets event ID.
-     *
-     * @return event ID.
-     */
-    public String getEventId() {
-        return eventId;
-    }
-
-    /**
-     * Sets event ID.
-     *
-     * @param eventId event ID.
-     * @return this Event.
-     */
-    public Event setEventId(String eventId) {
-        this.eventId = eventId;
-        return this;
-    }
-
-    /**
-     * Gets event object.
-     *
-     * @return event object.
-     */
     public EventObject getObject() {
         return object;
     }
 
-    /**
-     * Sets event object.
-     *
-     * @param object event object.
-     * @return this Event.
-     */
-    public Event setObject(EventObject object) {
+    public void setObject(EventObject object) {
         this.object = object;
-        return this;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
     }
 }

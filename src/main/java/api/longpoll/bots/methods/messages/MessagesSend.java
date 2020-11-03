@@ -12,14 +12,16 @@ import api.longpoll.bots.methods.other.UploadDoc;
 import api.longpoll.bots.methods.other.UploadPhoto;
 import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
 import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
+import api.longpoll.bots.model.objects.additional.Keyboard;
+import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
-import api.longpoll.bots.model.response.messages.MessagesSendResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
 import api.longpoll.bots.model.response.other.UploadDocResult;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
-import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
-import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
+import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResponse;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
 import org.jsoup.Connection;
 
 import java.io.File;
@@ -32,7 +34,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
-public class MessagesSend extends GetMethod<MessagesSendResult> {
+public class MessagesSend extends GetMethod<GenericResult<Object>> {
     /**
      * User ID.
      */
@@ -99,6 +101,16 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
     private Integer stickerId;
 
     /**
+     * Keyboard object.
+     */
+    private Keyboard keyboard;
+
+    /**
+     * Template object.
+     */
+    private Template template;
+
+    /**
      * <b>true</b> - links will not attach snippet.
      */
     private Boolean dontParseLinks;
@@ -124,7 +136,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<MessagesSendResult> getConverter() {
+    protected JsonToPojoConverter<GenericResult<Object>> getConverter() {
         return new MessagesSendResultConverterImpl();
     }
 
@@ -148,7 +160,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
                 keyVal("forward_messages", forwardMessages),
                 keyVal("sticker_id", stickerId),
                 keyVal("dont_parse_links", dontParseLinks, true),
-                keyVal("disable_mentions", disableMentions, true)
+                keyVal("disable_mentions", disableMentions, true),
+                keyVal("keyboard", keyboard),
+                keyVal("template", template)
         );
     }
 
@@ -169,7 +183,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
     }
 
     public MessagesSend attachPhoto(File photo) throws ApiHttpException {
-        PhotosGetMessagesUploadServerResult.Response uploadServer = new PhotosGetMessagesUploadServer(bot)
+        PhotosGetMessagesUploadServerResponse uploadServer = new PhotosGetMessagesUploadServer(bot)
                 .setPeerId(peerId)
                 .execute()
                 .getResponse();
@@ -177,7 +191,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
                 .setUploadUrl(uploadServer.getUploadUrl())
                 .setPhoto(photo)
                 .execute();
-        PhotosSaveMessagesPhotoResult.Response savePhoto = new PhotosSaveMessagesPhoto(bot)
+        PhotosSaveMessagesPhotoResponse savePhoto = new PhotosSaveMessagesPhoto(bot)
                 .setHash(uploadPhoto.getHash())
                 .setPhoto(uploadPhoto.getPhoto())
                 .setServer(uploadPhoto.getServer())
@@ -193,7 +207,7 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
     }
 
     public MessagesSend attachDoc(File doc) throws ApiHttpException {
-        DocsGetUploadServerResult.Response uploadServer = new DocsGetMessagesUploadServer(bot)
+        DocsGetUploadServerResponse uploadServer = new DocsGetMessagesUploadServer(bot)
                 .setType("doc")
                 .setPeerId(peerId)
                 .execute()
@@ -343,6 +357,24 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
 
     public MessagesSend setDisableMentions(Boolean disableMentions) {
         this.disableMentions = disableMentions;
+        return this;
+    }
+
+    public Keyboard getKeyboard() {
+        return keyboard;
+    }
+
+    public MessagesSend setKeyboard(Keyboard keyboard) {
+        this.keyboard = keyboard;
+        return this;
+    }
+
+    public Template getTemplate() {
+        return template;
+    }
+
+    public MessagesSend setTemplate(Template template) {
+        this.template = template;
         return this;
     }
 }

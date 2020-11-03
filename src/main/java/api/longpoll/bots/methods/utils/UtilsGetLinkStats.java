@@ -5,7 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.utils.UtilsGetLinkStatsResult;
+import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.utils.UtilsGetLinkStatsResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
  */
-public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
+public class UtilsGetLinkStats extends GetMethod<GenericResult<UtilsGetLinkStatsResponse>> {
     /**
      * Part of the link after "vk.cc/".
      */
@@ -62,8 +64,8 @@ public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<UtilsGetLinkStatsResult> getConverter() {
-        return GenericConverterFactory.get(UtilsGetLinkStatsResult.class);
+    protected JsonToPojoConverter<GenericResult<UtilsGetLinkStatsResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<UtilsGetLinkStatsResponse>>(){}.getType());
     }
 
     /**
