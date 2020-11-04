@@ -46,7 +46,7 @@ public class MessagesUtil {
                 .setUploadUrl(uploadServer.getUploadUrl())
                 .setDoc(doc)
                 .execute();
-        return  (Doc) new DocsSave(bot)
+        return (Doc) new DocsSave(bot)
                 .setFile(uploadDoc.getFile())
                 .execute()
                 .getResponse()

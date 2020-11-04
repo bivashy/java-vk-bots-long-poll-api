@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class GetMethod<Response> extends Method<Response> {
     private static final String ACCESS_TOKEN = "access_token";
     private static final String VERSION = "v";
-    private static final String VERSION_NUMBER = "5.110";
+    private static final String VERSION_NUMBER = "5.111";
 
     /**
      * Long Poll bot.
