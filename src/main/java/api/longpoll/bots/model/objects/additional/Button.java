@@ -23,6 +23,18 @@ public class Button {
     @SerializedName("action")
     private Action action;
 
+    public Button() {
+    }
+
+    public Button(Action action) {
+        this.action = action;
+    }
+
+    public Button(ButtonColor color, Action action) {
+        this.color = color;
+        this.action = action;
+    }
+
     /**
      * Describes possible button colors.
      * {@link ButtonColor#PRIMARY}
@@ -121,6 +133,16 @@ public class Button {
          */
         @SerializedName("label")
         private String label;
+
+        public TextAction(String label) {
+            this();
+            this.label = label;
+        }
+
+        public TextAction(String label, String payload) {
+            this(label);
+            setPayload(payload);
+        }
 
         public TextAction() {
             super(TYPE);
@@ -254,6 +276,11 @@ public class Button {
         @SerializedName("label")
         private String label;
 
+        public CallbackAction(String label) {
+            this();
+            this.label = label;
+        }
+
         public CallbackAction() {
             super(TYPE);
         }
@@ -311,6 +338,11 @@ public class Button {
         @SerializedName("text")
         private String text;
 
+        public ShowSnackbar(String text) {
+            this();
+            this.text = text;
+        }
+
         public ShowSnackbar() {
             super(TYPE);
         }
@@ -339,6 +371,11 @@ public class Button {
          */
         @SerializedName("link")
         private String link;
+
+        public OpenLink(String link) {
+            this();
+            this.link = link;
+        }
 
         public OpenLink() {
             super(TYPE);

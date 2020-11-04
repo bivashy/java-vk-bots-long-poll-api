@@ -9,6 +9,7 @@ import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.wall.WallCreateCommentResponse;
+import api.longpoll.bots.utils.AttachmentsUtil;
 import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
@@ -90,24 +91,20 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
         return null;
     }
 
-    private String attachment(String type, Integer ownerId, Integer mediaId, String accessKey) {
-        return type + ownerId + "_" + mediaId + (accessKey == null ? "" : "_" + accessKey);
-    }
-
-    private WallCreateComment attach(String type, Integer ownerId, Integer mediaId, String accessKey) {
+    private WallCreateComment attach(String attachment) {
         if (attachments == null) {
             attachments = new ArrayList<>();
         }
-        attachments.add(attachment(type, ownerId, mediaId, accessKey));
+        attachments.add(attachment);
         return this;
     }
 
     public WallCreateComment attachPhoto(Photo photo) {
-        return attach("photo", photo.getOwnerId(), photo.getId(), photo.getAccessKey());
+        return attach(AttachmentsUtil.toAttachment(photo));
     }
 
     public WallCreateComment attachDoc(Doc doc) {
-        return attach("doc", doc.getOwnerId(), doc.getId(), doc.getAccessKey());
+        return attach(AttachmentsUtil.toAttachment(doc));
     }
 
     public Integer getOwnerId() {
