@@ -6,7 +6,7 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.stories.StoriesGetPhotoUploadServerResponse;
+import api.longpoll.bots.model.response.stories.StoriesGetUploadServerResponse;
 import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
@@ -18,7 +18,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.getPhotoUploadServer">https://vk.com/dev/stories.getPhotoUploadServer</a>
  */
-public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<StoriesGetPhotoUploadServerResponse>> {
+public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<StoriesGetUploadServerResponse>> {
     /**
      * To add the story to friend's feed.
      */
@@ -86,8 +86,8 @@ public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<Stories
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<StoriesGetPhotoUploadServerResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<StoriesGetPhotoUploadServerResponse>>(){}.getType());
+    protected JsonToPojoConverter<GenericResult<StoriesGetUploadServerResponse>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<StoriesGetUploadServerResponse>>(){}.getType());
     }
 
     @Override

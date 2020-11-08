@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Response to <b>stories.getPhotoUploadServer</b>
+ * Response to <b>stories.getPhotoUploadServer</b> and <b>stories.getVideoUploadServer</b>
  */
-public class StoriesGetPhotoUploadServerResponse {
+public class StoriesGetUploadServerResponse {
     /**
      * Upload URL.
      */

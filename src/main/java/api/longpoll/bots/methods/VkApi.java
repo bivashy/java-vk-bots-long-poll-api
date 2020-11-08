@@ -297,6 +297,14 @@ public class VkApi {
         return properties.getProperty("stories.getStats");
     }
 
+    public String storiesGetVideoUploadServer() {
+        return properties.getProperty("stories.getVideoUploadServer");
+    }
+
+    public String storiesGetViewers() {
+        return properties.getProperty("stories.getViewers");
+    }
+
     public String usersGet() {
         return properties.getProperty("users.get");
     }
