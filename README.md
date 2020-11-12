@@ -35,7 +35,7 @@ This library uses the next third-party dependecies:
 ```java
 public class MyBot extends LongPollBot {
     @Override
-    public void onMessageNew(MessageEvent messageNewEvent) {
+    public void onMessageNew(MessageNewEvent messageNewEvent) {
         Message message = messageNewEvent.getMessage();
         if (message.hasText()) {
             String response = "Hello! Received your message: " + message.getText();
