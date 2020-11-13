@@ -1,0 +1,15 @@
+{
+  "ts": "666",
+  "updates": [
+    {
+      "type": "message_typing_state",
+      "object": {
+        "state": "typing",
+        "from_id": 789,
+        "to_id": -456
+      },
+      "group_id": 123,
+      "event_id": "abc"
+    }
+  ]
+}

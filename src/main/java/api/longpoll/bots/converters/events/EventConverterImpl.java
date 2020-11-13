@@ -17,6 +17,7 @@ import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
 import api.longpoll.bots.model.events.messages.MessageEvent;
+import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
 import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
@@ -34,11 +35,14 @@ import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.objects.media.Video;
 import com.google.gson.FieldAttributes;
 import com.google.gson.JsonObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class EventConverterImpl extends JsonToPojoConverter<Event> {
+    private static final Logger log = LoggerFactory.getLogger(EventConverterImpl.class);
     private static final String OBJECT_FIELD = "object";
 
     private static final Map<String, JsonToPojoConverter<? extends EventObject>> CONVERTERS = new HashMap<>();
@@ -69,6 +73,7 @@ public class EventConverterImpl extends JsonToPojoConverter<Event> {
         CONVERTERS.put(EventTypes.MESSAGE_EVENT, GenericConverterFactory.get(MessageEvent.class));
         CONVERTERS.put(EventTypes.MESSAGE_NEW, new MessageEventConverterImpl());
         CONVERTERS.put(EventTypes.MESSAGE_REPLY, new MessageConverterImpl());
+        CONVERTERS.put(EventTypes.MESSAGE_TYPING_STATE, GenericConverterFactory.get(MessageTypingStateEvent.class));
 
         CONVERTERS.put(EventTypes.LIKE_ADD, GenericConverterFactory.get(LikeEvent.class));
         CONVERTERS.put(EventTypes.LIKE_REMOVE, GenericConverterFactory.get(LikeEvent.class));
@@ -107,10 +112,11 @@ public class EventConverterImpl extends JsonToPojoConverter<Event> {
 
         if (CONVERTERS.containsKey(type)) {
             event.setObject(CONVERTERS.get(type).convert(jsonUpdateObject));
-            return event;
+        } else {
+            log.warn("There is no converter for event type: {}", type);
         }
 
-        return null;
+        return event;
     }
 
     @Override

@@ -11,6 +11,7 @@ import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
 import api.longpoll.bots.model.events.messages.MessageEvent;
 import api.longpoll.bots.model.events.messages.MessageNewEvent;
+import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
 import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
@@ -227,6 +228,10 @@ public class BotsLongPoll implements Runnable {
 
                 case EventTypes.APP_PAYLOAD:
                     bot.onAppPayload((AppPayload) update.getObject());
+                    break;
+
+                case EventTypes.MESSAGE_TYPING_STATE:
+                    bot.onMessageTypingState((MessageTypingStateEvent) update.getObject());
                     break;
             }
         });
