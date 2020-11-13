@@ -5,8 +5,9 @@ import api.longpoll.bots.converters.GenericConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.model.objects.basic.Conversation;
 import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesSearchConversationsResponse;
+import api.longpoll.bots.model.response.ExtendedVkList;
 import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
@@ -18,7 +19,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.searchConversations">https://vk.com/dev/messages.searchConversations</a>
  */
-public class MessagesSearchConversations extends GetMethod<GenericResult<MessagesSearchConversationsResponse>> {
+public class MessagesSearchConversations extends GetMethod<GenericResult<ExtendedVkList<Conversation>>> {
     /**
      * Search query string.
      */
@@ -60,8 +61,8 @@ public class MessagesSearchConversations extends GetMethod<GenericResult<Message
      * {@inheritDoc}
      */
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesSearchConversationsResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<MessagesSearchConversationsResponse>>(){}.getType());
+    protected JsonToPojoConverter<GenericResult<ExtendedVkList<Conversation>>> getConverter() {
+        return GenericConverterFactory.get(new TypeToken<GenericResult<ExtendedVkList<Conversation>>>(){}.getType());
     }
 
     /**

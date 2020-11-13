@@ -16,6 +16,8 @@ import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
+import api.longpoll.bots.model.events.messages.MessageAllowEvent;
+import api.longpoll.bots.model.events.messages.MessageDenyEvent;
 import api.longpoll.bots.model.events.messages.MessageEvent;
 import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
 import api.longpoll.bots.model.events.other.AppPayload;
@@ -73,6 +75,8 @@ public class EventConverterImpl extends JsonToPojoConverter<Event> {
         CONVERTERS.put(EventTypes.MESSAGE_EVENT, GenericConverterFactory.get(MessageEvent.class));
         CONVERTERS.put(EventTypes.MESSAGE_NEW, new MessageEventConverterImpl());
         CONVERTERS.put(EventTypes.MESSAGE_REPLY, new MessageConverterImpl());
+        CONVERTERS.put(EventTypes.MESSAGE_ALLOW, GenericConverterFactory.get(MessageAllowEvent.class));
+        CONVERTERS.put(EventTypes.MESSAGE_DENY, GenericConverterFactory.get(MessageDenyEvent.class));
         CONVERTERS.put(EventTypes.MESSAGE_TYPING_STATE, GenericConverterFactory.get(MessageTypingStateEvent.class));
 
         CONVERTERS.put(EventTypes.LIKE_ADD, GenericConverterFactory.get(LikeEvent.class));

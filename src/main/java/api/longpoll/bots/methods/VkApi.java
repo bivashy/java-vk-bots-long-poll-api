@@ -273,6 +273,50 @@ public class VkApi {
         return properties.getProperty("photos.saveOwnerCoverPhoto");
     }
 
+    public String storiesDelete() {
+        return properties.getProperty("stories.delete");
+    }
+
+    public String storiesGet() {
+        return properties.getProperty("stories.get");
+    }
+
+    public String storiesGetById() {
+        return properties.getProperty("stories.getById");
+    }
+
+    public String storiesGetPhotoUploadServer() {
+        return properties.getProperty("stories.getPhotoUploadServer");
+    }
+
+    public String storiesGetReplies() {
+        return properties.getProperty("stories.getReplies");
+    }
+
+    public String storiesGetStats() {
+        return properties.getProperty("stories.getStats");
+    }
+
+    public String storiesGetVideoUploadServer() {
+        return properties.getProperty("stories.getVideoUploadServer");
+    }
+
+    public String storiesGetViewers() {
+        return properties.getProperty("stories.getViewers");
+    }
+
+    public String storiesHideAllReplies() {
+        return properties.getProperty("stories.hideAllReplies");
+    }
+
+    public String storiesHideReply() {
+        return properties.getProperty("stories.hideReply");
+    }
+
+    public String storiesSave() {
+        return properties.getProperty("stories.save");
+    }
+
     public String usersGet() {
         return properties.getProperty("users.get");
     }

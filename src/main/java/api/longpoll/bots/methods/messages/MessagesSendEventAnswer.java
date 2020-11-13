@@ -42,16 +42,25 @@ public class MessagesSendEventAnswer extends GetMethod<GenericResult<Integer>> {
         super(bot);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().messagesSendMessageEventAnswer();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
         return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(

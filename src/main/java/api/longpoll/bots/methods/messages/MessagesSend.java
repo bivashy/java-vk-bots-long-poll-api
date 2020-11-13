@@ -6,22 +6,13 @@ import api.longpoll.bots.converters.response.messages.MessagesSendResultConverte
 import api.longpoll.bots.exceptions.ApiHttpException;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.methods.docs.DocsGetMessagesUploadServer;
-import api.longpoll.bots.methods.docs.DocsSave;
-import api.longpoll.bots.methods.other.UploadDoc;
-import api.longpoll.bots.methods.other.UploadPhoto;
-import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
-import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
-import api.longpoll.bots.model.response.other.UploadDocResult;
-import api.longpoll.bots.model.response.other.UploadPhotoResult;
-import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResponse;
-import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
+import api.longpoll.bots.utils.AttachmentsUtil;
+import api.longpoll.bots.utils.MessagesUtil;
 import org.jsoup.Connection;
 
 import java.io.File;
@@ -166,63 +157,28 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         );
     }
 
-    private String attachment(String type, Integer ownerId, Integer mediaId, String accessKey) {
-        return type + ownerId + "_" + mediaId + (accessKey == null ? "" : "_" + accessKey);
-    }
-
-    private MessagesSend attach(String type, Integer ownerId, Integer mediaId, String accessKey) {
+    private MessagesSend attach(String attachment) {
         if (attachments == null) {
             attachments = new ArrayList<>();
         }
-        attachments.add(attachment(type, ownerId, mediaId, accessKey));
+        attachments.add(attachment);
         return this;
     }
 
     public MessagesSend attachPhoto(Photo photo) {
-        return attach("photo", photo.getOwnerId(), photo.getId(), photo.getAccessKey());
+        return attach(AttachmentsUtil.toAttachment(photo));
     }
 
     public MessagesSend attachPhoto(File photo) throws ApiHttpException {
-        PhotosGetMessagesUploadServerResponse uploadServer = new PhotosGetMessagesUploadServer(bot)
-                .setPeerId(peerId)
-                .execute()
-                .getResponse();
-        UploadPhotoResult uploadPhoto = new UploadPhoto()
-                .setUploadUrl(uploadServer.getUploadUrl())
-                .setPhoto(photo)
-                .execute();
-        PhotosSaveMessagesPhotoResponse savePhoto = new PhotosSaveMessagesPhoto(bot)
-                .setHash(uploadPhoto.getHash())
-                .setPhoto(uploadPhoto.getPhoto())
-                .setServer(uploadPhoto.getServer())
-                .execute()
-                .getResponse()
-                .get(0);
-
-        return attach("photo", savePhoto.getOwnerId(), savePhoto.getId(), savePhoto.getAccessKey());
+        return attach(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(bot, getPeerId(), photo)));
     }
 
     public MessagesSend attachDoc(Doc doc) {
-        return attach("doc", doc.getOwnerId(), doc.getId(), doc.getAccessKey());
+        return attach(AttachmentsUtil.toAttachment(doc));
     }
 
     public MessagesSend attachDoc(File doc) throws ApiHttpException {
-        DocsGetUploadServerResponse uploadServer = new DocsGetMessagesUploadServer(bot)
-                .setType("doc")
-                .setPeerId(peerId)
-                .execute()
-                .getResponse();
-        UploadDocResult uploadDoc = new UploadDoc()
-                .setUploadUrl(uploadServer.getUploadUrl())
-                .setDoc(doc)
-                .execute();
-        Doc uploadedDoc = (Doc) new DocsSave(bot)
-                .setFile(uploadDoc.getFile())
-                .execute()
-                .getResponse()
-                .getAttachable();
-
-        return attach("doc", uploadedDoc.getOwnerId(), uploadedDoc.getId(), uploadedDoc.getAccessKey());
+        return attachDoc(MessagesUtil.uploadDoc(bot, peerId, doc));
     }
 
     public Integer getUserId() {

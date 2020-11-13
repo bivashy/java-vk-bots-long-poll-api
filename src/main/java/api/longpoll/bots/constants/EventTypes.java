@@ -1,11 +1,12 @@
 package api.longpoll.bots.constants;
 
-// TODO: 13.11.2020 add message_allow and message_deny
 public class EventTypes {
     public static final String MESSAGE_NEW = "message_new";
     public static final String MESSAGE_REPLY = "message_reply";
     public static final String MESSAGE_EDIT = "message_edit";
     public static final String MESSAGE_EVENT = "message_event";
+    public static final String MESSAGE_ALLOW = "message_allow";
+    public static final String MESSAGE_DENY = "message_deny";
     public static final String MESSAGE_TYPING_STATE = "message_typing_state";
 
     public static final String PHOTO_NEW = "photo_new";
