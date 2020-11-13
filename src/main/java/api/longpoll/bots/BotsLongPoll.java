@@ -9,6 +9,8 @@ import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
+import api.longpoll.bots.model.events.messages.MessageAllowEvent;
+import api.longpoll.bots.model.events.messages.MessageDenyEvent;
 import api.longpoll.bots.model.events.messages.MessageEvent;
 import api.longpoll.bots.model.events.messages.MessageNewEvent;
 import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
@@ -232,6 +234,14 @@ public class BotsLongPoll implements Runnable {
 
                 case EventTypes.MESSAGE_TYPING_STATE:
                     bot.onMessageTypingState((MessageTypingStateEvent) update.getObject());
+                    break;
+
+                case EventTypes.MESSAGE_ALLOW:
+                    bot.onMessageAllow((MessageAllowEvent) update.getObject());
+                    break;
+
+                case EventTypes.MESSAGE_DENY:
+                    bot.onMessageDeny((MessageDenyEvent) update.getObject());
                     break;
             }
         });

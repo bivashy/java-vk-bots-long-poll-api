@@ -305,6 +305,18 @@ public class VkApi {
         return properties.getProperty("stories.getViewers");
     }
 
+    public String storiesHideAllReplies() {
+        return properties.getProperty("stories.hideAllReplies");
+    }
+
+    public String storiesHideReply() {
+        return properties.getProperty("stories.hideReply");
+    }
+
+    public String storiesSave() {
+        return properties.getProperty("stories.save");
+    }
+
     public String usersGet() {
         return properties.getProperty("users.get");
     }
