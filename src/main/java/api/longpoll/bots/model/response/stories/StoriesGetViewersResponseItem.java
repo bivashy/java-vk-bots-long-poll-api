@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Response to <b>stories.getViewers</b>.
  */
-public abstract class StoriesGetViewersResponseItem {
+public class StoriesGetViewersResponseItem {
     /**
      * Whether the story is liked.
      */
