@@ -49,7 +49,7 @@ public class BoardDeleteComment extends GetMethod<GenericResult<Integer>> {
      */
     @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
+        return GenericConverterFactory.get(GenericResult.class, Integer.class);
     }
 
     /**
