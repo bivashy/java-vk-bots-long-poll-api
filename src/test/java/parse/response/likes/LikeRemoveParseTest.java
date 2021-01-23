@@ -1,7 +1,8 @@
 package parse.response.likes;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
@@ -20,7 +21,7 @@ public class LikeRemoveParseTest extends AbstractParseTest {
     @Test
     public void test1_likeRemove() throws IOException {
         JsonObject jsonObject = readJson("json/response/like_remove/like_remove_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
         Assert.assertNotNull(getEventsResult);
         Assert.assertEquals(Integer.valueOf(2630), getEventsResult.getTs());
 
@@ -30,7 +31,7 @@ public class LikeRemoveParseTest extends AbstractParseTest {
 
         Event event = events.get(0);
         Assert.assertNotNull(event);
-        Assert.assertEquals("like_remove", event.getType());
+        Assert.assertEquals(EventType.LIKE_REMOVE, event.getType());
         Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
         Assert.assertEquals("aaa", event.getEventId());
 

@@ -1,17 +1,17 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.exceptions.ApiHttpException;
+import api.longpoll.bots.exceptions.BotsLongPollException;
+import api.longpoll.bots.exceptions.BotsLongPollHttpException;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.utils.AttachmentsUtil;
-import api.longpoll.bots.utils.MessagesUtil;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.utils.methods.AttachmentsUtil;
+import api.longpoll.bots.utils.methods.MessagesUtil;
 import org.jsoup.Connection;
 
 import java.io.File;
@@ -84,25 +84,16 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().messagesEdit();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, Integer.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
@@ -132,7 +123,7 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         return attach(AttachmentsUtil.toAttachment(photo));
     }
 
-    public MessagesEdit attachPhoto(File photo) throws ApiHttpException {
+    public MessagesEdit attachPhoto(File photo) throws BotsLongPollHttpException, BotsLongPollException {
         return attach(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(bot, getPeerId(), photo)));
     }
 
@@ -140,7 +131,7 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         return attach(AttachmentsUtil.toAttachment(doc));
     }
 
-    public MessagesEdit attachDoc(File doc) throws ApiHttpException {
+    public MessagesEdit attachDoc(File doc) throws BotsLongPollHttpException, BotsLongPollException {
         return attachDoc(MessagesUtil.uploadDoc(bot, peerId, doc));
     }
 

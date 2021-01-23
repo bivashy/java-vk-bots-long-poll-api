@@ -1,8 +1,9 @@
 package parse.response.video;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import api.longpoll.bots.model.events.video.VideoCommentEvent;
@@ -21,7 +22,7 @@ public class VideoCommentRestoreParseTest extends AbstractParseTest {
     @Test
     public void test1_videoCommentRestore() throws IOException {
         JsonObject jsonObject = readJson("json/response/video_comment_restore/video_comment_restore_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
         Assert.assertNotNull(getEventsResult);
         Assert.assertEquals(Integer.valueOf(2625), getEventsResult.getTs());
 
@@ -31,7 +32,7 @@ public class VideoCommentRestoreParseTest extends AbstractParseTest {
 
         Event event = events.get(0);
         Assert.assertNotNull(event);
-        Assert.assertEquals("video_comment_restore", event.getType());
+        Assert.assertEquals(EventType.VIDEO_COMMENT_RESTORE, event.getType());
         Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
         Assert.assertEquals("aaa", event.getEventId());
 

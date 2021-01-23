@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.stories;
 
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.stories.StoriesGetViewersResultConverterImpl;
+import api.longpoll.bots.converters.response.stories.StoriesGetViewersResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.VkList;
@@ -18,6 +18,8 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
 public class StoriesGetViewers extends GetMethod<GenericResult<VkList<Object>>> {
+    private static final JsonToPojoConverter<GenericResult<VkList<Object>>> STORIES_GET_VIEWERS_RESULT_CONVERTER = new StoriesGetViewersResultConverter();
+
     /**
      * Message IDs.
      */
@@ -54,7 +56,7 @@ public class StoriesGetViewers extends GetMethod<GenericResult<VkList<Object>>> 
 
     @Override
     protected JsonToPojoConverter<GenericResult<VkList<Object>>> getConverter() {
-        return new StoriesGetViewersResultConverterImpl();
+        return STORIES_GET_VIEWERS_RESULT_CONVERTER;
     }
 
     @Override

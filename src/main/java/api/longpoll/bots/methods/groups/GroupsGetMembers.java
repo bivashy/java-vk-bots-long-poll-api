@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.groups.GroupsGetMembersResultConverterImpl;
+import api.longpoll.bots.converters.response.groups.GroupsGetMembersResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.VkList;
@@ -19,6 +19,8 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/groups.getMembers">https://vk.com/dev/groups.getMembers</a>
  */
 public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMembersResponseItem>>> {
+    private static final JsonToPojoConverter<GenericResult<VkList<GroupsGetMembersResponseItem>>> GROUPS_GET_MEMBERS_RESPONSE_CONVERTER = new GroupsGetMembersResultConverter();
+
     /**
      * ID or screen name of the community.
      */
@@ -53,25 +55,16 @@ public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMe
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().groupsGetMembers();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<VkList<GroupsGetMembersResponseItem>>> getConverter() {
-        return new GroupsGetMembersResultConverterImpl();
+        return GROUPS_GET_MEMBERS_RESPONSE_CONVERTER;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(

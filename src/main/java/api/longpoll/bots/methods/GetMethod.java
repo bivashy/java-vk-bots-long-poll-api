@@ -24,9 +24,6 @@ public abstract class GetMethod<Response> extends Method<Response> {
         this.bot = bot;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected List<Connection.KeyVal> getData() {
         List<Connection.KeyVal> requestParams = super.getData();
@@ -37,9 +34,6 @@ public abstract class GetMethod<Response> extends Method<Response> {
         return requestParams;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Connection.Method getMethod() {
         return Connection.Method.GET;

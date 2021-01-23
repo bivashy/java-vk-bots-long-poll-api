@@ -10,18 +10,18 @@ public class Attachment {
      * Attachment type.
      */
     @SerializedName("type")
-    private String type;
+    private AttachmentType type;
 
     /**
      * Attachment object.
      */
     private Attachable attachable;
 
-    public String getType() {
+    public AttachmentType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(AttachmentType type) {
         this.type = type;
     }
 

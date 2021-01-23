@@ -1,8 +1,9 @@
 package parse.response.wall;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import api.longpoll.bots.model.events.wall.comments.WallReplyEvent;
@@ -21,7 +22,7 @@ public class WallCommentEditParseTest extends AbstractParseTest {
     @Test
     public void test1_wallReplyEdit() throws IOException {
         JsonObject jsonObject = readJson("json/response/wall_reply_edit/wall_reply_edit_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
         Assert.assertNotNull(getEventsResult);
         Assert.assertEquals(Integer.valueOf(2632), getEventsResult.getTs());
 
@@ -31,7 +32,7 @@ public class WallCommentEditParseTest extends AbstractParseTest {
 
         Event event = events.get(0);
         Assert.assertNotNull(event);
-        Assert.assertEquals("wall_reply_edit", event.getType());
+        Assert.assertEquals(EventType.WALL_REPLY_EDIT, event.getType());
         Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
         Assert.assertEquals("aaa", event.getEventId());
 

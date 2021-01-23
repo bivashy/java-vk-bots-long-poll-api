@@ -1,14 +1,13 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.groups.GroupsAddressResponse;
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -101,7 +100,7 @@ public class GroupsAddAddress extends GetMethod<GenericResult<GroupsAddressRespo
      */
     @Override
     protected JsonToPojoConverter<GenericResult<GroupsAddressResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<GroupsAddressResponse>>(){}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, GroupsAddressResponse.class);
     }
 
     /**

@@ -1,7 +1,8 @@
 package parse.response.photo;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.photos.PhotoCommentDeleteEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
@@ -20,7 +21,7 @@ public class PhotoCommentDeleteParseTest extends AbstractParseTest {
     @Test
     public void test1_messageEdit() throws IOException {
         JsonObject jsonObject = readJson("json/response/photo_comment_delete/photo_comment_delete_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
         Assert.assertNotNull(getEventsResult);
         Assert.assertEquals(Integer.valueOf(2615), getEventsResult.getTs());
 
@@ -30,7 +31,7 @@ public class PhotoCommentDeleteParseTest extends AbstractParseTest {
 
         Event event = events.get(0);
         Assert.assertNotNull(event);
-        Assert.assertEquals("photo_comment_delete", event.getType());
+        Assert.assertEquals(EventType.PHOTO_COMMENT_DELETE, event.getType());
         Assert.assertEquals(Integer.valueOf(666), event.getGroupId());
         Assert.assertEquals("aaa", event.getEventId());
 

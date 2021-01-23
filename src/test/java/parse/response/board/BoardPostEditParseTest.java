@@ -1,6 +1,7 @@
 package parse.response.board;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
+import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
@@ -20,7 +21,7 @@ public class BoardPostEditParseTest extends AbstractParseTest {
     @Test
     public void test1_boardReplyNew() throws IOException {
         JsonObject jsonObject = readJson("json/response/board_post_edit/board_post_edit_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
         Assert.assertNotNull(getEventsResult);
         Assert.assertEquals(Integer.valueOf(2636), getEventsResult.getTs());
 
@@ -30,7 +31,7 @@ public class BoardPostEditParseTest extends AbstractParseTest {
 
         Event event = events.get(0);
         Assert.assertNotNull(event);
-        Assert.assertEquals("board_post_edit", event.getType());
+        Assert.assertEquals(EventType.BOARD_POST_EDIT, event.getType());
         Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
         Assert.assertEquals("aaa", event.getEventId());
 

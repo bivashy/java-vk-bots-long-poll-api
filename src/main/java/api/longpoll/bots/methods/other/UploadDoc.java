@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.other;
 
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.PostMethod;
 import api.longpoll.bots.model.response.other.UploadDocResult;
@@ -18,33 +18,21 @@ public class UploadDoc extends PostMethod<UploadDocResult> {
      */
     private String uploadUrl;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return uploadUrl;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<UploadDocResult> getConverter() {
-        return GenericConverterFactory.get(UploadDocResult.class);
+        return CachedConverterFactory.getConverter(UploadDocResult.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getType() {
         return "file";
