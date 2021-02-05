@@ -1,6 +1,7 @@
 package parse.response.photo;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
+import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.objects.additional.PhotoSize;
 import api.longpoll.bots.model.events.Event;
@@ -21,7 +22,7 @@ public class PhotoNewParseTest extends AbstractParseTest {
     @Test
     public void test1_messageEdit() throws IOException {
         JsonObject jsonObject = readJson("json/response/photo_new/photo_new_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
         Assert.assertNotNull(getEventsResult);
         Assert.assertEquals(Integer.valueOf(2612), getEventsResult.getTs());
 
@@ -31,7 +32,7 @@ public class PhotoNewParseTest extends AbstractParseTest {
 
         Event event = events.get(0);
         Assert.assertNotNull(event);
-        Assert.assertEquals("photo_new", event.getType());
+        Assert.assertEquals(EventType.PHOTO_NEW, event.getType());
         Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
         Assert.assertEquals("aaa", event.getEventId());
 

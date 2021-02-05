@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.other;
 
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.PostMethod;
 import api.longpoll.bots.model.response.other.UploadStoryResult;
@@ -30,7 +30,7 @@ public class UploadStory extends PostMethod<UploadStoryResult> {
 
     @Override
     protected JsonToPojoConverter<UploadStoryResult> getConverter() {
-        return GenericConverterFactory.get(UploadStoryResult.class);
+        return CachedConverterFactory.getConverter(UploadStoryResult.class);
     }
 
     @Override

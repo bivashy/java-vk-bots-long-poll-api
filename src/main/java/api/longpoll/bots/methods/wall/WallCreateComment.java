@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.wall;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
@@ -9,8 +9,7 @@ import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.wall.WallCreateCommentResponse;
-import api.longpoll.bots.utils.AttachmentsUtil;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.utils.methods.AttachmentsUtil;
 import org.jsoup.Connection;
 
 import java.util.ArrayList;
@@ -67,25 +66,16 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().wallCreateComment();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<WallCreateCommentResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<WallCreateCommentResponse>>(){}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, WallCreateCommentResponse.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return null;

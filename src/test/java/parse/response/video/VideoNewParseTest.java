@@ -1,8 +1,9 @@
 package parse.response.video;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import api.longpoll.bots.model.objects.media.Video;
 import com.google.gson.JsonObject;
@@ -20,7 +21,7 @@ public class VideoNewParseTest extends AbstractParseTest {
     @Test
     public void test1_videoNew() throws IOException {
         JsonObject jsonObject = readJson("json/response/video_new/video_new_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
         Assert.assertNotNull(getEventsResult);
         Assert.assertEquals(Integer.valueOf(2617), getEventsResult.getTs());
 
@@ -30,7 +31,7 @@ public class VideoNewParseTest extends AbstractParseTest {
 
         Event event = events.get(0);
         Assert.assertNotNull(event);
-        Assert.assertEquals("video_new", event.getType());
+        Assert.assertEquals(EventType.VIDEO_NEW, event.getType());
         Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
         Assert.assertEquals("aaa", event.getEventId());
 

@@ -12,7 +12,7 @@ public class Event {
      * @see <a href="https://vk.com/dev/groups_events">list of event types</a>
      */
     @SerializedName("type")
-    private String type;
+    private EventType type;
 
     /**
      * Object that has triggered the event.
@@ -32,11 +32,11 @@ public class Event {
     @SerializedName("event_id")
     private String eventId;
 
-    public String getType() {
+    public EventType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(EventType type) {
         this.type = type;
     }
 

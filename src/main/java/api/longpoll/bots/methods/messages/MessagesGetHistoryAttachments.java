@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.events.messages.MessagesGetHistoryAttachmentsResultConverterImpl;
+import api.longpoll.bots.converters.events.messages.MessagesGetHistoryAttachmentsResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
@@ -18,6 +18,8 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
  */
 public class MessagesGetHistoryAttachments extends GetMethod<GenericResult<MessagesGetHistoryAttachmentsResponse>> {
+    private static final JsonToPojoConverter<GenericResult<MessagesGetHistoryAttachmentsResponse>> MESSAGES_GET_HISTORY_ATTACHMENTS_RESULT_CONVERTER = new MessagesGetHistoryAttachmentsResultConverter();
+
     /**
      * Peer ID.
      */
@@ -67,25 +69,16 @@ public class MessagesGetHistoryAttachments extends GetMethod<GenericResult<Messa
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetHistoryAttachments();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<MessagesGetHistoryAttachmentsResponse>> getConverter() {
-        return new MessagesGetHistoryAttachmentsResultConverterImpl();
+        return MESSAGES_GET_HISTORY_ATTACHMENTS_RESULT_CONVERTER;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(

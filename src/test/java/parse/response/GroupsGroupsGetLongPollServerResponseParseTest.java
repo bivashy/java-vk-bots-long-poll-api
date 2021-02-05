@@ -1,12 +1,11 @@
 package parse.response;
 
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.StringToJsonConverterImpl;
+import api.longpoll.bots.converters.StringToJsonConverter;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResponse;
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -18,8 +17,8 @@ import java.io.IOException;
 public class GroupsGroupsGetLongPollServerResponseParseTest extends AbstractParseTest {
     @Test
     public void test1_getLongPollServerResponseSuccessParse() throws IOException {
-        JsonObject jsonObject = new StringToJsonConverterImpl().convert(readJson("json/response/get_long_poll_server_response_sample_5_110.json").toString());
-        JsonToPojoConverter<GenericResult<GroupsGetLongPollServerResponse>> jsonToPojoConverter = GenericConverterFactory.get(new TypeToken<GenericResult<GroupsGetLongPollServerResponse>>(){}.getType());
+        JsonObject jsonObject = new StringToJsonConverter().convert(readJson("json/response/get_long_poll_server_response_sample_5_110.json").toString());
+        JsonToPojoConverter<GenericResult<GroupsGetLongPollServerResponse>> jsonToPojoConverter = CachedConverterFactory.getConverter(GenericResult.class, GroupsGetLongPollServerResponse.class);
         GenericResult<GroupsGetLongPollServerResponse> groupsGetLongPollServerResponse = jsonToPojoConverter.convert(jsonObject);
         Assert.assertNotNull(groupsGetLongPollServerResponse);
 

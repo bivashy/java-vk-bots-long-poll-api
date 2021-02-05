@@ -2,8 +2,9 @@ package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.messages.MessagesSendResultConverterImpl;
-import api.longpoll.bots.exceptions.ApiHttpException;
+import api.longpoll.bots.converters.response.messages.MessagesSendResultConverter;
+import api.longpoll.bots.exceptions.BotsLongPollException;
+import api.longpoll.bots.exceptions.BotsLongPollHttpException;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.Keyboard;
@@ -11,8 +12,8 @@ import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.utils.AttachmentsUtil;
-import api.longpoll.bots.utils.MessagesUtil;
+import api.longpoll.bots.utils.methods.AttachmentsUtil;
+import api.longpoll.bots.utils.methods.MessagesUtil;
 import org.jsoup.Connection;
 
 import java.io.File;
@@ -26,6 +27,8 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
 public class MessagesSend extends GetMethod<GenericResult<Object>> {
+    private static final JsonToPojoConverter<GenericResult<Object>> MESSAGES_SEND_RESULT_CONVERTER = new MessagesSendResultConverter();
+
     /**
      * User ID.
      */
@@ -115,25 +118,16 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().messagesSend();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<Object>> getConverter() {
-        return new MessagesSendResultConverterImpl();
+        return MESSAGES_SEND_RESULT_CONVERTER;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
@@ -169,7 +163,7 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         return attach(AttachmentsUtil.toAttachment(photo));
     }
 
-    public MessagesSend attachPhoto(File photo) throws ApiHttpException {
+    public MessagesSend attachPhoto(File photo) throws BotsLongPollHttpException, BotsLongPollException {
         return attach(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(bot, getPeerId(), photo)));
     }
 
@@ -177,7 +171,7 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         return attach(AttachmentsUtil.toAttachment(doc));
     }
 
-    public MessagesSend attachDoc(File doc) throws ApiHttpException {
+    public MessagesSend attachDoc(File doc) throws BotsLongPollHttpException, BotsLongPollException {
         return attachDoc(MessagesUtil.uploadDoc(bot, peerId, doc));
     }
 

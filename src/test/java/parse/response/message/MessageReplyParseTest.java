@@ -1,7 +1,8 @@
 package parse.response.message;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.response.events.GetEventsResult;
@@ -20,7 +21,7 @@ public class MessageReplyParseTest extends AbstractParseTest {
     @Test
     public void test1_messageEdit() throws IOException {
         JsonObject jsonObject = readJson("json/response/message_reply/message_reply_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
         Assert.assertNotNull(getEventsResult);
         Assert.assertEquals(Integer.valueOf(2610), getEventsResult.getTs());
 
@@ -30,7 +31,7 @@ public class MessageReplyParseTest extends AbstractParseTest {
 
         Event event = events.get(0);
         Assert.assertNotNull(event);
-        Assert.assertEquals("message_reply", event.getType());
+        Assert.assertEquals(EventType.MESSAGE_REPLY, event.getType());
         Assert.assertEquals(Integer.valueOf(555), event.getGroupId());
         Assert.assertEquals("aaa", event.getEventId());
 

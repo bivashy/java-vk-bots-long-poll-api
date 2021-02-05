@@ -73,7 +73,7 @@ public class Doc implements Attachable {
      * Document preview data.
      */
     @SerializedName("preview")
-    private Map<String, Preview> preview;
+    private Map<DocType, Preview> preview;
 
     /**
      * Document access key.
@@ -405,11 +405,11 @@ public class Doc implements Attachable {
         this.type = type;
     }
 
-    public Map<String, Preview> getPreview() {
+    public Map<DocType, Preview> getPreview() {
         return preview;
     }
 
-    public void setPreview(Map<String, Preview> preview) {
+    public void setPreview(Map<DocType, Preview> preview) {
         this.preview = preview;
     }
 

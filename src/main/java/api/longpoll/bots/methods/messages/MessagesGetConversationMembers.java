@@ -1,14 +1,13 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.messages.MessagesGetConversationMembersResponseItem;
-import api.longpoll.bots.model.response.ExtendedVkList;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -39,25 +38,16 @@ public class MessagesGetConversationMembers extends GetMethod<GenericResult<Exte
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetConversationMembers();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<ExtendedVkList<MessagesGetConversationMembersResponseItem>>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<ExtendedVkList<MessagesGetConversationMembersResponseItem>>>(){}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, ExtendedVkList.class, MessagesGetConversationMembersResponseItem.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(

@@ -1,13 +1,12 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.messages.MessagesDeleteChatPhotoResponse;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -32,25 +31,16 @@ public class MessagesDeleteChatPhoto extends GetMethod<GenericResult<MessagesDel
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().messagesDeleteChatPhoto();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<MessagesDeleteChatPhotoResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<MessagesDeleteChatPhotoResponse>>(){}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, MessagesDeleteChatPhotoResponse.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
