@@ -425,4 +425,29 @@ public class MessageNewParseTest extends AbstractParseTest {
         Assert.assertFalse(likes.getUserLikes());
         Assert.assertTrue(likes.getCanLike());
     }
+
+    @Test
+    public void test14_messageNewDocNoPreview() throws IOException {
+        JsonObject jsonObject = readJson("json/response/message_new/message_new_doc_no_preview_sample_5_118.json");
+        List<Attachment> attachments = ((MessageNewEvent) new GetEventsResultConverter().convert(jsonObject).getEvents().get(0).getObject()).getMessage().getAttachments();
+        Assert.assertNotNull(attachments);
+        Assert.assertEquals(1, attachments.size());
+
+        Attachment attachment = attachments.get(0);
+        Assert.assertNotNull(attachment);
+        Assert.assertEquals(AttachmentType.DOCUMENT, attachment.getType());
+
+        Doc doc = (Doc) attachment.getAttachable();
+        Assert.assertNotNull(doc);
+        Assert.assertEquals(Integer.valueOf(456), doc.getId());
+        Assert.assertEquals(Integer.valueOf(789), doc.getOwnerId());
+        Assert.assertEquals("canvas.rar", doc.getTitle());
+        Assert.assertEquals(Integer.valueOf(2325), doc.getSize());
+        Assert.assertEquals("rar", doc.getExt());
+        Assert.assertEquals(Integer.valueOf(1559985418), doc.getDate());
+        Assert.assertEquals(Integer.valueOf(2), doc.getType());
+        Assert.assertEquals("https://vk.com/doc1234", doc.getUrl());
+        Assert.assertEquals("5678", doc.getAccessKey());
+        Assert.assertNull(doc.getPreview());
+    }
 }

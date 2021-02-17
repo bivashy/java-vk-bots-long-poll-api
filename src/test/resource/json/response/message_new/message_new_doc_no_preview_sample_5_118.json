@@ -1,0 +1,56 @@
+{
+  "ts": "3105",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1613547783,
+          "from_id": 123,
+          "id": 578,
+          "out": 0,
+          "peer_id": 123,
+          "text": "",
+          "conversation_message_id": 554,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "doc",
+              "doc": {
+                "id": 456,
+                "owner_id": 789,
+                "title": "canvas.rar",
+                "size": 2325,
+                "ext": "rar",
+                "date": 1559985418,
+                "type": 2,
+                "url": "https:\/\/vk.com\/doc1234",
+                "access_key": "5678"
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link",
+            "intent_subscribe",
+            "intent_unsubscribe"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": false,
+          "lang_id": 0
+        }
+      },
+      "group_id": 444,
+      "event_id": "aaa"
+    }
+  ]
+}
