@@ -18,12 +18,14 @@ public class DocConverter extends JsonToPojoConverter<Doc> {
     @Override
     public Doc convert(JsonObject jsonObject) {
         Doc doc = gson.fromJson(jsonObject, Doc.class);
-        doc.setPreview(
-                jsonObject.getAsJsonObject("preview")
-                        .entrySet()
-                        .stream()
-                        .collect(Collectors.toMap(this::convertKeyToDocType, this::convertValueToDocPreview))
-        );
+        if (jsonObject.has("preview")) {
+            doc.setPreview(
+                    jsonObject.getAsJsonObject("preview")
+                            .entrySet()
+                            .stream()
+                            .collect(Collectors.toMap(this::convertKeyToDocType, this::convertValueToDocPreview))
+            );
+        }
         return doc;
     }
 
