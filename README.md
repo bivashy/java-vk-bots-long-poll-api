@@ -5,14 +5,14 @@
 A Java library to create VK bots using Bots Long Poll API.
 
 ## Description
-An easy to use and lightweight Java library that implements [Bots Long Poll API](https://vk.com/dev/bots_longpoll).
-This library does not promise to implement all possible public VK APIs. Uses API version: 5.110.
+An easy-to-use and lightweight Java library that implements [Bots Long Poll API](https://vk.com/dev/bots_longpoll).
+This library does not promise to implement all possible public VK APIs. Uses API version: 5.118.
 
 ## Note
 This library is in beta release. Feel free to create issues or pull requests.
 
 ## Third-party dependencies
-This library uses the next third-party dependecies:
+This library uses the next third-party dependencies:
 * Gson
 * SLF4J
 * Jsoup
@@ -28,10 +28,10 @@ This library uses the next third-party dependecies:
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
   <artifactId>java-vk-bots-longpoll-api</artifactId>
-  <version>1.0.28-beta</version>
+  <version>1.2.0</version>
 </dependency>
 ```
-2. Create a class that extends `LongPollBot` and overrides necessary methods:
+2. Create a subclass of `LongPollBot` and override necessary methods:
 ```java
 public class MyBot extends LongPollBot {
     @Override

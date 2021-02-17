@@ -1,13 +1,12 @@
 package api.longpoll.bots.methods.docs;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
 import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -32,25 +31,17 @@ public class DocsGetMessagesUploadServer extends GetMethod<GenericResult<DocsGet
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().docsGetMessagesUploadServer();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+
     @Override
     protected JsonToPojoConverter<GenericResult<DocsGetUploadServerResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<DocsGetUploadServerResponse>>(){}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, DocsGetUploadServerResponse.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(

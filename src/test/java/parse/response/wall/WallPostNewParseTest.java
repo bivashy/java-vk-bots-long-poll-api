@@ -1,8 +1,9 @@
 package parse.response.wall;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import api.longpoll.bots.model.objects.basic.WallPost;
 import com.google.gson.JsonObject;
@@ -20,7 +21,7 @@ public class WallPostNewParseTest extends AbstractParseTest {
     @Test
     public void test1_wallPostNew() throws IOException {
         JsonObject jsonObject = readJson("json/response/wall_post_new/wall_post_new_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverterImpl().convert(jsonObject);
+        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
         Assert.assertNotNull(getEventsResult);
         Assert.assertEquals(Integer.valueOf(2626), getEventsResult.getTs());
 
@@ -30,7 +31,7 @@ public class WallPostNewParseTest extends AbstractParseTest {
 
         Event event = events.get(0);
         Assert.assertNotNull(event);
-        Assert.assertEquals("wall_post_new", event.getType());
+        Assert.assertEquals(EventType.WALL_POST_NEW, event.getType());
         Assert.assertEquals(Integer.valueOf(444), event.getGroupId());
         Assert.assertEquals("aaa", event.getEventId());
 

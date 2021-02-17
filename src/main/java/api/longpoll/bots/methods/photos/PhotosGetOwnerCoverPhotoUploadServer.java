@@ -1,13 +1,12 @@
 package api.longpoll.bots.methods.photos;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.photos.PhotosGetOwnerCoverPhotoUploadServerResponse;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -47,25 +46,16 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<GenericResul
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().photosGetOwnerCoverPhotoUploadServer();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>>(){}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, PhotosGetOwnerCoverPhotoUploadServerResponse.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(

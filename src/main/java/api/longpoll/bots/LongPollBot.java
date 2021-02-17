@@ -5,6 +5,8 @@ import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
+import api.longpoll.bots.model.events.messages.MessageAllowEvent;
+import api.longpoll.bots.model.events.messages.MessageDenyEvent;
 import api.longpoll.bots.model.events.messages.MessageEvent;
 import api.longpoll.bots.model.events.messages.MessageNewEvent;
 import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
@@ -33,7 +35,6 @@ public abstract class LongPollBot {
     public abstract String getAccessToken();
 
     public abstract int getGroupId();
-
 
     public void onMessageNew(MessageNewEvent messageNewEvent) {
     }
@@ -159,5 +160,11 @@ public abstract class LongPollBot {
     }
 
     public void onMessageTypingState(MessageTypingStateEvent messageTypingStateEvent) {
+    }
+
+    public void onMessageAllow(MessageAllowEvent messageAllowEvent) {
+    }
+
+    public void onMessageDeny(MessageDenyEvent messageDenyEvent) {
     }
 }

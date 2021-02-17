@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class GetMethod<Response> extends Method<Response> {
     private static final String ACCESS_TOKEN = "access_token";
     private static final String VERSION = "v";
-    private static final String VERSION_NUMBER = "5.110";
+    private static final String VERSION_NUMBER = "5.118";
 
     /**
      * Long Poll bot.
@@ -24,9 +24,6 @@ public abstract class GetMethod<Response> extends Method<Response> {
         this.bot = bot;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected List<Connection.KeyVal> getData() {
         List<Connection.KeyVal> requestParams = super.getData();
@@ -37,9 +34,6 @@ public abstract class GetMethod<Response> extends Method<Response> {
         return requestParams;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Connection.Method getMethod() {
         return Connection.Method.GET;

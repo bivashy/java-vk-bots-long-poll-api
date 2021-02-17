@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.docs;
 
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.docs.DocsSaveResultConverterImpl;
+import api.longpoll.bots.converters.response.docs.DocsSaveResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
@@ -17,6 +17,8 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/docs.save">https://vk.com/dev/docs.save</a>
  */
 public class DocsSave extends GetMethod<GenericResult<DocsSaveResponse>> {
+    private static final JsonToPojoConverter<GenericResult<DocsSaveResponse>> DOCS_SAVE_RESULT_CONVERTER = new DocsSaveResultConverter();
+
     /**
      * This parameter is returned when the file is uploaded to the server.
      */
@@ -41,25 +43,16 @@ public class DocsSave extends GetMethod<GenericResult<DocsSaveResponse>> {
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().docsSave();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<DocsSaveResponse>> getConverter() {
-        return new DocsSaveResultConverterImpl();
+        return DOCS_SAVE_RESULT_CONVERTER;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(

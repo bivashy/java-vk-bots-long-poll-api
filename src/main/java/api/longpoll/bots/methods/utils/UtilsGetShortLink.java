@@ -1,13 +1,12 @@
 package api.longpoll.bots.methods.utils;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.utils.UtilsGetShortLinkResponse;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -32,25 +31,16 @@ public class UtilsGetShortLink extends GetMethod<GenericResult<UtilsGetShortLink
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().utilsGetShortLink();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<UtilsGetShortLinkResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<UtilsGetShortLinkResponse>>(){}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, UtilsGetShortLinkResponse.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(

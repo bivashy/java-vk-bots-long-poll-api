@@ -1,13 +1,12 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.Button;
 import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -49,7 +48,7 @@ public class MessagesSendEventAnswer extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, Integer.class);
     }
 
     @Override

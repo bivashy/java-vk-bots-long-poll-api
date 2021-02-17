@@ -1,13 +1,13 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.model.objects.basic.Conversation;
+import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesGetConversationsByIdResponse;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getConversationsById">https://vk.com/dev/messages.getConversationsById</a>
  */
-public class MessagesGetConversationsById extends GetMethod<GenericResult<MessagesGetConversationsByIdResponse>> {
+public class MessagesGetConversationsById extends GetMethod<GenericResult<ExtendedVkList<Conversation>>> {
     /**
      * List of destination IDs.
      */
@@ -43,25 +43,16 @@ public class MessagesGetConversationsById extends GetMethod<GenericResult<Messag
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().messagesGetConversationsById();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesGetConversationsByIdResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<MessagesGetConversationsByIdResponse>>(){}.getType());
+    protected JsonToPojoConverter<GenericResult<ExtendedVkList<Conversation>>> getConverter() {
+        return CachedConverterFactory.getConverter(GenericResult.class, ExtendedVkList.class, Conversation.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(

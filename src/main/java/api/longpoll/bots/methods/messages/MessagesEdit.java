@@ -1,26 +1,17 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.exceptions.ApiHttpException;
+import api.longpoll.bots.exceptions.BotsLongPollException;
+import api.longpoll.bots.exceptions.BotsLongPollHttpException;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.methods.docs.DocsGetMessagesUploadServer;
-import api.longpoll.bots.methods.docs.DocsSave;
-import api.longpoll.bots.methods.other.UploadDoc;
-import api.longpoll.bots.methods.other.UploadPhoto;
-import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
-import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
 import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.other.UploadDocResult;
-import api.longpoll.bots.model.response.other.UploadPhotoResult;
-import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResponse;
-import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.utils.methods.AttachmentsUtil;
+import api.longpoll.bots.utils.methods.MessagesUtil;
 import org.jsoup.Connection;
 
 import java.io.File;
@@ -93,26 +84,16 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().messagesEdit();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<Integer>>() {
-        }.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, Integer.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
@@ -130,63 +111,28 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         );
     }
 
-    private String attachment(String type, Integer ownerId, Integer mediaId, String accessKey) {
-        return type + ownerId + "_" + mediaId + (accessKey == null ? "" : "_" + accessKey);
-    }
-
-    private MessagesEdit attach(String type, Integer ownerId, Integer mediaId, String accessKey) {
+    private MessagesEdit attach(String attachment) {
         if (attachments == null) {
             attachments = new ArrayList<>();
         }
-        attachments.add(attachment(type, ownerId, mediaId, accessKey));
+        attachments.add(attachment);
         return this;
     }
 
     public MessagesEdit attachPhoto(Photo photo) {
-        return attach("photo", photo.getOwnerId(), photo.getId(), photo.getAccessKey());
+        return attach(AttachmentsUtil.toAttachment(photo));
     }
 
-    public MessagesEdit attachPhoto(File photo) throws ApiHttpException {
-        PhotosGetMessagesUploadServerResponse uploadServer = new PhotosGetMessagesUploadServer(bot)
-                .setPeerId(peerId)
-                .execute()
-                .getResponse();
-        UploadPhotoResult uploadPhoto = new UploadPhoto()
-                .setUploadUrl(uploadServer.getUploadUrl())
-                .setPhoto(photo)
-                .execute();
-        PhotosSaveMessagesPhotoResponse savePhoto = new PhotosSaveMessagesPhoto(bot)
-                .setHash(uploadPhoto.getHash())
-                .setPhoto(uploadPhoto.getPhoto())
-                .setServer(uploadPhoto.getServer())
-                .execute()
-                .getResponse()
-                .get(0);
-
-        return attach("photo", savePhoto.getOwnerId(), savePhoto.getId(), savePhoto.getAccessKey());
+    public MessagesEdit attachPhoto(File photo) throws BotsLongPollHttpException, BotsLongPollException {
+        return attach(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(bot, getPeerId(), photo)));
     }
 
     public MessagesEdit attachDoc(Doc doc) {
-        return attach("doc", doc.getOwnerId(), doc.getId(), doc.getAccessKey());
+        return attach(AttachmentsUtil.toAttachment(doc));
     }
 
-    public MessagesEdit attachDoc(File doc) throws ApiHttpException {
-        DocsGetUploadServerResponse uploadServer = new DocsGetMessagesUploadServer(bot)
-                .setType("doc")
-                .setPeerId(peerId)
-                .execute()
-                .getResponse();
-        UploadDocResult uploadDoc = new UploadDoc()
-                .setUploadUrl(uploadServer.getUploadUrl())
-                .setDoc(doc)
-                .execute();
-        Doc uploadedDoc = (Doc) new DocsSave(bot)
-                .setFile(uploadDoc.getFile())
-                .execute()
-                .getResponse()
-                .getAttachable();
-
-        return attach("doc", uploadedDoc.getOwnerId(), uploadedDoc.getId(), uploadedDoc.getAccessKey());
+    public MessagesEdit attachDoc(File doc) throws BotsLongPollHttpException, BotsLongPollException {
+        return attachDoc(MessagesUtil.uploadDoc(bot, peerId, doc));
     }
 
     public Integer getPeerId() {

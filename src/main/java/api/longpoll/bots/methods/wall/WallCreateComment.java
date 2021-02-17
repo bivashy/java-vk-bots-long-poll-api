@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.wall;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
@@ -9,7 +9,7 @@ import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.wall.WallCreateCommentResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.utils.methods.AttachmentsUtil;
 import org.jsoup.Connection;
 
 import java.util.ArrayList;
@@ -66,48 +66,35 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().wallCreateComment();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<WallCreateCommentResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<WallCreateCommentResponse>>(){}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, WallCreateCommentResponse.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return null;
     }
 
-    private String attachment(String type, Integer ownerId, Integer mediaId, String accessKey) {
-        return type + ownerId + "_" + mediaId + (accessKey == null ? "" : "_" + accessKey);
-    }
-
-    private WallCreateComment attach(String type, Integer ownerId, Integer mediaId, String accessKey) {
+    private WallCreateComment attach(String attachment) {
         if (attachments == null) {
             attachments = new ArrayList<>();
         }
-        attachments.add(attachment(type, ownerId, mediaId, accessKey));
+        attachments.add(attachment);
         return this;
     }
 
     public WallCreateComment attachPhoto(Photo photo) {
-        return attach("photo", photo.getOwnerId(), photo.getId(), photo.getAccessKey());
+        return attach(AttachmentsUtil.toAttachment(photo));
     }
 
     public WallCreateComment attachDoc(Doc doc) {
-        return attach("doc", doc.getOwnerId(), doc.getId(), doc.getAccessKey());
+        return attach(AttachmentsUtil.toAttachment(doc));
     }
 
     public Integer getOwnerId() {

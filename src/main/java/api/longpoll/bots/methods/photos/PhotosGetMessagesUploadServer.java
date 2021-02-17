@@ -1,13 +1,12 @@
 package api.longpoll.bots.methods.photos;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResponse;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -27,25 +26,16 @@ public class PhotosGetMessagesUploadServer extends GetMethod<GenericResult<Photo
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().photosGetMessagesUploadServer();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<PhotosGetMessagesUploadServerResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<PhotosGetMessagesUploadServerResponse>>(){}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, PhotosGetMessagesUploadServerResponse.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(keyVal("peer_id", peerId));

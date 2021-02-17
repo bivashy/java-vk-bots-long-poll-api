@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.events;
 
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.events.GetEventsResultConverterImpl;
+import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.model.response.events.GetEventsResult;
 import org.jsoup.Connection;
@@ -13,6 +13,8 @@ import java.util.stream.Stream;
  * Gets update events from VK server.
  */
 public class GetEvents extends GetMethod<GetEventsResult> {
+    private static final JsonToPojoConverter<GetEventsResult> GET_EVENTS_RESULT_CONVERTER = new GetEventsResultConverter();
+
     /**
      * Server URL.
      */
@@ -32,17 +34,11 @@ public class GetEvents extends GetMethod<GetEventsResult> {
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GetEventsResult> getConverter() {
-        return new GetEventsResultConverterImpl();
+        return GET_EVENTS_RESULT_CONVERTER;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
@@ -53,9 +49,6 @@ public class GetEvents extends GetMethod<GetEventsResult> {
         );
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return server;

@@ -1,13 +1,12 @@
 package api.longpoll.bots.methods.utils;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.GenericConverterFactory;
+import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.utils.UtilsResolveScreenNameResponse;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -27,25 +26,16 @@ public class UtilsResolveScreenName extends GetMethod<GenericResult<UtilsResolve
         super(bot);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().utilsResolveScreenName();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<UtilsResolveScreenNameResponse>> getConverter() {
-        return GenericConverterFactory.get(new TypeToken<GenericResult<UtilsResolveScreenNameResponse>>(){}.getType());
+        return CachedConverterFactory.getConverter(GenericResult.class, UtilsResolveScreenNameResponse.class);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(keyVal("screen_name", screenName));

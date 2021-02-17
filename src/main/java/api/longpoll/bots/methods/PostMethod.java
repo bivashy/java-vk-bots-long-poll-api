@@ -27,9 +27,6 @@ public abstract class PostMethod<Response> extends Method<Response> {
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Connection.Response execute(Connection connection) throws IOException {
         if (file != null) {
@@ -42,9 +39,6 @@ public abstract class PostMethod<Response> extends Method<Response> {
         return super.execute(connection);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Connection.Method getMethod() {
         return Connection.Method.POST;
