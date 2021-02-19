@@ -3,7 +3,7 @@ package api.longpoll.bots.converters.media;
 import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.model.objects.media.Doc;
-import api.longpoll.bots.model.objects.media.DocType;
+import api.longpoll.bots.model.objects.media.DocPreviewType;
 import com.google.gson.FieldAttributes;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class DocConverter extends JsonToPojoConverter<Doc> {
-    private static final Map<DocType, JsonToPojoConverter<? extends Doc.Preview>> CONVERTERS = new HashMap<>();
+    private static final Map<DocPreviewType, JsonToPojoConverter<? extends Doc.Preview>> CONVERTERS = new HashMap<>();
 
     @Override
     public Doc convert(JsonObject jsonObject) {
@@ -34,8 +34,8 @@ public class DocConverter extends JsonToPojoConverter<Doc> {
         return Map.class.equals(fieldAttributes.getDeclaredClass());
     }
 
-    private DocType convertKeyToDocType(Map.Entry<String, JsonElement> entry) {
-        return gson.fromJson(entry.getKey(), DocType.class);
+    private DocPreviewType convertKeyToDocType(Map.Entry<String, JsonElement> entry) {
+        return gson.fromJson(entry.getKey(), DocPreviewType.class);
     }
 
     private Doc.Preview convertValueToDocPreview(Map.Entry<String, JsonElement> entry) {
@@ -43,9 +43,9 @@ public class DocConverter extends JsonToPojoConverter<Doc> {
     }
 
     static {
-        CONVERTERS.put(DocType.AUDIO_MSG, CachedConverterFactory.getConverter(Doc.AudioMessage.class));
-        CONVERTERS.put(DocType.GRAFFITI, CachedConverterFactory.getConverter(Doc.Graffiti.class));
-        CONVERTERS.put(DocType.PHOTO, CachedConverterFactory.getConverter(Doc.Photo.class));
-        CONVERTERS.put(DocType.VIDEO, CachedConverterFactory.getConverter(Doc.Video.class));
+        CONVERTERS.put(DocPreviewType.AUDIO_MSG, CachedConverterFactory.getConverter(Doc.AudioMessage.class));
+        CONVERTERS.put(DocPreviewType.GRAFFITI, CachedConverterFactory.getConverter(Doc.Graffiti.class));
+        CONVERTERS.put(DocPreviewType.PHOTO, CachedConverterFactory.getConverter(Doc.Photo.class));
+        CONVERTERS.put(DocPreviewType.VIDEO, CachedConverterFactory.getConverter(Doc.Video.class));
     }
 }

@@ -67,13 +67,13 @@ public class Doc implements Attachable {
      * </ol>
      */
     @SerializedName("type")
-    private Integer type;
+    private DocType type;
 
     /**
      * Document preview data.
      */
     @SerializedName("preview")
-    private Map<DocType, Preview> preview;
+    private Map<DocPreviewType, Preview> preview;
 
     /**
      * Document access key.
@@ -397,19 +397,19 @@ public class Doc implements Attachable {
         this.date = date;
     }
 
-    public Integer getType() {
+    public DocType getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(DocType type) {
         this.type = type;
     }
 
-    public Map<DocType, Preview> getPreview() {
+    public Map<DocPreviewType, Preview> getPreview() {
         return preview;
     }
 
-    public void setPreview(Map<DocType, Preview> preview) {
+    public void setPreview(Map<DocPreviewType, Preview> preview) {
         this.preview = preview;
     }
 

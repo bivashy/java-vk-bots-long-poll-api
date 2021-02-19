@@ -1,6 +1,6 @@
 package parse.response.message;
 
-import api.longpoll.bots.constants.DocumentTypes;
+import api.longpoll.bots.model.objects.media.DocType;
 import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.messages.MessageNewEvent;
@@ -224,13 +224,13 @@ public class MessageNewParseTest extends AbstractParseTest {
         Assert.assertEquals(Integer.valueOf(756010), doc.getSize());
         Assert.assertEquals("png", doc.getExt());
         Assert.assertEquals(Integer.valueOf(1593165675), doc.getDate());
-        Assert.assertEquals(DocumentTypes.IMAGES, doc.getType());
+        Assert.assertEquals(DocType.IMAGES, doc.getType());
 
-        Map<DocType, Doc.Preview> preview = doc.getPreview();
+        Map<DocPreviewType, Doc.Preview> preview = doc.getPreview();
         Assert.assertNotNull(preview);
-        Assert.assertTrue(preview.containsKey(DocType.PHOTO));
+        Assert.assertTrue(preview.containsKey(DocPreviewType.PHOTO));
 
-        Doc.Preview photoPreview = preview.get(DocType.PHOTO);
+        Doc.Preview photoPreview = preview.get(DocPreviewType.PHOTO);
         Assert.assertNotNull(photoPreview);
         Assert.assertTrue(photoPreview instanceof Doc.Photo);
 
@@ -445,7 +445,7 @@ public class MessageNewParseTest extends AbstractParseTest {
         Assert.assertEquals(Integer.valueOf(2325), doc.getSize());
         Assert.assertEquals("rar", doc.getExt());
         Assert.assertEquals(Integer.valueOf(1559985418), doc.getDate());
-        Assert.assertEquals(Integer.valueOf(2), doc.getType());
+        Assert.assertEquals(DocType.ARCHIVES, doc.getType());
         Assert.assertEquals("https://vk.com/doc1234", doc.getUrl());
         Assert.assertEquals("5678", doc.getAccessKey());
         Assert.assertNull(doc.getPreview());
