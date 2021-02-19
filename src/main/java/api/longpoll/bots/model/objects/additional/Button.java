@@ -1,8 +1,6 @@
 package api.longpoll.bots.model.objects.additional;
 
-import api.longpoll.bots.adapters.serializers.ButtonColorSerializer;
 import com.google.gson.Gson;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -14,7 +12,6 @@ public class Button {
      * For possible values see {@link ButtonColor}.
      */
     @SerializedName("color")
-    @JsonAdapter(ButtonColorSerializer.class)
     private ButtonColor color;
 
     /**
@@ -46,29 +43,19 @@ public class Button {
         /**
          * Blue button, indicates the main action. #5181B8
          */
-        PRIMARY("primary"),
+        @SerializedName("primary") PRIMARY,
         /**
          * Default white button. #FFFFFF
          */
-        SECONDARY("secondary"),
+        @SerializedName("secondary") SECONDARY,
         /**
          * Dangerous or negative action (cancel, delete etc.) #E64646
          */
-        NEGATIVE("negative"),
+        @SerializedName("negative") NEGATIVE,
         /**
          * Accept, agree. #4BB34B
          */
-        POSITIVE("positive");
-
-        private String color;
-
-        ButtonColor(String color) {
-            this.color = color;
-        }
-
-        public String getColor() {
-            return color;
-        }
+        @SerializedName("positive") POSITIVE
     }
 
     /**
