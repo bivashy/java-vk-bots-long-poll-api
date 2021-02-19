@@ -61,6 +61,7 @@ public abstract class Method<Result> {
      * @param converter converter which converts JsonObject to required Result type.
      * @return VK API response.
      * @throws BotsLongPollHttpException if error occurs.
+     * @throws BotsLongPollException if error occurs.
      */
     private Result execute(JsonToPojoConverter<Result> converter) throws BotsLongPollHttpException, BotsLongPollException {
         String stringResponse = sendRequest();
