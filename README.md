@@ -9,7 +9,7 @@ An easy-to-use and lightweight Java library that implements [Bots Long Poll API]
 This library does not promise to implement all possible public VK APIs. Uses API version: 5.118.
 
 ## Note
-This library is in beta release. Feel free to create issues or pull requests.
+This library keeps on improving. Feel free to create issues or pull requests.
 
 ## Third-party dependencies
 This library uses the next third-party dependencies:
