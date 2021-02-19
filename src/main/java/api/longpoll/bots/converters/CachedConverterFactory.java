@@ -27,13 +27,9 @@ public class CachedConverterFactory {
     }
 
     protected static Type toType(Type rawType, Type... typeArguments) {
-        // TODO: 18.02.2021 https://github.com/google/gson/issues/1863
-        // WA
-        if (typeArguments.length > 0) {
-            return TypeToken.getParameterized(rawType, collectParameterized(typeArguments)).getType();
-        } else {
-            return TypeToken.getParameterized(rawType, typeArguments).getType();
-        }
+        return typeArguments.length > 0
+                ? TypeToken.getParameterized(rawType, collectParameterized(typeArguments)).getType()
+                : TypeToken.getParameterized(rawType, typeArguments).getType();
     }
 
     protected static Type collectParameterized(Type... typeArguments) {
