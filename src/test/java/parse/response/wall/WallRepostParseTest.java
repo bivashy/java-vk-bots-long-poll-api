@@ -1,74 +1,58 @@
 package parse.response.wall;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.response.events.GetEventsResult;
 import api.longpoll.bots.model.objects.basic.WallPost;
-import com.google.gson.JsonObject;
-import org.junit.Assert;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-import parse.response.AbstractParseTest;
+import org.junit.jupiter.api.Test;
+import parse.response.ParseTestUtil;
 
-import java.io.IOException;
 import java.util.List;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class WallRepostParseTest extends AbstractParseTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+public class WallRepostParseTest {
     @Test
-    public void test1_wallRepost() throws IOException {
-        JsonObject jsonObject = readJson("json/response/wall_repost/wall_repost_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
-        Assert.assertNotNull(getEventsResult);
-        Assert.assertEquals(Integer.valueOf(2628), getEventsResult.getTs());
-
-        List<Event> events = getEventsResult.getEvents();
-        Assert.assertNotNull(events);
-        Assert.assertEquals(1, events.size());
-
-        Event event = events.get(0);
-        Assert.assertNotNull(event);
-        Assert.assertEquals(EventType.WALL_REPOST, event.getType());
-        Assert.assertEquals(Integer.valueOf(555), event.getGroupId());
-        Assert.assertEquals("aaa", event.getEventId());
+    void wallRepost() {
+        Event event = ParseTestUtil.getFirstEvent("json/response/wall_repost/wall_repost_sample_5_110.json");
+        assertEquals(EventType.WALL_REPOST, event.getType());
+        assertEquals(555, event.getGroupId());
+        assertEquals("aaa", event.getEventId());
 
         EventObject eventObject = event.getObject();
-        Assert.assertNotNull(eventObject);
+        assertNotNull(eventObject);
+        assertTrue(eventObject instanceof WallPost);
 
-        Assert.assertTrue(eventObject instanceof WallPost);
         WallPost wallPost = (WallPost) eventObject;
-        Assert.assertEquals(Integer.valueOf(34), wallPost.getId());
-        Assert.assertEquals(Integer.valueOf(111), wallPost.getFromId());
-        Assert.assertEquals(Integer.valueOf(222), wallPost.getOwnerId());
-        Assert.assertEquals(Integer.valueOf(1594890511), wallPost.getDate());
-        Assert.assertEquals("post", wallPost.getPostType());
-        Assert.assertEquals("", wallPost.getText());
-        Assert.assertTrue(wallPost.getCanArchive());
-        Assert.assertFalse(wallPost.getArchived());
-        Assert.assertFalse(wallPost.getFavourite());
+        assertEquals(34, wallPost.getId());
+        assertEquals(111, wallPost.getFromId());
+        assertEquals(222, wallPost.getOwnerId());
+        assertEquals(1594890511, wallPost.getDate());
+        assertEquals("post", wallPost.getPostType());
+        assertEquals("", wallPost.getText());
+        assertTrue(wallPost.getCanArchive());
+        assertFalse(wallPost.getArchived());
+        assertFalse(wallPost.getFavourite());
 
         WallPost.Comments comments = wallPost.getComments();
-        Assert.assertNotNull(comments);
-        Assert.assertEquals(Integer.valueOf(0), comments.getCount());
+        assertNotNull(comments);
+        assertEquals(0, comments.getCount());
 
         List<WallPost> copyHistory = wallPost.getCopyHistory();
-        Assert.assertNotNull(copyHistory);
-        Assert.assertEquals(1, copyHistory.size());
+        assertNotNull(copyHistory);
+        assertFalse(copyHistory.isEmpty());
 
         WallPost post = copyHistory.get(0);
-        Assert.assertNotNull(post);
-        Assert.assertEquals(Integer.valueOf(3), post.getId());
-        Assert.assertEquals(Integer.valueOf(-333), post.getOwnerId());
-        Assert.assertEquals(Integer.valueOf(-444), post.getFromId());
-        Assert.assertEquals(Integer.valueOf(1594890485), post.getDate());
-        Assert.assertEquals("post", post.getPostType());
-        Assert.assertEquals("test", post.getText());
+        assertNotNull(post);
+        assertEquals(3, post.getId());
+        assertEquals(-333, post.getOwnerId());
+        assertEquals(-444, post.getFromId());
+        assertEquals(1594890485, post.getDate());
+        assertEquals("post", post.getPostType());
+        assertEquals("test", post.getText());
 
         WallPost.PostSource postSource = post.getPostSource();
-        Assert.assertNotNull(postSource);
-        Assert.assertEquals("vk", postSource.getType());
+        assertNotNull(postSource);
+        assertEquals("vk", postSource.getType());
     }
 }

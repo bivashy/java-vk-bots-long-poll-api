@@ -1,41 +1,27 @@
 package parse.response.message;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
-import api.longpoll.bots.model.response.events.GetEventsResult;
-import com.google.gson.JsonObject;
-import org.junit.Assert;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-import parse.response.AbstractParseTest;
+import org.junit.jupiter.api.Test;
+import parse.response.ParseTestUtil;
 
-import java.io.IOException;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class MessageTypingStateParseTest extends AbstractParseTest {
+public class MessageTypingStateParseTest {
     @Test
-    public void test1_messageTypingState() throws IOException {
-        JsonObject jsonObject = readJson("json/response/message_typing_state/message_typing_state_sample_5_111.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
-        List<Event> events = getEventsResult.getEvents();
-        Assert.assertNotNull(events);
-        Assert.assertTrue(events.size() > 0);
+    void messageTypingState() {
+        Event event = ParseTestUtil.getFirstEvent("json/response/message_typing_state/message_typing_state_sample_5_111.json");
+        assertEquals(EventType.MESSAGE_TYPING_STATE, event.getType());
 
-        Event event = events.get(0);
-        Assert.assertNotNull(event);
-        Assert.assertEquals(EventType.MESSAGE_TYPING_STATE, event.getType());
+        EventObject eventObject = event.getObject();
+        assertNotNull(eventObject);
+        assertTrue(eventObject instanceof MessageTypingStateEvent);
 
-        EventObject object = event.getObject();
-        Assert.assertNotNull(object);
-
-        MessageTypingStateEvent eventObject = (MessageTypingStateEvent) object;
-        Assert.assertEquals("typing", eventObject.getState());
-        Assert.assertEquals(Integer.valueOf(789), eventObject.getFromId());
-        Assert.assertEquals(Integer.valueOf(-456), eventObject.getToId());
+        MessageTypingStateEvent messageTypingStateEvent = (MessageTypingStateEvent) eventObject;
+        assertEquals("typing", messageTypingStateEvent.getState());
+        assertEquals(789, messageTypingStateEvent.getFromId());
+        assertEquals(-456, messageTypingStateEvent.getToId());
     }
 }

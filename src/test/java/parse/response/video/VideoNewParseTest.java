@@ -1,58 +1,42 @@
 package parse.response.video;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.response.events.GetEventsResult;
 import api.longpoll.bots.model.objects.media.Video;
-import com.google.gson.JsonObject;
-import org.junit.Assert;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-import parse.response.AbstractParseTest;
+import org.junit.jupiter.api.Test;
+import parse.response.ParseTestUtil;
 
-import java.io.IOException;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class VideoNewParseTest extends AbstractParseTest {
+public class VideoNewParseTest {
     @Test
-    public void test1_videoNew() throws IOException {
-        JsonObject jsonObject = readJson("json/response/video_new/video_new_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
-        Assert.assertNotNull(getEventsResult);
-        Assert.assertEquals(Integer.valueOf(2617), getEventsResult.getTs());
-
-        List<Event> events = getEventsResult.getEvents();
-        Assert.assertNotNull(events);
-        Assert.assertEquals(1, events.size());
-
-        Event event = events.get(0);
-        Assert.assertNotNull(event);
-        Assert.assertEquals(EventType.VIDEO_NEW, event.getType());
-        Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
-        Assert.assertEquals("aaa", event.getEventId());
+    void videoNew() {
+        Event event = ParseTestUtil.getFirstEvent("json/response/video_new/video_new_sample_5_110.json");
+        assertEquals(EventType.VIDEO_NEW, event.getType());
+        assertEquals(333, event.getGroupId());
+        assertEquals("aaa", event.getEventId());
 
         EventObject eventObject = event.getObject();
-        Assert.assertNotNull(eventObject);
+        assertNotNull(eventObject);
+        assertTrue(eventObject instanceof Video);
 
-        Assert.assertTrue(eventObject instanceof Video);
         Video video = (Video) eventObject;
-        Assert.assertTrue(video.getCanEdit());
-        Assert.assertTrue(video.getCanAdd());
-        Assert.assertEquals(Integer.valueOf(0), video.getCommentsAmount());
-        Assert.assertEquals(Integer.valueOf(1594821406), video.getDate());
-        Assert.assertFalse(video.getDescription().isEmpty());
-        Assert.assertEquals(Integer.valueOf(314), video.getDuration());
-        Assert.assertEquals(Integer.valueOf(111), video.getId());
-        Assert.assertEquals(Integer.valueOf(-222), video.getOwnerId());
-        Assert.assertFalse(video.getTitle().isEmpty());
-        Assert.assertFalse(video.getFavourite());
-        Assert.assertEquals("video", video.getType());
-        Assert.assertEquals(Integer.valueOf(1), video.getViews());
-        Assert.assertEquals(Integer.valueOf(0), video.getLocalViews());
-        Assert.assertEquals("YouTube", video.getPlatform());
+        assertTrue(video.getCanEdit());
+        assertTrue(video.getCanAdd());
+        assertEquals(0, video.getCommentsAmount());
+        assertEquals(1594821406, video.getDate());
+        assertFalse(video.getDescription().isEmpty());
+        assertEquals(314, video.getDuration());
+        assertEquals(111, video.getId());
+        assertEquals(-222, video.getOwnerId());
+        String title = video.getTitle();
+        assertNotNull(title);
+        assertFalse(title.isEmpty());
+        assertFalse(video.getFavourite());
+        assertEquals("video", video.getType());
+        assertEquals(1, video.getViews());
+        assertEquals(0, video.getLocalViews());
+        assertEquals("YouTube", video.getPlatform());
     }
 }

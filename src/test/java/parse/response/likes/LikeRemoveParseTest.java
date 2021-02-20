@@ -1,50 +1,38 @@
 package parse.response.likes;
 
-import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.likes.LikeEvent;
-import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.response.events.GetEventsResult;
-import com.google.gson.JsonObject;
-import org.junit.Assert;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-import parse.response.AbstractParseTest;
+import org.junit.jupiter.api.Test;
+import parse.response.ParseTestUtil;
 
-import java.io.IOException;
 import java.util.List;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class LikeRemoveParseTest extends AbstractParseTest {
-    @Test
-    public void test1_likeRemove() throws IOException {
-        JsonObject jsonObject = readJson("json/response/like_remove/like_remove_sample_5_110.json");
-        GetEventsResult getEventsResult = new GetEventsResultConverter().convert(jsonObject);
-        Assert.assertNotNull(getEventsResult);
-        Assert.assertEquals(Integer.valueOf(2630), getEventsResult.getTs());
+import static org.junit.jupiter.api.Assertions.*;
 
-        List<Event> events = getEventsResult.getEvents();
-        Assert.assertNotNull(events);
-        Assert.assertEquals(1, events.size());
+public class LikeRemoveParseTest {
+    @Test
+    void likeRemove() {
+        List<Event> events = ParseTestUtil.getEvents("json/response/like_remove/like_remove_sample_5_110.json");
+        assertEquals(1, events.size());
 
         Event event = events.get(0);
-        Assert.assertNotNull(event);
-        Assert.assertEquals(EventType.LIKE_REMOVE, event.getType());
-        Assert.assertEquals(Integer.valueOf(333), event.getGroupId());
-        Assert.assertEquals("aaa", event.getEventId());
+        assertNotNull(event);
+        assertEquals(EventType.LIKE_REMOVE, event.getType());
+        assertEquals(333, event.getGroupId());
+        assertEquals("aaa", event.getEventId());
 
         EventObject eventObject = event.getObject();
-        Assert.assertNotNull(eventObject);
+        assertNotNull(eventObject);
 
-        Assert.assertTrue(eventObject instanceof LikeEvent);
+        assertTrue(eventObject instanceof LikeEvent);
         LikeEvent audio = (LikeEvent) eventObject;
-        Assert.assertEquals(Integer.valueOf(111), audio.getLikerId());
-        Assert.assertEquals("post", audio.getObjectType());
-        Assert.assertEquals(Integer.valueOf(-222), audio.getObjectOwnerId());
-        Assert.assertEquals(Integer.valueOf(3), audio.getObjectId());
-        Assert.assertEquals(Integer.valueOf(0), audio.getThreadReplyId());
-        Assert.assertEquals(Integer.valueOf(0), audio.getPostId());
+        assertEquals(111, audio.getLikerId());
+        assertEquals("post", audio.getObjectType());
+        assertEquals(-222, audio.getObjectOwnerId());
+        assertEquals(3, audio.getObjectId());
+        assertEquals(0, audio.getThreadReplyId());
+        assertEquals(0, audio.getPostId());
     }
 }
