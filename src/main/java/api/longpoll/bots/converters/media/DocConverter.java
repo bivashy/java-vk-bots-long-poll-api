@@ -18,6 +18,7 @@ public class DocConverter extends JsonToPojoConverter<Doc> {
     @Override
     public Doc convert(JsonObject jsonObject) {
         Doc doc = gson.fromJson(jsonObject, Doc.class);
+        // TODO: 15.03.2021 make it beautiful
         if (jsonObject.has("preview")) {
             doc.setPreview(
                     jsonObject.getAsJsonObject("preview")

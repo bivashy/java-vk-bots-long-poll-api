@@ -4,11 +4,10 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.events.EventConverter;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.response.events.GetEventsResult;
+import api.longpoll.bots.utils.converters.BulkConverterUtil;
 import com.google.gson.FieldAttributes;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GetEventsResultConverter extends JsonToPojoConverter<GetEventsResult> {
@@ -19,10 +18,7 @@ public class GetEventsResultConverter extends JsonToPojoConverter<GetEventsResul
         GetEventsResult getEventsResult = gson.fromJson(jsonObject, GetEventsResult.class);
 
         if (jsonObject.has("updates")) {
-            JsonArray updates = jsonObject.getAsJsonArray("updates");
-            List<Event> eventList = new ArrayList<>(updates.size());
-            updates.forEach(update -> eventList.add(EVENT_CONVERTER.convert(update.getAsJsonObject())));
-            getEventsResult.setEvents(eventList);
+            getEventsResult.setEvents(BulkConverterUtil.convert(jsonObject.getAsJsonArray("updates"), EVENT_CONVERTER));
         }
 
         return getEventsResult;

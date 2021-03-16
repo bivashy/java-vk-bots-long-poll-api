@@ -407,4 +407,36 @@ public class MessageNewParseTest {
         assertEquals("5678", doc.getAccessKey());
         assertNull(doc.getPreview());
     }
+
+    @Test
+    void messageNewFwdAttachments() {
+        Message message = ParseTestUtil.getFirstMessage("json/response/message_new/message_new_fwd_attachments_sample_5_118.json");
+        assertTrue(message.hasFwdMessages());
+
+        List<Message> fwdMessages = message.getFwdMessages();
+        Message fwdMessage = fwdMessages.get(0);
+        assertNotNull(fwdMessage);
+        assertEquals(1615559549, fwdMessage.getDate());
+        assertEquals(1234, fwdMessage.getFromId());
+        assertTrue(fwdMessage.hasAttachments());
+
+        List<Attachment> attachments = fwdMessage.getAttachments();
+        Attachment attachment = attachments.get(0);
+        assertNotNull(attachment);
+        assertEquals(AttachmentType.DOCUMENT, attachment.getType());
+
+        Attachable attachable = attachment.getAttachable();
+        assertNotNull(attachable);
+        assertTrue(attachable instanceof Doc);
+
+        Doc doc = (Doc) attachable;
+        assertEquals(592161514, doc.getId());
+        assertEquals(1234, doc.getOwnerId());
+        assertEquals("my_file.docx", doc.getTitle());
+        assertEquals(11614, doc.getSize());
+        assertEquals("docx", doc.getExt());
+        assertEquals(1615559548, doc.getDate());
+        assertEquals(DocType.TEXT_DOCUMENT, doc.getType());
+        assertNotNull(doc.getUrl());
+    }
 }

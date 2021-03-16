@@ -1,13 +1,14 @@
 package api.longpoll.bots.converters.media;
 
-import api.longpoll.bots.model.objects.media.AttachmentType;
 import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.basic.WallCommentConverter;
-import api.longpoll.bots.converters.basic.WallPostConverter;
+import api.longpoll.bots.converters.basic.AttachmentHolderConverter;
+import api.longpoll.bots.model.objects.basic.WallComment;
+import api.longpoll.bots.model.objects.basic.WallPost;
 import api.longpoll.bots.model.objects.media.Attachable;
 import api.longpoll.bots.model.objects.media.AttachedLink;
 import api.longpoll.bots.model.objects.media.Attachment;
+import api.longpoll.bots.model.objects.media.AttachmentType;
 import api.longpoll.bots.model.objects.media.Audio;
 import api.longpoll.bots.model.objects.media.AudioMessage;
 import api.longpoll.bots.model.objects.media.Graffiti;
@@ -48,7 +49,7 @@ public class AttachmentConverter extends JsonToPojoConverter<Attachment> {
         CONVERTERS.put(AttachmentType.PHOTO, CachedConverterFactory.getConverter(Photo.class));
         CONVERTERS.put(AttachmentType.STICKER, CachedConverterFactory.getConverter(Sticker.class));
         CONVERTERS.put(AttachmentType.VIDEO, CachedConverterFactory.getConverter(Video.class));
-        CONVERTERS.put(AttachmentType.WALL_POST, new WallPostConverter());
-        CONVERTERS.put(AttachmentType.WALL_REPLY, new WallCommentConverter());
+        CONVERTERS.put(AttachmentType.WALL_POST, AttachmentHolderConverter.of(WallPost.class));
+        CONVERTERS.put(AttachmentType.WALL_REPLY, AttachmentHolderConverter.of(WallComment.class));
     }
 }

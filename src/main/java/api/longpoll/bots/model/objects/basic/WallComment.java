@@ -2,7 +2,6 @@ package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.objects.media.Attachable;
-import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,7 +12,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/comment">Wall Comment</a>
  */
-public class WallComment implements Attachable {
+public class WallComment extends AttachmentHolder implements Attachable {
     /**
      * Comment ID.
      */
@@ -49,12 +48,6 @@ public class WallComment implements Attachable {
      */
     @SerializedName("reply_to_comment")
     private Integer replyToComment;
-
-    /**
-     * List of attachments in the comments (photos, links, etc.)
-     */
-    @SerializedName("attachments")
-    private List<Attachment> attachments;
 
     /**
      * Parent comments IDs.
@@ -245,14 +238,6 @@ public class WallComment implements Attachable {
 
     public void setReplyToComment(Integer replyToComment) {
         this.replyToComment = replyToComment;
-    }
-
-    public List<Attachment> getAttachments() {
-        return attachments;
-    }
-
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
     }
 
     public List<Integer> getParentsStack() {

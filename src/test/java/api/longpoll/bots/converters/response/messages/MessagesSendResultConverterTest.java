@@ -1,7 +1,6 @@
-package parse.response.messages.send;
+package api.longpoll.bots.converters.response.messages;
 
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.messages.MessagesSendResultConverter;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.messages.MessagesSendResponse;
 import org.junit.jupiter.api.Test;
@@ -11,10 +10,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MessagesSendParseTest {
+class MessagesSendResultConverterTest {
+    JsonToPojoConverter<GenericResult<Object>> converter = new MessagesSendResultConverter();
+
     @Test
     void responses() {
-        JsonToPojoConverter<GenericResult<Object>> converter = new MessagesSendResultConverter();
         GenericResult<Object> result = converter.convert(ParseTestUtil.readJson("json/response/messages_send/message_send_responses_sample_5_110.json"));
         assertNotNull(result);
 

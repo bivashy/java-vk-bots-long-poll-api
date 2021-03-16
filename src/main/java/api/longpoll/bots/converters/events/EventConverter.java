@@ -2,12 +2,9 @@ package api.longpoll.bots.converters.events;
 
 import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.basic.AttachmentHolderConverter;
 import api.longpoll.bots.converters.basic.MessageConverter;
-import api.longpoll.bots.converters.basic.WallPostConverter;
 import api.longpoll.bots.converters.events.messages.MessageNewEventConverter;
-import api.longpoll.bots.converters.events.photos.PhotoCommentEventConverter;
-import api.longpoll.bots.converters.events.video.VideoCommentEventConverter;
-import api.longpoll.bots.converters.events.wall.WallReplyEventConverter;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
@@ -105,7 +102,7 @@ public class EventConverter extends JsonToPojoConverter<Event> {
         CONVERTERS.put(EventType.LIKE_ADD, CachedConverterFactory.getConverter(LikeEvent.class));
         CONVERTERS.put(EventType.LIKE_REMOVE, CachedConverterFactory.getConverter(LikeEvent.class));
 
-        JsonToPojoConverter<PhotoCommentEvent> photoCommentEventConverter = new PhotoCommentEventConverter();
+        JsonToPojoConverter<PhotoCommentEvent> photoCommentEventConverter = AttachmentHolderConverter.of(PhotoCommentEvent.class);
         CONVERTERS.put(EventType.PHOTO_COMMENT_DELETE, CachedConverterFactory.getConverter(PhotoCommentDeleteEvent.class));
         CONVERTERS.put(EventType.PHOTO_COMMENT_EDIT, photoCommentEventConverter);
         CONVERTERS.put(EventType.PHOTO_COMMENT_NEW, photoCommentEventConverter);
@@ -115,15 +112,15 @@ public class EventConverter extends JsonToPojoConverter<Event> {
         CONVERTERS.put(EventType.USER_BLOCK, CachedConverterFactory.getConverter(UserBlockEvent.class));
         CONVERTERS.put(EventType.USER_UNBLOCK, CachedConverterFactory.getConverter(UserUnblockEvent.class));
 
-        JsonToPojoConverter<VideoCommentEvent> videoCommentEventConverter = new VideoCommentEventConverter();
+        JsonToPojoConverter<VideoCommentEvent> videoCommentEventConverter = AttachmentHolderConverter.of(VideoCommentEvent.class);
         CONVERTERS.put(EventType.VIDEO_COMMENT_DELETE, CachedConverterFactory.getConverter(VideoCommentDeleteEvent.class));
         CONVERTERS.put(EventType.VIDEO_COMMENT_EDIT, videoCommentEventConverter);
         CONVERTERS.put(EventType.VIDEO_COMMENT_NEW, videoCommentEventConverter);
         CONVERTERS.put(EventType.VIDEO_COMMENT_RESTORE, videoCommentEventConverter);
         CONVERTERS.put(EventType.VIDEO_NEW, CachedConverterFactory.getConverter(Video.class));
 
-        JsonToPojoConverter<WallPost> wallPostConverter = new WallPostConverter();
-        JsonToPojoConverter<WallReplyEvent> wallReplyEventConverter = new WallReplyEventConverter();
+        JsonToPojoConverter<WallPost> wallPostConverter = AttachmentHolderConverter.of(WallPost.class);
+        JsonToPojoConverter<WallReplyEvent> wallReplyEventConverter = AttachmentHolderConverter.of(WallReplyEvent.class);
         CONVERTERS.put(EventType.WALL_POST_NEW, wallPostConverter);
         CONVERTERS.put(EventType.WALL_REPLY_DELETE, CachedConverterFactory.getConverter(WallReplyDeleteEvent.class));
         CONVERTERS.put(EventType.WALL_REPLY_EDIT, wallReplyEventConverter);

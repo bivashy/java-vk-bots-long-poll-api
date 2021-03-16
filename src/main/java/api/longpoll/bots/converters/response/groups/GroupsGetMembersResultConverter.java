@@ -4,6 +4,7 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.groups.GroupsGetMembersResponseItem;
+import api.longpoll.bots.utils.json.GsonUtil;
 import com.google.gson.FieldAttributes;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -14,7 +15,7 @@ import java.util.List;
 public class GroupsGetMembersResultConverter extends JsonToPojoConverter<GenericResult<VkList<GroupsGetMembersResponseItem>>> {
     @Override
     public GenericResult<VkList<GroupsGetMembersResponseItem>> convert(JsonObject jsonObject) {
-        GenericResult<VkList<GroupsGetMembersResponseItem>> groupsGetMembers = gson.fromJson(jsonObject, new TypeToken<GenericResult<VkList<GroupsGetMembersResponseItem>>>(){}.getType());
+        GenericResult<VkList<GroupsGetMembersResponseItem>> groupsGetMembers = gson.fromJson(jsonObject, GsonUtil.toType(GenericResult.class, VkList.class, GroupsGetMembersResponseItem.class));
 
         VkList<GroupsGetMembersResponseItem> response = groupsGetMembers.getResponse();
         JsonArray jsonArray = jsonObject.getAsJsonObject("response").getAsJsonArray("items");

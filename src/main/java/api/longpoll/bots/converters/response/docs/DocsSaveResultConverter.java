@@ -8,9 +8,9 @@ import api.longpoll.bots.model.objects.media.AudioMessage;
 import api.longpoll.bots.model.objects.media.Graffiti;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.docs.DocsSaveResponse;
+import api.longpoll.bots.utils.json.GsonUtil;
 import com.google.gson.FieldAttributes;
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class DocsSaveResultConverter extends JsonToPojoConverter<GenericResult<D
 
     @Override
     public GenericResult<DocsSaveResponse> convert(JsonObject jsonObject) {
-        GenericResult<DocsSaveResponse> docsSaveResponse = gson.fromJson(jsonObject, new TypeToken<GenericResult<DocsSaveResponse>>() {}.getType());
+        GenericResult<DocsSaveResponse> docsSaveResponse = gson.fromJson(jsonObject, GsonUtil.toType(GenericResult.class, DocsSaveResponse.class));
         DocsSaveResponse response = docsSaveResponse.getResponse();
         String type = response.getType();
         JsonObject jsonResponse = jsonObject.getAsJsonObject("response");
