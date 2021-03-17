@@ -1,11 +1,12 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.basic.Community;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class GroupsGetById extends GetMethod<List<Community>> {
 
     @Override
     protected JsonToPojoConverter<List<Community>> getConverter() {
-        return CachedConverterFactory.getConverter(List.class, Community.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<List<Community>>(){}.getType());
     }
 
     @Override

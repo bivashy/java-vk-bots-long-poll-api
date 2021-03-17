@@ -5,10 +5,10 @@ import api.longpoll.bots.converters.media.AttachmentConverter;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.messages.MessagesGetHistoryAttachmentsResponse;
-import api.longpoll.bots.utils.json.GsonUtil;
 import com.google.gson.FieldAttributes;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class MessagesGetHistoryAttachmentsResultConverter extends JsonToPojoConv
 
     @Override
     public GenericResult<MessagesGetHistoryAttachmentsResponse> convert(JsonObject jsonObject) {
-        GenericResult<MessagesGetHistoryAttachmentsResponse> result = gson.fromJson(jsonObject, GsonUtil.toType(GenericResult.class, MessagesGetHistoryAttachmentsResponse.class));
+        GenericResult<MessagesGetHistoryAttachmentsResponse> result = gson.fromJson(jsonObject, new TypeToken<GenericResult<MessagesGetHistoryAttachmentsResponse>>(){}.getType());
 
         List<MessagesGetHistoryAttachmentsResponse.Item> items = result.getResponse().getItems();
         JsonArray jsonItems = jsonObject.getAsJsonObject("response").getAsJsonArray("items");

@@ -27,8 +27,6 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
 public class MessagesSend extends GetMethod<GenericResult<Object>> {
-    private static final JsonToPojoConverter<GenericResult<Object>> MESSAGES_SEND_RESULT_CONVERTER = new MessagesSendResultConverter();
-
     /**
      * User ID.
      */
@@ -125,7 +123,7 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
 
     @Override
     protected JsonToPojoConverter<GenericResult<Object>> getConverter() {
-        return MESSAGES_SEND_RESULT_CONVERTER;
+        return new MessagesSendResultConverter();
     }
 
     @Override
