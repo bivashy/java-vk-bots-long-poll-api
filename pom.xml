@@ -6,7 +6,7 @@
     <groupId>com.github.yvasyliev</groupId>
     <artifactId>java-vk-bots-longpoll-api</artifactId>
     <packaging>jar</packaging>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
 
     <name>Java VK Bots Long Poll API</name>
     <description>A Java library to create VK bots using Bots Long Poll API</description>
