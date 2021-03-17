@@ -1,12 +1,13 @@
 package api.longpoll.bots.methods.docs;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -39,7 +40,7 @@ public class DocsGetMessagesUploadServer extends GetMethod<GenericResult<DocsGet
 
     @Override
     protected JsonToPojoConverter<GenericResult<DocsGetUploadServerResponse>> getConverter() {
-        return CachedConverterFactory.getConverter(GenericResult.class, DocsGetUploadServerResponse.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<DocsGetUploadServerResponse>>(){}.getType());
     }
 
     @Override

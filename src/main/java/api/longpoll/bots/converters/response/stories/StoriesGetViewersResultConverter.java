@@ -15,9 +15,10 @@ public class StoriesGetViewersResultConverter extends JsonToPojoConverter<Generi
     @Override
     public GenericResult<VkList<Object>> convert(JsonObject jsonObject) {
         JsonArray jsonArray = jsonObject.getAsJsonObject("response").getAsJsonArray("items");
+
         Type type = jsonArray.size() == 0 || jsonArray.get(0).getAsJsonObject().has("user_id")
-                ? new TypeToken<GenericResult<VkList<StoriesGetViewersResponseItem>>>() {}.getType()
-                : new TypeToken<GenericResult<VkList<User>>>() {}.getType();
+                ? new TypeToken<GenericResult<VkList<StoriesGetViewersResponseItem>>>(){}.getType()
+                : new TypeToken<GenericResult<VkList<User>>>(){}.getType();
         return gson.fromJson(jsonObject, type);
     }
 }

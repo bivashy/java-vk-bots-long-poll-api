@@ -1,12 +1,13 @@
 package api.longpoll.bots.methods.photos;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.photos.PhotosSaveOwnerCoverPhotoResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -38,7 +39,7 @@ public class PhotosSaveOwnerCoverPhoto extends GetMethod<GenericResult<PhotosSav
 
     @Override
     protected JsonToPojoConverter<GenericResult<PhotosSaveOwnerCoverPhotoResponse>> getConverter() {
-        return CachedConverterFactory.getConverter(GenericResult.class, PhotosSaveOwnerCoverPhotoResponse.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<PhotosSaveOwnerCoverPhotoResponse>>(){}.getType());
     }
 
     @Override

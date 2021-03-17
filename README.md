@@ -28,7 +28,7 @@ This library uses the next third-party dependencies:
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
   <artifactId>java-vk-bots-longpoll-api</artifactId>
-  <version>1.2.1</version>
+  <version>1.2.3</version>
 </dependency>
 ```
 2. Create a subclass of `LongPollBot` and override necessary methods:

@@ -18,8 +18,6 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
  */
 public class MessagesGetHistoryAttachments extends GetMethod<GenericResult<MessagesGetHistoryAttachmentsResponse>> {
-    private static final JsonToPojoConverter<GenericResult<MessagesGetHistoryAttachmentsResponse>> MESSAGES_GET_HISTORY_ATTACHMENTS_RESULT_CONVERTER = new MessagesGetHistoryAttachmentsResultConverter();
-
     /**
      * Peer ID.
      */
@@ -76,7 +74,7 @@ public class MessagesGetHistoryAttachments extends GetMethod<GenericResult<Messa
 
     @Override
     protected JsonToPojoConverter<GenericResult<MessagesGetHistoryAttachmentsResponse>> getConverter() {
-        return MESSAGES_GET_HISTORY_ATTACHMENTS_RESULT_CONVERTER;
+        return new MessagesGetHistoryAttachmentsResultConverter();
     }
 
     @Override

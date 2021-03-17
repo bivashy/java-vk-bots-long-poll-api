@@ -17,8 +17,6 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/docs.save">https://vk.com/dev/docs.save</a>
  */
 public class DocsSave extends GetMethod<GenericResult<DocsSaveResponse>> {
-    private static final JsonToPojoConverter<GenericResult<DocsSaveResponse>> DOCS_SAVE_RESULT_CONVERTER = new DocsSaveResultConverter();
-
     /**
      * This parameter is returned when the file is uploaded to the server.
      */
@@ -50,7 +48,7 @@ public class DocsSave extends GetMethod<GenericResult<DocsSaveResponse>> {
 
     @Override
     protected JsonToPojoConverter<GenericResult<DocsSaveResponse>> getConverter() {
-        return DOCS_SAVE_RESULT_CONVERTER;
+        return new DocsSaveResultConverter();
     }
 
     @Override

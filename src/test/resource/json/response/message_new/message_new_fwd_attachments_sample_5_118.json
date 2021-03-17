@@ -1,0 +1,65 @@
+{
+  "ts": "1622",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1615562288,
+          "from_id": 1234,
+          "id": 4068,
+          "out": 0,
+          "peer_id": 1234,
+          "text": "",
+          "conversation_message_id": 2352,
+          "fwd_messages": [
+            {
+              "date": 1615559549,
+              "from_id": 1234,
+              "text": "",
+              "attachments": [
+                {
+                  "type": "doc",
+                  "doc": {
+                    "id": 592161514,
+                    "owner_id": 1234,
+                    "title": "my_file.docx",
+                    "size": 11614,
+                    "ext": "docx",
+                    "date": 1615559548,
+                    "type": 1,
+                    "url": "https://vk.com/doc1234_592161514?hash=d3356bbe9142758178&dl=GM2TEMZXGU3TONA:16124388:3230aee45448176eb2&api=1&no_preview=1",
+                    "access_key": "d34be3e00c9bda3f1d"
+                  }
+                }
+              ],
+              "conversation_message_id": 698
+            }
+          ],
+          "important": false,
+          "random_id": 0,
+          "attachments": [],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link",
+            "callback",
+            "intent_subscribe",
+            "intent_unsubscribe"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": false,
+          "lang_id": 0
+        }
+      },
+      "group_id": 5678,
+      "event_id": "1a9311f96ec3342f604bf0f5dd32d079bb64"
+    }
+  ]
+}

@@ -1,12 +1,13 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.messages.MessagesDeleteConversationResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -43,7 +44,7 @@ public class MessagesDeleteConversation extends GetMethod<GenericResult<Messages
 
     @Override
     protected JsonToPojoConverter<GenericResult<MessagesDeleteConversationResponse>> getConverter() {
-        return CachedConverterFactory.getConverter(GenericResult.class, MessagesDeleteConversationResponse.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<MessagesDeleteConversationResponse>>(){}.getType());
     }
 
     @Override

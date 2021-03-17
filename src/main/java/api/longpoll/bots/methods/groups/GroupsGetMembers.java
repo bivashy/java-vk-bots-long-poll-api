@@ -19,8 +19,6 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/groups.getMembers">https://vk.com/dev/groups.getMembers</a>
  */
 public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMembersResponseItem>>> {
-    private static final JsonToPojoConverter<GenericResult<VkList<GroupsGetMembersResponseItem>>> GROUPS_GET_MEMBERS_RESPONSE_CONVERTER = new GroupsGetMembersResultConverter();
-
     /**
      * ID or screen name of the community.
      */
@@ -62,7 +60,7 @@ public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMe
 
     @Override
     protected JsonToPojoConverter<GenericResult<VkList<GroupsGetMembersResponseItem>>> getConverter() {
-        return GROUPS_GET_MEMBERS_RESPONSE_CONVERTER;
+        return new GroupsGetMembersResultConverter();
     }
 
     @Override

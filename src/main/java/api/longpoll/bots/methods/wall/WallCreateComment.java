@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.wall;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
@@ -10,6 +10,7 @@ import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.wall.WallCreateCommentResponse;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.ArrayList;
@@ -73,7 +74,7 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
 
     @Override
     protected JsonToPojoConverter<GenericResult<WallCreateCommentResponse>> getConverter() {
-        return CachedConverterFactory.getConverter(GenericResult.class, WallCreateCommentResponse.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<WallCreateCommentResponse>>(){}.getType());
     }
 
     @Override

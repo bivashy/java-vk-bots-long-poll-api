@@ -1,11 +1,10 @@
 package api.longpoll.bots.converters;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-public class StringToJsonConverter implements Converter<String, JsonObject> {
+public class StringToJsonConverter extends AbstractConverter<String, JsonObject> {
     @Override
     public JsonObject convert(String s) {
-        return new Gson().fromJson(s, JsonObject.class);
+        return gson.fromJson(s, JsonObject.class);
     }
 }

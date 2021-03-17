@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import com.google.gson.JsonObject;
@@ -97,7 +97,7 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
 
     @Override
     protected JsonToPojoConverter<GroupsEditAddress> getConverter() {
-        return CachedConverterFactory.getConverter(GroupsEditAddress.class);
+        return JsonToPojoConverterFactory.get(GroupsEditAddress.class);
     }
 
     @Override

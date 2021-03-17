@@ -1,7 +1,7 @@
 package api.longpoll.bots.converters.response.docs;
 
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.converters.media.DocConverter;
 import api.longpoll.bots.model.objects.media.Attachable;
 import api.longpoll.bots.model.objects.media.AudioMessage;
@@ -20,7 +20,7 @@ public class DocsSaveResultConverter extends JsonToPojoConverter<GenericResult<D
 
     @Override
     public GenericResult<DocsSaveResponse> convert(JsonObject jsonObject) {
-        GenericResult<DocsSaveResponse> docsSaveResponse = gson.fromJson(jsonObject, new TypeToken<GenericResult<DocsSaveResponse>>() {}.getType());
+        GenericResult<DocsSaveResponse> docsSaveResponse = gson.fromJson(jsonObject, new TypeToken<GenericResult<DocsSaveResponse>>(){}.getType());
         DocsSaveResponse response = docsSaveResponse.getResponse();
         String type = response.getType();
         JsonObject jsonResponse = jsonObject.getAsJsonObject("response");
@@ -36,8 +36,8 @@ public class DocsSaveResultConverter extends JsonToPojoConverter<GenericResult<D
     }
 
     static {
-        CONVERTERS.put("audio_message", CachedConverterFactory.getConverter(AudioMessage.class));
+        CONVERTERS.put("audio_message", JsonToPojoConverterFactory.get(AudioMessage.class));
         CONVERTERS.put("doc", new DocConverter());
-        CONVERTERS.put("graffiti", CachedConverterFactory.getConverter(Graffiti.class));
+        CONVERTERS.put("graffiti", JsonToPojoConverterFactory.get(Graffiti.class));
     }
 }

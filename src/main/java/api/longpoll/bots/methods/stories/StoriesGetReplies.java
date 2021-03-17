@@ -1,13 +1,14 @@
 package api.longpoll.bots.methods.stories;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.StoriesFeedBlock;
 import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResult;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -55,7 +56,7 @@ public class StoriesGetReplies extends GetMethod<GenericResult<ExtendedVkList<St
 
     @Override
     protected JsonToPojoConverter<GenericResult<ExtendedVkList<StoriesFeedBlock>>> getConverter() {
-        return CachedConverterFactory.getConverter(GenericResult.class, ExtendedVkList.class, StoriesFeedBlock.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<ExtendedVkList<StoriesFeedBlock>>>(){}.getType());
     }
 
     @Override

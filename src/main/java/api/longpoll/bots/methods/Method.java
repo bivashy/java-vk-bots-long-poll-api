@@ -50,6 +50,7 @@ public abstract class Method<Result> {
      *
      * @return VK API response.
      * @throws BotsLongPollHttpException if error occurs.
+     * @throws BotsLongPollException if error occurs.
      */
     public Result execute() throws BotsLongPollHttpException, BotsLongPollException {
         return execute(getConverter());
@@ -61,17 +62,18 @@ public abstract class Method<Result> {
      * @param converter converter which converts JsonObject to required Result type.
      * @return VK API response.
      * @throws BotsLongPollHttpException if error occurs.
+     * @throws BotsLongPollException if error occurs.
      */
     private Result execute(JsonToPojoConverter<Result> converter) throws BotsLongPollHttpException, BotsLongPollException {
         String stringResponse = sendRequest();
 
-        JsonObject responseJson = STRING_TO_JSON_CONVERTER.convert(stringResponse);
+        JsonObject jsonResponse = STRING_TO_JSON_CONVERTER.convert(stringResponse);
 
-        if (VALIDATOR.isValid(responseJson)) {
-            return converter.convert(responseJson);
+        if (VALIDATOR.isValid(jsonResponse)) {
+            return converter.convert(jsonResponse);
         }
 
-        throw new BotsLongPollException(responseJson.toString());
+        throw new BotsLongPollException(stringResponse);
     }
 
     /**
