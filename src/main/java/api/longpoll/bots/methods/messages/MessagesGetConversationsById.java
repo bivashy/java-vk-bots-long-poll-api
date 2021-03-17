@@ -1,13 +1,14 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.basic.Conversation;
 import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResult;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -50,7 +51,7 @@ public class MessagesGetConversationsById extends GetMethod<GenericResult<Extend
 
     @Override
     protected JsonToPojoConverter<GenericResult<ExtendedVkList<Conversation>>> getConverter() {
-        return CachedConverterFactory.getConverter(GenericResult.class, ExtendedVkList.class, Conversation.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<ExtendedVkList<Conversation>>>(){}.getType());
     }
 
     @Override

@@ -1,9 +1,8 @@
 package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
-import api.longpoll.bots.model.objects.media.Attachable;
-import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.objects.additional.Geo;
+import api.longpoll.bots.model.objects.media.Attachable;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -14,7 +13,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/post">Wall Post</a>
  */
-public class WallPost implements Attachable {
+public class WallPost extends AttachmentHolder implements Attachable {
     /**
      * Post ID on the wall.
      */
@@ -99,12 +98,6 @@ public class WallPost implements Attachable {
      */
     @SerializedName("post_type")
     private String postType;
-
-    /**
-     * Information about attachments to the post (photos, links, etc.).
-     */
-    @SerializedName("attachments")
-    private List<Attachment> attachments;
 
     /**
      * Information about location.
@@ -502,14 +495,6 @@ public class WallPost implements Attachable {
 
     public void setPostType(String postType) {
         this.postType = postType;
-    }
-
-    public List<Attachment> getAttachments() {
-        return attachments;
-    }
-
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
     }
 
     public Geo getGeo() {

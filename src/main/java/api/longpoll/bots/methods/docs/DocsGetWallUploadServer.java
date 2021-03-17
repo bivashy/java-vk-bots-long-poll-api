@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.docs;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
@@ -32,7 +32,7 @@ public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerRespon
 
     @Override
     protected JsonToPojoConverter<DocsGetUploadServerResponse> getConverter() {
-        return CachedConverterFactory.getConverter(DocsGetUploadServerResponse.class);
+        return JsonToPojoConverterFactory.get(DocsGetUploadServerResponse.class);
     }
 
     @Override

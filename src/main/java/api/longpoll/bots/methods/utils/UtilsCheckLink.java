@@ -1,12 +1,13 @@
 package api.longpoll.bots.methods.utils;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.utils.UtilsCheckLinkResponse;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -33,7 +34,7 @@ public class UtilsCheckLink extends GetMethod<GenericResult<UtilsCheckLinkRespon
 
     @Override
     protected JsonToPojoConverter<GenericResult<UtilsCheckLinkResponse>> getConverter() {
-        return CachedConverterFactory.getConverter(GenericResult.class, UtilsCheckLinkResponse.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<UtilsCheckLinkResponse>>(){}.getType());
     }
 
     @Override

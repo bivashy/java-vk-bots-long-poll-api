@@ -17,8 +17,6 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
  */
 public class GroupsIsMember extends GetMethod<GenericResult<Object>> {
-    private static final JsonToPojoConverter<GenericResult<Object>> GROUPS_IS_MEMBER_RESULT_CONVERTER = new GroupsIsMemberResultConverter();
-
     /**
      * ID or screen name of the community.
      */
@@ -50,7 +48,7 @@ public class GroupsIsMember extends GetMethod<GenericResult<Object>> {
 
     @Override
     protected JsonToPojoConverter<GenericResult<Object>> getConverter() {
-        return GROUPS_IS_MEMBER_RESULT_CONVERTER;
+        return new GroupsIsMemberResultConverter();
     }
 
     @Override

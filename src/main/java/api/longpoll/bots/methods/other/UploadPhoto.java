@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.other;
 
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.PostMethod;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
 import org.jsoup.Connection;
@@ -24,7 +24,7 @@ public class UploadPhoto extends PostMethod<UploadPhotoResult> {
 
     @Override
     protected JsonToPojoConverter<UploadPhotoResult> getConverter() {
-        return CachedConverterFactory.getConverter(UploadPhotoResult.class);
+        return JsonToPojoConverterFactory.get(UploadPhotoResult.class);
     }
 
     @Override

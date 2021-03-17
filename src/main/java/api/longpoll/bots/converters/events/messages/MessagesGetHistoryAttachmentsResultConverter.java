@@ -21,6 +21,7 @@ public class MessagesGetHistoryAttachmentsResultConverter extends JsonToPojoConv
 
         List<MessagesGetHistoryAttachmentsResponse.Item> items = result.getResponse().getItems();
         JsonArray jsonItems = jsonObject.getAsJsonObject("response").getAsJsonArray("items");
+        // TODO: 15.03.2021 make it beautiful
         for (int i = 0; i < jsonItems.size(); i++) {
             JsonObject jsonAttachment = jsonItems.get(i)
                     .getAsJsonObject()

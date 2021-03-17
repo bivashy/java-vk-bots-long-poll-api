@@ -13,8 +13,6 @@ import java.util.stream.Stream;
  * Gets update events from VK server.
  */
 public class GetEvents extends GetMethod<GetEventsResult> {
-    private static final JsonToPojoConverter<GetEventsResult> GET_EVENTS_RESULT_CONVERTER = new GetEventsResultConverter();
-
     /**
      * Server URL.
      */
@@ -36,7 +34,7 @@ public class GetEvents extends GetMethod<GetEventsResult> {
 
     @Override
     protected JsonToPojoConverter<GetEventsResult> getConverter() {
-        return GET_EVENTS_RESULT_CONVERTER;
+        return new GetEventsResultConverter();
     }
 
     @Override

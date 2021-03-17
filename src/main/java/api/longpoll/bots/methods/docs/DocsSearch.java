@@ -1,12 +1,13 @@
 package api.longpoll.bots.methods.docs;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.media.Doc;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -48,7 +49,7 @@ public class DocsSearch extends GetMethod<VkList<Doc>> {
 
     @Override
     protected JsonToPojoConverter<VkList<Doc>> getConverter() {
-        return CachedConverterFactory.getConverter(VkList.class, Doc.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<VkList<Doc>>(){}.getType());
     }
 
     @Override

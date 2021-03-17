@@ -1,13 +1,14 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.groups.GroupsGetCallbackServersResponseItem;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class GroupsGetCallbackServers extends GetMethod<GenericResult<VkList<Gro
 
     @Override
     protected JsonToPojoConverter<GenericResult<VkList<GroupsGetCallbackServersResponseItem>>> getConverter() {
-        return CachedConverterFactory.getConverter(GenericResult.class, VkList.class, GroupsGetCallbackServersResponseItem.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<VkList<GroupsGetCallbackServersResponseItem>>>(){}.getType());
     }
 
     @Override

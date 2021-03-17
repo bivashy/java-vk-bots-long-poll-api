@@ -1,12 +1,13 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.CachedConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.PinnedMessage;
 import api.longpoll.bots.model.response.GenericResult;
+import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -38,7 +39,7 @@ public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
 
     @Override
     protected JsonToPojoConverter<GenericResult<PinnedMessage>> getConverter() {
-        return CachedConverterFactory.getConverter(GenericResult.class, PinnedMessage.class);
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<PinnedMessage>>(){}.getType());
     }
 
     @Override
