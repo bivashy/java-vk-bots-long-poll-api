@@ -1,6 +1,7 @@
 package api.longpoll.bots.converters.events.messages;
 
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.response.messages.MessagesGetHistoryAttachmentsResultConverter;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.objects.media.AttachmentType;
 import api.longpoll.bots.model.response.GenericResult;

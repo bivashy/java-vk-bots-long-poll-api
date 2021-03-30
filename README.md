@@ -28,7 +28,7 @@ This library uses the next third-party dependencies:
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
   <artifactId>java-vk-bots-longpoll-api</artifactId>
-  <version>1.2.3</version>
+  <version>1.2.4</version>
 </dependency>
 ```
 2. Create a subclass of `LongPollBot` and override necessary methods:
@@ -63,8 +63,10 @@ public class MyBot extends LongPollBot {
 ```
 3. In `main` method create instance of `BotsLongPoll` class, pass instance of `LongPollBot` class as constructor parameter and call `run()` method:
 ```java
-public static void main(String[] args) {
-    new BotsLongPoll(new MyBot()).run();
+public class Main {
+    public static void main(String[] args) {
+        new BotsLongPoll(new MyBot()).run();
+    }
 }
 ```
 
