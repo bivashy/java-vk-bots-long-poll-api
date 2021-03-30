@@ -2,12 +2,11 @@ package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
+import api.longpoll.bots.converters.response.messages.MessagesGetHistoryResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.messages.MessagesGetHistoryResponse;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -75,7 +74,7 @@ public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHisto
 
     @Override
     protected JsonToPojoConverter<GenericResult<MessagesGetHistoryResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<MessagesGetHistoryResponse>>(){}.getType());
+        return new MessagesGetHistoryResultConverter();
     }
 
     @Override

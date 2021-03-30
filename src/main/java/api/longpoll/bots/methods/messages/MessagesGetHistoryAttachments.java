@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.events.messages.MessagesGetHistoryAttachmentsResultConverter;
+import api.longpoll.bots.converters.response.messages.MessagesGetHistoryAttachmentsResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;

@@ -1,4 +1,4 @@
-package api.longpoll.bots.converters.events.messages;
+package api.longpoll.bots.converters.response.messages;
 
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.media.AttachmentConverter;

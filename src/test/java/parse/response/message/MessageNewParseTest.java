@@ -439,4 +439,29 @@ public class MessageNewParseTest {
         assertEquals(DocType.TEXT_DOCUMENT, doc.getType());
         assertNotNull(doc.getUrl());
     }
+
+    @Test
+    void messageNewReplyAttachment() {
+        Message message = ParseTestUtil.getFirstMessage("json/response/message_new/message_new_reply_attachment_sample_5_118.json");
+        assertTrue(message.hasReplyMessage());
+
+        Message replyMessage = message.getReplyMessage();
+        assertTrue(replyMessage.hasAttachments());
+
+        List<Attachment> attachments = replyMessage.getAttachments();
+        Attachment attachment = attachments.get(0);
+        assertNotNull(attachment);
+        assertEquals(AttachmentType.PHOTO, attachment.getType());
+
+        Attachable attachable = attachment.getAttachable();
+        assertNotNull(attachable);
+        assertTrue(attachable instanceof Photo);
+
+        Photo photo = (Photo) attachable;
+        assertEquals(432, photo.getId());
+
+        List<PhotoSize> photoSizes = photo.getPhotoSizes();
+        assertNotNull(photoSizes);
+        assertFalse(photoSizes.isEmpty());
+    }
 }
