@@ -160,6 +160,14 @@ public class Video implements Attachable {
         public void setWithPadding(Boolean withPadding) {
             this.withPadding = withPadding;
         }
+
+
+        @Override
+        public String toString() {
+            return "VideoImage{" +
+                    "withPadding=" + withPadding +
+                    "} " + super.toString();
+        }
     }
 
     public Integer getId() {
@@ -344,5 +352,34 @@ public class Video implements Attachable {
 
     public void setLocalViews(Integer localViews) {
         this.localViews = localViews;
+    }
+
+    @Override
+    public String toString() {
+        return "Video{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", duration=" + duration +
+                ", date=" + date +
+                ", addingDate=" + addingDate +
+                ", views=" + views +
+                ", commentsAmount=" + commentsAmount +
+                ", player='" + player + '\'' +
+                ", platform='" + platform + '\'' +
+                ", canEdit=" + canEdit +
+                ", canAdd=" + canAdd +
+                ", isPrivate=" + isPrivate +
+                ", accessKey='" + accessKey + '\'' +
+                ", processing=" + processing +
+                ", live=" + live +
+                ", upcoming=" + upcoming +
+                ", isFavourite=" + isFavourite +
+                ", image=" + image +
+                ", trackCode='" + trackCode + '\'' +
+                ", type='" + type + '\'' +
+                ", localViews=" + localViews +
+                '}';
     }
 }

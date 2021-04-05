@@ -31,11 +31,6 @@ public class Keyboard {
         return new Gson().toJson(this);
     }
 
-    @Override
-    public String toString() {
-        return toJson();
-    }
-
     public Boolean getOneTime() {
         return oneTime;
     }
@@ -61,5 +56,14 @@ public class Keyboard {
     public Keyboard setButtons(List<List<Button>> buttons) {
         this.buttons = buttons;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Keyboard{" +
+                "oneTime=" + oneTime +
+                ", inline=" + inline +
+                ", buttons=" + buttons +
+                '}';
     }
 }

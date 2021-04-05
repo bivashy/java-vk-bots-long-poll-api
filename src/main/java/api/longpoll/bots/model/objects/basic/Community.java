@@ -374,6 +374,14 @@ public class Community {
         public void setMainAddressId(Integer mainAddressId) {
             this.mainAddressId = mainAddressId;
         }
+
+        @Override
+        public String toString() {
+            return "Addresses{" +
+                    "enabled=" + enabled +
+                    ", mainAddressId=" + mainAddressId +
+                    '}';
+        }
     }
 
     /**
@@ -407,6 +415,14 @@ public class Community {
         public void setComment(String comment) {
             this.comment = comment;
         }
+
+        @Override
+        public String toString() {
+            return "BanInfo{" +
+                    "endDate=" + endDate +
+                    ", comment='" + comment + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -439,6 +455,14 @@ public class Community {
 
         public void setTitle(String title) {
             this.title = title;
+        }
+
+        @Override
+        public String toString() {
+            return "City{" +
+                    "id=" + id +
+                    ", title='" + title + '\'' +
+                    '}';
         }
     }
 
@@ -500,6 +524,16 @@ public class Community {
 
         public void setEmail(String email) {
             this.email = email;
+        }
+
+        @Override
+        public String toString() {
+            return "Contact{" +
+                    "userId=" + userId +
+                    ", desc='" + desc + '\'' +
+                    ", phone='" + phone + '\'' +
+                    ", email='" + email + '\'' +
+                    '}';
         }
     }
 
@@ -590,6 +624,18 @@ public class Community {
         public void setDocs(Integer docs) {
             this.docs = docs;
         }
+
+        @Override
+        public String toString() {
+            return "Counters{" +
+                    "photos=" + photos +
+                    ", albums=" + albums +
+                    ", audios=" + audios +
+                    ", videos=" + videos +
+                    ", topics=" + topics +
+                    ", docs=" + docs +
+                    '}';
+        }
     }
 
     /**
@@ -623,6 +669,14 @@ public class Community {
 
         public void setImages(List<Image> images) {
             this.images = images;
+        }
+
+        @Override
+        public String toString() {
+            return "Cover{" +
+                    "enabled=" + enabled +
+                    ", images=" + images +
+                    '}';
         }
     }
 
@@ -712,6 +766,18 @@ public class Community {
 
         public void setPhoto100(String photo100) {
             this.photo100 = photo100;
+        }
+
+        @Override
+        public String toString() {
+            return "Link{" +
+                    "id=" + id +
+                    ", url='" + url + '\'' +
+                    ", name='" + name + '\'' +
+                    ", desc='" + desc + '\'' +
+                    ", photo50='" + photo50 + '\'' +
+                    ", photo100='" + photo100 + '\'' +
+                    '}';
         }
     }
 
@@ -816,6 +882,19 @@ public class Community {
 
         public void setCurrencyText(String currencyText) {
             this.currencyText = currencyText;
+        }
+
+        @Override
+        public String toString() {
+            return "Market{" +
+                    "enabled=" + enabled +
+                    ", priceMin=" + priceMin +
+                    ", priceMax=" + priceMax +
+                    ", mainAlbumId=" + mainAlbumId +
+                    ", contactId=" + contactId +
+                    ", currency=" + currency +
+                    ", currencyText='" + currencyText + '\'' +
+                    '}';
         }
     }
 
@@ -933,6 +1012,20 @@ public class Community {
 
         public void setAddress(String address) {
             this.address = address;
+        }
+
+        @Override
+        public String toString() {
+            return "Place{" +
+                    "id=" + id +
+                    ", title='" + title + '\'' +
+                    ", latitude=" + latitude +
+                    ", longitude=" + longitude +
+                    ", type=" + type +
+                    ", country=" + country +
+                    ", city=" + city +
+                    ", address='" + address + '\'' +
+                    '}';
         }
     }
 
@@ -1350,5 +1443,63 @@ public class Community {
 
     public void setWikiPage(String wikiPage) {
         this.wikiPage = wikiPage;
+    }
+
+    @Override
+    public String toString() {
+        return "Community{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", screenName='" + screenName + '\'' +
+                ", isClosed=" + isClosed +
+                ", deactivated='" + deactivated + '\'' +
+                ", admin=" + admin +
+                ", adminLevel=" + adminLevel +
+                ", member=" + member +
+                ", advertiser=" + advertiser +
+                ", invitedBy=" + invitedBy +
+                ", type='" + type + '\'' +
+                ", photo50='" + photo50 + '\'' +
+                ", photo100='" + photo100 + '\'' +
+                ", photo200='" + photo200 + '\'' +
+                ", activity='" + activity + '\'' +
+                ", addresses=" + addresses +
+                ", ageLimits=" + ageLimits +
+                ", banInfo=" + banInfo +
+                ", canCreateTopic=" + canCreateTopic +
+                ", canMessage=" + canMessage +
+                ", canPost=" + canPost +
+                ", canSeeAllPosts=" + canSeeAllPosts +
+                ", canUploadDoc=" + canUploadDoc +
+                ", canUploadVideo=" + canUploadVideo +
+                ", city=" + city +
+                ", contacts=" + contacts +
+                ", counters=" + counters +
+                ", country=" + country +
+                ", cover=" + cover +
+                ", cropPhoto=" + cropPhoto +
+                ", description='" + description + '\'' +
+                ", fixedPost=" + fixedPost +
+                ", hasPhoto=" + hasPhoto +
+                ", favorite=" + favorite +
+                ", hiddenFromFeed=" + hiddenFromFeed +
+                ", messagesBlocked=" + messagesBlocked +
+                ", links=" + links +
+                ", mainAlbumId=" + mainAlbumId +
+                ", mainSection=" + mainSection +
+                ", market=" + market +
+                ", memberStatus=" + memberStatus +
+                ", membersCount=" + membersCount +
+                ", place=" + place +
+                ", public_date_label='" + public_date_label + '\'' +
+                ", site='" + site + '\'' +
+                ", startDate=" + startDate +
+                ", finishDate=" + finishDate +
+                ", status='" + status + '\'' +
+                ", trending=" + trending +
+                ", verified=" + verified +
+                ", wall=" + wall +
+                ", wikiPage='" + wikiPage + '\'' +
+                '}';
     }
 }

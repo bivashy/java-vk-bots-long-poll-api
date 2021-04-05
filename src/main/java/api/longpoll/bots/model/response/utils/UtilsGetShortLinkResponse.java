@@ -61,4 +61,14 @@ public class UtilsGetShortLinkResponse {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    @Override
+    public String toString() {
+        return "UtilsGetShortLinkResponse{" +
+                "shortUrl='" + shortUrl + '\'' +
+                ", accessKey='" + accessKey + '\'' +
+                ", key='" + key + '\'' +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

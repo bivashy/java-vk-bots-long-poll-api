@@ -188,6 +188,15 @@ public class Message implements EventObject {
             public void setPhoto200(String photo200) {
                 this.photo200 = photo200;
             }
+
+            @Override
+            public String toString() {
+                return "Photo{" +
+                        "photo50='" + photo50 + '\'' +
+                        ", photo100='" + photo100 + '\'' +
+                        ", photo200='" + photo200 + '\'' +
+                        '}';
+            }
         }
 
         public String getType() {
@@ -228,6 +237,17 @@ public class Message implements EventObject {
 
         public void setPhoto(Photo photo) {
             this.photo = photo;
+        }
+
+        @Override
+        public String toString() {
+            return "Action{" +
+                    "type='" + type + '\'' +
+                    ", memberId=" + memberId +
+                    ", text='" + text + '\'' +
+                    ", email='" + email + '\'' +
+                    ", photo=" + photo +
+                    '}';
         }
     }
 
@@ -361,5 +381,25 @@ public class Message implements EventObject {
 
     public void setConversationMessageId(Integer conversationMessageId) {
         this.conversationMessageId = conversationMessageId;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", date=" + date +
+                ", peerId=" + peerId +
+                ", fromId=" + fromId +
+                ", text='" + text + '\'' +
+                ", randomId=" + randomId +
+                ", attachments=" + attachments +
+                ", important=" + important +
+                ", geo=" + geo +
+                ", payload='" + payload + '\'' +
+                ", fwdMessages=" + fwdMessages +
+                ", replyMessage=" + replyMessage +
+                ", action=" + action +
+                ", conversationMessageId=" + conversationMessageId +
+                '}';
     }
 }

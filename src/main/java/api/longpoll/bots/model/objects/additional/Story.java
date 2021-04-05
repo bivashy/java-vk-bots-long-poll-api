@@ -202,4 +202,23 @@ public class Story {
     public void setExpired(Boolean expired) {
         this.expired = expired;
     }
+
+    @Override
+    public String toString() {
+        return "Story{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", date=" + date +
+                ", seen=" + seen +
+                ", type='" + type + '\'' +
+                ", photo=" + photo +
+                ", video=" + video +
+                ", canShare=" + canShare +
+                ", canComment=" + canComment +
+                ", views=" + views +
+                ", isPrivate=" + isPrivate +
+                ", accessKey='" + accessKey + '\'' +
+                ", expired=" + expired +
+                '}';
+    }
 }

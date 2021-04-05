@@ -33,4 +33,12 @@ public class UtilsResolveScreenNameResponse {
     public void setObjectId(Integer objectId) {
         this.objectId = objectId;
     }
+
+    @Override
+    public String toString() {
+        return "UtilsResolveScreenNameResponse{" +
+                "type='" + type + '\'' +
+                ", objectId=" + objectId +
+                '}';
+    }
 }

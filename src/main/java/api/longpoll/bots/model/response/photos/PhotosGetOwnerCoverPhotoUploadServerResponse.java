@@ -19,4 +19,11 @@ public class PhotosGetOwnerCoverPhotoUploadServerResponse {
     public void setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
     }
+
+    @Override
+    public String toString() {
+        return "PhotosGetOwnerCoverPhotoUploadServerResponse{" +
+                "uploadUrl='" + uploadUrl + '\'' +
+                '}';
+    }
 }

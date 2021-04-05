@@ -51,6 +51,14 @@ public class GroupsGetTokenPermissionsResponse {
         public void setName(String name) {
             this.name = name;
         }
+
+        @Override
+        public String toString() {
+            return "Setting{" +
+                    "setting=" + setting +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
     }
 
     public Integer getMask() {
@@ -67,5 +75,13 @@ public class GroupsGetTokenPermissionsResponse {
 
     public void setSettings(List<Setting> settings) {
         this.settings = settings;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupsGetTokenPermissionsResponse{" +
+                "mask=" + mask +
+                ", settings=" + settings +
+                '}';
     }
 }

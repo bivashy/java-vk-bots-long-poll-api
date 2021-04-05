@@ -108,4 +108,17 @@ public class PinnedMessage {
     public void setFwdMessages(List<Message> fwdMessages) {
         this.fwdMessages = fwdMessages;
     }
+
+    @Override
+    public String toString() {
+        return "PinnedMessage{" +
+                "id=" + id +
+                ", date=" + date +
+                ", fromId=" + fromId +
+                ", text='" + text + '\'' +
+                ", attachments=" + attachments +
+                ", geo=" + geo +
+                ", fwdMessages=" + fwdMessages +
+                '}';
+    }
 }

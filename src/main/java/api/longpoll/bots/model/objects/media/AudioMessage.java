@@ -105,4 +105,17 @@ public class AudioMessage implements Attachable {
     public void setAccessKey(String accessKey) {
         this.accessKey = accessKey;
     }
+
+    @Override
+    public String toString() {
+        return "AudioMessage{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", duration=" + duration +
+                ", waveform=" + waveform +
+                ", linkOgg='" + linkOgg + '\'' +
+                ", linkMp3='" + linkMp3 + '\'' +
+                ", accessKey='" + accessKey + '\'' +
+                '}';
+    }
 }

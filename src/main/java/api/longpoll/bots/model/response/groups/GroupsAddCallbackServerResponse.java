@@ -19,4 +19,11 @@ public class GroupsAddCallbackServerResponse {
     public void setServerId(Integer serverId) {
         this.serverId = serverId;
     }
+
+    @Override
+    public String toString() {
+        return "GroupsAddCallbackServerResponse{" +
+                "serverId=" + serverId +
+                '}';
+    }
 }

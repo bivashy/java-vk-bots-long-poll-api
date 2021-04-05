@@ -19,4 +19,11 @@ public class UploadDocResult {
     public void setFile(String file) {
         this.file = file;
     }
+
+    @Override
+    public String toString() {
+        return "UploadDocResult{" +
+                "file='" + file + '\'' +
+                '}';
+    }
 }

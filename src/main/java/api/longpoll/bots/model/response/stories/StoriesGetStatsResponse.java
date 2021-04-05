@@ -79,6 +79,14 @@ public class StoriesGetStatsResponse {
         public void setCount(Integer count) {
             this.count = count;
         }
+
+        @Override
+        public String toString() {
+            return "Stats{" +
+                    "state='" + state + '\'' +
+                    ", count=" + count +
+                    '}';
+        }
     }
 
     public Stats getViews() {
@@ -135,5 +143,18 @@ public class StoriesGetStatsResponse {
 
     public void setOpenLink(Stats openLink) {
         this.openLink = openLink;
+    }
+
+    @Override
+    public String toString() {
+        return "StoriesGetStatsResponse{" +
+                "views=" + views +
+                ", replies=" + replies +
+                ", answer=" + answer +
+                ", shares=" + shares +
+                ", subscribers=" + subscribers +
+                ", bans=" + bans +
+                ", openLink=" + openLink +
+                '}';
     }
 }

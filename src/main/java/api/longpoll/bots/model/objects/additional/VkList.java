@@ -37,4 +37,12 @@ public class VkList<T> {
     public void setItems(List<T> items) {
         this.items = items;
     }
+
+    @Override
+    public String toString() {
+        return "VkList{" +
+                "count=" + count +
+                ", items=" + items +
+                '}';
+    }
 }

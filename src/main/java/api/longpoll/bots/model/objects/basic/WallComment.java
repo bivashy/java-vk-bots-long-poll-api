@@ -141,6 +141,16 @@ public class WallComment extends AttachmentHolder implements Attachable {
         public void setGroupsCanPost(Boolean groupsCanPost) {
             this.groupsCanPost = groupsCanPost;
         }
+
+        @Override
+        public String toString() {
+            return "Thread{" +
+                    "count=" + count +
+                    ", canPost=" + canPost +
+                    ", showReplyButton=" + showReplyButton +
+                    ", groupsCanPost=" + groupsCanPost +
+                    '}';
+        }
     }
 
     /**
@@ -189,6 +199,15 @@ public class WallComment extends AttachmentHolder implements Attachable {
 
         public void setCanLike(Boolean canLike) {
             this.canLike = canLike;
+        }
+
+        @Override
+        public String toString() {
+            return "Likes{" +
+                    "count=" + count +
+                    ", userLikes=" + userLikes +
+                    ", canLike=" + canLike +
+                    '}';
         }
     }
 
@@ -278,5 +297,23 @@ public class WallComment extends AttachmentHolder implements Attachable {
 
     public void setLikes(Likes likes) {
         this.likes = likes;
+    }
+
+
+    @Override
+    public String toString() {
+        return "WallComment{" +
+                "id=" + id +
+                ", fromId=" + fromId +
+                ", date=" + date +
+                ", text='" + text + '\'' +
+                ", replyToUser=" + replyToUser +
+                ", replyToComment=" + replyToComment +
+                ", parentsStack=" + parentsStack +
+                ", thread=" + thread +
+                ", postId=" + postId +
+                ", ownerId=" + ownerId +
+                ", likes=" + likes +
+                "} " + super.toString();
     }
 }

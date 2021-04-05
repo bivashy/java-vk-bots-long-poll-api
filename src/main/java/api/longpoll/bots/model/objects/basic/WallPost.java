@@ -249,6 +249,17 @@ public class WallPost extends AttachmentHolder implements Attachable {
         public void setCanOpen(Boolean canOpen) {
             this.canOpen = canOpen;
         }
+
+        @Override
+        public String toString() {
+            return "Comments{" +
+                    "count=" + count +
+                    ", canPost=" + canPost +
+                    ", groupsCanPost=" + groupsCanPost +
+                    ", canClose=" + canClose +
+                    ", canOpen=" + canOpen +
+                    '}';
+        }
     }
 
     /**
@@ -268,6 +279,14 @@ public class WallPost extends AttachmentHolder implements Attachable {
 
         public void setCanPublish(Boolean canPublish) {
             this.canPublish = canPublish;
+        }
+
+
+        @Override
+        public String toString() {
+            return "Likes{" +
+                    "canPublish=" + canPublish +
+                    "} " + super.toString();
         }
     }
 
@@ -303,6 +322,14 @@ public class WallPost extends AttachmentHolder implements Attachable {
         public void setUserReposted(Boolean userReposted) {
             this.userReposted = userReposted;
         }
+
+        @Override
+        public String toString() {
+            return "Reposts{" +
+                    "count=" + count +
+                    ", userReposted=" + userReposted +
+                    '}';
+        }
     }
 
     /**
@@ -321,6 +348,13 @@ public class WallPost extends AttachmentHolder implements Attachable {
 
         public void setCount(Integer count) {
             this.count = count;
+        }
+
+        @Override
+        public String toString() {
+            return "Views{" +
+                    "count=" + count +
+                    '}';
         }
     }
 
@@ -382,6 +416,16 @@ public class WallPost extends AttachmentHolder implements Attachable {
 
         public void setUrl(String url) {
             this.url = url;
+        }
+
+        @Override
+        public String toString() {
+            return "PostSource{" +
+                    "type='" + type + '\'' +
+                    ", platform='" + platform + '\'' +
+                    ", data='" + data + '\'' +
+                    ", url='" + url + '\'' +
+                    '}';
         }
     }
 
@@ -599,5 +643,39 @@ public class WallPost extends AttachmentHolder implements Attachable {
 
     public void setPostSource(PostSource postSource) {
         this.postSource = postSource;
+    }
+
+
+    @Override
+    public String toString() {
+        return "WallPost{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", fromId=" + fromId +
+                ", createdBy=" + createdBy +
+                ", date=" + date +
+                ", text='" + text + '\'' +
+                ", replyOwnerId=" + replyOwnerId +
+                ", replyPostId=" + replyPostId +
+                ", friendsOnly=" + friendsOnly +
+                ", comments=" + comments +
+                ", likes=" + likes +
+                ", reposts=" + reposts +
+                ", views=" + views +
+                ", postType='" + postType + '\'' +
+                ", geo=" + geo +
+                ", signerId=" + signerId +
+                ", copyHistory=" + copyHistory +
+                ", canPin=" + canPin +
+                ", canDelete=" + canDelete +
+                ", canEdit=" + canEdit +
+                ", pinned=" + pinned +
+                ", markedAsAds=" + markedAsAds +
+                ", favourite=" + favourite +
+                ", postponedId=" + postponedId +
+                ", canArchive=" + canArchive +
+                ", archived=" + archived +
+                ", postSource=" + postSource +
+                "} " + super.toString();
     }
 }

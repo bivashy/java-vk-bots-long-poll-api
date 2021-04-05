@@ -96,4 +96,16 @@ public class GroupsIsMemberResponse {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "GroupsIsMemberResponse{" +
+                "member=" + member +
+                ", request=" + request +
+                ", invitation=" + invitation +
+                ", canInvite=" + canInvite +
+                ", canRecall=" + canRecall +
+                ", userId=" + userId +
+                '}';
+    }
 }

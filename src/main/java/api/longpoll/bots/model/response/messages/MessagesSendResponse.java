@@ -47,4 +47,13 @@ public class MessagesSendResponse {
     public void setError(String error) {
         this.error = error;
     }
+
+    @Override
+    public String toString() {
+        return "MessagesSendResponse{" +
+                "peerId=" + peerId +
+                ", messageId=" + messageId +
+                ", error='" + error + '\'' +
+                '}';
+    }
 }

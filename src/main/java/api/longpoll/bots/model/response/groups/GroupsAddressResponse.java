@@ -188,4 +188,23 @@ public class GroupsAddressResponse {
     public void setMainAddress(Boolean mainAddress) {
         this.mainAddress = mainAddress;
     }
+
+    @Override
+    public String toString() {
+        return "GroupsAddressResponse{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", address='" + address + '\'' +
+                ", additionalAddress='" + additionalAddress + '\'' +
+                ", countryId=" + countryId +
+                ", cityId=" + cityId +
+                ", metroStationId=" + metroStationId +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", phone='" + phone + '\'' +
+                ", workInfoStatus='" + workInfoStatus + '\'' +
+                ", timetable=" + timetable +
+                ", mainAddress=" + mainAddress +
+                '}';
+    }
 }

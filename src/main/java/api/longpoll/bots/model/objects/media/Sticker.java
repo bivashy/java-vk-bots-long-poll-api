@@ -66,4 +66,14 @@ public class Sticker implements Attachable {
     public void setImagesWithBackground(List<Image> imagesWithBackground) {
         this.imagesWithBackground = imagesWithBackground;
     }
+
+    @Override
+    public String toString() {
+        return "Sticker{" +
+                "productId=" + productId +
+                ", stickerId=" + stickerId +
+                ", images=" + images +
+                ", imagesWithBackground=" + imagesWithBackground +
+                '}';
+    }
 }

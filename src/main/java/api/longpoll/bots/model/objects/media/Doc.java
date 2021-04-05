@@ -164,6 +164,16 @@ public class Doc implements Attachable {
             public void setType(String type) {
                 this.type = type;
             }
+
+            @Override
+            public String toString() {
+                return "Size{" +
+                        "src='" + src + '\'' +
+                        ", width=" + width +
+                        ", height=" + height +
+                        ", type='" + type + '\'' +
+                        '}';
+            }
         }
 
         public List<Size> getSizes() {
@@ -172,6 +182,13 @@ public class Doc implements Attachable {
 
         public void setSizes(List<Size> sizes) {
             this.sizes = sizes;
+        }
+
+        @Override
+        public String toString() {
+            return "Photo{" +
+                    "sizes=" + sizes +
+                    '}';
         }
     }
 
@@ -219,6 +236,15 @@ public class Doc implements Attachable {
 
         public void setHeight(Integer height) {
             this.height = height;
+        }
+
+        @Override
+        public String toString() {
+            return "Graffiti{" +
+                    "src='" + src + '\'' +
+                    ", width=" + width +
+                    ", height=" + height +
+                    '}';
         }
     }
 
@@ -277,6 +303,16 @@ public class Doc implements Attachable {
 
         public void setLinkMp3(String linkMp3) {
             this.linkMp3 = linkMp3;
+        }
+
+        @Override
+        public String toString() {
+            return "AudioMessage{" +
+                    "duration=" + duration +
+                    ", waveform=" + waveform +
+                    ", linkOgg='" + linkOgg + '\'' +
+                    ", linkMp3='" + linkMp3 + '\'' +
+                    '}';
         }
     }
 
@@ -338,6 +374,16 @@ public class Doc implements Attachable {
 
         public void setFileSize(Integer fileSize) {
             this.fileSize = fileSize;
+        }
+
+        @Override
+        public String toString() {
+            return "Video{" +
+                    "src='" + src + '\'' +
+                    ", width=" + width +
+                    ", height=" + height +
+                    ", fileSize=" + fileSize +
+                    '}';
         }
     }
 
@@ -419,5 +465,21 @@ public class Doc implements Attachable {
 
     public void setAccessKey(String accessKey) {
         this.accessKey = accessKey;
+    }
+
+    @Override
+    public String toString() {
+        return "Doc{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", title='" + title + '\'' +
+                ", size=" + size +
+                ", ext='" + ext + '\'' +
+                ", url='" + url + '\'' +
+                ", date=" + date +
+                ", type=" + type +
+                ", preview=" + preview +
+                ", accessKey='" + accessKey + '\'' +
+                '}';
     }
 }

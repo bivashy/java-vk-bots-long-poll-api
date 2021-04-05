@@ -22,4 +22,11 @@ public class PhotosSaveOwnerCoverPhotoResponse {
     public void setImages(List<Image> images) {
         this.images = images;
     }
+
+    @Override
+    public String toString() {
+        return "PhotosSaveOwnerCoverPhotoResponse{" +
+                "images=" + images +
+                '}';
+    }
 }

@@ -34,4 +34,12 @@ public class MessagesDeleteChatPhotoResponse {
     public void setChat(Chat chat) {
         this.chat = chat;
     }
+
+    @Override
+    public String toString() {
+        return "MessagesDeleteChatPhotoResponse{" +
+                "messageId=" + messageId +
+                ", chat=" + chat +
+                '}';
+    }
 }

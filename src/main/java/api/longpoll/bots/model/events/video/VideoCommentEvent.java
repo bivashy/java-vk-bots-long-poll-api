@@ -34,4 +34,13 @@ public class VideoCommentEvent extends WallComment {
     public void setVideoOwnerId(Integer videoOwnerId) {
         this.videoOwnerId = videoOwnerId;
     }
+
+
+    @Override
+    public String toString() {
+        return "VideoCommentEvent{" +
+                "videoId=" + videoId +
+                ", videoOwnerId=" + videoOwnerId +
+                "} " + super.toString();
+    }
 }

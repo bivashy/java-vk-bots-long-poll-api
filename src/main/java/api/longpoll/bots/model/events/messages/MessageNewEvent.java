@@ -36,4 +36,12 @@ public class MessageNewEvent implements EventObject {
     public void setClientInfo(ClientInfo clientInfo) {
         this.clientInfo = clientInfo;
     }
+
+    @Override
+    public String toString() {
+        return "MessageNewEvent{" +
+                "message=" + message +
+                ", clientInfo=" + clientInfo +
+                '}';
+    }
 }

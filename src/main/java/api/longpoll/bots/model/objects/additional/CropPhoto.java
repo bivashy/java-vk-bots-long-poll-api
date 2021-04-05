@@ -84,6 +84,16 @@ public class CropPhoto {
         public void setY2(Float y2) {
             this.y2 = y2;
         }
+
+        @Override
+        public String toString() {
+            return "Crop{" +
+                    "x=" + x +
+                    ", y=" + y +
+                    ", x2=" + x2 +
+                    ", y2=" + y2 +
+                    '}';
+        }
     }
 
     public Photo getPhoto() {
@@ -108,5 +118,14 @@ public class CropPhoto {
 
     public void setRect(Crop rect) {
         this.rect = rect;
+    }
+
+    @Override
+    public String toString() {
+        return "CropPhoto{" +
+                "photo=" + photo +
+                ", crop=" + crop +
+                ", rect=" + rect +
+                '}';
     }
 }

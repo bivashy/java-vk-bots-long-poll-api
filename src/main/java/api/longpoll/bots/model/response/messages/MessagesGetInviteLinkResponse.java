@@ -19,4 +19,11 @@ public class MessagesGetInviteLinkResponse {
     public void setLink(String link) {
         this.link = link;
     }
+
+    @Override
+    public String toString() {
+        return "MessagesGetInviteLinkResponse{" +
+                "link='" + link + '\'' +
+                '}';
+    }
 }

@@ -110,6 +110,15 @@ public class Conversation {
         public void setLocalId(Integer localId) {
             this.localId = localId;
         }
+
+        @Override
+        public String toString() {
+            return "Peer{" +
+                    "id=" + id +
+                    ", type='" + type + '\'' +
+                    ", localId=" + localId +
+                    '}';
+        }
     }
 
     /**
@@ -157,6 +166,15 @@ public class Conversation {
         public void setNoSound(Boolean noSound) {
             this.noSound = noSound;
         }
+
+        @Override
+        public String toString() {
+            return "PushSettings{" +
+                    "disabledUntil=" + disabledUntil +
+                    ", disableForever=" + disableForever +
+                    ", noSound=" + noSound +
+                    '}';
+        }
     }
 
     /**
@@ -189,6 +207,14 @@ public class Conversation {
 
         public void setReason(Integer reason) {
             this.reason = reason;
+        }
+
+        @Override
+        public String toString() {
+            return "CanWrite{" +
+                    "allowed=" + allowed +
+                    ", reason=" + reason +
+                    '}';
         }
     }
 
@@ -283,6 +309,15 @@ public class Conversation {
             public void setPhoto200(String photo200) {
                 this.photo200 = photo200;
             }
+
+            @Override
+            public String toString() {
+                return "Photo{" +
+                        "photo50='" + photo50 + '\'' +
+                        ", photo100='" + photo100 + '\'' +
+                        ", photo200='" + photo200 + '\'' +
+                        '}';
+            }
         }
 
         public Integer getMembersCount() {
@@ -339,6 +374,19 @@ public class Conversation {
 
         public void setGroupChannel(Boolean groupChannel) {
             this.groupChannel = groupChannel;
+        }
+
+        @Override
+        public String toString() {
+            return "ChatSettings{" +
+                    "membersCount=" + membersCount +
+                    ", title='" + title + '\'' +
+                    ", pinnedMessage=" + pinnedMessage +
+                    ", state='" + state + '\'' +
+                    ", photo=" + photo +
+                    ", activeIds=" + activeIds +
+                    ", groupChannel=" + groupChannel +
+                    '}';
         }
     }
 
@@ -412,5 +460,20 @@ public class Conversation {
 
     public void setChatSettings(ChatSettings chatSettings) {
         this.chatSettings = chatSettings;
+    }
+
+    @Override
+    public String toString() {
+        return "Conversation{" +
+                "peer=" + peer +
+                ", inRead=" + inRead +
+                ", outRead=" + outRead +
+                ", unreadAmount=" + unreadAmount +
+                ", important=" + important +
+                ", unanswered=" + unanswered +
+                ", pushSettings=" + pushSettings +
+                ", canWrite=" + canWrite +
+                ", chatSettings=" + chatSettings +
+                '}';
     }
 }

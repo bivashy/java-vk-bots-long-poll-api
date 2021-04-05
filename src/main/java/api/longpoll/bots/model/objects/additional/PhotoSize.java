@@ -67,4 +67,14 @@ public class PhotoSize {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "PhotoSize{" +
+                "url='" + url + '\'' +
+                ", width=" + width +
+                ", height=" + height +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

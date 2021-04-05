@@ -35,4 +35,12 @@ public class StoriesGetUploadServerResponse {
     public void setUserIds(List<Integer> userIds) {
         this.userIds = userIds;
     }
+
+    @Override
+    public String toString() {
+        return "StoriesGetUploadServerResponse{" +
+                "uploadUrl=" + uploadUrl +
+                ", userIds=" + userIds +
+                '}';
+    }
 }

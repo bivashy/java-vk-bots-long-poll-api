@@ -33,4 +33,12 @@ public class GroupsGetOnlineStatusResponse {
     public void setMinutes(Integer minutes) {
         this.minutes = minutes;
     }
+
+    @Override
+    public String toString() {
+        return "GroupsGetOnlineStatusResponse{" +
+                "status='" + status + '\'' +
+                ", minutes=" + minutes +
+                '}';
+    }
 }

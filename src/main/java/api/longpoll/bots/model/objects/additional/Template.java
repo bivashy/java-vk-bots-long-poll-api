@@ -118,6 +118,14 @@ public abstract class Template {
                     this.link = link;
                     return this;
                 }
+
+                @Override
+                public String toString() {
+                    return "OpenLink{" +
+                            "type='" + getType() + '\'' +
+                            ", link='" + link + '\'' +
+                            '}';
+                }
             }
 
             /**
@@ -131,6 +139,13 @@ public abstract class Template {
 
                 public OpenPhoto() {
                     super(TYPE);
+                }
+
+                @Override
+                public String toString() {
+                    return "OpenPhoto{" +
+                            "type='" + getType() + '\'' +
+                            '}';
                 }
             }
 
@@ -178,6 +193,17 @@ public abstract class Template {
                 this.action = action;
                 return this;
             }
+
+            @Override
+            public String toString() {
+                return "Element{" +
+                        "title='" + title + '\'' +
+                        ", description='" + description + '\'' +
+                        ", photoId='" + photoId + '\'' +
+                        ", buttons=" + buttons +
+                        ", action=" + action +
+                        '}';
+            }
         }
 
         public List<Element> getElements() {
@@ -187,6 +213,14 @@ public abstract class Template {
         public Carousel setElements(List<Element> elements) {
             this.elements = elements;
             return this;
+        }
+
+        @Override
+        public String toString() {
+            return "Carousel{" +
+                    "type='" + getType() + '\'' +
+                    ", elements=" + elements +
+                    '}';
         }
     }
 

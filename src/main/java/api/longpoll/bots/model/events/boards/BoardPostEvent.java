@@ -34,4 +34,13 @@ public class BoardPostEvent extends TopicComment {
     public void setTopicOwnerId(Integer topicOwnerId) {
         this.topicOwnerId = topicOwnerId;
     }
+
+
+    @Override
+    public String toString() {
+        return "BoardPostEvent{" +
+                "topicId=" + topicId +
+                ", topicOwnerId=" + topicOwnerId +
+                "} " + super.toString();
+    }
 }

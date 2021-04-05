@@ -53,4 +53,13 @@ public class MessagesGetHistoryResponse extends VkList<Message> {
     public void setProfiles(List<User> profiles) {
         this.profiles = profiles;
     }
+
+    @Override
+    public String toString() {
+        return "MessagesGetHistoryResponse{" +
+                "unread=" + unread +
+                ", conversations=" + conversations +
+                ", profiles=" + profiles +
+                "} " + super.toString();
+    }
 }

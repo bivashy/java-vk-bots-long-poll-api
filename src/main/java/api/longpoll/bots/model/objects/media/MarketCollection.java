@@ -91,4 +91,16 @@ public class MarketCollection implements Attachable {
     public void setUpdatedTime(Integer updatedTime) {
         this.updatedTime = updatedTime;
     }
+
+    @Override
+    public String toString() {
+        return "MarketCollection{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", title='" + title + '\'' +
+                ", photo=" + photo +
+                ", count=" + count +
+                ", updatedTime=" + updatedTime +
+                '}';
+    }
 }

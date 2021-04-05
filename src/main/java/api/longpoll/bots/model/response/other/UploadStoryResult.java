@@ -16,4 +16,11 @@ public class UploadStoryResult {
     public void setUploadResult(String uploadResult) {
         this.uploadResult = uploadResult;
     }
+
+    @Override
+    public String toString() {
+        return "UploadStoryResult{" +
+                "uploadResult='" + uploadResult + '\'' +
+                '}';
+    }
 }

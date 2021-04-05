@@ -63,6 +63,14 @@ public class GroupChangeSettingsEvent implements EventObject {
         public void setNewValue(String newValue) {
             this.newValue = newValue;
         }
+
+        @Override
+        public String toString() {
+            return "Change{" +
+                    "oldValue='" + oldValue + '\'' +
+                    ", newValue='" + newValue + '\'' +
+                    '}';
+        }
     }
 
     public Integer getUserId() {
@@ -79,5 +87,13 @@ public class GroupChangeSettingsEvent implements EventObject {
 
     public void setChanges(Map<String, Change> changes) {
         this.changes = changes;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupChangeSettingsEvent{" +
+                "userId=" + userId +
+                ", changes=" + changes +
+                '}';
     }
 }

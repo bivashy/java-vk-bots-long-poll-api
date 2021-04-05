@@ -19,4 +19,11 @@ public class GroupsGetLongPollSettingsResponse extends GroupsGetCallbackSettings
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
+
+    @Override
+    public String toString() {
+        return "GroupsGetLongPollSettingsResponse{" +
+                "enabled=" + enabled +
+                "} " + super.toString();
+    }
 }

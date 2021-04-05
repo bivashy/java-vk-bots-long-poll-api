@@ -35,4 +35,12 @@ public class WallCreateCommentResponse {
     public void setParentStack(List<Integer> parentStack) {
         this.parentStack = parentStack;
     }
+
+    @Override
+    public String toString() {
+        return "WallCreateCommentResponse{" +
+                "commentId=" + commentId +
+                ", parentStack=" + parentStack +
+                '}';
+    }
 }

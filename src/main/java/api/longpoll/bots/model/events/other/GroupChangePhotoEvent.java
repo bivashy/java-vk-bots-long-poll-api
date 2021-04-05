@@ -35,4 +35,12 @@ public class GroupChangePhotoEvent implements EventObject {
     public void setPhoto(Photo photo) {
         this.photo = photo;
     }
+
+    @Override
+    public String toString() {
+        return "GroupChangePhotoEvent{" +
+                "userId=" + userId +
+                ", photo=" + photo +
+                '}';
+    }
 }

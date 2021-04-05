@@ -63,4 +63,14 @@ public class Event {
     public void setEventId(String eventId) {
         this.eventId = eventId;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "type=" + type +
+                ", object=" + object +
+                ", groupId=" + groupId +
+                ", eventId='" + eventId + '\'' +
+                '}';
+    }
 }
