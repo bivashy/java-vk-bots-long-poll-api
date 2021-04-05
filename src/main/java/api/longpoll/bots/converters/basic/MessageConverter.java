@@ -14,6 +14,9 @@ public class MessageConverter extends JsonToPojoConverter<Message> {
     public Message convert(JsonObject jsonObject) {
         Message message = gson.fromJson(jsonObject, Message.class);
         message.setAttachments(AttachmentConverterUtil.extractAttachments(jsonObject));
+        if (jsonObject.has("reply_message")) {
+            message.setReplyMessage(convert(jsonObject.getAsJsonObject("reply_message")));
+        }
         if (jsonObject.has("fwd_messages")) {
             message.setFwdMessages(BulkConverterUtil.convert(jsonObject.getAsJsonArray("fwd_messages"), this));
         }
