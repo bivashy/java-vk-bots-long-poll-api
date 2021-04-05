@@ -4,7 +4,7 @@ import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.Converter;
 import api.longpoll.bots.converters.StringToJsonConverter;
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.exceptions.BotsLongPollHttpException;
+import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.methods.events.GetEvents;
 import api.longpoll.bots.methods.groups.GroupsGetLongPollServer;
 import api.longpoll.bots.model.events.Event;
@@ -31,7 +31,7 @@ public class LongPollServer implements Server {
     }
 
     @Override
-    public List<Event> getUpdates() throws BotsLongPollHttpException, BotsLongPollException {
+    public List<Event> getUpdates() throws BotsLongPollAPIException, BotsLongPollException {
         if (firstCall) {
             init();
             firstCall = false;
@@ -63,10 +63,10 @@ public class LongPollServer implements Server {
                 }
             }
         }
-        throw new BotsLongPollHttpException("Failed to get events from Long Poll server. Number of attempts: " + ATTEMPTS);
+        throw new BotsLongPollException("Failed to get events from Long Poll server. Number of attempts: " + ATTEMPTS);
     }
 
-    protected void init() throws BotsLongPollHttpException, BotsLongPollException {
+    protected void init() throws BotsLongPollAPIException, BotsLongPollException {
         GroupsGetLongPollServerResponse response = groupsGetLongPollServer.execute().getResponse();
         getEvents.setServer(response.getServer())
                 .setKey(response.getKey())

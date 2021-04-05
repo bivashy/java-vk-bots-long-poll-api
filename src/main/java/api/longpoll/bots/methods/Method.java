@@ -4,7 +4,7 @@ import api.longpoll.bots.converters.Converter;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.StringToJsonConverter;
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.exceptions.BotsLongPollHttpException;
+import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.validators.Validator;
 import api.longpoll.bots.validators.ResponseValidator;
 import com.google.gson.JsonObject;
@@ -49,10 +49,10 @@ public abstract class Method<Result> {
      * Executes request to VK API.
      *
      * @return VK API response.
-     * @throws BotsLongPollHttpException if error occurs.
+     * @throws BotsLongPollAPIException if error occurs.
      * @throws BotsLongPollException if error occurs.
      */
-    public Result execute() throws BotsLongPollHttpException, BotsLongPollException {
+    public Result execute() throws BotsLongPollAPIException, BotsLongPollException {
         return execute(getConverter());
     }
 
@@ -61,10 +61,10 @@ public abstract class Method<Result> {
      *
      * @param converter converter which converts JsonObject to required Result type.
      * @return VK API response.
-     * @throws BotsLongPollHttpException if error occurs.
+     * @throws BotsLongPollAPIException if error occurs.
      * @throws BotsLongPollException if error occurs.
      */
-    private Result execute(JsonToPojoConverter<Result> converter) throws BotsLongPollHttpException, BotsLongPollException {
+    private Result execute(JsonToPojoConverter<Result> converter) throws BotsLongPollAPIException, BotsLongPollException {
         String stringResponse = sendRequest();
 
         JsonObject jsonResponse = STRING_TO_JSON_CONVERTER.convert(stringResponse);
@@ -73,16 +73,16 @@ public abstract class Method<Result> {
             return converter.convert(jsonResponse);
         }
 
-        throw new BotsLongPollException(stringResponse);
+        throw new BotsLongPollAPIException(stringResponse);
     }
 
     /**
      * Sends HTTP request.
      *
      * @return String response.
-     * @throws BotsLongPollHttpException if error occurs.
+     * @throws BotsLongPollException if error occurs.
      */
-    private String sendRequest() throws BotsLongPollHttpException {
+    private String sendRequest() throws BotsLongPollException {
         try {
             String api = getApi();
             Connection.Method method = getMethod();
@@ -106,7 +106,7 @@ public abstract class Method<Result> {
             return body;
         } catch (IOException e) {
             log.error("Failed to send request {}.", getMethod(), e);
-            throw new BotsLongPollHttpException(e);
+            throw new BotsLongPollException(e);
         }
     }
 

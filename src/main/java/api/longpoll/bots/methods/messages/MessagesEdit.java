@@ -4,7 +4,7 @@ import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.exceptions.BotsLongPollHttpException;
+import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
@@ -124,7 +124,7 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         return attach(AttachmentsUtil.toAttachment(photo));
     }
 
-    public MessagesEdit attachPhoto(File photo) throws BotsLongPollHttpException, BotsLongPollException {
+    public MessagesEdit attachPhoto(File photo) throws BotsLongPollAPIException, BotsLongPollException {
         return attach(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(bot, getPeerId(), photo)));
     }
 
@@ -132,7 +132,7 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         return attach(AttachmentsUtil.toAttachment(doc));
     }
 
-    public MessagesEdit attachDoc(File doc) throws BotsLongPollHttpException, BotsLongPollException {
+    public MessagesEdit attachDoc(File doc) throws BotsLongPollAPIException, BotsLongPollException {
         return attachDoc(MessagesUtil.uploadDoc(bot, peerId, doc));
     }
 
