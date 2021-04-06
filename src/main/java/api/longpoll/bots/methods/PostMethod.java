@@ -12,7 +12,7 @@ import java.io.InputStream;
  *
  * @param <Response> response type.
  */
-public abstract class PostMethod<Response> extends Method<Response> {
+public abstract class PostMethod<Response> extends AsyncMethod<Response> {
     /**
      * File to be uploaded.
      */

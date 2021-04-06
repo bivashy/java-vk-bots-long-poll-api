@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @param <Response> response type.
  */
-public abstract class GetMethod<Response> extends Method<Response> {
+public abstract class GetMethod<Response> extends AsyncMethod<Response> {
     private static final String ACCESS_TOKEN = "access_token";
     private static final String VERSION = "v";
     private static final String VERSION_NUMBER = "5.118";

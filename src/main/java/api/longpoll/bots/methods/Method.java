@@ -3,10 +3,10 @@ package api.longpoll.bots.methods;
 import api.longpoll.bots.converters.Converter;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.StringToJsonConverter;
-import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
-import api.longpoll.bots.validators.Validator;
+import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.validators.ResponseValidator;
+import api.longpoll.bots.validators.Validator;
 import com.google.gson.JsonObject;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -40,10 +40,6 @@ public abstract class Method<Result> {
      * Validator that checks VK API response.
      */
     private static final Validator VALIDATOR = new ResponseValidator();
-
-    public Method() {
-
-    }
 
     /**
      * Executes request to VK API.
