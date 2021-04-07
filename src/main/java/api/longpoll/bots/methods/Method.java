@@ -101,7 +101,6 @@ public abstract class Method<Result> {
 
             return body;
         } catch (IOException e) {
-            log.error("Failed to send request {}.", getMethod(), e);
             throw new BotsLongPollException(e);
         }
     }
