@@ -5,4 +5,4 @@ dist: trusty
 jdk:
   - oraclejdk8
 
-install: mvn package
+install: mvn package -Dmaven.test.skip=true
