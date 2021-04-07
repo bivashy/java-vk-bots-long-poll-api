@@ -143,6 +143,15 @@ public class Button {
             this.label = label;
             return this;
         }
+
+        @Override
+        public String toString() {
+            return "TextAction{" +
+                    "type='" + getType() + '\'' +
+                    ", payload='" + getPayload() + '\'' +
+                    ", label='" + label + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -217,6 +226,18 @@ public class Button {
             this.hash = hash;
             return this;
         }
+
+        @Override
+        public String toString() {
+            return "VKAppsAction{" +
+                    "type='" + getType() + '\'' +
+                    ", payload='" + getPayload() + '\'' +
+                    ", appId=" + appId +
+                    ", ownerId=" + ownerId +
+                    ", label='" + label + '\'' +
+                    ", hash='" + hash + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -245,6 +266,15 @@ public class Button {
         public VKPayAction setHash(String hash) {
             this.hash = hash;
             return this;
+        }
+
+        @Override
+        public String toString() {
+            return "VKPayAction{" +
+                    "type='" + getType() + '\'' +
+                    ", payload='" + getPayload() + '\'' +
+                    ", hash='" + hash + '\'' +
+                    '}';
         }
     }
 
@@ -279,6 +309,15 @@ public class Button {
         public CallbackAction setLabel(String label) {
             this.label = label;
             return this;
+        }
+
+        @Override
+        public String toString() {
+            return "CallbackAction{" +
+                    "type='" + getType() + '\'' +
+                    ", payload='" + getPayload() + '\'' +
+                    ", label='" + label + '\'' +
+                    '}';
         }
     }
 
@@ -342,6 +381,14 @@ public class Button {
             this.text = text;
             return this;
         }
+
+        @Override
+        public String toString() {
+            return "ShowSnackbar{" +
+                    "type='" + getType() + '\'' +
+                    ", text='" + text + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -375,6 +422,14 @@ public class Button {
         public OpenLink setLink(String link) {
             this.link = link;
             return this;
+        }
+
+        @Override
+        public String toString() {
+            return "OpenLink{" +
+                    "type='" + getType() + '\'' +
+                    ", link='" + link + '\'' +
+                    '}';
         }
     }
 
@@ -435,6 +490,16 @@ public class Button {
             this.ownerId = ownerId;
             return this;
         }
+
+        @Override
+        public String toString() {
+            return "OpenApp{" +
+                    "type='" + getType() + '\'' +
+                    ", appId=" + appId +
+                    ", hash='" + hash + '\'' +
+                    ", ownerId=" + ownerId +
+                    '}';
+        }
     }
 
     public ButtonColor getColor() {
@@ -453,5 +518,13 @@ public class Button {
     public Button setAction(Action action) {
         this.action = action;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Button{" +
+                "color=" + color +
+                ", action=" + action +
+                '}';
     }
 }

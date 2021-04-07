@@ -1,7 +1,7 @@
 package api.longpoll.bots;
 
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.exceptions.BotsLongPollHttpException;
+import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.server.LongPollServer;
 import api.longpoll.bots.server.Server;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ public class BotsLongPoll {
         this.updateHandler = new LongPollBotUpdateHandler(bot);
     }
 
-    public void run() throws BotsLongPollHttpException, BotsLongPollException {
+    public void run() throws BotsLongPollAPIException, BotsLongPollException {
         log.debug("Starting bot with group_id = {}", bot.getGroupId());
         while (true) {
             updateHandler.handleUpdates(server.getUpdates());

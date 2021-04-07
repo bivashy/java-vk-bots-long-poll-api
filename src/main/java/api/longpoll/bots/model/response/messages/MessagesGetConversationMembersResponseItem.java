@@ -75,4 +75,15 @@ public class MessagesGetConversationMembersResponseItem {
     public void setCanKick(Boolean canKick) {
         this.canKick = canKick;
     }
+
+    @Override
+    public String toString() {
+        return "MessagesGetConversationMembersResponseItem{" +
+                "memberId=" + memberId +
+                ", invitedBy=" + invitedBy +
+                ", joinDate=" + joinDate +
+                ", admin=" + admin +
+                ", canKick=" + canKick +
+                '}';
+    }
 }

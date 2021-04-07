@@ -48,4 +48,13 @@ public class MessageTypingStateEvent implements EventObject {
     public void setToId(Integer toId) {
         this.toId = toId;
     }
+
+    @Override
+    public String toString() {
+        return "MessageTypingStateEvent{" +
+                "state='" + state + '\'' +
+                ", fromId=" + fromId +
+                ", toId=" + toId +
+                '}';
+    }
 }

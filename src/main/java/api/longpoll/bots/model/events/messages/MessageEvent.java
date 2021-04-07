@@ -76,4 +76,15 @@ public class MessageEvent implements EventObject {
     public void setConversationMessageId(String conversationMessageId) {
         this.conversationMessageId = conversationMessageId;
     }
+
+    @Override
+    public String toString() {
+        return "MessageEvent{" +
+                "userId=" + userId +
+                ", peerId=" + peerId +
+                ", eventId='" + eventId + '\'' +
+                ", payload='" + payload + '\'' +
+                ", conversationMessageId='" + conversationMessageId + '\'' +
+                '}';
+    }
 }

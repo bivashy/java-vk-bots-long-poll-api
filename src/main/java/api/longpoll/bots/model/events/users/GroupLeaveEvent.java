@@ -37,4 +37,12 @@ public class GroupLeaveEvent implements EventObject {
     public void setSelf(Boolean self) {
         this.self = self;
     }
+
+    @Override
+    public String toString() {
+        return "GroupLeaveEvent{" +
+                "userId=" + userId +
+                ", self=" + self +
+                '}';
+    }
 }

@@ -99,6 +99,15 @@ public class UtilsGetLinkStatsResponse {
             public void setMale(Integer male) {
                 this.male = male;
             }
+
+            @Override
+            public String toString() {
+                return "SexAge{" +
+                        "ageRange='" + ageRange + '\'' +
+                        ", female=" + female +
+                        ", male=" + male +
+                        '}';
+            }
         }
 
         /**
@@ -132,6 +141,14 @@ public class UtilsGetLinkStatsResponse {
             public void setViews(Integer views) {
                 this.views = views;
             }
+
+            @Override
+            public String toString() {
+                return "Country{" +
+                        "countryId=" + countryId +
+                        ", views=" + views +
+                        '}';
+            }
         }
 
         /**
@@ -164,6 +181,14 @@ public class UtilsGetLinkStatsResponse {
 
             public void setViews(Integer views) {
                 this.views = views;
+            }
+
+            @Override
+            public String toString() {
+                return "City{" +
+                        "cityId=" + cityId +
+                        ", views=" + views +
+                        '}';
             }
         }
 
@@ -206,6 +231,17 @@ public class UtilsGetLinkStatsResponse {
         public void setCities(List<City> cities) {
             this.cities = cities;
         }
+
+        @Override
+        public String toString() {
+            return "Stat{" +
+                    "timestamp=" + timestamp +
+                    ", views=" + views +
+                    ", sexAges=" + sexAges +
+                    ", countries=" + countries +
+                    ", cities=" + cities +
+                    '}';
+        }
     }
 
     public String getKey() {
@@ -222,5 +258,13 @@ public class UtilsGetLinkStatsResponse {
 
     public void setStats(List<Stat> stats) {
         this.stats = stats;
+    }
+
+    @Override
+    public String toString() {
+        return "UtilsGetLinkStatsResponse{" +
+                "key='" + key + '\'' +
+                ", stats=" + stats +
+                '}';
     }
 }

@@ -21,4 +21,11 @@ public class GenericResult<T> {
     public void setResponse(T response) {
         this.response = response;
     }
+
+    @Override
+    public String toString() {
+        return "GenericResult{" +
+                "response=" + response +
+                '}';
+    }
 }

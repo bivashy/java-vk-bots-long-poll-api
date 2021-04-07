@@ -52,6 +52,14 @@ public class MessagesGetHistoryAttachmentsResponse {
         public void setAttachment(Attachment attachment) {
             this.attachment = attachment;
         }
+
+        @Override
+        public String toString() {
+            return "Item{" +
+                    "messageId=" + messageId +
+                    ", attachment=" + attachment +
+                    '}';
+        }
     }
 
     public List<Item> getItems() {
@@ -68,5 +76,13 @@ public class MessagesGetHistoryAttachmentsResponse {
 
     public void setNextFrom(String nextFrom) {
         this.nextFrom = nextFrom;
+    }
+
+    @Override
+    public String toString() {
+        return "MessagesGetHistoryAttachmentsResponse{" +
+                "items=" + items +
+                ", nextFrom='" + nextFrom + '\'' +
+                '}';
     }
 }

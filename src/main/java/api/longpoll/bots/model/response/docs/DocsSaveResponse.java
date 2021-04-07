@@ -38,4 +38,12 @@ public class DocsSaveResponse {
     public void setAttachable(Attachable attachable) {
         this.attachable = attachable;
     }
+
+    @Override
+    public String toString() {
+        return "DocsSaveResponse{" +
+                "type='" + type + '\'' +
+                ", attachable=" + attachable +
+                '}';
+    }
 }

@@ -19,4 +19,11 @@ public class DocsGetUploadServerResponse {
     public void setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
     }
+
+    @Override
+    public String toString() {
+        return "DocsGetUploadServerResponse{" +
+                "uploadUrl='" + uploadUrl + '\'' +
+                '}';
+    }
 }

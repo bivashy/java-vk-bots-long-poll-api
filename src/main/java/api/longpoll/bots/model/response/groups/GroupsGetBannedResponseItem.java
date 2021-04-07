@@ -105,6 +105,17 @@ public class GroupsGetBannedResponseItem {
         public void setEndDate(Integer endDate) {
             this.endDate = endDate;
         }
+
+        @Override
+        public String toString() {
+            return "BanInfo{" +
+                    "adminId=" + adminId +
+                    ", date=" + date +
+                    ", reason=" + reason +
+                    ", comment='" + comment + '\'' +
+                    ", endDate=" + endDate +
+                    '}';
+        }
     }
 
     public String getType() {
@@ -137,5 +148,15 @@ public class GroupsGetBannedResponseItem {
 
     public void setBanInfo(BanInfo banInfo) {
         this.banInfo = banInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupsGetBannedResponseItem{" +
+                "type='" + type + '\'' +
+                ", group=" + group +
+                ", profile=" + profile +
+                ", banInfo=" + banInfo +
+                '}';
     }
 }

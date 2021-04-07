@@ -578,6 +578,49 @@ public class GroupsGetCallbackSettingsResponse {
         public void setGroupOfficersEdit(Boolean groupOfficersEdit) {
             this.groupOfficersEdit = groupOfficersEdit;
         }
+
+        @Override
+        public String toString() {
+            return "Events{" +
+                    "messageNew=" + messageNew +
+                    ", messageReply=" + messageReply +
+                    ", messageEdit=" + messageEdit +
+                    ", messageAllow=" + messageAllow +
+                    ", messageDeny=" + messageDeny +
+                    ", photoNew=" + photoNew +
+                    ", audioNew=" + audioNew +
+                    ", videoNew=" + videoNew +
+                    ", wallReplyNew=" + wallReplyNew +
+                    ", wallReplyEdit=" + wallReplyEdit +
+                    ", wallReplyDelete=" + wallReplyDelete +
+                    ", wallPostNew=" + wallPostNew +
+                    ", wallRepost=" + wallRepost +
+                    ", boardPostNew=" + boardPostNew +
+                    ", boardPostEdit=" + boardPostEdit +
+                    ", boardPostDelete=" + boardPostDelete +
+                    ", boardPostRestore=" + boardPostRestore +
+                    ", PhotoCommentNew=" + PhotoCommentNew +
+                    ", photoCommentEdit=" + photoCommentEdit +
+                    ", photoCommentDelete=" + photoCommentDelete +
+                    ", photoCommentRestore=" + photoCommentRestore +
+                    ", videoCommentNew=" + videoCommentNew +
+                    ", videoCommentEdit=" + videoCommentEdit +
+                    ", videoCommentDelete=" + videoCommentDelete +
+                    ", videoCommentRestore=" + videoCommentRestore +
+                    ", marketCommentNew=" + marketCommentNew +
+                    ", marketCommentEdit=" + marketCommentEdit +
+                    ", marketCommentDelete=" + marketCommentDelete +
+                    ", marketCommentRestore=" + marketCommentRestore +
+                    ", pollVoteNew=" + pollVoteNew +
+                    ", groupJoin=" + groupJoin +
+                    ", groupLeave=" + groupLeave +
+                    ", userBlock=" + userBlock +
+                    ", userUnblock=" + userUnblock +
+                    ", groupChangeSettings=" + groupChangeSettings +
+                    ", groupChangePhoto=" + groupChangePhoto +
+                    ", groupOfficersEdit=" + groupOfficersEdit +
+                    '}';
+        }
     }
 
     public String getApiVersion() {
@@ -594,5 +637,13 @@ public class GroupsGetCallbackSettingsResponse {
 
     public void setEvents(Events events) {
         this.events = events;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupsGetCallbackSettingsResponse{" +
+                "apiVersion='" + apiVersion + '\'' +
+                ", events=" + events +
+                '}';
     }
 }

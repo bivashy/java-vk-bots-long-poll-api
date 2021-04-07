@@ -97,6 +97,15 @@ public class TopicComment implements EventObject {
         public void setCanLike(Boolean canLike) {
             this.canLike = canLike;
         }
+
+        @Override
+        public String toString() {
+            return "Likes{" +
+                    "count=" + count +
+                    ", userLikes=" + userLikes +
+                    ", canLike=" + canLike +
+                    '}';
+        }
     }
 
     public Integer getId() {
@@ -145,5 +154,17 @@ public class TopicComment implements EventObject {
 
     public void setLikes(Likes likes) {
         this.likes = likes;
+    }
+
+    @Override
+    public String toString() {
+        return "TopicComment{" +
+                "id=" + id +
+                ", fromId=" + fromId +
+                ", date=" + date +
+                ", text='" + text + '\'' +
+                ", attachments=" + attachments +
+                ", likes=" + likes +
+                '}';
     }
 }

@@ -47,4 +47,13 @@ public class GroupsGetLongPollServerResponse {
     public void setTs(Integer ts) {
         this.ts = ts;
     }
+
+    @Override
+    public String toString() {
+        return "GroupsGetLongPollServerResponse{" +
+                "key='" + key + '\'' +
+                ", server='" + server + '\'' +
+                ", ts=" + ts +
+                '}';
+    }
 }

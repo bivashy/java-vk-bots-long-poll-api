@@ -179,4 +179,22 @@ public class Audio implements Attachable {
     public void setHq(Boolean hq) {
         this.hq = hq;
     }
+
+    @Override
+    public String toString() {
+        return "Audio{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", artist='" + artist + '\'' +
+                ", title='" + title + '\'' +
+                ", duration=" + duration +
+                ", url='" + url + '\'' +
+                ", lyricsId=" + lyricsId +
+                ", albumId=" + albumId +
+                ", genre=" + genre +
+                ", date=" + date +
+                ", noSearch=" + noSearch +
+                ", hq=" + hq +
+                '}';
+    }
 }

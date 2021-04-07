@@ -101,4 +101,16 @@ public class LikeEvent implements EventObject {
     public void setPostId(Integer postId) {
         this.postId = postId;
     }
+
+    @Override
+    public String toString() {
+        return "LikeEvent{" +
+                "likerId=" + likerId +
+                ", objectType='" + objectType + '\'' +
+                ", objectOwnerId=" + objectOwnerId +
+                ", objectId=" + objectId +
+                ", threadReplyId=" + threadReplyId +
+                ", postId=" + postId +
+                '}';
+    }
 }

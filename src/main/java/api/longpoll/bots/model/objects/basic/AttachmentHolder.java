@@ -19,4 +19,12 @@ public abstract class AttachmentHolder {
     public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
     }
+
+
+    @Override
+    public String toString() {
+        return "AttachmentHolder{" +
+                "attachments=" + attachments +
+                '}';
+    }
 }

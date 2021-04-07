@@ -48,4 +48,13 @@ public class BoardPostDeleteEvent implements EventObject {
     public void setTopicId(Integer topicId) {
         this.topicId = topicId;
     }
+
+    @Override
+    public String toString() {
+        return "BoardPostDeleteEvent{" +
+                "topicOwnerId=" + topicOwnerId +
+                ", id=" + id +
+                ", topicId=" + topicId +
+                '}';
+    }
 }

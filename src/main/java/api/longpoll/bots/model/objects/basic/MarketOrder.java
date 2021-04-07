@@ -163,6 +163,15 @@ public class MarketOrder implements EventObject {
         public void setPropertyName(String propertyName) {
             this.propertyName = propertyName;
         }
+
+        @Override
+        public String toString() {
+            return "PropertyValue{" +
+                    "variantId=" + variantId +
+                    ", variantName='" + variantName + '\'' +
+                    ", propertyName='" + propertyName + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -224,6 +233,16 @@ public class MarketOrder implements EventObject {
         public void setTrackLink(String trackLink) {
             this.trackLink = trackLink;
         }
+
+        @Override
+        public String toString() {
+            return "Delivery{" +
+                    "address='" + address + '\'' +
+                    ", type='" + type + '\'' +
+                    ", trackNumber='" + trackNumber + '\'' +
+                    ", trackLink='" + trackLink + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -270,6 +289,15 @@ public class MarketOrder implements EventObject {
 
         public void setDisplay_text(String display_text) {
             this.display_text = display_text;
+        }
+
+        @Override
+        public String toString() {
+            return "Recipient{" +
+                    "name='" + name + '\'' +
+                    ", phone='" + phone + '\'' +
+                    ", display_text='" + display_text + '\'' +
+                    '}';
         }
     }
 
@@ -399,5 +427,27 @@ public class MarketOrder implements EventObject {
 
     public void setRecipient(Recipient recipient) {
         this.recipient = recipient;
+    }
+
+    @Override
+    public String toString() {
+        return "MarketOrder{" +
+                "id=" + id +
+                ", groupId=" + groupId +
+                ", userId=" + userId +
+                ", date=" + date +
+                ", variantsGroupingId=" + variantsGroupingId +
+                ", mainVariant=" + mainVariant +
+                ", propertyValues=" + propertyValues +
+                ", cartQuantity=" + cartQuantity +
+                ", status=" + status +
+                ", itemsCount=" + itemsCount +
+                ", totalPrice=" + totalPrice +
+                ", displayOrderId='" + displayOrderId + '\'' +
+                ", comment='" + comment + '\'' +
+                ", previewOrderItems=" + previewOrderItems +
+                ", delivery=" + delivery +
+                ", recipient=" + recipient +
+                '}';
     }
 }

@@ -33,4 +33,12 @@ public class StoriesGetViewersResponseItem {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "StoriesGetViewersResponseItem{" +
+                "isLiked=" + isLiked +
+                ", userId=" + userId +
+                '}';
+    }
 }

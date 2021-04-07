@@ -47,4 +47,13 @@ public class PhotosGetMessagesUploadServerResponse {
     public void setGroupId(Integer groupId) {
         this.groupId = groupId;
     }
+
+    @Override
+    public String toString() {
+        return "PhotosGetMessagesUploadServerResponse{" +
+                "uploadUrl='" + uploadUrl + '\'' +
+                ", albumId=" + albumId +
+                ", groupId=" + groupId +
+                '}';
+    }
 }

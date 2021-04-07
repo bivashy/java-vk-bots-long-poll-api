@@ -89,4 +89,16 @@ public class Graffiti implements Attachable {
     public void setAccessKey(String accessKey) {
         this.accessKey = accessKey;
     }
+
+    @Override
+    public String toString() {
+        return "Graffiti{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", url='" + url + '\'' +
+                ", width=" + width +
+                ", height=" + height +
+                ", accessKey='" + accessKey + '\'' +
+                '}';
+    }
 }

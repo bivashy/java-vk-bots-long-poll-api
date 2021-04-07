@@ -36,4 +36,12 @@ public class GetEventsResult {
     public void setEvents(List<Event> events) {
         this.events = events;
     }
+
+    @Override
+    public String toString() {
+        return "GetEventsResult{" +
+                "ts=" + ts +
+                ", events=" + events +
+                '}';
+    }
 }

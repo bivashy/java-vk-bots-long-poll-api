@@ -76,4 +76,15 @@ public class VideoCommentDeleteEvent implements EventObject {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "VideoCommentDeleteEvent{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", deleterId=" + deleterId +
+                ", videoId=" + videoId +
+                ", userId=" + userId +
+                '}';
+    }
 }

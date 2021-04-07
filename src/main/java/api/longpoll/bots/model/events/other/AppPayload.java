@@ -62,4 +62,14 @@ public class AppPayload implements EventObject {
     public void setGroupId(Integer groupId) {
         this.groupId = groupId;
     }
+
+    @Override
+    public String toString() {
+        return "AppPayload{" +
+                "userId=" + userId +
+                ", appId=" + appId +
+                ", payload='" + payload + '\'' +
+                ", groupId=" + groupId +
+                '}';
+    }
 }

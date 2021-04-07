@@ -32,4 +32,12 @@ public class Attachment {
     public void setAttachable(Attachable attachable) {
         this.attachable = attachable;
     }
+
+    @Override
+    public String toString() {
+        return "Attachment{" +
+                "type=" + type +
+                ", attachable=" + attachable +
+                '}';
+    }
 }

@@ -91,6 +91,13 @@ public class AttachedLink implements Attachable {
         public void setPrice(Price price) {
             this.price = price;
         }
+
+        @Override
+        public String toString() {
+            return "Product{" +
+                    "price=" + price +
+                    '}';
+        }
     }
 
     /**
@@ -145,6 +152,14 @@ public class AttachedLink implements Attachable {
             public void setUrl(String url) {
                 this.url = url;
             }
+
+            @Override
+            public String toString() {
+                return "Action{" +
+                        "type='" + type + '\'' +
+                        ", url='" + url + '\'' +
+                        '}';
+            }
         }
 
         public String getTitle() {
@@ -161,6 +176,14 @@ public class AttachedLink implements Attachable {
 
         public void setAction(Action action) {
             this.action = action;
+        }
+
+        @Override
+        public String toString() {
+            return "Button{" +
+                    "title='" + title + '\'' +
+                    ", action=" + action +
+                    '}';
         }
     }
 
@@ -242,5 +265,21 @@ public class AttachedLink implements Attachable {
 
     public void setExternal(Boolean external) {
         this.external = external;
+    }
+
+    @Override
+    public String toString() {
+        return "AttachedLink{" +
+                "url='" + url + '\'' +
+                ", title='" + title + '\'' +
+                ", caption='" + caption + '\'' +
+                ", description='" + description + '\'' +
+                ", photo=" + photo +
+                ", product=" + product +
+                ", button=" + button +
+                ", previewPage='" + previewPage + '\'' +
+                ", previewUrl='" + previewUrl + '\'' +
+                ", external=" + external +
+                '}';
     }
 }

@@ -20,4 +20,11 @@ public class GroupsGetMembersResponseItem extends User {
     public void setRole(String role) {
         this.role = role;
     }
+
+    @Override
+    public String toString() {
+        return "GroupsGetMembersResponseItem{" +
+                "role='" + role + '\'' +
+                "} " + super.toString();
+    }
 }

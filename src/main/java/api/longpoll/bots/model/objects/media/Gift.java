@@ -63,4 +63,14 @@ public class Gift implements Attachable {
     public void setThumb48(String thumb48) {
         this.thumb48 = thumb48;
     }
+
+    @Override
+    public String toString() {
+        return "Gift{" +
+                "id=" + id +
+                ", thumb256='" + thumb256 + '\'' +
+                ", thumb96='" + thumb96 + '\'' +
+                ", thumb48='" + thumb48 + '\'' +
+                '}';
+    }
 }

@@ -19,4 +19,11 @@ public class MessagesDeleteConversationResponse {
     public void setLastDeletedId(Integer lastDeletedId) {
         this.lastDeletedId = lastDeletedId;
     }
+
+    @Override
+    public String toString() {
+        return "MessagesDeleteConversationResponse{" +
+                "lastDeletedId=" + lastDeletedId +
+                '}';
+    }
 }

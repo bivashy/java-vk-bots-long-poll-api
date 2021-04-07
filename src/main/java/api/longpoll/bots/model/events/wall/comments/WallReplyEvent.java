@@ -20,4 +20,12 @@ public class WallReplyEvent extends WallComment {
     public void setPostOwnerId(Integer postOwnerId) {
         this.postOwnerId = postOwnerId;
     }
+
+
+    @Override
+    public String toString() {
+        return "WallReplyEvent{" +
+                "postOwnerId=" + postOwnerId +
+                "} " + super.toString();
+    }
 }

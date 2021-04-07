@@ -71,4 +71,14 @@ public class StoriesFeedBlock {
     public void setApp(Application app) {
         this.app = app;
     }
+
+    @Override
+    public String toString() {
+        return "StoriesFeedBlock{" +
+                "type='" + type + '\'' +
+                ", stories=" + stories +
+                ", grouped=" + grouped +
+                ", app=" + app +
+                '}';
+    }
 }

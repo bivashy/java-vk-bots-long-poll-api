@@ -89,4 +89,16 @@ public class GroupsGetCallbackServersResponseItem {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "GroupsGetCallbackServersResponseItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", creatorId=" + creatorId +
+                ", url='" + url + '\'' +
+                ", secretKey='" + secretKey + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

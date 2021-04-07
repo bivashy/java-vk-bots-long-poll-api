@@ -47,4 +47,13 @@ public class UploadPhotoResult {
     public void setHash(String hash) {
         this.hash = hash;
     }
+
+    @Override
+    public String toString() {
+        return "UploadPhotoResult{" +
+                "server=" + server +
+                ", photo='" + photo + '\'' +
+                ", hash='" + hash + '\'' +
+                '}';
+    }
 }

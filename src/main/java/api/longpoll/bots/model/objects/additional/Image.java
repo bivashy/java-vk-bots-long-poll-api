@@ -46,4 +46,13 @@ public class Image {
     public void setHeight(Integer height) {
         this.height = height;
     }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "url='" + url + '\'' +
+                ", width=" + width +
+                ", height=" + height +
+                '}';
+    }
 }

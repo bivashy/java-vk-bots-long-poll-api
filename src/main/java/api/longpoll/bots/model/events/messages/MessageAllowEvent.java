@@ -34,4 +34,12 @@ public class MessageAllowEvent implements EventObject {
     public void setKey(Integer key) {
         this.key = key;
     }
+
+    @Override
+    public String toString() {
+        return "MessageAllowEvent{" +
+                "userId=" + userId +
+                ", key=" + key +
+                '}';
+    }
 }

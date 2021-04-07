@@ -106,4 +106,17 @@ public class PhotosSaveMessagesPhotoResponse {
     public void setPhotoSizes(List<PhotoSize> photoSizes) {
         this.photoSizes = photoSizes;
     }
+
+    @Override
+    public String toString() {
+        return "PhotosSaveMessagesPhotoResponse{" +
+                "albumId=" + albumId +
+                ", date=" + date +
+                ", id=" + id +
+                ", ownerId=" + ownerId +
+                ", hasTags=" + hasTags +
+                ", accessKey='" + accessKey + '\'' +
+                ", photoSizes=" + photoSizes +
+                '}';
+    }
 }

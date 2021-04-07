@@ -46,6 +46,14 @@ public class MessagesGetConversationsResponse extends ExtendedVkList<MessagesGet
         public void setMessage(Message message) {
             this.message = message;
         }
+
+        @Override
+        public String toString() {
+            return "Item{" +
+                    "conversation=" + conversation +
+                    ", message=" + message +
+                    '}';
+        }
     }
 
     public Integer getUnreadCount() {
@@ -54,5 +62,12 @@ public class MessagesGetConversationsResponse extends ExtendedVkList<MessagesGet
 
     public void setUnreadCount(Integer unreadCount) {
         this.unreadCount = unreadCount;
+    }
+
+    @Override
+    public String toString() {
+        return "MessagesGetConversationsResponse{" +
+                "unreadCount=" + unreadCount +
+                "} " + super.toString();
     }
 }
