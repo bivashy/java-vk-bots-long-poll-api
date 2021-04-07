@@ -7,6 +7,3 @@ jdk:
   - oraclejdk8
 
 install: mvn package -Dmaven.test.skip=true
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
