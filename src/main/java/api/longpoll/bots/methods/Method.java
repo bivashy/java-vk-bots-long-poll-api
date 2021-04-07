@@ -5,6 +5,7 @@ import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.StringToJsonConverter;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
+import api.longpoll.bots.utils.async.AsyncUtil;
 import api.longpoll.bots.validators.ResponseValidator;
 import api.longpoll.bots.validators.Validator;
 import com.google.gson.JsonObject;
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -40,6 +42,10 @@ public abstract class Method<Result> {
      * Validator that checks VK API response.
      */
     private static final Validator VALIDATOR = new ResponseValidator();
+
+    private CompletableFuture<Result> executeAsync() {
+        return AsyncUtil.callAsync(this::execute);
+    }
 
     /**
      * Executes request to VK API.
