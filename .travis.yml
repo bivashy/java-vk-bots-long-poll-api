@@ -5,4 +5,5 @@ dist: trusty
 jdk:
   - oraclejdk8
 
+install: false
 script: mvn package
