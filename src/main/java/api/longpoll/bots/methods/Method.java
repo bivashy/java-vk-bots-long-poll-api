@@ -43,7 +43,7 @@ public abstract class Method<Result> {
      */
     private static final Validator VALIDATOR = new ResponseValidator();
 
-    private CompletableFuture<Result> executeAsync() {
+    public CompletableFuture<Result> executeAsync() {
         return AsyncUtil.callAsync(this::execute);
     }
 
