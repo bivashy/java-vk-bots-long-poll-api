@@ -1,5 +1,5 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.yvasyliev/java-vk-bots-longpoll-api/badge.svg?&kill_cache=1)](https://search.maven.org/artifact/com.github.yvasyliev/java-vk-bots-longpoll-api)
-[![Build Status](https://travis-ci.com/yvasyliev/java-vk-bots-long-poll-api.svg?branch=master)](https://travis-ci.com/yvasyliev/java-vk-bots-long-poll-api)
+![Build status](https://github.com/yvasyliev/java-vk-bots-long-poll-api/actions/workflows/build-maven-project.yml/badge.svg?branch=master)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/yvasyliev/java-vk-bots-long-poll-api/blob/master/LICENSE)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/yvasyliev/java-vk-bots-long-poll-api.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/yvasyliev/java-vk-bots-long-poll-api/alerts/)
 [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/yvasyliev/java-vk-bots-long-poll-api.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/yvasyliev/java-vk-bots-long-poll-api/context:java)
