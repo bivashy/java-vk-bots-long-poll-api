@@ -4,6 +4,7 @@ import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.server.LongPollServer;
 import api.longpoll.bots.server.Server;
+import api.longpoll.bots.utils.async.AsyncUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,5 +30,6 @@ public class BotsLongPoll {
 
     public synchronized void stop() {
         running = false;
+        AsyncUtil.stopChildProcesses();
     }
 }
