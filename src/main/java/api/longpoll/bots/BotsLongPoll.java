@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class BotsLongPoll {
     private static final Logger log = LoggerFactory.getLogger(BotsLongPoll.class);
+    private boolean running = true;
     private LongPollBot bot;
     private Server server;
     private UpdateHandler updateHandler;
@@ -21,8 +22,12 @@ public class BotsLongPoll {
 
     public void run() throws BotsLongPollAPIException, BotsLongPollException {
         log.debug("Starting bot with group_id = {}", bot.getGroupId());
-        while (true) {
+        while (running) {
             updateHandler.handleUpdates(server.getUpdates());
         }
+    }
+
+    public synchronized void stop() {
+        running = false;
     }
 }

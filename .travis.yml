@@ -1,9 +1,0 @@
-language: java
-
-dist: trusty
-sudo: false
-
-jdk:
-  - oraclejdk8
-
-install: mvn package -Dmaven.test.skip=true
