@@ -18,4 +18,8 @@ public class AsyncUtil {
             }
         }, EXECUTOR_SERVICE);
     }
+
+    public static void stopChildProcesses() {
+        EXECUTOR_SERVICE.shutdown();
+    }
 }
