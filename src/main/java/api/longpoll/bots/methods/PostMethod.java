@@ -18,25 +18,12 @@ public abstract class PostMethod<Response> extends Method<Response> {
      */
     private File file;
 
-    protected File getFile() {
-        return file;
-    }
-
-    protected PostMethod<Response> setFile(File file) {
-        this.file = file;
-        return this;
-    }
-
     @Override
     protected Connection.Response execute(Connection connection) throws IOException {
-        if (file != null) {
-            try (InputStream inputStream = new FileInputStream(file)) {
-                connection.data(getType(), file.getName(), inputStream);
-                return super.execute(connection);
-            }
+        try (InputStream inputStream = new FileInputStream(file)) {
+            connection.data(getType(), file.getName(), inputStream);
+            return super.execute(connection);
         }
-
-        return super.execute(connection);
     }
 
     @Override
@@ -50,4 +37,13 @@ public abstract class PostMethod<Response> extends Method<Response> {
      * @return file type.
      */
     protected abstract String getType();
+
+    public File getFile() {
+        return file;
+    }
+
+    public PostMethod<Response> setFile(File file) {
+        this.file = file;
+        return this;
+    }
 }

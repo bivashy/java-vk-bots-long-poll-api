@@ -6,7 +6,6 @@ import api.longpoll.bots.methods.PostMethod;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
 import org.jsoup.Connection;
 
-import java.io.File;
 import java.util.stream.Stream;
 
 /**
@@ -17,6 +16,7 @@ public class UploadPhoto extends PostMethod<UploadPhotoResult> {
      * Upload URL.
      */
     private String uploadUrl;
+
     @Override
     protected String getApi() {
         return uploadUrl;
@@ -44,14 +44,5 @@ public class UploadPhoto extends PostMethod<UploadPhotoResult> {
     public UploadPhoto setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
         return this;
-    }
-
-    public UploadPhoto setPhoto(File photo) {
-        setFile(photo);
-        return this;
-    }
-
-    public File getPhoto() {
-        return getFile();
     }
 }

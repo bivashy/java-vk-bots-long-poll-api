@@ -6,7 +6,6 @@ import api.longpoll.bots.methods.PostMethod;
 import api.longpoll.bots.model.response.other.UploadStoryResult;
 import org.jsoup.Connection;
 
-import java.io.File;
 import java.util.stream.Stream;
 
 /**
@@ -36,15 +35,6 @@ public class UploadStory extends PostMethod<UploadStoryResult> {
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of();
-    }
-
-    public File getStory() {
-        return getFile();
-    }
-
-    public UploadStory setStory(File story) {
-        setFile(story);
-        return this;
     }
 
     public String getUploadUrl() {

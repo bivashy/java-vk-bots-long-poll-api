@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.messages;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.messages.MessagesSendResultConverter;
-import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
+import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.Keyboard;
@@ -75,7 +75,7 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
     /**
      * List of objects attached to the message.
      */
-    private List<String> attachments;
+    private List<String> attachments = new ArrayList<>();
 
     /**
      * Id of replied message.
@@ -111,6 +111,16 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
      * <b>true</b> - mention of user will not generate notification for him.
      */
     private Boolean disableMentions;
+
+    /**
+     * Photos to be attached.
+     */
+    private List<File> photos = new ArrayList<>();
+
+    /**
+     * Docs to be attached.
+     */
+    private List<File> docs = new ArrayList<>();
 
     public MessagesSend(LongPollBot bot) {
         super(bot);
@@ -149,28 +159,38 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         );
     }
 
-    private MessagesSend attach(String attachment) {
-        if (attachments == null) {
-            attachments = new ArrayList<>();
+    @Override
+    public GenericResult<Object> execute() throws BotsLongPollAPIException, BotsLongPollException {
+        for (File photo : photos) {
+            addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(bot, peerId, photo)));
         }
+        for (File doc : docs) {
+            addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadDoc(bot, peerId, doc)));
+        }
+        return super.execute();
+    }
+
+    private MessagesSend addAttachment(String attachment) {
         attachments.add(attachment);
         return this;
     }
 
-    public MessagesSend attachPhoto(Photo photo) {
-        return attach(AttachmentsUtil.toAttachment(photo));
+    public MessagesSend addPhoto(Photo photo) {
+        return addAttachment(AttachmentsUtil.toAttachment(photo));
     }
 
-    public MessagesSend attachPhoto(File photo) throws BotsLongPollAPIException, BotsLongPollException {
-        return attach(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(bot, getPeerId(), photo)));
+    public MessagesSend addPhoto(File photo) {
+        photos.add(photo);
+        return this;
     }
 
-    public MessagesSend attachDoc(Doc doc) {
-        return attach(AttachmentsUtil.toAttachment(doc));
+    public MessagesSend addDoc(Doc doc) {
+        return addAttachment(AttachmentsUtil.toAttachment(doc));
     }
 
-    public MessagesSend attachDoc(File doc) throws BotsLongPollAPIException, BotsLongPollException {
-        return attachDoc(MessagesUtil.uploadDoc(bot, peerId, doc));
+    public MessagesSend addDoc(File doc) {
+        docs.add(doc);
+        return this;
     }
 
     public Integer getUserId() {

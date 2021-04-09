@@ -6,7 +6,6 @@ import api.longpoll.bots.methods.PostMethod;
 import api.longpoll.bots.model.response.other.UploadDocResult;
 import org.jsoup.Connection;
 
-import java.io.File;
 import java.util.stream.Stream;
 
 /**
@@ -45,14 +44,5 @@ public class UploadDoc extends PostMethod<UploadDocResult> {
     public UploadDoc setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
         return this;
-    }
-
-    public UploadDoc setDoc(File doc) {
-        setFile(doc);
-        return this;
-    }
-
-    public File getDoc() {
-        return getFile();
     }
 }
