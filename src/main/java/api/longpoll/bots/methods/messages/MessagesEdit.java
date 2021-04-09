@@ -49,7 +49,7 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
     /**
      * List of objects attached to the message.
      */
-    private List<String> attachments;
+    private List<String> attachments = new ArrayList<>();
 
     /**
      * <b>true</b> to keep forwarded, messages.
