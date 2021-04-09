@@ -1,8 +1,8 @@
 package api.longpoll.bots.utils.methods;
 
 import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
+import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.methods.docs.DocsGetMessagesUploadServer;
 import api.longpoll.bots.methods.docs.DocsSave;
 import api.longpoll.bots.methods.other.UploadDoc;
@@ -26,7 +26,7 @@ public class MessagesUtil {
                 .getResponse();
         UploadPhotoResult uploadPhoto = new UploadPhoto()
                 .setUploadUrl(uploadServer.getUploadUrl())
-                .setPhoto(photo)
+                .setFile(photo)
                 .execute();
         return new PhotosSaveMessagesPhoto(bot)
                 .setHash(uploadPhoto.getHash())
@@ -45,7 +45,7 @@ public class MessagesUtil {
                 .getResponse();
         UploadDocResult uploadDoc = new UploadDoc()
                 .setUploadUrl(uploadServer.getUploadUrl())
-                .setDoc(doc)
+                .setFile(doc)
                 .execute();
         return (Doc) new DocsSave(bot)
                 .setFile(uploadDoc.getFile())

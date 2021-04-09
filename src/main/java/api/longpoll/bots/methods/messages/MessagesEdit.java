@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.messages;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
+import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
@@ -81,6 +81,16 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
      */
     private Integer conversationMessageId;
 
+    /**
+     * Photos to be attached.
+     */
+    private List<File> photos = new ArrayList<>();
+
+    /**
+     * Docs to be attached.
+     */
+    private List<File> docs = new ArrayList<>();
+
     public MessagesEdit(LongPollBot bot) {
         super(bot);
     }
@@ -92,7 +102,8 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
 
     @Override
     protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>() {
+        }.getType());
     }
 
     @Override
@@ -112,28 +123,38 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         );
     }
 
-    private MessagesEdit attach(String attachment) {
-        if (attachments == null) {
-            attachments = new ArrayList<>();
+    @Override
+    public GenericResult<Integer> execute() throws BotsLongPollAPIException, BotsLongPollException {
+        for (File photo : photos) {
+            addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(bot, peerId, photo)));
         }
+        for (File doc : docs) {
+            addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadDoc(bot, peerId, doc)));
+        }
+        return super.execute();
+    }
+
+    private MessagesEdit addAttachment(String attachment) {
         attachments.add(attachment);
         return this;
     }
 
-    public MessagesEdit attachPhoto(Photo photo) {
-        return attach(AttachmentsUtil.toAttachment(photo));
+    public MessagesEdit addPhoto(Photo photo) {
+        return addAttachment(AttachmentsUtil.toAttachment(photo));
     }
 
-    public MessagesEdit attachPhoto(File photo) throws BotsLongPollAPIException, BotsLongPollException {
-        return attach(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(bot, getPeerId(), photo)));
+    public MessagesEdit addPhoto(File photo) {
+        photos.add(photo);
+        return this;
     }
 
-    public MessagesEdit attachDoc(Doc doc) {
-        return attach(AttachmentsUtil.toAttachment(doc));
+    public MessagesEdit addDoc(Doc doc) {
+        return addAttachment(AttachmentsUtil.toAttachment(doc));
     }
 
-    public MessagesEdit attachDoc(File doc) throws BotsLongPollAPIException, BotsLongPollException {
-        return attachDoc(MessagesUtil.uploadDoc(bot, peerId, doc));
+    public MessagesEdit addDoc(File doc) {
+        docs.add(doc);
+        return this;
     }
 
     public Integer getPeerId() {
