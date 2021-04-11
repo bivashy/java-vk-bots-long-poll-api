@@ -11,7 +11,7 @@ public class MessagesDeleteChatPhotoResponse {
      * ID of the system message sent.
      */
     @SerializedName("message_id")
-    private Object messageId;
+    private Integer messageId;
 
     /**
      * Chat object.
@@ -23,7 +23,7 @@ public class MessagesDeleteChatPhotoResponse {
         return messageId;
     }
 
-    public void setMessageId(Object messageId) {
+    public void setMessageId(Integer messageId) {
         this.messageId = messageId;
     }
 
