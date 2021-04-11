@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +18,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
  */
-public class MessagesDelete extends GetMethod<GenericResult<Integer>> {
+public class MessagesDelete extends GetMethod<GenericResult<Map<String, Integer>>> {
     /**
      * Message IDs.
      */
@@ -48,8 +49,8 @@ public class MessagesDelete extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
+    protected JsonToPojoConverter<GenericResult<Map<String, Integer>>> getConverter() {
+        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Map<String, Integer>>>(){}.getType());
     }
 
     @Override

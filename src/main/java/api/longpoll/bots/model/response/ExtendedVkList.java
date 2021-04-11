@@ -46,6 +46,6 @@ public class ExtendedVkList<T> extends VkList<T> {
         return "ExtendedVkList{" +
                 "profiles=" + profiles +
                 ", groups=" + groups +
-                '}';
+                "} " + super.toString();
     }
 }
