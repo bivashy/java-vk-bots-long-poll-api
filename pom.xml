@@ -30,6 +30,7 @@
         <slf4j.version>1.7.30</slf4j.version>
         <jsoup.version>1.13.1</jsoup.version>
         <junit.version>5.7.1</junit.version>
+        <junit.platform.version>1.1.0</junit.platform.version>
     </properties>
 
     <dependencies>
@@ -74,6 +75,7 @@
     </distributionManagement>
 
     <build>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -189,6 +191,18 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit.platform.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
         <resources>
