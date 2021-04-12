@@ -1,6 +1,6 @@
 name: Build
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   build:
@@ -22,9 +22,10 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots -B package -Dmaven.test.skip=true --file pom.xml
-      - name: Test
-        run: mvn -DrepoToken=${{ secrets.REPO_TOKEN }} clean test jacoco:report coveralls:report
+      - name: Code coverage
+        run: mvn -B package -P coverage --no-transfer-progress
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v1.1.2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./**/target/site/jacoco/jacoco.xml
+          name: codecov
