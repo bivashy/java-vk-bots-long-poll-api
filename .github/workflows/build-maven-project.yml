@@ -21,9 +21,9 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots -B -DrepoToken=${{ secrets.REPO_TOKEN }} package -Dmaven.test.skip=true --file pom.xml
+        run: mvn --batch-mode --update-snapshots -B package -Dmaven.test.skip=true --file pom.xml
       - name: Test
-        run: mvn clean test jacoco:report coveralls:report
+        run: mvn -DrepoToken=${{ secrets.REPO_TOKEN }} clean test jacoco:report coveralls:report
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v1.1.2
         with:
