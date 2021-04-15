@@ -147,7 +147,10 @@ public abstract class Method<Result> {
         }
 
         if (value instanceof List) {
-            value = ((List) value).stream().map(String::valueOf).collect(Collectors.joining(","));
+            if (((List<?>) value).isEmpty()) {
+                return null;
+            }
+            value = ((List<?>) value).stream().map(String::valueOf).collect(Collectors.joining(","));
         }
 
         if (boolint && value instanceof Boolean) {

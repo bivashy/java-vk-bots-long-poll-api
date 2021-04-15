@@ -60,10 +60,6 @@ public class Keyboard {
 
     @Override
     public String toString() {
-        return "Keyboard{" +
-                "oneTime=" + oneTime +
-                ", inline=" + inline +
-                ", buttons=" + buttons +
-                '}';
+        return toJson();
     }
 }
