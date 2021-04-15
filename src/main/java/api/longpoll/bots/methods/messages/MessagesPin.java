@@ -24,9 +24,9 @@ public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
     private Integer peerId;
 
     /**
-     * Message Id.
+     * Id of the group chat message that needs to be pinned.
      */
-    private Integer messageId;
+    private Integer conversationMessageId;
 
     public MessagesPin(LongPollBot bot) {
         super(bot);
@@ -46,7 +46,7 @@ public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
-                keyVal("message_id", messageId)
+                keyVal("conversation_message_id", conversationMessageId)
         );
     }
 
@@ -59,12 +59,12 @@ public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
         return this;
     }
 
-    public Integer getMessageId() {
-        return messageId;
+    public Integer getConversationMessageId() {
+        return conversationMessageId;
     }
 
-    public MessagesPin setMessageId(Integer messageId) {
-        this.messageId = messageId;
+    public MessagesPin setConversationMessageId(Integer conversationMessageId) {
+        this.conversationMessageId = conversationMessageId;
         return this;
     }
 }
