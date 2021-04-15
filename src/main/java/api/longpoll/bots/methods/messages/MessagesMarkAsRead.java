@@ -9,7 +9,6 @@ import api.longpoll.bots.model.response.GenericResult;
 import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -19,14 +18,9 @@ import java.util.stream.Stream;
  */
 public class MessagesMarkAsRead extends GetMethod<GenericResult<Integer>> {
     /**
-     * IDs of messages to mark as read.
-     */
-    private List<Integer> messageIds;
-
-    /**
      * Destination ID.
      */
-    private String peerId;
+    private Integer peerId;
 
     /**
      * Message ID to start from.
@@ -60,7 +54,6 @@ public class MessagesMarkAsRead extends GetMethod<GenericResult<Integer>> {
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                keyVal("message_ids", messageIds),
                 keyVal("peer_id", peerId),
                 keyVal("start_message_id", startMessageId),
                 keyVal("group_id", groupId),
@@ -68,20 +61,11 @@ public class MessagesMarkAsRead extends GetMethod<GenericResult<Integer>> {
         );
     }
 
-    public List<Integer> getMessageIds() {
-        return messageIds;
-    }
-
-    public MessagesMarkAsRead setMessageIds(List<Integer> messageIds) {
-        this.messageIds = messageIds;
-        return this;
-    }
-
-    public String getPeerId() {
+    public Integer getPeerId() {
         return peerId;
     }
 
-    public MessagesMarkAsRead setPeerId(String peerId) {
+    public MessagesMarkAsRead setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
     }

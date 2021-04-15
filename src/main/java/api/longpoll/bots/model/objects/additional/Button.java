@@ -382,12 +382,13 @@ public class Button {
             return this;
         }
 
+        public String toJson() {
+            return new Gson().toJson(this);
+        }
+
         @Override
         public String toString() {
-            return "ShowSnackbar{" +
-                    "type='" + getType() + '\'' +
-                    ", text='" + text + '\'' +
-                    '}';
+            return toJson();
         }
     }
 
@@ -424,12 +425,13 @@ public class Button {
             return this;
         }
 
+        public String toJson() {
+            return new Gson().toJson(this);
+        }
+
         @Override
         public String toString() {
-            return "OpenLink{" +
-                    "type='" + getType() + '\'' +
-                    ", link='" + link + '\'' +
-                    '}';
+            return toJson();
         }
     }
 
@@ -491,14 +493,13 @@ public class Button {
             return this;
         }
 
+        public String toJson() {
+            return new Gson().toJson(this);
+        }
+
         @Override
         public String toString() {
-            return "OpenApp{" +
-                    "type='" + getType() + '\'' +
-                    ", appId=" + appId +
-                    ", hash='" + hash + '\'' +
-                    ", ownerId=" + ownerId +
-                    '}';
+            return toJson();
         }
     }
 
@@ -520,11 +521,12 @@ public class Button {
         return this;
     }
 
+    public String toJson() {
+        return new Gson().toJson(this);
+    }
+
     @Override
     public String toString() {
-        return "Button{" +
-                "color=" + color +
-                ", action=" + action +
-                '}';
+        return toJson();
     }
 }

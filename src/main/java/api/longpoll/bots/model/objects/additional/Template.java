@@ -215,12 +215,13 @@ public abstract class Template {
             return this;
         }
 
+        public String toJson() {
+            return new Gson().toJson(this);
+        }
+
         @Override
         public String toString() {
-            return "Carousel{" +
-                    "type='" + getType() + '\'' +
-                    ", elements=" + elements +
-                    '}';
+            return toJson();
         }
     }
 

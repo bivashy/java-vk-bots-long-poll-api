@@ -6,7 +6,7 @@
     <groupId>com.github.yvasyliev</groupId>
     <artifactId>java-vk-bots-longpoll-api</artifactId>
     <packaging>jar</packaging>
-    <version>1.3.4</version>
+    <version>1.3.5</version>
 
     <name>Java VK Bots Long Poll API</name>
     <description>A Java library to create VK bots using Bots Long Poll API</description>
@@ -30,6 +30,7 @@
         <slf4j.version>1.7.30</slf4j.version>
         <jsoup.version>1.13.1</jsoup.version>
         <junit.version>5.7.1</junit.version>
+        <junit.platform.version>1.1.0</junit.platform.version>
     </properties>
 
     <dependencies>
@@ -74,6 +75,7 @@
     </distributionManagement>
 
     <build>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -151,6 +153,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -164,6 +167,43 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.jacoco</groupId>-->
+<!--                <artifactId>jacoco-maven-plugin</artifactId>-->
+<!--                <version>0.8.6</version>-->
+<!--                <executions>-->
+<!--                    &lt;!&ndash; Prepares the property pointing to the JaCoCo-->
+<!--                    runtime agent which is passed as VM argument when Maven the Surefire plugin-->
+<!--                    is executed. &ndash;&gt;-->
+<!--                    <execution>-->
+<!--                        <id>pre-unit-test</id>-->
+<!--                        <goals>-->
+<!--                            <goal>prepare-agent</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                    &lt;!&ndash; Ensures that the code coverage report for-->
+<!--                    unit tests is created after unit tests have been run. &ndash;&gt;-->
+<!--                    <execution>-->
+<!--                        <id>post-unit-test</id>-->
+<!--                        <phase>test</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>report</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit.platform.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
         <resources>

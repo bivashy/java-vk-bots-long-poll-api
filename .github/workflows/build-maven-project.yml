@@ -1,6 +1,6 @@
 name: Build
 
-on: [push, pull_request]
+on: [ push, pull_request ]
 
 jobs:
   build:
@@ -21,4 +21,9 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots -B package --file pom.xml
+        run: mvn package --file pom.xml
+#      - name: Coveralls GitHub Action
+#        uses: codecov/codecov-action@v1
+#        with:
+#          file: ./**/target/site/jacoco/jacoco.xml
+#          name: codecov
