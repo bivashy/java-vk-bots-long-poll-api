@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -28,8 +27,8 @@ public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
      */
     private Integer conversationMessageId;
 
-    public MessagesPin(LongPollBot bot) {
-        super(bot);
+    public MessagesPin(String accessToken) {
+        super(accessToken);
     }
 
     @Override

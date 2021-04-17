@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -33,8 +32,8 @@ public class MessagesDeleteConversation extends GetMethod<GenericResult<Messages
      */
     private Integer groupId;
 
-    public MessagesDeleteConversation(LongPollBot bot) {
-        super(bot);
+    public MessagesDeleteConversation(String accessToken) {
+        super(accessToken);
     }
 
     @Override

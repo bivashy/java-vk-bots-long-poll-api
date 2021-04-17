@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -30,8 +29,8 @@ public class GroupsGetCallbackServers extends GetMethod<GenericResult<VkList<Gro
      */
     private List<Integer> serverIds;
 
-    public GroupsGetCallbackServers(LongPollBot bot) {
-        super(bot);
+    public GroupsGetCallbackServers(String accessToken) {
+        super(accessToken);
     }
 
     @Override

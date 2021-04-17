@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -33,8 +32,8 @@ public class GroupsGetById extends GetMethod<List<Community>> {
      */
     private List<String> fields;
 
-    public GroupsGetById(LongPollBot bot) {
-        super(bot);
+    public GroupsGetById(String accessToken) {
+        super(accessToken);
     }
 
     @Override

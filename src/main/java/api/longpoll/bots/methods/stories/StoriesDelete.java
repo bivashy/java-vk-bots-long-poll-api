@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -33,8 +32,8 @@ public class StoriesDelete extends GetMethod<GenericResult<Integer>> {
      */
     private List<String> stories;
 
-    public StoriesDelete(LongPollBot bot) {
-        super(bot);
+    public StoriesDelete(String accessToken) {
+        super(accessToken);
     }
 
     @Override

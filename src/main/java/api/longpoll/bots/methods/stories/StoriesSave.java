@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -21,8 +20,8 @@ import java.util.stream.Stream;
 public class StoriesSave extends GetMethod<GenericResult<VkList<Story>>> {
     private String uploadResults;
 
-    public StoriesSave(LongPollBot bot) {
-        super(bot);
+    public StoriesSave(String accessToken) {
+        super(accessToken);
     }
 
     @Override

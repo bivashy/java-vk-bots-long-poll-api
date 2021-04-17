@@ -37,8 +37,8 @@ public class MessagesMarkAsRead extends GetMethod<GenericResult<Integer>> {
      */
     private Boolean markConversationAsRead;
 
-    public MessagesMarkAsRead(LongPollBot bot) {
-        super(bot);
+    public MessagesMarkAsRead(String accessToken) {
+        super(accessToken);
     }
 
     @Override

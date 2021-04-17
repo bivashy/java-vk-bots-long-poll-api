@@ -28,8 +28,8 @@ public class MessagesDeleteChatPhoto extends GetMethod<GenericResult<MessagesDel
      */
     private Integer groupId;
 
-    public MessagesDeleteChatPhoto(LongPollBot bot) {
-        super(bot);
+    public MessagesDeleteChatPhoto(String accessToken) {
+        super(accessToken);
     }
 
     @Override

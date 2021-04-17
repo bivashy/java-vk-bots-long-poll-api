@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -33,8 +32,8 @@ public class MessagesGetInviteLink extends GetMethod<GenericResult<MessagesGetIn
      */
     private Integer groupId;
 
-    public MessagesGetInviteLink(LongPollBot bot) {
-        super(bot);
+    public MessagesGetInviteLink(String accessToken) {
+        super(accessToken);
     }
 
     @Override

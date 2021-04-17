@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.methods.VkApi;
 
 /**
@@ -9,8 +8,8 @@ import api.longpoll.bots.methods.VkApi;
  * @see <a href="https://vk.com/dev/stories.getVideoUploadServer">https://vk.com/dev/stories.getVideoUploadServer</a>
  */
 public class StoriesGetVideoUploadServer extends StoriesGetPhotoUploadServer {
-    public StoriesGetVideoUploadServer(LongPollBot bot) {
-        super(bot);
+    public StoriesGetVideoUploadServer(String accessToken) {
+        super(accessToken);
     }
 
     @Override

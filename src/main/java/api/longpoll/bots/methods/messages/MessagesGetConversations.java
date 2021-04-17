@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -54,8 +53,8 @@ public class MessagesGetConversations extends GetMethod<GenericResult<MessagesGe
      */
     private Integer groupId;
 
-    public MessagesGetConversations(LongPollBot bot) {
-        super(bot);
+    public MessagesGetConversations(String accessToken) {
+        super(accessToken);
     }
 
     @Override

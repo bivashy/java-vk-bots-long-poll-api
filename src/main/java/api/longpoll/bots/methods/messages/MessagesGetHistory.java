@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.messages.MessagesGetHistoryResultConverter;
 import api.longpoll.bots.methods.GetMethod;
@@ -63,8 +62,8 @@ public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHisto
      */
     private Integer groupId;
 
-    public MessagesGetHistory(LongPollBot bot) {
-        super(bot);
+    public MessagesGetHistory(String accessToken) {
+        super(accessToken);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package api.longpoll.bots.utils.methods;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.methods.docs.DocsGetMessagesUploadServer;
@@ -19,8 +18,8 @@ import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
 import java.io.File;
 
 public class MessagesUtil {
-    public static PhotosSaveMessagesPhotoResponse uploadPhoto(LongPollBot bot, int peerId, File photo) throws BotsLongPollAPIException, BotsLongPollException {
-        PhotosGetMessagesUploadServerResponse uploadServer = new PhotosGetMessagesUploadServer(bot)
+    public static PhotosSaveMessagesPhotoResponse uploadPhoto(String accessToken, int peerId, File photo) throws BotsLongPollAPIException, BotsLongPollException {
+        PhotosGetMessagesUploadServerResponse uploadServer = new PhotosGetMessagesUploadServer(accessToken)
                 .setPeerId(peerId)
                 .execute()
                 .getResponse();
@@ -28,7 +27,7 @@ public class MessagesUtil {
                 .setUploadUrl(uploadServer.getUploadUrl())
                 .setFile(photo)
                 .execute();
-        return new PhotosSaveMessagesPhoto(bot)
+        return new PhotosSaveMessagesPhoto(accessToken)
                 .setHash(uploadPhoto.getHash())
                 .setPhoto(uploadPhoto.getPhoto())
                 .setServer(uploadPhoto.getServer())
@@ -37,8 +36,8 @@ public class MessagesUtil {
                 .get(0);
     }
 
-    public static Doc uploadDoc(LongPollBot bot, int peerId, File doc) throws BotsLongPollAPIException, BotsLongPollException {
-        DocsGetUploadServerResponse uploadServer = new DocsGetMessagesUploadServer(bot)
+    public static Doc uploadDoc(String accessToken, int peerId, File doc) throws BotsLongPollAPIException, BotsLongPollException {
+        DocsGetUploadServerResponse uploadServer = new DocsGetMessagesUploadServer(accessToken)
                 .setType("doc")
                 .setPeerId(peerId)
                 .execute()
@@ -47,7 +46,7 @@ public class MessagesUtil {
                 .setUploadUrl(uploadServer.getUploadUrl())
                 .setFile(doc)
                 .execute();
-        return (Doc) new DocsSave(bot)
+        return (Doc) new DocsSave(accessToken)
                 .setFile(uploadDoc.getFile())
                 .execute()
                 .getResponse()

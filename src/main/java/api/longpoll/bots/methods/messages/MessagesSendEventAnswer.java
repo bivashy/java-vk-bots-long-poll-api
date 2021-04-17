@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -38,8 +37,8 @@ public class MessagesSendEventAnswer extends GetMethod<GenericResult<Integer>> {
      */
     private Button.EventData eventData;
 
-    public MessagesSendEventAnswer(LongPollBot bot) {
-        super(bot);
+    public MessagesSendEventAnswer(String accessToken) {
+        super(accessToken);
     }
 
     @Override

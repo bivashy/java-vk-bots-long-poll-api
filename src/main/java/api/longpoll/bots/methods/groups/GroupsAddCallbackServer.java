@@ -38,8 +38,8 @@ public class GroupsAddCallbackServer extends GetMethod<GenericResult<GroupsAddCa
      */
     private String secretKey;
 
-    public GroupsAddCallbackServer(LongPollBot bot) {
-        super(bot);
+    public GroupsAddCallbackServer(String accessToken) {
+        super(accessToken);
     }
 
     @Override

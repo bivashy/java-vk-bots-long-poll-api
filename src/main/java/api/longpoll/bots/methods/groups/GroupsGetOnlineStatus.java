@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -23,8 +22,8 @@ public class GroupsGetOnlineStatus extends GetMethod<GenericResult<GroupsGetOnli
      */
     private Integer groupId;
 
-    public GroupsGetOnlineStatus(LongPollBot bot) {
-        super(bot);
+    public GroupsGetOnlineStatus(String accessToken) {
+        super(accessToken);
     }
 
     @Override

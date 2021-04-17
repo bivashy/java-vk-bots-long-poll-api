@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.docs;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.docs.DocsSaveResultConverter;
 import api.longpoll.bots.methods.GetMethod;
@@ -37,8 +36,8 @@ public class DocsSave extends GetMethod<GenericResult<DocsSaveResponse>> {
      */
     private Boolean returnTags;
 
-    public DocsSave(LongPollBot bot) {
-        super(bot);
+    public DocsSave(String accessToken) {
+        super(accessToken);
     }
 
     @Override

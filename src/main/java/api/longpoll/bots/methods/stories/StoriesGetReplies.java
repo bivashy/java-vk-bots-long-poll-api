@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -45,8 +44,8 @@ public class StoriesGetReplies extends GetMethod<GenericResult<ExtendedVkList<St
      */
     private List<String> fields;
 
-    public StoriesGetReplies(LongPollBot bot) {
-        super(bot);
+    public StoriesGetReplies(String accessToken) {
+        super(accessToken);
     }
 
     @Override

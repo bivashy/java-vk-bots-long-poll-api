@@ -49,8 +49,8 @@ public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMe
      */
     private String filter;
 
-    public GroupsGetMembers(LongPollBot bot) {
-        super(bot);
+    public GroupsGetMembers(String accessToken) {
+        super(accessToken);
     }
 
     @Override

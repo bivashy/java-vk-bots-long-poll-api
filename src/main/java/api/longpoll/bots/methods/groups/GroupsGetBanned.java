@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -45,8 +44,8 @@ public class GroupsGetBanned extends GetMethod<GenericResult<VkList<GroupsGetBan
      */
     private Integer ownerId;
 
-    public GroupsGetBanned(LongPollBot bot) {
-        super(bot);
+    public GroupsGetBanned(String accessToken) {
+        super(accessToken);
     }
 
     @Override

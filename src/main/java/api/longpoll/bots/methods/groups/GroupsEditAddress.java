@@ -86,8 +86,8 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
      */
     private Boolean mainAddress;
 
-    public GroupsEditAddress(LongPollBot bot) {
-        super(bot);
+    public GroupsEditAddress(String accessToken) {
+        super(accessToken);
     }
 
     @Override

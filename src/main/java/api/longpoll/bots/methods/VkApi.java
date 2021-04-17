@@ -24,7 +24,7 @@ public class VkApi {
     /**
      * VkApi instance.
      */
-    private static VkApi instance = new VkApi();
+    private static final VkApi INSTANCE = new VkApi();
 
     /**
      * Properties object.
@@ -43,10 +43,14 @@ public class VkApi {
     }
 
     public static VkApi getInstance() {
-        if (instance.properties.isEmpty()) {
-            instance.loadProperties();
+        if (INSTANCE.properties.isEmpty()) {
+            INSTANCE.loadProperties();
         }
-        return instance;
+        return INSTANCE;
+    }
+
+    public String apiVersion() {
+        return properties.getProperty("api.version");
     }
 
     public String boardDeleteComment() {

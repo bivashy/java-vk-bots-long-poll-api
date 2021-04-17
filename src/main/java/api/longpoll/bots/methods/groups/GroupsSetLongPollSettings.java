@@ -241,8 +241,8 @@ public class GroupsSetLongPollSettings extends GetMethod<GenericResult<Integer>>
      */
     private Boolean likeRemove;
 
-    public GroupsSetLongPollSettings(LongPollBot bot) {
-        super(bot);
+    public GroupsSetLongPollSettings(String accessToken) {
+        super(accessToken);
     }
 
     @Override

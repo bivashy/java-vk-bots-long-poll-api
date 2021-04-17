@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.messages.MessagesSendResultConverter;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
@@ -122,8 +121,8 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
      */
     private List<File> docs = new ArrayList<>();
 
-    public MessagesSend(LongPollBot bot) {
-        super(bot);
+    public MessagesSend(String accessToken) {
+        super(accessToken);
     }
 
     @Override
@@ -162,10 +161,10 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
     @Override
     public GenericResult<Object> execute() throws BotsLongPollAPIException, BotsLongPollException {
         for (File photo : photos) {
-            addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(bot, peerId, photo)));
+            addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(accessToken, peerId, photo)));
         }
         for (File doc : docs) {
-            addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadDoc(bot, peerId, doc)));
+            addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadDoc(accessToken, peerId, doc)));
         }
         return super.execute();
     }

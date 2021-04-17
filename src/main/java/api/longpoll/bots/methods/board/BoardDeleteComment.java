@@ -1,8 +1,7 @@
 package api.longpoll.bots.methods.board;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.converters.JsonToPojoConverter;
+import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.GenericResult;
@@ -32,8 +31,8 @@ public class BoardDeleteComment extends GetMethod<GenericResult<Integer>> {
      */
     private Integer commentId;
 
-    public BoardDeleteComment(LongPollBot bot) {
-        super(bot);
+    public BoardDeleteComment(String accessToken) {
+        super(accessToken);
     }
 
     @Override

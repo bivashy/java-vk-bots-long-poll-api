@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.photos;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -43,8 +42,8 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<GenericResul
      */
     private Integer cropY2;
 
-    public PhotosGetOwnerCoverPhotoUploadServer(LongPollBot bot) {
-        super(bot);
+    public PhotosGetOwnerCoverPhotoUploadServer(String accessToken) {
+        super(accessToken);
     }
 
     @Override

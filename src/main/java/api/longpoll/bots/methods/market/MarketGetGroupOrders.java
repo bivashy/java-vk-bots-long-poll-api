@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.market;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -34,8 +33,8 @@ public class MarketGetGroupOrders extends GetMethod<GenericResult<VkList<MarketO
      */
     private Integer count;
 
-    public MarketGetGroupOrders(LongPollBot bot) {
-        super(bot);
+    public MarketGetGroupOrders(String accessToken) {
+        super(accessToken);
     }
 
     @Override

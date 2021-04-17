@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -37,8 +36,8 @@ public class GroupsSetSettings extends GetMethod<GenericResult<Integer>> {
      */
     private Boolean botsAddToChat;
 
-    public GroupsSetSettings(LongPollBot bot) {
-        super(bot);
+    public GroupsSetSettings(String accessToken) {
+        super(accessToken);
     }
 
     @Override

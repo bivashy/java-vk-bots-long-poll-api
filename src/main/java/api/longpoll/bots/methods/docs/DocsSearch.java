@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.docs;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -38,8 +37,8 @@ public class DocsSearch extends GetMethod<VkList<Doc>> {
      */
     private Boolean returnTags;
 
-    public DocsSearch(LongPollBot bot) {
-        super(bot);
+    public DocsSearch(String accessToken) {
+        super(accessToken);
     }
 
     @Override

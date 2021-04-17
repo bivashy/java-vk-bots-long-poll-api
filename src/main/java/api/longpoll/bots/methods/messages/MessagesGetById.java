@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -45,8 +44,8 @@ public class MessagesGetById extends GetMethod<GenericResult<VkList<Message>>> {
      */
     private Integer groupId;
 
-    public MessagesGetById(LongPollBot bot) {
-        super(bot);
+    public MessagesGetById(String accessToken) {
+        super(accessToken);
     }
 
     @Override
