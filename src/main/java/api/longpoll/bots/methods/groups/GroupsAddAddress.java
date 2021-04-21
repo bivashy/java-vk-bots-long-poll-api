@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -84,29 +83,20 @@ public class GroupsAddAddress extends GetMethod<GenericResult<GroupsAddressRespo
      */
     private Boolean mainAddress;
 
-    public GroupsAddAddress(LongPollBot bot) {
-        super(bot);
+    public GroupsAddAddress(String accessToken) {
+        super(accessToken);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().groupsAddAddress();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JsonToPojoConverter<GenericResult<GroupsAddressResponse>> getConverter() {
         return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<GroupsAddressResponse>>(){}.getType());
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(

@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.photos;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -28,8 +27,8 @@ public class PhotosSaveOwnerCoverPhoto extends GetMethod<GenericResult<PhotosSav
      */
     private String photo;
 
-    public PhotosSaveOwnerCoverPhoto(LongPollBot bot) {
-        super(bot);
+    public PhotosSaveOwnerCoverPhoto(String accessToken) {
+        super(accessToken);
     }
 
     @Override

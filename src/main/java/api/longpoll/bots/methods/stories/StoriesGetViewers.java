@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.stories.StoriesGetViewersResultConverter;
 import api.longpoll.bots.methods.GetMethod;
@@ -43,8 +42,8 @@ public class StoriesGetViewers extends GetMethod<GenericResult<VkList<Object>>> 
      */
     private Integer groupId;
 
-    public StoriesGetViewers(LongPollBot bot) {
-        super(bot);
+    public StoriesGetViewers(String accessToken) {
+        super(accessToken);
     }
 
     @Override

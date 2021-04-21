@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -28,8 +27,8 @@ public class StoriesGetStats extends GetMethod<GenericResult<StoriesGetStatsResp
      */
     private Integer storyId;
 
-    public StoriesGetStats(LongPollBot bot) {
-        super(bot);
+    public StoriesGetStats(String accessToken) {
+        super(accessToken);
     }
 
     @Override

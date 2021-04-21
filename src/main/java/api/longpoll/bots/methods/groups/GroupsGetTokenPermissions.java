@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -18,8 +17,8 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/groups.getTokenPermissions">https://vk.com/dev/groups.getTokenPermissions</a>
  */
 public class GroupsGetTokenPermissions extends GetMethod<GenericResult<GroupsGetTokenPermissionsResponse>> {
-    public GroupsGetTokenPermissions(LongPollBot bot) {
-        super(bot);
+    public GroupsGetTokenPermissions(String accessToken) {
+        super(accessToken);
     }
 
     @Override

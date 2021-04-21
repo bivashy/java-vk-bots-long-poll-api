@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -76,8 +75,8 @@ public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<Stories
      */
     private List<Integer> userIds;
 
-    public StoriesGetPhotoUploadServer(LongPollBot bot) {
-        super(bot);
+    public StoriesGetPhotoUploadServer(String accessToken) {
+        super(accessToken);
     }
 
     @Override

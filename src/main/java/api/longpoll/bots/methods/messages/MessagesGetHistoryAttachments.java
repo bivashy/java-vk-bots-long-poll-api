@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.messages.MessagesGetHistoryAttachmentsResultConverter;
 import api.longpoll.bots.methods.GetMethod;
@@ -63,8 +62,8 @@ public class MessagesGetHistoryAttachments extends GetMethod<GenericResult<Messa
      */
     private Integer maxForwardsLevel;
 
-    public MessagesGetHistoryAttachments(LongPollBot bot) {
-        super(bot);
+    public MessagesGetHistoryAttachments(String accessToken) {
+        super(accessToken);
     }
 
     @Override

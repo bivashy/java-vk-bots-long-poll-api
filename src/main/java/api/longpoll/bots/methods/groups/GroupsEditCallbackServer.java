@@ -42,8 +42,8 @@ public class GroupsEditCallbackServer extends GetMethod<GenericResult<Integer>> 
      */
     private String secretKey;
 
-    public GroupsEditCallbackServer(LongPollBot bot) {
-        super(bot);
+    public GroupsEditCallbackServer(String accessToken) {
+        super(accessToken);
     }
 
     @Override

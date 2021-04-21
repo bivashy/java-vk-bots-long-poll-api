@@ -39,8 +39,8 @@ public class MessagesDelete extends GetMethod<GenericResult<Map<String, Integer>
      */
     private Boolean deleteForAll;
 
-    public MessagesDelete(LongPollBot bot) {
-        super(bot);
+    public MessagesDelete(String accessToken) {
+        super(accessToken);
     }
 
     @Override

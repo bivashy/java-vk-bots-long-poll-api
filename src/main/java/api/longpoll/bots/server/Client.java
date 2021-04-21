@@ -6,6 +6,6 @@ import api.longpoll.bots.model.events.Event;
 
 import java.util.List;
 
-public interface Server {
+public interface Client {
     List<Event> getUpdates() throws BotsLongPollAPIException, BotsLongPollException;
 }

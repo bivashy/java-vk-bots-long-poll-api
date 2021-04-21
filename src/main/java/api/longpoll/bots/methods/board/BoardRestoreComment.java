@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.board;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -32,9 +31,10 @@ public class BoardRestoreComment extends GetMethod<GenericResult<Integer>> {
      */
     private Integer commentId;
 
-    public BoardRestoreComment(LongPollBot bot) {
-        super(bot);
+    public BoardRestoreComment(String accessToken) {
+        super(accessToken);
     }
+
 
     /**
      * {@inheritDoc}

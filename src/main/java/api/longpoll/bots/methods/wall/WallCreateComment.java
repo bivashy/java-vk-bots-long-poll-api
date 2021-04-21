@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.wall;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -63,8 +62,8 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
      */
     private String guid;
 
-    public WallCreateComment(LongPollBot bot) {
-        super(bot);
+    public WallCreateComment(String accessToken) {
+        super(accessToken);
     }
 
     @Override

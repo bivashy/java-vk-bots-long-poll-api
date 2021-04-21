@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -17,8 +16,8 @@ import java.util.stream.Stream;
  * @see <a href="https://vk.com/dev/utils.getServerTime">https://vk.com/dev/utils.getServerTime</a>
  */
 public class UtilsGetServerTime extends GetMethod<GenericResult<Integer>> {
-    public UtilsGetServerTime(LongPollBot bot) {
-        super(bot);
+    public UtilsGetServerTime(String accessToken) {
+        super(accessToken);
     }
 
     @Override

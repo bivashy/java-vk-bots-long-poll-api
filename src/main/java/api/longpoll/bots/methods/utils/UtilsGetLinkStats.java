@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -48,8 +47,8 @@ public class UtilsGetLinkStats extends GetMethod<GenericResult<UtilsGetLinkStats
      */
     private Boolean extended;
 
-    public UtilsGetLinkStats(LongPollBot bot) {
-        super(bot);
+    public UtilsGetLinkStats(String accessToken) {
+        super(accessToken);
     }
 
     @Override

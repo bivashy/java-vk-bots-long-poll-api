@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.events;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.events.GetEventsResultConverter;
 import api.longpoll.bots.methods.GetMethod;
@@ -28,8 +27,8 @@ public class GetEvents extends GetMethod<GetEventsResult> {
      */
     private Integer ts;
 
-    public GetEvents(LongPollBot bot) {
-        super(bot);
+    public GetEvents(String accessToken) {
+        super(accessToken);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.response.groups.GroupsIsMemberResultConverter;
 import api.longpoll.bots.methods.GetMethod;
@@ -37,8 +36,8 @@ public class GroupsIsMember extends GetMethod<GenericResult<Object>> {
      */
     private Boolean extended;
 
-    public GroupsIsMember(LongPollBot bot) {
-        super(bot);
+    public GroupsIsMember(String accessToken) {
+        super(accessToken);
     }
 
     @Override

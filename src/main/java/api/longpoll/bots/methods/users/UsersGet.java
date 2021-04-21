@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.users;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -34,8 +33,8 @@ public class UsersGet extends GetMethod<GenericResult<List<User>>> {
      */
     private String nameCase;
 
-    public UsersGet(LongPollBot bot) {
-        super(bot);
+    public UsersGet(String accessToken) {
+        super(accessToken);
     }
 
     @Override

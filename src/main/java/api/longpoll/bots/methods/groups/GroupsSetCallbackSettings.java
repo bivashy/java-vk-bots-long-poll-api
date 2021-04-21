@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -242,8 +241,8 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
      */
     private Boolean likeRemove;
 
-    public GroupsSetCallbackSettings(LongPollBot bot) {
-        super(bot);
+    public GroupsSetCallbackSettings(String accessToken) {
+        super(accessToken);
     }
 
     @Override

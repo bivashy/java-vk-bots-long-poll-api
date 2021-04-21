@@ -33,8 +33,8 @@ public class MessagesCreateChat extends GetMethod<GenericResult<Integer>> {
      */
     private Integer groupId;
 
-    public MessagesCreateChat(LongPollBot bot) {
-        super(bot);
+    public MessagesCreateChat(String accessToken) {
+        super(accessToken);
     }
 
     @Override

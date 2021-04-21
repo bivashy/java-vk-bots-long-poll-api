@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -27,8 +26,8 @@ public class MessagesEditChat extends GetMethod<GenericResult<Integer>> {
      */
     private String title;
 
-    public MessagesEditChat(LongPollBot bot) {
-        super(bot);
+    public MessagesEditChat(String accessToken) {
+        super(accessToken);
     }
 
     @Override

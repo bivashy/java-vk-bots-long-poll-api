@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -27,8 +26,8 @@ public class GroupsDeleteAddress extends GetMethod<GenericResult<Integer>> {
      */
     private Integer addressId;
 
-    public GroupsDeleteAddress(LongPollBot bot) {
-        super(bot);
+    public GroupsDeleteAddress(String accessToken) {
+        super(accessToken);
     }
 
     @Override

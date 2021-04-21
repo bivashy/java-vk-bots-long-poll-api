@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.docs;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -28,8 +27,8 @@ public class DocsGetMessagesUploadServer extends GetMethod<GenericResult<DocsGet
      */
     private Integer peerId;
 
-    public DocsGetMessagesUploadServer(LongPollBot bot) {
-        super(bot);
+    public DocsGetMessagesUploadServer(String accessToken) {
+        super(accessToken);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.docs;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -21,8 +20,8 @@ public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerRespon
      */
     private Integer groupId;
 
-    public DocsGetWallUploadServer(LongPollBot bot) {
-        super(bot);
+    public DocsGetWallUploadServer(String accessToken) {
+        super(accessToken);
     }
 
     @Override

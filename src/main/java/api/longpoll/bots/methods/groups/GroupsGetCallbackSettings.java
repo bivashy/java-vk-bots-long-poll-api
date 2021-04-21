@@ -28,8 +28,8 @@ public class GroupsGetCallbackSettings extends GetMethod<GenericResult<GroupsGet
      */
     private Integer serverId;
 
-    public GroupsGetCallbackSettings(LongPollBot bot) {
-        super(bot);
+    public GroupsGetCallbackSettings(String accessToken) {
+        super(accessToken);
     }
 
     @Override

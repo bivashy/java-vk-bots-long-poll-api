@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
@@ -23,8 +22,8 @@ public class UtilsResolveScreenName extends GetMethod<GenericResult<UtilsResolve
      */
     private String screenName;
 
-    public UtilsResolveScreenName(LongPollBot bot) {
-        super(bot);
+    public UtilsResolveScreenName(String accessToken) {
+        super(accessToken);
     }
 
     @Override
