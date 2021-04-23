@@ -78,7 +78,16 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
 
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
-        return null;
+        return Stream.of(
+                keyVal("owner_id", ownerId),
+                keyVal("post_id", postId),
+                keyVal("from_group", fromGroupId),
+                keyVal("message", message),
+                keyVal("reply_to_comment", replyToComment),
+                keyVal("attachments", attachments),
+                keyVal("sticker_id", stickerId),
+                keyVal("guid", guid)
+        );
     }
 
     private WallCreateComment attach(String attachment) {

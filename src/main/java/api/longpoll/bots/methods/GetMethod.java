@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods;
 
-import api.longpoll.bots.LongPollBot;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -13,12 +12,11 @@ import java.util.List;
 public abstract class GetMethod<Response> extends Method<Response> {
     private static final String ACCESS_TOKEN = "access_token";
     private static final String VERSION = "v";
-    protected String accessToken;
 
     /**
-     * Long Poll bot.
+     * Access token
      */
-    protected LongPollBot bot;
+    protected String accessToken;
 
     public GetMethod(String accessToken) {
         this.accessToken = accessToken;
