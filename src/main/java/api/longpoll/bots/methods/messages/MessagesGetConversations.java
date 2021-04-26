@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesGetConversationsResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.messages.MessagesGetConversationsResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -17,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getConversations">https://vk.com/dev/messages.getConversations</a>
  */
-public class MessagesGetConversations extends GetMethod<GenericResult<MessagesGetConversationsResponse>> {
+public class MessagesGetConversations extends GetMethod<MessagesGetConversationsResult> {
     /**
      * Offset needed to return a specific subset of conversations.
      */
@@ -63,11 +59,6 @@ public class MessagesGetConversations extends GetMethod<GenericResult<MessagesGe
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesGetConversationsResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<MessagesGetConversationsResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("offset", offset),
@@ -78,6 +69,11 @@ public class MessagesGetConversations extends GetMethod<GenericResult<MessagesGe
                 keyVal("fields", fields),
                 keyVal("group_id", groupId)
         );
+    }
+
+    @Override
+    protected Class<? extends MessagesGetConversationsResult> getResultType() {
+        return MessagesGetConversationsResult.class;
     }
 
     public Integer getOffset() {

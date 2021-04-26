@@ -5,14 +5,14 @@ import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.objects.basic.Message;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MessageEditParseTest {
     @Test
     void messageEdit() {
-        Event event = ParseTestUtil.getFirstEvent("json/response/message_edit/message_edit_sample_5_110.json");
+        Event event = ParseUtil.getFirstEvent("json/response/message_edit/message_edit_sample_5_110.json");
         assertEquals(EventType.MESSAGE_EDIT, event.getType());
         assertEquals(444, event.getGroupId());
         assertEquals("aaa", event.getEventId());

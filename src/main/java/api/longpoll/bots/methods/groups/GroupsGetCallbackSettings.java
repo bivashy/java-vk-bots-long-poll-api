@@ -1,13 +1,8 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.groups.GroupsGetCallbackSettingsResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.groups.GroupsGetCallbackSettingsResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -17,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getCallbackSettings">https://vk.com/dev/groups.getCallbackSettings</a>
  */
-public class GroupsGetCallbackSettings extends GetMethod<GenericResult<GroupsGetCallbackSettingsResponse>> {
+public class GroupsGetCallbackSettings extends GetMethod<GroupsGetCallbackSettingsResult> {
     /**
      * Community ID.
      */
@@ -38,16 +33,16 @@ public class GroupsGetCallbackSettings extends GetMethod<GenericResult<GroupsGet
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<GroupsGetCallbackSettingsResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<GroupsGetCallbackSettingsResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("server_id", serverId)
         );
+    }
+
+    @Override
+    protected Class<? extends GroupsGetCallbackSettingsResult> getResultType() {
+        return GroupsGetCallbackSettingsResult.class;
     }
 
     public Integer getGroupId() {

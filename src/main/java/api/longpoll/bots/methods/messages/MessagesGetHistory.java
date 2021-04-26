@@ -1,11 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.messages.MessagesGetHistoryResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesGetHistoryResponse;
+import api.longpoll.bots.model.response.messages.MessagesGetHistoryResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
  */
-public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHistoryResponse>> {
+public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
     /**
      * Offset needed to return a specific subset of messages.
      */
@@ -72,11 +69,6 @@ public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHisto
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesGetHistoryResponse>> getConverter() {
-        return new MessagesGetHistoryResultConverter();
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("offset", offset),
@@ -89,6 +81,11 @@ public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHisto
                 keyVal("fields", fields),
                 keyVal("group_id", groupId)
         );
+    }
+
+    @Override
+    protected Class<? extends MessagesGetHistoryResult> getResultType() {
+        return MessagesGetHistoryResult.class;
     }
 
     public Integer getOffset() {

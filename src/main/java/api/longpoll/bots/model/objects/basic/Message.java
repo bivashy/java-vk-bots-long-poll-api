@@ -1,8 +1,8 @@
 package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.objects.additional.Geo;
+import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

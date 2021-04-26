@@ -1,8 +1,7 @@
 package api.longpoll.bots.methods.other;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.PostMethod;
+import api.longpoll.bots.model.objects.media.FileType;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
 import org.jsoup.Connection;
 
@@ -23,18 +22,18 @@ public class UploadPhoto extends PostMethod<UploadPhotoResult> {
     }
 
     @Override
-    protected JsonToPojoConverter<UploadPhotoResult> getConverter() {
-        return JsonToPojoConverterFactory.get(UploadPhotoResult.class);
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of();
     }
 
     @Override
-    protected String getType() {
-        return "photo";
+    protected Class<? extends UploadPhotoResult> getResultType() {
+        return UploadPhotoResult.class;
+    }
+
+    @Override
+    protected FileType getType() {
+        return FileType.PHOTO;
     }
 
     public String getUploadUrl() {

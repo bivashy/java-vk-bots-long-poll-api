@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.PinnedMessage;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.messages.MessagesPinResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.pin">https://vk.com/dev/messages.pin</a>
  */
-public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
+public class MessagesPin extends GetMethod<MessagesPinResult> {
     /**
      * Peer ID.
      */
@@ -37,16 +33,16 @@ public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<PinnedMessage>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<PinnedMessage>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
                 keyVal("conversation_message_id", conversationMessageId)
         );
+    }
+
+    @Override
+    protected Class<? extends MessagesPinResult> getResultType() {
+        return MessagesPinResult.class;
     }
 
     public Integer getPeerId() {

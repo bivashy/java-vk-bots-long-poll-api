@@ -1,12 +1,9 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.Button;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.sendMessageEventAnswer">https://vk.com/dev/messages.sendMessageEventAnswer</a>
  */
-public class MessagesSendEventAnswer extends GetMethod<GenericResult<Integer>> {
+public class MessagesSendEventAnswer extends GetMethod<IntegerResult> {
     /**
      * A random string that is returned in the <b>message_event</b> event.
      */
@@ -47,11 +44,6 @@ public class MessagesSendEventAnswer extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("event_id", eventId),
@@ -59,6 +51,11 @@ public class MessagesSendEventAnswer extends GetMethod<GenericResult<Integer>> {
                 keyVal("peer_id", peerId),
                 keyVal("event_data", eventData)
         );
+    }
+
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public String getEventId() {

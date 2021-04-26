@@ -1,11 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.messages.MessagesGetHistoryAttachmentsResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesGetHistoryAttachmentsResponse;
+import api.longpoll.bots.model.response.messages.MessagesGetHistoryAttachmentsResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
  */
-public class MessagesGetHistoryAttachments extends GetMethod<GenericResult<MessagesGetHistoryAttachmentsResponse>> {
+public class MessagesGetHistoryAttachments extends GetMethod<MessagesGetHistoryAttachmentsResult> {
     /**
      * Peer ID.
      */
@@ -72,11 +69,6 @@ public class MessagesGetHistoryAttachments extends GetMethod<GenericResult<Messa
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesGetHistoryAttachmentsResponse>> getConverter() {
-        return new MessagesGetHistoryAttachmentsResultConverter();
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
@@ -89,6 +81,11 @@ public class MessagesGetHistoryAttachments extends GetMethod<GenericResult<Messa
                 keyVal("preserve_order", preserveOrder, true),
                 keyVal("max_forwards_level", maxForwardsLevel)
         );
+    }
+
+    @Override
+    protected Class<? extends MessagesGetHistoryAttachmentsResult> getResultType() {
+        return MessagesGetHistoryAttachmentsResult.class;
     }
 
     public Integer getPeerId() {

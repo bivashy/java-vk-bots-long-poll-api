@@ -1,11 +1,28 @@
 package api.longpoll.bots.exceptions;
 
+import com.google.gson.JsonObject;
+
+/**
+ * A checked exception occurs in <b>Java VK Bots Long Poll API</b> library when VK server returns error JSON.
+ *
+ * @see <a href="https://vk.com/dev/errors">List of possible errors.</a>
+ */
 public class BotsLongPollAPIException extends Exception {
-    public BotsLongPollAPIException(Throwable cause) {
-        super(cause);
+    /**
+     * VK API error response.
+     */
+    private JsonObject jsonError;
+
+    public BotsLongPollAPIException(JsonObject jsonError) {
+        this.jsonError = jsonError;
     }
 
-    public BotsLongPollAPIException(String message) {
-        super(message);
+    @Override
+    public String getMessage() {
+        return jsonError.toString();
+    }
+
+    public JsonObject getJsonError() {
+        return jsonError;
     }
 }

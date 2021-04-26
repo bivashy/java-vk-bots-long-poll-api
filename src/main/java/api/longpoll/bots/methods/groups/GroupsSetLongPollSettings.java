@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.setLongPollSettings">https://vk.com/dev/groups.setLongPollSettings</a>
  */
-public class GroupsSetLongPollSettings extends GetMethod<GenericResult<Integer>> {
+public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
     /**
      * Community ID.
      */
@@ -251,11 +247,6 @@ public class GroupsSetLongPollSettings extends GetMethod<GenericResult<Integer>>
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
@@ -304,6 +295,11 @@ public class GroupsSetLongPollSettings extends GetMethod<GenericResult<Integer>>
                 keyVal("like_add", likeAdd),
                 keyVal("like_remove", likeRemove)
         );
+    }
+
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public Integer getGroupId() {

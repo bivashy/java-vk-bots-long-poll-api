@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.stories.StoriesGetUploadServerResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.stories.StoriesGetUploadServerResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -17,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.getPhotoUploadServer">https://vk.com/dev/stories.getPhotoUploadServer</a>
  */
-public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<StoriesGetUploadServerResponse>> {
+public class StoriesGetPhotoUploadServer extends GetMethod<StoriesGetUploadServerResult> {
     /**
      * To add the story to friend's feed.
      */
@@ -85,11 +81,6 @@ public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<Stories
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<StoriesGetUploadServerResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<StoriesGetUploadServerResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("add_to_news", add_to_news, true),
@@ -100,6 +91,11 @@ public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<Stories
                 keyVal("group_id", groupId),
                 keyVal("clickable_stickers", clickableStickers)
         );
+    }
+
+    @Override
+    protected Class<? extends StoriesGetUploadServerResult> getResultType() {
+        return StoriesGetUploadServerResult.class;
     }
 
     public Boolean getAdd_to_news() {

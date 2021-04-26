@@ -2,10 +2,10 @@ package api.longpoll.bots.utils.methods;
 
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
 
 public class AttachmentsUtil {
-    public static String toAttachment(PhotosSaveMessagesPhotoResponse savePhoto) {
+    public static String toAttachment(PhotosSaveMessagesPhotoResult.Response savePhoto) {
         return toAttachment("photo", savePhoto.getOwnerId(), savePhoto.getId(), savePhoto.getAccessKey());
     }
 

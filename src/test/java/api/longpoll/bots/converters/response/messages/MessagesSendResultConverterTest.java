@@ -1,35 +1,34 @@
 package api.longpoll.bots.converters.response.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesSendResponse;
+import api.longpoll.bots.model.response.messages.MessagesSendResult;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MessagesSendResultConverterTest {
-    JsonToPojoConverter<GenericResult<Object>> converter = new MessagesSendResultConverter();
+    Gson gson = new Gson();
 
     @Test
     void responses() {
-        GenericResult<Object> result = converter.convert(ParseTestUtil.readJson("json/response/messages_send/message_send_responses_sample_5_110.json"));
+        MessagesSendResult result = gson.fromJson(ParseUtil.readJson("json/response/messages_send/message_send_responses_sample_5_110.json"), MessagesSendResult.class);
         assertNotNull(result);
 
         Object response = result.getResponse();
         assertNotNull(response);
         assertTrue(response instanceof List);
 
-        List list = (List) response;
+        List<?> list = (List<?>) response;
         assertFalse(list.isEmpty());
 
         Object o = list.get(0);
         assertNotNull(o);
-        assertTrue(o instanceof MessagesSendResponse);
+        assertTrue(o instanceof MessagesSendResult.Response);
 
-        MessagesSendResponse messagesSendResponse = (MessagesSendResponse) o;
+        MessagesSendResult.Response messagesSendResponse = (MessagesSendResult.Response) o;
         assertEquals(111, messagesSendResponse.getPeerId());
         assertEquals(287, messagesSendResponse.getMessageId());
     }

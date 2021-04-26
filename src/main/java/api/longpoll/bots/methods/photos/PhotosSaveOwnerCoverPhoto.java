@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.photos;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.photos.PhotosSaveOwnerCoverPhotoResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.photos.PhotosSaveOwnerCoverPhotoResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/photos.saveOwnerCoverPhoto">https://vk.com/dev/photos.saveOwnerCoverPhoto</a>
  */
-public class PhotosSaveOwnerCoverPhoto extends GetMethod<GenericResult<PhotosSaveOwnerCoverPhotoResponse>> {
+public class PhotosSaveOwnerCoverPhoto extends GetMethod<PhotosSaveOwnerCoverPhotoResult> {
     /**
      * Parameter returned when photo is uploaded to server.
      */
@@ -37,16 +33,16 @@ public class PhotosSaveOwnerCoverPhoto extends GetMethod<GenericResult<PhotosSav
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<PhotosSaveOwnerCoverPhotoResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<PhotosSaveOwnerCoverPhotoResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("hash", hash),
                 keyVal("photo", photo)
         );
+    }
+
+    @Override
+    protected Class<? extends PhotosSaveOwnerCoverPhotoResult> getResultType() {
+        return PhotosSaveOwnerCoverPhotoResult.class;
     }
 
     public String getHash() {

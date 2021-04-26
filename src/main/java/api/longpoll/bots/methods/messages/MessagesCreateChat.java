@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -17,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.createChat">https://vk.com/dev/messages.createChat</a>
  */
-public class MessagesCreateChat extends GetMethod<GenericResult<Integer>> {
+public class MessagesCreateChat extends GetMethod<IntegerResult> {
     /**
      * IDs of the users to be added to the chat.
      */
@@ -43,17 +39,17 @@ public class MessagesCreateChat extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("user_ids", userIds),
                 keyVal("title", title),
                 keyVal("group_id", groupId)
         );
+    }
+
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public List<Integer> getUserIds() {

@@ -5,14 +5,14 @@ import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardReplyNewParseTest {
     @Test
     void boardReplyNew() {
-        Event event = ParseTestUtil.getFirstEvent("json/response/board_post_new/board_post_new_sample_5_110.json");
+        Event event = ParseUtil.getFirstEvent("json/response/board_post_new/board_post_new_sample_5_110.json");
         assertEquals(EventType.BOARD_POST_NEW, event.getType());
         assertEquals(444, event.getGroupId());
         assertEquals("aaa", event.getEventId());

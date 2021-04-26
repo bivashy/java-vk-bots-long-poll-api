@@ -1,13 +1,8 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.groups.GroupsGetMembersResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.groups.GroupsGetMembersResponseItem;
+import api.longpoll.bots.model.response.groups.GroupsGetMembersResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getMembers">https://vk.com/dev/groups.getMembers</a>
  */
-public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMembersResponseItem>>> {
+public class GroupsGetMembers extends GetMethod<GroupsGetMembersResult> {
     /**
      * ID or screen name of the community.
      */
@@ -59,11 +54,6 @@ public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMe
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<GroupsGetMembersResponseItem>>> getConverter() {
-        return new GroupsGetMembersResultConverter();
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
@@ -73,6 +63,11 @@ public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMe
                 keyVal("fields", fields),
                 keyVal("filter", filter)
         );
+    }
+
+    @Override
+    protected Class<? extends GroupsGetMembersResult> getResultType() {
+        return GroupsGetMembersResult.class;
     }
 
     public String getGroupId() {

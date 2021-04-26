@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.utils.UtilsGetShortLinkResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.utils.UtilsGetShortLinkResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/utils.getShortLink">https://vk.com/dev/utils.getShortLink</a>
  */
-public class UtilsGetShortLink extends GetMethod<GenericResult<UtilsGetShortLinkResponse>> {
+public class UtilsGetShortLink extends GetMethod<UtilsGetShortLinkResult> {
     /**
      * URL to be shortened.
      */
@@ -37,16 +33,16 @@ public class UtilsGetShortLink extends GetMethod<GenericResult<UtilsGetShortLink
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<UtilsGetShortLinkResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<UtilsGetShortLinkResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("url", url),
                 keyVal("private", isPrivate, true)
         );
+    }
+
+    @Override
+    protected Class<? extends UtilsGetShortLinkResult> getResultType() {
+        return UtilsGetShortLinkResult.class;
     }
 
     public String getUrl() {

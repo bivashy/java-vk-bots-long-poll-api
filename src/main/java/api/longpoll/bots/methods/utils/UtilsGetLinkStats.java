@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.utils.UtilsGetLinkStatsResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.utils.UtilsGetLinkStatsResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
  */
-public class UtilsGetLinkStats extends GetMethod<GenericResult<UtilsGetLinkStatsResponse>> {
+public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
     /**
      * Part of the link after "vk.cc/".
      */
@@ -57,11 +53,6 @@ public class UtilsGetLinkStats extends GetMethod<GenericResult<UtilsGetLinkStats
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<UtilsGetLinkStatsResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<UtilsGetLinkStatsResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("key", key),
@@ -71,6 +62,11 @@ public class UtilsGetLinkStats extends GetMethod<GenericResult<UtilsGetLinkStats
                 keyVal("intervals_count", intervalsCount),
                 keyVal("extended", extended, true)
         );
+    }
+
+    @Override
+    protected Class<? extends UtilsGetLinkStatsResult> getResultType() {
+        return UtilsGetLinkStatsResult.class;
     }
 
     public String getKey() {

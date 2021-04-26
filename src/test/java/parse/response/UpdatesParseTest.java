@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UpdatesParseTest {
     @Test
     void emptyUpdatesParse() {
-        GetEventsResult getEventsResult = ParseTestUtil.getEventsResult("json/response/empty_updates_sample_5_110.json");
+        GetEventsResult getEventsResult = ParseUtil.getEventsResult("json/response/empty_updates_sample_5_110.json");
         assertEquals(2587, getEventsResult.getTs());
 
         List<Event> events = getEventsResult.getEvents();
@@ -21,7 +21,7 @@ public class UpdatesParseTest {
 
     @Test
     void updatesFailed() {
-        GetEventsResult getEventsResult = ParseTestUtil.getEventsResult("json/response/get_updates_failed_1_5_110.json");
+        GetEventsResult getEventsResult = ParseUtil.getEventsResult("json/response/get_updates_failed_1_5_110.json");
         assertEquals(2593, getEventsResult.getTs());
     }
 }

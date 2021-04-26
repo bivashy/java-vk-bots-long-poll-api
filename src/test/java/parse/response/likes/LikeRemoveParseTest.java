@@ -5,7 +5,7 @@ import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.likes.LikeEvent;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LikeRemoveParseTest {
     @Test
     void likeRemove() {
-        List<Event> events = ParseTestUtil.getEvents("json/response/like_remove/like_remove_sample_5_110.json");
+        List<Event> events = ParseUtil.getEvents("json/response/like_remove/like_remove_sample_5_110.json");
         assertEquals(1, events.size());
 
         Event event = events.get(0);

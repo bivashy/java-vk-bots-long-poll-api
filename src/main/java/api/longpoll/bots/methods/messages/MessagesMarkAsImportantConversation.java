@@ -1,11 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.markAsImportantConversation">https://vk.com/dev/messages.markAsImportantConversation</a>
  */
-public class MessagesMarkAsImportantConversation extends GetMethod<GenericResult<Integer>> {
+public class MessagesMarkAsImportantConversation extends GetMethod<IntegerResult> {
     /**
      * Peer Id.
      */
@@ -41,17 +38,17 @@ public class MessagesMarkAsImportantConversation extends GetMethod<GenericResult
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
                 keyVal("answered", answered, true),
                 keyVal("group_id", groupId)
         );
+    }
+
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public Integer getPeerId() {

@@ -1,11 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.restore">https://vk.com/dev/messages.restore</a>
  */
-public class MessagesRestore extends GetMethod<GenericResult<Integer>> {
+public class MessagesRestore extends GetMethod<IntegerResult> {
     /**
      * ID of a previously-deleted message to restore.
      */
@@ -36,16 +33,16 @@ public class MessagesRestore extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("message_id", messageId),
                 keyVal("group_id", groupId)
         );
+    }
+
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public Integer getMessageId() {

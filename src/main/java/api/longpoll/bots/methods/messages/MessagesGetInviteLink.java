@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesGetInviteLinkResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.messages.MessagesGetInviteLinkResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
  */
-public class MessagesGetInviteLink extends GetMethod<GenericResult<MessagesGetInviteLinkResponse>> {
+public class MessagesGetInviteLink extends GetMethod<MessagesGetInviteLinkResult> {
     /**
      * Destination ID.
      */
@@ -42,17 +38,17 @@ public class MessagesGetInviteLink extends GetMethod<GenericResult<MessagesGetIn
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesGetInviteLinkResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<MessagesGetInviteLinkResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
                 keyVal("reset", reset, true),
                 keyVal("group_id", groupId)
         );
+    }
+
+    @Override
+    protected Class<? extends MessagesGetInviteLinkResult> getResultType() {
+        return MessagesGetInviteLinkResult.class;
     }
 
     public Integer getPeerId() {

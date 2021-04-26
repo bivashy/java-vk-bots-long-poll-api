@@ -1,11 +1,8 @@
 package api.longpoll.bots.methods.docs;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.docs.DocsSaveResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.docs.DocsSaveResponse;
+import api.longpoll.bots.model.response.docs.DocsSaveResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/docs.save">https://vk.com/dev/docs.save</a>
  */
-public class DocsSave extends GetMethod<GenericResult<DocsSaveResponse>> {
+public class DocsSave extends GetMethod<DocsSaveResult> {
     /**
      * This parameter is returned when the file is uploaded to the server.
      */
@@ -46,11 +43,6 @@ public class DocsSave extends GetMethod<GenericResult<DocsSaveResponse>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<DocsSaveResponse>> getConverter() {
-        return new DocsSaveResultConverter();
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("file", file),
@@ -58,6 +50,11 @@ public class DocsSave extends GetMethod<GenericResult<DocsSaveResponse>> {
                 keyVal("tags", tags),
                 keyVal("return_tags", returnTags, true)
         );
+    }
+
+    @Override
+    protected Class<? extends DocsSaveResult> getResultType() {
+        return DocsSaveResult.class;
     }
 
     public String getFile() {

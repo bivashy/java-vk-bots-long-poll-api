@@ -1,16 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.messages.MessagesDeleteResult;
 import org.jsoup.Connection;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
  */
-public class MessagesDelete extends GetMethod<GenericResult<Map<String, Integer>>> {
+public class MessagesDelete extends GetMethod<MessagesDeleteResult> {
     /**
      * Message IDs.
      */
@@ -49,11 +44,6 @@ public class MessagesDelete extends GetMethod<GenericResult<Map<String, Integer>
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Map<String, Integer>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Map<String, Integer>>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("message_ids", messageIds),
@@ -61,6 +51,11 @@ public class MessagesDelete extends GetMethod<GenericResult<Map<String, Integer>
                 keyVal("group_id", groupId),
                 keyVal("delete_for_all", deleteForAll, true)
         );
+    }
+
+    @Override
+    protected Class<? extends MessagesDeleteResult> getResultType() {
+        return MessagesDeleteResult.class;
     }
 
     public List<Integer> getMessageIds() {

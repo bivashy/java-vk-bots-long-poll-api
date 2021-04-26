@@ -1,13 +1,9 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.groups.GroupsAddressResponse;
+import api.longpoll.bots.model.response.groups.GroupsAddressResult;
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -17,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.addAddress">https://vk.com/dev/groups.addAddress</a>
  */
-public class GroupsAddAddress extends GetMethod<GenericResult<GroupsAddressResponse>> {
+public class GroupsAddAddress extends GetMethod<GroupsAddressResult> {
     /**
      * Group ID.
      */
@@ -93,11 +89,6 @@ public class GroupsAddAddress extends GetMethod<GenericResult<GroupsAddressRespo
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<GroupsAddressResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<GroupsAddressResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
@@ -114,6 +105,11 @@ public class GroupsAddAddress extends GetMethod<GenericResult<GroupsAddressRespo
                 keyVal("timetable", timeTable),
                 keyVal("is_main_address", mainAddress, true)
         );
+    }
+
+    @Override
+    protected Class<? extends GroupsAddressResult> getResultType() {
+        return GroupsAddressResult.class;
     }
 
     public Integer getGroupId() {

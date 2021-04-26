@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.utils.UtilsResolveScreenNameResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.utils.UtilsResolveScreenNameResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/utils.resolveScreenName">https://vk.com/dev/utils.resolveScreenName</a>
  */
-public class UtilsResolveScreenName extends GetMethod<GenericResult<UtilsResolveScreenNameResponse>> {
+public class UtilsResolveScreenName extends GetMethod<UtilsResolveScreenNameResult> {
     /**
      * Screen name of the user, community (e.g., apiclub, andrew, or rules_of_war), or application.
      */
@@ -32,13 +28,13 @@ public class UtilsResolveScreenName extends GetMethod<GenericResult<UtilsResolve
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<UtilsResolveScreenNameResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<UtilsResolveScreenNameResponse>>(){}.getType());
+    protected Stream<Connection.KeyVal> getKeyValStream() {
+        return Stream.of(keyVal("screen_name", screenName));
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
-        return Stream.of(keyVal("screen_name", screenName));
+    protected Class<? extends UtilsResolveScreenNameResult> getResultType() {
+        return null;
     }
 
     public String getScreenName() {

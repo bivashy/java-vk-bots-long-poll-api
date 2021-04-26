@@ -1,11 +1,8 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.delete">https://vk.com/dev/stories.delete</a>
  */
-public class StoriesDelete extends GetMethod<GenericResult<Integer>> {
+public class StoriesDelete extends GetMethod<IntegerResult> {
     /**
      * Story owner's ID.
      */
@@ -42,17 +39,17 @@ public class StoriesDelete extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),
                 keyVal("story_id", storyId),
                 keyVal("stories", stories)
         );
+    }
+
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public Integer getOwnerId() {

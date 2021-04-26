@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.stories.StoriesGetStatsResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.stories.StoriesGetStatsResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.getStats">https://vk.com/dev/stories.getStats</a>
  */
-public class StoriesGetStats extends GetMethod<GenericResult<StoriesGetStatsResponse>> {
+public class StoriesGetStats extends GetMethod<StoriesGetStatsResult> {
     /**
      * Story owner ID.
      */
@@ -37,16 +33,16 @@ public class StoriesGetStats extends GetMethod<GenericResult<StoriesGetStatsResp
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<StoriesGetStatsResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<StoriesGetStatsResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),
                 keyVal("story_id", storyId)
         );
+    }
+
+    @Override
+    protected Class<? extends StoriesGetStatsResult> getResultType() {
+        return StoriesGetStatsResult.class;
     }
 
     public Integer getOwnerId() {

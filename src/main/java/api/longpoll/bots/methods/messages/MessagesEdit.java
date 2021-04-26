@@ -1,17 +1,14 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.IntegerResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
 import api.longpoll.bots.utils.methods.MessagesUtil;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.io.File;
@@ -24,7 +21,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
  */
-public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
+public class MessagesEdit extends GetMethod<IntegerResult> {
     /**
      * Destination ID.
      */
@@ -100,12 +97,6 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>() {
-        }.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
@@ -123,7 +114,12 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    public GenericResult<Integer> execute() throws BotsLongPollAPIException, BotsLongPollException {
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
+    }
+
+    @Override
+    public IntegerResult execute() throws BotsLongPollAPIException, BotsLongPollException {
         for (File photo : photos) {
             addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(accessToken, peerId, photo)));
         }

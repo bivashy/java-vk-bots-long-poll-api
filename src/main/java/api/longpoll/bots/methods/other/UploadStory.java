@@ -1,8 +1,7 @@
 package api.longpoll.bots.methods.other;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.PostMethod;
+import api.longpoll.bots.model.objects.media.FileType;
 import api.longpoll.bots.model.response.other.UploadStoryResult;
 import org.jsoup.Connection;
 
@@ -18,8 +17,8 @@ public class UploadStory extends PostMethod<UploadStoryResult> {
     private String uploadUrl;
 
     @Override
-    protected String getType() {
-        return "video_file";
+    protected FileType getType() {
+        return FileType.VIDEO_FILE;
     }
 
     @Override
@@ -28,13 +27,13 @@ public class UploadStory extends PostMethod<UploadStoryResult> {
     }
 
     @Override
-    protected JsonToPojoConverter<UploadStoryResult> getConverter() {
-        return JsonToPojoConverterFactory.get(UploadStoryResult.class);
+    protected Stream<Connection.KeyVal> getKeyValStream() {
+        return Stream.of();
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
-        return Stream.of();
+    protected Class<? extends UploadStoryResult> getResultType() {
+        return UploadStoryResult.class;
     }
 
     public String getUploadUrl() {

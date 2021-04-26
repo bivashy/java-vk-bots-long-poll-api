@@ -1,13 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.basic.Conversation;
-import api.longpoll.bots.model.response.ExtendedVkList;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.messages.MessagesGetConversationsResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.searchConversations">https://vk.com/dev/messages.searchConversations</a>
  */
-public class MessagesSearchConversations extends GetMethod<GenericResult<ExtendedVkList<Conversation>>> {
+public class MessagesSearchConversations extends GetMethod<MessagesGetConversationsResult> {
     /**
      * Search query string.
      */
@@ -54,11 +49,6 @@ public class MessagesSearchConversations extends GetMethod<GenericResult<Extende
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<ExtendedVkList<Conversation>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<ExtendedVkList<Conversation>>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("q", q),
@@ -67,6 +57,11 @@ public class MessagesSearchConversations extends GetMethod<GenericResult<Extende
                 keyVal("fields", fields),
                 keyVal("group_id", groupId)
         );
+    }
+
+    @Override
+    protected Class<? extends MessagesGetConversationsResult> getResultType() {
+        return MessagesGetConversationsResult.class;
     }
 
     public String getQ() {

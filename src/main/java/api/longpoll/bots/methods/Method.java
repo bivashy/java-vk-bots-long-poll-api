@@ -1,13 +1,11 @@
 package api.longpoll.bots.methods;
 
-import api.longpoll.bots.converters.Converter;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.StringToJsonConverter;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.utils.async.AsyncUtil;
-import api.longpoll.bots.validators.ResponseValidator;
 import api.longpoll.bots.validators.Validator;
+import api.longpoll.bots.validators.VkApiResponseValidator;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -23,7 +21,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Generic method which executes requests to VK API.
+ * Executes generic HTTP request to VK API.
  *
  * @param <Result> VK API response type.
  */
@@ -34,15 +32,20 @@ public abstract class Method<Result> {
     private static final Logger log = LoggerFactory.getLogger(Method.class);
 
     /**
-     * Converter object that converts String to JsonObject.
+     * Gson object.
      */
-    private static final Converter<String, JsonObject> STRING_TO_JSON_CONVERTER = new StringToJsonConverter();
+    private static final Gson GSON = new Gson();
 
     /**
-     * Validator that checks VK API response.
+     * Validator to check if VK API response is valid.
      */
-    private static final Validator VALIDATOR = new ResponseValidator();
+    private static final Validator<JsonObject> VALIDATOR = new VkApiResponseValidator();
 
+    /**
+     * Executes request to VK API asynchronously.
+     *
+     * @return VK API response wrapped to CompletableFuture
+     */
     public CompletableFuture<Result> executeAsync() {
         return AsyncUtil.callAsync(this::execute);
     }
@@ -51,37 +54,38 @@ public abstract class Method<Result> {
      * Executes request to VK API.
      *
      * @return VK API response.
-     * @throws BotsLongPollAPIException if error occurs.
-     * @throws BotsLongPollException if error occurs.
+     * @throws BotsLongPollAPIException if VK API returns invalid JSON response.
+     * @throws BotsLongPollException    if other errors occur.
      */
     public Result execute() throws BotsLongPollAPIException, BotsLongPollException {
-        return execute(getConverter());
+        return execute(getResultType());
     }
 
     /**
      * Executes request to VK API.
      *
-     * @param converter converter which converts JsonObject to required Result type.
+     * @param responseType VK API response type.
+     *                     This value is used during deserialization of received JSON.
      * @return VK API response.
-     * @throws BotsLongPollAPIException if error occurs.
-     * @throws BotsLongPollException if error occurs.
+     * @throws BotsLongPollAPIException if VK API returns invalid JSON response.
+     * @throws BotsLongPollException    if other errors occur.
      */
-    private Result execute(JsonToPojoConverter<Result> converter) throws BotsLongPollAPIException, BotsLongPollException {
+    private Result execute(Class<? extends Result> responseType) throws BotsLongPollAPIException, BotsLongPollException {
         String stringResponse = sendRequest();
 
-        JsonObject jsonResponse = STRING_TO_JSON_CONVERTER.convert(stringResponse);
+        JsonObject jsonResponse = GSON.fromJson(stringResponse, JsonObject.class);
 
         if (VALIDATOR.isValid(jsonResponse)) {
-            return converter.convert(jsonResponse);
+            return GSON.fromJson(jsonResponse, responseType);
         }
 
-        throw new BotsLongPollAPIException(stringResponse);
+        throw new BotsLongPollAPIException(jsonResponse);
     }
 
     /**
-     * Sends HTTP request.
+     * Sends HTTP request to VK API.
      *
-     * @return String response.
+     * @return VK API {@code String} response.
      * @throws BotsLongPollException if error occurs.
      */
     private String sendRequest() throws BotsLongPollException {
@@ -112,9 +116,9 @@ public abstract class Method<Result> {
     }
 
     /**
-     * Executes HTTP request.
+     * Executes HTTP request to VK API.
      *
-     * @param connection destination params.
+     * @param connection request data.
      * @return HTTP response.
      * @throws IOException if error occurs.
      */
@@ -123,7 +127,7 @@ public abstract class Method<Result> {
     }
 
     /**
-     * Collects request params.
+     * Collects request params to be sent to VK API.
      *
      * @return list of request params.
      */
@@ -134,7 +138,7 @@ public abstract class Method<Result> {
     }
 
     /**
-     * Creates request parameter.
+     * Creates a request parameter to be sent to VK API.
      *
      * @param key     parameter name.
      * @param value   parameter value.
@@ -161,7 +165,7 @@ public abstract class Method<Result> {
     }
 
     /**
-     * Creates request parameter.
+     * Creates a request parameter to be sent to VK API.
      *
      * @param key   parameter name.
      * @param value parameter value.
@@ -172,30 +176,32 @@ public abstract class Method<Result> {
     }
 
     /**
-     * Gets VK API method URL.
+     * Gets VK API URL.
      *
-     * @return method URL.
+     * @return VK API URL.
      */
     protected abstract String getApi();
 
     /**
-     * Gets request method type.
+     * Gets HTTP method. (E.g. {@link Connection.Method#GET} or {@link Connection.Method#POST})
      *
-     * @return request method type.
+     * @return HTTP method.
      */
     protected abstract Connection.Method getMethod();
 
     /**
-     * Gets JsonObject to POJO converter.
-     *
-     * @return JsonObject to POJO converter.
-     */
-    protected abstract JsonToPojoConverter<Result> getConverter();
-
-    /**
-     * Get stream of request parameters.
+     * Gets stream of request parameters.
+     * This stream is used during collecting request data in {@link Method#getData()}.
      *
      * @return stream of request parameters.
      */
     protected abstract Stream<Connection.KeyVal> getKeyValStream();
+
+    /**
+     * Gets type of VK API response.
+     * This value is used during deserialization of received JSON.
+     *
+     * @return type of VK API response.
+     */
+    protected abstract Class<? extends Result> getResultType();
 }

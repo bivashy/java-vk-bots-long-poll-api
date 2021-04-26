@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.photos;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.photos.PhotosGetOwnerCoverPhotoUploadServerResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.photos.PhotosGetOwnerCoverPhotoUploadServerResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer">https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer</a>
  */
-public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>> {
+public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwnerCoverPhotoUploadServerResult> {
     /**
      * Community ID.
      */
@@ -52,11 +48,6 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<GenericResul
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
@@ -65,6 +56,11 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<GenericResul
                 keyVal("crop_x2", cropX2),
                 keyVal("crop_y2", cropY2)
         );
+    }
+
+    @Override
+    protected Class<? extends PhotosGetOwnerCoverPhotoUploadServerResult> getResultType() {
+        return PhotosGetOwnerCoverPhotoUploadServerResult.class;
     }
 
     public Integer getGroupId() {

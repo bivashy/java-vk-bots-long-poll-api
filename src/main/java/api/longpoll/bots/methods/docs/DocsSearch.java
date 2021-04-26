@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.docs;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.objects.media.Doc;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.docs.DocsSearchResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/docs.search">https://vk.com/dev/docs.search</a>
  */
-public class DocsSearch extends GetMethod<VkList<Doc>> {
+public class DocsSearch extends GetMethod<DocsSearchResult> {
     /**
      * Search query.
      */
@@ -47,11 +43,6 @@ public class DocsSearch extends GetMethod<VkList<Doc>> {
     }
 
     @Override
-    protected JsonToPojoConverter<VkList<Doc>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<VkList<Doc>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("q", q),
@@ -59,6 +50,11 @@ public class DocsSearch extends GetMethod<VkList<Doc>> {
                 keyVal("offset", offset),
                 keyVal("return_tags", returnTags, true)
         );
+    }
+
+    @Override
+    protected Class<? extends DocsSearchResult> getResultType() {
+        return DocsSearchResult.class;
     }
 
     public String getQ() {

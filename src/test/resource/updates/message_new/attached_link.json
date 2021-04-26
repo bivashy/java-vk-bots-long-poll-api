@@ -1,0 +1,130 @@
+{
+  "ts": "3394",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1619371299,
+          "from_id": 381980625,
+          "id": 776,
+          "out": 0,
+          "peer_id": 381980625,
+          "text": "",
+          "conversation_message_id": 752,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "link",
+              "link": {
+                "url": "https://github.com/yvasyliev/java-vk-bots-long-poll-api",
+                "title": "yvasyliev/java-vk-bots-long-poll-api",
+                "caption": "github.com",
+                "description": "A Java library to create VK bots using Bots Long Poll API - yvasyliev/java-vk-bots-long-poll-api",
+                "photo": {
+                  "album_id": -27,
+                  "date": 1619335586,
+                  "id": 457322865,
+                  "owner_id": 2000017109,
+                  "has_tags": false,
+                  "sizes": [
+                    {
+                      "height": 37,
+                      "url": "https://sun9-29.userapi.com/impg/OvMA7f_WGkTDvF4kAqPj9OkT07yazrQMmqpduA/oEFb8ib4hig.jpg?size=75x35&quality=96&crop=22,0,1029,480&sign=37688420da0ef4dd81630d075423caf0&c_uniq_tag=QsfVCzgpoK3PsVaCjbUReEvMe5H2ffwYGFQMpLPj6kI&type=share",
+                      "type": "s",
+                      "width": 75
+                    },
+                    {
+                      "height": 65,
+                      "url": "https://sun9-29.userapi.com/impg/OvMA7f_WGkTDvF4kAqPj9OkT07yazrQMmqpduA/oEFb8ib4hig.jpg?size=130x80&quality=96&crop=147,0,780,480&sign=7630584111b4f39f04643c964859c2e5&c_uniq_tag=RfnuaoKSH20mqrcSS1W35ndeqqsu7iFKw0j0-cqF5DM&type=share",
+                      "type": "m",
+                      "width": 130
+                    },
+                    {
+                      "height": 302,
+                      "url": "https://sun9-29.userapi.com/impg/OvMA7f_WGkTDvF4kAqPj9OkT07yazrQMmqpduA/oEFb8ib4hig.jpg?size=150x80&quality=96&crop=87,0,900,480&sign=e498a2d52f8c102b5fe9523deb0c0964&c_uniq_tag=rgBubwU4HreHHNOlqS1kCxMVpNBu14_Q3v8iwRx8WMs&type=share",
+                      "type": "x",
+                      "width": 604
+                    },
+                    {
+                      "height": 403,
+                      "url": "https://sun9-6.userapi.com/jjx1pW2Qf-nvXv9ogAsGyZop_tUiuyyowY-IGQ/YJ6O0v7PCTM.jpg",
+                      "type": "y",
+                      "width": 807
+                    },
+                    {
+                      "height": 600,
+                      "url": "https://sun9-17.userapi.com/I2lYOB4yDIaOpmzuRn8Lxvtj9GtuiP6JcaC21A/NgdoIf4sFVI.jpg",
+                      "type": "z",
+                      "width": 1200
+                    },
+                    {
+                      "height": 87,
+                      "url": "https://sun9-30.userapi.com/0hbL4_DPQtFbjw_DeBTJvZlnG1dId5d_qPdjdw/lyW7EanAujU.jpg",
+                      "type": "o",
+                      "width": 130
+                    },
+                    {
+                      "height": 133,
+                      "url": "https://sun9-29.userapi.com/impg/OvMA7f_WGkTDvF4kAqPj9OkT07yazrQMmqpduA/oEFb8ib4hig.jpg?size=260x140&quality=96&crop=91,0,891,480&sign=ff10f881239aa987579cc25521f24938&c_uniq_tag=U01x1SyHccz1EmH6sAVoXAjotfuMSMgYbmwvADqfC_g&type=share",
+                      "type": "p",
+                      "width": 200
+                    },
+                    {
+                      "height": 213,
+                      "url": "https://sun9-52.userapi.com/XVjbdOyT4nOhJCX6RhMr1U6HquMBbBJtR3ZdSw/ZKEZT2tsLYM.jpg",
+                      "type": "q",
+                      "width": 320
+                    },
+                    {
+                      "height": 340,
+                      "url": "https://sun9-41.userapi.com/aXG613j3qCT-s0EDmnKcDrGXhk8EEGcfYcbS1g/aXTD_mX-cg4.jpg",
+                      "type": "r",
+                      "width": 510
+                    },
+                    {
+                      "height": 240,
+                      "url": "https://sun9-29.userapi.com/impg/OvMA7f_WGkTDvF4kAqPj9OkT07yazrQMmqpduA/oEFb8ib4hig.jpg?size=537x240&quality=96&sign=85ea534ab4f472c2f72b7f3ced4bb51d&c_uniq_tag=My2N9M1fJsACxscatmU2U_RzOMxmp_HLT0IQjZAa5dE&type=share",
+                      "type": "l",
+                      "width": 537
+                    },
+                    {
+                      "height": 480,
+                      "url": "https://sun9-29.userapi.com/impg/OvMA7f_WGkTDvF4kAqPj9OkT07yazrQMmqpduA/oEFb8ib4hig.jpg?size=1074x480&quality=96&sign=735ce280ecebe6820c4ad546b83b1c99&c_uniq_tag=ET4ZR7HRNRPJXatZaE8mMJ9aeeKPOyV7Fm4ICNcmy9o&type=share",
+                      "type": "k",
+                      "width": 1074
+                    }
+                  ],
+                  "text": "test",
+                  "user_id": 100
+                },
+                "is_favorite": false
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link",
+            "callback",
+            "intent_subscribe",
+            "intent_unsubscribe"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": false,
+          "lang_id": 3
+        }
+      },
+      "group_id": 168975658,
+      "event_id": "883eeb71910deebff3ce9303b44f98598d22e6bf"
+    }
+  ]
+}

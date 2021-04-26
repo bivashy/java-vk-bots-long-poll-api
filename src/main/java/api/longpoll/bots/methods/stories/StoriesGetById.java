@@ -1,13 +1,8 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.Story;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.stories.StoriesListResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.get">https://vk.com/dev/stories.get</a>
  */
-public class StoriesGetById extends GetMethod<GenericResult<VkList<Story>>> {
+public class StoriesGetById extends GetMethod<StoriesListResult> {
     /**
      * Stories IDs in format {owner_id}+'_'+{story_id}. Example: 12345_54331
      */
@@ -44,17 +39,17 @@ public class StoriesGetById extends GetMethod<GenericResult<VkList<Story>>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<Story>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<VkList<Story>>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("stories", stories),
                 keyVal("extended", extended, true),
                 keyVal("fields", fields)
         );
+    }
+
+    @Override
+    protected Class<? extends StoriesListResult> getResultType() {
+        return StoriesListResult.class;
     }
 
     public List<String> getStories() {

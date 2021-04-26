@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesDeleteConversationResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.messages.MessagesDeleteConversationResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.deleteConversation">https://vk.com/dev/messages.deleteConversation</a>
  */
-public class MessagesDeleteConversation extends GetMethod<GenericResult<MessagesDeleteConversationResponse>> {
+public class MessagesDeleteConversation extends GetMethod<MessagesDeleteConversationResult> {
     /**
      * User ID.
      */
@@ -42,17 +38,17 @@ public class MessagesDeleteConversation extends GetMethod<GenericResult<Messages
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesDeleteConversationResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<MessagesDeleteConversationResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("user_id", userId),
                 keyVal("peer_id", peerId),
                 keyVal("group_id", groupId)
         );
+    }
+
+    @Override
+    protected Class<? extends MessagesDeleteConversationResult> getResultType() {
+        return MessagesDeleteConversationResult.class;
     }
 
     public String getUserId() {

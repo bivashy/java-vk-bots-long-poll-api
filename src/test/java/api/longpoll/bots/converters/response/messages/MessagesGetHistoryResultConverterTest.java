@@ -1,29 +1,28 @@
 package api.longpoll.bots.converters.response.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
 import api.longpoll.bots.model.objects.additional.PhotoSize;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.objects.media.AttachmentType;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesGetHistoryResponse;
+import api.longpoll.bots.model.response.messages.MessagesGetHistoryResult;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MessagesGetHistoryResultConverterTest {
-    private static final JsonToPojoConverter<GenericResult<MessagesGetHistoryResponse>> MESSAGES_GET_HISTORY_RESULT_CONVERTER = new MessagesGetHistoryResultConverter();
-    
+    private static final Gson GSON = new Gson();
+
     @Test
     void convert() {
-        GenericResult<MessagesGetHistoryResponse> result = MESSAGES_GET_HISTORY_RESULT_CONVERTER.convert(ParseTestUtil.readJson("json/response/messages_get_history/messages_get_history_sample_5_118.json"));
+        MessagesGetHistoryResult result = GSON.fromJson(ParseUtil.readJson("json/response/messages_get_history/messages_get_history_sample_5_118.json"), MessagesGetHistoryResult.class);
         assertNotNull(result);
 
-        MessagesGetHistoryResponse response = result.getResponse();
+        MessagesGetHistoryResult.Response response = result.getResponse();
         assertNotNull(response);
         assertEquals(241, response.getCount());
 

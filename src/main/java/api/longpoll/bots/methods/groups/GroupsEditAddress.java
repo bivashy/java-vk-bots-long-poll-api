@@ -1,10 +1,8 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.model.response.groups.GroupsAddressResult;
 import com.google.gson.JsonObject;
 import org.jsoup.Connection;
 
@@ -15,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.editAddress">https://vk.com/dev/groups.editAddress</a>
  */
-public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
+public class GroupsEditAddress extends GetMethod<GroupsAddressResult> {
     /**
      * Community ID.
      */
@@ -96,11 +94,6 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
     }
 
     @Override
-    protected JsonToPojoConverter<GroupsEditAddress> getConverter() {
-        return JsonToPojoConverterFactory.get(GroupsEditAddress.class);
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
@@ -118,6 +111,11 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
                 keyVal("timetable", timeTable),
                 keyVal("is_main_address", mainAddress, true)
         );
+    }
+
+    @Override
+    protected Class<? extends GroupsAddressResult> getResultType() {
+        return GroupsAddressResult.class;
     }
 
     public Integer getGroupId() {

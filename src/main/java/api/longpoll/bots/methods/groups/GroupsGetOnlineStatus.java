@@ -1,12 +1,8 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.groups.GroupsGetOnlineStatusResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.groups.GroupsGetOnlineStatusResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getOnlineStatus">https://vk.com/dev/groups.getOnlineStatus</a>
  */
-public class GroupsGetOnlineStatus extends GetMethod<GenericResult<GroupsGetOnlineStatusResponse>> {
+public class GroupsGetOnlineStatus extends GetMethod<GroupsGetOnlineStatusResult> {
     /**
      * Community ID.
      */
@@ -32,13 +28,13 @@ public class GroupsGetOnlineStatus extends GetMethod<GenericResult<GroupsGetOnli
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<GroupsGetOnlineStatusResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<GroupsGetOnlineStatusResponse>>(){}.getType());
+    protected Stream<Connection.KeyVal> getKeyValStream() {
+        return Stream.of(keyVal("group_id", groupId));
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
-        return Stream.of(keyVal("group_id", groupId));
+    protected Class<? extends GroupsGetOnlineStatusResult> getResultType() {
+        return GroupsGetOnlineStatusResult.class;
     }
 
     public Integer getGroupId() {

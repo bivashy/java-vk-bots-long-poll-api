@@ -1,7 +1,6 @@
 package api.longpoll.bots.validators;
 
-import com.google.gson.JsonObject;
-
-public interface Validator {
-    boolean isValid(JsonObject jsonObject);
+@FunctionalInterface
+public interface Validator<T> {
+    boolean isValid(T t);
 }

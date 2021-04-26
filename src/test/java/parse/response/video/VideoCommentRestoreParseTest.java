@@ -6,14 +6,14 @@ import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.video.VideoCommentEvent;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VideoCommentRestoreParseTest {
     @Test
     void videoCommentRestore() {
-        Event event = ParseTestUtil.getFirstEvent("json/response/video_comment_restore/video_comment_restore_sample_5_110.json");
+        Event event = ParseUtil.getFirstEvent("json/response/video_comment_restore/video_comment_restore_sample_5_110.json");
         assertEquals(EventType.VIDEO_COMMENT_RESTORE, event.getType());
         assertEquals(444, event.getGroupId());
         assertEquals("aaa", event.getEventId());

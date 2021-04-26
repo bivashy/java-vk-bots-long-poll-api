@@ -1,10 +1,13 @@
 package api.longpoll.bots.model.objects.media;
 
+import api.longpoll.bots.adapters.deserializers.AttachmentDeserializer;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes attachment.
  */
+@JsonAdapter(AttachmentDeserializer.class)
 public class Attachment {
     /**
      * Attachment type.

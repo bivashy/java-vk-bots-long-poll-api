@@ -1,11 +1,8 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.stories.StoriesGetViewersResultConverter;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.stories.StoriesGetViewersResult;
 import org.jsoup.Connection;
 
 import java.util.List;
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
-public class StoriesGetViewers extends GetMethod<GenericResult<VkList<Object>>> {
+public class StoriesGetViewers extends GetMethod<StoriesGetViewersResult> {
     /**
      * Message IDs.
      */
@@ -52,11 +49,6 @@ public class StoriesGetViewers extends GetMethod<GenericResult<VkList<Object>>> 
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<Object>>> getConverter() {
-        return new StoriesGetViewersResultConverter();
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("message_ids", messageIds),
@@ -65,6 +57,11 @@ public class StoriesGetViewers extends GetMethod<GenericResult<VkList<Object>>> 
                 keyVal("fields", fields),
                 keyVal("group_id", groupId)
         );
+    }
+
+    @Override
+    protected Class<? extends StoriesGetViewersResult> getResultType() {
+        return StoriesGetViewersResult.class;
     }
 
     public List<Integer> getMessageIds() {

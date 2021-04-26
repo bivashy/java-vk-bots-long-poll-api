@@ -12,7 +12,7 @@ public class MessageNewEvent implements EventObject {
     /**
      * Message object.
      */
-    @SerializedName("messages")
+    @SerializedName("message")
     private Message message;
 
     /**

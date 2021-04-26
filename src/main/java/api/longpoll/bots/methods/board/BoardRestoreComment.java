@@ -1,11 +1,8 @@
 package api.longpoll.bots.methods.board;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -15,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/board.deleteComment">https://vk.com/dev/board.deleteComment</a>
  */
-public class BoardRestoreComment extends GetMethod<GenericResult<Integer>> {
+public class BoardRestoreComment extends GetMethod<IntegerResult> {
     /**
      * ID of the community that owns the discussion board.
      */
@@ -35,26 +32,11 @@ public class BoardRestoreComment extends GetMethod<GenericResult<Integer>> {
         super(accessToken);
     }
 
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getApi() {
         return VkApi.getInstance().boardRestoreComment();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
@@ -62,6 +44,11 @@ public class BoardRestoreComment extends GetMethod<GenericResult<Integer>> {
                 keyVal("topic_id", topicId),
                 keyVal("comment_id", commentId)
         );
+    }
+
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public Integer getGroupId() {

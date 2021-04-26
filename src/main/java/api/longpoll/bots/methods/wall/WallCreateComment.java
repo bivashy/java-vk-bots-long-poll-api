@@ -1,15 +1,11 @@
 package api.longpoll.bots.methods.wall;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.methods.GetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.wall.WallCreateCommentResponse;
+import api.longpoll.bots.model.response.wall.WallCreateCommentResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
-import com.google.gson.reflect.TypeToken;
 import org.jsoup.Connection;
 
 import java.util.ArrayList;
@@ -21,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
  */
-public class WallCreateComment extends GetMethod<GenericResult<WallCreateCommentResponse>> {
+public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
     /**
      * User ID or community ID.
      */
@@ -72,11 +68,6 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<WallCreateCommentResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<WallCreateCommentResponse>>(){}.getType());
-    }
-
-    @Override
     protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),
@@ -88,6 +79,11 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
                 keyVal("sticker_id", stickerId),
                 keyVal("guid", guid)
         );
+    }
+
+    @Override
+    protected Class<? extends WallCreateCommentResult> getResultType() {
+        return WallCreateCommentResult.class;
     }
 
     private WallCreateComment attach(String attachment) {

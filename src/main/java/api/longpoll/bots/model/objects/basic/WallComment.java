@@ -2,6 +2,7 @@ package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.objects.media.Attachable;
+import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/comment">Wall Comment</a>
  */
-public class WallComment extends AttachmentHolder implements Attachable {
+public class WallComment implements Attachable {
     /**
      * Comment ID.
      */
@@ -78,6 +79,12 @@ public class WallComment extends AttachmentHolder implements Attachable {
      */
     @SerializedName("likes")
     private Likes likes;
+
+    /**
+     * List of attachments in the comments (photos, links, etc.)
+     */
+    @SerializedName("attachments")
+    private List<Attachment> attachments;
 
     /**
      * Describes thread.
@@ -299,6 +306,13 @@ public class WallComment extends AttachmentHolder implements Attachable {
         this.likes = likes;
     }
 
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
+    }
 
     @Override
     public String toString() {
@@ -314,6 +328,7 @@ public class WallComment extends AttachmentHolder implements Attachable {
                 ", postId=" + postId +
                 ", ownerId=" + ownerId +
                 ", likes=" + likes +
-                "} " + super.toString();
+                ", attachments=" + attachments +
+                '}';
     }
 }
