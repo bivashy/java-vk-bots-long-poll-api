@@ -45,17 +45,9 @@ public class MessagesDeleteChatPhoto extends GetMethod<MessagesDeleteChatPhotoRe
         return MessagesDeleteChatPhotoResult.class;
     }
 
-    public Integer getChatId() {
-        return chatId;
-    }
-
     public MessagesDeleteChatPhoto setChatId(Integer chatId) {
         this.chatId = chatId;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesDeleteChatPhoto setGroupId(Integer groupId) {

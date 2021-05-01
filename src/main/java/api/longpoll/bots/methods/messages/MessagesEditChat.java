@@ -45,17 +45,9 @@ public class MessagesEditChat extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getChatId() {
-        return chatId;
-    }
-
     public MessagesEditChat setChatId(Integer chatId) {
         this.chatId = chatId;
         return this;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public MessagesEditChat setTitle(String title) {

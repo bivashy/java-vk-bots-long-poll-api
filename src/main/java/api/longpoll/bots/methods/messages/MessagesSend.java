@@ -190,17 +190,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
     public MessagesSend setUserId(Integer userId) {
         this.userId = userId;
         return this;
-    }
-
-    public Integer getRandomId() {
-        return randomId;
     }
 
     public MessagesSend setRandomId(Integer randomId) {
@@ -208,17 +200,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
         return this;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesSend setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public String getDomain() {
-        return domain;
     }
 
     public MessagesSend setDomain(String domain) {
@@ -226,17 +210,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
         return this;
     }
 
-    public Integer getChatId() {
-        return chatId;
-    }
-
     public MessagesSend setChatId(Integer chatId) {
         this.chatId = chatId;
         return this;
-    }
-
-    public List<Integer> getUserIds() {
-        return userIds;
     }
 
     public MessagesSend setUserIds(List<Integer> userIds) {
@@ -244,17 +220,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
         return this;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
     public MessagesSend setMessage(String message) {
         this.message = message;
         return this;
-    }
-
-    public Float getLatitude() {
-        return latitude;
     }
 
     public MessagesSend setLatitude(Float latitude) {
@@ -262,17 +230,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
         return this;
     }
 
-    public Float getLongitude() {
-        return longitude;
-    }
-
     public MessagesSend setLongitude(Float longitude) {
         this.longitude = longitude;
         return this;
-    }
-
-    public List<String> getAttachments() {
-        return attachments;
     }
 
     public MessagesSend setAttachments(List<String> attachments) {
@@ -280,17 +240,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
         return this;
     }
 
-    public Integer getReplyTo() {
-        return replyTo;
-    }
-
     public MessagesSend setReplyTo(Integer replyTo) {
         this.replyTo = replyTo;
         return this;
-    }
-
-    public List<Integer> getForwardMessages() {
-        return forwardMessages;
     }
 
     public MessagesSend setForwardMessages(List<Integer> forwardMessages) {
@@ -298,17 +250,9 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
         return this;
     }
 
-    public Integer getStickerId() {
-        return stickerId;
-    }
-
     public MessagesSend setStickerId(Integer stickerId) {
         this.stickerId = stickerId;
         return this;
-    }
-
-    public Boolean getDontParseLinks() {
-        return dontParseLinks;
     }
 
     public MessagesSend setDontParseLinks(Boolean dontParseLinks) {
@@ -316,26 +260,14 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
         return this;
     }
 
-    public Boolean getDisableMentions() {
-        return disableMentions;
-    }
-
     public MessagesSend setDisableMentions(Boolean disableMentions) {
         this.disableMentions = disableMentions;
         return this;
     }
 
-    public Keyboard getKeyboard() {
-        return keyboard;
-    }
-
     public MessagesSend setKeyboard(Keyboard keyboard) {
         this.keyboard = keyboard;
         return this;
-    }
-
-    public Template getTemplate() {
-        return template;
     }
 
     public MessagesSend setTemplate(Template template) {

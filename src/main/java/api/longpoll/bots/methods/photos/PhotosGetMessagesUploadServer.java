@@ -37,10 +37,6 @@ public class PhotosGetMessagesUploadServer extends GetMethod<PhotosGetMessagesUp
         return PhotosGetMessagesUploadServerResult.class;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public PhotosGetMessagesUploadServer setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;

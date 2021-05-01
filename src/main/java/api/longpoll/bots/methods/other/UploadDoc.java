@@ -36,10 +36,6 @@ public class UploadDoc extends PostMethod<UploadDocResult> {
         return FileType.FILE;
     }
 
-    public String getUploadUrl() {
-        return uploadUrl;
-    }
-
     public UploadDoc setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
         return this;

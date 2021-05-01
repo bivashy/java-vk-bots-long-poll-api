@@ -57,17 +57,9 @@ public class MessagesMarkAsRead extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesMarkAsRead setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public Integer getStartMessageId() {
-        return startMessageId;
     }
 
     public MessagesMarkAsRead setStartMessageId(Integer startMessageId) {
@@ -75,17 +67,9 @@ public class MessagesMarkAsRead extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public MessagesMarkAsRead setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Boolean getMarkConversationAsRead() {
-        return markConversationAsRead;
     }
 
     public MessagesMarkAsRead setMarkConversationAsRead(Boolean markConversationAsRead) {

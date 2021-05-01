@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.events;
 
 import api.longpoll.bots.methods.Method;
-import api.longpoll.bots.model.response.events.GetEventsResult;
+import api.longpoll.bots.model.response.events.GetUpdatesResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 /**
  * Gets update events from VK server.
  */
-public class GetEvents extends Method<GetEventsResult> {
+public class GetUpdates extends Method<GetUpdatesResult> {
     /**
      * Server URL.
      */
@@ -36,8 +36,8 @@ public class GetEvents extends Method<GetEventsResult> {
     }
 
     @Override
-    protected Class<? extends GetEventsResult> getResultType() {
-        return GetEventsResult.class;
+    protected Class<? extends GetUpdatesResult> getResultType() {
+        return GetUpdatesResult.class;
     }
 
     @Override
@@ -50,29 +50,17 @@ public class GetEvents extends Method<GetEventsResult> {
         return Connection.Method.GET;
     }
 
-    public String getServer() {
-        return server;
-    }
-
-    public GetEvents setServer(String server) {
+    public GetUpdates setServer(String server) {
         this.server = server;
         return this;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public GetEvents setKey(String key) {
+    public GetUpdates setKey(String key) {
         this.key = key;
         return this;
     }
 
-    public Integer getTs() {
-        return ts;
-    }
-
-    public GetEvents setTs(Integer ts) {
+    public GetUpdates setTs(Integer ts) {
         this.ts = ts;
         return this;
     }

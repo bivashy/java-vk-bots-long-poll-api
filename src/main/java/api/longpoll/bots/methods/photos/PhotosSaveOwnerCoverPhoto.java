@@ -45,17 +45,9 @@ public class PhotosSaveOwnerCoverPhoto extends GetMethod<PhotosSaveOwnerCoverPho
         return PhotosSaveOwnerCoverPhotoResult.class;
     }
 
-    public String getHash() {
-        return hash;
-    }
-
     public PhotosSaveOwnerCoverPhoto setHash(String hash) {
         this.hash = hash;
         return this;
-    }
-
-    public String getPhoto() {
-        return photo;
     }
 
     public PhotosSaveOwnerCoverPhoto setPhoto(String photo) {

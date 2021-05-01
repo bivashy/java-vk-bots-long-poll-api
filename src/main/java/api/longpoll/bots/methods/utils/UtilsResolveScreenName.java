@@ -37,10 +37,6 @@ public class UtilsResolveScreenName extends GetMethod<UtilsResolveScreenNameResu
         return null;
     }
 
-    public String getScreenName() {
-        return screenName;
-    }
-
     public UtilsResolveScreenName setScreenName(String screenName) {
         this.screenName = screenName;
         return this;

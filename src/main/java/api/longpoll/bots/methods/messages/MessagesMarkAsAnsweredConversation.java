@@ -51,26 +51,14 @@ public class MessagesMarkAsAnsweredConversation extends GetMethod<IntegerResult>
         return IntegerResult.class;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesMarkAsAnsweredConversation setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
     }
 
-    public Boolean getAnswered() {
-        return answered;
-    }
-
     public MessagesMarkAsAnsweredConversation setAnswered(Boolean answered) {
         this.answered = answered;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesMarkAsAnsweredConversation setGroupId(Integer groupId) {

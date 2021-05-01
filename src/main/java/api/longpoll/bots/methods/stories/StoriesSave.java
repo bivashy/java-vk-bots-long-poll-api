@@ -34,10 +34,6 @@ public class StoriesSave extends GetMethod<StoriesListResult> {
         return StoriesListResult.class;
     }
 
-    public String getUploadResults() {
-        return uploadResults;
-    }
-
     public StoriesSave setUploadResults(String uploadResults) {
         this.uploadResults = uploadResults;
         return this;

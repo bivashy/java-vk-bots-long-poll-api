@@ -98,17 +98,9 @@ public class StoriesGetPhotoUploadServer extends GetMethod<StoriesGetUploadServe
         return StoriesGetUploadServerResult.class;
     }
 
-    public Boolean getAdd_to_news() {
-        return add_to_news;
-    }
-
     public StoriesGetPhotoUploadServer setAdd_to_news(Boolean add_to_news) {
         this.add_to_news = add_to_news;
         return this;
-    }
-
-    public String getReplyToStory() {
-        return replyToStory;
     }
 
     public StoriesGetPhotoUploadServer setReplyToStory(String replyToStory) {
@@ -116,17 +108,9 @@ public class StoriesGetPhotoUploadServer extends GetMethod<StoriesGetUploadServe
         return this;
     }
 
-    public String getLinkText() {
-        return linkText;
-    }
-
     public StoriesGetPhotoUploadServer setLinkText(String linkText) {
         this.linkText = linkText;
         return this;
-    }
-
-    public String getLinkUrl() {
-        return linkUrl;
     }
 
     public StoriesGetPhotoUploadServer setLinkUrl(String linkUrl) {
@@ -134,26 +118,14 @@ public class StoriesGetPhotoUploadServer extends GetMethod<StoriesGetUploadServe
         return this;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public StoriesGetPhotoUploadServer setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
     }
 
-    public String getClickableStickers() {
-        return clickableStickers;
-    }
-
     public StoriesGetPhotoUploadServer setClickableStickers(String clickableStickers) {
         this.clickableStickers = clickableStickers;
         return this;
-    }
-
-    public List<Integer> getUserIds() {
-        return userIds;
     }
 
     public StoriesGetPhotoUploadServer setUserIds(List<Integer> userIds) {

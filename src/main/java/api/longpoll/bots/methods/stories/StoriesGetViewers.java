@@ -64,17 +64,9 @@ public class StoriesGetViewers extends GetMethod<StoriesGetViewersResult> {
         return StoriesGetViewersResult.class;
     }
 
-    public List<Integer> getMessageIds() {
-        return messageIds;
-    }
-
     public StoriesGetViewers setMessageIds(List<Integer> messageIds) {
         this.messageIds = messageIds;
         return this;
-    }
-
-    public Integer getPreviewLength() {
-        return previewLength;
     }
 
     public StoriesGetViewers setPreviewLength(Integer previewLength) {
@@ -82,26 +74,14 @@ public class StoriesGetViewers extends GetMethod<StoriesGetViewersResult> {
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public StoriesGetViewers setExtended(Boolean extended) {
         this.extended = extended;
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public StoriesGetViewers setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public StoriesGetViewers setGroupId(Integer groupId) {

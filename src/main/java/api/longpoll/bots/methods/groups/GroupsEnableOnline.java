@@ -37,10 +37,6 @@ public class GroupsEnableOnline extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsEnableOnline setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;

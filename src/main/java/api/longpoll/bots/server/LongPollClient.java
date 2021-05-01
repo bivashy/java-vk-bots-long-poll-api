@@ -3,10 +3,10 @@ package api.longpoll.bots.server;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.methods.events.GetEvents;
+import api.longpoll.bots.methods.events.GetUpdates;
 import api.longpoll.bots.methods.groups.GroupsGetLongPollServer;
 import api.longpoll.bots.model.events.Event;
-import api.longpoll.bots.model.response.events.GetEventsResult;
+import api.longpoll.bots.model.response.events.GetUpdatesResult;
 import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResult;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -21,11 +21,11 @@ public class LongPollClient implements Client {
 
     private static final Gson GSON = new Gson();
     private GroupsGetLongPollServer groupsGetLongPollServer;
-    private GetEvents getEvents;
+    private GetUpdates getUpdates;
 
     public LongPollClient(LongPollBot bot) {
         groupsGetLongPollServer = new GroupsGetLongPollServer(bot.getAccessToken()).setGroupId(bot.getGroupId());
-        getEvents = new GetEvents();
+        getUpdates = new GetUpdates();
     }
 
     @Override
@@ -33,9 +33,9 @@ public class LongPollClient implements Client {
         for (int attempt = 0; attempt < ATTEMPTS; attempt++) {
             log.debug("Getting events from VK Long Poll Server. Attempt: {}.", attempt + 1);
             try {
-                GetEventsResult getEventsResult = getEvents.execute();
-                getEvents.setTs(getEventsResult.getTs());
-                return getEventsResult.getEvents();
+                GetUpdatesResult getUpdatesResult = getUpdates.execute();
+                getUpdates.setTs(getUpdatesResult.getTs());
+                return getUpdatesResult.getEvents();
             } catch (BotsLongPollAPIException e) {
                 tryHandle(e);
             }
@@ -45,7 +45,7 @@ public class LongPollClient implements Client {
 
     public void init() throws BotsLongPollAPIException, BotsLongPollException {
         GroupsGetLongPollServerResult.Response response = groupsGetLongPollServer.execute().getResponse();
-        getEvents.setServer(response.getServer())
+        getUpdates.setServer(response.getServer())
                 .setKey(response.getKey())
                 .setTs(response.getTs());
     }
@@ -61,7 +61,7 @@ public class LongPollClient implements Client {
         int code = jsonObject.get("failed").getAsInt();
         switch (code) {
             case 1:
-                getEvents.setTs(jsonObject.get("ts").getAsInt());
+                getUpdates.setTs(jsonObject.get("ts").getAsInt());
                 break;
             case 2:
             case 3:

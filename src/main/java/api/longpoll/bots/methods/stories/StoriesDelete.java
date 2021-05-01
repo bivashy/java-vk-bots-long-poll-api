@@ -52,26 +52,14 @@ public class StoriesDelete extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
     public StoriesDelete setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
     }
 
-    public Integer getStoryId() {
-        return storyId;
-    }
-
     public StoriesDelete setStoryId(Integer storyId) {
         this.storyId = storyId;
         return this;
-    }
-
-    public List<String> getStories() {
-        return stories;
     }
 
     public StoriesDelete setStories(List<String> stories) {

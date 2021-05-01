@@ -302,17 +302,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsSetLongPollSettings setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
     }
 
     public GroupsSetLongPollSettings setEnabled(Boolean enabled) {
@@ -320,17 +312,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public String getApiVersion() {
-        return apiVersion;
-    }
-
     public GroupsSetLongPollSettings setApiVersion(String apiVersion) {
         this.apiVersion = apiVersion;
         return this;
-    }
-
-    public Boolean getMessageNew() {
-        return messageNew;
     }
 
     public GroupsSetLongPollSettings setMessageNew(Boolean messageNew) {
@@ -338,17 +322,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getMessageReply() {
-        return messageReply;
-    }
-
     public GroupsSetLongPollSettings setMessageReply(Boolean messageReply) {
         this.messageReply = messageReply;
         return this;
-    }
-
-    public Boolean getMessageAllow() {
-        return messageAllow;
     }
 
     public GroupsSetLongPollSettings setMessageAllow(Boolean messageAllow) {
@@ -356,17 +332,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getMessageEdit() {
-        return messageEdit;
-    }
-
     public GroupsSetLongPollSettings setMessageEdit(Boolean messageEdit) {
         this.messageEdit = messageEdit;
         return this;
-    }
-
-    public Boolean getMessageDeny() {
-        return messageDeny;
     }
 
     public GroupsSetLongPollSettings setMessageDeny(Boolean messageDeny) {
@@ -374,17 +342,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getMessageTypingState() {
-        return messageTypingState;
-    }
-
     public GroupsSetLongPollSettings setMessageTypingState(Boolean messageTypingState) {
         this.messageTypingState = messageTypingState;
         return this;
-    }
-
-    public Boolean getPhotoNew() {
-        return photoNew;
     }
 
     public GroupsSetLongPollSettings setPhotoNew(Boolean photoNew) {
@@ -392,17 +352,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getAudioNew() {
-        return audioNew;
-    }
-
     public GroupsSetLongPollSettings setAudioNew(Boolean audioNew) {
         this.audioNew = audioNew;
         return this;
-    }
-
-    public Boolean getVideoNew() {
-        return videoNew;
     }
 
     public GroupsSetLongPollSettings setVideoNew(Boolean videoNew) {
@@ -410,17 +362,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getWallReplyNew() {
-        return wallReplyNew;
-    }
-
     public GroupsSetLongPollSettings setWallReplyNew(Boolean wallReplyNew) {
         this.wallReplyNew = wallReplyNew;
         return this;
-    }
-
-    public Boolean getWallReplyEdit() {
-        return wallReplyEdit;
     }
 
     public GroupsSetLongPollSettings setWallReplyEdit(Boolean wallReplyEdit) {
@@ -428,17 +372,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getWallReplyDelete() {
-        return wallReplyDelete;
-    }
-
     public GroupsSetLongPollSettings setWallReplyDelete(Boolean wallReplyDelete) {
         this.wallReplyDelete = wallReplyDelete;
         return this;
-    }
-
-    public Boolean getWallReplyRestore() {
-        return wallReplyRestore;
     }
 
     public GroupsSetLongPollSettings setWallReplyRestore(Boolean wallReplyRestore) {
@@ -446,17 +382,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getWallPostNew() {
-        return wallPostNew;
-    }
-
     public GroupsSetLongPollSettings setWallPostNew(Boolean wallPostNew) {
         this.wallPostNew = wallPostNew;
         return this;
-    }
-
-    public Boolean getWallPostRepost() {
-        return wallPostRepost;
     }
 
     public GroupsSetLongPollSettings setWallPostRepost(Boolean wallPostRepost) {
@@ -464,17 +392,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getBoardPostNew() {
-        return boardPostNew;
-    }
-
     public GroupsSetLongPollSettings setBoardPostNew(Boolean boardPostNew) {
         this.boardPostNew = boardPostNew;
         return this;
-    }
-
-    public Boolean getBoardPostEdit() {
-        return boardPostEdit;
     }
 
     public GroupsSetLongPollSettings setBoardPostEdit(Boolean boardPostEdit) {
@@ -482,17 +402,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getBoardPostRestore() {
-        return boardPostRestore;
-    }
-
     public GroupsSetLongPollSettings setBoardPostRestore(Boolean boardPostRestore) {
         this.boardPostRestore = boardPostRestore;
         return this;
-    }
-
-    public Boolean getBoardPostDelete() {
-        return boardPostDelete;
     }
 
     public GroupsSetLongPollSettings setBoardPostDelete(Boolean boardPostDelete) {
@@ -500,17 +412,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getPhotoCommentNew() {
-        return photoCommentNew;
-    }
-
     public GroupsSetLongPollSettings setPhotoCommentNew(Boolean photoCommentNew) {
         this.photoCommentNew = photoCommentNew;
         return this;
-    }
-
-    public Boolean getPhotoCommentEdit() {
-        return photoCommentEdit;
     }
 
     public GroupsSetLongPollSettings setPhotoCommentEdit(Boolean photoCommentEdit) {
@@ -518,17 +422,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getPhotoCommentDelete() {
-        return photoCommentDelete;
-    }
-
     public GroupsSetLongPollSettings setPhotoCommentDelete(Boolean photoCommentDelete) {
         this.photoCommentDelete = photoCommentDelete;
         return this;
-    }
-
-    public Boolean getPhotoCommentRestore() {
-        return photoCommentRestore;
     }
 
     public GroupsSetLongPollSettings setPhotoCommentRestore(Boolean photoCommentRestore) {
@@ -536,17 +432,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getVideoCommentNew() {
-        return videoCommentNew;
-    }
-
     public GroupsSetLongPollSettings setVideoCommentNew(Boolean videoCommentNew) {
         this.videoCommentNew = videoCommentNew;
         return this;
-    }
-
-    public Boolean getVideoCommentEdit() {
-        return videoCommentEdit;
     }
 
     public GroupsSetLongPollSettings setVideoCommentEdit(Boolean videoCommentEdit) {
@@ -554,17 +442,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getVideoCommentDelete() {
-        return videoCommentDelete;
-    }
-
     public GroupsSetLongPollSettings setVideoCommentDelete(Boolean videoCommentDelete) {
         this.videoCommentDelete = videoCommentDelete;
         return this;
-    }
-
-    public Boolean getVideoCommentRestore() {
-        return videoCommentRestore;
     }
 
     public GroupsSetLongPollSettings setVideoCommentRestore(Boolean videoCommentRestore) {
@@ -572,17 +452,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getMarketCommentNew() {
-        return marketCommentNew;
-    }
-
     public GroupsSetLongPollSettings setMarketCommentNew(Boolean marketCommentNew) {
         this.marketCommentNew = marketCommentNew;
         return this;
-    }
-
-    public Boolean getMarketCommentEdit() {
-        return marketCommentEdit;
     }
 
     public GroupsSetLongPollSettings setMarketCommentEdit(Boolean marketCommentEdit) {
@@ -590,17 +462,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getMarketCommentDelete() {
-        return marketCommentDelete;
-    }
-
     public GroupsSetLongPollSettings setMarketCommentDelete(Boolean marketCommentDelete) {
         this.marketCommentDelete = marketCommentDelete;
         return this;
-    }
-
-    public Boolean getMarketCommentRestore() {
-        return marketCommentRestore;
     }
 
     public GroupsSetLongPollSettings setMarketCommentRestore(Boolean marketCommentRestore) {
@@ -608,17 +472,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getPollVoteNew() {
-        return pollVoteNew;
-    }
-
     public GroupsSetLongPollSettings setPollVoteNew(Boolean pollVoteNew) {
         this.pollVoteNew = pollVoteNew;
         return this;
-    }
-
-    public Boolean getGroupJoin() {
-        return groupJoin;
     }
 
     public GroupsSetLongPollSettings setGroupJoin(Boolean groupJoin) {
@@ -626,17 +482,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getGroupLeave() {
-        return groupLeave;
-    }
-
     public GroupsSetLongPollSettings setGroupLeave(Boolean groupLeave) {
         this.groupLeave = groupLeave;
         return this;
-    }
-
-    public Boolean getGroupChangeSettings() {
-        return groupChangeSettings;
     }
 
     public GroupsSetLongPollSettings setGroupChangeSettings(Boolean groupChangeSettings) {
@@ -644,17 +492,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getGroupChangePhoto() {
-        return groupChangePhoto;
-    }
-
     public GroupsSetLongPollSettings setGroupChangePhoto(Boolean groupChangePhoto) {
         this.groupChangePhoto = groupChangePhoto;
         return this;
-    }
-
-    public Boolean getGroupOfficersEdit() {
-        return groupOfficersEdit;
     }
 
     public GroupsSetLongPollSettings setGroupOfficersEdit(Boolean groupOfficersEdit) {
@@ -662,17 +502,9 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getUserBlock() {
-        return userBlock;
-    }
-
     public GroupsSetLongPollSettings setUserBlock(Boolean userBlock) {
         this.userBlock = userBlock;
         return this;
-    }
-
-    public Boolean getUserUnblock() {
-        return userUnblock;
     }
 
     public GroupsSetLongPollSettings setUserUnblock(Boolean userUnblock) {
@@ -680,26 +512,14 @@ public class GroupsSetLongPollSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getLeadFormsNew() {
-        return leadFormsNew;
-    }
-
     public GroupsSetLongPollSettings setLeadFormsNew(Boolean leadFormsNew) {
         this.leadFormsNew = leadFormsNew;
         return this;
     }
 
-    public Boolean getLikeAdd() {
-        return likeAdd;
-    }
-
     public GroupsSetLongPollSettings setLikeAdd(Boolean likeAdd) {
         this.likeAdd = likeAdd;
         return this;
-    }
-
-    public Boolean getLikeRemove() {
-        return likeRemove;
     }
 
     public GroupsSetLongPollSettings setLikeRemove(Boolean likeRemove) {

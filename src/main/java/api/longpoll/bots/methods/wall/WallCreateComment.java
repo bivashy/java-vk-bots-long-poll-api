@@ -102,17 +102,9 @@ public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
         return attach(AttachmentsUtil.toAttachment(doc));
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
     public WallCreateComment setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
-    }
-
-    public Integer getPostId() {
-        return postId;
     }
 
     public WallCreateComment setPostId(Integer postId) {
@@ -120,17 +112,9 @@ public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
         return this;
     }
 
-    public Integer getFromGroupId() {
-        return fromGroupId;
-    }
-
     public WallCreateComment setFromGroupId(Integer fromGroupId) {
         this.fromGroupId = fromGroupId;
         return this;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public WallCreateComment setMessage(String message) {
@@ -138,17 +122,9 @@ public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
         return this;
     }
 
-    public Integer getReplyToComment() {
-        return replyToComment;
-    }
-
     public WallCreateComment setReplyToComment(Integer replyToComment) {
         this.replyToComment = replyToComment;
         return this;
-    }
-
-    public List<String> getAttachments() {
-        return attachments;
     }
 
     public WallCreateComment setAttachments(List<String> attachments) {
@@ -156,17 +132,9 @@ public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
         return this;
     }
 
-    public Integer getStickerId() {
-        return stickerId;
-    }
-
     public WallCreateComment setStickerId(Integer stickerId) {
         this.stickerId = stickerId;
         return this;
-    }
-
-    public String getGuid() {
-        return guid;
     }
 
     public WallCreateComment setGuid(String guid) {

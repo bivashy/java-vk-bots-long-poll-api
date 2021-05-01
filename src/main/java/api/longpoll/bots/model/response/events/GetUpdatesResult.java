@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Contains list of events that occur on VK server.
  */
-public class GetEventsResult {
+public class GetUpdatesResult {
     /**
      * The number of the last event.
      */
@@ -39,7 +39,7 @@ public class GetEventsResult {
 
     @Override
     public String toString() {
-        return "GetEventsResult{" +
+        return "GetUpdatesResult{" +
                 "ts=" + ts +
                 ", events=" + events +
                 '}';

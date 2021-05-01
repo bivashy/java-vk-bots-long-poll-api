@@ -70,17 +70,9 @@ public class GroupsGetMembers extends GetMethod<GroupsGetMembersResult> {
         return GroupsGetMembersResult.class;
     }
 
-    public String getGroupId() {
-        return groupId;
-    }
-
     public GroupsGetMembers setGroupId(String groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public String getSort() {
-        return sort;
     }
 
     public GroupsGetMembers setSort(String sort) {
@@ -88,17 +80,9 @@ public class GroupsGetMembers extends GetMethod<GroupsGetMembersResult> {
         return this;
     }
 
-    public Integer getOffset() {
-        return offset;
-    }
-
     public GroupsGetMembers setOffset(Integer offset) {
         this.offset = offset;
         return this;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 
     public GroupsGetMembers setCount(Integer count) {
@@ -106,17 +90,9 @@ public class GroupsGetMembers extends GetMethod<GroupsGetMembersResult> {
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public GroupsGetMembers setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public String getFilter() {
-        return filter;
     }
 
     public GroupsGetMembers setFilter(String filter) {

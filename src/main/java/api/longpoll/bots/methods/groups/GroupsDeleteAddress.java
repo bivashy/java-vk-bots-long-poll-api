@@ -45,17 +45,9 @@ public class GroupsDeleteAddress extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsDeleteAddress setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Integer getAddressId() {
-        return addressId;
     }
 
     public GroupsDeleteAddress setAddressId(Integer addressId) {

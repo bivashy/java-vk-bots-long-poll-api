@@ -69,17 +69,9 @@ public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
         return UtilsGetLinkStatsResult.class;
     }
 
-    public String getKey() {
-        return key;
-    }
-
     public UtilsGetLinkStats setKey(String key) {
         this.key = key;
         return this;
-    }
-
-    public String getSource() {
-        return source;
     }
 
     public UtilsGetLinkStats setSource(String source) {
@@ -87,17 +79,9 @@ public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
         return this;
     }
 
-    public String getAccessKey() {
-        return accessKey;
-    }
-
     public UtilsGetLinkStats setAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
-    }
-
-    public String getInterval() {
-        return interval;
     }
 
     public UtilsGetLinkStats setInterval(String interval) {
@@ -105,17 +89,9 @@ public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
         return this;
     }
 
-    public Integer getIntervalsCount() {
-        return intervalsCount;
-    }
-
     public UtilsGetLinkStats setIntervalsCount(Integer intervalsCount) {
         this.intervalsCount = intervalsCount;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public UtilsGetLinkStats setExtended(Boolean extended) {

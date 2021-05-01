@@ -303,17 +303,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsSetCallbackSettings setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Integer getServerId() {
-        return serverId;
     }
 
     public GroupsSetCallbackSettings setServerId(Integer serverId) {
@@ -321,17 +313,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public String getApiVersion() {
-        return apiVersion;
-    }
-
     public GroupsSetCallbackSettings setApiVersion(String apiVersion) {
         this.apiVersion = apiVersion;
         return this;
-    }
-
-    public Boolean getMessageNew() {
-        return messageNew;
     }
 
     public GroupsSetCallbackSettings setMessageNew(Boolean messageNew) {
@@ -339,17 +323,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getMessageReply() {
-        return messageReply;
-    }
-
     public GroupsSetCallbackSettings setMessageReply(Boolean messageReply) {
         this.messageReply = messageReply;
         return this;
-    }
-
-    public Boolean getMessageAllow() {
-        return messageAllow;
     }
 
     public GroupsSetCallbackSettings setMessageAllow(Boolean messageAllow) {
@@ -357,17 +333,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getMessageEdit() {
-        return messageEdit;
-    }
-
     public GroupsSetCallbackSettings setMessageEdit(Boolean messageEdit) {
         this.messageEdit = messageEdit;
         return this;
-    }
-
-    public Boolean getMessageDeny() {
-        return messageDeny;
     }
 
     public GroupsSetCallbackSettings setMessageDeny(Boolean messageDeny) {
@@ -375,17 +343,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getMessageTypingState() {
-        return messageTypingState;
-    }
-
     public GroupsSetCallbackSettings setMessageTypingState(Boolean messageTypingState) {
         this.messageTypingState = messageTypingState;
         return this;
-    }
-
-    public Boolean getPhotoNew() {
-        return photoNew;
     }
 
     public GroupsSetCallbackSettings setPhotoNew(Boolean photoNew) {
@@ -393,17 +353,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getAudioNew() {
-        return audioNew;
-    }
-
     public GroupsSetCallbackSettings setAudioNew(Boolean audioNew) {
         this.audioNew = audioNew;
         return this;
-    }
-
-    public Boolean getVideoNew() {
-        return videoNew;
     }
 
     public GroupsSetCallbackSettings setVideoNew(Boolean videoNew) {
@@ -411,17 +363,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getWallReplyNew() {
-        return wallReplyNew;
-    }
-
     public GroupsSetCallbackSettings setWallReplyNew(Boolean wallReplyNew) {
         this.wallReplyNew = wallReplyNew;
         return this;
-    }
-
-    public Boolean getWallReplyEdit() {
-        return wallReplyEdit;
     }
 
     public GroupsSetCallbackSettings setWallReplyEdit(Boolean wallReplyEdit) {
@@ -429,17 +373,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getWallReplyDelete() {
-        return wallReplyDelete;
-    }
-
     public GroupsSetCallbackSettings setWallReplyDelete(Boolean wallReplyDelete) {
         this.wallReplyDelete = wallReplyDelete;
         return this;
-    }
-
-    public Boolean getWallReplyRestore() {
-        return wallReplyRestore;
     }
 
     public GroupsSetCallbackSettings setWallReplyRestore(Boolean wallReplyRestore) {
@@ -447,17 +383,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getWallPostNew() {
-        return wallPostNew;
-    }
-
     public GroupsSetCallbackSettings setWallPostNew(Boolean wallPostNew) {
         this.wallPostNew = wallPostNew;
         return this;
-    }
-
-    public Boolean getWallPostRepost() {
-        return wallPostRepost;
     }
 
     public GroupsSetCallbackSettings setWallPostRepost(Boolean wallPostRepost) {
@@ -465,17 +393,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getBoardPostNew() {
-        return boardPostNew;
-    }
-
     public GroupsSetCallbackSettings setBoardPostNew(Boolean boardPostNew) {
         this.boardPostNew = boardPostNew;
         return this;
-    }
-
-    public Boolean getBoardPostEdit() {
-        return boardPostEdit;
     }
 
     public GroupsSetCallbackSettings setBoardPostEdit(Boolean boardPostEdit) {
@@ -483,17 +403,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getBoardPostRestore() {
-        return boardPostRestore;
-    }
-
     public GroupsSetCallbackSettings setBoardPostRestore(Boolean boardPostRestore) {
         this.boardPostRestore = boardPostRestore;
         return this;
-    }
-
-    public Boolean getBoardPostDelete() {
-        return boardPostDelete;
     }
 
     public GroupsSetCallbackSettings setBoardPostDelete(Boolean boardPostDelete) {
@@ -501,17 +413,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getPhotoCommentNew() {
-        return photoCommentNew;
-    }
-
     public GroupsSetCallbackSettings setPhotoCommentNew(Boolean photoCommentNew) {
         this.photoCommentNew = photoCommentNew;
         return this;
-    }
-
-    public Boolean getPhotoCommentEdit() {
-        return photoCommentEdit;
     }
 
     public GroupsSetCallbackSettings setPhotoCommentEdit(Boolean photoCommentEdit) {
@@ -519,17 +423,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getPhotoCommentDelete() {
-        return photoCommentDelete;
-    }
-
     public GroupsSetCallbackSettings setPhotoCommentDelete(Boolean photoCommentDelete) {
         this.photoCommentDelete = photoCommentDelete;
         return this;
-    }
-
-    public Boolean getPhotoCommentRestore() {
-        return photoCommentRestore;
     }
 
     public GroupsSetCallbackSettings setPhotoCommentRestore(Boolean photoCommentRestore) {
@@ -537,17 +433,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getVideoCommentNew() {
-        return videoCommentNew;
-    }
-
     public GroupsSetCallbackSettings setVideoCommentNew(Boolean videoCommentNew) {
         this.videoCommentNew = videoCommentNew;
         return this;
-    }
-
-    public Boolean getVideoCommentEdit() {
-        return videoCommentEdit;
     }
 
     public GroupsSetCallbackSettings setVideoCommentEdit(Boolean videoCommentEdit) {
@@ -555,17 +443,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getVideoCommentDelete() {
-        return videoCommentDelete;
-    }
-
     public GroupsSetCallbackSettings setVideoCommentDelete(Boolean videoCommentDelete) {
         this.videoCommentDelete = videoCommentDelete;
         return this;
-    }
-
-    public Boolean getVideoCommentRestore() {
-        return videoCommentRestore;
     }
 
     public GroupsSetCallbackSettings setVideoCommentRestore(Boolean videoCommentRestore) {
@@ -573,17 +453,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getMarketCommentNew() {
-        return marketCommentNew;
-    }
-
     public GroupsSetCallbackSettings setMarketCommentNew(Boolean marketCommentNew) {
         this.marketCommentNew = marketCommentNew;
         return this;
-    }
-
-    public Boolean getMarketCommentEdit() {
-        return marketCommentEdit;
     }
 
     public GroupsSetCallbackSettings setMarketCommentEdit(Boolean marketCommentEdit) {
@@ -591,17 +463,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getMarketCommentDelete() {
-        return marketCommentDelete;
-    }
-
     public GroupsSetCallbackSettings setMarketCommentDelete(Boolean marketCommentDelete) {
         this.marketCommentDelete = marketCommentDelete;
         return this;
-    }
-
-    public Boolean getMarketCommentRestore() {
-        return marketCommentRestore;
     }
 
     public GroupsSetCallbackSettings setMarketCommentRestore(Boolean marketCommentRestore) {
@@ -609,17 +473,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getPollVoteNew() {
-        return pollVoteNew;
-    }
-
     public GroupsSetCallbackSettings setPollVoteNew(Boolean pollVoteNew) {
         this.pollVoteNew = pollVoteNew;
         return this;
-    }
-
-    public Boolean getGroupJoin() {
-        return groupJoin;
     }
 
     public GroupsSetCallbackSettings setGroupJoin(Boolean groupJoin) {
@@ -627,17 +483,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getGroupLeave() {
-        return groupLeave;
-    }
-
     public GroupsSetCallbackSettings setGroupLeave(Boolean groupLeave) {
         this.groupLeave = groupLeave;
         return this;
-    }
-
-    public Boolean getGroupChangeSettings() {
-        return groupChangeSettings;
     }
 
     public GroupsSetCallbackSettings setGroupChangeSettings(Boolean groupChangeSettings) {
@@ -645,17 +493,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getGroupChangePhoto() {
-        return groupChangePhoto;
-    }
-
     public GroupsSetCallbackSettings setGroupChangePhoto(Boolean groupChangePhoto) {
         this.groupChangePhoto = groupChangePhoto;
         return this;
-    }
-
-    public Boolean getGroupOfficersEdit() {
-        return groupOfficersEdit;
     }
 
     public GroupsSetCallbackSettings setGroupOfficersEdit(Boolean groupOfficersEdit) {
@@ -663,17 +503,9 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getUserBlock() {
-        return userBlock;
-    }
-
     public GroupsSetCallbackSettings setUserBlock(Boolean userBlock) {
         this.userBlock = userBlock;
         return this;
-    }
-
-    public Boolean getUserUnblock() {
-        return userUnblock;
     }
 
     public GroupsSetCallbackSettings setUserUnblock(Boolean userUnblock) {
@@ -681,26 +513,14 @@ public class GroupsSetCallbackSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getLeadFormsNew() {
-        return leadFormsNew;
-    }
-
     public GroupsSetCallbackSettings setLeadFormsNew(Boolean leadFormsNew) {
         this.leadFormsNew = leadFormsNew;
         return this;
     }
 
-    public Boolean getLikeAdd() {
-        return likeAdd;
-    }
-
     public GroupsSetCallbackSettings setLikeAdd(Boolean likeAdd) {
         this.likeAdd = likeAdd;
         return this;
-    }
-
-    public Boolean getLikeRemove() {
-        return likeRemove;
     }
 
     public GroupsSetCallbackSettings setLikeRemove(Boolean likeRemove) {

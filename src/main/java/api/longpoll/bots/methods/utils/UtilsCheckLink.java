@@ -37,10 +37,6 @@ public class UtilsCheckLink extends GetMethod<UtilsCheckLinkResult> {
         return UtilsCheckLinkResult.class;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
     public UtilsCheckLink setUrl(String url) {
         this.url = url;
         return this;

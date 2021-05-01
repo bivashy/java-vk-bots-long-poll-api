@@ -52,26 +52,14 @@ public class GroupsGetById extends GetMethod<GroupsGetByIdResult> {
         return GroupsGetByIdResult.class;
     }
 
-    public List<String> getGroupIds() {
-        return groupIds;
-    }
-
     public GroupsGetById setGroupIds(List<String> groupIds) {
         this.groupIds = groupIds;
         return this;
     }
 
-    public String getGroupId() {
-        return groupId;
-    }
-
     public GroupsGetById setGroupId(String groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public List<String> getFields() {
-        return fields;
     }
 
     public GroupsGetById setFields(List<String> fields) {

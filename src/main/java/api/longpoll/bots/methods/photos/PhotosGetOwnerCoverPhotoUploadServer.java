@@ -63,17 +63,9 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwn
         return PhotosGetOwnerCoverPhotoUploadServerResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public PhotosGetOwnerCoverPhotoUploadServer setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Integer getCropX() {
-        return cropX;
     }
 
     public PhotosGetOwnerCoverPhotoUploadServer setCropX(Integer cropX) {
@@ -81,26 +73,14 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwn
         return this;
     }
 
-    public Integer getCropY() {
-        return cropY;
-    }
-
     public PhotosGetOwnerCoverPhotoUploadServer setCropY(Integer cropY) {
         this.cropY = cropY;
         return this;
     }
 
-    public Integer getCropX2() {
-        return cropX2;
-    }
-
     public PhotosGetOwnerCoverPhotoUploadServer setCropX2(Integer cropX2) {
         this.cropX2 = cropX2;
         return this;
-    }
-
-    public Integer getCropY2() {
-        return cropY2;
     }
 
     public PhotosGetOwnerCoverPhotoUploadServer setCropY2(Integer cropY2) {

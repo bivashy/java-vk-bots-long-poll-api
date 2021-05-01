@@ -5,7 +5,7 @@ import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.messages.MessageNewEvent;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.media.Attachment;
-import api.longpoll.bots.model.response.events.GetEventsResult;
+import api.longpoll.bots.model.response.events.GetUpdatesResult;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
@@ -38,8 +38,8 @@ public class ParseUtil {
         return notNull(objects.get(0));
     }
 
-    public static GetEventsResult getEventsResult(String relativePath) {
-        return notNull(GSON.fromJson(readJson(relativePath), GetEventsResult.class));
+    public static GetUpdatesResult getEventsResult(String relativePath) {
+        return notNull(GSON.fromJson(readJson(relativePath), GetUpdatesResult.class));
     }
 
     public static List<Event> getEvents(String relativePath) {

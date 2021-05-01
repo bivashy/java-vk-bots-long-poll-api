@@ -52,26 +52,14 @@ public class MessagesGetConversationMembers extends GetMethod<MessagesGetConvers
         return MessagesGetConversationMembersResult.class;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesGetConversationMembers setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesGetConversationMembers setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetConversationMembers setGroupId(Integer groupId) {

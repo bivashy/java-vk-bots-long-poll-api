@@ -51,26 +51,14 @@ public class MessagesGetInviteLink extends GetMethod<MessagesGetInviteLinkResult
         return MessagesGetInviteLinkResult.class;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesGetInviteLink setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
     }
 
-    public Boolean getReset() {
-        return reset;
-    }
-
     public MessagesGetInviteLink setReset(Boolean reset) {
         this.reset = reset;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetInviteLink setGroupId(Integer groupId) {

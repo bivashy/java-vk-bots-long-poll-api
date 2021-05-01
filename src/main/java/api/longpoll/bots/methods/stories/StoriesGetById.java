@@ -52,26 +52,14 @@ public class StoriesGetById extends GetMethod<StoriesListResult> {
         return StoriesListResult.class;
     }
 
-    public List<String> getStories() {
-        return stories;
-    }
-
     public StoriesGetById setStories(List<String> stories) {
         this.stories = stories;
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public StoriesGetById setExtended(Boolean extended) {
         this.extended = extended;
         return this;
-    }
-
-    public List<String> getFields() {
-        return fields;
     }
 
     public StoriesGetById setFields(List<String> fields) {

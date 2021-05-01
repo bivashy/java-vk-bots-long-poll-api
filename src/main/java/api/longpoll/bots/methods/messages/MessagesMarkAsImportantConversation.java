@@ -51,26 +51,14 @@ public class MessagesMarkAsImportantConversation extends GetMethod<IntegerResult
         return IntegerResult.class;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesMarkAsImportantConversation setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
     }
 
-    public Boolean getAnswered() {
-        return answered;
-    }
-
     public MessagesMarkAsImportantConversation setAnswered(Boolean answered) {
         this.answered = answered;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesMarkAsImportantConversation setGroupId(Integer groupId) {

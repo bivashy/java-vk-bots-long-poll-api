@@ -51,26 +51,14 @@ public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoRe
         return PhotosSaveMessagesPhotoResult.class;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
-
     public PhotosSaveMessagesPhoto setPhoto(String photo) {
         this.photo = photo;
         return this;
     }
 
-    public Integer getServer() {
-        return server;
-    }
-
     public PhotosSaveMessagesPhoto setServer(Integer server) {
         this.server = server;
         return this;
-    }
-
-    public String getHash() {
-        return hash;
     }
 
     public PhotosSaveMessagesPhoto setHash(String hash) {

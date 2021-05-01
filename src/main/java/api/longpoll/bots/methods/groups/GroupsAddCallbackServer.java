@@ -59,17 +59,9 @@ public class GroupsAddCallbackServer extends GetMethod<GroupsAddCallbackServerRe
         return VkApi.getInstance().groupsAddCallbackServer();
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsAddCallbackServer setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public String getUrl() {
-        return url;
     }
 
     public GroupsAddCallbackServer setUrl(String url) {
@@ -77,17 +69,9 @@ public class GroupsAddCallbackServer extends GetMethod<GroupsAddCallbackServerRe
         return this;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public GroupsAddCallbackServer setTitle(String title) {
         this.title = title;
         return this;
-    }
-
-    public String getSecretKey() {
-        return secretKey;
     }
 
     public GroupsAddCallbackServer setSecretKey(String secretKey) {

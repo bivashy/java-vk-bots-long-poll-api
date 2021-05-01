@@ -51,26 +51,14 @@ public class MarketGetGroupOrders extends GetMethod<MarketGetGroupOrdersResult> 
         return MarketGetGroupOrdersResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public MarketGetGroupOrders setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
     }
 
-    public Integer getOffset() {
-        return offset;
-    }
-
     public MarketGetGroupOrders setOffset(Integer offset) {
         this.offset = offset;
         return this;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 
     public MarketGetGroupOrders setCount(Integer count) {

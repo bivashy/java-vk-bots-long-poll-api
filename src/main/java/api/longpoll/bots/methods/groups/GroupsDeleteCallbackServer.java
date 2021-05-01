@@ -45,17 +45,9 @@ public class GroupsDeleteCallbackServer extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsDeleteCallbackServer setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Integer getServerId() {
-        return serverId;
     }
 
     public GroupsDeleteCallbackServer setServerId(Integer serverId) {

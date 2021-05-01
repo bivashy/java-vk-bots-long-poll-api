@@ -45,17 +45,9 @@ public class StoriesGetStats extends GetMethod<StoriesGetStatsResult> {
         return StoriesGetStatsResult.class;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
     public StoriesGetStats setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
-    }
-
-    public Integer getStoryId() {
-        return storyId;
     }
 
     public StoriesGetStats setStoryId(Integer storyId) {

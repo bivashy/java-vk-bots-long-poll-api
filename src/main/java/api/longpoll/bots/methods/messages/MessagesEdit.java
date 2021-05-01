@@ -152,17 +152,9 @@ public class MessagesEdit extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesEdit setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public MessagesEdit setMessage(String message) {
@@ -170,17 +162,9 @@ public class MessagesEdit extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Float getLatitude() {
-        return latitude;
-    }
-
     public MessagesEdit setLatitude(Float latitude) {
         this.latitude = latitude;
         return this;
-    }
-
-    public Float getLongitude() {
-        return longitude;
     }
 
     public MessagesEdit setLongitude(Float longitude) {
@@ -188,17 +172,9 @@ public class MessagesEdit extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public List<String> getAttachments() {
-        return attachments;
-    }
-
     public MessagesEdit setAttachments(List<String> attachments) {
         this.attachments = attachments;
         return this;
-    }
-
-    public Boolean getKeepForwardMessages() {
-        return keepForwardMessages;
     }
 
     public MessagesEdit setKeepForwardMessages(Boolean keepForwardMessages) {
@@ -206,17 +182,9 @@ public class MessagesEdit extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getKeepSnippets() {
-        return keepSnippets;
-    }
-
     public MessagesEdit setKeepSnippets(Boolean keepSnippets) {
         this.keepSnippets = keepSnippets;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesEdit setGroupId(Integer groupId) {
@@ -224,26 +192,14 @@ public class MessagesEdit extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getDontParseLinks() {
-        return dontParseLinks;
-    }
-
     public MessagesEdit setDontParseLinks(Boolean dontParseLinks) {
         this.dontParseLinks = dontParseLinks;
         return this;
     }
 
-    public Integer getMessageId() {
-        return messageId;
-    }
-
     public MessagesEdit setMessageId(Integer messageId) {
         this.messageId = messageId;
         return this;
-    }
-
-    public Integer getConversationMessageId() {
-        return conversationMessageId;
     }
 
     public MessagesEdit setConversationMessageId(Integer conversationMessageId) {

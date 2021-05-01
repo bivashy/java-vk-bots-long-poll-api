@@ -51,26 +51,14 @@ public class MessagesRemoveChatUser extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getChatId() {
-        return chatId;
-    }
-
     public MessagesRemoveChatUser setChatId(Integer chatId) {
         this.chatId = chatId;
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
     public MessagesRemoveChatUser setUserId(Integer userId) {
         this.userId = userId;
         return this;
-    }
-
-    public Integer getMemberId() {
-        return memberId;
     }
 
     public MessagesRemoveChatUser setMemberId(Integer memberId) {

@@ -88,17 +88,9 @@ public class MessagesGetHistoryAttachments extends GetMethod<MessagesGetHistoryA
         return MessagesGetHistoryAttachmentsResult.class;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesGetHistoryAttachments setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public String getMediaType() {
-        return mediaType;
     }
 
     public MessagesGetHistoryAttachments setMediaType(String mediaType) {
@@ -106,17 +98,9 @@ public class MessagesGetHistoryAttachments extends GetMethod<MessagesGetHistoryA
         return this;
     }
 
-    public String getStartFrom() {
-        return startFrom;
-    }
-
     public MessagesGetHistoryAttachments setStartFrom(String startFrom) {
         this.startFrom = startFrom;
         return this;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 
     public MessagesGetHistoryAttachments setCount(Integer count) {
@@ -124,17 +108,9 @@ public class MessagesGetHistoryAttachments extends GetMethod<MessagesGetHistoryA
         return this;
     }
 
-    public Boolean getPhotoSizes() {
-        return photoSizes;
-    }
-
     public MessagesGetHistoryAttachments setPhotoSizes(Boolean photoSizes) {
         this.photoSizes = photoSizes;
         return this;
-    }
-
-    public List<String> getFields() {
-        return fields;
     }
 
     public MessagesGetHistoryAttachments setFields(List<String> fields) {
@@ -142,26 +118,14 @@ public class MessagesGetHistoryAttachments extends GetMethod<MessagesGetHistoryA
         return this;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public MessagesGetHistoryAttachments setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
     }
 
-    public Boolean getPreserveOrder() {
-        return preserveOrder;
-    }
-
     public MessagesGetHistoryAttachments setPreserveOrder(Boolean preserveOrder) {
         this.preserveOrder = preserveOrder;
         return this;
-    }
-
-    public Integer getMaxForwardsLevel() {
-        return maxForwardsLevel;
     }
 
     public MessagesGetHistoryAttachments setMaxForwardsLevel(Integer maxForwardsLevel) {

@@ -37,10 +37,6 @@ public class GroupsGetLongPollServer extends GetMethod<GroupsGetLongPollServerRe
         return VkApi.getInstance().groupsGetLongPollServer();
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsGetLongPollServer setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;

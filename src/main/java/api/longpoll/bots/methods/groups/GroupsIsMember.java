@@ -58,17 +58,9 @@ public class GroupsIsMember extends GetMethod<GroupsIsMemberResult> {
         return GroupsIsMemberResult.class;
     }
 
-    public String getGroupId() {
-        return groupId;
-    }
-
     public GroupsIsMember setGroupId(String groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Integer getUserId() {
-        return userId;
     }
 
     public GroupsIsMember setUserId(Integer userId) {
@@ -76,17 +68,9 @@ public class GroupsIsMember extends GetMethod<GroupsIsMemberResult> {
         return this;
     }
 
-    public List<Integer> getUserIds() {
-        return userIds;
-    }
-
     public GroupsIsMember setUserIds(List<Integer> userIds) {
         this.userIds = userIds;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public GroupsIsMember setExtended(Boolean extended) {

@@ -118,17 +118,9 @@ public class GroupsEditAddress extends GetMethod<GroupsAddressResult> {
         return GroupsAddressResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsEditAddress setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Integer getAddressId() {
-        return addressId;
     }
 
     public GroupsEditAddress setAddressId(Integer addressId) {
@@ -136,17 +128,9 @@ public class GroupsEditAddress extends GetMethod<GroupsAddressResult> {
         return this;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public GroupsEditAddress setTitle(String title) {
         this.title = title;
         return this;
-    }
-
-    public String getAddress() {
-        return address;
     }
 
     public GroupsEditAddress setAddress(String address) {
@@ -154,17 +138,9 @@ public class GroupsEditAddress extends GetMethod<GroupsAddressResult> {
         return this;
     }
 
-    public String getAdditionalAddress() {
-        return additionalAddress;
-    }
-
     public GroupsEditAddress setAdditionalAddress(String additionalAddress) {
         this.additionalAddress = additionalAddress;
         return this;
-    }
-
-    public Integer getCountryId() {
-        return countryId;
     }
 
     public GroupsEditAddress setCountryId(Integer countryId) {
@@ -172,17 +148,9 @@ public class GroupsEditAddress extends GetMethod<GroupsAddressResult> {
         return this;
     }
 
-    public Integer getCityId() {
-        return cityId;
-    }
-
     public GroupsEditAddress setCityId(Integer cityId) {
         this.cityId = cityId;
         return this;
-    }
-
-    public Integer getMetroId() {
-        return metroId;
     }
 
     public GroupsEditAddress setMetroId(Integer metroId) {
@@ -190,17 +158,9 @@ public class GroupsEditAddress extends GetMethod<GroupsAddressResult> {
         return this;
     }
 
-    public Float getLatitude() {
-        return latitude;
-    }
-
     public GroupsEditAddress setLatitude(Float latitude) {
         this.latitude = latitude;
         return this;
-    }
-
-    public Float getLongitude() {
-        return longitude;
     }
 
     public GroupsEditAddress setLongitude(Float longitude) {
@@ -208,17 +168,9 @@ public class GroupsEditAddress extends GetMethod<GroupsAddressResult> {
         return this;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
     public GroupsEditAddress setPhone(String phone) {
         this.phone = phone;
         return this;
-    }
-
-    public String getWorkInfoStatus() {
-        return workInfoStatus;
     }
 
     public GroupsEditAddress setWorkInfoStatus(String workInfoStatus) {
@@ -226,17 +178,9 @@ public class GroupsEditAddress extends GetMethod<GroupsAddressResult> {
         return this;
     }
 
-    public JsonObject getTimeTable() {
-        return timeTable;
-    }
-
     public GroupsEditAddress setTimeTable(JsonObject timeTable) {
         this.timeTable = timeTable;
         return this;
-    }
-
-    public Boolean getMainAddress() {
-        return mainAddress;
     }
 
     public GroupsEditAddress setMainAddress(Boolean mainAddress) {

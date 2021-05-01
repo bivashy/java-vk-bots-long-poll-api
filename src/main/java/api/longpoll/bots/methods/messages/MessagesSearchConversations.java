@@ -64,17 +64,9 @@ public class MessagesSearchConversations extends GetMethod<MessagesGetConversati
         return MessagesGetConversationsResult.class;
     }
 
-    public String getQ() {
-        return q;
-    }
-
     public MessagesSearchConversations setQ(String q) {
         this.q = q;
         return this;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 
     public MessagesSearchConversations setCount(Integer count) {
@@ -82,26 +74,14 @@ public class MessagesSearchConversations extends GetMethod<MessagesGetConversati
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public MessagesSearchConversations setExtended(Boolean extended) {
         this.extended = extended;
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesSearchConversations setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesSearchConversations setGroupId(Integer groupId) {

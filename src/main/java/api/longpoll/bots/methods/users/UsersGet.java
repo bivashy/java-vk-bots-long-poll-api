@@ -52,26 +52,14 @@ public class UsersGet extends GetMethod<UsersGetResult> {
         return UsersGetResult.class;
     }
 
-    public List<String> getUserIds() {
-        return userIds;
-    }
-
     public UsersGet setUserIds(List<String> userIds) {
         this.userIds = userIds;
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public UsersGet setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public String getNameCase() {
-        return nameCase;
     }
 
     public UsersGet setNameCase(String nameCase) {

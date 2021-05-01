@@ -51,26 +51,14 @@ public class BoardRestoreComment extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public BoardRestoreComment setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
     }
 
-    public Integer getTopicId() {
-        return topicId;
-    }
-
     public BoardRestoreComment setTopicId(Integer topicId) {
         this.topicId = topicId;
         return this;
-    }
-
-    public Integer getCommentId() {
-        return commentId;
     }
 
     public BoardRestoreComment setCommentId(Integer commentId) {

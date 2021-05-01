@@ -64,17 +64,9 @@ public class StoriesGetReplies extends GetMethod<StoriesGetRepliesResult> {
         return StoriesGetRepliesResult.class;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
     public StoriesGetReplies setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
-    }
-
-    public Integer getStoryId() {
-        return storyId;
     }
 
     public StoriesGetReplies setStoryId(Integer storyId) {
@@ -82,26 +74,14 @@ public class StoriesGetReplies extends GetMethod<StoriesGetRepliesResult> {
         return this;
     }
 
-    public String getAccessKey() {
-        return accessKey;
-    }
-
     public StoriesGetReplies setAccessKey(String accessKey) {
         this.accessKey = accessKey;
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public StoriesGetReplies setExtended(Boolean extended) {
         this.extended = extended;
         return this;
-    }
-
-    public List<String> getFields() {
-        return fields;
     }
 
     public StoriesGetReplies setFields(List<String> fields) {

@@ -37,10 +37,6 @@ public class GroupsGetOnlineStatus extends GetMethod<GroupsGetOnlineStatusResult
         return GroupsGetOnlineStatusResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsGetOnlineStatus setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;

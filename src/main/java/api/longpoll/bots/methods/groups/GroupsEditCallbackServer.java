@@ -63,17 +63,9 @@ public class GroupsEditCallbackServer extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsEditCallbackServer setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Integer getServerId() {
-        return serverId;
     }
 
     public GroupsEditCallbackServer setServerId(Integer serverId) {
@@ -81,26 +73,14 @@ public class GroupsEditCallbackServer extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
     public GroupsEditCallbackServer setUrl(String url) {
         this.url = url;
         return this;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public GroupsEditCallbackServer setTitle(String title) {
         this.title = title;
         return this;
-    }
-
-    public String getSecretKey() {
-        return secretKey;
     }
 
     public GroupsEditCallbackServer setSecretKey(String secretKey) {

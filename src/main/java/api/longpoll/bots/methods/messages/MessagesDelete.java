@@ -58,17 +58,9 @@ public class MessagesDelete extends GetMethod<MessagesDeleteResult> {
         return MessagesDeleteResult.class;
     }
 
-    public List<Integer> getMessageIds() {
-        return messageIds;
-    }
-
     public MessagesDelete setMessageIds(List<Integer> messageIds) {
         this.messageIds = messageIds;
         return this;
-    }
-
-    public Boolean getSpam() {
-        return spam;
     }
 
     public MessagesDelete setSpam(Boolean spam) {
@@ -76,17 +68,9 @@ public class MessagesDelete extends GetMethod<MessagesDeleteResult> {
         return this;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public MessagesDelete setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Boolean getDeleteForAll() {
-        return deleteForAll;
     }
 
     public MessagesDelete setDeleteForAll(Boolean deleteForAll) {

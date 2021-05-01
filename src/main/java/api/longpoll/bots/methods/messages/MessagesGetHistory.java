@@ -88,17 +88,9 @@ public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
         return MessagesGetHistoryResult.class;
     }
 
-    public Integer getOffset() {
-        return offset;
-    }
-
     public MessagesGetHistory setOffset(Integer offset) {
         this.offset = offset;
         return this;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 
     public MessagesGetHistory setCount(Integer count) {
@@ -106,17 +98,9 @@ public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
         return this;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
     public MessagesGetHistory setUserId(String userId) {
         this.userId = userId;
         return this;
-    }
-
-    public Integer getPeerId() {
-        return peerId;
     }
 
     public MessagesGetHistory setPeerId(Integer peerId) {
@@ -124,17 +108,9 @@ public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
         return this;
     }
 
-    public Integer getStartMessageId() {
-        return startMessageId;
-    }
-
     public MessagesGetHistory setStartMessageId(Integer startMessageId) {
         this.startMessageId = startMessageId;
         return this;
-    }
-
-    public Boolean getRev() {
-        return rev;
     }
 
     public MessagesGetHistory setRev(Boolean rev) {
@@ -142,26 +118,14 @@ public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public MessagesGetHistory setExtended(Boolean extended) {
         this.extended = extended;
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesGetHistory setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetHistory setGroupId(Integer groupId) {

@@ -37,10 +37,6 @@ public class GroupsGetLongPollSettings extends GetMethod<GroupsGetLongPollSettin
         return GroupsGetLongPollSettingsResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsGetLongPollSettings setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;

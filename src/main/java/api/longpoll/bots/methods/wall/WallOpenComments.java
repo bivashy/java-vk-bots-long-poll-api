@@ -45,17 +45,9 @@ public class WallOpenComments extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
     public WallOpenComments setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
-    }
-
-    public Integer getPostId() {
-        return postId;
     }
 
     public WallOpenComments setPostId(Integer postId) {

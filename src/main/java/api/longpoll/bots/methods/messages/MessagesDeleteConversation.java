@@ -51,26 +51,14 @@ public class MessagesDeleteConversation extends GetMethod<MessagesDeleteConversa
         return MessagesDeleteConversationResult.class;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
     public MessagesDeleteConversation setUserId(String userId) {
         this.userId = userId;
         return this;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesDeleteConversation setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesDeleteConversation setGroupId(Integer groupId) {

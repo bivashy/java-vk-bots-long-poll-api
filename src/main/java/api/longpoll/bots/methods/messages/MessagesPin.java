@@ -45,17 +45,9 @@ public class MessagesPin extends GetMethod<MessagesPinResult> {
         return MessagesPinResult.class;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesPin setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public Integer getConversationMessageId() {
-        return conversationMessageId;
     }
 
     public MessagesPin setConversationMessageId(Integer conversationMessageId) {

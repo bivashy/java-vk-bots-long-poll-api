@@ -45,17 +45,9 @@ public class StoriesHideReply extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
     public StoriesHideReply setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
-    }
-
-    public Integer getStoryId() {
-        return storyId;
     }
 
     public StoriesHideReply setStoryId(Integer storyId) {

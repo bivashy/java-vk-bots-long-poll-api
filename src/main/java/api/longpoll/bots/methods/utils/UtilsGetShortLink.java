@@ -45,17 +45,9 @@ public class UtilsGetShortLink extends GetMethod<UtilsGetShortLinkResult> {
         return UtilsGetShortLinkResult.class;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
     public UtilsGetShortLink setUrl(String url) {
         this.url = url;
         return this;
-    }
-
-    public Boolean getPrivate() {
-        return isPrivate;
     }
 
     public UtilsGetShortLink setPrivate(Boolean aPrivate) {

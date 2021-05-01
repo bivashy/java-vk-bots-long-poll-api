@@ -45,17 +45,9 @@ public class GroupsGetCallbackSettings extends GetMethod<GroupsGetCallbackSettin
         return GroupsGetCallbackSettingsResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsGetCallbackSettings setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Integer getServerId() {
-        return serverId;
     }
 
     public GroupsGetCallbackSettings setServerId(Integer serverId) {

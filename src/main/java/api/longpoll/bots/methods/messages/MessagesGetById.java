@@ -64,17 +64,9 @@ public class MessagesGetById extends GetMethod<MessagesGetByIdResult> {
         return MessagesGetByIdResult.class;
     }
 
-    public List<Integer> getMessageIds() {
-        return messageIds;
-    }
-
     public MessagesGetById setMessageIds(List<Integer> messageIds) {
         this.messageIds = messageIds;
         return this;
-    }
-
-    public Integer getPreviewLength() {
-        return previewLength;
     }
 
     public MessagesGetById setPreviewLength(Integer previewLength) {
@@ -82,26 +74,14 @@ public class MessagesGetById extends GetMethod<MessagesGetByIdResult> {
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public MessagesGetById setExtended(Boolean extended) {
         this.extended = extended;
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesGetById setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetById setGroupId(Integer groupId) {

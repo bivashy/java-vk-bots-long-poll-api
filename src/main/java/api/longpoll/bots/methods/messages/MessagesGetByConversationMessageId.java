@@ -64,17 +64,9 @@ public class MessagesGetByConversationMessageId extends GetMethod<MessagesGetByI
         return MessagesGetByIdResult.class;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesGetByConversationMessageId setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public List<Integer> getConversationMessageIds() {
-        return conversationMessageIds;
     }
 
     public MessagesGetByConversationMessageId setConversationMessageIds(List<Integer> conversationMessageIds) {
@@ -82,26 +74,14 @@ public class MessagesGetByConversationMessageId extends GetMethod<MessagesGetByI
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public MessagesGetByConversationMessageId setExtended(Boolean extended) {
         this.extended = extended;
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesGetByConversationMessageId setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetByConversationMessageId setGroupId(Integer groupId) {

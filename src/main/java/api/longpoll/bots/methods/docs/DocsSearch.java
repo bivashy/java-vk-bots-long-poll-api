@@ -57,17 +57,9 @@ public class DocsSearch extends GetMethod<DocsSearchResult> {
         return DocsSearchResult.class;
     }
 
-    public String getQ() {
-        return q;
-    }
-
     public DocsSearch setQ(String q) {
         this.q = q;
         return this;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 
     public DocsSearch setCount(Integer count) {
@@ -75,17 +67,9 @@ public class DocsSearch extends GetMethod<DocsSearchResult> {
         return this;
     }
 
-    public Integer getOffset() {
-        return offset;
-    }
-
     public DocsSearch setOffset(Integer offset) {
         this.offset = offset;
         return this;
-    }
-
-    public Boolean getReturnTags() {
-        return returnTags;
     }
 
     public DocsSearch setReturnTags(Boolean returnTags) {

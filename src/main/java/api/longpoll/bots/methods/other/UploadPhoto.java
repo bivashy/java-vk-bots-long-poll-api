@@ -36,10 +36,6 @@ public class UploadPhoto extends PostMethod<UploadPhotoResult> {
         return FileType.PHOTO;
     }
 
-    public String getUploadUrl() {
-        return uploadUrl;
-    }
-
     public UploadPhoto setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
         return this;

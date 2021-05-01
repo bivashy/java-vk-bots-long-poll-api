@@ -76,17 +76,9 @@ public class MessagesGetConversations extends GetMethod<MessagesGetConversations
         return MessagesGetConversationsResult.class;
     }
 
-    public Integer getOffset() {
-        return offset;
-    }
-
     public MessagesGetConversations setOffset(Integer offset) {
         this.offset = offset;
         return this;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 
     public MessagesGetConversations setCount(Integer count) {
@@ -94,17 +86,9 @@ public class MessagesGetConversations extends GetMethod<MessagesGetConversations
         return this;
     }
 
-    public String getFilter() {
-        return filter;
-    }
-
     public MessagesGetConversations setFilter(String filter) {
         this.filter = filter;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public MessagesGetConversations setExtended(Boolean extended) {
@@ -112,26 +96,14 @@ public class MessagesGetConversations extends GetMethod<MessagesGetConversations
         return this;
     }
 
-    public Integer getStartMessageId() {
-        return startMessageId;
-    }
-
     public MessagesGetConversations setStartMessageId(Integer startMessageId) {
         this.startMessageId = startMessageId;
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesGetConversations setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetConversations setGroupId(Integer groupId) {

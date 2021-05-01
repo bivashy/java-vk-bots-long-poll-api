@@ -64,17 +64,9 @@ public class GroupsGetBanned extends GetMethod<GroupsGetBannedResult> {
         return GroupsGetBannedResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsGetBanned setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Integer getOffset() {
-        return offset;
     }
 
     public GroupsGetBanned setOffset(Integer offset) {
@@ -82,26 +74,14 @@ public class GroupsGetBanned extends GetMethod<GroupsGetBannedResult> {
         return this;
     }
 
-    public Integer getCount() {
-        return count;
-    }
-
     public GroupsGetBanned setCount(Integer count) {
         this.count = count;
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public GroupsGetBanned setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
     }
 
     public GroupsGetBanned setOwnerId(Integer ownerId) {

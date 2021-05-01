@@ -37,10 +37,6 @@ public class GroupsGetCallbackConfirmationCode extends GetMethod<GroupsGetCallba
         return GroupsGetCallbackConfirmationCodeResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsGetCallbackConfirmationCode setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;

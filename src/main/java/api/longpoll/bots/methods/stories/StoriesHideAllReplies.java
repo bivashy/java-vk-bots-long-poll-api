@@ -45,17 +45,9 @@ public class StoriesHideAllReplies extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
     public StoriesHideAllReplies setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public StoriesHideAllReplies setGroupId(Integer groupId) {

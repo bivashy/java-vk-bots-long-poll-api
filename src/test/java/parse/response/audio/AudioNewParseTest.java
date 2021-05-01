@@ -5,10 +5,6 @@ import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.objects.media.Audio;
 import org.junit.jupiter.api.Test;
-import org.mockserver.client.server.MockServerClient;
-import org.mockserver.integration.ClientAndServer;
-import org.mockserver.mockserver.MockServer;
-import org.mockserver.model.HttpRequest;
 import parse.response.ParseUtil;
 
 import static org.junit.jupiter.api.Assertions.*;

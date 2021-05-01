@@ -57,17 +57,9 @@ public class DocsSave extends GetMethod<DocsSaveResult> {
         return DocsSaveResult.class;
     }
 
-    public String getFile() {
-        return file;
-    }
-
     public DocsSave setFile(String file) {
         this.file = file;
         return this;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public DocsSave setTitle(String title) {
@@ -75,17 +67,9 @@ public class DocsSave extends GetMethod<DocsSaveResult> {
         return this;
     }
 
-    public String getTags() {
-        return tags;
-    }
-
     public DocsSave setTags(String tags) {
         this.tags = tags;
         return this;
-    }
-
-    public Boolean getReturnTags() {
-        return returnTags;
     }
 
     public DocsSave setReturnTags(Boolean returnTags) {

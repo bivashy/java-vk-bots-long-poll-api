@@ -45,17 +45,9 @@ public class MessagesRestore extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getMessageId() {
-        return messageId;
-    }
-
     public MessagesRestore setMessageId(Integer messageId) {
         this.messageId = messageId;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesRestore setGroupId(Integer groupId) {

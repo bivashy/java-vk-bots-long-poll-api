@@ -52,26 +52,14 @@ public class StoriesGet extends GetMethod<StoriesGetResult> {
         return StoriesGetResult.class;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
     public StoriesGet setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public StoriesGet setExtended(Boolean extended) {
         this.extended = extended;
         return this;
-    }
-
-    public List<String> getFields() {
-        return fields;
     }
 
     public StoriesGet setFields(List<String> fields) {

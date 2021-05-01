@@ -46,17 +46,9 @@ public class DocsGetMessagesUploadServer extends GetMethod<DocsGetUploadServerRe
         return DocsGetUploadServerResult.class;
     }
 
-    public String getType() {
-        return type;
-    }
-
     public DocsGetMessagesUploadServer setType(String type) {
         this.type = type;
         return this;
-    }
-
-    public Integer getPeerId() {
-        return peerId;
     }
 
     public DocsGetMessagesUploadServer setPeerId(Integer peerId) {

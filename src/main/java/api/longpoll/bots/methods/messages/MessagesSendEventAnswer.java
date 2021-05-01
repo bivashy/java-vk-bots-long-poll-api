@@ -58,17 +58,9 @@ public class MessagesSendEventAnswer extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public String getEventId() {
-        return eventId;
-    }
-
     public MessagesSendEventAnswer setEventId(String eventId) {
         this.eventId = eventId;
         return this;
-    }
-
-    public Integer getUserId() {
-        return userId;
     }
 
     public MessagesSendEventAnswer setUserId(Integer userId) {
@@ -76,17 +68,9 @@ public class MessagesSendEventAnswer extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesSendEventAnswer setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public Button.EventData getEventData() {
-        return eventData;
     }
 
     public MessagesSendEventAnswer setEventData(Button.EventData eventData) {

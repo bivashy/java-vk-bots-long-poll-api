@@ -57,17 +57,9 @@ public class GroupsSetSettings extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsSetSettings setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Boolean getMessages() {
-        return messages;
     }
 
     public GroupsSetSettings setMessages(Boolean messages) {
@@ -75,17 +67,9 @@ public class GroupsSetSettings extends GetMethod<IntegerResult> {
         return this;
     }
 
-    public Boolean getBotsCapabilities() {
-        return botsCapabilities;
-    }
-
     public GroupsSetSettings setBotsCapabilities(Boolean botsCapabilities) {
         this.botsCapabilities = botsCapabilities;
         return this;
-    }
-
-    public Boolean getBotsAddToChat() {
-        return botsAddToChat;
     }
 
     public GroupsSetSettings setBotsAddToChat(Boolean botsAddToChat) {

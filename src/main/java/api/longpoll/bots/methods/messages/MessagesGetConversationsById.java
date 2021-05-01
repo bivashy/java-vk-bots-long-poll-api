@@ -58,17 +58,9 @@ public class MessagesGetConversationsById extends GetMethod<MessagesGetConversat
         return MessagesGetConversationsResult.class;
     }
 
-    public List<Integer> getPeerIds() {
-        return peerIds;
-    }
-
     public MessagesGetConversationsById setPeerIds(List<Integer> peerIds) {
         this.peerIds = peerIds;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public MessagesGetConversationsById setExtended(Boolean extended) {
@@ -76,17 +68,9 @@ public class MessagesGetConversationsById extends GetMethod<MessagesGetConversat
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesGetConversationsById setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetConversationsById setGroupId(Integer groupId) {

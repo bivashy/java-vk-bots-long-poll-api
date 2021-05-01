@@ -52,26 +52,14 @@ public class MessagesCreateChat extends GetMethod<IntegerResult> {
         return IntegerResult.class;
     }
 
-    public List<Integer> getUserIds() {
-        return userIds;
-    }
-
     public MessagesCreateChat setUserIds(List<Integer> userIds) {
         this.userIds = userIds;
         return this;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public MessagesCreateChat setTitle(String title) {
         this.title = title;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesCreateChat setGroupId(Integer groupId) {

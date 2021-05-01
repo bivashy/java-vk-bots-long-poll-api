@@ -36,10 +36,6 @@ public class UploadStory extends PostMethod<UploadStoryResult> {
         return UploadStoryResult.class;
     }
 
-    public String getUploadUrl() {
-        return uploadUrl;
-    }
-
     public UploadStory setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
         return this;

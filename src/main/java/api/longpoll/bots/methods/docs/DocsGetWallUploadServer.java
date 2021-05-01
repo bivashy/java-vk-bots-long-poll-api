@@ -37,10 +37,6 @@ public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerResult
         return DocsGetUploadServerResult.class;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public DocsGetWallUploadServer setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
