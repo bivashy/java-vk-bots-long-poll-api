@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesGetConversationsResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getConversations">https://vk.com/dev/messages.getConversations</a>
  */
-public class MessagesGetConversations extends GetMethod<MessagesGetConversationsResult> {
+public class MessagesGetConversations extends VkApiGetMethod<MessagesGetConversationsResult> {
     /**
      * Offset needed to return a specific subset of conversations.
      */
@@ -59,15 +59,15 @@ public class MessagesGetConversations extends GetMethod<MessagesGetConversations
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("offset", offset),
-                keyVal("count", count),
-                keyVal("filter", filter),
-                keyVal("extended", extended, true),
-                keyVal("start_message_id", startMessageId),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("offset", offset),
+                param("count", count),
+                param("filter", filter),
+                param("extended", extended, true),
+                param("start_message_id", startMessageId),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 

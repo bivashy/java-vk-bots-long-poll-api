@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesGetByIdResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getByConversationMessageId">https://vk.com/dev/messages.getByConversationMessageId</a>
  */
-public class MessagesGetByConversationMessageId extends GetMethod<MessagesGetByIdResult> {
+public class MessagesGetByConversationMessageId extends VkApiGetMethod<MessagesGetByIdResult> {
     /**
      * Peer Id.
      */
@@ -49,13 +49,13 @@ public class MessagesGetByConversationMessageId extends GetMethod<MessagesGetByI
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("conversation_message_ids", conversationMessageIds),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("peer_id", peerId),
+                param("conversation_message_ids", conversationMessageIds),
+                param("extended", extended, true),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 

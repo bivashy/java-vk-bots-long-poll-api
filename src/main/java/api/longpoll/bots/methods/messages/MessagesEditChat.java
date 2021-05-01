@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.editChat">https://vk.com/dev/messages.editChat</a>
  */
-public class MessagesEditChat extends GetMethod<IntegerResult> {
+public class MessagesEditChat extends VkApiGetMethod<IntegerResult> {
     /**
      * Chat ID.
      */
@@ -33,10 +33,10 @@ public class MessagesEditChat extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("chat_id", chatId),
-                keyVal("title", title)
+                param("chat_id", chatId),
+                param("title", title)
         );
     }
 

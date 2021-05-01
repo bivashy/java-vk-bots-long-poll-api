@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.market;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.market.MarketGetGroupOrdersResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/market.getGroupOrders">https://vk.com/dev/market.getGroupOrders</a>
  */
-public class MarketGetGroupOrders extends GetMethod<MarketGetGroupOrdersResult> {
+public class MarketGetGroupOrders extends VkApiGetMethod<MarketGetGroupOrdersResult> {
     /**
      * ID of the community that owns the items market.
      */
@@ -38,11 +38,11 @@ public class MarketGetGroupOrders extends GetMethod<MarketGetGroupOrdersResult> 
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("offset", offset),
-                keyVal("count", count)
+                param("group_id", groupId),
+                param("offset", offset),
+                param("count", count)
         );
     }
 

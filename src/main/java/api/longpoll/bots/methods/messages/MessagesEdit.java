@@ -2,18 +2,18 @@ package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.IntegerResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
 import api.longpoll.bots.utils.methods.MessagesUtil;
-import org.jsoup.Connection;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -21,7 +21,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
  */
-public class MessagesEdit extends GetMethod<IntegerResult> {
+public class MessagesEdit extends VkApiGetMethod<IntegerResult> {
     /**
      * Destination ID.
      */
@@ -97,19 +97,19 @@ public class MessagesEdit extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("message", message),
-                keyVal("lat", latitude),
-                keyVal("long", longitude),
-                keyVal("attachment", attachments),
-                keyVal("keep_forward_messages", keepForwardMessages, true),
-                keyVal("keep_snippets", keepSnippets, true),
-                keyVal("group_id", groupId),
-                keyVal("dont_parse_links", dontParseLinks, true),
-                keyVal("message_id", messageId),
-                keyVal("conversation_message_id", conversationMessageId)
+                param("peer_id", peerId),
+                param("message", message),
+                param("lat", latitude),
+                param("long", longitude),
+                param("attachment", attachments),
+                param("keep_forward_messages", keepForwardMessages, true),
+                param("keep_snippets", keepSnippets, true),
+                param("group_id", groupId),
+                param("dont_parse_links", dontParseLinks, true),
+                param("message_id", messageId),
+                param("conversation_message_id", conversationMessageId)
         );
     }
 

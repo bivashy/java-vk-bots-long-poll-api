@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.photos;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/photos.saveMessagesPhoto">https://vk.com/dev/photos.saveMessagesPhoto</a>
  */
-public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoResult> {
+public class PhotosSaveMessagesPhoto extends VkApiGetMethod<PhotosSaveMessagesPhotoResult> {
     /**
      * Parameter returned when photo upload to the server.
      */
@@ -38,11 +38,11 @@ public class PhotosSaveMessagesPhoto extends GetMethod<PhotosSaveMessagesPhotoRe
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("photo", photo),
-                keyVal("server", server),
-                keyVal("hash", hash)
+                param("photo", photo),
+                param("server", server),
+                param("hash", hash)
         );
     }
 

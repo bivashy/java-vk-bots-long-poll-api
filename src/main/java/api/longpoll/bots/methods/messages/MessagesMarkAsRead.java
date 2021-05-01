@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.markAsRead">https://vk.com/dev/messages.markAsRead</a>
  */
-public class MessagesMarkAsRead extends GetMethod<IntegerResult> {
+public class MessagesMarkAsRead extends VkApiGetMethod<IntegerResult> {
     /**
      * Destination ID.
      */
@@ -43,12 +43,12 @@ public class MessagesMarkAsRead extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("start_message_id", startMessageId),
-                keyVal("group_id", groupId),
-                keyVal("mark_conversation_as_read", markConversationAsRead, true)
+                param("peer_id", peerId),
+                param("start_message_id", startMessageId),
+                param("group_id", groupId),
+                param("mark_conversation_as_read", markConversationAsRead, true)
         );
     }
 

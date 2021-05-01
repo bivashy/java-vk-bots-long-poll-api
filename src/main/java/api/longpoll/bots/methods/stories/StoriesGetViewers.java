@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.stories.StoriesGetViewersResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
-public class StoriesGetViewers extends GetMethod<StoriesGetViewersResult> {
+public class StoriesGetViewers extends VkApiGetMethod<StoriesGetViewersResult> {
     /**
      * Message IDs.
      */
@@ -49,13 +49,13 @@ public class StoriesGetViewers extends GetMethod<StoriesGetViewersResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("message_ids", messageIds),
-                keyVal("preview_length", previewLength),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("message_ids", messageIds),
+                param("preview_length", previewLength),
+                param("extended", extended, true),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 

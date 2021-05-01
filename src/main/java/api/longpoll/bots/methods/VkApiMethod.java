@@ -7,14 +7,15 @@ import api.longpoll.bots.validators.Validator;
 import api.longpoll.bots.validators.VkApiResponseValidator;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.helper.HttpConnection;
+import kong.unirest.HttpRequest;
+import kong.unirest.Unirest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.AbstractMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
@@ -25,11 +26,11 @@ import java.util.stream.Stream;
  *
  * @param <Result> VK API response type.
  */
-public abstract class Method<Result> {
+public abstract class VkApiMethod<Result> {
     /**
      * Logger object.
      */
-    private static final Logger log = LoggerFactory.getLogger(Method.class);
+    private static final Logger log = LoggerFactory.getLogger(VkApiMethod.class);
 
     /**
      * Gson object.
@@ -71,9 +72,7 @@ public abstract class Method<Result> {
      * @throws BotsLongPollException    if other errors occur.
      */
     private Result execute(Class<? extends Result> responseType) throws BotsLongPollAPIException, BotsLongPollException {
-        String stringResponse = sendRequest();
-
-        JsonObject jsonResponse = GSON.fromJson(stringResponse, JsonObject.class);
+        JsonObject jsonResponse = GSON.fromJson(sendRequest(), JsonObject.class);
 
         if (VALIDATOR.isValid(jsonResponse)) {
             return GSON.fromJson(jsonResponse, responseType);
@@ -91,21 +90,12 @@ public abstract class Method<Result> {
     private String sendRequest() throws BotsLongPollException {
         try {
             String api = getApi();
-            Connection.Method method = getMethod();
-            List<Connection.KeyVal> data = getData();
+            Map<String, Object> data = getData();
 
-            log.debug("Sending: method={}, api={}, data={}", method, api, data);
+            log.debug("Sending: api={}, data={}", api, data);
 
-            Connection connection = Jsoup.connect(api)
-                    .ignoreContentType(true)
-                    .timeout(0)
-                    .method(method);
-
-            if (!data.isEmpty()) {
-                connection.data(data);
-            }
-
-            String body = execute(connection).body();
+            Unirest.config().defaultBaseUrl(VkApi.getInstance().apiBaseUrl());
+            String body = execute(httpRequest().queryString(data));
 
             log.debug("Received: {}", body);
 
@@ -118,23 +108,23 @@ public abstract class Method<Result> {
     /**
      * Executes HTTP request to VK API.
      *
-     * @param connection request data.
+     * @param httpRequest request data.
      * @return HTTP response.
      * @throws IOException if error occurs.
      */
-    protected Connection.Response execute(Connection connection) throws IOException {
-        return connection.execute();
+    protected String execute(HttpRequest<?> httpRequest) throws IOException {
+        return httpRequest.asString().getBody();
     }
 
     /**
      * Collects request params to be sent to VK API.
      *
-     * @return list of request params.
+     * @return request params.
      */
-    protected List<Connection.KeyVal> getData() {
-        return getKeyValStream()
+    protected Map<String, Object> getData() {
+        return getParamsStream()
                 .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
     /**
@@ -145,7 +135,7 @@ public abstract class Method<Result> {
      * @param boolint <b>true</b> if boolean value should be represented as 0 or 1.
      * @return request parameter.
      */
-    protected Connection.KeyVal keyVal(String key, Object value, boolean boolint) {
+    protected Map.Entry<String, Object> param(String key, Object value, boolean boolint) {
         if (value == null) {
             return null;
         }
@@ -154,14 +144,16 @@ public abstract class Method<Result> {
             if (((List<?>) value).isEmpty()) {
                 return null;
             }
-            value = ((List<?>) value).stream().map(String::valueOf).collect(Collectors.joining(","));
+            value = ((List<?>) value).stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.joining(","));
         }
 
         if (boolint && value instanceof Boolean) {
             value = (Boolean) value ? 1 : 0;
         }
 
-        return HttpConnection.KeyVal.create(key, String.valueOf(value));
+        return new AbstractMap.SimpleEntry<>(key, String.valueOf(value));
     }
 
     /**
@@ -171,8 +163,8 @@ public abstract class Method<Result> {
      * @param value parameter value.
      * @return request parameter.
      */
-    protected Connection.KeyVal keyVal(String key, Object value) {
-        return keyVal(key, value, false);
+    protected Map.Entry<String, Object> param(String key, Object value) {
+        return param(key, value, false);
     }
 
     /**
@@ -183,19 +175,19 @@ public abstract class Method<Result> {
     protected abstract String getApi();
 
     /**
-     * Gets HTTP method. (E.g. {@link Connection.Method#GET} or {@link Connection.Method#POST})
+     * Instantiates HTTP request. (E.g. {@link Unirest#get(String)} or {@link Unirest#post(String)})
      *
-     * @return HTTP method.
+     * @return HTTP request.
      */
-    protected abstract Connection.Method getMethod();
+    protected abstract HttpRequest<?> httpRequest();
 
     /**
      * Gets stream of request parameters.
-     * This stream is used during collecting request data in {@link Method#getData()}.
+     * This stream is used during collecting request data in {@link VkApiMethod#getData()}.
      *
      * @return stream of request parameters.
      */
-    protected abstract Stream<Connection.KeyVal> getKeyValStream();
+    protected abstract Stream<Map.Entry<String, Object>> getParamsStream();
 
     /**
      * Gets type of VK API response.

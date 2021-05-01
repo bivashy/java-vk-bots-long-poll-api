@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsGetMembersResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getMembers">https://vk.com/dev/groups.getMembers</a>
  */
-public class GroupsGetMembers extends GetMethod<GroupsGetMembersResult> {
+public class GroupsGetMembers extends VkApiGetMethod<GroupsGetMembersResult> {
     /**
      * ID or screen name of the community.
      */
@@ -54,14 +54,14 @@ public class GroupsGetMembers extends GetMethod<GroupsGetMembersResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("sort", sort),
-                keyVal("offset", offset),
-                keyVal("count", count),
-                keyVal("fields", fields),
-                keyVal("filter", filter)
+                param("group_id", groupId),
+                param("sort", sort),
+                param("offset", offset),
+                param("count", count),
+                param("fields", fields),
+                param("filter", filter)
         );
     }
 

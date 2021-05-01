@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.docs;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.docs.DocsSaveResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/docs.save">https://vk.com/dev/docs.save</a>
  */
-public class DocsSave extends GetMethod<DocsSaveResult> {
+public class DocsSave extends VkApiGetMethod<DocsSaveResult> {
     /**
      * This parameter is returned when the file is uploaded to the server.
      */
@@ -43,12 +43,12 @@ public class DocsSave extends GetMethod<DocsSaveResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("file", file),
-                keyVal("title", title),
-                keyVal("tags", tags),
-                keyVal("return_tags", returnTags, true)
+                param("file", file),
+                param("title", title),
+                param("tags", tags),
+                param("return_tags", returnTags, true)
         );
     }
 

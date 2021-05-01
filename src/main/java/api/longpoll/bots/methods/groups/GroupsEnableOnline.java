@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.enableOnline">https://vk.com/dev/groups.enableOnline</a>
  */
-public class GroupsEnableOnline extends GetMethod<IntegerResult> {
+public class GroupsEnableOnline extends VkApiGetMethod<IntegerResult> {
     /**
      * Community ID.
      */
@@ -28,8 +28,8 @@ public class GroupsEnableOnline extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
-        return Stream.of(keyVal("group_id", groupId));
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+        return Stream.of(param("group_id", groupId));
     }
 
     @Override

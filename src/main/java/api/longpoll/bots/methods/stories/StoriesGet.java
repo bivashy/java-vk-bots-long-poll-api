@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.stories.StoriesGetResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.get">https://vk.com/dev/stories.get</a>
  */
-public class StoriesGet extends GetMethod<StoriesGetResult> {
+public class StoriesGet extends VkApiGetMethod<StoriesGetResult> {
     /**
      * Owner ID.
      */
@@ -39,11 +39,11 @@ public class StoriesGet extends GetMethod<StoriesGetResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("owner_id", ownerId),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields)
+                param("owner_id", ownerId),
+                param("extended", extended, true),
+                param("fields", fields)
         );
     }
 

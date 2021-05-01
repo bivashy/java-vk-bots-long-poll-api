@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesPinResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.pin">https://vk.com/dev/messages.pin</a>
  */
-public class MessagesPin extends GetMethod<MessagesPinResult> {
+public class MessagesPin extends VkApiGetMethod<MessagesPinResult> {
     /**
      * Peer ID.
      */
@@ -33,10 +33,10 @@ public class MessagesPin extends GetMethod<MessagesPinResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("conversation_message_id", conversationMessageId)
+                param("peer_id", peerId),
+                param("conversation_message_id", conversationMessageId)
         );
     }
 

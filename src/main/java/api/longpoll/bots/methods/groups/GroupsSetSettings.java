@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.setSettings">https://vk.com/dev/groups.setSettings</a>
  */
-public class GroupsSetSettings extends GetMethod<IntegerResult> {
+public class GroupsSetSettings extends VkApiGetMethod<IntegerResult> {
     /**
      * Community ID.
      */
@@ -43,12 +43,12 @@ public class GroupsSetSettings extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("messages", messages, true),
-                keyVal("bots_capabilities", botsCapabilities, true),
-                keyVal("bots_add_to_chat", botsAddToChat, true)
+                param("group_id", groupId),
+                param("messages", messages, true),
+                param("bots_capabilities", botsCapabilities, true),
+                param("bots_add_to_chat", botsAddToChat, true)
         );
     }
 

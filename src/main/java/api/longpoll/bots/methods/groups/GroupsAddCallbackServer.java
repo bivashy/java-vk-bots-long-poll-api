@@ -1,12 +1,10 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
 import api.longpoll.bots.model.response.groups.GroupsAddCallbackServerResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -14,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.addCallbackServer">https://vk.com/dev/groups.addCallbackServer</a>
  */
-public class GroupsAddCallbackServer extends GetMethod<GroupsAddCallbackServerResult> {
+public class GroupsAddCallbackServer extends VkApiGetMethod<GroupsAddCallbackServerResult> {
     /**
      * Community ID.
      */
@@ -40,12 +38,12 @@ public class GroupsAddCallbackServer extends GetMethod<GroupsAddCallbackServerRe
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("url", url),
-                keyVal("title", title),
-                keyVal("secret_key", secretKey)
+                param("group_id", groupId),
+                param("url", url),
+                param("title", title),
+                param("secret_key", secretKey)
         );
     }
 

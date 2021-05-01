@@ -62,6 +62,10 @@ public class VkApi {
         return properties.getProperty("api.version");
     }
 
+    public String apiBaseUrl() {
+        return properties.getProperty("api.baseUrl");
+    }
+
     public String boardDeleteComment() {
         return properties.getProperty("board.deleteComment");
     }

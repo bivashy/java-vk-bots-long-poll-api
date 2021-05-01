@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesGetHistoryResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
  */
-public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
+public class MessagesGetHistory extends VkApiGetMethod<MessagesGetHistoryResult> {
     /**
      * Offset needed to return a specific subset of messages.
      */
@@ -69,17 +69,17 @@ public class MessagesGetHistory extends GetMethod<MessagesGetHistoryResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("offset", offset),
-                keyVal("count", count),
-                keyVal("user_id", userId),
-                keyVal("peer_id", peerId),
-                keyVal("start_message_id", startMessageId),
-                keyVal("rev", rev, true),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("offset", offset),
+                param("count", count),
+                param("user_id", userId),
+                param("peer_id", peerId),
+                param("start_message_id", startMessageId),
+                param("rev", rev, true),
+                param("extended", extended, true),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 

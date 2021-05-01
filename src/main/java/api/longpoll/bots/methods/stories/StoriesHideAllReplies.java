@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.hideAllReplies">https://vk.com/dev/stories.hideAllReplies</a>
  */
-public class StoriesHideAllReplies extends GetMethod<IntegerResult> {
+public class StoriesHideAllReplies extends VkApiGetMethod<IntegerResult> {
     /**
      * ID of the user whose replies should be hidden.
      */
@@ -33,10 +33,10 @@ public class StoriesHideAllReplies extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("owner_id", ownerId),
-                keyVal("group_id", groupId)
+                param("owner_id", ownerId),
+                param("group_id", groupId)
         );
     }
 

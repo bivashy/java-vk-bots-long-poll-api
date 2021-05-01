@@ -6,7 +6,7 @@
     <groupId>com.github.yvasyliev</groupId>
     <artifactId>java-vk-bots-longpoll-api</artifactId>
     <packaging>jar</packaging>
-    <version>1.4.2</version>
+    <version>1.5.0</version>
 
     <name>Java VK Bots Long Poll API</name>
     <description>A Java library to create VK bots using Bots Long Poll API</description>
@@ -26,29 +26,22 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <gson.version>2.8.6</gson.version>
         <slf4j.version>1.7.30</slf4j.version>
         <log4j12.version>1.7.30</log4j12.version>
-        <jsoup.version>1.13.1</jsoup.version>
+        <unirest.version>3.11.09</unirest.version>
         <junit.version>5.7.1</junit.version>
-        <junit.platform.version>1.1.0</junit.platform.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>${jsoup.version}</version>
+            <groupId>com.konghq</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>${unirest.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -202,7 +195,7 @@
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit.platform.version}</version>
+                        <version>1.1.0</version>
                     </dependency>
                 </dependencies>
             </plugin>

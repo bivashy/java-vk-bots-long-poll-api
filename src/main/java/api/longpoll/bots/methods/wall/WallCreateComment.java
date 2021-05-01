@@ -1,15 +1,15 @@
 package api.longpoll.bots.methods.wall;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.wall.WallCreateCommentResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
-import org.jsoup.Connection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
  */
-public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
+public class WallCreateComment extends VkApiGetMethod<WallCreateCommentResult> {
     /**
      * User ID or community ID.
      */
@@ -68,16 +68,16 @@ public class WallCreateComment extends GetMethod<WallCreateCommentResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("owner_id", ownerId),
-                keyVal("post_id", postId),
-                keyVal("from_group", fromGroupId),
-                keyVal("message", message),
-                keyVal("reply_to_comment", replyToComment),
-                keyVal("attachments", attachments),
-                keyVal("sticker_id", stickerId),
-                keyVal("guid", guid)
+                param("owner_id", ownerId),
+                param("post_id", postId),
+                param("from_group", fromGroupId),
+                param("message", message),
+                param("reply_to_comment", replyToComment),
+                param("attachments", attachments),
+                param("sticker_id", stickerId),
+                param("guid", guid)
         );
     }
 

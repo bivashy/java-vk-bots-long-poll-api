@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsGetBannedResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getBanned">https://vk.com/dev/groups.getBanned</a>
  */
-public class GroupsGetBanned extends GetMethod<GroupsGetBannedResult> {
+public class GroupsGetBanned extends VkApiGetMethod<GroupsGetBannedResult> {
     /**
      * Community ID.
      */
@@ -49,13 +49,13 @@ public class GroupsGetBanned extends GetMethod<GroupsGetBannedResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("offset", offset),
-                keyVal("count", count),
-                keyVal("fields", fields),
-                keyVal("owner_id", ownerId)
+                param("group_id", groupId),
+                param("offset", offset),
+                param("count", count),
+                param("fields", fields),
+                param("owner_id", ownerId)
         );
     }
 

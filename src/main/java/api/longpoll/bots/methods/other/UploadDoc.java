@@ -1,16 +1,16 @@
 package api.longpoll.bots.methods.other;
 
-import api.longpoll.bots.methods.PostMethod;
+import api.longpoll.bots.methods.VkApiPostMethod;
 import api.longpoll.bots.model.objects.media.FileType;
 import api.longpoll.bots.model.response.other.UploadDocResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
  * Implements uploading document in VK API.
  */
-public class UploadDoc extends PostMethod<UploadDocResult> {
+public class UploadDoc extends VkApiPostMethod<UploadDocResult> {
     /**
      * Upload URL.
      */
@@ -22,7 +22,7 @@ public class UploadDoc extends PostMethod<UploadDocResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of();
     }
 

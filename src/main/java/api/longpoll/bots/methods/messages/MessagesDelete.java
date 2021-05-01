@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesDeleteResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
  */
-public class MessagesDelete extends GetMethod<MessagesDeleteResult> {
+public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
     /**
      * Message IDs.
      */
@@ -44,12 +44,12 @@ public class MessagesDelete extends GetMethod<MessagesDeleteResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("message_ids", messageIds),
-                keyVal("spam", spam, true),
-                keyVal("group_id", groupId),
-                keyVal("delete_for_all", deleteForAll, true)
+                param("message_ids", messageIds),
+                param("spam", spam, true),
+                param("group_id", groupId),
+                param("delete_for_all", deleteForAll, true)
         );
     }
 

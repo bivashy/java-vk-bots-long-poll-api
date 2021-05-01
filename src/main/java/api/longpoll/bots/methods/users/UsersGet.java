@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.users;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.users.UsersGetResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/users.get">https://vk.com/dev/users.get</a>
  */
-public class UsersGet extends GetMethod<UsersGetResult> {
+public class UsersGet extends VkApiGetMethod<UsersGetResult> {
     /**
      * User IDs or screen names (screen_name).
      */
@@ -39,11 +39,11 @@ public class UsersGet extends GetMethod<UsersGetResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("user_ids", userIds),
-                keyVal("fields", fields),
-                keyVal("name_case", nameCase)
+                param("user_ids", userIds),
+                param("fields", fields),
+                param("name_case", nameCase)
         );
     }
 

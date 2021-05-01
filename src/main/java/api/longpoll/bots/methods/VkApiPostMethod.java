@@ -1,12 +1,12 @@
 package api.longpoll.bots.methods;
 
 import api.longpoll.bots.model.objects.media.FileType;
-import org.jsoup.Connection;
+import kong.unirest.HttpRequest;
+import kong.unirest.HttpRequestWithBody;
+import kong.unirest.Unirest;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Executes generic POST HTTP request to VK API.
@@ -14,25 +14,22 @@ import java.io.InputStream;
  * These request do not require neither <b>access token</b> not <b>API version</b> as parameters.
  *
  * @param <Response> VK API response type.
- * @see Method
+ * @see VkApiMethod
  */
-public abstract class PostMethod<Response> extends Method<Response> {
+public abstract class VkApiPostMethod<Response> extends VkApiMethod<Response> {
     /**
      * File to be uploaded to VK server.
      */
     private File file;
 
     @Override
-    protected Connection.Response execute(Connection connection) throws IOException {
-        try (InputStream inputStream = new FileInputStream(file)) {
-            connection.data(getType().name, file.getName(), inputStream);
-            return super.execute(connection);
-        }
+    protected String execute(HttpRequest<?> httpRequest) throws IOException {
+        return super.execute(((HttpRequestWithBody) httpRequest).field(getType().name, file));
     }
 
     @Override
-    protected Connection.Method getMethod() {
-        return Connection.Method.POST;
+    protected HttpRequest<?> httpRequest() {
+        return Unirest.post(getApi());
     }
 
     /**
@@ -43,11 +40,7 @@ public abstract class PostMethod<Response> extends Method<Response> {
      */
     protected abstract FileType getType();
 
-    public File getFile() {
-        return file;
-    }
-
-    public PostMethod<Response> setFile(File file) {
+    public VkApiPostMethod<Response> setFile(File file) {
         this.file = file;
         return this;
     }

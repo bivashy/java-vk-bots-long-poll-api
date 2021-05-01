@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.board;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/board.deleteComment">https://vk.com/dev/board.deleteComment</a>
  */
-public class BoardDeleteComment extends GetMethod<IntegerResult> {
+public class BoardDeleteComment extends VkApiGetMethod<IntegerResult> {
     /**
      * ID of the community that owns the discussion board.
      */
@@ -38,11 +38,11 @@ public class BoardDeleteComment extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("topic_id", topicId),
-                keyVal("comment_id", commentId)
+                param("group_id", groupId),
+                param("topic_id", topicId),
+                param("comment_id", commentId)
         );
     }
 

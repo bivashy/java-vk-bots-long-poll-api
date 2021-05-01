@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesDeleteChatPhotoResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.deleteChatPhoto">https://vk.com/dev/messages.deleteChatPhoto</a>
  */
-public class MessagesDeleteChatPhoto extends GetMethod<MessagesDeleteChatPhotoResult> {
+public class MessagesDeleteChatPhoto extends VkApiGetMethod<MessagesDeleteChatPhotoResult> {
     /**
      * Chat ID.
      */
@@ -33,10 +33,10 @@ public class MessagesDeleteChatPhoto extends GetMethod<MessagesDeleteChatPhotoRe
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("chat_id", chatId),
-                keyVal("group_id", groupId)
+                param("chat_id", chatId),
+                param("group_id", groupId)
         );
     }
 

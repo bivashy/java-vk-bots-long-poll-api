@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsIsMemberResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
  */
-public class GroupsIsMember extends GetMethod<GroupsIsMemberResult> {
+public class GroupsIsMember extends VkApiGetMethod<GroupsIsMemberResult> {
     /**
      * ID or screen name of the community.
      */
@@ -44,12 +44,12 @@ public class GroupsIsMember extends GetMethod<GroupsIsMemberResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("user_id", userId),
-                keyVal("user_ids", userIds),
-                keyVal("extended", extended, true)
+                param("group_id", groupId),
+                param("user_id", userId),
+                param("user_ids", userIds),
+                param("extended", extended, true)
         );
     }
 

@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsGetByIdResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getById">https://vk.com/dev/groups.getById</a>
  */
-public class GroupsGetById extends GetMethod<GroupsGetByIdResult> {
+public class GroupsGetById extends VkApiGetMethod<GroupsGetByIdResult> {
     /**
      * IDs or screen names of communities.
      */
@@ -39,11 +39,11 @@ public class GroupsGetById extends GetMethod<GroupsGetByIdResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_ids", groupIds),
-                keyVal("group_id", groupId),
-                keyVal("fields", fields)
+                param("group_ids", groupIds),
+                param("group_id", groupId),
+                param("fields", fields)
         );
     }
 

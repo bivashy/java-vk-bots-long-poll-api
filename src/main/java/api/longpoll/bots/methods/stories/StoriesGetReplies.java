@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.stories.StoriesGetRepliesResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.getReplies">https://vk.com/dev/stories.getReplies</a>
  */
-public class StoriesGetReplies extends GetMethod<StoriesGetRepliesResult> {
+public class StoriesGetReplies extends VkApiGetMethod<StoriesGetRepliesResult> {
     /**
      * Story owner ID.
      */
@@ -49,13 +49,13 @@ public class StoriesGetReplies extends GetMethod<StoriesGetRepliesResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("owner_id", ownerId),
-                keyVal("story_id", storyId),
-                keyVal("access_key", accessKey),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields)
+                param("owner_id", ownerId),
+                param("story_id", storyId),
+                param("access_key", accessKey),
+                param("extended", extended, true),
+                param("fields", fields)
         );
     }
 

@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesGetConversationMembersResult;
-import org.jsoup.Connection;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getConversationMembers">https://vk.com/dev/messages.getConversationMembers</a>
  */
-public class MessagesGetConversationMembers extends GetMethod<MessagesGetConversationMembersResult> {
+public class MessagesGetConversationMembers extends VkApiGetMethod<MessagesGetConversationMembersResult> {
     /**
      * Destination ID.
      */
@@ -39,11 +39,11 @@ public class MessagesGetConversationMembers extends GetMethod<MessagesGetConvers
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("peer_id", peerId),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 

@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsGetTokenPermissionsResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getTokenPermissions">https://vk.com/dev/groups.getTokenPermissions</a>
  */
-public class GroupsGetTokenPermissions extends GetMethod<GroupsGetTokenPermissionsResult> {
+public class GroupsGetTokenPermissions extends VkApiGetMethod<GroupsGetTokenPermissionsResult> {
     public GroupsGetTokenPermissions(String accessToken) {
         super(accessToken);
     }
@@ -23,7 +23,7 @@ public class GroupsGetTokenPermissions extends GetMethod<GroupsGetTokenPermissio
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of();
     }
 

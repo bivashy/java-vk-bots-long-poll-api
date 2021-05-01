@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.utils.UtilsGetLinkStatsResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
  */
-public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
+public class UtilsGetLinkStats extends VkApiGetMethod<UtilsGetLinkStatsResult> {
     /**
      * Part of the link after "vk.cc/".
      */
@@ -53,14 +53,14 @@ public class UtilsGetLinkStats extends GetMethod<UtilsGetLinkStatsResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("key", key),
-                keyVal("source", source),
-                keyVal("access_key", accessKey),
-                keyVal("interval", interval),
-                keyVal("intervals_count", intervalsCount),
-                keyVal("extended", extended, true)
+                param("key", key),
+                param("source", source),
+                param("access_key", accessKey),
+                param("interval", interval),
+                param("intervals_count", intervalsCount),
+                param("extended", extended, true)
         );
     }
 

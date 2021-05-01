@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsAddressResult;
 import com.google.gson.JsonObject;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.addAddress">https://vk.com/dev/groups.addAddress</a>
  */
-public class GroupsAddAddress extends GetMethod<GroupsAddressResult> {
+public class GroupsAddAddress extends VkApiGetMethod<GroupsAddressResult> {
     /**
      * Group ID.
      */
@@ -89,21 +89,21 @@ public class GroupsAddAddress extends GetMethod<GroupsAddressResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("title", title),
-                keyVal("address", address),
-                keyVal("additional_address", additionalAddress),
-                keyVal("country_id", countryId),
-                keyVal("city_id", cityId),
-                keyVal("metro_id", metroId),
-                keyVal("latitude", latitude),
-                keyVal("longitude", longitude),
-                keyVal("phone", phone),
-                keyVal("work_info_status", workInfoStatus),
-                keyVal("timetable", timeTable),
-                keyVal("is_main_address", mainAddress, true)
+                param("group_id", groupId),
+                param("title", title),
+                param("address", address),
+                param("additional_address", additionalAddress),
+                param("country_id", countryId),
+                param("city_id", cityId),
+                param("metro_id", metroId),
+                param("latitude", latitude),
+                param("longitude", longitude),
+                param("phone", phone),
+                param("work_info_status", workInfoStatus),
+                param("timetable", timeTable),
+                param("is_main_address", mainAddress, true)
         );
     }
 

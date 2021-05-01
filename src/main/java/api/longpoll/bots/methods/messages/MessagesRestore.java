@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.restore">https://vk.com/dev/messages.restore</a>
  */
-public class MessagesRestore extends GetMethod<IntegerResult> {
+public class MessagesRestore extends VkApiGetMethod<IntegerResult> {
     /**
      * ID of a previously-deleted message to restore.
      */
@@ -33,10 +33,10 @@ public class MessagesRestore extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("message_id", messageId),
-                keyVal("group_id", groupId)
+                param("message_id", messageId),
+                param("group_id", groupId)
         );
     }
 

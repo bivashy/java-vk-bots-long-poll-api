@@ -16,9 +16,9 @@ This library keeps on improving. Feel free to create issues or pull requests.
 
 ## Third-party dependencies
 This library uses the next third-party dependencies:
+* Unirest
 * Gson
 * SLF4J
-* Jsoup
 
 ## Requirements
 1. Java 8+
@@ -32,7 +32,7 @@ This library uses the next third-party dependencies:
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
   <artifactId>java-vk-bots-longpoll-api</artifactId>
-  <version>1.4.2</version>
+  <version>1.5.0</version>
 </dependency>
 ```
 4. Extend `LongPollBot` class and override necessary methods:

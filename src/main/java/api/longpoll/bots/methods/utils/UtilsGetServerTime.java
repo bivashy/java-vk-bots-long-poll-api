@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/utils.getServerTime">https://vk.com/dev/utils.getServerTime</a>
  */
-public class UtilsGetServerTime extends GetMethod<IntegerResult> {
+public class UtilsGetServerTime extends VkApiGetMethod<IntegerResult> {
     public UtilsGetServerTime(String accessToken) {
         super(accessToken);
     }
@@ -23,7 +23,7 @@ public class UtilsGetServerTime extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of();
     }
 

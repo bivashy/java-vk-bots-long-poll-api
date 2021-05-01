@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.utils.UtilsGetShortLinkResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/utils.getShortLink">https://vk.com/dev/utils.getShortLink</a>
  */
-public class UtilsGetShortLink extends GetMethod<UtilsGetShortLinkResult> {
+public class UtilsGetShortLink extends VkApiGetMethod<UtilsGetShortLinkResult> {
     /**
      * URL to be shortened.
      */
@@ -33,10 +33,10 @@ public class UtilsGetShortLink extends GetMethod<UtilsGetShortLinkResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("url", url),
-                keyVal("private", isPrivate, true)
+                param("url", url),
+                param("private", isPrivate, true)
         );
     }
 

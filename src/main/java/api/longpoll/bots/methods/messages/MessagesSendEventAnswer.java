@@ -1,11 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.Button;
 import api.longpoll.bots.model.response.IntegerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -13,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.sendMessageEventAnswer">https://vk.com/dev/messages.sendMessageEventAnswer</a>
  */
-public class MessagesSendEventAnswer extends GetMethod<IntegerResult> {
+public class MessagesSendEventAnswer extends VkApiGetMethod<IntegerResult> {
     /**
      * A random string that is returned in the <b>message_event</b> event.
      */
@@ -44,12 +44,12 @@ public class MessagesSendEventAnswer extends GetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("event_id", eventId),
-                keyVal("user_id", userId),
-                keyVal("peer_id", peerId),
-                keyVal("event_data", eventData)
+                param("event_id", eventId),
+                param("user_id", userId),
+                param("peer_id", peerId),
+                param("event_data", eventData)
         );
     }
 

@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.stories.StoriesListResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.save">https://vk.com/dev/stories.save</a>
  */
-public class StoriesSave extends GetMethod<StoriesListResult> {
+public class StoriesSave extends VkApiGetMethod<StoriesListResult> {
     private String uploadResults;
 
     public StoriesSave(String accessToken) {
@@ -25,8 +25,8 @@ public class StoriesSave extends GetMethod<StoriesListResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
-        return Stream.of(keyVal("upload_results", uploadResults));
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+        return Stream.of(param("upload_results", uploadResults));
     }
 
     @Override

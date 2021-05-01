@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesGetInviteLinkResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
  */
-public class MessagesGetInviteLink extends GetMethod<MessagesGetInviteLinkResult> {
+public class MessagesGetInviteLink extends VkApiGetMethod<MessagesGetInviteLinkResult> {
     /**
      * Destination ID.
      */
@@ -38,11 +38,11 @@ public class MessagesGetInviteLink extends GetMethod<MessagesGetInviteLinkResult
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("reset", reset, true),
-                keyVal("group_id", groupId)
+                param("peer_id", peerId),
+                param("reset", reset, true),
+                param("group_id", groupId)
         );
     }
 

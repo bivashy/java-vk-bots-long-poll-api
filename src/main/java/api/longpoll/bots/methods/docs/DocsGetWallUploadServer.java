@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.docs;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/docs.getWallUploadServer">https://vk.com/dev/docs.getWallUploadServer</a>
  */
-public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerResult> {
+public class DocsGetWallUploadServer extends VkApiGetMethod<DocsGetUploadServerResult> {
     /**
      * Community ID
      */
@@ -28,8 +28,8 @@ public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerResult
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
-        return Stream.of(keyVal("group_id", groupId));
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+        return Stream.of(param("group_id", groupId));
     }
 
     @Override

@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
@@ -11,11 +11,11 @@ import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.messages.MessagesSendResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
 import api.longpoll.bots.utils.methods.MessagesUtil;
-import org.jsoup.Connection;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -23,7 +23,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
-public class MessagesSend extends GetMethod<MessagesSendResult> {
+public class MessagesSend extends VkApiGetMethod<MessagesSendResult> {
     /**
      * User ID.
      */
@@ -129,25 +129,25 @@ public class MessagesSend extends GetMethod<MessagesSendResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("user_id", userId),
-                keyVal("random_id", randomId),
-                keyVal("peer_id", peerId),
-                keyVal("domain", domain),
-                keyVal("user_ids", userId),
-                keyVal("user_ids", userIds),
-                keyVal("message", message),
-                keyVal("lat", latitude),
-                keyVal("long", longitude),
-                keyVal("attachment", attachments),
-                keyVal("reply_to", replyTo),
-                keyVal("forward_messages", forwardMessages),
-                keyVal("sticker_id", stickerId),
-                keyVal("dont_parse_links", dontParseLinks, true),
-                keyVal("disable_mentions", disableMentions, true),
-                keyVal("keyboard", keyboard),
-                keyVal("template", template)
+                param("user_id", userId),
+                param("random_id", randomId),
+                param("peer_id", peerId),
+                param("domain", domain),
+                param("user_ids", userId),
+                param("user_ids", userIds),
+                param("message", message),
+                param("lat", latitude),
+                param("long", longitude),
+                param("attachment", attachments),
+                param("reply_to", replyTo),
+                param("forward_messages", forwardMessages),
+                param("sticker_id", stickerId),
+                param("dont_parse_links", dontParseLinks, true),
+                param("disable_mentions", disableMentions, true),
+                param("keyboard", keyboard),
+                param("template", template)
         );
     }
 

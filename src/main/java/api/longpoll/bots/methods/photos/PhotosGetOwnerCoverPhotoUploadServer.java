@@ -1,10 +1,10 @@
 package api.longpoll.bots.methods.photos;
 
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.photos.PhotosGetOwnerCoverPhotoUploadServerResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer">https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer</a>
  */
-public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwnerCoverPhotoUploadServerResult> {
+public class PhotosGetOwnerCoverPhotoUploadServer extends VkApiGetMethod<PhotosGetOwnerCoverPhotoUploadServerResult> {
     /**
      * Community ID.
      */
@@ -48,13 +48,13 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<PhotosGetOwn
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("crop_x", cropX),
-                keyVal("crop_y", cropY),
-                keyVal("crop_x2", cropX2),
-                keyVal("crop_y2", cropY2)
+                param("group_id", groupId),
+                param("crop_x", cropX),
+                param("crop_y", cropY),
+                param("crop_x2", cropX2),
+                param("crop_y2", cropY2)
         );
     }
 
