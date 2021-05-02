@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.groups;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsAddCallbackServerResult;
+import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 

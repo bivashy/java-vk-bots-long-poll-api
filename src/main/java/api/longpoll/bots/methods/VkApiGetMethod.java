@@ -1,9 +1,8 @@
 package api.longpoll.bots.methods;
 
-import kong.unirest.HttpRequest;
-import kong.unirest.Unirest;
+import org.jsoup.Connection;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * Executes generic GET HTTP request to VK API.
@@ -35,17 +34,17 @@ public abstract class VkApiGetMethod<Response> extends VkApiMethod<Response> {
     }
 
     @Override
-    protected Map<String, Object> getData() {
-        Map<String, Object> requestParams = super.getData();
+    protected List<Connection.KeyVal> getData() {
+        List<Connection.KeyVal> requestParams = super.getData();
 
-        requestParams.put(ACCESS_TOKEN, accessToken);
-        requestParams.put(VERSION, VkApi.getInstance().apiVersion());
+        requestParams.add(keyVal(ACCESS_TOKEN, accessToken));
+        requestParams.add(keyVal(VERSION, VkApi.getInstance().apiVersion()));
 
         return requestParams;
     }
 
     @Override
-    protected HttpRequest<?> httpRequest() {
-        return Unirest.get(getApi());
+    protected Connection.Method getMethod() {
+        return Connection.Method.GET;
     }
 }
