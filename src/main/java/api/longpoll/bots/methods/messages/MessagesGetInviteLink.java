@@ -1,14 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesGetInviteLinkResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.messages.MessagesGetInviteLinkResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
  */
-public class MessagesGetInviteLink extends GetMethod<GenericResult<MessagesGetInviteLinkResponse>> {
+public class MessagesGetInviteLink extends VkApiGetMethod<MessagesGetInviteLinkResult> {
     /**
      * Destination ID.
      */
@@ -42,21 +38,17 @@ public class MessagesGetInviteLink extends GetMethod<GenericResult<MessagesGetIn
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesGetInviteLinkResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<MessagesGetInviteLinkResponse>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("reset", reset, true),
-                keyVal("group_id", groupId)
+                param("peer_id", peerId),
+                param("reset", reset, true),
+                param("group_id", groupId)
         );
     }
 
-    public Integer getPeerId() {
-        return peerId;
+    @Override
+    protected Class<? extends MessagesGetInviteLinkResult> getResultType() {
+        return MessagesGetInviteLinkResult.class;
     }
 
     public MessagesGetInviteLink setPeerId(Integer peerId) {
@@ -64,17 +56,9 @@ public class MessagesGetInviteLink extends GetMethod<GenericResult<MessagesGetIn
         return this;
     }
 
-    public Boolean getReset() {
-        return reset;
-    }
-
     public MessagesGetInviteLink setReset(Boolean reset) {
         this.reset = reset;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetInviteLink setGroupId(Integer groupId) {

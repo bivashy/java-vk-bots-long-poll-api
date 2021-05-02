@@ -1,13 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.IntegerResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -15,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.removeChatUser">https://vk.com/dev/messages.removeChatUser</a>
  */
-public class MessagesRemoveChatUser extends GetMethod<GenericResult<Integer>> {
+public class MessagesRemoveChatUser extends VkApiGetMethod<IntegerResult> {
     /**
      * Chat ID.
      */
@@ -41,21 +38,17 @@ public class MessagesRemoveChatUser extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("chat_id", chatId),
-                keyVal("user_id", userId),
-                keyVal("member_id", memberId)
+                param("chat_id", chatId),
+                param("user_id", userId),
+                param("member_id", memberId)
         );
     }
 
-    public Integer getChatId() {
-        return chatId;
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public MessagesRemoveChatUser setChatId(Integer chatId) {
@@ -63,17 +56,9 @@ public class MessagesRemoveChatUser extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
     public MessagesRemoveChatUser setUserId(Integer userId) {
         this.userId = userId;
         return this;
-    }
-
-    public Integer getMemberId() {
-        return memberId;
     }
 
     public MessagesRemoveChatUser setMemberId(Integer memberId) {

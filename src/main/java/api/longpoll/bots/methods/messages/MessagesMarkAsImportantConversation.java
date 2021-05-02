@@ -1,13 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.IntegerResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -15,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.markAsImportantConversation">https://vk.com/dev/messages.markAsImportantConversation</a>
  */
-public class MessagesMarkAsImportantConversation extends GetMethod<GenericResult<Integer>> {
+public class MessagesMarkAsImportantConversation extends VkApiGetMethod<IntegerResult> {
     /**
      * Peer Id.
      */
@@ -41,21 +38,17 @@ public class MessagesMarkAsImportantConversation extends GetMethod<GenericResult
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("answered", answered, true),
-                keyVal("group_id", groupId)
+                param("peer_id", peerId),
+                param("answered", answered, true),
+                param("group_id", groupId)
         );
     }
 
-    public Integer getPeerId() {
-        return peerId;
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public MessagesMarkAsImportantConversation setPeerId(Integer peerId) {
@@ -63,17 +56,9 @@ public class MessagesMarkAsImportantConversation extends GetMethod<GenericResult
         return this;
     }
 
-    public Boolean getAnswered() {
-        return answered;
-    }
-
     public MessagesMarkAsImportantConversation setAnswered(Boolean answered) {
         this.answered = answered;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesMarkAsImportantConversation setGroupId(Integer groupId) {

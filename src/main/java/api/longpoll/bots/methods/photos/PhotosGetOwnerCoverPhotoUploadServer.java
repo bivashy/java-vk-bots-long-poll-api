@@ -1,14 +1,10 @@
 package api.longpoll.bots.methods.photos;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.photos.PhotosGetOwnerCoverPhotoUploadServerResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.photos.PhotosGetOwnerCoverPhotoUploadServerResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer">https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer</a>
  */
-public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>> {
+public class PhotosGetOwnerCoverPhotoUploadServer extends VkApiGetMethod<PhotosGetOwnerCoverPhotoUploadServerResult> {
     /**
      * Community ID.
      */
@@ -52,23 +48,19 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<GenericResul
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<PhotosGetOwnerCoverPhotoUploadServerResponse>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("crop_x", cropX),
-                keyVal("crop_y", cropY),
-                keyVal("crop_x2", cropX2),
-                keyVal("crop_y2", cropY2)
+                param("group_id", groupId),
+                param("crop_x", cropX),
+                param("crop_y", cropY),
+                param("crop_x2", cropX2),
+                param("crop_y2", cropY2)
         );
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    @Override
+    protected Class<? extends PhotosGetOwnerCoverPhotoUploadServerResult> getResultType() {
+        return PhotosGetOwnerCoverPhotoUploadServerResult.class;
     }
 
     public PhotosGetOwnerCoverPhotoUploadServer setGroupId(Integer groupId) {
@@ -76,17 +68,9 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<GenericResul
         return this;
     }
 
-    public Integer getCropX() {
-        return cropX;
-    }
-
     public PhotosGetOwnerCoverPhotoUploadServer setCropX(Integer cropX) {
         this.cropX = cropX;
         return this;
-    }
-
-    public Integer getCropY() {
-        return cropY;
     }
 
     public PhotosGetOwnerCoverPhotoUploadServer setCropY(Integer cropY) {
@@ -94,17 +78,9 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends GetMethod<GenericResul
         return this;
     }
 
-    public Integer getCropX2() {
-        return cropX2;
-    }
-
     public PhotosGetOwnerCoverPhotoUploadServer setCropX2(Integer cropX2) {
         this.cropX2 = cropX2;
         return this;
-    }
-
-    public Integer getCropY2() {
-        return cropY2;
     }
 
     public PhotosGetOwnerCoverPhotoUploadServer setCropY2(Integer cropY2) {

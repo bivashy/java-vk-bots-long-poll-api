@@ -1,15 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesDeleteChatPhotoResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.messages.MessagesDeleteChatPhotoResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.deleteChatPhoto">https://vk.com/dev/messages.deleteChatPhoto</a>
  */
-public class MessagesDeleteChatPhoto extends GetMethod<GenericResult<MessagesDeleteChatPhotoResponse>> {
+public class MessagesDeleteChatPhoto extends VkApiGetMethod<MessagesDeleteChatPhotoResult> {
     /**
      * Chat ID.
      */
@@ -38,29 +33,21 @@ public class MessagesDeleteChatPhoto extends GetMethod<GenericResult<MessagesDel
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesDeleteChatPhotoResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<MessagesDeleteChatPhotoResponse>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("chat_id", chatId),
-                keyVal("group_id", groupId)
+                param("chat_id", chatId),
+                param("group_id", groupId)
         );
     }
 
-    public Integer getChatId() {
-        return chatId;
+    @Override
+    protected Class<? extends MessagesDeleteChatPhotoResult> getResultType() {
+        return MessagesDeleteChatPhotoResult.class;
     }
 
     public MessagesDeleteChatPhoto setChatId(Integer chatId) {
         this.chatId = chatId;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesDeleteChatPhoto setGroupId(Integer groupId) {

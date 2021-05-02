@@ -1,15 +1,10 @@
 package api.longpoll.bots.methods.photos;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
 
-import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/photos.saveMessagesPhoto">https://vk.com/dev/photos.saveMessagesPhoto</a>
  */
-public class PhotosSaveMessagesPhoto extends GetMethod<GenericResult<List<PhotosSaveMessagesPhotoResponse>>> {
+public class PhotosSaveMessagesPhoto extends VkApiGetMethod<PhotosSaveMessagesPhotoResult> {
     /**
      * Parameter returned when photo upload to the server.
      */
@@ -43,21 +38,17 @@ public class PhotosSaveMessagesPhoto extends GetMethod<GenericResult<List<Photos
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<List<PhotosSaveMessagesPhotoResponse>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<List<PhotosSaveMessagesPhotoResponse>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("photo", photo),
-                keyVal("server", server),
-                keyVal("hash", hash)
+                param("photo", photo),
+                param("server", server),
+                param("hash", hash)
         );
     }
 
-    public String getPhoto() {
-        return photo;
+    @Override
+    protected Class<? extends PhotosSaveMessagesPhotoResult> getResultType() {
+        return PhotosSaveMessagesPhotoResult.class;
     }
 
     public PhotosSaveMessagesPhoto setPhoto(String photo) {
@@ -65,17 +56,9 @@ public class PhotosSaveMessagesPhoto extends GetMethod<GenericResult<List<Photos
         return this;
     }
 
-    public Integer getServer() {
-        return server;
-    }
-
     public PhotosSaveMessagesPhoto setServer(Integer server) {
         this.server = server;
         return this;
-    }
-
-    public String getHash() {
-        return hash;
     }
 
     public PhotosSaveMessagesPhoto setHash(String hash) {

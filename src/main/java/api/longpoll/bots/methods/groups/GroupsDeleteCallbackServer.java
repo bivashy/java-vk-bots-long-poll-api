@@ -1,13 +1,10 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.IntegerResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -15,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.deleteCallbackServer">https://vk.com/dev/groups.deleteCallbackServer</a>
  */
-public class GroupsDeleteCallbackServer extends GetMethod<GenericResult<Integer>> {
+public class GroupsDeleteCallbackServer extends VkApiGetMethod<IntegerResult> {
     /**
      * Community ID.
      */
@@ -36,29 +33,21 @@ public class GroupsDeleteCallbackServer extends GetMethod<GenericResult<Integer>
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("server_id", serverId)
+                param("group_id", groupId),
+                param("server_id", serverId)
         );
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public GroupsDeleteCallbackServer setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Integer getServerId() {
-        return serverId;
     }
 
     public GroupsDeleteCallbackServer setServerId(Integer serverId) {

@@ -1,10 +1,13 @@
 package api.longpoll.bots.model.events;
 
+import api.longpoll.bots.adapters.deserializers.EventDeserializer;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * An event that occurs on VK server.
  */
+@JsonAdapter(EventDeserializer.class)
 public class Event {
     /**
      * Event type.

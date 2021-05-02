@@ -1,14 +1,11 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.stories.StoriesGetViewersResultConverter;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.response.GenericResult;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.stories.StoriesGetViewersResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
-public class StoriesGetViewers extends GetMethod<GenericResult<VkList<Object>>> {
+public class StoriesGetViewers extends VkApiGetMethod<StoriesGetViewersResult> {
     /**
      * Message IDs.
      */
@@ -52,23 +49,19 @@ public class StoriesGetViewers extends GetMethod<GenericResult<VkList<Object>>> 
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<Object>>> getConverter() {
-        return new StoriesGetViewersResultConverter();
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("message_ids", messageIds),
-                keyVal("preview_length", previewLength),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("message_ids", messageIds),
+                param("preview_length", previewLength),
+                param("extended", extended, true),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 
-    public List<Integer> getMessageIds() {
-        return messageIds;
+    @Override
+    protected Class<? extends StoriesGetViewersResult> getResultType() {
+        return StoriesGetViewersResult.class;
     }
 
     public StoriesGetViewers setMessageIds(List<Integer> messageIds) {
@@ -76,17 +69,9 @@ public class StoriesGetViewers extends GetMethod<GenericResult<VkList<Object>>> 
         return this;
     }
 
-    public Integer getPreviewLength() {
-        return previewLength;
-    }
-
     public StoriesGetViewers setPreviewLength(Integer previewLength) {
         this.previewLength = previewLength;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public StoriesGetViewers setExtended(Boolean extended) {
@@ -94,17 +79,9 @@ public class StoriesGetViewers extends GetMethod<GenericResult<VkList<Object>>> 
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public StoriesGetViewers setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public StoriesGetViewers setGroupId(Integer groupId) {

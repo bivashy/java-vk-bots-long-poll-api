@@ -1,15 +1,11 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.stories.StoriesGetUploadServerResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.stories.StoriesGetUploadServerResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.getPhotoUploadServer">https://vk.com/dev/stories.getPhotoUploadServer</a>
  */
-public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<StoriesGetUploadServerResponse>> {
+public class StoriesGetPhotoUploadServer extends VkApiGetMethod<StoriesGetUploadServerResult> {
     /**
      * To add the story to friend's feed.
      */
@@ -85,25 +81,21 @@ public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<Stories
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<StoriesGetUploadServerResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<StoriesGetUploadServerResponse>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("add_to_news", add_to_news, true),
-                keyVal("user_ids", userIds),
-                keyVal("reply_to_story", replyToStory),
-                keyVal("link_text", linkText),
-                keyVal("link_url", linkUrl),
-                keyVal("group_id", groupId),
-                keyVal("clickable_stickers", clickableStickers)
+                param("add_to_news", add_to_news, true),
+                param("user_ids", userIds),
+                param("reply_to_story", replyToStory),
+                param("link_text", linkText),
+                param("link_url", linkUrl),
+                param("group_id", groupId),
+                param("clickable_stickers", clickableStickers)
         );
     }
 
-    public Boolean getAdd_to_news() {
-        return add_to_news;
+    @Override
+    protected Class<? extends StoriesGetUploadServerResult> getResultType() {
+        return StoriesGetUploadServerResult.class;
     }
 
     public StoriesGetPhotoUploadServer setAdd_to_news(Boolean add_to_news) {
@@ -111,17 +103,9 @@ public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<Stories
         return this;
     }
 
-    public String getReplyToStory() {
-        return replyToStory;
-    }
-
     public StoriesGetPhotoUploadServer setReplyToStory(String replyToStory) {
         this.replyToStory = replyToStory;
         return this;
-    }
-
-    public String getLinkText() {
-        return linkText;
     }
 
     public StoriesGetPhotoUploadServer setLinkText(String linkText) {
@@ -129,17 +113,9 @@ public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<Stories
         return this;
     }
 
-    public String getLinkUrl() {
-        return linkUrl;
-    }
-
     public StoriesGetPhotoUploadServer setLinkUrl(String linkUrl) {
         this.linkUrl = linkUrl;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public StoriesGetPhotoUploadServer setGroupId(Integer groupId) {
@@ -147,17 +123,9 @@ public class StoriesGetPhotoUploadServer extends GetMethod<GenericResult<Stories
         return this;
     }
 
-    public String getClickableStickers() {
-        return clickableStickers;
-    }
-
     public StoriesGetPhotoUploadServer setClickableStickers(String clickableStickers) {
         this.clickableStickers = clickableStickers;
         return this;
-    }
-
-    public List<Integer> getUserIds() {
-        return userIds;
     }
 
     public StoriesGetPhotoUploadServer setUserIds(List<Integer> userIds) {

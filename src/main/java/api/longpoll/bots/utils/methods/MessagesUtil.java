@@ -9,17 +9,17 @@ import api.longpoll.bots.methods.other.UploadPhoto;
 import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
 import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
 import api.longpoll.bots.model.objects.media.Doc;
-import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
 import api.longpoll.bots.model.response.other.UploadDocResult;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
-import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResponse;
-import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResponse;
+import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
+import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
 
 import java.io.File;
 
 public class MessagesUtil {
-    public static PhotosSaveMessagesPhotoResponse uploadPhoto(String accessToken, int peerId, File photo) throws BotsLongPollAPIException, BotsLongPollException {
-        PhotosGetMessagesUploadServerResponse uploadServer = new PhotosGetMessagesUploadServer(accessToken)
+    public static PhotosSaveMessagesPhotoResult.Response uploadPhoto(String accessToken, int peerId, File photo) throws BotsLongPollAPIException, BotsLongPollException {
+        PhotosGetMessagesUploadServerResult.Response uploadServer = new PhotosGetMessagesUploadServer(accessToken)
                 .setPeerId(peerId)
                 .execute()
                 .getResponse();
@@ -37,7 +37,7 @@ public class MessagesUtil {
     }
 
     public static Doc uploadDoc(String accessToken, int peerId, File doc) throws BotsLongPollAPIException, BotsLongPollException {
-        DocsGetUploadServerResponse uploadServer = new DocsGetMessagesUploadServer(accessToken)
+        DocsGetUploadServerResult.Response uploadServer = new DocsGetMessagesUploadServer(accessToken)
                 .setType("doc")
                 .setPeerId(peerId)
                 .execute()

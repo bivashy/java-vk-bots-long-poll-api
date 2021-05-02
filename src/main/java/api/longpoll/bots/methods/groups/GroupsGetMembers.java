@@ -1,16 +1,11 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.groups.GroupsGetMembersResultConverter;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.groups.GroupsGetMembersResponseItem;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.groups.GroupsGetMembersResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getMembers">https://vk.com/dev/groups.getMembers</a>
  */
-public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMembersResponseItem>>> {
+public class GroupsGetMembers extends VkApiGetMethod<GroupsGetMembersResult> {
     /**
      * ID or screen name of the community.
      */
@@ -59,24 +54,20 @@ public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMe
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<GroupsGetMembersResponseItem>>> getConverter() {
-        return new GroupsGetMembersResultConverter();
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("sort", sort),
-                keyVal("offset", offset),
-                keyVal("count", count),
-                keyVal("fields", fields),
-                keyVal("filter", filter)
+                param("group_id", groupId),
+                param("sort", sort),
+                param("offset", offset),
+                param("count", count),
+                param("fields", fields),
+                param("filter", filter)
         );
     }
 
-    public String getGroupId() {
-        return groupId;
+    @Override
+    protected Class<? extends GroupsGetMembersResult> getResultType() {
+        return GroupsGetMembersResult.class;
     }
 
     public GroupsGetMembers setGroupId(String groupId) {
@@ -84,17 +75,9 @@ public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMe
         return this;
     }
 
-    public String getSort() {
-        return sort;
-    }
-
     public GroupsGetMembers setSort(String sort) {
         this.sort = sort;
         return this;
-    }
-
-    public Integer getOffset() {
-        return offset;
     }
 
     public GroupsGetMembers setOffset(Integer offset) {
@@ -102,26 +85,14 @@ public class GroupsGetMembers extends GetMethod<GenericResult<VkList<GroupsGetMe
         return this;
     }
 
-    public Integer getCount() {
-        return count;
-    }
-
     public GroupsGetMembers setCount(Integer count) {
         this.count = count;
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public GroupsGetMembers setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public String getFilter() {
-        return filter;
     }
 
     public GroupsGetMembers setFilter(String filter) {

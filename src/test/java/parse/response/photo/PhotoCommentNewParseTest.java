@@ -6,14 +6,14 @@ import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.photos.PhotoCommentEvent;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PhotoCommentNewParseTest {
     @Test
     void messageEdit() {
-        Event event = ParseTestUtil.getFirstEvent("json/response/photo_comment_new/photo_comment_new_sample_5_110.json");
+        Event event = ParseUtil.getFirstEvent("json/response/photo_comment_new/photo_comment_new_sample_5_110.json");
         assertEquals(EventType.PHOTO_COMMENT_NEW, event.getType());
         assertEquals(444, event.getGroupId());
         assertEquals("aaa", event.getEventId());

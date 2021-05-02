@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Stores VK API method links.
+ * Stores VK API URLs. Implements singleton pattern.
  */
 public class VkApi {
     /**
@@ -17,23 +17,26 @@ public class VkApi {
     private static final Logger log = LoggerFactory.getLogger(VkApi.class);
 
     /**
-     * Path to .properties file which contains VK API method links.
+     * Path to <b>.properties</b> file which contains VK API method links.
      */
     private static final String PROPERTIES_FILE = "/vk/API.properties";
 
     /**
-     * VkApi instance.
+     * {@link VkApi} instance.
      */
     private static final VkApi INSTANCE = new VkApi();
 
     /**
-     * Properties object.
+     * Stores VK API URLs. It is loaded during first call of {@link VkApi#getInstance()}.
      */
     private Properties properties = new Properties();
 
     private VkApi() {
     }
 
+    /**
+     * Loads VK API URLs to {@link VkApi#properties}.
+     */
     private void loadProperties() {
         try (InputStream inputStream = getClass().getResourceAsStream(PROPERTIES_FILE)) {
             properties.load(inputStream);
@@ -42,6 +45,12 @@ public class VkApi {
         }
     }
 
+    /**
+     * Implementation of singleton pattern.
+     * Loads {@link VkApi#properties} during first call and return instance of {@link VkApi}.
+     *
+     * @return singleton instance of {@link VkApi}.
+     */
     public static VkApi getInstance() {
         if (INSTANCE.properties.isEmpty()) {
             INSTANCE.loadProperties();
@@ -51,6 +60,10 @@ public class VkApi {
 
     public String apiVersion() {
         return properties.getProperty("api.version");
+    }
+
+    public String apiBaseUrl() {
+        return properties.getProperty("api.baseUrl");
     }
 
     public String boardDeleteComment() {

@@ -1,16 +1,11 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.groups.GroupsGetBannedResponseItem;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.groups.GroupsGetBannedResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getBanned">https://vk.com/dev/groups.getBanned</a>
  */
-public class GroupsGetBanned extends GetMethod<GenericResult<VkList<GroupsGetBannedResponseItem>>> {
+public class GroupsGetBanned extends VkApiGetMethod<GroupsGetBannedResult> {
     /**
      * Community ID.
      */
@@ -54,23 +49,19 @@ public class GroupsGetBanned extends GetMethod<GenericResult<VkList<GroupsGetBan
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<GroupsGetBannedResponseItem>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<VkList<GroupsGetBannedResponseItem>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("offset", offset),
-                keyVal("count", count),
-                keyVal("fields", fields),
-                keyVal("owner_id", ownerId)
+                param("group_id", groupId),
+                param("offset", offset),
+                param("count", count),
+                param("fields", fields),
+                param("owner_id", ownerId)
         );
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    @Override
+    protected Class<? extends GroupsGetBannedResult> getResultType() {
+        return GroupsGetBannedResult.class;
     }
 
     public GroupsGetBanned setGroupId(Integer groupId) {
@@ -78,17 +69,9 @@ public class GroupsGetBanned extends GetMethod<GenericResult<VkList<GroupsGetBan
         return this;
     }
 
-    public Integer getOffset() {
-        return offset;
-    }
-
     public GroupsGetBanned setOffset(Integer offset) {
         this.offset = offset;
         return this;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 
     public GroupsGetBanned setCount(Integer count) {
@@ -96,17 +79,9 @@ public class GroupsGetBanned extends GetMethod<GenericResult<VkList<GroupsGetBan
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public GroupsGetBanned setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
     }
 
     public GroupsGetBanned setOwnerId(Integer ownerId) {

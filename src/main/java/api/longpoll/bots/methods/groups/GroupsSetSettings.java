@@ -1,13 +1,10 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.IntegerResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -15,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.setSettings">https://vk.com/dev/groups.setSettings</a>
  */
-public class GroupsSetSettings extends GetMethod<GenericResult<Integer>> {
+public class GroupsSetSettings extends VkApiGetMethod<IntegerResult> {
     /**
      * Community ID.
      */
@@ -46,22 +43,18 @@ public class GroupsSetSettings extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("messages", messages, true),
-                keyVal("bots_capabilities", botsCapabilities, true),
-                keyVal("bots_add_to_chat", botsAddToChat, true)
+                param("group_id", groupId),
+                param("messages", messages, true),
+                param("bots_capabilities", botsCapabilities, true),
+                param("bots_add_to_chat", botsAddToChat, true)
         );
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public GroupsSetSettings setGroupId(Integer groupId) {
@@ -69,26 +62,14 @@ public class GroupsSetSettings extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public Boolean getMessages() {
-        return messages;
-    }
-
     public GroupsSetSettings setMessages(Boolean messages) {
         this.messages = messages;
         return this;
     }
 
-    public Boolean getBotsCapabilities() {
-        return botsCapabilities;
-    }
-
     public GroupsSetSettings setBotsCapabilities(Boolean botsCapabilities) {
         this.botsCapabilities = botsCapabilities;
         return this;
-    }
-
-    public Boolean getBotsAddToChat() {
-        return botsAddToChat;
     }
 
     public GroupsSetSettings setBotsAddToChat(Boolean botsAddToChat) {

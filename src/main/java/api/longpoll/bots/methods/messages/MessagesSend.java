@@ -1,23 +1,21 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.messages.MessagesSendResultConverter;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.messages.MessagesSendResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
 import api.longpoll.bots.utils.methods.MessagesUtil;
-import org.jsoup.Connection;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -25,7 +23,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
-public class MessagesSend extends GetMethod<GenericResult<Object>> {
+public class MessagesSend extends VkApiGetMethod<MessagesSendResult> {
     /**
      * User ID.
      */
@@ -131,35 +129,35 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Object>> getConverter() {
-        return new MessagesSendResultConverter();
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("user_id", userId),
-                keyVal("random_id", randomId),
-                keyVal("peer_id", peerId),
-                keyVal("domain", domain),
-                keyVal("user_ids", userId),
-                keyVal("user_ids", userIds),
-                keyVal("message", message),
-                keyVal("lat", latitude),
-                keyVal("long", longitude),
-                keyVal("attachment", attachments),
-                keyVal("reply_to", replyTo),
-                keyVal("forward_messages", forwardMessages),
-                keyVal("sticker_id", stickerId),
-                keyVal("dont_parse_links", dontParseLinks, true),
-                keyVal("disable_mentions", disableMentions, true),
-                keyVal("keyboard", keyboard),
-                keyVal("template", template)
+                param("user_id", userId),
+                param("random_id", randomId),
+                param("peer_id", peerId),
+                param("domain", domain),
+                param("user_ids", userId),
+                param("user_ids", userIds),
+                param("message", message),
+                param("lat", latitude),
+                param("long", longitude),
+                param("attachment", attachments),
+                param("reply_to", replyTo),
+                param("forward_messages", forwardMessages),
+                param("sticker_id", stickerId),
+                param("dont_parse_links", dontParseLinks, true),
+                param("disable_mentions", disableMentions, true),
+                param("keyboard", keyboard),
+                param("template", template)
         );
     }
 
     @Override
-    public GenericResult<Object> execute() throws BotsLongPollAPIException, BotsLongPollException {
+    protected Class<? extends MessagesSendResult> getResultType() {
+        return MessagesSendResult.class;
+    }
+
+    @Override
+    public MessagesSendResult execute() throws BotsLongPollAPIException, BotsLongPollException {
         for (File photo : photos) {
             addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(accessToken, peerId, photo)));
         }
@@ -192,17 +190,9 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
     public MessagesSend setUserId(Integer userId) {
         this.userId = userId;
         return this;
-    }
-
-    public Integer getRandomId() {
-        return randomId;
     }
 
     public MessagesSend setRandomId(Integer randomId) {
@@ -210,17 +200,9 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         return this;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesSend setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public String getDomain() {
-        return domain;
     }
 
     public MessagesSend setDomain(String domain) {
@@ -228,17 +210,9 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         return this;
     }
 
-    public Integer getChatId() {
-        return chatId;
-    }
-
     public MessagesSend setChatId(Integer chatId) {
         this.chatId = chatId;
         return this;
-    }
-
-    public List<Integer> getUserIds() {
-        return userIds;
     }
 
     public MessagesSend setUserIds(List<Integer> userIds) {
@@ -246,17 +220,9 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         return this;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
     public MessagesSend setMessage(String message) {
         this.message = message;
         return this;
-    }
-
-    public Float getLatitude() {
-        return latitude;
     }
 
     public MessagesSend setLatitude(Float latitude) {
@@ -264,17 +230,9 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         return this;
     }
 
-    public Float getLongitude() {
-        return longitude;
-    }
-
     public MessagesSend setLongitude(Float longitude) {
         this.longitude = longitude;
         return this;
-    }
-
-    public List<String> getAttachments() {
-        return attachments;
     }
 
     public MessagesSend setAttachments(List<String> attachments) {
@@ -282,17 +240,9 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         return this;
     }
 
-    public Integer getReplyTo() {
-        return replyTo;
-    }
-
     public MessagesSend setReplyTo(Integer replyTo) {
         this.replyTo = replyTo;
         return this;
-    }
-
-    public List<Integer> getForwardMessages() {
-        return forwardMessages;
     }
 
     public MessagesSend setForwardMessages(List<Integer> forwardMessages) {
@@ -300,17 +250,9 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         return this;
     }
 
-    public Integer getStickerId() {
-        return stickerId;
-    }
-
     public MessagesSend setStickerId(Integer stickerId) {
         this.stickerId = stickerId;
         return this;
-    }
-
-    public Boolean getDontParseLinks() {
-        return dontParseLinks;
     }
 
     public MessagesSend setDontParseLinks(Boolean dontParseLinks) {
@@ -318,26 +260,14 @@ public class MessagesSend extends GetMethod<GenericResult<Object>> {
         return this;
     }
 
-    public Boolean getDisableMentions() {
-        return disableMentions;
-    }
-
     public MessagesSend setDisableMentions(Boolean disableMentions) {
         this.disableMentions = disableMentions;
         return this;
     }
 
-    public Keyboard getKeyboard() {
-        return keyboard;
-    }
-
     public MessagesSend setKeyboard(Keyboard keyboard) {
         this.keyboard = keyboard;
         return this;
-    }
-
-    public Template getTemplate() {
-        return template;
     }
 
     public MessagesSend setTemplate(Template template) {

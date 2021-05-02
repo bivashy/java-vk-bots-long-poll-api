@@ -1,14 +1,10 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.groups.GroupsGetCallbackConfirmationCodeResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.groups.GroupsGetCallbackConfirmationCodeResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.getCallbackConfirmationCode">https://vk.com/dev/groups.getCallbackConfirmationCode</a>
  */
-public class GroupsGetCallbackConfirmationCode extends GetMethod<GenericResult<GroupsGetCallbackConfirmationCodeResponse>> {
+public class GroupsGetCallbackConfirmationCode extends VkApiGetMethod<GroupsGetCallbackConfirmationCodeResult> {
     /**
      * Community ID.
      */
@@ -32,17 +28,13 @@ public class GroupsGetCallbackConfirmationCode extends GetMethod<GenericResult<G
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<GroupsGetCallbackConfirmationCodeResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<GroupsGetCallbackConfirmationCodeResponse>>(){}.getType());
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+        return Stream.of(param("group_id", groupId));
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
-        return Stream.of(keyVal("group_id", groupId));
-    }
-
-    public Integer getGroupId() {
-        return groupId;
+    protected Class<? extends GroupsGetCallbackConfirmationCodeResult> getResultType() {
+        return GroupsGetCallbackConfirmationCodeResult.class;
     }
 
     public GroupsGetCallbackConfirmationCode setGroupId(Integer groupId) {

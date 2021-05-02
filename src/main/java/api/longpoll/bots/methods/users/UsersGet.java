@@ -1,15 +1,11 @@
 package api.longpoll.bots.methods.users;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.basic.User;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.users.UsersGetResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/users.get">https://vk.com/dev/users.get</a>
  */
-public class UsersGet extends GetMethod<GenericResult<List<User>>> {
+public class UsersGet extends VkApiGetMethod<UsersGetResult> {
     /**
      * User IDs or screen names (screen_name).
      */
@@ -43,21 +39,17 @@ public class UsersGet extends GetMethod<GenericResult<List<User>>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<List<User>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<List<User>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("user_ids", userIds),
-                keyVal("fields", fields),
-                keyVal("name_case", nameCase)
+                param("user_ids", userIds),
+                param("fields", fields),
+                param("name_case", nameCase)
         );
     }
 
-    public List<String> getUserIds() {
-        return userIds;
+    @Override
+    protected Class<? extends UsersGetResult> getResultType() {
+        return UsersGetResult.class;
     }
 
     public UsersGet setUserIds(List<String> userIds) {
@@ -65,17 +57,9 @@ public class UsersGet extends GetMethod<GenericResult<List<User>>> {
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public UsersGet setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public String getNameCase() {
-        return nameCase;
     }
 
     public UsersGet setNameCase(String nameCase) {

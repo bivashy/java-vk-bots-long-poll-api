@@ -1,22 +1,19 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.GenericResult;
+import api.longpoll.bots.model.response.IntegerResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
 import api.longpoll.bots.utils.methods.MessagesUtil;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -24,7 +21,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
  */
-public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
+public class MessagesEdit extends VkApiGetMethod<IntegerResult> {
     /**
      * Destination ID.
      */
@@ -100,30 +97,29 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>() {
-        }.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("message", message),
-                keyVal("lat", latitude),
-                keyVal("long", longitude),
-                keyVal("attachment", attachments),
-                keyVal("keep_forward_messages", keepForwardMessages, true),
-                keyVal("keep_snippets", keepSnippets, true),
-                keyVal("group_id", groupId),
-                keyVal("dont_parse_links", dontParseLinks, true),
-                keyVal("message_id", messageId),
-                keyVal("conversation_message_id", conversationMessageId)
+                param("peer_id", peerId),
+                param("message", message),
+                param("lat", latitude),
+                param("long", longitude),
+                param("attachment", attachments),
+                param("keep_forward_messages", keepForwardMessages, true),
+                param("keep_snippets", keepSnippets, true),
+                param("group_id", groupId),
+                param("dont_parse_links", dontParseLinks, true),
+                param("message_id", messageId),
+                param("conversation_message_id", conversationMessageId)
         );
     }
 
     @Override
-    public GenericResult<Integer> execute() throws BotsLongPollAPIException, BotsLongPollException {
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
+    }
+
+    @Override
+    public IntegerResult execute() throws BotsLongPollAPIException, BotsLongPollException {
         for (File photo : photos) {
             addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(accessToken, peerId, photo)));
         }
@@ -156,17 +152,9 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesEdit setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public MessagesEdit setMessage(String message) {
@@ -174,17 +162,9 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public Float getLatitude() {
-        return latitude;
-    }
-
     public MessagesEdit setLatitude(Float latitude) {
         this.latitude = latitude;
         return this;
-    }
-
-    public Float getLongitude() {
-        return longitude;
     }
 
     public MessagesEdit setLongitude(Float longitude) {
@@ -192,17 +172,9 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public List<String> getAttachments() {
-        return attachments;
-    }
-
     public MessagesEdit setAttachments(List<String> attachments) {
         this.attachments = attachments;
         return this;
-    }
-
-    public Boolean getKeepForwardMessages() {
-        return keepForwardMessages;
     }
 
     public MessagesEdit setKeepForwardMessages(Boolean keepForwardMessages) {
@@ -210,17 +182,9 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public Boolean getKeepSnippets() {
-        return keepSnippets;
-    }
-
     public MessagesEdit setKeepSnippets(Boolean keepSnippets) {
         this.keepSnippets = keepSnippets;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesEdit setGroupId(Integer groupId) {
@@ -228,26 +192,14 @@ public class MessagesEdit extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public Boolean getDontParseLinks() {
-        return dontParseLinks;
-    }
-
     public MessagesEdit setDontParseLinks(Boolean dontParseLinks) {
         this.dontParseLinks = dontParseLinks;
         return this;
     }
 
-    public Integer getMessageId() {
-        return messageId;
-    }
-
     public MessagesEdit setMessageId(Integer messageId) {
         this.messageId = messageId;
         return this;
-    }
-
-    public Integer getConversationMessageId() {
-        return conversationMessageId;
     }
 
     public MessagesEdit setConversationMessageId(Integer conversationMessageId) {

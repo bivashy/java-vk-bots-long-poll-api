@@ -1,13 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.messages.MessagesDeleteResult;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
  */
-public class MessagesDelete extends GetMethod<GenericResult<Map<String, Integer>>> {
+public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
     /**
      * Message IDs.
      */
@@ -49,22 +44,18 @@ public class MessagesDelete extends GetMethod<GenericResult<Map<String, Integer>
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Map<String, Integer>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Map<String, Integer>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("message_ids", messageIds),
-                keyVal("spam", spam, true),
-                keyVal("group_id", groupId),
-                keyVal("delete_for_all", deleteForAll, true)
+                param("message_ids", messageIds),
+                param("spam", spam, true),
+                param("group_id", groupId),
+                param("delete_for_all", deleteForAll, true)
         );
     }
 
-    public List<Integer> getMessageIds() {
-        return messageIds;
+    @Override
+    protected Class<? extends MessagesDeleteResult> getResultType() {
+        return MessagesDeleteResult.class;
     }
 
     public MessagesDelete setMessageIds(List<Integer> messageIds) {
@@ -72,26 +63,14 @@ public class MessagesDelete extends GetMethod<GenericResult<Map<String, Integer>
         return this;
     }
 
-    public Boolean getSpam() {
-        return spam;
-    }
-
     public MessagesDelete setSpam(Boolean spam) {
         this.spam = spam;
         return this;
     }
 
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public MessagesDelete setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public Boolean getDeleteForAll() {
-        return deleteForAll;
     }
 
     public MessagesDelete setDeleteForAll(Boolean deleteForAll) {

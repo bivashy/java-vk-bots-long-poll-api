@@ -1,17 +1,16 @@
 package api.longpoll.bots.methods.other;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.PostMethod;
+import api.longpoll.bots.methods.VkApiPostMethod;
+import api.longpoll.bots.model.objects.media.FileType;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
  * Implements uploading photo in VK API.
  */
-public class UploadPhoto extends PostMethod<UploadPhotoResult> {
+public class UploadPhoto extends VkApiPostMethod<UploadPhotoResult> {
     /**
      * Upload URL.
      */
@@ -23,22 +22,18 @@ public class UploadPhoto extends PostMethod<UploadPhotoResult> {
     }
 
     @Override
-    protected JsonToPojoConverter<UploadPhotoResult> getConverter() {
-        return JsonToPojoConverterFactory.get(UploadPhotoResult.class);
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of();
     }
 
     @Override
-    protected String getType() {
-        return "photo";
+    protected Class<? extends UploadPhotoResult> getResultType() {
+        return UploadPhotoResult.class;
     }
 
-    public String getUploadUrl() {
-        return uploadUrl;
+    @Override
+    protected FileType getType() {
+        return FileType.PHOTO;
     }
 
     public UploadPhoto setUploadUrl(String uploadUrl) {

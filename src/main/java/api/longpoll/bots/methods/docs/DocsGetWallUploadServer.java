@@ -1,12 +1,10 @@
 package api.longpoll.bots.methods.docs;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.docs.DocsGetUploadServerResponse;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -14,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/docs.getWallUploadServer">https://vk.com/dev/docs.getWallUploadServer</a>
  */
-public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerResponse> {
+public class DocsGetWallUploadServer extends VkApiGetMethod<DocsGetUploadServerResult> {
     /**
      * Community ID
      */
@@ -30,17 +28,13 @@ public class DocsGetWallUploadServer extends GetMethod<DocsGetUploadServerRespon
     }
 
     @Override
-    protected JsonToPojoConverter<DocsGetUploadServerResponse> getConverter() {
-        return JsonToPojoConverterFactory.get(DocsGetUploadServerResponse.class);
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+        return Stream.of(param("group_id", groupId));
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
-        return Stream.of(keyVal("group_id", groupId));
-    }
-
-    public Integer getGroupId() {
-        return groupId;
+    protected Class<? extends DocsGetUploadServerResult> getResultType() {
+        return DocsGetUploadServerResult.class;
     }
 
     public DocsGetWallUploadServer setGroupId(Integer groupId) {

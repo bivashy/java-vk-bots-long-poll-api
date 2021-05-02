@@ -1,16 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.basic.Conversation;
-import api.longpoll.bots.model.response.ExtendedVkList;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.messages.MessagesGetConversationsResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.searchConversations">https://vk.com/dev/messages.searchConversations</a>
  */
-public class MessagesSearchConversations extends GetMethod<GenericResult<ExtendedVkList<Conversation>>> {
+public class MessagesSearchConversations extends VkApiGetMethod<MessagesGetConversationsResult> {
     /**
      * Search query string.
      */
@@ -54,23 +49,19 @@ public class MessagesSearchConversations extends GetMethod<GenericResult<Extende
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<ExtendedVkList<Conversation>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<ExtendedVkList<Conversation>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("q", q),
-                keyVal("count", count),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("q", q),
+                param("count", count),
+                param("extended", extended, true),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 
-    public String getQ() {
-        return q;
+    @Override
+    protected Class<? extends MessagesGetConversationsResult> getResultType() {
+        return MessagesGetConversationsResult.class;
     }
 
     public MessagesSearchConversations setQ(String q) {
@@ -78,17 +69,9 @@ public class MessagesSearchConversations extends GetMethod<GenericResult<Extende
         return this;
     }
 
-    public Integer getCount() {
-        return count;
-    }
-
     public MessagesSearchConversations setCount(Integer count) {
         this.count = count;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public MessagesSearchConversations setExtended(Boolean extended) {
@@ -96,17 +79,9 @@ public class MessagesSearchConversations extends GetMethod<GenericResult<Extende
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesSearchConversations setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesSearchConversations setGroupId(Integer groupId) {

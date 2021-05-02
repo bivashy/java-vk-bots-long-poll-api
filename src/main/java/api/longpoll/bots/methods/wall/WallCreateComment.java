@@ -1,19 +1,15 @@
 package api.longpoll.bots.methods.wall;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.wall.WallCreateCommentResponse;
+import api.longpoll.bots.model.response.wall.WallCreateCommentResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -21,7 +17,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
  */
-public class WallCreateComment extends GetMethod<GenericResult<WallCreateCommentResponse>> {
+public class WallCreateComment extends VkApiGetMethod<WallCreateCommentResult> {
     /**
      * User ID or community ID.
      */
@@ -72,22 +68,22 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<WallCreateCommentResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<WallCreateCommentResponse>>(){}.getType());
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+        return Stream.of(
+                param("owner_id", ownerId),
+                param("post_id", postId),
+                param("from_group", fromGroupId),
+                param("message", message),
+                param("reply_to_comment", replyToComment),
+                param("attachments", attachments),
+                param("sticker_id", stickerId),
+                param("guid", guid)
+        );
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
-        return Stream.of(
-                keyVal("owner_id", ownerId),
-                keyVal("post_id", postId),
-                keyVal("from_group", fromGroupId),
-                keyVal("message", message),
-                keyVal("reply_to_comment", replyToComment),
-                keyVal("attachments", attachments),
-                keyVal("sticker_id", stickerId),
-                keyVal("guid", guid)
-        );
+    protected Class<? extends WallCreateCommentResult> getResultType() {
+        return WallCreateCommentResult.class;
     }
 
     private WallCreateComment attach(String attachment) {
@@ -106,17 +102,9 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
         return attach(AttachmentsUtil.toAttachment(doc));
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
     public WallCreateComment setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
-    }
-
-    public Integer getPostId() {
-        return postId;
     }
 
     public WallCreateComment setPostId(Integer postId) {
@@ -124,17 +112,9 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
         return this;
     }
 
-    public Integer getFromGroupId() {
-        return fromGroupId;
-    }
-
     public WallCreateComment setFromGroupId(Integer fromGroupId) {
         this.fromGroupId = fromGroupId;
         return this;
-    }
-
-    public String getMessage() {
-        return message;
     }
 
     public WallCreateComment setMessage(String message) {
@@ -142,17 +122,9 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
         return this;
     }
 
-    public Integer getReplyToComment() {
-        return replyToComment;
-    }
-
     public WallCreateComment setReplyToComment(Integer replyToComment) {
         this.replyToComment = replyToComment;
         return this;
-    }
-
-    public List<String> getAttachments() {
-        return attachments;
     }
 
     public WallCreateComment setAttachments(List<String> attachments) {
@@ -160,17 +132,9 @@ public class WallCreateComment extends GetMethod<GenericResult<WallCreateComment
         return this;
     }
 
-    public Integer getStickerId() {
-        return stickerId;
-    }
-
     public WallCreateComment setStickerId(Integer stickerId) {
         this.stickerId = stickerId;
         return this;
-    }
-
-    public String getGuid() {
-        return guid;
     }
 
     public WallCreateComment setGuid(String guid) {

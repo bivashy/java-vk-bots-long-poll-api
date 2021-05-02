@@ -1,16 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.objects.basic.Message;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.messages.MessagesGetByIdResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
-public class MessagesGetById extends GetMethod<GenericResult<VkList<Message>>> {
+public class MessagesGetById extends VkApiGetMethod<MessagesGetByIdResult> {
     /**
      * Message IDs.
      */
@@ -54,23 +49,19 @@ public class MessagesGetById extends GetMethod<GenericResult<VkList<Message>>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<Message>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<VkList<Message>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("message_ids", messageIds),
-                keyVal("preview_length", previewLength),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("message_ids", messageIds),
+                param("preview_length", previewLength),
+                param("extended", extended, true),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 
-    public List<Integer> getMessageIds() {
-        return messageIds;
+    @Override
+    protected Class<? extends MessagesGetByIdResult> getResultType() {
+        return MessagesGetByIdResult.class;
     }
 
     public MessagesGetById setMessageIds(List<Integer> messageIds) {
@@ -78,17 +69,9 @@ public class MessagesGetById extends GetMethod<GenericResult<VkList<Message>>> {
         return this;
     }
 
-    public Integer getPreviewLength() {
-        return previewLength;
-    }
-
     public MessagesGetById setPreviewLength(Integer previewLength) {
         this.previewLength = previewLength;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public MessagesGetById setExtended(Boolean extended) {
@@ -96,17 +79,9 @@ public class MessagesGetById extends GetMethod<GenericResult<VkList<Message>>> {
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesGetById setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetById setGroupId(Integer groupId) {

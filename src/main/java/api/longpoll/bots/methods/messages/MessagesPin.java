@@ -1,14 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.PinnedMessage;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.messages.MessagesPinResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.pin">https://vk.com/dev/messages.pin</a>
  */
-public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
+public class MessagesPin extends VkApiGetMethod<MessagesPinResult> {
     /**
      * Peer ID.
      */
@@ -37,29 +33,21 @@ public class MessagesPin extends GetMethod<GenericResult<PinnedMessage>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<PinnedMessage>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<PinnedMessage>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("conversation_message_id", conversationMessageId)
+                param("peer_id", peerId),
+                param("conversation_message_id", conversationMessageId)
         );
     }
 
-    public Integer getPeerId() {
-        return peerId;
+    @Override
+    protected Class<? extends MessagesPinResult> getResultType() {
+        return MessagesPinResult.class;
     }
 
     public MessagesPin setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public Integer getConversationMessageId() {
-        return conversationMessageId;
     }
 
     public MessagesPin setConversationMessageId(Integer conversationMessageId) {

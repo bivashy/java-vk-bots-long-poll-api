@@ -1,14 +1,10 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesDeleteConversationResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.messages.MessagesDeleteConversationResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.deleteConversation">https://vk.com/dev/messages.deleteConversation</a>
  */
-public class MessagesDeleteConversation extends GetMethod<GenericResult<MessagesDeleteConversationResponse>> {
+public class MessagesDeleteConversation extends VkApiGetMethod<MessagesDeleteConversationResult> {
     /**
      * User ID.
      */
@@ -42,21 +38,17 @@ public class MessagesDeleteConversation extends GetMethod<GenericResult<Messages
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesDeleteConversationResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<MessagesDeleteConversationResponse>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("user_id", userId),
-                keyVal("peer_id", peerId),
-                keyVal("group_id", groupId)
+                param("user_id", userId),
+                param("peer_id", peerId),
+                param("group_id", groupId)
         );
     }
 
-    public String getUserId() {
-        return userId;
+    @Override
+    protected Class<? extends MessagesDeleteConversationResult> getResultType() {
+        return MessagesDeleteConversationResult.class;
     }
 
     public MessagesDeleteConversation setUserId(String userId) {
@@ -64,17 +56,9 @@ public class MessagesDeleteConversation extends GetMethod<GenericResult<Messages
         return this;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesDeleteConversation setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesDeleteConversation setGroupId(Integer groupId) {

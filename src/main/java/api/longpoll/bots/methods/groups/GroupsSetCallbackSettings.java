@@ -1,13 +1,10 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.IntegerResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -15,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.setCallbackSettings">https://vk.com/dev/groups.setCallbackSettings</a>
  */
-public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>> {
+public class GroupsSetCallbackSettings extends VkApiGetMethod<IntegerResult> {
     /**
      * Community ID.
      */
@@ -251,63 +248,59 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("server_id", serverId),
-                keyVal("api_version", apiVersion),
-                keyVal("message_new", messageNew),
-                keyVal("message_reply", messageReply),
-                keyVal("message_allow", messageAllow),
-                keyVal("message_edit", messageEdit),
-                keyVal("message_deny", messageDeny),
-                keyVal("message_typing_state", messageTypingState),
-                keyVal("photo_new", photoNew),
-                keyVal("audio_new", audioNew),
-                keyVal("video_new", videoNew),
-                keyVal("wall_reply_new", wallReplyNew),
-                keyVal("wall_reply_edit", wallReplyEdit),
-                keyVal("wall_reply_delete", wallReplyDelete),
-                keyVal("wall_reply_restore", wallReplyRestore),
-                keyVal("wall_post_new", wallPostNew),
-                keyVal("wall_repost", wallPostRepost),
-                keyVal("board_post_new", boardPostNew),
-                keyVal("board_post_edit", boardPostEdit),
-                keyVal("board_post_restore", boardPostRestore),
-                keyVal("board_post_delete", boardPostDelete),
-                keyVal("photo_comment_new", photoCommentNew),
-                keyVal("photo_comment_edit", photoCommentEdit),
-                keyVal("photo_comment_delete", photoCommentDelete),
-                keyVal("photo_comment_restore", photoCommentRestore),
-                keyVal("video_comment_new", videoCommentNew),
-                keyVal("video_comment_edit", videoCommentEdit),
-                keyVal("video_comment_delete", videoCommentDelete),
-                keyVal("video_comment_restore", videoCommentRestore),
-                keyVal("market_comment_new", marketCommentNew),
-                keyVal("market_comment_edit", marketCommentEdit),
-                keyVal("market_comment_delete", marketCommentDelete),
-                keyVal("market_comment_restore", marketCommentRestore),
-                keyVal("poll_vote_new", pollVoteNew),
-                keyVal("group_join", groupJoin),
-                keyVal("group_leave", groupLeave),
-                keyVal("group_change_settings", groupChangeSettings),
-                keyVal("group_change_photo", groupChangePhoto),
-                keyVal("group_officers_edit", groupOfficersEdit),
-                keyVal("user_block", userBlock),
-                keyVal("user_unblock", userUnblock),
-                keyVal("lead_forms_new", leadFormsNew),
-                keyVal("like_add", likeAdd),
-                keyVal("like_remove", likeRemove)
+                param("group_id", groupId),
+                param("server_id", serverId),
+                param("api_version", apiVersion),
+                param("message_new", messageNew),
+                param("message_reply", messageReply),
+                param("message_allow", messageAllow),
+                param("message_edit", messageEdit),
+                param("message_deny", messageDeny),
+                param("message_typing_state", messageTypingState),
+                param("photo_new", photoNew),
+                param("audio_new", audioNew),
+                param("video_new", videoNew),
+                param("wall_reply_new", wallReplyNew),
+                param("wall_reply_edit", wallReplyEdit),
+                param("wall_reply_delete", wallReplyDelete),
+                param("wall_reply_restore", wallReplyRestore),
+                param("wall_post_new", wallPostNew),
+                param("wall_repost", wallPostRepost),
+                param("board_post_new", boardPostNew),
+                param("board_post_edit", boardPostEdit),
+                param("board_post_restore", boardPostRestore),
+                param("board_post_delete", boardPostDelete),
+                param("photo_comment_new", photoCommentNew),
+                param("photo_comment_edit", photoCommentEdit),
+                param("photo_comment_delete", photoCommentDelete),
+                param("photo_comment_restore", photoCommentRestore),
+                param("video_comment_new", videoCommentNew),
+                param("video_comment_edit", videoCommentEdit),
+                param("video_comment_delete", videoCommentDelete),
+                param("video_comment_restore", videoCommentRestore),
+                param("market_comment_new", marketCommentNew),
+                param("market_comment_edit", marketCommentEdit),
+                param("market_comment_delete", marketCommentDelete),
+                param("market_comment_restore", marketCommentRestore),
+                param("poll_vote_new", pollVoteNew),
+                param("group_join", groupJoin),
+                param("group_leave", groupLeave),
+                param("group_change_settings", groupChangeSettings),
+                param("group_change_photo", groupChangePhoto),
+                param("group_officers_edit", groupOfficersEdit),
+                param("user_block", userBlock),
+                param("user_unblock", userUnblock),
+                param("lead_forms_new", leadFormsNew),
+                param("like_add", likeAdd),
+                param("like_remove", likeRemove)
         );
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public GroupsSetCallbackSettings setGroupId(Integer groupId) {
@@ -315,17 +308,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Integer getServerId() {
-        return serverId;
-    }
-
     public GroupsSetCallbackSettings setServerId(Integer serverId) {
         this.serverId = serverId;
         return this;
-    }
-
-    public String getApiVersion() {
-        return apiVersion;
     }
 
     public GroupsSetCallbackSettings setApiVersion(String apiVersion) {
@@ -333,17 +318,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getMessageNew() {
-        return messageNew;
-    }
-
     public GroupsSetCallbackSettings setMessageNew(Boolean messageNew) {
         this.messageNew = messageNew;
         return this;
-    }
-
-    public Boolean getMessageReply() {
-        return messageReply;
     }
 
     public GroupsSetCallbackSettings setMessageReply(Boolean messageReply) {
@@ -351,17 +328,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getMessageAllow() {
-        return messageAllow;
-    }
-
     public GroupsSetCallbackSettings setMessageAllow(Boolean messageAllow) {
         this.messageAllow = messageAllow;
         return this;
-    }
-
-    public Boolean getMessageEdit() {
-        return messageEdit;
     }
 
     public GroupsSetCallbackSettings setMessageEdit(Boolean messageEdit) {
@@ -369,17 +338,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getMessageDeny() {
-        return messageDeny;
-    }
-
     public GroupsSetCallbackSettings setMessageDeny(Boolean messageDeny) {
         this.messageDeny = messageDeny;
         return this;
-    }
-
-    public Boolean getMessageTypingState() {
-        return messageTypingState;
     }
 
     public GroupsSetCallbackSettings setMessageTypingState(Boolean messageTypingState) {
@@ -387,17 +348,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getPhotoNew() {
-        return photoNew;
-    }
-
     public GroupsSetCallbackSettings setPhotoNew(Boolean photoNew) {
         this.photoNew = photoNew;
         return this;
-    }
-
-    public Boolean getAudioNew() {
-        return audioNew;
     }
 
     public GroupsSetCallbackSettings setAudioNew(Boolean audioNew) {
@@ -405,17 +358,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getVideoNew() {
-        return videoNew;
-    }
-
     public GroupsSetCallbackSettings setVideoNew(Boolean videoNew) {
         this.videoNew = videoNew;
         return this;
-    }
-
-    public Boolean getWallReplyNew() {
-        return wallReplyNew;
     }
 
     public GroupsSetCallbackSettings setWallReplyNew(Boolean wallReplyNew) {
@@ -423,17 +368,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getWallReplyEdit() {
-        return wallReplyEdit;
-    }
-
     public GroupsSetCallbackSettings setWallReplyEdit(Boolean wallReplyEdit) {
         this.wallReplyEdit = wallReplyEdit;
         return this;
-    }
-
-    public Boolean getWallReplyDelete() {
-        return wallReplyDelete;
     }
 
     public GroupsSetCallbackSettings setWallReplyDelete(Boolean wallReplyDelete) {
@@ -441,17 +378,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getWallReplyRestore() {
-        return wallReplyRestore;
-    }
-
     public GroupsSetCallbackSettings setWallReplyRestore(Boolean wallReplyRestore) {
         this.wallReplyRestore = wallReplyRestore;
         return this;
-    }
-
-    public Boolean getWallPostNew() {
-        return wallPostNew;
     }
 
     public GroupsSetCallbackSettings setWallPostNew(Boolean wallPostNew) {
@@ -459,17 +388,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getWallPostRepost() {
-        return wallPostRepost;
-    }
-
     public GroupsSetCallbackSettings setWallPostRepost(Boolean wallPostRepost) {
         this.wallPostRepost = wallPostRepost;
         return this;
-    }
-
-    public Boolean getBoardPostNew() {
-        return boardPostNew;
     }
 
     public GroupsSetCallbackSettings setBoardPostNew(Boolean boardPostNew) {
@@ -477,17 +398,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getBoardPostEdit() {
-        return boardPostEdit;
-    }
-
     public GroupsSetCallbackSettings setBoardPostEdit(Boolean boardPostEdit) {
         this.boardPostEdit = boardPostEdit;
         return this;
-    }
-
-    public Boolean getBoardPostRestore() {
-        return boardPostRestore;
     }
 
     public GroupsSetCallbackSettings setBoardPostRestore(Boolean boardPostRestore) {
@@ -495,17 +408,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getBoardPostDelete() {
-        return boardPostDelete;
-    }
-
     public GroupsSetCallbackSettings setBoardPostDelete(Boolean boardPostDelete) {
         this.boardPostDelete = boardPostDelete;
         return this;
-    }
-
-    public Boolean getPhotoCommentNew() {
-        return photoCommentNew;
     }
 
     public GroupsSetCallbackSettings setPhotoCommentNew(Boolean photoCommentNew) {
@@ -513,17 +418,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getPhotoCommentEdit() {
-        return photoCommentEdit;
-    }
-
     public GroupsSetCallbackSettings setPhotoCommentEdit(Boolean photoCommentEdit) {
         this.photoCommentEdit = photoCommentEdit;
         return this;
-    }
-
-    public Boolean getPhotoCommentDelete() {
-        return photoCommentDelete;
     }
 
     public GroupsSetCallbackSettings setPhotoCommentDelete(Boolean photoCommentDelete) {
@@ -531,17 +428,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getPhotoCommentRestore() {
-        return photoCommentRestore;
-    }
-
     public GroupsSetCallbackSettings setPhotoCommentRestore(Boolean photoCommentRestore) {
         this.photoCommentRestore = photoCommentRestore;
         return this;
-    }
-
-    public Boolean getVideoCommentNew() {
-        return videoCommentNew;
     }
 
     public GroupsSetCallbackSettings setVideoCommentNew(Boolean videoCommentNew) {
@@ -549,17 +438,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getVideoCommentEdit() {
-        return videoCommentEdit;
-    }
-
     public GroupsSetCallbackSettings setVideoCommentEdit(Boolean videoCommentEdit) {
         this.videoCommentEdit = videoCommentEdit;
         return this;
-    }
-
-    public Boolean getVideoCommentDelete() {
-        return videoCommentDelete;
     }
 
     public GroupsSetCallbackSettings setVideoCommentDelete(Boolean videoCommentDelete) {
@@ -567,17 +448,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getVideoCommentRestore() {
-        return videoCommentRestore;
-    }
-
     public GroupsSetCallbackSettings setVideoCommentRestore(Boolean videoCommentRestore) {
         this.videoCommentRestore = videoCommentRestore;
         return this;
-    }
-
-    public Boolean getMarketCommentNew() {
-        return marketCommentNew;
     }
 
     public GroupsSetCallbackSettings setMarketCommentNew(Boolean marketCommentNew) {
@@ -585,17 +458,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getMarketCommentEdit() {
-        return marketCommentEdit;
-    }
-
     public GroupsSetCallbackSettings setMarketCommentEdit(Boolean marketCommentEdit) {
         this.marketCommentEdit = marketCommentEdit;
         return this;
-    }
-
-    public Boolean getMarketCommentDelete() {
-        return marketCommentDelete;
     }
 
     public GroupsSetCallbackSettings setMarketCommentDelete(Boolean marketCommentDelete) {
@@ -603,17 +468,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getMarketCommentRestore() {
-        return marketCommentRestore;
-    }
-
     public GroupsSetCallbackSettings setMarketCommentRestore(Boolean marketCommentRestore) {
         this.marketCommentRestore = marketCommentRestore;
         return this;
-    }
-
-    public Boolean getPollVoteNew() {
-        return pollVoteNew;
     }
 
     public GroupsSetCallbackSettings setPollVoteNew(Boolean pollVoteNew) {
@@ -621,17 +478,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getGroupJoin() {
-        return groupJoin;
-    }
-
     public GroupsSetCallbackSettings setGroupJoin(Boolean groupJoin) {
         this.groupJoin = groupJoin;
         return this;
-    }
-
-    public Boolean getGroupLeave() {
-        return groupLeave;
     }
 
     public GroupsSetCallbackSettings setGroupLeave(Boolean groupLeave) {
@@ -639,17 +488,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getGroupChangeSettings() {
-        return groupChangeSettings;
-    }
-
     public GroupsSetCallbackSettings setGroupChangeSettings(Boolean groupChangeSettings) {
         this.groupChangeSettings = groupChangeSettings;
         return this;
-    }
-
-    public Boolean getGroupChangePhoto() {
-        return groupChangePhoto;
     }
 
     public GroupsSetCallbackSettings setGroupChangePhoto(Boolean groupChangePhoto) {
@@ -657,17 +498,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getGroupOfficersEdit() {
-        return groupOfficersEdit;
-    }
-
     public GroupsSetCallbackSettings setGroupOfficersEdit(Boolean groupOfficersEdit) {
         this.groupOfficersEdit = groupOfficersEdit;
         return this;
-    }
-
-    public Boolean getUserBlock() {
-        return userBlock;
     }
 
     public GroupsSetCallbackSettings setUserBlock(Boolean userBlock) {
@@ -675,17 +508,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getUserUnblock() {
-        return userUnblock;
-    }
-
     public GroupsSetCallbackSettings setUserUnblock(Boolean userUnblock) {
         this.userUnblock = userUnblock;
         return this;
-    }
-
-    public Boolean getLeadFormsNew() {
-        return leadFormsNew;
     }
 
     public GroupsSetCallbackSettings setLeadFormsNew(Boolean leadFormsNew) {
@@ -693,17 +518,9 @@ public class GroupsSetCallbackSettings extends GetMethod<GenericResult<Integer>>
         return this;
     }
 
-    public Boolean getLikeAdd() {
-        return likeAdd;
-    }
-
     public GroupsSetCallbackSettings setLikeAdd(Boolean likeAdd) {
         this.likeAdd = likeAdd;
         return this;
-    }
-
-    public Boolean getLikeRemove() {
-        return likeRemove;
     }
 
     public GroupsSetCallbackSettings setLikeRemove(Boolean likeRemove) {

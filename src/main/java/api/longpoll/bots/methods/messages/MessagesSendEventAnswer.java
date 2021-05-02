@@ -1,14 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.Button;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.IntegerResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.sendMessageEventAnswer">https://vk.com/dev/messages.sendMessageEventAnswer</a>
  */
-public class MessagesSendEventAnswer extends GetMethod<GenericResult<Integer>> {
+public class MessagesSendEventAnswer extends VkApiGetMethod<IntegerResult> {
     /**
      * A random string that is returned in the <b>message_event</b> event.
      */
@@ -47,22 +44,18 @@ public class MessagesSendEventAnswer extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("event_id", eventId),
-                keyVal("user_id", userId),
-                keyVal("peer_id", peerId),
-                keyVal("event_data", eventData)
+                param("event_id", eventId),
+                param("user_id", userId),
+                param("peer_id", peerId),
+                param("event_data", eventData)
         );
     }
 
-    public String getEventId() {
-        return eventId;
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public MessagesSendEventAnswer setEventId(String eventId) {
@@ -70,26 +63,14 @@ public class MessagesSendEventAnswer extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
     public MessagesSendEventAnswer setUserId(Integer userId) {
         this.userId = userId;
         return this;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesSendEventAnswer setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public Button.EventData getEventData() {
-        return eventData;
     }
 
     public MessagesSendEventAnswer setEventData(Button.EventData eventData) {

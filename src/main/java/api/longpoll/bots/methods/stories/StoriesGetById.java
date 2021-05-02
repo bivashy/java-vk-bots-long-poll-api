@@ -1,16 +1,11 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.Story;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.stories.StoriesListResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.get">https://vk.com/dev/stories.get</a>
  */
-public class StoriesGetById extends GetMethod<GenericResult<VkList<Story>>> {
+public class StoriesGetById extends VkApiGetMethod<StoriesListResult> {
     /**
      * Stories IDs in format {owner_id}+'_'+{story_id}. Example: 12345_54331
      */
@@ -44,21 +39,17 @@ public class StoriesGetById extends GetMethod<GenericResult<VkList<Story>>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<Story>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<VkList<Story>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("stories", stories),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields)
+                param("stories", stories),
+                param("extended", extended, true),
+                param("fields", fields)
         );
     }
 
-    public List<String> getStories() {
-        return stories;
+    @Override
+    protected Class<? extends StoriesListResult> getResultType() {
+        return StoriesListResult.class;
     }
 
     public StoriesGetById setStories(List<String> stories) {
@@ -66,17 +57,9 @@ public class StoriesGetById extends GetMethod<GenericResult<VkList<Story>>> {
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public StoriesGetById setExtended(Boolean extended) {
         this.extended = extended;
         return this;
-    }
-
-    public List<String> getFields() {
-        return fields;
     }
 
     public StoriesGetById setFields(List<String> fields) {

@@ -1,14 +1,11 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.IntegerResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.delete">https://vk.com/dev/stories.delete</a>
  */
-public class StoriesDelete extends GetMethod<GenericResult<Integer>> {
+public class StoriesDelete extends VkApiGetMethod<IntegerResult> {
     /**
      * Story owner's ID.
      */
@@ -42,21 +39,17 @@ public class StoriesDelete extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("owner_id", ownerId),
-                keyVal("story_id", storyId),
-                keyVal("stories", stories)
+                param("owner_id", ownerId),
+                param("story_id", storyId),
+                param("stories", stories)
         );
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public StoriesDelete setOwnerId(Integer ownerId) {
@@ -64,17 +57,9 @@ public class StoriesDelete extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public Integer getStoryId() {
-        return storyId;
-    }
-
     public StoriesDelete setStoryId(Integer storyId) {
         this.storyId = storyId;
         return this;
-    }
-
-    public List<String> getStories() {
-        return stories;
     }
 
     public StoriesDelete setStories(List<String> stories) {

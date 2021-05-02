@@ -1,14 +1,10 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.utils.UtilsGetShortLinkResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.utils.UtilsGetShortLinkResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/utils.getShortLink">https://vk.com/dev/utils.getShortLink</a>
  */
-public class UtilsGetShortLink extends GetMethod<GenericResult<UtilsGetShortLinkResponse>> {
+public class UtilsGetShortLink extends VkApiGetMethod<UtilsGetShortLinkResult> {
     /**
      * URL to be shortened.
      */
@@ -37,29 +33,21 @@ public class UtilsGetShortLink extends GetMethod<GenericResult<UtilsGetShortLink
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<UtilsGetShortLinkResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<UtilsGetShortLinkResponse>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("url", url),
-                keyVal("private", isPrivate, true)
+                param("url", url),
+                param("private", isPrivate, true)
         );
     }
 
-    public String getUrl() {
-        return url;
+    @Override
+    protected Class<? extends UtilsGetShortLinkResult> getResultType() {
+        return UtilsGetShortLinkResult.class;
     }
 
     public UtilsGetShortLink setUrl(String url) {
         this.url = url;
         return this;
-    }
-
-    public Boolean getPrivate() {
-        return isPrivate;
     }
 
     public UtilsGetShortLink setPrivate(Boolean aPrivate) {

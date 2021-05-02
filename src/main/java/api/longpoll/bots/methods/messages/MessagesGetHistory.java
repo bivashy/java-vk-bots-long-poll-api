@@ -1,14 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.messages.MessagesGetHistoryResultConverter;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesGetHistoryResponse;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.messages.MessagesGetHistoryResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
  */
-public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHistoryResponse>> {
+public class MessagesGetHistory extends VkApiGetMethod<MessagesGetHistoryResult> {
     /**
      * Offset needed to return a specific subset of messages.
      */
@@ -72,27 +69,23 @@ public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHisto
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesGetHistoryResponse>> getConverter() {
-        return new MessagesGetHistoryResultConverter();
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("offset", offset),
-                keyVal("count", count),
-                keyVal("user_id", userId),
-                keyVal("peer_id", peerId),
-                keyVal("start_message_id", startMessageId),
-                keyVal("rev", rev, true),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("offset", offset),
+                param("count", count),
+                param("user_id", userId),
+                param("peer_id", peerId),
+                param("start_message_id", startMessageId),
+                param("rev", rev, true),
+                param("extended", extended, true),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 
-    public Integer getOffset() {
-        return offset;
+    @Override
+    protected Class<? extends MessagesGetHistoryResult> getResultType() {
+        return MessagesGetHistoryResult.class;
     }
 
     public MessagesGetHistory setOffset(Integer offset) {
@@ -100,17 +93,9 @@ public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHisto
         return this;
     }
 
-    public Integer getCount() {
-        return count;
-    }
-
     public MessagesGetHistory setCount(Integer count) {
         this.count = count;
         return this;
-    }
-
-    public String getUserId() {
-        return userId;
     }
 
     public MessagesGetHistory setUserId(String userId) {
@@ -118,17 +103,9 @@ public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHisto
         return this;
     }
 
-    public Integer getPeerId() {
-        return peerId;
-    }
-
     public MessagesGetHistory setPeerId(Integer peerId) {
         this.peerId = peerId;
         return this;
-    }
-
-    public Integer getStartMessageId() {
-        return startMessageId;
     }
 
     public MessagesGetHistory setStartMessageId(Integer startMessageId) {
@@ -136,17 +113,9 @@ public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHisto
         return this;
     }
 
-    public Boolean getRev() {
-        return rev;
-    }
-
     public MessagesGetHistory setRev(Boolean rev) {
         this.rev = rev;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public MessagesGetHistory setExtended(Boolean extended) {
@@ -154,17 +123,9 @@ public class MessagesGetHistory extends GetMethod<GenericResult<MessagesGetHisto
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesGetHistory setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetHistory setGroupId(Integer groupId) {

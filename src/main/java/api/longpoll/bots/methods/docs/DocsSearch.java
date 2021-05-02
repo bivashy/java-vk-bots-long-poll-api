@@ -1,14 +1,10 @@
 package api.longpoll.bots.methods.docs;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.objects.media.Doc;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.docs.DocsSearchResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/docs.search">https://vk.com/dev/docs.search</a>
  */
-public class DocsSearch extends GetMethod<VkList<Doc>> {
+public class DocsSearch extends VkApiGetMethod<DocsSearchResult> {
     /**
      * Search query.
      */
@@ -47,22 +43,18 @@ public class DocsSearch extends GetMethod<VkList<Doc>> {
     }
 
     @Override
-    protected JsonToPojoConverter<VkList<Doc>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<VkList<Doc>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("q", q),
-                keyVal("count", count),
-                keyVal("offset", offset),
-                keyVal("return_tags", returnTags, true)
+                param("q", q),
+                param("count", count),
+                param("offset", offset),
+                param("return_tags", returnTags, true)
         );
     }
 
-    public String getQ() {
-        return q;
+    @Override
+    protected Class<? extends DocsSearchResult> getResultType() {
+        return DocsSearchResult.class;
     }
 
     public DocsSearch setQ(String q) {
@@ -70,26 +62,14 @@ public class DocsSearch extends GetMethod<VkList<Doc>> {
         return this;
     }
 
-    public Integer getCount() {
-        return count;
-    }
-
     public DocsSearch setCount(Integer count) {
         this.count = count;
         return this;
     }
 
-    public Integer getOffset() {
-        return offset;
-    }
-
     public DocsSearch setOffset(Integer offset) {
         this.offset = offset;
         return this;
-    }
-
-    public Boolean getReturnTags() {
-        return returnTags;
     }
 
     public DocsSearch setReturnTags(Boolean returnTags) {

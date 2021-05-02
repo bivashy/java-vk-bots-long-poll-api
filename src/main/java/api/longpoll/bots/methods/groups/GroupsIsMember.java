@@ -1,13 +1,11 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.response.groups.GroupsIsMemberResultConverter;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.groups.GroupsIsMemberResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -15,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
  */
-public class GroupsIsMember extends GetMethod<GenericResult<Object>> {
+public class GroupsIsMember extends VkApiGetMethod<GroupsIsMemberResult> {
     /**
      * ID or screen name of the community.
      */
@@ -46,22 +44,18 @@ public class GroupsIsMember extends GetMethod<GenericResult<Object>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Object>> getConverter() {
-        return new GroupsIsMemberResultConverter();
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("user_id", userId),
-                keyVal("user_ids", userIds),
-                keyVal("extended", extended, true)
+                param("group_id", groupId),
+                param("user_id", userId),
+                param("user_ids", userIds),
+                param("extended", extended, true)
         );
     }
 
-    public String getGroupId() {
-        return groupId;
+    @Override
+    protected Class<? extends GroupsIsMemberResult> getResultType() {
+        return GroupsIsMemberResult.class;
     }
 
     public GroupsIsMember setGroupId(String groupId) {
@@ -69,26 +63,14 @@ public class GroupsIsMember extends GetMethod<GenericResult<Object>> {
         return this;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
     public GroupsIsMember setUserId(Integer userId) {
         this.userId = userId;
         return this;
     }
 
-    public List<Integer> getUserIds() {
-        return userIds;
-    }
-
     public GroupsIsMember setUserIds(List<Integer> userIds) {
         this.userIds = userIds;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public GroupsIsMember setExtended(Boolean extended) {

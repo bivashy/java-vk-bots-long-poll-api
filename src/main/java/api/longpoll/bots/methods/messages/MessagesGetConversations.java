@@ -1,15 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.messages.MessagesGetConversationsResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.messages.MessagesGetConversationsResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getConversations">https://vk.com/dev/messages.getConversations</a>
  */
-public class MessagesGetConversations extends GetMethod<GenericResult<MessagesGetConversationsResponse>> {
+public class MessagesGetConversations extends VkApiGetMethod<MessagesGetConversationsResult> {
     /**
      * Offset needed to return a specific subset of conversations.
      */
@@ -63,25 +59,21 @@ public class MessagesGetConversations extends GetMethod<GenericResult<MessagesGe
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<MessagesGetConversationsResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<MessagesGetConversationsResponse>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("offset", offset),
-                keyVal("count", count),
-                keyVal("filter", filter),
-                keyVal("extended", extended, true),
-                keyVal("start_message_id", startMessageId),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("offset", offset),
+                param("count", count),
+                param("filter", filter),
+                param("extended", extended, true),
+                param("start_message_id", startMessageId),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 
-    public Integer getOffset() {
-        return offset;
+    @Override
+    protected Class<? extends MessagesGetConversationsResult> getResultType() {
+        return MessagesGetConversationsResult.class;
     }
 
     public MessagesGetConversations setOffset(Integer offset) {
@@ -89,17 +81,9 @@ public class MessagesGetConversations extends GetMethod<GenericResult<MessagesGe
         return this;
     }
 
-    public Integer getCount() {
-        return count;
-    }
-
     public MessagesGetConversations setCount(Integer count) {
         this.count = count;
         return this;
-    }
-
-    public String getFilter() {
-        return filter;
     }
 
     public MessagesGetConversations setFilter(String filter) {
@@ -107,17 +91,9 @@ public class MessagesGetConversations extends GetMethod<GenericResult<MessagesGe
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public MessagesGetConversations setExtended(Boolean extended) {
         this.extended = extended;
         return this;
-    }
-
-    public Integer getStartMessageId() {
-        return startMessageId;
     }
 
     public MessagesGetConversations setStartMessageId(Integer startMessageId) {
@@ -125,17 +101,9 @@ public class MessagesGetConversations extends GetMethod<GenericResult<MessagesGe
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesGetConversations setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetConversations setGroupId(Integer groupId) {

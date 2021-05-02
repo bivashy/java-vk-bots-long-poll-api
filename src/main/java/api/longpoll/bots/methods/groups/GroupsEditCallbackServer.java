@@ -1,14 +1,10 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.IntegerResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.editCallbackServer">https://vk.com/dev/groups.editCallbackServer</a>
  */
-public class GroupsEditCallbackServer extends GetMethod<GenericResult<Integer>> {
+public class GroupsEditCallbackServer extends VkApiGetMethod<IntegerResult> {
     /**
      * Community ID.
      */
@@ -52,23 +48,19 @@ public class GroupsEditCallbackServer extends GetMethod<GenericResult<Integer>> 
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("server_id", serverId),
-                keyVal("url", url),
-                keyVal("title", title),
-                keyVal("secret_key", secretKey)
+                param("group_id", groupId),
+                param("server_id", serverId),
+                param("url", url),
+                param("title", title),
+                param("secret_key", secretKey)
         );
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public GroupsEditCallbackServer setGroupId(Integer groupId) {
@@ -76,17 +68,9 @@ public class GroupsEditCallbackServer extends GetMethod<GenericResult<Integer>> 
         return this;
     }
 
-    public Integer getServerId() {
-        return serverId;
-    }
-
     public GroupsEditCallbackServer setServerId(Integer serverId) {
         this.serverId = serverId;
         return this;
-    }
-
-    public String getUrl() {
-        return url;
     }
 
     public GroupsEditCallbackServer setUrl(String url) {
@@ -94,17 +78,9 @@ public class GroupsEditCallbackServer extends GetMethod<GenericResult<Integer>> 
         return this;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public GroupsEditCallbackServer setTitle(String title) {
         this.title = title;
         return this;
-    }
-
-    public String getSecretKey() {
-        return secretKey;
     }
 
     public GroupsEditCallbackServer setSecretKey(String secretKey) {

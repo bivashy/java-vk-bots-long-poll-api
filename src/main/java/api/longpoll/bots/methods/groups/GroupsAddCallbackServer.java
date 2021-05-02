@@ -1,15 +1,10 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.groups.GroupsAddCallbackServerResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.groups.GroupsAddCallbackServerResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.addCallbackServer">https://vk.com/dev/groups.addCallbackServer</a>
  */
-public class GroupsAddCallbackServer extends GetMethod<GenericResult<GroupsAddCallbackServerResponse>> {
+public class GroupsAddCallbackServer extends VkApiGetMethod<GroupsAddCallbackServerResult> {
     /**
      * Community ID.
      */
@@ -43,13 +38,18 @@ public class GroupsAddCallbackServer extends GetMethod<GenericResult<GroupsAddCa
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("url", url),
-                keyVal("title", title),
-                keyVal("secret_key", secretKey)
+                param("group_id", groupId),
+                param("url", url),
+                param("title", title),
+                param("secret_key", secretKey)
         );
+    }
+
+    @Override
+    protected Class<? extends GroupsAddCallbackServerResult> getResultType() {
+        return GroupsAddCallbackServerResult.class;
     }
 
     @Override
@@ -57,22 +57,9 @@ public class GroupsAddCallbackServer extends GetMethod<GenericResult<GroupsAddCa
         return VkApi.getInstance().groupsAddCallbackServer();
     }
 
-    @Override
-    protected JsonToPojoConverter<GenericResult<GroupsAddCallbackServerResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<GroupsAddCallbackServerResponse>>(){}.getType());
-    }
-
-    public Integer getGroupId() {
-        return groupId;
-    }
-
     public GroupsAddCallbackServer setGroupId(Integer groupId) {
         this.groupId = groupId;
         return this;
-    }
-
-    public String getUrl() {
-        return url;
     }
 
     public GroupsAddCallbackServer setUrl(String url) {
@@ -80,17 +67,9 @@ public class GroupsAddCallbackServer extends GetMethod<GenericResult<GroupsAddCa
         return this;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public GroupsAddCallbackServer setTitle(String title) {
         this.title = title;
         return this;
-    }
-
-    public String getSecretKey() {
-        return secretKey;
     }
 
     public GroupsAddCallbackServer setSecretKey(String secretKey) {

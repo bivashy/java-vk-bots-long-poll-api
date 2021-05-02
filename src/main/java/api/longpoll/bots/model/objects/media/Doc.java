@@ -1,5 +1,7 @@
 package api.longpoll.bots.model.objects.media;
 
+import api.longpoll.bots.adapters.deserializers.DocPreviewDeserializer;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -72,7 +74,9 @@ public class Doc implements Attachable {
     /**
      * Document preview data.
      */
+    // TODO: 25.04.2021 change it
     @SerializedName("preview")
+    @JsonAdapter(DocPreviewDeserializer.class)
     private Map<DocPreviewType, Preview> preview;
 
     /**

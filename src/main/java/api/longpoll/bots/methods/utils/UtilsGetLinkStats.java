@@ -1,14 +1,10 @@
 package api.longpoll.bots.methods.utils;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.utils.UtilsGetLinkStatsResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.utils.UtilsGetLinkStatsResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
  */
-public class UtilsGetLinkStats extends GetMethod<GenericResult<UtilsGetLinkStatsResponse>> {
+public class UtilsGetLinkStats extends VkApiGetMethod<UtilsGetLinkStatsResult> {
     /**
      * Part of the link after "vk.cc/".
      */
@@ -57,24 +53,20 @@ public class UtilsGetLinkStats extends GetMethod<GenericResult<UtilsGetLinkStats
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<UtilsGetLinkStatsResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<UtilsGetLinkStatsResponse>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("key", key),
-                keyVal("source", source),
-                keyVal("access_key", accessKey),
-                keyVal("interval", interval),
-                keyVal("intervals_count", intervalsCount),
-                keyVal("extended", extended, true)
+                param("key", key),
+                param("source", source),
+                param("access_key", accessKey),
+                param("interval", interval),
+                param("intervals_count", intervalsCount),
+                param("extended", extended, true)
         );
     }
 
-    public String getKey() {
-        return key;
+    @Override
+    protected Class<? extends UtilsGetLinkStatsResult> getResultType() {
+        return UtilsGetLinkStatsResult.class;
     }
 
     public UtilsGetLinkStats setKey(String key) {
@@ -82,17 +74,9 @@ public class UtilsGetLinkStats extends GetMethod<GenericResult<UtilsGetLinkStats
         return this;
     }
 
-    public String getSource() {
-        return source;
-    }
-
     public UtilsGetLinkStats setSource(String source) {
         this.source = source;
         return this;
-    }
-
-    public String getAccessKey() {
-        return accessKey;
     }
 
     public UtilsGetLinkStats setAccessKey(String accessKey) {
@@ -100,26 +84,14 @@ public class UtilsGetLinkStats extends GetMethod<GenericResult<UtilsGetLinkStats
         return this;
     }
 
-    public String getInterval() {
-        return interval;
-    }
-
     public UtilsGetLinkStats setInterval(String interval) {
         this.interval = interval;
         return this;
     }
 
-    public Integer getIntervalsCount() {
-        return intervalsCount;
-    }
-
     public UtilsGetLinkStats setIntervalsCount(Integer intervalsCount) {
         this.intervalsCount = intervalsCount;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public UtilsGetLinkStats setExtended(Boolean extended) {

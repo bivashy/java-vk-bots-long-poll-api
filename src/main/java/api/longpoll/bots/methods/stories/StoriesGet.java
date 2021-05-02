@@ -1,16 +1,11 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.StoriesFeedBlock;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.stories.StoriesGetResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.get">https://vk.com/dev/stories.get</a>
  */
-public class StoriesGet extends GetMethod<GenericResult<VkList<StoriesFeedBlock>>> {
+public class StoriesGet extends VkApiGetMethod<StoriesGetResult> {
     /**
      * Owner ID.
      */
@@ -44,21 +39,17 @@ public class StoriesGet extends GetMethod<GenericResult<VkList<StoriesFeedBlock>
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<StoriesFeedBlock>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<VkList<StoriesFeedBlock>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("owner_id", ownerId),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields)
+                param("owner_id", ownerId),
+                param("extended", extended, true),
+                param("fields", fields)
         );
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
+    @Override
+    protected Class<? extends StoriesGetResult> getResultType() {
+        return StoriesGetResult.class;
     }
 
     public StoriesGet setOwnerId(Integer ownerId) {
@@ -66,17 +57,9 @@ public class StoriesGet extends GetMethod<GenericResult<VkList<StoriesFeedBlock>
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public StoriesGet setExtended(Boolean extended) {
         this.extended = extended;
         return this;
-    }
-
-    public List<String> getFields() {
-        return fields;
     }
 
     public StoriesGet setFields(List<String> fields) {

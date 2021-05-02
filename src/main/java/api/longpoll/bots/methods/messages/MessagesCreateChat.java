@@ -1,15 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.IntegerResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.createChat">https://vk.com/dev/messages.createChat</a>
  */
-public class MessagesCreateChat extends GetMethod<GenericResult<Integer>> {
+public class MessagesCreateChat extends VkApiGetMethod<IntegerResult> {
     /**
      * IDs of the users to be added to the chat.
      */
@@ -43,21 +39,17 @@ public class MessagesCreateChat extends GetMethod<GenericResult<Integer>> {
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<Integer>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<Integer>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("user_ids", userIds),
-                keyVal("title", title),
-                keyVal("group_id", groupId)
+                param("user_ids", userIds),
+                param("title", title),
+                param("group_id", groupId)
         );
     }
 
-    public List<Integer> getUserIds() {
-        return userIds;
+    @Override
+    protected Class<? extends IntegerResult> getResultType() {
+        return IntegerResult.class;
     }
 
     public MessagesCreateChat setUserIds(List<Integer> userIds) {
@@ -65,17 +57,9 @@ public class MessagesCreateChat extends GetMethod<GenericResult<Integer>> {
         return this;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public MessagesCreateChat setTitle(String title) {
         this.title = title;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesCreateChat setGroupId(Integer groupId) {

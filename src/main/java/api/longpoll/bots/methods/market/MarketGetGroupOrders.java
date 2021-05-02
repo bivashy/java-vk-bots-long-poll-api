@@ -1,15 +1,10 @@
 package api.longpoll.bots.methods.market;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.objects.basic.MarketOrder;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.market.MarketGetGroupOrdersResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/market.getGroupOrders">https://vk.com/dev/market.getGroupOrders</a>
  */
-public class MarketGetGroupOrders extends GetMethod<GenericResult<VkList<MarketOrder>>> {
+public class MarketGetGroupOrders extends VkApiGetMethod<MarketGetGroupOrdersResult> {
     /**
      * ID of the community that owns the items market.
      */
@@ -43,21 +38,17 @@ public class MarketGetGroupOrders extends GetMethod<GenericResult<VkList<MarketO
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<MarketOrder>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<VkList<MarketOrder>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("offset", offset),
-                keyVal("count", count)
+                param("group_id", groupId),
+                param("offset", offset),
+                param("count", count)
         );
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    @Override
+    protected Class<? extends MarketGetGroupOrdersResult> getResultType() {
+        return MarketGetGroupOrdersResult.class;
     }
 
     public MarketGetGroupOrders setGroupId(Integer groupId) {
@@ -65,17 +56,9 @@ public class MarketGetGroupOrders extends GetMethod<GenericResult<VkList<MarketO
         return this;
     }
 
-    public Integer getOffset() {
-        return offset;
-    }
-
     public MarketGetGroupOrders setOffset(Integer offset) {
         this.offset = offset;
         return this;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 
     public MarketGetGroupOrders setCount(Integer count) {

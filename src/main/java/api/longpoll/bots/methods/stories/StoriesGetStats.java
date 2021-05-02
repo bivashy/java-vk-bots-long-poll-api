@@ -1,14 +1,10 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.stories.StoriesGetStatsResponse;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.stories.StoriesGetStatsResult;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.getStats">https://vk.com/dev/stories.getStats</a>
  */
-public class StoriesGetStats extends GetMethod<GenericResult<StoriesGetStatsResponse>> {
+public class StoriesGetStats extends VkApiGetMethod<StoriesGetStatsResult> {
     /**
      * Story owner ID.
      */
@@ -37,29 +33,21 @@ public class StoriesGetStats extends GetMethod<GenericResult<StoriesGetStatsResp
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<StoriesGetStatsResponse>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<StoriesGetStatsResponse>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("owner_id", ownerId),
-                keyVal("story_id", storyId)
+                param("owner_id", ownerId),
+                param("story_id", storyId)
         );
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
+    @Override
+    protected Class<? extends StoriesGetStatsResult> getResultType() {
+        return StoriesGetStatsResult.class;
     }
 
     public StoriesGetStats setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
         return this;
-    }
-
-    public Integer getStoryId() {
-        return storyId;
     }
 
     public StoriesGetStats setStoryId(Integer storyId) {

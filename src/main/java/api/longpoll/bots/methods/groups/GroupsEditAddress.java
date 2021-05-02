@@ -1,13 +1,11 @@
 package api.longpoll.bots.methods.groups;
 
-import api.longpoll.bots.LongPollBot;
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.model.response.groups.GroupsAddressResult;
 import com.google.gson.JsonObject;
-import org.jsoup.Connection;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -15,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/groups.editAddress">https://vk.com/dev/groups.editAddress</a>
  */
-public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
+public class GroupsEditAddress extends VkApiGetMethod<GroupsAddressResult> {
     /**
      * Community ID.
      */
@@ -96,32 +94,28 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
     }
 
     @Override
-    protected JsonToPojoConverter<GroupsEditAddress> getConverter() {
-        return JsonToPojoConverterFactory.get(GroupsEditAddress.class);
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("group_id", groupId),
-                keyVal("address_id", addressId),
-                keyVal("title", title),
-                keyVal("address", address),
-                keyVal("additional_address", additionalAddress),
-                keyVal("country_id", countryId),
-                keyVal("city_id", cityId),
-                keyVal("metro_id", metroId),
-                keyVal("latitude", latitude),
-                keyVal("longitude", longitude),
-                keyVal("phone", phone),
-                keyVal("work_info_status", workInfoStatus),
-                keyVal("timetable", timeTable),
-                keyVal("is_main_address", mainAddress, true)
+                param("group_id", groupId),
+                param("address_id", addressId),
+                param("title", title),
+                param("address", address),
+                param("additional_address", additionalAddress),
+                param("country_id", countryId),
+                param("city_id", cityId),
+                param("metro_id", metroId),
+                param("latitude", latitude),
+                param("longitude", longitude),
+                param("phone", phone),
+                param("work_info_status", workInfoStatus),
+                param("timetable", timeTable),
+                param("is_main_address", mainAddress, true)
         );
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    @Override
+    protected Class<? extends GroupsAddressResult> getResultType() {
+        return GroupsAddressResult.class;
     }
 
     public GroupsEditAddress setGroupId(Integer groupId) {
@@ -129,17 +123,9 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
         return this;
     }
 
-    public Integer getAddressId() {
-        return addressId;
-    }
-
     public GroupsEditAddress setAddressId(Integer addressId) {
         this.addressId = addressId;
         return this;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public GroupsEditAddress setTitle(String title) {
@@ -147,17 +133,9 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
         return this;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public GroupsEditAddress setAddress(String address) {
         this.address = address;
         return this;
-    }
-
-    public String getAdditionalAddress() {
-        return additionalAddress;
     }
 
     public GroupsEditAddress setAdditionalAddress(String additionalAddress) {
@@ -165,17 +143,9 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
         return this;
     }
 
-    public Integer getCountryId() {
-        return countryId;
-    }
-
     public GroupsEditAddress setCountryId(Integer countryId) {
         this.countryId = countryId;
         return this;
-    }
-
-    public Integer getCityId() {
-        return cityId;
     }
 
     public GroupsEditAddress setCityId(Integer cityId) {
@@ -183,17 +153,9 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
         return this;
     }
 
-    public Integer getMetroId() {
-        return metroId;
-    }
-
     public GroupsEditAddress setMetroId(Integer metroId) {
         this.metroId = metroId;
         return this;
-    }
-
-    public Float getLatitude() {
-        return latitude;
     }
 
     public GroupsEditAddress setLatitude(Float latitude) {
@@ -201,17 +163,9 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
         return this;
     }
 
-    public Float getLongitude() {
-        return longitude;
-    }
-
     public GroupsEditAddress setLongitude(Float longitude) {
         this.longitude = longitude;
         return this;
-    }
-
-    public String getPhone() {
-        return phone;
     }
 
     public GroupsEditAddress setPhone(String phone) {
@@ -219,26 +173,14 @@ public class GroupsEditAddress extends GetMethod<GroupsEditAddress> {
         return this;
     }
 
-    public String getWorkInfoStatus() {
-        return workInfoStatus;
-    }
-
     public GroupsEditAddress setWorkInfoStatus(String workInfoStatus) {
         this.workInfoStatus = workInfoStatus;
         return this;
     }
 
-    public JsonObject getTimeTable() {
-        return timeTable;
-    }
-
     public GroupsEditAddress setTimeTable(JsonObject timeTable) {
         this.timeTable = timeTable;
         return this;
-    }
-
-    public Boolean getMainAddress() {
-        return mainAddress;
     }
 
     public GroupsEditAddress setMainAddress(Boolean mainAddress) {

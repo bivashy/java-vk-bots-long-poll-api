@@ -13,7 +13,7 @@ import api.longpoll.bots.model.objects.basic.WallComment;
 import api.longpoll.bots.model.objects.basic.WallPost;
 import api.longpoll.bots.model.objects.media.*;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MessageNewParseTest {
     @Test
     void messageNewText() {
-        Event event = ParseTestUtil.getFirstEvent("json/response/message_new/message_new_text_sample_5_110.json");
+        Event event = ParseUtil.getFirstEvent("json/response/message_new/message_new_text_sample_5_110.json");
         assertEquals(EventType.MESSAGE_NEW, event.getType());
         assertEquals(333, event.getGroupId());
         assertEquals("aaa", event.getEventId());
@@ -66,7 +66,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewReply() {
-        Message replyMessage = ParseTestUtil.getFirstMessage("json/response/message_new/message_new_reply_sample_5_110.json").getReplyMessage();
+        Message replyMessage = ParseUtil.getFirstMessage("json/response/message_new/message_new_reply_sample_5_110.json").getReplyMessage();
         assertNotNull(replyMessage);
         assertEquals(1593092313, replyMessage.getDate());
         assertEquals(333, replyMessage.getFromId());
@@ -78,7 +78,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewFwd() {
-        List<Message> fwdMessages = ParseTestUtil.getFirstMessage("json/response/message_new/message_new_fwd_sample_5_110.json").getFwdMessages();
+        List<Message> fwdMessages = ParseUtil.getFirstMessage("json/response/message_new/message_new_fwd_sample_5_110.json").getFwdMessages();
         assertNotNull(fwdMessages);
         assertFalse(fwdMessages.isEmpty());
 
@@ -94,7 +94,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewPhoto() {
-        Attachment attachment = ParseTestUtil.getFirstMessageAttachment("json/response/message_new/message_new_photo_sample_5_110.json");
+        Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_photo_sample_5_110.json");
         assertEquals(AttachmentType.PHOTO, attachment.getType());
 
         Attachable attachable = attachment.getAttachable();
@@ -120,7 +120,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewVideo() {
-        Attachment attachment = ParseTestUtil.getFirstMessageAttachment("json/response/message_new/message_new_video_sample_5_110.json");
+        Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_video_sample_5_110.json");
         assertEquals(AttachmentType.VIDEO, attachment.getType());
 
         Attachable attachable = attachment.getAttachable();
@@ -157,7 +157,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewAudio() {
-        Attachment attachment = ParseTestUtil.getFirstMessageAttachment("json/response/message_new/message_new_audio_sample_5_110.json");
+        Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_audio_sample_5_110.json");
         assertEquals(AttachmentType.AUDIO, attachment.getType());
 
         Attachable attachable = attachment.getAttachable();
@@ -175,7 +175,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewDocPhoto() {
-        Attachment attachment = ParseTestUtil.getFirstMessageAttachment("json/response/message_new/message_new_doc_photo_sample_5_110.json");
+        Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_doc_photo_sample_5_110.json");
         assertEquals(AttachmentType.DOCUMENT, attachment.getType());
 
         Attachable attachable = attachment.getAttachable();
@@ -212,7 +212,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewAudioMessage() {
-        Attachment attachment = ParseTestUtil.getFirstMessageAttachment("json/response/message_new/message_new_audio_message_sample_5_110.json");
+        Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_audio_message_sample_5_110.json");
         assertEquals(AttachmentType.AUDIO_MESSAGE, attachment.getType());
 
         Attachable attachable = attachment.getAttachable();
@@ -237,7 +237,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewGraffiti() {
-        Attachment attachment = ParseTestUtil.getFirstMessageAttachment("json/response/message_new/message_new_graffiti_sample_5_110.json");
+        Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_graffiti_sample_5_110.json");
         assertEquals(AttachmentType.GRAFFITI, attachment.getType());
 
         Attachable attachable = attachment.getAttachable();
@@ -253,7 +253,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewGeo() {
-        Message message = ParseTestUtil.getFirstMessage("json/response/message_new/message_new_geo_sample_5_110.json");
+        Message message = ParseUtil.getFirstMessage("json/response/message_new/message_new_geo_sample_5_110.json");
         Geo geo = message.getGeo();
         assertNotNull(geo);
         assertEquals("point", geo.getType());
@@ -266,7 +266,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewSticker() {
-        Attachment attachment = ParseTestUtil.getFirstMessageAttachment("json/response/message_new/message_new_sticker_sample_5_110.json");
+        Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_sticker_sample_5_110.json");
         assertEquals(AttachmentType.STICKER, attachment.getType());
 
         Attachable attachable = attachment.getAttachable();
@@ -304,7 +304,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewWall() {
-        Attachment attachment = ParseTestUtil.getFirstMessageAttachment("json/response/message_new/message_new_wall_sample_5_110.json");
+        Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_wall_sample_5_110.json");
         assertEquals(AttachmentType.WALL_POST, attachment.getType());
 
         Attachable attachable = attachment.getAttachable();
@@ -352,7 +352,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewWallReply() {
-        Attachment attachment = ParseTestUtil.getFirstMessageAttachment("json/response/message_new/message_new_wall_reply_sample_5_110.json");
+        Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_wall_reply_sample_5_110.json");
         assertEquals(AttachmentType.WALL_REPLY, attachment.getType());
 
         Attachable attachable = attachment.getAttachable();
@@ -388,7 +388,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewDocNoPreview() {
-        Attachment attachment = ParseTestUtil.getFirstMessageAttachment("json/response/message_new/message_new_doc_no_preview_sample_5_118.json");
+        Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_doc_no_preview_sample_5_118.json");
         assertEquals(AttachmentType.DOCUMENT, attachment.getType());
 
         Attachable attachable = attachment.getAttachable();
@@ -410,7 +410,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewFwdAttachments() {
-        Message message = ParseTestUtil.getFirstMessage("json/response/message_new/message_new_fwd_attachments_sample_5_118.json");
+        Message message = ParseUtil.getFirstMessage("json/response/message_new/message_new_fwd_attachments_sample_5_118.json");
         assertTrue(message.hasFwdMessages());
 
         List<Message> fwdMessages = message.getFwdMessages();
@@ -442,7 +442,7 @@ public class MessageNewParseTest {
 
     @Test
     void messageNewReplyAttachment() {
-        Message message = ParseTestUtil.getFirstMessage("json/response/message_new/message_new_reply_attachment_sample_5_118.json");
+        Message message = ParseUtil.getFirstMessage("json/response/message_new/message_new_reply_attachment_sample_5_118.json");
         assertTrue(message.hasReplyMessage());
 
         Message replyMessage = message.getReplyMessage();

@@ -1,16 +1,11 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.StoriesFeedBlock;
-import api.longpoll.bots.model.response.ExtendedVkList;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.stories.StoriesGetRepliesResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/stories.getReplies">https://vk.com/dev/stories.getReplies</a>
  */
-public class StoriesGetReplies extends GetMethod<GenericResult<ExtendedVkList<StoriesFeedBlock>>> {
+public class StoriesGetReplies extends VkApiGetMethod<StoriesGetRepliesResult> {
     /**
      * Story owner ID.
      */
@@ -54,23 +49,19 @@ public class StoriesGetReplies extends GetMethod<GenericResult<ExtendedVkList<St
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<ExtendedVkList<StoriesFeedBlock>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<ExtendedVkList<StoriesFeedBlock>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("owner_id", ownerId),
-                keyVal("story_id", storyId),
-                keyVal("access_key", accessKey),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields)
+                param("owner_id", ownerId),
+                param("story_id", storyId),
+                param("access_key", accessKey),
+                param("extended", extended, true),
+                param("fields", fields)
         );
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
+    @Override
+    protected Class<? extends StoriesGetRepliesResult> getResultType() {
+        return StoriesGetRepliesResult.class;
     }
 
     public StoriesGetReplies setOwnerId(Integer ownerId) {
@@ -78,17 +69,9 @@ public class StoriesGetReplies extends GetMethod<GenericResult<ExtendedVkList<St
         return this;
     }
 
-    public Integer getStoryId() {
-        return storyId;
-    }
-
     public StoriesGetReplies setStoryId(Integer storyId) {
         this.storyId = storyId;
         return this;
-    }
-
-    public String getAccessKey() {
-        return accessKey;
     }
 
     public StoriesGetReplies setAccessKey(String accessKey) {
@@ -96,17 +79,9 @@ public class StoriesGetReplies extends GetMethod<GenericResult<ExtendedVkList<St
         return this;
     }
 
-    public Boolean getExtended() {
-        return extended;
-    }
-
     public StoriesGetReplies setExtended(Boolean extended) {
         this.extended = extended;
         return this;
-    }
-
-    public List<String> getFields() {
-        return fields;
     }
 
     public StoriesGetReplies setFields(List<String> fields) {

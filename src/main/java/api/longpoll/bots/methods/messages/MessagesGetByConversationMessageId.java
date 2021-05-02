@@ -1,16 +1,11 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.methods.GetMethod;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
-import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.objects.basic.Message;
-import api.longpoll.bots.model.response.GenericResult;
-import com.google.gson.reflect.TypeToken;
-import org.jsoup.Connection;
+import api.longpoll.bots.model.response.messages.MessagesGetByIdResult;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -18,7 +13,7 @@ import java.util.stream.Stream;
  *
  * @see <a href="https://vk.com/dev/messages.getByConversationMessageId">https://vk.com/dev/messages.getByConversationMessageId</a>
  */
-public class MessagesGetByConversationMessageId extends GetMethod<GenericResult<VkList<Message>>> {
+public class MessagesGetByConversationMessageId extends VkApiGetMethod<MessagesGetByIdResult> {
     /**
      * Peer Id.
      */
@@ -54,23 +49,19 @@ public class MessagesGetByConversationMessageId extends GetMethod<GenericResult<
     }
 
     @Override
-    protected JsonToPojoConverter<GenericResult<VkList<Message>>> getConverter() {
-        return JsonToPojoConverterFactory.get(new TypeToken<GenericResult<VkList<Message>>>(){}.getType());
-    }
-
-    @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Map.Entry<String, Object>> getParamsStream() {
         return Stream.of(
-                keyVal("peer_id", peerId),
-                keyVal("conversation_message_ids", conversationMessageIds),
-                keyVal("extended", extended, true),
-                keyVal("fields", fields),
-                keyVal("group_id", groupId)
+                param("peer_id", peerId),
+                param("conversation_message_ids", conversationMessageIds),
+                param("extended", extended, true),
+                param("fields", fields),
+                param("group_id", groupId)
         );
     }
 
-    public Integer getPeerId() {
-        return peerId;
+    @Override
+    protected Class<? extends MessagesGetByIdResult> getResultType() {
+        return MessagesGetByIdResult.class;
     }
 
     public MessagesGetByConversationMessageId setPeerId(Integer peerId) {
@@ -78,17 +69,9 @@ public class MessagesGetByConversationMessageId extends GetMethod<GenericResult<
         return this;
     }
 
-    public List<Integer> getConversationMessageIds() {
-        return conversationMessageIds;
-    }
-
     public MessagesGetByConversationMessageId setConversationMessageIds(List<Integer> conversationMessageIds) {
         this.conversationMessageIds = conversationMessageIds;
         return this;
-    }
-
-    public Boolean getExtended() {
-        return extended;
     }
 
     public MessagesGetByConversationMessageId setExtended(Boolean extended) {
@@ -96,17 +79,9 @@ public class MessagesGetByConversationMessageId extends GetMethod<GenericResult<
         return this;
     }
 
-    public List<String> getFields() {
-        return fields;
-    }
-
     public MessagesGetByConversationMessageId setFields(List<String> fields) {
         this.fields = fields;
         return this;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
     }
 
     public MessagesGetByConversationMessageId setGroupId(Integer groupId) {
