@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.stories;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.stories.StoriesGetStatsResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -33,10 +33,10 @@ public class StoriesGetStats extends VkApiGetMethod<StoriesGetStatsResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("owner_id", ownerId),
-                param("story_id", storyId)
+                keyVal("owner_id", ownerId),
+                keyVal("story_id", storyId)
         );
     }
 

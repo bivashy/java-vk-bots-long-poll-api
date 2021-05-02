@@ -4,8 +4,8 @@ import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsAddressResult;
 import com.google.gson.JsonObject;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -94,22 +94,22 @@ public class GroupsEditAddress extends VkApiGetMethod<GroupsAddressResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("group_id", groupId),
-                param("address_id", addressId),
-                param("title", title),
-                param("address", address),
-                param("additional_address", additionalAddress),
-                param("country_id", countryId),
-                param("city_id", cityId),
-                param("metro_id", metroId),
-                param("latitude", latitude),
-                param("longitude", longitude),
-                param("phone", phone),
-                param("work_info_status", workInfoStatus),
-                param("timetable", timeTable),
-                param("is_main_address", mainAddress, true)
+                keyVal("group_id", groupId),
+                keyVal("address_id", addressId),
+                keyVal("title", title),
+                keyVal("address", address),
+                keyVal("additional_address", additionalAddress),
+                keyVal("country_id", countryId),
+                keyVal("city_id", cityId),
+                keyVal("metro_id", metroId),
+                keyVal("latitude", latitude),
+                keyVal("longitude", longitude),
+                keyVal("phone", phone),
+                keyVal("work_info_status", workInfoStatus),
+                keyVal("timetable", timeTable),
+                keyVal("is_main_address", mainAddress, true)
         );
     }
 

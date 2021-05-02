@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.groups;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -43,12 +43,12 @@ public class GroupsSetSettings extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("group_id", groupId),
-                param("messages", messages, true),
-                param("bots_capabilities", botsCapabilities, true),
-                param("bots_add_to_chat", botsAddToChat, true)
+                keyVal("group_id", groupId),
+                keyVal("messages", messages, true),
+                keyVal("bots_capabilities", botsCapabilities, true),
+                keyVal("bots_add_to_chat", botsAddToChat, true)
         );
     }
 

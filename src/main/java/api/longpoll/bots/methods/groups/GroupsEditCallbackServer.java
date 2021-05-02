@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.groups;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -48,13 +48,13 @@ public class GroupsEditCallbackServer extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("group_id", groupId),
-                param("server_id", serverId),
-                param("url", url),
-                param("title", title),
-                param("secret_key", secretKey)
+                keyVal("group_id", groupId),
+                keyVal("server_id", serverId),
+                keyVal("url", url),
+                keyVal("title", title),
+                keyVal("secret_key", secretKey)
         );
     }
 

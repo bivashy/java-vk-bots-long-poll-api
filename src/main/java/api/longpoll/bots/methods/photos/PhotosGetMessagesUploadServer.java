@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.photos;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -28,8 +28,8 @@ public class PhotosGetMessagesUploadServer extends VkApiGetMethod<PhotosGetMessa
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
-        return Stream.of(param("peer_id", peerId));
+    protected Stream<Connection.KeyVal> getKeyValStream() {
+        return Stream.of(keyVal("peer_id", peerId));
     }
 
     @Override

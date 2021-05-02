@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.messages;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesDeleteConversationResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -38,11 +38,11 @@ public class MessagesDeleteConversation extends VkApiGetMethod<MessagesDeleteCon
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("user_id", userId),
-                param("peer_id", peerId),
-                param("group_id", groupId)
+                keyVal("user_id", userId),
+                keyVal("peer_id", peerId),
+                keyVal("group_id", groupId)
         );
     }
 

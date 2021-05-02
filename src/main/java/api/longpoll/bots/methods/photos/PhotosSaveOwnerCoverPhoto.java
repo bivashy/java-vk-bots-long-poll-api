@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.photos;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.photos.PhotosSaveOwnerCoverPhotoResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -33,10 +33,10 @@ public class PhotosSaveOwnerCoverPhoto extends VkApiGetMethod<PhotosSaveOwnerCov
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("hash", hash),
-                param("photo", photo)
+                keyVal("hash", hash),
+                keyVal("photo", photo)
         );
     }
 

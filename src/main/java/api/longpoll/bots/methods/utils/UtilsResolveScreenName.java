@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.utils;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.utils.UtilsResolveScreenNameResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -28,8 +28,8 @@ public class UtilsResolveScreenName extends VkApiGetMethod<UtilsResolveScreenNam
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
-        return Stream.of(param("screen_name", screenName));
+    protected Stream<Connection.KeyVal> getKeyValStream() {
+        return Stream.of(keyVal("screen_name", screenName));
     }
 
     @Override

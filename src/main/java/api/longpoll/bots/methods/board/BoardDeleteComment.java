@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.board;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -38,11 +38,11 @@ public class BoardDeleteComment extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("group_id", groupId),
-                param("topic_id", topicId),
-                param("comment_id", commentId)
+                keyVal("group_id", groupId),
+                keyVal("topic_id", topicId),
+                keyVal("comment_id", commentId)
         );
     }
 

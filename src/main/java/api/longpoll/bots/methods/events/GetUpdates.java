@@ -2,10 +2,8 @@ package api.longpoll.bots.methods.events;
 
 import api.longpoll.bots.methods.VkApiMethod;
 import api.longpoll.bots.model.response.events.GetUpdatesResult;
-import kong.unirest.HttpRequest;
-import kong.unirest.Unirest;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -28,12 +26,12 @@ public class GetUpdates extends VkApiMethod<GetUpdatesResult> {
     private Integer ts;
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("act", "a_check"),
-                param("wait", "25"),
-                param("key", key),
-                param("ts", ts)
+                keyVal("act", "a_check"),
+                keyVal("wait", "25"),
+                keyVal("key", key),
+                keyVal("ts", ts)
         );
     }
 
@@ -48,8 +46,8 @@ public class GetUpdates extends VkApiMethod<GetUpdatesResult> {
     }
 
     @Override
-    protected HttpRequest<?> httpRequest() {
-        return Unirest.get(getApi());
+    protected Connection.Method getMethod() {
+        return Connection.Method.GET;
     }
 
     public GetUpdates setServer(String server) {

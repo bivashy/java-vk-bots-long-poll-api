@@ -3,9 +3,9 @@ package api.longpoll.bots.methods.messages;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesGetConversationsResult;
+import org.jsoup.Connection;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -44,12 +44,12 @@ public class MessagesGetConversationsById extends VkApiGetMethod<MessagesGetConv
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("peer_ids", peerIds),
-                param("extended", extended, true),
-                param("fields", fields),
-                param("group_id", groupId)
+                keyVal("peer_ids", peerIds),
+                keyVal("extended", extended, true),
+                keyVal("fields", fields),
+                keyVal("group_id", groupId)
         );
     }
 

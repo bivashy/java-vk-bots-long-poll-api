@@ -11,11 +11,11 @@ import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.messages.MessagesSendResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
 import api.longpoll.bots.utils.methods.MessagesUtil;
+import org.jsoup.Connection;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -129,25 +129,25 @@ public class MessagesSend extends VkApiGetMethod<MessagesSendResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("user_id", userId),
-                param("random_id", randomId),
-                param("peer_id", peerId),
-                param("domain", domain),
-                param("user_ids", userId),
-                param("user_ids", userIds),
-                param("message", message),
-                param("lat", latitude),
-                param("long", longitude),
-                param("attachment", attachments),
-                param("reply_to", replyTo),
-                param("forward_messages", forwardMessages),
-                param("sticker_id", stickerId),
-                param("dont_parse_links", dontParseLinks, true),
-                param("disable_mentions", disableMentions, true),
-                param("keyboard", keyboard),
-                param("template", template)
+                keyVal("user_id", userId),
+                keyVal("random_id", randomId),
+                keyVal("peer_id", peerId),
+                keyVal("domain", domain),
+                keyVal("user_ids", userId),
+                keyVal("user_ids", userIds),
+                keyVal("message", message),
+                keyVal("lat", latitude),
+                keyVal("long", longitude),
+                keyVal("attachment", attachments),
+                keyVal("reply_to", replyTo),
+                keyVal("forward_messages", forwardMessages),
+                keyVal("sticker_id", stickerId),
+                keyVal("dont_parse_links", dontParseLinks, true),
+                keyVal("disable_mentions", disableMentions, true),
+                keyVal("keyboard", keyboard),
+                keyVal("template", template)
         );
     }
 

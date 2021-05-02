@@ -4,8 +4,8 @@ import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.objects.additional.Button;
 import api.longpoll.bots.model.response.IntegerResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -44,12 +44,12 @@ public class MessagesSendEventAnswer extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("event_id", eventId),
-                param("user_id", userId),
-                param("peer_id", peerId),
-                param("event_data", eventData)
+                keyVal("event_id", eventId),
+                keyVal("user_id", userId),
+                keyVal("peer_id", peerId),
+                keyVal("event_data", eventData)
         );
     }
 

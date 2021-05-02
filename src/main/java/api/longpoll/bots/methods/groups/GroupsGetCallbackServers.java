@@ -3,9 +3,9 @@ package api.longpoll.bots.methods.groups;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsGetCallbackServersResult;
+import org.jsoup.Connection;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -34,10 +34,10 @@ public class GroupsGetCallbackServers extends VkApiGetMethod<GroupsGetCallbackSe
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("group_id", groupId),
-                param("server_ids", serverIds)
+                keyVal("group_id", groupId),
+                keyVal("server_ids", serverIds)
         );
     }
 

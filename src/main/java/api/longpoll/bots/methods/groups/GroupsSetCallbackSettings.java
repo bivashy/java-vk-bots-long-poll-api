@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.groups;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -248,53 +248,53 @@ public class GroupsSetCallbackSettings extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("group_id", groupId),
-                param("server_id", serverId),
-                param("api_version", apiVersion),
-                param("message_new", messageNew),
-                param("message_reply", messageReply),
-                param("message_allow", messageAllow),
-                param("message_edit", messageEdit),
-                param("message_deny", messageDeny),
-                param("message_typing_state", messageTypingState),
-                param("photo_new", photoNew),
-                param("audio_new", audioNew),
-                param("video_new", videoNew),
-                param("wall_reply_new", wallReplyNew),
-                param("wall_reply_edit", wallReplyEdit),
-                param("wall_reply_delete", wallReplyDelete),
-                param("wall_reply_restore", wallReplyRestore),
-                param("wall_post_new", wallPostNew),
-                param("wall_repost", wallPostRepost),
-                param("board_post_new", boardPostNew),
-                param("board_post_edit", boardPostEdit),
-                param("board_post_restore", boardPostRestore),
-                param("board_post_delete", boardPostDelete),
-                param("photo_comment_new", photoCommentNew),
-                param("photo_comment_edit", photoCommentEdit),
-                param("photo_comment_delete", photoCommentDelete),
-                param("photo_comment_restore", photoCommentRestore),
-                param("video_comment_new", videoCommentNew),
-                param("video_comment_edit", videoCommentEdit),
-                param("video_comment_delete", videoCommentDelete),
-                param("video_comment_restore", videoCommentRestore),
-                param("market_comment_new", marketCommentNew),
-                param("market_comment_edit", marketCommentEdit),
-                param("market_comment_delete", marketCommentDelete),
-                param("market_comment_restore", marketCommentRestore),
-                param("poll_vote_new", pollVoteNew),
-                param("group_join", groupJoin),
-                param("group_leave", groupLeave),
-                param("group_change_settings", groupChangeSettings),
-                param("group_change_photo", groupChangePhoto),
-                param("group_officers_edit", groupOfficersEdit),
-                param("user_block", userBlock),
-                param("user_unblock", userUnblock),
-                param("lead_forms_new", leadFormsNew),
-                param("like_add", likeAdd),
-                param("like_remove", likeRemove)
+                keyVal("group_id", groupId),
+                keyVal("server_id", serverId),
+                keyVal("api_version", apiVersion),
+                keyVal("message_new", messageNew),
+                keyVal("message_reply", messageReply),
+                keyVal("message_allow", messageAllow),
+                keyVal("message_edit", messageEdit),
+                keyVal("message_deny", messageDeny),
+                keyVal("message_typing_state", messageTypingState),
+                keyVal("photo_new", photoNew),
+                keyVal("audio_new", audioNew),
+                keyVal("video_new", videoNew),
+                keyVal("wall_reply_new", wallReplyNew),
+                keyVal("wall_reply_edit", wallReplyEdit),
+                keyVal("wall_reply_delete", wallReplyDelete),
+                keyVal("wall_reply_restore", wallReplyRestore),
+                keyVal("wall_post_new", wallPostNew),
+                keyVal("wall_repost", wallPostRepost),
+                keyVal("board_post_new", boardPostNew),
+                keyVal("board_post_edit", boardPostEdit),
+                keyVal("board_post_restore", boardPostRestore),
+                keyVal("board_post_delete", boardPostDelete),
+                keyVal("photo_comment_new", photoCommentNew),
+                keyVal("photo_comment_edit", photoCommentEdit),
+                keyVal("photo_comment_delete", photoCommentDelete),
+                keyVal("photo_comment_restore", photoCommentRestore),
+                keyVal("video_comment_new", videoCommentNew),
+                keyVal("video_comment_edit", videoCommentEdit),
+                keyVal("video_comment_delete", videoCommentDelete),
+                keyVal("video_comment_restore", videoCommentRestore),
+                keyVal("market_comment_new", marketCommentNew),
+                keyVal("market_comment_edit", marketCommentEdit),
+                keyVal("market_comment_delete", marketCommentDelete),
+                keyVal("market_comment_restore", marketCommentRestore),
+                keyVal("poll_vote_new", pollVoteNew),
+                keyVal("group_join", groupJoin),
+                keyVal("group_leave", groupLeave),
+                keyVal("group_change_settings", groupChangeSettings),
+                keyVal("group_change_photo", groupChangePhoto),
+                keyVal("group_officers_edit", groupOfficersEdit),
+                keyVal("user_block", userBlock),
+                keyVal("user_unblock", userUnblock),
+                keyVal("lead_forms_new", leadFormsNew),
+                keyVal("like_add", likeAdd),
+                keyVal("like_remove", likeRemove)
         );
     }
 

@@ -3,9 +3,9 @@ package api.longpoll.bots.methods.stories;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.stories.StoriesGetViewersResult;
+import org.jsoup.Connection;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -49,13 +49,13 @@ public class StoriesGetViewers extends VkApiGetMethod<StoriesGetViewersResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("message_ids", messageIds),
-                param("preview_length", previewLength),
-                param("extended", extended, true),
-                param("fields", fields),
-                param("group_id", groupId)
+                keyVal("message_ids", messageIds),
+                keyVal("preview_length", previewLength),
+                keyVal("extended", extended, true),
+                keyVal("fields", fields),
+                keyVal("group_id", groupId)
         );
     }
 

@@ -4,7 +4,6 @@ import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.groups.GroupsAddCallbackServerResult;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -38,12 +37,12 @@ public class GroupsAddCallbackServer extends VkApiGetMethod<GroupsAddCallbackSer
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("group_id", groupId),
-                param("url", url),
-                param("title", title),
-                param("secret_key", secretKey)
+                keyVal("group_id", groupId),
+                keyVal("url", url),
+                keyVal("title", title),
+                keyVal("secret_key", secretKey)
         );
     }
 

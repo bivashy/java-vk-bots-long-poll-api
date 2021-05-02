@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.other;
 import api.longpoll.bots.methods.VkApiPostMethod;
 import api.longpoll.bots.model.objects.media.FileType;
 import api.longpoll.bots.model.response.other.UploadPhotoResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -22,7 +22,7 @@ public class UploadPhoto extends VkApiPostMethod<UploadPhotoResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of();
     }
 
