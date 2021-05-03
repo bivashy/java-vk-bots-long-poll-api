@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.docs;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.docs.DocsSaveResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -43,12 +43,12 @@ public class DocsSave extends VkApiGetMethod<DocsSaveResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("file", file),
-                param("title", title),
-                param("tags", tags),
-                param("return_tags", returnTags, true)
+                keyVal("file", file),
+                keyVal("title", title),
+                keyVal("tags", tags),
+                keyVal("return_tags", returnTags, true)
         );
     }
 

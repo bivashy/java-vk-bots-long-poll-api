@@ -6,10 +6,10 @@ import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.wall.WallCreateCommentResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
+import org.jsoup.Connection;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -68,16 +68,16 @@ public class WallCreateComment extends VkApiGetMethod<WallCreateCommentResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("owner_id", ownerId),
-                param("post_id", postId),
-                param("from_group", fromGroupId),
-                param("message", message),
-                param("reply_to_comment", replyToComment),
-                param("attachments", attachments),
-                param("sticker_id", stickerId),
-                param("guid", guid)
+                keyVal("owner_id", ownerId),
+                keyVal("post_id", postId),
+                keyVal("from_group", fromGroupId),
+                keyVal("message", message),
+                keyVal("reply_to_comment", replyToComment),
+                keyVal("attachments", attachments),
+                keyVal("sticker_id", stickerId),
+                keyVal("guid", guid)
         );
     }
 

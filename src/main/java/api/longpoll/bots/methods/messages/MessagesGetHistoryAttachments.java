@@ -3,9 +3,9 @@ package api.longpoll.bots.methods.messages;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesGetHistoryAttachmentsResult;
+import org.jsoup.Connection;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -69,17 +69,17 @@ public class MessagesGetHistoryAttachments extends VkApiGetMethod<MessagesGetHis
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("peer_id", peerId),
-                param("media_type", mediaType),
-                param("start_from", startFrom),
-                param("count", count),
-                param("photo_sizes", photoSizes, true),
-                param("fields", fields),
-                param("group_id", groupId),
-                param("preserve_order", preserveOrder, true),
-                param("max_forwards_level", maxForwardsLevel)
+                keyVal("peer_id", peerId),
+                keyVal("media_type", mediaType),
+                keyVal("start_from", startFrom),
+                keyVal("count", count),
+                keyVal("photo_sizes", photoSizes, true),
+                keyVal("fields", fields),
+                keyVal("group_id", groupId),
+                keyVal("preserve_order", preserveOrder, true),
+                keyVal("max_forwards_level", maxForwardsLevel)
         );
     }
 

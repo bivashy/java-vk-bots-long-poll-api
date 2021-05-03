@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.messages;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesGetInviteLinkResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -38,11 +38,11 @@ public class MessagesGetInviteLink extends VkApiGetMethod<MessagesGetInviteLinkR
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("peer_id", peerId),
-                param("reset", reset, true),
-                param("group_id", groupId)
+                keyVal("peer_id", peerId),
+                keyVal("reset", reset, true),
+                keyVal("group_id", groupId)
         );
     }
 

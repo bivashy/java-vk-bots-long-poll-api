@@ -3,9 +3,9 @@ package api.longpoll.bots.methods.stories;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.IntegerResult;
+import org.jsoup.Connection;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -39,11 +39,11 @@ public class StoriesDelete extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("owner_id", ownerId),
-                param("story_id", storyId),
-                param("stories", stories)
+                keyVal("owner_id", ownerId),
+                keyVal("story_id", storyId),
+                keyVal("stories", stories)
         );
     }
 

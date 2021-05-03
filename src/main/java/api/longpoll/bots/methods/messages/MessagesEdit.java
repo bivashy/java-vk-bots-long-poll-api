@@ -9,11 +9,11 @@ import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.IntegerResult;
 import api.longpoll.bots.utils.methods.AttachmentsUtil;
 import api.longpoll.bots.utils.methods.MessagesUtil;
+import org.jsoup.Connection;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -97,19 +97,19 @@ public class MessagesEdit extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("peer_id", peerId),
-                param("message", message),
-                param("lat", latitude),
-                param("long", longitude),
-                param("attachment", attachments),
-                param("keep_forward_messages", keepForwardMessages, true),
-                param("keep_snippets", keepSnippets, true),
-                param("group_id", groupId),
-                param("dont_parse_links", dontParseLinks, true),
-                param("message_id", messageId),
-                param("conversation_message_id", conversationMessageId)
+                keyVal("peer_id", peerId),
+                keyVal("message", message),
+                keyVal("lat", latitude),
+                keyVal("long", longitude),
+                keyVal("attachment", attachments),
+                keyVal("keep_forward_messages", keepForwardMessages, true),
+                keyVal("keep_snippets", keepSnippets, true),
+                keyVal("group_id", groupId),
+                keyVal("dont_parse_links", dontParseLinks, true),
+                keyVal("message_id", messageId),
+                keyVal("conversation_message_id", conversationMessageId)
         );
     }
 

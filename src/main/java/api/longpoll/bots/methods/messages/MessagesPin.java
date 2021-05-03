@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.messages;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesPinResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -33,10 +33,10 @@ public class MessagesPin extends VkApiGetMethod<MessagesPinResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("peer_id", peerId),
-                param("conversation_message_id", conversationMessageId)
+                keyVal("peer_id", peerId),
+                keyVal("conversation_message_id", conversationMessageId)
         );
     }
 

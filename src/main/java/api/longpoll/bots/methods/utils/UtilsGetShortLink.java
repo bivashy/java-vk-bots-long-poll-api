@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.utils;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.utils.UtilsGetShortLinkResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -33,10 +33,10 @@ public class UtilsGetShortLink extends VkApiGetMethod<UtilsGetShortLinkResult> {
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("url", url),
-                param("private", isPrivate, true)
+                keyVal("url", url),
+                keyVal("private", isPrivate, true)
         );
     }
 

@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.photos;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.photos.PhotosGetOwnerCoverPhotoUploadServerResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -48,13 +48,13 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends VkApiGetMethod<PhotosG
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("group_id", groupId),
-                param("crop_x", cropX),
-                param("crop_y", cropY),
-                param("crop_x2", cropX2),
-                param("crop_y2", cropY2)
+                keyVal("group_id", groupId),
+                keyVal("crop_x", cropX),
+                keyVal("crop_y", cropY),
+                keyVal("crop_x2", cropX2),
+                keyVal("crop_y2", cropY2)
         );
     }
 

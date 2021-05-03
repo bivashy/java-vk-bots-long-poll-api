@@ -3,8 +3,8 @@ package api.longpoll.bots.methods.market;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.market.MarketGetGroupOrdersResult;
+import org.jsoup.Connection;
 
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -38,11 +38,11 @@ public class MarketGetGroupOrders extends VkApiGetMethod<MarketGetGroupOrdersRes
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("group_id", groupId),
-                param("offset", offset),
-                param("count", count)
+                keyVal("group_id", groupId),
+                keyVal("offset", offset),
+                keyVal("count", count)
         );
     }
 

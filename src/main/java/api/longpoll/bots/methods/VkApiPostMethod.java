@@ -1,12 +1,12 @@
 package api.longpoll.bots.methods;
 
 import api.longpoll.bots.model.objects.media.FileType;
-import kong.unirest.HttpRequest;
-import kong.unirest.HttpRequestWithBody;
-import kong.unirest.Unirest;
+import org.jsoup.Connection;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Executes generic POST HTTP request to VK API.
@@ -23,13 +23,16 @@ public abstract class VkApiPostMethod<Response> extends VkApiMethod<Response> {
     private File file;
 
     @Override
-    protected String execute(HttpRequest<?> httpRequest) throws IOException {
-        return super.execute(((HttpRequestWithBody) httpRequest).field(getType().name, file));
+    protected Connection.Response execute(Connection connection) throws IOException {
+        try (InputStream inputStream = new FileInputStream(file)) {
+            connection.data(getType().name, file.getName(), inputStream);
+            return super.execute(connection);
+        }
     }
 
     @Override
-    protected HttpRequest<?> httpRequest() {
-        return Unirest.post(getApi());
+    protected Connection.Method getMethod() {
+        return Connection.Method.POST;
     }
 
     /**
@@ -39,6 +42,10 @@ public abstract class VkApiPostMethod<Response> extends VkApiMethod<Response> {
      * @see FileType
      */
     protected abstract FileType getType();
+
+    public File getFile() {
+        return file;
+    }
 
     public VkApiPostMethod<Response> setFile(File file) {
         this.file = file;

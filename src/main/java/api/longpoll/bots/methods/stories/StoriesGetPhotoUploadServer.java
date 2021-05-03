@@ -3,9 +3,9 @@ package api.longpoll.bots.methods.stories;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.stories.StoriesGetUploadServerResult;
+import org.jsoup.Connection;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -81,15 +81,15 @@ public class StoriesGetPhotoUploadServer extends VkApiGetMethod<StoriesGetUpload
     }
 
     @Override
-    protected Stream<Map.Entry<String, Object>> getParamsStream() {
+    protected Stream<Connection.KeyVal> getKeyValStream() {
         return Stream.of(
-                param("add_to_news", add_to_news, true),
-                param("user_ids", userIds),
-                param("reply_to_story", replyToStory),
-                param("link_text", linkText),
-                param("link_url", linkUrl),
-                param("group_id", groupId),
-                param("clickable_stickers", clickableStickers)
+                keyVal("add_to_news", add_to_news, true),
+                keyVal("user_ids", userIds),
+                keyVal("reply_to_story", replyToStory),
+                keyVal("link_text", linkText),
+                keyVal("link_url", linkUrl),
+                keyVal("group_id", groupId),
+                keyVal("clickable_stickers", clickableStickers)
         );
     }
 
