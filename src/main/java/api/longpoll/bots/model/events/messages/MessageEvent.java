@@ -3,6 +3,8 @@ package api.longpoll.bots.model.events.messages;
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Map;
+
 /**
  * Action with message. Used to work with Callback buttons.
  */
@@ -29,7 +31,7 @@ public class MessageEvent implements EventObject {
      * Additional info.
      */
     @SerializedName("payload")
-    private String payload;
+    private Map<String, Object> payload;
 
     /**
      * Message ID.
@@ -61,11 +63,11 @@ public class MessageEvent implements EventObject {
         this.eventId = eventId;
     }
 
-    public String getPayload() {
+    public Map<String, Object> getPayload() {
         return payload;
     }
 
-    public void setPayload(String payload) {
+    public void setPayload(Map<String, Object> payload) {
         this.payload = payload;
     }
 
