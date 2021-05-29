@@ -1,7 +1,6 @@
 package api.longpoll.bots.model.events.messages;
 
 import api.longpoll.bots.model.events.EventObject;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -30,7 +29,7 @@ public class MessageEvent implements EventObject {
      * Additional info.
      */
     @SerializedName("payload")
-    private JsonObject payload;
+    private String payload;
 
     /**
      * Message ID.
@@ -62,11 +61,11 @@ public class MessageEvent implements EventObject {
         this.eventId = eventId;
     }
 
-    public JsonObject getPayload() {
+    public String getPayload() {
         return payload;
     }
 
-    public void setPayload(JsonObject payload) {
+    public void setPayload(String payload) {
         this.payload = payload;
     }
 
