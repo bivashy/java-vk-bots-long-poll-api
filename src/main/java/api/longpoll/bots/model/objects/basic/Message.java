@@ -1,8 +1,12 @@
 package api.longpoll.bots.model.objects.basic;
 
+import api.longpoll.bots.adapters.deserializers.PayloadDeserializer;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.objects.additional.Geo;
 import api.longpoll.bots.model.objects.media.Attachment;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -72,7 +76,8 @@ public class Message implements EventObject {
      * Service field (payload).
      */
     @SerializedName("payload")
-    private String payload;
+    @JsonAdapter(PayloadDeserializer.class)
+    private JsonElement payload;
 
     /**
      * List of forwarded messages (if any).
@@ -343,11 +348,11 @@ public class Message implements EventObject {
         this.geo = geo;
     }
 
-    public String getPayload() {
+    public JsonElement getPayload() {
         return payload;
     }
 
-    public void setPayload(String payload) {
+    public void setPayload(JsonObject payload) {
         this.payload = payload;
     }
 

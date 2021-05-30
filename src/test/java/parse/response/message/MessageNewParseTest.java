@@ -12,6 +12,9 @@ import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import api.longpoll.bots.model.objects.basic.WallPost;
 import api.longpoll.bots.model.objects.media.*;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
 
@@ -463,5 +466,31 @@ public class MessageNewParseTest {
         List<PhotoSize> photoSizes = photo.getPhotoSizes();
         assertNotNull(photoSizes);
         assertFalse(photoSizes.isEmpty());
+    }
+
+    @Test
+    void messageNewPayload() {
+        Message message = ParseUtil.getFirstMessage("json/response/message_new/message_new_payload_sample_5_118.json");
+        JsonElement element = message.getPayload();
+        assertNotNull(element);
+        assertTrue(element.isJsonObject());
+        JsonObject payload = element.getAsJsonObject();
+        //assertEquals("{\"data\":\"clicked\",\"time\":1622383763657,\"values\":[11,22,33],\"status\":{\"active\":true}}", payload);
+        assertTrue(payload.has("data"));
+        assertEquals("clicked", payload.get("data").getAsString());
+        assertTrue(payload.has("time"));
+        assertEquals(1622383763657L, payload.get("time").getAsLong());
+
+        assertTrue(payload.has("values"));
+        JsonArray jsonArray = payload.getAsJsonArray("values");
+        assertEquals(3, jsonArray.size());
+        assertEquals(11, jsonArray.get(0).getAsInt());
+        assertEquals(22, jsonArray.get(1).getAsInt());
+        assertEquals(33, jsonArray.get(2).getAsInt());
+
+        assertTrue(payload.has("status"));
+        JsonObject jsonObject = payload.getAsJsonObject("status");
+        assertTrue(jsonObject.has("active"));
+        assertTrue(jsonObject.get("active").getAsBoolean());
     }
 }
