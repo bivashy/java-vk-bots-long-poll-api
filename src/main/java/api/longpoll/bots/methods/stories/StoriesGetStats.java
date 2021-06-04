@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>stories.getStats</b> method.
  *
+ * Return statictics data for the story.
+ *
  * @see <a href="https://vk.com/dev/stories.getStats">https://vk.com/dev/stories.getStats</a>
  */
 public class StoriesGetStats extends VkApiGetMethod<StoriesGetStatsResult> {

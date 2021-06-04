@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.deleteCallbackServer</b> method.
  *
+ * Deletes Callback API server from the community.
+ *
  * @see <a href="https://vk.com/dev/groups.deleteCallbackServer">https://vk.com/dev/groups.deleteCallbackServer</a>
  */
 public class GroupsDeleteCallbackServer extends VkApiGetMethod<IntegerResult> {

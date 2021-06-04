@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.getConversations</b> method.
  *
+ * Returns a list of conversations.
+ *
  * @see <a href="https://vk.com/dev/messages.getConversations">https://vk.com/dev/messages.getConversations</a>
  */
 public class MessagesGetConversations extends VkApiGetMethod<MessagesGetConversationsResult> {

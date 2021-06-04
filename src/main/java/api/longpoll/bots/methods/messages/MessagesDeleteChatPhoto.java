@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.deleteChatPhoto</b> method.
  *
+ * Deletes a chat's cover picture.
+ *
  * @see <a href="https://vk.com/dev/messages.deleteChatPhoto">https://vk.com/dev/messages.deleteChatPhoto</a>
  */
 public class MessagesDeleteChatPhoto extends VkApiGetMethod<MessagesDeleteChatPhotoResult> {

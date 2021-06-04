@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.isMember</b> method.
  *
+ * Returns information specifying whether a user is a member of a community.
+ *
  * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
  */
 public class GroupsIsMember extends VkApiGetMethod<GroupsIsMemberResult> {

@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.getLongPollServer</b> method.
  *
+ * Returns data for Bots Long Poll API connection.
+ *
  * @see <a href="https://vk.com/dev/groups.getLongPollServer">https://vk.com/dev/groups.getLongPollServer</a>
  */
 public class GroupsGetLongPollServer extends VkApiGetMethod<GroupsGetLongPollServerResult> {

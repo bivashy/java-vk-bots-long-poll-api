@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.searchConversations</b> method.
  *
+ * Returns a list of conversations that match search criteria.
+ *
  * @see <a href="https://vk.com/dev/messages.searchConversations">https://vk.com/dev/messages.searchConversations</a>
  */
 public class MessagesSearchConversations extends VkApiGetMethod<MessagesGetConversationsResult> {

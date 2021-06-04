@@ -1,4 +1,4 @@
-package api.longpoll.bots.methods.other;
+package api.longpoll.bots.methods.upload;
 
 import api.longpoll.bots.methods.VkApiPostMethod;
 import api.longpoll.bots.model.objects.media.FileType;

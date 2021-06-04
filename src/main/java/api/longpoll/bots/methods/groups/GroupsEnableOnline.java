@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.enableOnline</b> method.
  *
+ * Enables "online" status in the community.
+ *
  * @see <a href="https://vk.com/dev/groups.enableOnline">https://vk.com/dev/groups.enableOnline</a>
  */
 public class GroupsEnableOnline extends VkApiGetMethod<IntegerResult> {

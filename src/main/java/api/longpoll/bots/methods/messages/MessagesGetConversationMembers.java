@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.getConversationMembers</b> method.
  *
+ * Returns a list of IDs of users participating in a conversation.
+ *
  * @see <a href="https://vk.com/dev/messages.getConversationMembers">https://vk.com/dev/messages.getConversationMembers</a>
  */
 public class MessagesGetConversationMembers extends VkApiGetMethod<MessagesGetConversationMembersResult> {

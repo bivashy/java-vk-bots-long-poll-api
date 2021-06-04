@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>stories.get</b> method.
  *
+ * Returns stories available for current user.
+ *
  * @see <a href="https://vk.com/dev/stories.get">https://vk.com/dev/stories.get</a>
  */
 public class StoriesGetById extends VkApiGetMethod<StoriesListResult> {

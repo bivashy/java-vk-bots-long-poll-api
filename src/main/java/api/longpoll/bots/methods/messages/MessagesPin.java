@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.pin</b> method.
  *
+ * Pin the message
+ *
  * @see <a href="https://vk.com/dev/messages.pin">https://vk.com/dev/messages.pin</a>
  */
 public class MessagesPin extends VkApiGetMethod<MessagesPinResult> {

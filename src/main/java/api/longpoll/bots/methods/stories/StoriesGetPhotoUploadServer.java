@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>stories.getPhotoUploadServer</b> method.
  *
+ * Returns URL for uploading a story with photo.
+ *
  * @see <a href="https://vk.com/dev/stories.getPhotoUploadServer">https://vk.com/dev/stories.getPhotoUploadServer</a>
  */
 public class StoriesGetPhotoUploadServer extends VkApiGetMethod<StoriesGetUploadServerResult> {

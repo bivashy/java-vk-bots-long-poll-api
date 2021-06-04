@@ -15,6 +15,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>wall.createComment</b> method.
  *
+ * Adds a comment to a post on a user wall or community wall.
+ *
  * @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
  */
 public class WallCreateComment extends VkApiGetMethod<WallCreateCommentResult> {

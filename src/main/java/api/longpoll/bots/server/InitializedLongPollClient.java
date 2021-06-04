@@ -7,6 +7,9 @@ import api.longpoll.bots.model.events.Event;
 
 import java.util.List;
 
+/**
+ * Client to get Vk Long Poll updates. Become initialized after first call.
+ */
 public class InitializedLongPollClient extends LongPollClient {
     private boolean firstCall = true;
 

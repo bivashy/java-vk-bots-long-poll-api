@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.removeChatUser</b> method.
  *
+ * Allows the current user to leave a chat or, if the current user started the chat, allows the user to remove another user from the chat.
+ *
  * @see <a href="https://vk.com/dev/messages.removeChatUser">https://vk.com/dev/messages.removeChatUser</a>
  */
 public class MessagesRemoveChatUser extends VkApiGetMethod<IntegerResult> {

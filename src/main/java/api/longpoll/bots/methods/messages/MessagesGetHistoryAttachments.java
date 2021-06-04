@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.getHistoryAttachments</b> method.
  *
+ * Returns media files from the dialog or group chat.
+ *
  * @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
  */
 public class MessagesGetHistoryAttachments extends VkApiGetMethod<MessagesGetHistoryAttachmentsResult> {

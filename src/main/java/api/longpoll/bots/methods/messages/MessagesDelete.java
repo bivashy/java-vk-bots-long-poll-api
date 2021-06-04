@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.delete</b> method.
  *
+ * Deletes one or more messages.
+ *
  * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
  */
 public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {

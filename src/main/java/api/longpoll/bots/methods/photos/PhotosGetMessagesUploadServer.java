@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>photos.getMessagesUploadServer</b> method.
  *
+ * Returns the server address for photo upload in a private message for a user.
+ *
  * @see <a href="https://vk.com/dev/photos.getMessagesUploadServer">https://vk.com/dev/photos.getMessagesUploadServer</a>
  */
 public class PhotosGetMessagesUploadServer extends VkApiGetMethod<PhotosGetMessagesUploadServerResult> {

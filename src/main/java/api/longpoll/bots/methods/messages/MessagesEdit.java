@@ -19,6 +19,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.edit</b> method.
  *
+ * Edits the message.
+ *
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
  */
 public class MessagesEdit extends VkApiGetMethod<IntegerResult> {

@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.markAsRead</b> method.
  *
+ * Marks messages as read.
+ *
  * @see <a href="https://vk.com/dev/messages.markAsRead">https://vk.com/dev/messages.markAsRead</a>
  */
 public class MessagesMarkAsRead extends VkApiGetMethod<IntegerResult> {

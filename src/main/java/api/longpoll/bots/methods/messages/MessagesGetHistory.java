@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.getHistory</b> method.
  *
+ * Returns message history for the specified user or group chat.
+ *
  * @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
  */
 public class MessagesGetHistory extends VkApiGetMethod<MessagesGetHistoryResult> {

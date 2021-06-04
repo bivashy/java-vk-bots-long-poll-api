@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.deleteConversation</b> method.
  *
+ * Deletes private messages in a conversation.
+ *
  * @see <a href="https://vk.com/dev/messages.deleteConversation">https://vk.com/dev/messages.deleteConversation</a>
  */
 public class MessagesDeleteConversation extends VkApiGetMethod<MessagesDeleteConversationResult> {

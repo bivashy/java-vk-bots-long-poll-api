@@ -21,6 +21,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.send</b> method.
  *
+ * Sends a message.
+ *
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
 public class MessagesSend extends VkApiGetMethod<MessagesSendResult> {

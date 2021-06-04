@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>stories.delete</b> method.
  *
+ * Allows to delete story.
+ *
  * @see <a href="https://vk.com/dev/stories.delete">https://vk.com/dev/stories.delete</a>
  */
 public class StoriesDelete extends VkApiGetMethod<IntegerResult> {

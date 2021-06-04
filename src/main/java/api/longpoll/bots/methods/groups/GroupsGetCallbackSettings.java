@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.getCallbackSettings</b> method.
  *
+ * Returns Callback API notifications settings.
+ *
  * @see <a href="https://vk.com/dev/groups.getCallbackSettings">https://vk.com/dev/groups.getCallbackSettings</a>
  */
 public class GroupsGetCallbackSettings extends VkApiGetMethod<GroupsGetCallbackSettingsResult> {

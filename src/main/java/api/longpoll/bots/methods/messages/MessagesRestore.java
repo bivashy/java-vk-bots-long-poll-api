@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.restore</b> method.
  *
+ * Restores a deleted message.
+ *
  * @see <a href="https://vk.com/dev/messages.restore">https://vk.com/dev/messages.restore</a>
  */
 public class MessagesRestore extends VkApiGetMethod<IntegerResult> {

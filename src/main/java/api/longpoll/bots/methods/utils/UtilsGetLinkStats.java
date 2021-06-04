@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>utils.getLinkStats</b> method.
  *
+ * Returns stats data for shortened link.
+ *
  * @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
  */
 public class UtilsGetLinkStats extends VkApiGetMethod<UtilsGetLinkStatsResult> {

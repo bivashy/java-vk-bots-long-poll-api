@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.createChat</b> method.
  *
+ * Creates a chat with several participants.
+ *
  * @see <a href="https://vk.com/dev/messages.createChat">https://vk.com/dev/messages.createChat</a>
  */
 public class MessagesCreateChat extends VkApiGetMethod<IntegerResult> {

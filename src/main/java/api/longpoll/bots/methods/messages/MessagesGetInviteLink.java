@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.getInviteLink</b> method.
  *
+ * Receives a link to invite a user to the chat.
+ *
  * @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
  */
 public class MessagesGetInviteLink extends VkApiGetMethod<MessagesGetInviteLinkResult> {

@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.editChat</b> method.
  *
+ * Edits the title of a chat.
+ *
  * @see <a href="https://vk.com/dev/messages.editChat">https://vk.com/dev/messages.editChat</a>
  */
 public class MessagesEditChat extends VkApiGetMethod<IntegerResult> {

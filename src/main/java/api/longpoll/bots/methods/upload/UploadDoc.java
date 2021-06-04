@@ -1,16 +1,16 @@
-package api.longpoll.bots.methods.other;
+package api.longpoll.bots.methods.upload;
 
 import api.longpoll.bots.methods.VkApiPostMethod;
 import api.longpoll.bots.model.objects.media.FileType;
-import api.longpoll.bots.model.response.other.UploadPhotoResult;
+import api.longpoll.bots.model.response.other.UploadDocResult;
 import org.jsoup.Connection;
 
 import java.util.stream.Stream;
 
 /**
- * Implements uploading photo in VK API.
+ * Implements uploading document in VK API.
  */
-public class UploadPhoto extends VkApiPostMethod<UploadPhotoResult> {
+public class UploadDoc extends VkApiPostMethod<UploadDocResult> {
     /**
      * Upload URL.
      */
@@ -27,16 +27,16 @@ public class UploadPhoto extends VkApiPostMethod<UploadPhotoResult> {
     }
 
     @Override
-    protected Class<? extends UploadPhotoResult> getResultType() {
-        return UploadPhotoResult.class;
+    protected Class<? extends UploadDocResult> getResultType() {
+        return UploadDocResult.class;
     }
 
     @Override
     protected FileType getType() {
-        return FileType.PHOTO;
+        return FileType.FILE;
     }
 
-    public UploadPhoto setUploadUrl(String uploadUrl) {
+    public UploadDoc setUploadUrl(String uploadUrl) {
         this.uploadUrl = uploadUrl;
         return this;
     }

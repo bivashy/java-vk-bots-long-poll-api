@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.editCallbackServer</b> method.
  *
+ * Edits Callback API server in the community.
+ *
  * @see <a href="https://vk.com/dev/groups.editCallbackServer">https://vk.com/dev/groups.editCallbackServer</a>
  */
 public class GroupsEditCallbackServer extends VkApiGetMethod<IntegerResult> {

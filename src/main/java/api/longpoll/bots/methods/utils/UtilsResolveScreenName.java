@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>utils.resolveScreenName</b> method.
  *
+ * Detects a type of object (e.g., user, community, application) and its ID by screen name.
+ *
  * @see <a href="https://vk.com/dev/utils.resolveScreenName">https://vk.com/dev/utils.resolveScreenName</a>
  */
 public class UtilsResolveScreenName extends VkApiGetMethod<UtilsResolveScreenNameResult> {

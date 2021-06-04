@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>board.deleteComment</b> method.
  *
+ * Restores a comment deleted from a topic on a community's discussion board.
+ *
  * @see <a href="https://vk.com/dev/board.deleteComment">https://vk.com/dev/board.deleteComment</a>
  */
 public class BoardRestoreComment extends VkApiGetMethod<IntegerResult> {

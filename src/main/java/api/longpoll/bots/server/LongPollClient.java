@@ -8,18 +8,19 @@ import api.longpoll.bots.methods.groups.GroupsGetLongPollServer;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.response.events.GetUpdatesResult;
 import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResult;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
+/**
+ * Client to get Vk Long Poll updates.
+ */
 public class LongPollClient implements Client {
     private static final Logger log = LoggerFactory.getLogger(LongPollClient.class);
     private static final int ATTEMPTS = 10;
 
-    private static final Gson GSON = new Gson();
     private GroupsGetLongPollServer groupsGetLongPollServer;
     private GetUpdates getUpdates;
 

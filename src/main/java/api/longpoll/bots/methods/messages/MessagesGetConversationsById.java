@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.getConversationsById</b> method.
  *
+ * Returns conversations by their IDs.
+ *
  * @see <a href="https://vk.com/dev/messages.getConversationsById">https://vk.com/dev/messages.getConversationsById</a>
  */
 public class MessagesGetConversationsById extends VkApiGetMethod<MessagesGetConversationsResult> {

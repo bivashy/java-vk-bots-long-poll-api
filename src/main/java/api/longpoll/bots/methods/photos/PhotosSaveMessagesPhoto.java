@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>photos.saveMessagesPhoto</b> method.
  *
+ * Saves a photo after being successfully uploaded. URL obtained with photos.getMessagesUploadServer method.
+ *
  * @see <a href="https://vk.com/dev/photos.saveMessagesPhoto">https://vk.com/dev/photos.saveMessagesPhoto</a>
  */
 public class PhotosSaveMessagesPhoto extends VkApiGetMethod<PhotosSaveMessagesPhotoResult> {

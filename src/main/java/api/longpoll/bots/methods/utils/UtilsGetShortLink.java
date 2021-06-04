@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>utils.getShortLink</b> method.
  *
+ * Allows to receive a link shortened via vk.cc.
+ *
  * @see <a href="https://vk.com/dev/utils.getShortLink">https://vk.com/dev/utils.getShortLink</a>
  */
 public class UtilsGetShortLink extends VkApiGetMethod<UtilsGetShortLinkResult> {

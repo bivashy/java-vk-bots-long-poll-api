@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.getOnlineStatus</b> method.
  *
+ * Returns a community's online status.
+ *
  * @see <a href="https://vk.com/dev/groups.getOnlineStatus">https://vk.com/dev/groups.getOnlineStatus</a>
  */
 public class GroupsGetOnlineStatus extends VkApiGetMethod<GroupsGetOnlineStatusResult> {
