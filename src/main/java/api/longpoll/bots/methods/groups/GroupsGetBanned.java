@@ -51,7 +51,7 @@ public class GroupsGetBanned extends VkApiGetMethod<GroupsGetBannedResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("offset", offset),

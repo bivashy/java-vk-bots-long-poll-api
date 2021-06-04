@@ -83,7 +83,7 @@ public class StoriesGetPhotoUploadServer extends VkApiGetMethod<StoriesGetUpload
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("add_to_news", add_to_news, true),
                 keyVal("user_ids", userIds),

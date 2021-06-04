@@ -40,7 +40,7 @@ public class PhotosSaveMessagesPhoto extends VkApiGetMethod<PhotosSaveMessagesPh
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("photo", photo),
                 keyVal("server", server),

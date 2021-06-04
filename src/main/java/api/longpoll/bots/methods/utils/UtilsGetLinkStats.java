@@ -55,7 +55,7 @@ public class UtilsGetLinkStats extends VkApiGetMethod<UtilsGetLinkStatsResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("key", key),
                 keyVal("source", source),

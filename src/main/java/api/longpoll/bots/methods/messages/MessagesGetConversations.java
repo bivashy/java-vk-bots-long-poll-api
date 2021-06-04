@@ -61,7 +61,7 @@ public class MessagesGetConversations extends VkApiGetMethod<MessagesGetConversa
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("offset", offset),
                 keyVal("count", count),

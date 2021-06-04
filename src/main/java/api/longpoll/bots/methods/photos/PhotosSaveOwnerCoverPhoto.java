@@ -35,7 +35,7 @@ public class PhotosSaveOwnerCoverPhoto extends VkApiGetMethod<PhotosSaveOwnerCov
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("hash", hash),
                 keyVal("photo", photo)

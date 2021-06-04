@@ -22,7 +22,7 @@ public class UploadPhoto extends VkApiPostMethod<UploadPhotoResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of();
     }
 

@@ -130,7 +130,7 @@ public class MessagesSend extends VkApiGetMethod<MessagesSendResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("user_id", userId),
                 keyVal("random_id", randomId),

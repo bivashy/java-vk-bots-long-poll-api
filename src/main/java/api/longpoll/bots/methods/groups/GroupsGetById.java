@@ -41,7 +41,7 @@ public class GroupsGetById extends VkApiGetMethod<GroupsGetByIdResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_ids", groupIds),
                 keyVal("group_id", groupId),

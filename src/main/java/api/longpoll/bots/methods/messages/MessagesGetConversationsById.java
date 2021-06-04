@@ -46,7 +46,7 @@ public class MessagesGetConversationsById extends VkApiGetMethod<MessagesGetConv
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("peer_ids", peerIds),
                 keyVal("extended", extended, true),

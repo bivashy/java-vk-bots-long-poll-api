@@ -25,7 +25,7 @@ public class StoriesSave extends VkApiGetMethod<StoriesListResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(keyVal("upload_results", uploadResults));
     }
 

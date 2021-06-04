@@ -30,7 +30,7 @@ public class GroupsEnableOnline extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(keyVal("group_id", groupId));
     }
 

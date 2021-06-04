@@ -36,7 +36,7 @@ public class DocsGetMessagesUploadServer extends VkApiGetMethod<DocsGetUploadSer
 
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("type", type),
                 keyVal("peer_id", peerId)

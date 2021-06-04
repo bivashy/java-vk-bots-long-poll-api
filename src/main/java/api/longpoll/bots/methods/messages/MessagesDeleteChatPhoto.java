@@ -35,7 +35,7 @@ public class MessagesDeleteChatPhoto extends VkApiGetMethod<MessagesDeleteChatPh
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("chat_id", chatId),
                 keyVal("group_id", groupId)

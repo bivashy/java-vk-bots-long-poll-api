@@ -25,7 +25,7 @@ public class UtilsGetServerTime extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of();
     }
 

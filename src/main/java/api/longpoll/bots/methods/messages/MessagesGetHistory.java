@@ -71,7 +71,7 @@ public class MessagesGetHistory extends VkApiGetMethod<MessagesGetHistoryResult>
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("offset", offset),
                 keyVal("count", count),

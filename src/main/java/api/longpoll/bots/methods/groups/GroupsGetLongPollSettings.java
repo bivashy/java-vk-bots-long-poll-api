@@ -30,7 +30,7 @@ public class GroupsGetLongPollSettings extends VkApiGetMethod<GroupsGetLongPollS
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(keyVal("group_id", groupId));
     }
 

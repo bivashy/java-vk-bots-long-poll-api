@@ -34,8 +34,8 @@ public abstract class VkApiGetMethod<Response> extends VkApiMethod<Response> {
     }
 
     @Override
-    protected List<Connection.KeyVal> getData() {
-        List<Connection.KeyVal> requestParams = super.getData();
+    protected List<Connection.KeyVal> collectParams() {
+        List<Connection.KeyVal> requestParams = super.collectParams();
 
         requestParams.add(keyVal(ACCESS_TOKEN, accessToken));
         requestParams.add(keyVal(VERSION, VkApi.getInstance().apiVersion()));

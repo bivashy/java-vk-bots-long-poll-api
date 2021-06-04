@@ -90,17 +90,17 @@ public abstract class VkApiMethod<Result> {
         try {
             String api = getApi();
             Connection.Method method = getMethod();
-            List<Connection.KeyVal> data = getData();
+            List<Connection.KeyVal> params = collectParams();
 
-            log.debug("Sending: method={}, api={}, data={}", method, api, data);
+            log.debug("Sending: method={}, api={}, params={}", method, api, params);
 
             Connection connection = Jsoup.connect(api)
                     .ignoreContentType(true)
                     .timeout(0)
                     .method(method);
 
-            if (!data.isEmpty()) {
-                connection.data(data);
+            if (!params.isEmpty()) {
+                connection.data(params);
             }
 
             String body = execute(connection).body();
@@ -129,8 +129,8 @@ public abstract class VkApiMethod<Result> {
      *
      * @return list of request params.
      */
-    protected List<Connection.KeyVal> getData() {
-        return getKeyValStream()
+    protected List<Connection.KeyVal> collectParams() {
+        return getParamsStream()
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
     }
@@ -189,11 +189,11 @@ public abstract class VkApiMethod<Result> {
 
     /**
      * Gets stream of request parameters.
-     * This stream is used during collecting request data in {@link VkApiMethod#getData()}.
+     * This stream is used during collecting request data in {@link VkApiMethod#collectParams()}.
      *
      * @return stream of request parameters.
      */
-    protected abstract Stream<Connection.KeyVal> getKeyValStream();
+    protected abstract Stream<Connection.KeyVal> getParamsStream();
 
     /**
      * Gets type of VK API response.

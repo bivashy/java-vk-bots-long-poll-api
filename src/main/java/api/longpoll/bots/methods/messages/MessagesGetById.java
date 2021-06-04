@@ -51,7 +51,7 @@ public class MessagesGetById extends VkApiGetMethod<MessagesGetByIdResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("message_ids", messageIds),
                 keyVal("preview_length", previewLength),

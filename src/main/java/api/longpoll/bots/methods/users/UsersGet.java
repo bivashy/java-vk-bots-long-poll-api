@@ -41,7 +41,7 @@ public class UsersGet extends VkApiGetMethod<UsersGetResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("user_ids", userIds),
                 keyVal("fields", fields),

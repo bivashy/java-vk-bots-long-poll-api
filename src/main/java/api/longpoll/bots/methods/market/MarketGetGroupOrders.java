@@ -40,7 +40,7 @@ public class MarketGetGroupOrders extends VkApiGetMethod<MarketGetGroupOrdersRes
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("offset", offset),

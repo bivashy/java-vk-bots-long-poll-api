@@ -27,7 +27,7 @@ public class UploadStory extends VkApiPostMethod<UploadStoryResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of();
     }
 

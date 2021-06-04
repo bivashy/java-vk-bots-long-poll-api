@@ -41,7 +41,7 @@ public class StoriesGet extends VkApiGetMethod<StoriesGetResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),
                 keyVal("extended", extended, true),

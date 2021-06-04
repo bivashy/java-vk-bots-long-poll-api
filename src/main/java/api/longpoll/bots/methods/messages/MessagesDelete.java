@@ -46,7 +46,7 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("message_ids", messageIds),
                 keyVal("spam", spam, true),

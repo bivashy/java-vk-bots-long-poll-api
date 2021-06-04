@@ -35,7 +35,7 @@ public class MessagesPin extends VkApiGetMethod<MessagesPinResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
                 keyVal("conversation_message_id", conversationMessageId)

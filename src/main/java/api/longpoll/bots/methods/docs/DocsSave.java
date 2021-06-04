@@ -43,7 +43,7 @@ public class DocsSave extends VkApiGetMethod<DocsSaveResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("file", file),
                 keyVal("title", title),

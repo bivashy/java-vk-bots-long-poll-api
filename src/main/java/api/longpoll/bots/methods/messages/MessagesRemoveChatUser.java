@@ -40,7 +40,7 @@ public class MessagesRemoveChatUser extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("chat_id", chatId),
                 keyVal("user_id", userId),

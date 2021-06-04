@@ -49,7 +49,7 @@ public class MessagesGetByConversationMessageId extends VkApiGetMethod<MessagesG
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
                 keyVal("conversation_message_ids", conversationMessageIds),

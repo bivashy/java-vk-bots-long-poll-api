@@ -35,7 +35,7 @@ public class UtilsGetShortLink extends VkApiGetMethod<UtilsGetShortLinkResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("url", url),
                 keyVal("private", isPrivate, true)
