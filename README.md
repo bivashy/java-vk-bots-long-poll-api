@@ -130,3 +130,6 @@ new MessagesSend(getAccessToken())
 This library uses SLF4J API to log all events. You can add any SLF4J binding to your project to register events the way you want.
 
 It is highly recommended enabling `DEBUG` log level to see sent and received data. 
+
+## Examples
+Check out [usage examples](https://github.com/yvasyliev/java-vk-bots-long-poll-api-examples) of Java VK Bots Long Poll API library.
