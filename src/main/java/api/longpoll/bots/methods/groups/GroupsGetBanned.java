@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.getBanned</b> method.
  *
+ * Returns a list of users on a community blacklist.
+ *
  * @see <a href="https://vk.com/dev/groups.getBanned">https://vk.com/dev/groups.getBanned</a>
  */
 public class GroupsGetBanned extends VkApiGetMethod<GroupsGetBannedResult> {
@@ -49,7 +51,7 @@ public class GroupsGetBanned extends VkApiGetMethod<GroupsGetBannedResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("offset", offset),

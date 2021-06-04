@@ -44,7 +44,7 @@ public class MessagesSendEventAnswer extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("event_id", eventId),
                 keyVal("user_id", userId),

@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>docs.getMessagesUploadServer</b> method.
  *
+ * Returns the server address for document upload.
+ *
  * @see <a href="https://vk.com/dev/docs.getMessagesUploadServer">https://vk.com/dev/docs.getMessagesUploadServer</a>
  */
 public class DocsGetMessagesUploadServer extends VkApiGetMethod<DocsGetUploadServerResult> {
@@ -34,7 +36,7 @@ public class DocsGetMessagesUploadServer extends VkApiGetMethod<DocsGetUploadSer
 
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("type", type),
                 keyVal("peer_id", peerId)

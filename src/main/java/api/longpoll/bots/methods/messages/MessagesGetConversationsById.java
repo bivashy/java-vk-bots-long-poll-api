@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.getConversationsById</b> method.
  *
+ * Returns conversations by their IDs.
+ *
  * @see <a href="https://vk.com/dev/messages.getConversationsById">https://vk.com/dev/messages.getConversationsById</a>
  */
 public class MessagesGetConversationsById extends VkApiGetMethod<MessagesGetConversationsResult> {
@@ -44,7 +46,7 @@ public class MessagesGetConversationsById extends VkApiGetMethod<MessagesGetConv
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("peer_ids", peerIds),
                 keyVal("extended", extended, true),

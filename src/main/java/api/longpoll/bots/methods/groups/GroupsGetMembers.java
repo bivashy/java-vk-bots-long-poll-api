@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.getMembers</b> method.
  *
+ * Returns a list of community members.
+ *
  * @see <a href="https://vk.com/dev/groups.getMembers">https://vk.com/dev/groups.getMembers</a>
  */
 public class GroupsGetMembers extends VkApiGetMethod<GroupsGetMembersResult> {
@@ -54,7 +56,7 @@ public class GroupsGetMembers extends VkApiGetMethod<GroupsGetMembersResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("sort", sort),

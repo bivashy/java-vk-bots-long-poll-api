@@ -4,6 +4,7 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/yvasyliev/java-vk-bots-long-poll-api.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/yvasyliev/java-vk-bots-long-poll-api/alerts/)
 [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/yvasyliev/java-vk-bots-long-poll-api.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/yvasyliev/java-vk-bots-long-poll-api/context:java)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
+[![javadoc](https://javadoc.io/badge2/com.github.yvasyliev/java-vk-bots-longpoll-api/javadoc.svg)](https://javadoc.io/doc/com.github.yvasyliev/java-vk-bots-longpoll-api)
 # Java VK Bots Long Poll API
 A Java library to create VK bots using Bots Long Poll API.
 
@@ -32,7 +33,7 @@ This library uses the next third-party dependencies:
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
   <artifactId>java-vk-bots-longpoll-api</artifactId>
-  <version>1.5.1</version>
+  <version>1.5.2</version>
 </dependency>
 ```
 4. Extend `LongPollBot` class and override necessary methods:
@@ -49,7 +50,7 @@ public class HelloBot extends LongPollBot {
                         .setMessage(response)
                         .execute();
             }
-        } catch (BotsLongPollAPIException | BotsLongPollException e) {
+        } catch (BotsLongPollException e) {
             e.printStackTrace();
         }
     }
@@ -64,7 +65,7 @@ public class HelloBot extends LongPollBot {
         return 999999999;
     }
 
-    public static void main(String[] args) throws BotsLongPollAPIException, BotsLongPollException {
+    public static void main(String[] args) throws BotsLongPollException {
         new BotsLongPoll(new HelloBot()).run();
     }
 }

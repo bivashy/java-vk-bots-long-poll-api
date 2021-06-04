@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.getById</b> method.
  *
+ * Returns messages by their IDs.
+ *
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
 public class MessagesGetById extends VkApiGetMethod<MessagesGetByIdResult> {
@@ -49,7 +51,7 @@ public class MessagesGetById extends VkApiGetMethod<MessagesGetByIdResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("message_ids", messageIds),
                 keyVal("preview_length", previewLength),

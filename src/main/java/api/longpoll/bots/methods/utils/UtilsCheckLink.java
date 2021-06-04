@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>utils.checkLink</b> method.
  *
+ * Checks whether a link is blocked in VK.
+ *
  * @see <a href="https://vk.com/dev/utils.checkLink">https://vk.com/dev/utils.checkLink</a>
  */
 public class UtilsCheckLink extends VkApiGetMethod<UtilsCheckLinkResult> {
@@ -28,7 +30,7 @@ public class UtilsCheckLink extends VkApiGetMethod<UtilsCheckLinkResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(keyVal("url", url));
     }
 

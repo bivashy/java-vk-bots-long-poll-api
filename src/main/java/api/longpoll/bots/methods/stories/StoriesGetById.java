@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>stories.get</b> method.
  *
+ * Returns stories available for current user.
+ *
  * @see <a href="https://vk.com/dev/stories.get">https://vk.com/dev/stories.get</a>
  */
 public class StoriesGetById extends VkApiGetMethod<StoriesListResult> {
@@ -39,7 +41,7 @@ public class StoriesGetById extends VkApiGetMethod<StoriesListResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("stories", stories),
                 keyVal("extended", extended, true),

@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>photos.saveOwnerCoverPhoto</b> method.
  *
+ * Saves cover photo after successful uploading.
+ *
  * @see <a href="https://vk.com/dev/photos.saveOwnerCoverPhoto">https://vk.com/dev/photos.saveOwnerCoverPhoto</a>
  */
 public class PhotosSaveOwnerCoverPhoto extends VkApiGetMethod<PhotosSaveOwnerCoverPhotoResult> {
@@ -33,7 +35,7 @@ public class PhotosSaveOwnerCoverPhoto extends VkApiGetMethod<PhotosSaveOwnerCov
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("hash", hash),
                 keyVal("photo", photo)

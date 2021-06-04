@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>stories.hideReply</b> method.
  *
+ * Hides the reply to the current user's story.
+ *
  * @see <a href="https://vk.com/dev/stories.hideReply">https://vk.com/dev/stories.hideReply</a>
  */
 public class StoriesHideReply extends VkApiGetMethod<IntegerResult> {
@@ -33,7 +35,7 @@ public class StoriesHideReply extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),
                 keyVal("story_id", storyId)

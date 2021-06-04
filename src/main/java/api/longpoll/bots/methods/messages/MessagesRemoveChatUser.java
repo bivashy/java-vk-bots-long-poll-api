@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.removeChatUser</b> method.
  *
+ * Allows the current user to leave a chat or, if the current user started the chat, allows the user to remove another user from the chat.
+ *
  * @see <a href="https://vk.com/dev/messages.removeChatUser">https://vk.com/dev/messages.removeChatUser</a>
  */
 public class MessagesRemoveChatUser extends VkApiGetMethod<IntegerResult> {
@@ -38,7 +40,7 @@ public class MessagesRemoveChatUser extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("chat_id", chatId),
                 keyVal("user_id", userId),

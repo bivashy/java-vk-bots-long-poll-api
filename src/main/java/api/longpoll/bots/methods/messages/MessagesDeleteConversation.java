@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.deleteConversation</b> method.
  *
+ * Deletes private messages in a conversation.
+ *
  * @see <a href="https://vk.com/dev/messages.deleteConversation">https://vk.com/dev/messages.deleteConversation</a>
  */
 public class MessagesDeleteConversation extends VkApiGetMethod<MessagesDeleteConversationResult> {
@@ -38,7 +40,7 @@ public class MessagesDeleteConversation extends VkApiGetMethod<MessagesDeleteCon
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("user_id", userId),
                 keyVal("peer_id", peerId),

@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>photos.saveMessagesPhoto</b> method.
  *
+ * Saves a photo after being successfully uploaded. URL obtained with photos.getMessagesUploadServer method.
+ *
  * @see <a href="https://vk.com/dev/photos.saveMessagesPhoto">https://vk.com/dev/photos.saveMessagesPhoto</a>
  */
 public class PhotosSaveMessagesPhoto extends VkApiGetMethod<PhotosSaveMessagesPhotoResult> {
@@ -38,7 +40,7 @@ public class PhotosSaveMessagesPhoto extends VkApiGetMethod<PhotosSaveMessagesPh
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("photo", photo),
                 keyVal("server", server),

@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>stories.delete</b> method.
  *
+ * Allows to delete story.
+ *
  * @see <a href="https://vk.com/dev/stories.delete">https://vk.com/dev/stories.delete</a>
  */
 public class StoriesDelete extends VkApiGetMethod<IntegerResult> {
@@ -39,7 +41,7 @@ public class StoriesDelete extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),
                 keyVal("story_id", storyId),

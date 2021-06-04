@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.addCallbackServer</b> method.
  *
+ * Adds Callback API server to the community.
+ *
  * @see <a href="https://vk.com/dev/groups.addCallbackServer">https://vk.com/dev/groups.addCallbackServer</a>
  */
 public class GroupsAddCallbackServer extends VkApiGetMethod<GroupsAddCallbackServerResult> {
@@ -38,7 +40,7 @@ public class GroupsAddCallbackServer extends VkApiGetMethod<GroupsAddCallbackSer
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("url", url),

@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.setCallbackSettings</b> method.
  *
+ * Allow to set notifications settings for Callback API.
+ *
  * @see <a href="https://vk.com/dev/groups.setCallbackSettings">https://vk.com/dev/groups.setCallbackSettings</a>
  */
 public class GroupsSetCallbackSettings extends VkApiGetMethod<IntegerResult> {
@@ -248,7 +250,7 @@ public class GroupsSetCallbackSettings extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("server_id", serverId),

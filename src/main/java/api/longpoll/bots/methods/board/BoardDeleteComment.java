@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>board.deleteComment</b> method.
  *
+ * Deletes a comment on a topic on a community's discussion board.
+ *
  * @see <a href="https://vk.com/dev/board.deleteComment">https://vk.com/dev/board.deleteComment</a>
  */
 public class BoardDeleteComment extends VkApiGetMethod<IntegerResult> {
@@ -38,7 +40,7 @@ public class BoardDeleteComment extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("topic_id", topicId),

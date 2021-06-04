@@ -1,4 +1,4 @@
-package api.longpoll.bots.methods.other;
+package api.longpoll.bots.methods.upload;
 
 import api.longpoll.bots.methods.VkApiPostMethod;
 import api.longpoll.bots.model.objects.media.FileType;
@@ -27,7 +27,7 @@ public class UploadStory extends VkApiPostMethod<UploadStoryResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of();
     }
 

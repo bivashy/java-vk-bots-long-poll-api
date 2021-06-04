@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.getCallbackServers</b> method.
  *
+ * Receives a list of Callback API servers from the community.
+ *
  * @see <a href="https://vk.com/dev/groups.getCallbackServers">https://vk.com/dev/groups.getCallbackServers</a>
  */
 public class GroupsGetCallbackServers extends VkApiGetMethod<GroupsGetCallbackServersResult> {
@@ -34,7 +36,7 @@ public class GroupsGetCallbackServers extends VkApiGetMethod<GroupsGetCallbackSe
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("server_ids", serverIds)

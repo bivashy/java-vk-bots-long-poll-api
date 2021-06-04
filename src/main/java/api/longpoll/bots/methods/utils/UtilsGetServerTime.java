@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>utils.getServerTime</b> method.
  *
+ * Returns the current time of the VK server.
+ *
  * @see <a href="https://vk.com/dev/utils.getServerTime">https://vk.com/dev/utils.getServerTime</a>
  */
 public class UtilsGetServerTime extends VkApiGetMethod<IntegerResult> {
@@ -23,7 +25,7 @@ public class UtilsGetServerTime extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of();
     }
 

@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>stories.getReplies</b> method.
  *
+ * Returns replies to the story.
+ *
  * @see <a href="https://vk.com/dev/stories.getReplies">https://vk.com/dev/stories.getReplies</a>
  */
 public class StoriesGetReplies extends VkApiGetMethod<StoriesGetRepliesResult> {
@@ -49,7 +51,7 @@ public class StoriesGetReplies extends VkApiGetMethod<StoriesGetRepliesResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),
                 keyVal("story_id", storyId),

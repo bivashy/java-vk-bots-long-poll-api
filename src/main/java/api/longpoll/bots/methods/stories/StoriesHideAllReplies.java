@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>stories.hideAllReplies</b> method.
  *
+ * Hides all replies in the last 24 hours from the user to current user's stories.
+ *
  * @see <a href="https://vk.com/dev/stories.hideAllReplies">https://vk.com/dev/stories.hideAllReplies</a>
  */
 public class StoriesHideAllReplies extends VkApiGetMethod<IntegerResult> {
@@ -33,7 +35,7 @@ public class StoriesHideAllReplies extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),
                 keyVal("group_id", groupId)

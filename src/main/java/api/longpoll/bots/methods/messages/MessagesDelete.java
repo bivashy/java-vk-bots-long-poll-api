@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.delete</b> method.
  *
+ * Deletes one or more messages.
+ *
  * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
  */
 public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
@@ -44,7 +46,7 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("message_ids", messageIds),
                 keyVal("spam", spam, true),

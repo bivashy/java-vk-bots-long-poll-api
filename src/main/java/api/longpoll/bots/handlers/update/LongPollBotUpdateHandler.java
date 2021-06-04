@@ -1,5 +1,6 @@
-package api.longpoll.bots;
+package api.longpoll.bots.handlers.update;
 
+import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.model.events.Event;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
@@ -37,6 +38,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+/**
+ * Handles VK updates using Long Poll Bot.
+ */
 public class LongPollBotUpdateHandler implements UpdateHandler {
     private static final Logger log = LoggerFactory.getLogger(LongPollBotUpdateHandler.class);
     private Map<EventType, Consumer<EventObject>> handlers = new HashMap<>();

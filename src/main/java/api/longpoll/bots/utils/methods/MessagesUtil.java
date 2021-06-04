@@ -1,13 +1,12 @@
 package api.longpoll.bots.utils.methods;
 
-import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.methods.docs.DocsGetMessagesUploadServer;
 import api.longpoll.bots.methods.docs.DocsSave;
-import api.longpoll.bots.methods.other.UploadDoc;
-import api.longpoll.bots.methods.other.UploadPhoto;
 import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
 import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
+import api.longpoll.bots.methods.upload.UploadDoc;
+import api.longpoll.bots.methods.upload.UploadPhoto;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
 import api.longpoll.bots.model.response.other.UploadDocResult;
@@ -17,8 +16,20 @@ import api.longpoll.bots.model.response.photos.PhotosSaveMessagesPhotoResult;
 
 import java.io.File;
 
+/**
+ * A helper to work with Message methods.
+ */
 public class MessagesUtil {
-    public static PhotosSaveMessagesPhotoResult.Response uploadPhoto(String accessToken, int peerId, File photo) throws BotsLongPollAPIException, BotsLongPollException {
+    /**
+     * Uploads photo to conversation.
+     *
+     * @param accessToken bot access token
+     * @param peerId      conversation ID
+     * @param photo       photo to be uploaded
+     * @return Uploaded photo info
+     * @throws BotsLongPollException if error occurs.
+     */
+    public static PhotosSaveMessagesPhotoResult.Response uploadPhoto(String accessToken, int peerId, File photo) throws BotsLongPollException {
         PhotosGetMessagesUploadServerResult.Response uploadServer = new PhotosGetMessagesUploadServer(accessToken)
                 .setPeerId(peerId)
                 .execute()
@@ -36,7 +47,16 @@ public class MessagesUtil {
                 .get(0);
     }
 
-    public static Doc uploadDoc(String accessToken, int peerId, File doc) throws BotsLongPollAPIException, BotsLongPollException {
+    /**
+     * Uploads document to conversation.
+     *
+     * @param accessToken bot access token
+     * @param peerId      conversation ID
+     * @param doc         document to be uploaded
+     * @return uploaded document info.
+     * @throws BotsLongPollException if error occurs.
+     */
+    public static Doc uploadDoc(String accessToken, int peerId, File doc) throws BotsLongPollException {
         DocsGetUploadServerResult.Response uploadServer = new DocsGetMessagesUploadServer(accessToken)
                 .setType("doc")
                 .setPeerId(peerId)

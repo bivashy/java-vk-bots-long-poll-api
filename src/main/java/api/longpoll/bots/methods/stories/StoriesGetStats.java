@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>stories.getStats</b> method.
  *
+ * Return statictics data for the story.
+ *
  * @see <a href="https://vk.com/dev/stories.getStats">https://vk.com/dev/stories.getStats</a>
  */
 public class StoriesGetStats extends VkApiGetMethod<StoriesGetStatsResult> {
@@ -33,7 +35,7 @@ public class StoriesGetStats extends VkApiGetMethod<StoriesGetStatsResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),
                 keyVal("story_id", storyId)

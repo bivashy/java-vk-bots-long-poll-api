@@ -1,9 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.media.Doc;
@@ -20,6 +19,8 @@ import java.util.stream.Stream;
 
 /**
  * Implements <b>messages.send</b> method.
+ *
+ * Sends a message.
  *
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
@@ -129,7 +130,7 @@ public class MessagesSend extends VkApiGetMethod<MessagesSendResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("user_id", userId),
                 keyVal("random_id", randomId),
@@ -157,7 +158,7 @@ public class MessagesSend extends VkApiGetMethod<MessagesSendResult> {
     }
 
     @Override
-    public MessagesSendResult execute() throws BotsLongPollAPIException, BotsLongPollException {
+    public MessagesSendResult execute() throws BotsLongPollException {
         for (File photo : photos) {
             addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(accessToken, peerId, photo)));
         }

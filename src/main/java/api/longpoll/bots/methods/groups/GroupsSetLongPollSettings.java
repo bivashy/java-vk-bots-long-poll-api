@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.setLongPollSettings</b> method.
  *
+ * Allows to set Bots Long Poll API settings in the community.
+ *
  * @see <a href="https://vk.com/dev/groups.setLongPollSettings">https://vk.com/dev/groups.setLongPollSettings</a>
  */
 public class GroupsSetLongPollSettings extends VkApiGetMethod<IntegerResult> {
@@ -247,7 +249,7 @@ public class GroupsSetLongPollSettings extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("enabled", enabled, true),

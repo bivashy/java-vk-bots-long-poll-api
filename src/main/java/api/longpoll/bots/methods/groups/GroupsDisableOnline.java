@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.disableOnline</b> method.
  *
+ * Disables "online" status in the community.
+ *
  * @see <a href="https://vk.com/dev/groups.disableOnline">https://vk.com/dev/groups.disableOnline</a>
  */
 public class GroupsDisableOnline extends VkApiGetMethod<IntegerResult> {
@@ -28,7 +30,7 @@ public class GroupsDisableOnline extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(keyVal("group_id", groupId));
     }
 

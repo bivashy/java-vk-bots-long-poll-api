@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.restore</b> method.
  *
+ * Restores a deleted message.
+ *
  * @see <a href="https://vk.com/dev/messages.restore">https://vk.com/dev/messages.restore</a>
  */
 public class MessagesRestore extends VkApiGetMethod<IntegerResult> {
@@ -33,7 +35,7 @@ public class MessagesRestore extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("message_id", messageId),
                 keyVal("group_id", groupId)

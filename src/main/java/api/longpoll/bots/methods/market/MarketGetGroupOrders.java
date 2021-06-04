@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>market.getGroupOrders</b> method.
  *
+ * Returns community's orders.
+ *
  * @see <a href="https://vk.com/dev/market.getGroupOrders">https://vk.com/dev/market.getGroupOrders</a>
  */
 public class MarketGetGroupOrders extends VkApiGetMethod<MarketGetGroupOrdersResult> {
@@ -38,7 +40,7 @@ public class MarketGetGroupOrders extends VkApiGetMethod<MarketGetGroupOrdersRes
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("offset", offset),

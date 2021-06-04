@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.deleteChatPhoto</b> method.
  *
+ * Deletes a chat's cover picture.
+ *
  * @see <a href="https://vk.com/dev/messages.deleteChatPhoto">https://vk.com/dev/messages.deleteChatPhoto</a>
  */
 public class MessagesDeleteChatPhoto extends VkApiGetMethod<MessagesDeleteChatPhotoResult> {
@@ -33,7 +35,7 @@ public class MessagesDeleteChatPhoto extends VkApiGetMethod<MessagesDeleteChatPh
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("chat_id", chatId),
                 keyVal("group_id", groupId)

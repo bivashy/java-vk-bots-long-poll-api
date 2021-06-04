@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.getById</b> method.
  *
+ * Returns information about communities by their IDs.
+ *
  * @see <a href="https://vk.com/dev/groups.getById">https://vk.com/dev/groups.getById</a>
  */
 public class GroupsGetById extends VkApiGetMethod<GroupsGetByIdResult> {
@@ -39,7 +41,7 @@ public class GroupsGetById extends VkApiGetMethod<GroupsGetByIdResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_ids", groupIds),
                 keyVal("group_id", groupId),

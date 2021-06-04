@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.getTokenPermissions</b> method.
  *
+ * Returns permissions scope for the community's access_token.
+ *
  * @see <a href="https://vk.com/dev/groups.getTokenPermissions">https://vk.com/dev/groups.getTokenPermissions</a>
  */
 public class GroupsGetTokenPermissions extends VkApiGetMethod<GroupsGetTokenPermissionsResult> {
@@ -23,7 +25,7 @@ public class GroupsGetTokenPermissions extends VkApiGetMethod<GroupsGetTokenPerm
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of();
     }
 

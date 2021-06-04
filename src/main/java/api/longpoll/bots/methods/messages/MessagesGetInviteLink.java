@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.getInviteLink</b> method.
  *
+ * Receives a link to invite a user to the chat.
+ *
  * @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
  */
 public class MessagesGetInviteLink extends VkApiGetMethod<MessagesGetInviteLinkResult> {
@@ -38,7 +40,7 @@ public class MessagesGetInviteLink extends VkApiGetMethod<MessagesGetInviteLinkR
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
                 keyVal("reset", reset, true),

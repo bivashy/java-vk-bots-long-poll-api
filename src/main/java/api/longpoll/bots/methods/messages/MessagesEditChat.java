@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.editChat</b> method.
  *
+ * Edits the title of a chat.
+ *
  * @see <a href="https://vk.com/dev/messages.editChat">https://vk.com/dev/messages.editChat</a>
  */
 public class MessagesEditChat extends VkApiGetMethod<IntegerResult> {
@@ -33,7 +35,7 @@ public class MessagesEditChat extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("chat_id", chatId),
                 keyVal("title", title)

@@ -38,7 +38,7 @@ public class MessagesMarkAsAnsweredConversation extends VkApiGetMethod<IntegerRe
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
                 keyVal("answered", answered, true),

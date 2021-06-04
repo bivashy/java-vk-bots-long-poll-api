@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.markAsRead</b> method.
  *
+ * Marks messages as read.
+ *
  * @see <a href="https://vk.com/dev/messages.markAsRead">https://vk.com/dev/messages.markAsRead</a>
  */
 public class MessagesMarkAsRead extends VkApiGetMethod<IntegerResult> {
@@ -43,7 +45,7 @@ public class MessagesMarkAsRead extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("peer_id", peerId),
                 keyVal("start_message_id", startMessageId),

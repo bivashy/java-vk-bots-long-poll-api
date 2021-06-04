@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>users.get</b> method.
  *
+ * Returns detailed information on users.
+ *
  * @see <a href="https://vk.com/dev/users.get">https://vk.com/dev/users.get</a>
  */
 public class UsersGet extends VkApiGetMethod<UsersGetResult> {
@@ -39,7 +41,7 @@ public class UsersGet extends VkApiGetMethod<UsersGetResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("user_ids", userIds),
                 keyVal("fields", fields),

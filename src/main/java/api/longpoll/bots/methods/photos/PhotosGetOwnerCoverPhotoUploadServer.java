@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>photos.getOwnerCoverPhotoUploadServer</b> method.
  *
+ * Receives server address for uploading community cover.
+ *
  * @see <a href="https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer">https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer</a>
  */
 public class PhotosGetOwnerCoverPhotoUploadServer extends VkApiGetMethod<PhotosGetOwnerCoverPhotoUploadServerResult> {
@@ -48,7 +50,7 @@ public class PhotosGetOwnerCoverPhotoUploadServer extends VkApiGetMethod<PhotosG
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("group_id", groupId),
                 keyVal("crop_x", cropX),

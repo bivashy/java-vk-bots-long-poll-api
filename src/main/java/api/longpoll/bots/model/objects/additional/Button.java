@@ -1,6 +1,7 @@
 package api.longpoll.bots.model.objects.additional;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -72,7 +73,7 @@ public class Button {
          * Additional information.
          */
         @SerializedName("payload")
-        private String payload;
+        private JsonElement payload;
 
         public Action(String type) {
             this.type = type;
@@ -82,11 +83,11 @@ public class Button {
             return type;
         }
 
-        public String getPayload() {
+        public JsonElement getPayload() {
             return payload;
         }
 
-        public Action setPayload(String payload) {
+        public Action setPayload(JsonElement payload) {
             this.payload = payload;
             return this;
         }
@@ -126,7 +127,7 @@ public class Button {
             this.label = label;
         }
 
-        public TextAction(String label, String payload) {
+        public TextAction(String label, JsonElement payload) {
             this(label);
             setPayload(payload);
         }

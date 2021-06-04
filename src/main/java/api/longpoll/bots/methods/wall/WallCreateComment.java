@@ -15,6 +15,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>wall.createComment</b> method.
  *
+ * Adds a comment to a post on a user wall or community wall.
+ *
  * @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
  */
 public class WallCreateComment extends VkApiGetMethod<WallCreateCommentResult> {
@@ -68,7 +70,7 @@ public class WallCreateComment extends VkApiGetMethod<WallCreateCommentResult> {
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("owner_id", ownerId),
                 keyVal("post_id", postId),

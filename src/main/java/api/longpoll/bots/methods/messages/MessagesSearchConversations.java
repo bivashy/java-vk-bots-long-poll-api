@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>messages.searchConversations</b> method.
  *
+ * Returns a list of conversations that match search criteria.
+ *
  * @see <a href="https://vk.com/dev/messages.searchConversations">https://vk.com/dev/messages.searchConversations</a>
  */
 public class MessagesSearchConversations extends VkApiGetMethod<MessagesGetConversationsResult> {
@@ -49,7 +51,7 @@ public class MessagesSearchConversations extends VkApiGetMethod<MessagesGetConve
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("q", q),
                 keyVal("count", count),

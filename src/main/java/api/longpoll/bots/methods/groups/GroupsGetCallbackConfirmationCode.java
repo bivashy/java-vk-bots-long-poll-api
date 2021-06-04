@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 /**
  * Implements <b>groups.getCallbackConfirmationCode</b> method.
  *
+ * Returns Callback API confirmation code for the community.
+ *
  * @see <a href="https://vk.com/dev/groups.getCallbackConfirmationCode">https://vk.com/dev/groups.getCallbackConfirmationCode</a>
  */
 public class GroupsGetCallbackConfirmationCode extends VkApiGetMethod<GroupsGetCallbackConfirmationCodeResult> {
@@ -28,7 +30,7 @@ public class GroupsGetCallbackConfirmationCode extends VkApiGetMethod<GroupsGetC
     }
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(keyVal("group_id", groupId));
     }
 

@@ -26,7 +26,7 @@ public class GetUpdates extends VkApiMethod<GetUpdatesResult> {
     private Integer ts;
 
     @Override
-    protected Stream<Connection.KeyVal> getKeyValStream() {
+    protected Stream<Connection.KeyVal> getParamsStream() {
         return Stream.of(
                 keyVal("act", "a_check"),
                 keyVal("wait", "25"),
