@@ -49,7 +49,7 @@ public class HelloBot extends LongPollBot {
                         .setMessage(response)
                         .execute();
             }
-        } catch (BotsLongPollAPIException | BotsLongPollException e) {
+        } catch (BotsLongPollException e) {
             e.printStackTrace();
         }
     }
@@ -64,7 +64,7 @@ public class HelloBot extends LongPollBot {
         return 999999999;
     }
 
-    public static void main(String[] args) throws BotsLongPollAPIException, BotsLongPollException {
+    public static void main(String[] args) throws BotsLongPollException {
         new BotsLongPoll(new HelloBot()).run();
     }
 }

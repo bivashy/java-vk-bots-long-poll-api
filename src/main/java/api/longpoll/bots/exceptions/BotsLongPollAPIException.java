@@ -7,13 +7,14 @@ import com.google.gson.JsonObject;
  *
  * @see <a href="https://vk.com/dev/errors">List of possible errors.</a>
  */
-public class BotsLongPollAPIException extends Exception {
+public class BotsLongPollAPIException extends BotsLongPollException {
     /**
      * VK API error response.
      */
     private JsonObject jsonError;
 
     public BotsLongPollAPIException(JsonObject jsonError) {
+        super(jsonError.toString());
         this.jsonError = jsonError;
     }
 

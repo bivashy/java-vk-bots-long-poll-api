@@ -1,13 +1,12 @@
 package api.longpoll.bots.utils.methods;
 
-import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.methods.docs.DocsGetMessagesUploadServer;
 import api.longpoll.bots.methods.docs.DocsSave;
-import api.longpoll.bots.methods.upload.UploadDoc;
-import api.longpoll.bots.methods.upload.UploadPhoto;
 import api.longpoll.bots.methods.photos.PhotosGetMessagesUploadServer;
 import api.longpoll.bots.methods.photos.PhotosSaveMessagesPhoto;
+import api.longpoll.bots.methods.upload.UploadDoc;
+import api.longpoll.bots.methods.upload.UploadPhoto;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
 import api.longpoll.bots.model.response.other.UploadDocResult;
@@ -28,10 +27,9 @@ public class MessagesUtil {
      * @param peerId      conversation ID
      * @param photo       photo to be uploaded
      * @return Uploaded photo info
-     * @throws BotsLongPollAPIException if error occurs.
-     * @throws BotsLongPollException    if error occurs.
+     * @throws BotsLongPollException if error occurs.
      */
-    public static PhotosSaveMessagesPhotoResult.Response uploadPhoto(String accessToken, int peerId, File photo) throws BotsLongPollAPIException, BotsLongPollException {
+    public static PhotosSaveMessagesPhotoResult.Response uploadPhoto(String accessToken, int peerId, File photo) throws BotsLongPollException {
         PhotosGetMessagesUploadServerResult.Response uploadServer = new PhotosGetMessagesUploadServer(accessToken)
                 .setPeerId(peerId)
                 .execute()
@@ -56,10 +54,9 @@ public class MessagesUtil {
      * @param peerId      conversation ID
      * @param doc         document to be uploaded
      * @return uploaded document info.
-     * @throws BotsLongPollAPIException if error occurs.
-     * @throws BotsLongPollException    if error occurs.
+     * @throws BotsLongPollException if error occurs.
      */
-    public static Doc uploadDoc(String accessToken, int peerId, File doc) throws BotsLongPollAPIException, BotsLongPollException {
+    public static Doc uploadDoc(String accessToken, int peerId, File doc) throws BotsLongPollException {
         DocsGetUploadServerResult.Response uploadServer = new DocsGetMessagesUploadServer(accessToken)
                 .setType("doc")
                 .setPeerId(peerId)

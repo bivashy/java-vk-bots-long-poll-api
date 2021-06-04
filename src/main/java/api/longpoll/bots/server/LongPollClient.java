@@ -30,7 +30,7 @@ public class LongPollClient implements Client {
     }
 
     @Override
-    public List<Event> getUpdates() throws BotsLongPollAPIException, BotsLongPollException {
+    public List<Event> getUpdates() throws BotsLongPollException {
         for (int attempt = 0; attempt < ATTEMPTS; attempt++) {
             log.debug("Getting events from VK Long Poll Server. Attempt: {}.", attempt + 1);
             try {
@@ -44,14 +44,14 @@ public class LongPollClient implements Client {
         throw new BotsLongPollException("Failed to get events from Long Poll server. Number of attempts: " + ATTEMPTS);
     }
 
-    public void init() throws BotsLongPollAPIException, BotsLongPollException {
+    public void init() throws BotsLongPollException {
         GroupsGetLongPollServerResult.Response response = groupsGetLongPollServer.execute().getResponse();
         getUpdates.setServer(response.getServer())
                 .setKey(response.getKey())
                 .setTs(response.getTs());
     }
 
-    protected void tryHandle(BotsLongPollAPIException e) throws BotsLongPollException, BotsLongPollAPIException {
+    protected void tryHandle(BotsLongPollAPIException e) throws BotsLongPollException {
         log.warn("Failed to get events from VK Long Poll Server.", e);
         JsonObject jsonObject = e.getJsonError();
 

@@ -1,9 +1,8 @@
 package api.longpoll.bots.methods.messages;
 
-import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.IntegerResult;
@@ -18,7 +17,7 @@ import java.util.stream.Stream;
 
 /**
  * Implements <b>messages.edit</b> method.
- *
+ * <p>
  * Edits the message.
  *
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
@@ -82,12 +81,12 @@ public class MessagesEdit extends VkApiGetMethod<IntegerResult> {
     /**
      * Photos to be attached.
      */
-    private List<File> photos = new ArrayList<>();
+    private final List<File> photos = new ArrayList<>();
 
     /**
      * Docs to be attached.
      */
-    private List<File> docs = new ArrayList<>();
+    private final List<File> docs = new ArrayList<>();
 
     public MessagesEdit(String accessToken) {
         super(accessToken);
@@ -121,7 +120,7 @@ public class MessagesEdit extends VkApiGetMethod<IntegerResult> {
     }
 
     @Override
-    public IntegerResult execute() throws BotsLongPollAPIException, BotsLongPollException {
+    public IntegerResult execute() throws BotsLongPollException {
         for (File photo : photos) {
             addAttachment(AttachmentsUtil.toAttachment(MessagesUtil.uploadPhoto(accessToken, peerId, photo)));
         }

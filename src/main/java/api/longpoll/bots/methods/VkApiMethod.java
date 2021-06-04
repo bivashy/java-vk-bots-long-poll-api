@@ -54,10 +54,9 @@ public abstract class VkApiMethod<Result> {
      * Executes request to VK API.
      *
      * @return VK API response.
-     * @throws BotsLongPollAPIException if VK API returns invalid JSON response.
      * @throws BotsLongPollException    if other errors occur.
      */
-    public Result execute() throws BotsLongPollAPIException, BotsLongPollException {
+    public Result execute() throws BotsLongPollException {
         return execute(getResultType());
     }
 
@@ -67,10 +66,9 @@ public abstract class VkApiMethod<Result> {
      * @param responseType VK API response type.
      *                     This value is used during deserialization of received JSON.
      * @return VK API response.
-     * @throws BotsLongPollAPIException if VK API returns invalid JSON response.
-     * @throws BotsLongPollException    if other errors occur.
+     * @throws BotsLongPollException if other errors occur.
      */
-    private Result execute(Class<? extends Result> responseType) throws BotsLongPollAPIException, BotsLongPollException {
+    private Result execute(Class<? extends Result> responseType) throws BotsLongPollException {
         String stringResponse = sendRequest();
 
         JsonObject jsonResponse = GSON.fromJson(stringResponse, JsonObject.class);

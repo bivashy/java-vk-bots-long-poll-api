@@ -1,6 +1,5 @@
 package api.longpoll.bots;
 
-import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.handlers.update.LongPollBotUpdateHandler;
 import api.longpoll.bots.handlers.update.UpdateHandler;
@@ -27,10 +26,10 @@ public class BotsLongPoll {
 
     /**
      * Starts listening to VK server.
-     * @throws BotsLongPollAPIException if error occurs.
+     *
      * @throws BotsLongPollException if error occurs.
      */
-    public void run() throws BotsLongPollAPIException, BotsLongPollException {
+    public void run() throws BotsLongPollException {
         log.debug("Starting bot with group_id = {}", bot.getGroupId());
         while (running) {
             updateHandler.handleUpdates(client.getUpdates());
