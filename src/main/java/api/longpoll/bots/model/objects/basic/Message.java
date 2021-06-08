@@ -5,7 +5,6 @@ import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.objects.additional.Geo;
 import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -102,6 +101,12 @@ public class Message implements EventObject {
      */
     @SerializedName("conversation_message_id")
     private Integer conversationMessageId;
+
+    /**
+     * Message lifetime in seconds
+     */
+    @SerializedName("expire_ttl")
+    private Integer expireTtl;
 
     /**
      * Contains information about service action with conversation.
@@ -276,6 +281,10 @@ public class Message implements EventObject {
         return replyMessage != null;
     }
 
+    public boolean isTemporaryMessage() {
+        return expireTtl != null;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -352,7 +361,7 @@ public class Message implements EventObject {
         return payload;
     }
 
-    public void setPayload(JsonObject payload) {
+    public void setPayload(JsonElement payload) {
         this.payload = payload;
     }
 
@@ -386,6 +395,14 @@ public class Message implements EventObject {
 
     public void setConversationMessageId(Integer conversationMessageId) {
         this.conversationMessageId = conversationMessageId;
+    }
+
+    public Integer getExpireTtl() {
+        return expireTtl;
+    }
+
+    public void setExpireTtl(Integer expireTtl) {
+        this.expireTtl = expireTtl;
     }
 
     @Override
