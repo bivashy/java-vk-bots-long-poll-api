@@ -1,0 +1,43 @@
+{
+  "ts": "3494",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1623079373,
+          "from_id": 123,
+          "id": 0,
+          "out": 0,
+          "peer_id": 2000000008,
+          "text": "bomb",
+          "conversation_message_id": 20,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [],
+          "is_hidden": false,
+          "expire_ttl": 15
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link",
+            "callback",
+            "intent_subscribe",
+            "intent_unsubscribe"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": true,
+          "lang_id": 0
+        }
+      },
+      "group_id": 321,
+      "event_id": "5302d228b5bc407db1fc42d91f4376e6c31d4b1b"
+    }
+  ]
+}
