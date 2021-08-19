@@ -178,6 +178,10 @@ public class VkApi {
         return properties.getProperty("market.getGroupOrders");
     }
 
+    public String marketGetOrderById() {
+        return properties.getProperty("market.getOrderById");
+    }
+
     public String messagesCreateChat() {
         return properties.getProperty("messages.createChat");
     }
