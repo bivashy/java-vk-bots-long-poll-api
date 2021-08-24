@@ -42,6 +42,11 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
      */
     private List<Integer> conversationMessageIds;
 
+    /**
+     * Conversation ID.
+     */
+    private Integer peerId;
+
     public MessagesDelete(String accessToken) {
         super(accessToken);
     }
@@ -57,7 +62,9 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
                 keyVal("message_ids", messageIds),
                 keyVal("spam", spam, true),
                 keyVal("group_id", groupId),
-                keyVal("delete_for_all", deleteForAll, true)
+                keyVal("delete_for_all", deleteForAll, true),
+                keyVal("conversation_message_ids", conversationMessageIds),
+                keyVal("peer_id", peerId)
         );
     }
 
@@ -96,6 +103,11 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
 
     public MessagesDelete setConversationMessageIds(List<Integer> conversationMessageIds) {
         this.conversationMessageIds = conversationMessageIds;
+        return this;
+    }
+
+    public MessagesDelete setPeerId(Integer peerId) {
+        this.peerId = peerId;
         return this;
     }
 }
