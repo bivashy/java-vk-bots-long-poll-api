@@ -1,6 +1,6 @@
 package parse.response.board;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BoardPostDeleteParseTest {
     @Test
     void boardReplyNew() {
-        Event event = ParseUtil.getFirstEvent("json/response/board_post_delete/board_post_delete_sample_5_110.json");
+        VkEvent event = ParseUtil.getFirstEvent("json/response/board_post_delete/board_post_delete_sample_5_110.json");
         assertEquals(EventType.BOARD_POST_DELETE, event.getType());
         assertEquals(123, event.getGroupId());
         assertEquals("aaa", event.getEventId());

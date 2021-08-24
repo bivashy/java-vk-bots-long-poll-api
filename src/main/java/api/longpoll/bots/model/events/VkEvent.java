@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  * An event that occurs on VK server.
  */
 @JsonAdapter(EventDeserializer.class)
-public class Event {
+public class VkEvent {
     /**
      * Event type.
      *

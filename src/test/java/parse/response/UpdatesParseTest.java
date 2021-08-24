@@ -1,6 +1,6 @@
 package parse.response;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.response.events.GetUpdatesResult;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ public class UpdatesParseTest {
         GetUpdatesResult getEventsResult = ParseUtil.getEventsResult("json/response/empty_updates_sample_5_110.json");
         assertEquals(2587, getEventsResult.getTs());
 
-        List<Event> events = getEventsResult.getEvents();
+        List<VkEvent> events = getEventsResult.getEvents();
         assertNotNull(events);
         assertTrue(events.isEmpty());
     }

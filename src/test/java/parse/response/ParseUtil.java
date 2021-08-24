@@ -1,6 +1,6 @@
 package parse.response;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.messages.MessageNewEvent;
 import api.longpoll.bots.model.objects.basic.Message;
@@ -42,11 +42,11 @@ public class ParseUtil {
         return notNull(GSON.fromJson(readJson(relativePath), GetUpdatesResult.class));
     }
 
-    public static List<Event> getEvents(String relativePath) {
+    public static List<VkEvent> getEvents(String relativePath) {
         return notNull(getEventsResult(relativePath).getEvents());
     }
 
-    public static Event getFirstEvent(String relativePath) {
+    public static VkEvent getFirstEvent(String relativePath) {
         return getFirst(getEvents(relativePath));
     }
 

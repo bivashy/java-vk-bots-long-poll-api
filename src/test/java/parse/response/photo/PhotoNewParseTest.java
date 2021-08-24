@@ -1,6 +1,6 @@
 package parse.response.photo;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.objects.additional.PhotoSize;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PhotoNewParseTest {
     @Test
     void messageEdit() {
-        Event event = ParseUtil.getFirstEvent("json/response/photo_new/photo_new_sample_5_110.json");
+        VkEvent event = ParseUtil.getFirstEvent("json/response/photo_new/photo_new_sample_5_110.json");
         assertEquals(EventType.PHOTO_NEW, event.getType());
         assertEquals(444, event.getGroupId());
         assertEquals("aaa", event.getEventId());

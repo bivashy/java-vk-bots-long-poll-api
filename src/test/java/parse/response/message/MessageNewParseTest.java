@@ -1,6 +1,6 @@
 package parse.response.message;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.messages.MessageNewEvent;
@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MessageNewParseTest {
     @Test
     void messageNewText() {
-        Event event = ParseUtil.getFirstEvent("json/response/message_new/message_new_text_sample_5_110.json");
+        VkEvent event = ParseUtil.getFirstEvent("json/response/message_new/message_new_text_sample_5_110.json");
         assertEquals(EventType.MESSAGE_NEW, event.getType());
         assertEquals(333, event.getGroupId());
         assertEquals("aaa", event.getEventId());

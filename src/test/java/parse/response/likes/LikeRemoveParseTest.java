@@ -1,6 +1,6 @@
 package parse.response.likes;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.likes.LikeEvent;
@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LikeRemoveParseTest {
     @Test
     void likeRemove() {
-        List<Event> events = ParseUtil.getEvents("json/response/like_remove/like_remove_sample_5_110.json");
+        List<VkEvent> events = ParseUtil.getEvents("json/response/like_remove/like_remove_sample_5_110.json");
         assertEquals(1, events.size());
 
-        Event event = events.get(0);
+        VkEvent event = events.get(0);
         assertNotNull(event);
         assertEquals(EventType.LIKE_REMOVE, event.getType());
         assertEquals(333, event.getGroupId());

@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.response.events;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class GetUpdatesResult {
      * List of events.
      */
     @SerializedName("updates")
-    private List<Event> events;
+    private List<VkEvent> events;
 
     public Integer getTs() {
         return ts;
@@ -29,11 +29,11 @@ public class GetUpdatesResult {
         this.ts = ts;
     }
 
-    public List<Event> getEvents() {
+    public List<VkEvent> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Event> events) {
+    public void setEvents(List<VkEvent> events) {
         this.events = events;
     }
 

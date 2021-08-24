@@ -1,6 +1,6 @@
 package parse.response.video;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.video.VideoCommentDeleteEvent;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class VideoCommentDeleteParseTest {
     @Test
     void videoCommentDelete() {
-        Event event = ParseUtil.getFirstEvent("json/response/video_comment_delete/video_comment_delete_sample_5_110.json");
+        VkEvent event = ParseUtil.getFirstEvent("json/response/video_comment_delete/video_comment_delete_sample_5_110.json");
         assertEquals(EventType.VIDEO_COMMENT_DELETE, event.getType());
         assertEquals(444, event.getGroupId());
         assertEquals("aaa", event.getEventId());
