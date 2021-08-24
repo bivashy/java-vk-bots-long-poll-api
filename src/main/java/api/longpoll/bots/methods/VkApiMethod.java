@@ -1,12 +1,12 @@
 package api.longpoll.bots.methods;
 
+import api.longpoll.bots.converter.GsonConverter;
+import api.longpoll.bots.converter.JsonConverter;
 import api.longpoll.bots.exceptions.BotsLongPollAPIException;
 import api.longpoll.bots.exceptions.BotsLongPollException;
 import api.longpoll.bots.utils.async.AsyncUtil;
-import api.longpoll.bots.validators.Validator;
 import api.longpoll.bots.validators.VkApiResponseValidator;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import api.longpoll.bots.validators.VkApiResponseValidatorImpl;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.helper.HttpConnection;
@@ -14,7 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
@@ -32,14 +34,19 @@ public abstract class VkApiMethod<Result> {
     private static final Logger log = LoggerFactory.getLogger(VkApiMethod.class);
 
     /**
-     * Gson object.
+     * Converts JSON string to POJO.
      */
-    private static final Gson GSON = new Gson();
+    private JsonConverter jsonConverter;
 
     /**
      * Validator to check if VK API response is valid.
      */
-    private static final Validator<JsonObject> VALIDATOR = new VkApiResponseValidator();
+    private VkApiResponseValidator vkApiResponseValidator;
+
+    /**
+     * Request params.
+     */
+    private Map<String, String> params;
 
     /**
      * Executes request to VK API asynchronously.
@@ -54,30 +61,16 @@ public abstract class VkApiMethod<Result> {
      * Executes request to VK API.
      *
      * @return VK API response.
-     * @throws BotsLongPollException    if other errors occur.
+     * @throws BotsLongPollException if errors occur.
      */
     public Result execute() throws BotsLongPollException {
-        return execute(getResultType());
-    }
+        String body = sendRequest();
 
-    /**
-     * Executes request to VK API.
-     *
-     * @param responseType VK API response type.
-     *                     This value is used during deserialization of received JSON.
-     * @return VK API response.
-     * @throws BotsLongPollException if other errors occur.
-     */
-    private Result execute(Class<? extends Result> responseType) throws BotsLongPollException {
-        String stringResponse = sendRequest();
-
-        JsonObject jsonResponse = GSON.fromJson(stringResponse, JsonObject.class);
-
-        if (VALIDATOR.isValid(jsonResponse)) {
-            return GSON.fromJson(jsonResponse, responseType);
+        if (getVkApiResponseValidator().isValid(body)) {
+            return getJsonConverter().convert(body, getResultType());
         }
 
-        throw new BotsLongPollAPIException(jsonResponse);
+        throw new BotsLongPollAPIException(body);
     }
 
     /**
@@ -202,4 +195,65 @@ public abstract class VkApiMethod<Result> {
      * @return type of VK API response.
      */
     protected abstract Class<? extends Result> getResultType();
+
+    public JsonConverter getJsonConverter() {
+        if (jsonConverter == null) {
+            jsonConverter = new GsonConverter();
+        }
+        return jsonConverter;
+    }
+
+    public void setJsonConverter(JsonConverter jsonConverter) {
+        this.jsonConverter = jsonConverter;
+    }
+
+    public VkApiResponseValidator getVkApiResponseValidator() {
+        if (vkApiResponseValidator == null) {
+            vkApiResponseValidator = new VkApiResponseValidatorImpl();
+        }
+        return vkApiResponseValidator;
+    }
+
+    public void setVkApiResponseValidator(VkApiResponseValidator vkApiResponseValidator) {
+        this.vkApiResponseValidator = vkApiResponseValidator;
+    }
+
+    public Map<String, String> getParams() {
+        if (params == null) {
+            params = new HashMap<>();
+        }
+        return params;
+    }
+
+    public void setParams(Map<String, String> params) {
+        this.params = params;
+    }
+
+    public void addParam(String key, Object value) {
+        addParam(key, value, false);
+    }
+
+    public void addParam(String key, Object value, boolean boolint) {
+        addNonNullParam(key, value, boolint);
+    }
+
+    private void addNonNullParam(String key, Object value, boolean boolint) {
+        if (value != null) {
+            if (value instanceof List) {
+                if (((List<?>) value).isEmpty()) {
+                    return;
+                }
+                value = ((List<?>) value).stream()
+                        .filter(Objects::nonNull)
+                        .map(String::valueOf)
+                        .collect(Collectors.joining(","));
+            }
+
+            if (boolint && value instanceof Boolean) {
+                value = (Boolean) value ? 1 : 0;
+            }
+
+            getParams().put(key, value.toString());
+        }
+    }
 }

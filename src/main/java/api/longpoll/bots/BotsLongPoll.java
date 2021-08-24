@@ -28,9 +28,9 @@ public class BotsLongPoll {
     private LongPollBot bot;
 
     /**
-     *
+     * Listens to VK Long Poll events.
      */
-    private LongPollClient client;
+    private LongPollClient longPollClient;
 
     /**
      * Handles VK events.
@@ -38,13 +38,7 @@ public class BotsLongPoll {
     private VkEventHandler vkEventHandler;
 
     public BotsLongPoll(LongPollBot bot) {
-        this(bot, new LongPollClientImpl(bot), new LongPollBotEventHandler(bot));
-    }
-
-    public BotsLongPoll(LongPollBot bot, LongPollClient client, VkEventHandler vkEventHandler) {
         this.bot = bot;
-        this.client = client;
-        this.vkEventHandler = vkEventHandler;
     }
 
     /**
@@ -65,7 +59,7 @@ public class BotsLongPoll {
     public void run(long delay) throws BotsLongPollException {
         log.debug("Starting bot [group_id = {}]...", bot.getGroupId());
         while (running && sleep(delay)) {
-            vkEventHandler.handle(client.getEvents());
+            getVkEventHandler().handle(getLongPollClient().getEvents());
         }
     }
 
@@ -80,5 +74,27 @@ public class BotsLongPoll {
 
     public void stop() {
         running = false;
+    }
+
+    public LongPollClient getLongPollClient() {
+        if (longPollClient == null) {
+            longPollClient = new LongPollClientImpl(bot);
+        }
+        return longPollClient;
+    }
+
+    public void setLongPollClient(LongPollClient longPollClient) {
+        this.longPollClient = longPollClient;
+    }
+
+    public VkEventHandler getVkEventHandler() {
+        if (vkEventHandler == null) {
+            vkEventHandler = new LongPollBotEventHandler(bot);
+        }
+        return vkEventHandler;
+    }
+
+    public void setVkEventHandler(VkEventHandler vkEventHandler) {
+        this.vkEventHandler = vkEventHandler;
     }
 }

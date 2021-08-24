@@ -8,11 +8,12 @@ import api.longpoll.bots.methods.groups.GroupsGetLongPollServer;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.response.events.GetUpdatesResult;
 import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResult;
-import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Client to get Vk Long Poll updates.
@@ -70,23 +71,36 @@ public class LongPollClientImpl implements LongPollClient {
                 .setTs(response.getTs());
     }
 
-    protected void tryHandle(BotsLongPollAPIException e) throws BotsLongPollException {
+    private void tryHandle(BotsLongPollAPIException e) throws BotsLongPollException {
         log.warn("Failed to get events from VK Long Poll Server.", e);
-        JsonObject jsonObject = e.getJsonError();
 
-        if (!jsonObject.has("failed")) {
+        Map<String, String> params = toParams(e.getMessage());
+        if (!params.containsKey("failed") || !params.containsKey("ts")) {
             throw e;
         }
 
-        int code = jsonObject.get("failed").getAsInt();
-        switch (code) {
+        switch (Integer.parseInt(params.get("failed"))) {
             case 1:
-                getUpdates.setTs(jsonObject.get("ts").getAsInt());
+                getUpdates.setTs(Integer.parseInt(params.get("ts")));
                 break;
             case 2:
             case 3:
                 init();
                 break;
         }
+    }
+
+    private Map<String, String> toParams(String json) {
+        String[] keyVal = json.trim()
+                .substring(1, json.length() - 1)
+                .replaceAll("[\\s\\n]", "")
+                .split(":");
+
+        HashMap<String, String> params = new HashMap<>();
+        for (int i = 0; i < keyVal.length; i++) {
+            params.put(keyVal[i], keyVal[++i]);
+        }
+
+        return params;
     }
 }

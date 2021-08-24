@@ -1,13 +1,15 @@
 package api.longpoll.bots.validators;
 
-import com.google.gson.JsonObject;
-
 /**
- * VK response validator.
+ * VK API response validator.
  */
-public class VkApiResponseValidator implements Validator<JsonObject> {
-    @Override
-    public boolean isValid(JsonObject jsonObject) {
-        return !jsonObject.has("error") && !jsonObject.has("failed");
-    }
+@FunctionalInterface
+public interface VkApiResponseValidator {
+    /**
+     * Checks whether VK API response represented by JSON is valid
+     *
+     * @param json JSON to be validated.
+     * @return <b>true</b> if response is valid, and <b>false</b> otherwise.
+     */
+    boolean isValid(String json);
 }
