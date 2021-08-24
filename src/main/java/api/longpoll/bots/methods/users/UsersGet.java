@@ -5,6 +5,7 @@ import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.users.UsersGetResult;
 import org.jsoup.Connection;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -52,6 +53,10 @@ public class UsersGet extends VkApiGetMethod<UsersGetResult> {
     @Override
     protected Class<? extends UsersGetResult> getResultType() {
         return UsersGetResult.class;
+    }
+
+    public UsersGet setUserIds(String... userIds) {
+        return setUserIds(Arrays.asList(userIds));
     }
 
     public UsersGet setUserIds(List<String> userIds) {

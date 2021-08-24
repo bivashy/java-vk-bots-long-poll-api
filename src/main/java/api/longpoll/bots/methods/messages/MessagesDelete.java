@@ -5,6 +5,7 @@ import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesDeleteResult;
 import org.jsoup.Connection;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -36,6 +37,16 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
      */
     private Boolean deleteForAll;
 
+    /**
+     * List of conversation message IDs.
+     */
+    private List<Integer> conversationMessageIds;
+
+    /**
+     * Conversation ID.
+     */
+    private Integer peerId;
+
     public MessagesDelete(String accessToken) {
         super(accessToken);
     }
@@ -51,13 +62,19 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
                 keyVal("message_ids", messageIds),
                 keyVal("spam", spam, true),
                 keyVal("group_id", groupId),
-                keyVal("delete_for_all", deleteForAll, true)
+                keyVal("delete_for_all", deleteForAll, true),
+                keyVal("conversation_message_ids", conversationMessageIds),
+                keyVal("peer_id", peerId)
         );
     }
 
     @Override
     protected Class<? extends MessagesDeleteResult> getResultType() {
         return MessagesDeleteResult.class;
+    }
+
+    public MessagesDelete setMessageIds(Integer... messageIds) {
+        return setMessageIds(Arrays.asList(messageIds));
     }
 
     public MessagesDelete setMessageIds(List<Integer> messageIds) {
@@ -77,6 +94,20 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
 
     public MessagesDelete setDeleteForAll(Boolean deleteForAll) {
         this.deleteForAll = deleteForAll;
+        return this;
+    }
+
+    public MessagesDelete setConversationMessageIds(Integer... conversationMessageIds) {
+        return setConversationMessageIds(Arrays.asList(conversationMessageIds));
+    }
+
+    public MessagesDelete setConversationMessageIds(List<Integer> conversationMessageIds) {
+        this.conversationMessageIds = conversationMessageIds;
+        return this;
+    }
+
+    public MessagesDelete setPeerId(Integer peerId) {
+        this.peerId = peerId;
         return this;
     }
 }
