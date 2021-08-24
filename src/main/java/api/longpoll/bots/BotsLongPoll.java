@@ -30,9 +30,28 @@ public class BotsLongPoll {
      * @throws BotsLongPollException if error occurs.
      */
     public void run() throws BotsLongPollException {
+        run(0);
+    }
+
+    /**
+     * Starts listening to VK server with delay.
+     *
+     * @param delay listening delay.
+     * @throws BotsLongPollException if error occurs.
+     */
+    public void run(long delay) throws BotsLongPollException {
         log.debug("Starting bot with group_id = {}", bot.getGroupId());
-        while (running) {
+        while (running && sleep(delay)) {
             updateHandler.handleUpdates(client.getUpdates());
+        }
+    }
+
+    private boolean sleep(long delay) throws BotsLongPollException {
+        try {
+            Thread.sleep(delay);
+            return true;
+        } catch (InterruptedException e) {
+            throw new BotsLongPollException(e);
         }
     }
 
