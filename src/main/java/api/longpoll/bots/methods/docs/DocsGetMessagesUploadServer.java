@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.docs;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.docs.DocsGetUploadServerResult;
 import org.jsoup.Connection;
 
@@ -31,7 +31,7 @@ public class DocsGetMessagesUploadServer extends VkApiGetMethod<DocsGetUploadSer
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().docsGetMessagesUploadServer();
+        return VkApiProperties.get("docs.getMessagesUploadServer");
     }
 
 

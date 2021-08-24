@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.wall;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
@@ -29,7 +29,7 @@ public class WallCloseComments extends VkApiGetMethod<IntegerResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().wallCloseComments();
+        return VkApiProperties.get("wall.closeComments");
     }
 
     @Override

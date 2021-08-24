@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.stories;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.stories.StoriesGetRepliesResult;
 import org.jsoup.Connection;
 
@@ -47,7 +47,7 @@ public class StoriesGetReplies extends VkApiGetMethod<StoriesGetRepliesResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().storiesGetReplies();
+        return VkApiProperties.get("stories.getReplies");
     }
 
     @Override

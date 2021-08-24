@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.utils;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.utils.UtilsGetShortLinkResult;
 import org.jsoup.Connection;
 
@@ -31,7 +31,7 @@ public class UtilsGetShortLink extends VkApiGetMethod<UtilsGetShortLinkResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().utilsGetShortLink();
+        return VkApiProperties.get("utils.getShortLink");
     }
 
     @Override

@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.wall;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.response.wall.WallCreateCommentResult;
@@ -66,7 +66,7 @@ public class WallCreateComment extends VkApiGetMethod<WallCreateCommentResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().wallCreateComment();
+        return VkApiProperties.get("wall.createComment");
     }
 
     @Override

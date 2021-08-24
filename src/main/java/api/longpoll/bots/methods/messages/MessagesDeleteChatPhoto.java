@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.messages.MessagesDeleteChatPhotoResult;
 import org.jsoup.Connection;
 
@@ -31,7 +31,7 @@ public class MessagesDeleteChatPhoto extends VkApiGetMethod<MessagesDeleteChatPh
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesDeleteChatPhoto();
+        return VkApiProperties.get("messages.deleteChatPhoto");
     }
 
     @Override

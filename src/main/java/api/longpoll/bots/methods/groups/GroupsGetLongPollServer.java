@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResult;
 import org.jsoup.Connection;
 
@@ -36,7 +36,7 @@ public class GroupsGetLongPollServer extends VkApiGetMethod<GroupsGetLongPollSer
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().groupsGetLongPollServer();
+        return VkApiProperties.get("groups.getLongPollServer");
     }
 
     public GroupsGetLongPollServer setGroupId(Integer groupId) {

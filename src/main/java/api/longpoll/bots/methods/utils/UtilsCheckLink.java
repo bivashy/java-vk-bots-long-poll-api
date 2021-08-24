@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.utils;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.utils.UtilsCheckLinkResult;
 import org.jsoup.Connection;
 
@@ -26,7 +26,7 @@ public class UtilsCheckLink extends VkApiGetMethod<UtilsCheckLinkResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().utilsCheckLink();
+        return VkApiProperties.get("utils.checkLink");
     }
 
     @Override

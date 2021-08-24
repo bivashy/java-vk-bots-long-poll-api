@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.stories;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.stories.StoriesGetUploadServerResult;
 import org.jsoup.Connection;
 
@@ -79,7 +79,7 @@ public class StoriesGetPhotoUploadServer extends VkApiGetMethod<StoriesGetUpload
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().storiesGetPhotoUploadServer();
+        return VkApiProperties.get("stories.getPhotoUploadServer");
     }
 
     @Override

@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.stories;
 
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 
 /**
  * Implements <b>stories.getVideoUploadServer</b> method.
@@ -16,6 +16,6 @@ public class StoriesGetVideoUploadServer extends StoriesGetPhotoUploadServer {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().storiesGetVideoUploadServer();
+        return VkApiProperties.get("stories.getVideoUploadServer");
     }
 }

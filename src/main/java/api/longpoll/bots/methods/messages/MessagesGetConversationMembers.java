@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.messages.MessagesGetConversationMembersResult;
 import org.jsoup.Connection;
 
@@ -37,7 +37,7 @@ public class MessagesGetConversationMembers extends VkApiGetMethod<MessagesGetCo
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesGetConversationMembers();
+        return VkApiProperties.get("messages.getConversationMembers");
     }
 
     @Override

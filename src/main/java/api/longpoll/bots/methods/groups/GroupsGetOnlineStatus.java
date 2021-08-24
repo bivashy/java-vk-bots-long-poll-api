@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.groups.GroupsGetOnlineStatusResult;
 import org.jsoup.Connection;
 
@@ -26,7 +26,7 @@ public class GroupsGetOnlineStatus extends VkApiGetMethod<GroupsGetOnlineStatusR
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().groupsGetOnlineStatus();
+        return VkApiProperties.get("groups.getOnlineStatus");
     }
 
     @Override

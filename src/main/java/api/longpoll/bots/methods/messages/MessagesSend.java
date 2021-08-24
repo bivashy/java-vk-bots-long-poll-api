@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
@@ -126,7 +126,7 @@ public class MessagesSend extends VkApiGetMethod<MessagesSendResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesSend();
+        return VkApiProperties.get("messages.send");
     }
 
     @Override

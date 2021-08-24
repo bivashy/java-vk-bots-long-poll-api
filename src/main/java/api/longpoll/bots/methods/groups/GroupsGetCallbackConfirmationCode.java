@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.groups.GroupsGetCallbackConfirmationCodeResult;
 import org.jsoup.Connection;
 
@@ -26,7 +26,7 @@ public class GroupsGetCallbackConfirmationCode extends VkApiGetMethod<GroupsGetC
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().groupsGetCallbackConfirmationCode();
+        return VkApiProperties.get("groups.getCallbackConfirmationCode");
     }
 
     @Override

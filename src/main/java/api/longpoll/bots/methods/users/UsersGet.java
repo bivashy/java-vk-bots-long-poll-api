@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.users;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.users.UsersGetResult;
 import org.jsoup.Connection;
 
@@ -38,7 +38,7 @@ public class UsersGet extends VkApiGetMethod<UsersGetResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().usersGet();
+        return VkApiProperties.get("users.get");
     }
 
     @Override

@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.photos;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.photos.PhotosGetMessagesUploadServerResult;
 import org.jsoup.Connection;
 
@@ -26,7 +26,7 @@ public class PhotosGetMessagesUploadServer extends VkApiGetMethod<PhotosGetMessa
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().photosGetMessagesUploadServer();
+        return VkApiProperties.get("photos.getMessagesUploadServer");
     }
 
     @Override

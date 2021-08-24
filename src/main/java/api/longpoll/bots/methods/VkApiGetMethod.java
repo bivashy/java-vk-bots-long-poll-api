@@ -12,19 +12,6 @@ import java.util.List;
  */
 public abstract class VkApiGetMethod<Response> extends VkApiMethod<Response> {
     /**
-     * Access token of group bot. Used as URL parameter of VK API request.
-     * Its value is {@link VkApiGetMethod#accessToken}.
-     * Required for almost all GET HTTP requests to VK API.
-     */
-    private static final String ACCESS_TOKEN = "access_token";
-    /**
-     * Version of VK API. Used as URL parameter of VK API request.
-     * Its value is taken from {@link VkApi#apiVersion()}.
-     * Required for almost all GET HTTP requests to VK API.
-     */
-    private static final String VERSION = "v";
-
-    /**
      * Group bot access token.
      */
     protected String accessToken;
@@ -37,8 +24,8 @@ public abstract class VkApiGetMethod<Response> extends VkApiMethod<Response> {
     protected List<Connection.KeyVal> collectParams() {
         List<Connection.KeyVal> requestParams = super.collectParams();
 
-        requestParams.add(keyVal(ACCESS_TOKEN, accessToken));
-        requestParams.add(keyVal(VERSION, VkApi.getInstance().apiVersion()));
+        requestParams.add(keyVal("access_token", accessToken));
+        requestParams.add(keyVal("v", VkApiProperties.get("api.version")));
 
         return requestParams;
     }

@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.docs;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.docs.DocsSearchResult;
 import org.jsoup.Connection;
 
@@ -39,7 +39,7 @@ public class DocsSearch extends VkApiGetMethod<DocsSearchResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().docsSearch();
+        return VkApiProperties.get("docs.search");
     }
 
     @Override

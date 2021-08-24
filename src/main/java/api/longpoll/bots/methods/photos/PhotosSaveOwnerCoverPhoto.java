@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.photos;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.photos.PhotosSaveOwnerCoverPhotoResult;
 import org.jsoup.Connection;
 
@@ -31,7 +31,7 @@ public class PhotosSaveOwnerCoverPhoto extends VkApiGetMethod<PhotosSaveOwnerCov
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().photosSaveOwnerCoverPhoto();
+        return VkApiProperties.get("photos.saveOwnerCoverPhoto");
     }
 
     @Override

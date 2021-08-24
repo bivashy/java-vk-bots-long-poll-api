@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
@@ -34,7 +34,7 @@ public class MessagesMarkAsImportantConversation extends VkApiGetMethod<IntegerR
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesMarkAsImportantConversation();
+        return VkApiProperties.get("messages.markAsImportantConversation");
     }
 
     @Override

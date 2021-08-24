@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.groups.GroupsGetTokenPermissionsResult;
 import org.jsoup.Connection;
 
@@ -21,7 +21,7 @@ public class GroupsGetTokenPermissions extends VkApiGetMethod<GroupsGetTokenPerm
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().groupsGetTokenPermissions();
+        return VkApiProperties.get("groups.getTokenPermissions");
     }
 
     @Override

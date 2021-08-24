@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.docs;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.docs.DocsSaveResult;
 import org.jsoup.Connection;
 
@@ -39,7 +39,7 @@ public class DocsSave extends VkApiGetMethod<DocsSaveResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().docsSave();
+        return VkApiProperties.get("docs.save");
     }
 
     @Override

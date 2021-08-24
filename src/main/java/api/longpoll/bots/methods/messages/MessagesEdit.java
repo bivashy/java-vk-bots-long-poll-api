@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
@@ -94,7 +94,7 @@ public class MessagesEdit extends VkApiGetMethod<IntegerResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesEdit();
+        return VkApiProperties.get("messages.edit");
     }
 
     @Override

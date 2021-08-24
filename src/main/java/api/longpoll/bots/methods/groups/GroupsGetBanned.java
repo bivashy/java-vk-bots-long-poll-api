@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.groups.GroupsGetBannedResult;
 import org.jsoup.Connection;
 
@@ -47,7 +47,7 @@ public class GroupsGetBanned extends VkApiGetMethod<GroupsGetBannedResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().groupsGetBanned();
+        return VkApiProperties.get("groups.getBanned");
     }
 
     @Override

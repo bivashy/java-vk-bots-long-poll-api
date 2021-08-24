@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
@@ -31,7 +31,7 @@ public class MessagesEditChat extends VkApiGetMethod<IntegerResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesEditChat();
+        return VkApiProperties.get("messages.editChat");
     }
 
     @Override

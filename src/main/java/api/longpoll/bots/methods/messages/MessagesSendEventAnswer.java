@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.Button;
 import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
@@ -40,7 +40,7 @@ public class MessagesSendEventAnswer extends VkApiGetMethod<IntegerResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesSendMessageEventAnswer();
+        return VkApiProperties.get("messages.sendMessageEventAnswer");
     }
 
     @Override

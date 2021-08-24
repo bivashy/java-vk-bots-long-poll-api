@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.messages.MessagesPinResult;
 import org.jsoup.Connection;
 
@@ -31,7 +31,7 @@ public class MessagesPin extends VkApiGetMethod<MessagesPinResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesPin();
+        return VkApiProperties.get("messages.pin");
     }
 
     @Override

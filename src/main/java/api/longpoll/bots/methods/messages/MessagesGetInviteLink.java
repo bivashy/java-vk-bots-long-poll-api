@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.messages.MessagesGetInviteLinkResult;
 import org.jsoup.Connection;
 
@@ -36,7 +36,7 @@ public class MessagesGetInviteLink extends VkApiGetMethod<MessagesGetInviteLinkR
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesGetInviteLink();
+        return VkApiProperties.get("messages.getInviteLink");
     }
 
     @Override

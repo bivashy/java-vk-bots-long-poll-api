@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.groups.GroupsGetCallbackServersResult;
 import org.jsoup.Connection;
 
@@ -32,7 +32,7 @@ public class GroupsGetCallbackServers extends VkApiGetMethod<GroupsGetCallbackSe
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().groupsGetCallbackServers();
+        return VkApiProperties.get("groups.getCallbackServers");
     }
 
     @Override

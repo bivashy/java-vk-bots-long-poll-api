@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.board;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
@@ -36,7 +36,7 @@ public class BoardRestoreComment extends VkApiGetMethod<IntegerResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().boardRestoreComment();
+        return VkApiProperties.get("board.restoreComment");
     }
 
     @Override

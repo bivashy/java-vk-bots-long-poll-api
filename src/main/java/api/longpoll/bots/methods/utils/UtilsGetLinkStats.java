@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.utils;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.utils.UtilsGetLinkStatsResult;
 import org.jsoup.Connection;
 
@@ -51,7 +51,7 @@ public class UtilsGetLinkStats extends VkApiGetMethod<UtilsGetLinkStatsResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().utilsGetLinkStats();
+        return VkApiProperties.get("utils.getLinkStats");
     }
 
     @Override

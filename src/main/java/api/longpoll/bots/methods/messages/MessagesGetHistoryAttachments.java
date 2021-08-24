@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.messages.MessagesGetHistoryAttachmentsResult;
 import org.jsoup.Connection;
 
@@ -67,7 +67,7 @@ public class MessagesGetHistoryAttachments extends VkApiGetMethod<MessagesGetHis
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesGetHistoryAttachments();
+        return VkApiProperties.get("messages.getHistoryAttachments");
     }
 
     @Override

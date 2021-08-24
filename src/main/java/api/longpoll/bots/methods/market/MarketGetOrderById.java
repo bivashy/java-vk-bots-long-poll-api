@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.market;
 
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.methods.VkApiGetMethod;
 import api.longpoll.bots.model.response.market.MarketGetOrderByIdResult;
 import org.jsoup.Connection;
@@ -36,7 +36,7 @@ public class MarketGetOrderById extends VkApiGetMethod<MarketGetOrderByIdResult>
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().marketGetOrderById();
+        return VkApiProperties.get("market.getOrderById");
     }
 
     @Override

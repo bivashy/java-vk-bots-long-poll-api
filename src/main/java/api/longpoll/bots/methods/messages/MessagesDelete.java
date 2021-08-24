@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.messages;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.messages.MessagesDeleteResult;
 import org.jsoup.Connection;
 
@@ -53,7 +53,7 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().messagesDelete();
+        return VkApiProperties.get("messages.delete");
     }
 
     @Override

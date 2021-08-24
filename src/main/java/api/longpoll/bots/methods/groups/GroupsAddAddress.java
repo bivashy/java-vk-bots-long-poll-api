@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.groups.GroupsAddressResult;
 import com.google.gson.JsonObject;
 import org.jsoup.Connection;
@@ -85,7 +85,7 @@ public class GroupsAddAddress extends VkApiGetMethod<GroupsAddressResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().groupsAddAddress();
+        return VkApiProperties.get("groups.addAddress");
     }
 
     @Override

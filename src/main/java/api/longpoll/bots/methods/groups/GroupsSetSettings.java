@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.groups;
 
 import api.longpoll.bots.methods.VkApiGetMethod;
-import api.longpoll.bots.methods.VkApi;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResult;
 import org.jsoup.Connection;
 
@@ -29,7 +29,7 @@ public class GroupsSetSettings extends VkApiGetMethod<IntegerResult> {
     private Boolean botsCapabilities;
 
     /**
-     * Allow add bots to chat.
+     * Allow adding bots to chat.
      */
     private Boolean botsAddToChat;
 
@@ -39,7 +39,7 @@ public class GroupsSetSettings extends VkApiGetMethod<IntegerResult> {
 
     @Override
     protected String getApi() {
-        return VkApi.getInstance().groupsSetSettings();
+        return VkApiProperties.get("groups.setSettings");
     }
 
     @Override
