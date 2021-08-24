@@ -5,6 +5,7 @@ import api.longpoll.bots.methods.VkApi;
 import api.longpoll.bots.model.response.messages.MessagesDeleteResult;
 import org.jsoup.Connection;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -36,6 +37,11 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
      */
     private Boolean deleteForAll;
 
+    /**
+     * List of conversation message IDs.
+     */
+    private List<Integer> conversationMessageIds;
+
     public MessagesDelete(String accessToken) {
         super(accessToken);
     }
@@ -60,6 +66,10 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
         return MessagesDeleteResult.class;
     }
 
+    public MessagesDelete setMessageIds(Integer... messageIds) {
+        return setMessageIds(Arrays.asList(messageIds));
+    }
+
     public MessagesDelete setMessageIds(List<Integer> messageIds) {
         this.messageIds = messageIds;
         return this;
@@ -77,6 +87,15 @@ public class MessagesDelete extends VkApiGetMethod<MessagesDeleteResult> {
 
     public MessagesDelete setDeleteForAll(Boolean deleteForAll) {
         this.deleteForAll = deleteForAll;
+        return this;
+    }
+
+    public MessagesDelete setConversationMessageIds(Integer... conversationMessageIds) {
+        return setConversationMessageIds(Arrays.asList(conversationMessageIds));
+    }
+
+    public MessagesDelete setConversationMessageIds(List<Integer> conversationMessageIds) {
+        this.conversationMessageIds = conversationMessageIds;
         return this;
     }
 }
