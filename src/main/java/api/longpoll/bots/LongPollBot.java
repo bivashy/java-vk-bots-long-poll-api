@@ -1,11 +1,16 @@
 package api.longpoll.bots;
 
+import api.longpoll.bots.methods.impl.VkBotsApi;
 import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
 import api.longpoll.bots.model.events.boards.BoardPostEvent;
 import api.longpoll.bots.model.events.likes.LikeEvent;
 import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
 import api.longpoll.bots.model.events.market.MarketCommentEvent;
-import api.longpoll.bots.model.events.messages.*;
+import api.longpoll.bots.model.events.messages.MessageAllowEvent;
+import api.longpoll.bots.model.events.messages.MessageDenyEvent;
+import api.longpoll.bots.model.events.messages.MessageEvent;
+import api.longpoll.bots.model.events.messages.MessageNewEvent;
+import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
 import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
@@ -32,6 +37,11 @@ import api.longpoll.bots.model.objects.media.Video;
  */
 public abstract class LongPollBot {
     /**
+     * VK Bots API methods.
+     */
+    protected VkBotsApi vkBotsApi = new VkBotsApi(getAccessToken());
+
+    /**
      * Gets bot access token.
      *
      * @return access token.
@@ -47,6 +57,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>message_new</b> events.
+     *
      * @param messageNewEvent event object.
      */
     public void onMessageNew(MessageNewEvent messageNewEvent) {
@@ -54,6 +65,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>message_reply</b> events.
+     *
      * @param message event object.
      */
     public void onMessageReply(Message message) {
@@ -61,6 +73,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>message_edit</b> events.
+     *
      * @param message event object.
      */
     public void onMessageEdit(Message message) {
@@ -68,6 +81,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>message_event</b> events.
+     *
      * @param messageEvent event object.
      */
     public void onMessageEvent(MessageEvent messageEvent) {
@@ -75,6 +89,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>photo_new</b> events.
+     *
      * @param photo event object.
      */
     public void onPhotoNew(Photo photo) {
@@ -82,6 +97,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>photo_comment_new</b> events.
+     *
      * @param photoCommentEvent event object.
      */
     public void onPhotoCommentNew(PhotoCommentEvent photoCommentEvent) {
@@ -89,6 +105,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>photo_comment_edit</b> events.
+     *
      * @param photoCommentEvent event object.
      */
     public void onPhotoCommentEdit(PhotoCommentEvent photoCommentEvent) {
@@ -96,6 +113,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>photo_comment_delete</b> events.
+     *
      * @param photoCommentDeleteEvent event object.
      */
     public void onPhotoCommentDelete(PhotoCommentDeleteEvent photoCommentDeleteEvent) {
@@ -103,6 +121,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>photo_comment_restore</b> events.
+     *
      * @param photoCommentEvent event object.
      */
     public void onPhotoCommentRestore(PhotoCommentEvent photoCommentEvent) {
@@ -110,6 +129,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>video_new</b> events.
+     *
      * @param video event object.
      */
     public void onVideoNew(Video video) {
@@ -117,6 +137,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>audio_new</b> events.
+     *
      * @param audio event object.
      */
     public void onAudioNew(Audio audio) {
@@ -124,6 +145,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>video_comment_new</b> events.
+     *
      * @param videoCommentEvent event object.
      */
     public void onVideoCommentNew(VideoCommentEvent videoCommentEvent) {
@@ -131,6 +153,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>video_comment_edit</b> events.
+     *
      * @param videoCommentEvent event object.
      */
     public void onVideoCommentEdit(VideoCommentEvent videoCommentEvent) {
@@ -138,6 +161,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>video_comment_delete</b> events.
+     *
      * @param videoCommentDeleteEvent event object.
      */
     public void onVideoCommentDelete(VideoCommentDeleteEvent videoCommentDeleteEvent) {
@@ -145,6 +169,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>video_comment_restore</b> events.
+     *
      * @param videoCommentEvent event object.
      */
     public void onVideoCommentRestore(VideoCommentEvent videoCommentEvent) {
@@ -152,6 +177,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>wall_post_new</b> events.
+     *
      * @param wallPost event object.
      */
     public void onWallPostNew(WallPost wallPost) {
@@ -159,6 +185,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>wall_repost</b> events.
+     *
      * @param wallPost event object.
      */
     public void onWallRepost(WallPost wallPost) {
@@ -166,6 +193,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>like_add</b> events.
+     *
      * @param likeEvent event object.
      */
     public void onLikeAdd(LikeEvent likeEvent) {
@@ -173,6 +201,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>like_remove</b> events.
+     *
      * @param likeEvent event object.
      */
     public void onLikeRemove(LikeEvent likeEvent) {
@@ -180,6 +209,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>wall_reply_new</b> events.
+     *
      * @param wallReplyEvent event object.
      */
     public void onWallReplyNew(WallReplyEvent wallReplyEvent) {
@@ -187,6 +217,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>wall_reply_edit</b> events.
+     *
      * @param wallReplyEvent event object.
      */
     public void onWallReplyEdit(WallReplyEvent wallReplyEvent) {
@@ -194,6 +225,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>wall_reply_delete</b> events.
+     *
      * @param wallReplyDeleteEvent event object.
      */
     public void onWallReplyDelete(WallReplyDeleteEvent wallReplyDeleteEvent) {
@@ -201,6 +233,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>wall_reply_restore</b> events.
+     *
      * @param wallReplyEvent event object.
      */
     public void onWallReplyRestore(WallReplyEvent wallReplyEvent) {
@@ -208,6 +241,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>board_post_new</b> events.
+     *
      * @param boardPostEvent event object.
      */
     public void onBoardPostNew(BoardPostEvent boardPostEvent) {
@@ -215,6 +249,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>board_post_edit</b> events.
+     *
      * @param boardPostEvent event object.
      */
     public void onBoardPostEdit(BoardPostEvent boardPostEvent) {
@@ -222,6 +257,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>board_post_delete</b> events.
+     *
      * @param boardPostDeleteEvent event object.
      */
     public void onBoardPostDelete(BoardPostDeleteEvent boardPostDeleteEvent) {
@@ -229,6 +265,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>board_post_restore</b> events.
+     *
      * @param boardPostEvent event object.
      */
     public void onBoardPostRestore(BoardPostEvent boardPostEvent) {
@@ -236,6 +273,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>market_comment_new</b> events.
+     *
      * @param marketCommentEvent event object.
      */
     public void onMarketCommentNew(MarketCommentEvent marketCommentEvent) {
@@ -243,6 +281,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>market_comment_edit</b> events.
+     *
      * @param marketCommentEvent event object.
      */
     public void onMarketCommentEdit(MarketCommentEvent marketCommentEvent) {
@@ -250,6 +289,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>market_comment_restore</b> events.
+     *
      * @param marketCommentEvent event object.
      */
     public void onMarketCommentRestore(MarketCommentEvent marketCommentEvent) {
@@ -257,6 +297,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>market_comment_delete</b> events.
+     *
      * @param marketCommentDeleteEvent event object.
      */
     public void onMarketCommentDelete(MarketCommentDeleteEvent marketCommentDeleteEvent) {
@@ -264,6 +305,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>market_order_new</b> events.
+     *
      * @param marketOrder event object.
      */
     public void onMarketOrderNew(MarketOrder marketOrder) {
@@ -271,6 +313,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>market_order_edit</b> events.
+     *
      * @param marketOrder event object.
      */
     public void onMarketOrderEdit(MarketOrder marketOrder) {
@@ -278,6 +321,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>group_leave</b> events.
+     *
      * @param groupLeaveEvent event object.
      */
     public void onGroupLeave(GroupLeaveEvent groupLeaveEvent) {
@@ -285,6 +329,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>group_join</b> events.
+     *
      * @param groupJoinEvent event object.
      */
     public void onGroupJoin(GroupJoinEvent groupJoinEvent) {
@@ -292,6 +337,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>user_block</b> events.
+     *
      * @param userBlockEvent event object.
      */
     public void onUserBlock(UserBlockEvent userBlockEvent) {
@@ -299,6 +345,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>user_unblock</b> events.
+     *
      * @param userUnblockEvent event object.
      */
     public void onUserUnblock(UserUnblockEvent userUnblockEvent) {
@@ -306,6 +353,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>group_change_settings</b> events.
+     *
      * @param groupChangeSettingsEvent event object.
      */
     public void onGroupChangeSettings(GroupChangeSettingsEvent groupChangeSettingsEvent) {
@@ -313,6 +361,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>group_change_photo</b> events.
+     *
      * @param groupChangePhotoEvent event object.
      */
     public void onGroupChangePhoto(GroupChangePhotoEvent groupChangePhotoEvent) {
@@ -320,6 +369,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>vkpay_transaction</b> events.
+     *
      * @param vkpayTransaction event object.
      */
     public void onVkpayTransaction(VkpayTransaction vkpayTransaction) {
@@ -327,6 +377,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>app_payload</b> events.
+     *
      * @param appPayload event object.
      */
     public void onAppPayload(AppPayload appPayload) {
@@ -334,6 +385,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>message_typing_state</b> events.
+     *
      * @param messageTypingStateEvent event object.
      */
     public void onMessageTypingState(MessageTypingStateEvent messageTypingStateEvent) {
@@ -341,6 +393,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>message_allow</b> events.
+     *
      * @param messageAllowEvent event object.
      */
     public void onMessageAllow(MessageAllowEvent messageAllowEvent) {
@@ -348,6 +401,7 @@ public abstract class LongPollBot {
 
     /**
      * Handles <b>message_deny</b> events.
+     *
      * @param messageDenyEvent event object.
      */
     public void onMessageDeny(MessageDenyEvent messageDenyEvent) {

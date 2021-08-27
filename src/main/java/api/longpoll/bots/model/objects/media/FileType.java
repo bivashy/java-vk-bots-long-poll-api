@@ -1,9 +1,9 @@
 package api.longpoll.bots.model.objects.media;
 
-import api.longpoll.bots.methods.VkApiPostMethod;
+import api.longpoll.bots.methods.FileUploadingVkApiMethod;
 
 /**
- * Type of file to be uploaded to VK server in {@link VkApiPostMethod}.
+ * Type of file to be uploaded to VK server in {@link FileUploadingVkApiMethod}.
  */
 public enum FileType {
     FILE("file"),
@@ -13,9 +13,13 @@ public enum FileType {
     /**
      * File type name to be passed as request argument.
      */
-    public String name;
+    private String key;
 
-    FileType(String name) {
-        this.name = name;
+    FileType(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
     }
 }

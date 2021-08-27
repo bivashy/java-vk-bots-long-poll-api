@@ -1,6 +1,6 @@
 package parse.response.video;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.objects.media.Video;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class VideoNewParseTest {
     @Test
     void videoNew() {
-        Event event = ParseUtil.getFirstEvent("json/response/video_new/video_new_sample_5_110.json");
+        VkEvent event = ParseUtil.getFirstEvent("json/response/video_new/video_new_sample_5_110.json");
         assertEquals(EventType.VIDEO_NEW, event.getType());
         assertEquals(333, event.getGroupId());
         assertEquals("aaa", event.getEventId());

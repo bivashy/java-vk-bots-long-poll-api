@@ -1,6 +1,6 @@
 package parse.response.likes;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.likes.LikeEvent;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LikeAddParseTest {
     @Test
     void likeAdd() {
-        Event event = ParseUtil.getFirstEvent("json/response/like_add/like_add_sample_5_110.json");
+        VkEvent event = ParseUtil.getFirstEvent("json/response/like_add/like_add_sample_5_110.json");
         assertEquals(EventType.LIKE_ADD, event.getType());
         assertEquals(333, event.getGroupId());
         assertEquals("aaa", event.getEventId());

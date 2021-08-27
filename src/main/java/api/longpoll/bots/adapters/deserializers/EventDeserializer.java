@@ -1,6 +1,6 @@
 package api.longpoll.bots.adapters.deserializers;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
 import api.longpoll.bots.model.events.boards.BoardPostEvent;
@@ -41,14 +41,14 @@ import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 
 /**
- * Deserializes JSON objects to {@link Event}.
+ * Deserializes JSON objects to {@link VkEvent}.
  */
-public class EventDeserializer implements JsonDeserializer<Event> {
+public class EventDeserializer implements JsonDeserializer<VkEvent> {
     @Override
-    public final Event deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public final VkEvent deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject jsonEvent = jsonElement.getAsJsonObject();
 
-        Event event = new Event();
+        VkEvent event = new VkEvent();
         event.setType(jsonDeserializationContext.deserialize(
                 jsonEvent.get("type"),
                 EventType.class

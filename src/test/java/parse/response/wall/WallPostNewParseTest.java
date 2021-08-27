@@ -1,6 +1,6 @@
 package parse.response.wall;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.objects.basic.WallPost;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class WallPostNewParseTest {
     @Test
     void wallPostNew() {
-        Event event = ParseUtil.getFirstEvent("json/response/wall_post_new/wall_post_new_sample_5_110.json");
+        VkEvent event = ParseUtil.getFirstEvent("json/response/wall_post_new/wall_post_new_sample_5_110.json");
         assertEquals(EventType.WALL_POST_NEW, event.getType());
         assertEquals(444, event.getGroupId());
         assertEquals("aaa", event.getEventId());

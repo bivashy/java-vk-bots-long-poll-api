@@ -1,6 +1,6 @@
 package parse.response;
 
-import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResult;
+import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 
@@ -12,13 +12,13 @@ public class GroupsGroupsGetLongPollServerResponseParseTest {
 
     @Test
     void getLongPollServerResponseSuccessParse() {
-        GroupsGetLongPollServerResult result = gson.fromJson(ParseUtil.readJson("json/response/get_long_poll_server_response_sample_5_110.json"), GroupsGetLongPollServerResult.class);
-        assertNotNull(result);
-
-        GroupsGetLongPollServerResult.Response response = result.getResponse();
+        GetLongPollServer.Response response = gson.fromJson(ParseUtil.readJson("json/response/get_long_poll_server_response_sample_5_110.json"), GetLongPollServer.Response.class);
         assertNotNull(response);
-        assertEquals("aaa", response.getKey());
-        assertEquals("bbb", response.getServer());
-        assertEquals(2587, response.getTs());
+
+        GetLongPollServer.Response.ResponseObject responseObject = response.getResponseObject();
+        assertNotNull(responseObject);
+        assertEquals("aaa", responseObject.getKey());
+        assertEquals("bbb", responseObject.getServer());
+        assertEquals(2587, responseObject.getTs());
     }
 }

@@ -33,7 +33,7 @@ This library uses the next third-party dependencies:
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
   <artifactId>java-vk-bots-longpoll-api</artifactId>
-  <version>1.5.4</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 4. Extend `LongPollBot` class and override necessary methods:
@@ -45,12 +45,12 @@ public class HelloBot extends LongPollBot {
             Message message = messageNewEvent.getMessage();
             if (message.hasText()) {
                 String response = "Hello! Received your message: " + message.getText();
-                new MessagesSend(getAccessToken())
+                vkBotsApi.messages().send()
                         .setPeerId(message.getPeerId())
                         .setMessage(response)
                         .execute();
             }
-        } catch (BotsLongPollException e) {
+        } catch (VkApiException e) {
             e.printStackTrace();
         }
     }
@@ -65,7 +65,7 @@ public class HelloBot extends LongPollBot {
         return 999999999;
     }
 
-    public static void main(String[] args) throws BotsLongPollException {
+    public static void main(String[] args) throws VkApiException {
         new BotsLongPoll(new HelloBot()).run();
     }
 }
@@ -73,7 +73,7 @@ public class HelloBot extends LongPollBot {
 ## Async execution
 Each API method can be executed asynchronously:
 ```java
-new MessagesSend(getAccessToken())
+vkBotsApi.messages().send()
         .setPeerId(peerId)
         .setMessage("Sending message asynchronously...")
         .executeAsync();

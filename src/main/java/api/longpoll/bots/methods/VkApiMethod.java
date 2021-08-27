@@ -1,176 +1,116 @@
 package api.longpoll.bots.methods;
 
-import api.longpoll.bots.exceptions.BotsLongPollAPIException;
-import api.longpoll.bots.exceptions.BotsLongPollException;
-import api.longpoll.bots.utils.async.AsyncUtil;
-import api.longpoll.bots.validators.Validator;
+import api.longpoll.bots.converters.json.GsonConverter;
+import api.longpoll.bots.converters.json.JsonConverter;
+import api.longpoll.bots.converters.params.VkApiParamsConverter;
+import api.longpoll.bots.converters.params.DefaultVkApiParamsConverter;
+import api.longpoll.bots.exceptions.VkApiException;
+import api.longpoll.bots.http.HttpClient;
+import api.longpoll.bots.http.JsoupHttpClient;
+import api.longpoll.bots.utils.async.AsyncCaller;
+import api.longpoll.bots.utils.async.DefaultAsyncCaller;
 import api.longpoll.bots.validators.VkApiResponseValidator;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.helper.HttpConnection;
+import api.longpoll.bots.validators.DefaultVkApiResponseValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Executes generic HTTP request to VK API.
  *
- * @param <Result> VK API response type.
+ * @param <Response> VK API response type.
  */
-public abstract class VkApiMethod<Result> {
+public abstract class VkApiMethod<Response> {
     /**
      * Logger object.
      */
     private static final Logger log = LoggerFactory.getLogger(VkApiMethod.class);
 
     /**
-     * Gson object.
+     * Converts JSON string to POJO.
      */
-    private static final Gson GSON = new Gson();
+    private JsonConverter jsonConverter;
 
     /**
      * Validator to check if VK API response is valid.
      */
-    private static final Validator<JsonObject> VALIDATOR = new VkApiResponseValidator();
+    private VkApiResponseValidator vkApiResponseValidator;
+
+    /**
+     * Request params.
+     */
+    private Map<String, Object> params;
+
+    /**
+     * Params converter.
+     */
+    private VkApiParamsConverter vkApiParamsConverter;
+
+    /**
+     * HTTP client.
+     */
+    private HttpClient httpClient;
+
+    /**
+     * HTTP method. Default value is POST.
+     */
+    private String method;
+
+    /**
+     * Async executor.
+     */
+    private AsyncCaller asyncCaller;
 
     /**
      * Executes request to VK API asynchronously.
      *
      * @return VK API response wrapped to CompletableFuture
      */
-    public CompletableFuture<Result> executeAsync() {
-        return AsyncUtil.callAsync(this::execute);
+    public CompletableFuture<Response> executeAsync() {
+        return getAsyncCaller().call(this::execute);
     }
 
     /**
      * Executes request to VK API.
      *
      * @return VK API response.
-     * @throws BotsLongPollException    if other errors occur.
+     * @throws VkApiException if errors occur.
      */
-    public Result execute() throws BotsLongPollException {
-        return execute(getResultType());
-    }
+    public Response execute() throws VkApiException {
+        Map<String, String> stringParams = getVkApiParamsConverter().toStringParams(getParams());
+        log.debug("Sending: method={}, url={}, params={}", getMethod(), getUrl(), stringParams);
+        String body = execute(
+                getVkApiHttpClient()
+                        .setMethod(getMethod())
+                        .setUrl(getUrl())
+                        .setParams(stringParams)
+        );
+        log.debug("Received: {}", body);
 
-    /**
-     * Executes request to VK API.
-     *
-     * @param responseType VK API response type.
-     *                     This value is used during deserialization of received JSON.
-     * @return VK API response.
-     * @throws BotsLongPollException if other errors occur.
-     */
-    private Result execute(Class<? extends Result> responseType) throws BotsLongPollException {
-        String stringResponse = sendRequest();
-
-        JsonObject jsonResponse = GSON.fromJson(stringResponse, JsonObject.class);
-
-        if (VALIDATOR.isValid(jsonResponse)) {
-            return GSON.fromJson(jsonResponse, responseType);
+        if (getVkApiResponseValidator().isValid(body)) {
+            return getJsonConverter().convert(body, getResultType());
         }
 
-        throw new BotsLongPollAPIException(jsonResponse);
-    }
-
-    /**
-     * Sends HTTP request to VK API.
-     *
-     * @return VK API {@code String} response.
-     * @throws BotsLongPollException if error occurs.
-     */
-    private String sendRequest() throws BotsLongPollException {
-        try {
-            String api = getApi();
-            Connection.Method method = getMethod();
-            List<Connection.KeyVal> params = collectParams();
-
-            log.debug("Sending: method={}, api={}, params={}", method, api, params);
-
-            Connection connection = Jsoup.connect(api)
-                    .ignoreContentType(true)
-                    .timeout(0)
-                    .method(method);
-
-            if (!params.isEmpty()) {
-                connection.data(params);
-            }
-
-            String body = execute(connection).body();
-
-            log.debug("Received: {}", body);
-
-            return body;
-        } catch (IOException e) {
-            throw new BotsLongPollException(e);
-        }
+        throw new VkApiException(body);
     }
 
     /**
      * Executes HTTP request to VK API.
      *
-     * @param connection request data.
-     * @return HTTP response.
-     * @throws IOException if error occurs.
+     * @param httpClient HTTP client.
+     * @return response body.
+     * @throws VkApiException if errors occur.
      */
-    protected Connection.Response execute(Connection connection) throws IOException {
-        return connection.execute();
-    }
-
-    /**
-     * Collects request params to be sent to VK API.
-     *
-     * @return list of request params.
-     */
-    protected List<Connection.KeyVal> collectParams() {
-        return getParamsStream()
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
-    }
-
-    /**
-     * Creates a request parameter to be sent to VK API.
-     *
-     * @param key     parameter name.
-     * @param value   parameter value.
-     * @param boolint <b>true</b> if boolean value should be represented as 0 or 1.
-     * @return request parameter.
-     */
-    protected Connection.KeyVal keyVal(String key, Object value, boolean boolint) {
-        if (value == null) {
-            return null;
+    protected String execute(HttpClient httpClient) throws VkApiException {
+        try {
+            return httpClient.execute();
+        } catch (IOException e) {
+            throw new VkApiException(e);
         }
-
-        if (value instanceof List) {
-            if (((List<?>) value).isEmpty()) {
-                return null;
-            }
-            value = ((List<?>) value).stream().map(String::valueOf).collect(Collectors.joining(","));
-        }
-
-        if (boolint && value instanceof Boolean) {
-            value = (Boolean) value ? 1 : 0;
-        }
-
-        return HttpConnection.KeyVal.create(key, String.valueOf(value));
-    }
-
-    /**
-     * Creates a request parameter to be sent to VK API.
-     *
-     * @param key   parameter name.
-     * @param value parameter value.
-     * @return request parameter.
-     */
-    protected Connection.KeyVal keyVal(String key, Object value) {
-        return keyVal(key, value, false);
     }
 
     /**
@@ -178,22 +118,7 @@ public abstract class VkApiMethod<Result> {
      *
      * @return VK API URL.
      */
-    protected abstract String getApi();
-
-    /**
-     * Gets HTTP method. (E.g. {@link Connection.Method#GET} or {@link Connection.Method#POST})
-     *
-     * @return HTTP method.
-     */
-    protected abstract Connection.Method getMethod();
-
-    /**
-     * Gets stream of request parameters.
-     * This stream is used during collecting request data in {@link VkApiMethod#collectParams()}.
-     *
-     * @return stream of request parameters.
-     */
-    protected abstract Stream<Connection.KeyVal> getParamsStream();
+    protected abstract String getUrl();
 
     /**
      * Gets type of VK API response.
@@ -201,5 +126,92 @@ public abstract class VkApiMethod<Result> {
      *
      * @return type of VK API response.
      */
-    protected abstract Class<? extends Result> getResultType();
+    protected abstract Class<Response> getResultType();
+
+    /**
+     * Adds URL parameter to HTTP request.
+     *
+     * @param key   URL parameter key.
+     * @param value URL parameter value.
+     */
+    public void addParam(String key, Object value) {
+        getParams().put(key, value);
+    }
+
+    public JsonConverter getJsonConverter() {
+        if (jsonConverter == null) {
+            jsonConverter = new GsonConverter();
+        }
+        return jsonConverter;
+    }
+
+    public void setJsonConverter(JsonConverter jsonConverter) {
+        this.jsonConverter = jsonConverter;
+    }
+
+    public VkApiResponseValidator getVkApiResponseValidator() {
+        if (vkApiResponseValidator == null) {
+            vkApiResponseValidator = new DefaultVkApiResponseValidator();
+        }
+        return vkApiResponseValidator;
+    }
+
+    public void setVkApiResponseValidator(VkApiResponseValidator vkApiResponseValidator) {
+        this.vkApiResponseValidator = vkApiResponseValidator;
+    }
+
+    public Map<String, Object> getParams() {
+        if (params == null) {
+            params = new HashMap<>();
+        }
+        return params;
+    }
+
+    public void setParams(Map<String, Object> params) {
+        this.params = params;
+    }
+
+    public HttpClient getVkApiHttpClient() {
+        if (httpClient == null) {
+            httpClient = new JsoupHttpClient();
+        }
+        return httpClient;
+    }
+
+    public void setVkApiHttpClient(HttpClient httpClient) {
+        this.httpClient = httpClient;
+    }
+
+    public String getMethod() {
+        if (method == null) {
+            method = "POST";
+        }
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    public VkApiParamsConverter getVkApiParamsConverter() {
+        if (vkApiParamsConverter == null) {
+            vkApiParamsConverter = new DefaultVkApiParamsConverter();
+        }
+        return vkApiParamsConverter;
+    }
+
+    public void setVkApiParamsConverter(VkApiParamsConverter vkApiParamsConverter) {
+        this.vkApiParamsConverter = vkApiParamsConverter;
+    }
+
+    public AsyncCaller getAsyncCaller() {
+        if (asyncCaller == null) {
+            asyncCaller = new DefaultAsyncCaller();
+        }
+        return asyncCaller;
+    }
+
+    public void setAsyncCaller(AsyncCaller asyncCaller) {
+        this.asyncCaller = asyncCaller;
+    }
 }
