@@ -19,7 +19,7 @@ public class VkApiProperties {
     /**
      * Path to <b>.properties</b> file which contains VK API properties.
      */
-    private static final String PROPERTIES_FILE = "/vk/API.properties";
+    private static final String PROPERTIES_FILE = "/vk/api.properties";
 
     /**
      * Stores VK API properties. It is loaded during first call of {@link VkApiProperties#get(String)}.

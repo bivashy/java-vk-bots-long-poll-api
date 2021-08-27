@@ -1,11 +1,11 @@
 package parse.response;
 
-import api.longpoll.bots.model.events.VkEvent;
+import api.longpoll.bots.methods.impl.events.GetUpdates;
 import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.messages.MessageNewEvent;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.media.Attachment;
-import api.longpoll.bots.model.response.events.GetUpdatesResult;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
@@ -14,7 +14,10 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ParseUtil {
     private static final Gson GSON = new Gson();
@@ -38,8 +41,8 @@ public class ParseUtil {
         return notNull(objects.get(0));
     }
 
-    public static GetUpdatesResult getEventsResult(String relativePath) {
-        return notNull(GSON.fromJson(readJson(relativePath), GetUpdatesResult.class));
+    public static GetUpdates.Response getEventsResult(String relativePath) {
+        return notNull(GSON.fromJson(readJson(relativePath), GetUpdates.Response.class));
     }
 
     public static List<VkEvent> getEvents(String relativePath) {

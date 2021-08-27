@@ -1,10 +1,10 @@
 package api.longpoll.bots;
 
-import api.longpoll.bots.exceptions.BotsLongPollException;
+import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.handlers.update.LongPollBotEventHandler;
 import api.longpoll.bots.handlers.update.VkEventHandler;
 import api.longpoll.bots.server.LongPollClient;
-import api.longpoll.bots.server.LongPollClientImpl;
+import api.longpoll.bots.server.DefaultLongPollClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,9 +44,9 @@ public class BotsLongPoll {
     /**
      * Starts listening to VK server.
      *
-     * @throws BotsLongPollException if error occurs.
+     * @throws VkApiException if errors occur.
      */
-    public void run() throws BotsLongPollException {
+    public void run() throws VkApiException {
         run(0);
     }
 
@@ -54,21 +54,21 @@ public class BotsLongPoll {
      * Starts listening to VK server with delay.
      *
      * @param delay listening delay.
-     * @throws BotsLongPollException if error occurs.
+     * @throws VkApiException if errors occur.
      */
-    public void run(long delay) throws BotsLongPollException {
+    public void run(long delay) throws VkApiException {
         log.debug("Starting bot [group_id = {}]...", bot.getGroupId());
         while (running && sleep(delay)) {
             getVkEventHandler().handle(getLongPollClient().getEvents());
         }
     }
 
-    private boolean sleep(long delay) throws BotsLongPollException {
+    private boolean sleep(long delay) throws VkApiException {
         try {
             Thread.sleep(delay);
             return true;
         } catch (InterruptedException e) {
-            throw new BotsLongPollException(e);
+            throw new VkApiException(e);
         }
     }
 
@@ -78,7 +78,7 @@ public class BotsLongPoll {
 
     public LongPollClient getLongPollClient() {
         if (longPollClient == null) {
-            longPollClient = new LongPollClientImpl(bot);
+            longPollClient = new DefaultLongPollClient(bot);
         }
         return longPollClient;
     }

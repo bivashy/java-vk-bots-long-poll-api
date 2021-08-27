@@ -1,6 +1,6 @@
 package api.longpoll.bots.server;
 
-import api.longpoll.bots.exceptions.BotsLongPollException;
+import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.model.events.VkEvent;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public interface LongPollClient {
      * Gets VK events from VK Long Poll server
      *
      * @return VK events
-     * @throws BotsLongPollException if error occurs.
+     * @throws VkApiException if errors occur.
      */
-    List<VkEvent> getEvents() throws BotsLongPollException;
+    List<VkEvent> getEvents() throws VkApiException;
 }
