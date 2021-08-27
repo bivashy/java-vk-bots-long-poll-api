@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Default client to get VK Long Poll updates.
+ * Default client to get VK  Long Poll updates.
  */
 public class DefaultLongPollClient implements LongPollClient {
     /**
@@ -95,8 +95,10 @@ public class DefaultLongPollClient implements LongPollClient {
                 .split(":");
 
         HashMap<String, String> params = new HashMap<>();
-        for (int i = 0; i < keyVal.length; i++) {
-            params.put(keyVal[i], keyVal[++i]);
+        if (keyVal.length % 2 == 0) {
+            for (int i = 0; i < keyVal.length; i++) {
+                params.put(keyVal[i], keyVal[++i]);
+            }
         }
 
         return params;
