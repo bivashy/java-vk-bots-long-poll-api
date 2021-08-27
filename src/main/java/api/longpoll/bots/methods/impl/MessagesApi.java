@@ -15,6 +15,7 @@ import api.longpoll.bots.methods.impl.messages.GetHistory;
 import api.longpoll.bots.methods.impl.messages.GetHistoryAttachments;
 import api.longpoll.bots.methods.impl.messages.GetImportantMessages;
 import api.longpoll.bots.methods.impl.messages.GetInviteLink;
+import api.longpoll.bots.methods.impl.messages.IsMessagesFromGroupAllowed;
 import api.longpoll.bots.methods.impl.messages.MarkAsAnsweredConversation;
 import api.longpoll.bots.methods.impl.messages.MarkAsImportantConversation;
 import api.longpoll.bots.methods.impl.messages.MarkAsRead;
@@ -91,6 +92,10 @@ public class MessagesApi extends AbstractVkApi {
 
     public GetInviteLink getInviteLink() {
         return new GetInviteLink(getAccessToken());
+    }
+
+    public IsMessagesFromGroupAllowed isMessagesFromGroupAllowed() {
+        return new IsMessagesFromGroupAllowed(getAccessToken());
     }
 
     public MarkAsAnsweredConversation markAsAnsweredConversation() {

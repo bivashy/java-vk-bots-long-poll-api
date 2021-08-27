@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.http.params.BoolInt;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -23,12 +24,12 @@ public class GetImportantMessages extends AuthorizedVkApiMethod<GetImportantMess
 
     @Override
     protected String getUrl() {
-        return null;
+        return VkApiProperties.get("messages.getImportantMessages");
     }
 
     @Override
     protected Class<Response> getResponseType() {
-        return null;
+        return Response.class;
     }
 
     public GetImportantMessages setCount(int count) {
