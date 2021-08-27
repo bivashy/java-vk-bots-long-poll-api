@@ -21,7 +21,7 @@ public class MarkAsAnsweredConversation extends AuthorizedVkApiMethod<IntegerRes
     }
 
     @Override
-    protected Class<IntegerResponse> getResultType() {
+    protected Class<IntegerResponse> getResponseType() {
         return IntegerResponse.class;
     }
 

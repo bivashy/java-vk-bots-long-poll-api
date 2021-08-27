@@ -23,7 +23,7 @@ public class GetLongPollSettings extends AuthorizedVkApiMethod<GetLongPollSettin
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

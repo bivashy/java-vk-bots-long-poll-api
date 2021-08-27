@@ -22,7 +22,7 @@ public class HideReply extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResultType() {
+    protected Class<IntegerResponse> getResponseType() {
         return IntegerResponse.class;
     }
 

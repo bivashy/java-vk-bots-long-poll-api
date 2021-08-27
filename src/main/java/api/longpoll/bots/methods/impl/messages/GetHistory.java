@@ -31,7 +31,7 @@ public class GetHistory extends AuthorizedVkApiMethod<GetHistory.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

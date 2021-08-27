@@ -25,7 +25,7 @@ public class SearchConversations extends AuthorizedVkApiMethod<SearchConversatio
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

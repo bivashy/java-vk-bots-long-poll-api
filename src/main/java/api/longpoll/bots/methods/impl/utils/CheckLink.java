@@ -23,7 +23,7 @@ public class CheckLink extends AuthorizedVkApiMethod<CheckLink.UtilsCheckLinkRes
     }
 
     @Override
-    protected Class<UtilsCheckLinkResult> getResultType() {
+    protected Class<UtilsCheckLinkResult> getResponseType() {
         return UtilsCheckLinkResult.class;
     }
 

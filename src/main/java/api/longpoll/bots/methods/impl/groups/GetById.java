@@ -26,7 +26,7 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

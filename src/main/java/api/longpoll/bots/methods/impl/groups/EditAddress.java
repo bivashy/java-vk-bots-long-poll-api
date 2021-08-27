@@ -21,7 +21,7 @@ public class EditAddress extends AuthorizedVkApiMethod<EditAddress.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return null;
     }
 

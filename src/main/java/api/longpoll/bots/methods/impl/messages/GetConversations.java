@@ -25,7 +25,7 @@ public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Res
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

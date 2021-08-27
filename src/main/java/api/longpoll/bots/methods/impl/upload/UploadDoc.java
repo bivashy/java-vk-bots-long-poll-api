@@ -19,7 +19,7 @@ public class UploadDoc extends FileUploadingVkApiMethod<UploadDoc.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

@@ -1,5 +1,6 @@
 package api.longpoll.bots.methods.impl;
 
+import api.longpoll.bots.methods.impl.market.EditOrder;
 import api.longpoll.bots.methods.impl.market.GetGroupOrders;
 import api.longpoll.bots.methods.impl.market.GetOrderById;
 
@@ -9,6 +10,10 @@ import api.longpoll.bots.methods.impl.market.GetOrderById;
 public class MarketApi extends AbstractVkApi {
     public MarketApi(String accessToken) {
         super(accessToken);
+    }
+
+    public EditOrder editOrder() {
+        return new EditOrder(getAccessToken());
     }
 
     public GetGroupOrders getGroupOrders() {

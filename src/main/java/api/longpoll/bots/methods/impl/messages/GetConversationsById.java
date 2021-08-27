@@ -30,7 +30,7 @@ public class GetConversationsById extends AuthorizedVkApiMethod<GetConversations
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

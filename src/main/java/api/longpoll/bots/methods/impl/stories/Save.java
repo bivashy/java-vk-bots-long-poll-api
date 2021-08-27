@@ -22,7 +22,7 @@ public class Save extends AuthorizedVkApiMethod<Save.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

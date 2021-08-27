@@ -23,7 +23,7 @@ public class GetCallbackConfirmationCode extends AuthorizedVkApiMethod<GetCallba
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

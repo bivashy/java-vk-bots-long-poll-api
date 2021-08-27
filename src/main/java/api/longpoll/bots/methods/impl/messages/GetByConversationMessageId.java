@@ -26,7 +26,7 @@ public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConve
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

@@ -25,7 +25,7 @@ public class GetTokenPermissions extends AuthorizedVkApiMethod<GetTokenPermissio
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

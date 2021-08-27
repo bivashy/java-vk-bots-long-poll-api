@@ -21,7 +21,7 @@ public class MarkAsImportantConversation extends AuthorizedVkApiMethod<IntegerRe
     }
 
     @Override
-    protected Class<IntegerResponse> getResultType() {
+    protected Class<IntegerResponse> getResponseType() {
         return IntegerResponse.class;
     }
 

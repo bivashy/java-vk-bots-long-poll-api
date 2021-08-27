@@ -24,7 +24,7 @@ public class GetShortLink extends AuthorizedVkApiMethod<GetShortLink.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

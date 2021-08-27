@@ -19,7 +19,7 @@ public class GetWallUploadServer extends AuthorizedVkApiMethod<GetWallUploadServ
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

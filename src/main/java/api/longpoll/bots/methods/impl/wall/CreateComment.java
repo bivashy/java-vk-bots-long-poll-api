@@ -27,7 +27,7 @@ public class CreateComment extends AuthorizedVkApiMethod<CreateComment.Response>
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 
