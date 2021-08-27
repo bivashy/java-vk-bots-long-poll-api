@@ -26,6 +26,7 @@ import api.longpoll.bots.methods.impl.messages.SearchConversations;
 import api.longpoll.bots.methods.impl.messages.Send;
 import api.longpoll.bots.methods.impl.messages.SendEventAnswer;
 import api.longpoll.bots.methods.impl.messages.SetActivity;
+import api.longpoll.bots.methods.impl.messages.Unpin;
 
 /**
  * Provides Messages methods.
@@ -137,5 +138,9 @@ public class MessagesApi extends AbstractVkApi {
 
     public SetActivity setActivity() {
         return new SetActivity(getAccessToken());
+    }
+
+    public Unpin unpin() {
+        return new Unpin(getAccessToken());
     }
 }
