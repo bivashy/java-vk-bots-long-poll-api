@@ -13,6 +13,7 @@ import api.longpoll.bots.methods.impl.messages.GetConversations;
 import api.longpoll.bots.methods.impl.messages.GetConversationsById;
 import api.longpoll.bots.methods.impl.messages.GetHistory;
 import api.longpoll.bots.methods.impl.messages.GetHistoryAttachments;
+import api.longpoll.bots.methods.impl.messages.GetImportantMessages;
 import api.longpoll.bots.methods.impl.messages.GetInviteLink;
 import api.longpoll.bots.methods.impl.messages.MarkAsAnsweredConversation;
 import api.longpoll.bots.methods.impl.messages.MarkAsImportantConversation;
@@ -82,6 +83,10 @@ public class MessagesApi extends AbstractVkApi {
 
     public GetHistoryAttachments getHistoryAttachments() {
         return new GetHistoryAttachments(getAccessToken());
+    }
+
+    public GetImportantMessages getImportantMessages() {
+        return new GetImportantMessages(getAccessToken());
     }
 
     public GetInviteLink getInviteLink() {
