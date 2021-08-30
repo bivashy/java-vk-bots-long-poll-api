@@ -40,7 +40,7 @@ public class CreateComment extends AuthorizedVkApiMethod<CreateComment.Response>
         return this;
     }
 
-    public CreateComment setOwnerId(Integer ownerId) {
+    public CreateComment setOwnerId(int ownerId) {
         addParam("owner_id", ownerId);
         return this;
     }
