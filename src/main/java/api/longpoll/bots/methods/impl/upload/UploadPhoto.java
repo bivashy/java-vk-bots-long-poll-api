@@ -1,23 +1,12 @@
 package api.longpoll.bots.methods.impl.upload;
 
-import api.longpoll.bots.methods.FileUploadingVkApiMethod;
 import api.longpoll.bots.model.objects.media.FileType;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Implements uploading photo in VK API.
  */
-public class UploadPhoto extends FileUploadingVkApiMethod<UploadPhoto.Response> {
-    /**
-     * Upload URL.
-     */
-    private String uploadUrl;
-
-    @Override
-    protected String getUrl() {
-        return uploadUrl;
-    }
-
+public class UploadPhoto extends AbstractUploadMethod<UploadPhoto.Response> {
     @Override
     protected Class<Response> getResponseType() {
         return Response.class;
@@ -26,11 +15,6 @@ public class UploadPhoto extends FileUploadingVkApiMethod<UploadPhoto.Response> 
     @Override
     protected FileType getType() {
         return FileType.PHOTO;
-    }
-
-    public UploadPhoto setUploadUrl(String uploadUrl) {
-        this.uploadUrl = uploadUrl;
-        return this;
     }
 
     /**

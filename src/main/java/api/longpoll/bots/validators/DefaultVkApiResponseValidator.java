@@ -6,6 +6,6 @@ package api.longpoll.bots.validators;
 public class DefaultVkApiResponseValidator implements VkApiResponseValidator {
     @Override
     public boolean isValid(String json) {
-        return !json.matches("\"error\"\\s*\\n*:") && !json.matches("\"failed\"\\s*\\n*:");
+        return !json.startsWith("{\"error\"") && !json.startsWith("{\"failed\"");
     }
 }

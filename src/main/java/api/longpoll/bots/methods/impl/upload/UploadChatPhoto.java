@@ -4,12 +4,12 @@ import api.longpoll.bots.model.objects.media.FileType;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Implements uploading story in VK API.
+ * Uploads chat photo.
  */
-public class UploadStory extends AbstractUploadMethod<UploadStory.Response> {
+public class UploadChatPhoto extends AbstractUploadMethod<UploadChatPhoto.Response> {
     @Override
     protected FileType getType() {
-        return FileType.VIDEO_FILE;
+        return FileType.FILE;
     }
 
     @Override
@@ -18,24 +18,28 @@ public class UploadStory extends AbstractUploadMethod<UploadStory.Response> {
     }
 
     /**
-     * Response to story uploading.
+     * Response to chat photo uploading.
      */
     public static class Response {
-        @SerializedName("upload_result")
-        private String uploadResult;
+        /**
+         * Response.
+         */
+        @SerializedName("response")
+        private String response;
 
-        public String getUploadResult() {
-            return uploadResult;
+        public String getResponse() {
+            return response;
         }
 
-        public void setUploadResult(String uploadResult) {
-            this.uploadResult = uploadResult;
+        public void setResponse(String response) {
+            this.response = response;
         }
+
 
         @Override
         public String toString() {
             return "Response{" +
-                    "uploadResult='" + uploadResult + '\'' +
+                    "response='" + response + '\'' +
                     '}';
         }
     }

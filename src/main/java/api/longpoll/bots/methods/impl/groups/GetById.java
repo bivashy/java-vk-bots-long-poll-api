@@ -30,16 +30,16 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
         return Response.class;
     }
 
-    public GetById setGroupIds(String... groupIds) {
+    public GetById setGroupIds(Integer... groupIds) {
         return setGroupIds(Arrays.asList(groupIds));
     }
 
-    public GetById setGroupIds(List<String> groupIds) {
+    public GetById setGroupIds(List<Integer> groupIds) {
         addParam("group_ids", groupIds);
         return this;
     }
 
-    public GetById setGroupId(String groupId) {
+    public GetById setGroupId(int groupId) {
         addParam("group_id", groupId);
         return this;
     }

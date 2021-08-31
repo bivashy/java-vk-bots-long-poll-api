@@ -26,6 +26,7 @@ import api.longpoll.bots.methods.impl.messages.SearchConversations;
 import api.longpoll.bots.methods.impl.messages.Send;
 import api.longpoll.bots.methods.impl.messages.SendEventAnswer;
 import api.longpoll.bots.methods.impl.messages.SetActivity;
+import api.longpoll.bots.methods.impl.messages.SetChatPhoto;
 import api.longpoll.bots.methods.impl.messages.Unpin;
 
 /**
@@ -138,6 +139,10 @@ public class MessagesApi extends AbstractVkApi {
 
     public SetActivity setActivity() {
         return new SetActivity(getAccessToken());
+    }
+
+    public SetChatPhoto setChatPhoto() {
+        return new SetChatPhoto(getAccessToken());
     }
 
     public Unpin unpin() {
