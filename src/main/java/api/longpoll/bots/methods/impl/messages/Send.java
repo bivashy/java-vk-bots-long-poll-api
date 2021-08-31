@@ -6,7 +6,7 @@ import api.longpoll.bots.http.params.BoolInt;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.Keyboard;
-import api.longpoll.bots.model.objects.additional.Template;
+import api.longpoll.bots.model.objects.additional.templete.Template;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

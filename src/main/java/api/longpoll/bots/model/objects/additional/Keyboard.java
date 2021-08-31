@@ -1,5 +1,6 @@
 package api.longpoll.bots.model.objects.additional;
 
+import api.longpoll.bots.model.objects.additional.buttons.Button;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
@@ -26,6 +27,10 @@ public class Keyboard {
      */
     @SerializedName("buttons")
     private List<List<Button>> buttons;
+
+    public Keyboard(List<List<Button>> buttons) {
+        this.buttons = buttons;
+    }
 
     public String toJson() {
         return new Gson().toJson(this);
