@@ -1,4 +1,4 @@
-package api.longpoll.bots.model.objects.additional.templete;
+package api.longpoll.bots.model.objects.additional;
 
 import com.google.gson.annotations.SerializedName;
 

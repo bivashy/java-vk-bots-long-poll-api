@@ -1,4 +1,4 @@
-package api.longpoll.bots.model.objects.additional.templete;
+package api.longpoll.bots.model.objects.additional.carousel;
 
 import api.longpoll.bots.model.objects.additional.buttons.Button;
 import com.google.gson.annotations.SerializedName;

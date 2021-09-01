@@ -1,5 +1,6 @@
-package api.longpoll.bots.model.objects.additional.templete;
+package api.longpoll.bots.model.objects.additional.carousel;
 
+import api.longpoll.bots.model.objects.additional.Template;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
