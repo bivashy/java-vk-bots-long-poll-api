@@ -38,9 +38,70 @@ public class Element {
      * An object describing the action that needs to happen after a carousel element is clicked.
      */
     @SerializedName("action")
-    private ElementAction elementAction;
+    private Action action;
+
+    /**
+     * Describes carousel action.
+     */
+    public static abstract class Action {
+        /**
+         * Carousel action type.
+         */
+        @SerializedName("type")
+        private String type;
+
+        public Action(String type) {
+            this.type = type;
+        }
+
+        @Override
+        public String toString() {
+            return "Action{" +
+                    "type='" + type + '\'' +
+                    '}';
+        }
+    }
+
+    /**
+     * Opens a link from the "link" field.
+     */
+    public static class OpenLink extends Action {
+        /**
+         * Link to be opened.
+         */
+        @SerializedName("link")
+        private String link;
+
+        public OpenLink(String link) {
+            super("open_link");
+            this.link = link;
+        }
+
+        public String getLink() {
+            return link;
+        }
+
+        public void setLink(String link) {
+            this.link = link;
+        }
 
 
+        @Override
+        public String toString() {
+            return "OpenLink{" +
+                    "link='" + link + '\'' +
+                    "} " + super.toString();
+        }
+    }
+
+    /**
+     * Opens an image from the current carousel element.
+     */
+    public static class OpenPhoto extends Action {
+        public OpenPhoto() {
+            super("open_photo");
+        }
+    }
 
     public String getTitle() {
         return title;
@@ -82,12 +143,12 @@ public class Element {
         return this;
     }
 
-    public ElementAction getElementAction() {
-        return elementAction;
+    public Action getAction() {
+        return action;
     }
 
-    public Element setElementAction(ElementAction elementAction) {
-        this.elementAction = elementAction;
+    public Element setAction(Action action) {
+        this.action = action;
         return this;
     }
 
@@ -98,7 +159,7 @@ public class Element {
                 ", description='" + description + '\'' +
                 ", photoId='" + photoId + '\'' +
                 ", buttons=" + buttons +
-                ", action=" + elementAction +
+                ", action=" + action +
                 '}';
     }
 }

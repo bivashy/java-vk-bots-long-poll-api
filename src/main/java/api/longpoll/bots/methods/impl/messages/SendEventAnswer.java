@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
-import api.longpoll.bots.model.objects.additional.buttons.actions.EventData;
+import api.longpoll.bots.model.objects.additional.buttons.EventData;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
