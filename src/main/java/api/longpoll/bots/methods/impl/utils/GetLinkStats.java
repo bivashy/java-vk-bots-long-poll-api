@@ -26,7 +26,7 @@ public class GetLinkStats extends AuthorizedVkApiMethod<GetLinkStats.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

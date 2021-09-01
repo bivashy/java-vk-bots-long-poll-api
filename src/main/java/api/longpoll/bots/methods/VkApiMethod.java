@@ -92,7 +92,7 @@ public abstract class VkApiMethod<Response> {
         log.debug("Received: {}", body);
 
         if (getVkApiResponseValidator().isValid(body)) {
-            return getJsonConverter().convert(body, getResultType());
+            return getJsonConverter().convert(body, getResponseType());
         }
 
         throw new VkApiException(body);
@@ -126,7 +126,7 @@ public abstract class VkApiMethod<Response> {
      *
      * @return type of VK API response.
      */
-    protected abstract Class<Response> getResultType();
+    protected abstract Class<Response> getResponseType();
 
     /**
      * Adds URL parameter to HTTP request.

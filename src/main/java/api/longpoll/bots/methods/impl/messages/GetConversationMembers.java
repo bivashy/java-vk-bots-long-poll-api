@@ -28,7 +28,7 @@ public class GetConversationMembers extends AuthorizedVkApiMethod<GetConversatio
 
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

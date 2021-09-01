@@ -30,11 +30,11 @@ public class GetMembers extends AuthorizedVkApiMethod<GetMembers.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 
-    public GetMembers setGroupId(String groupId) {
+    public GetMembers setGroupId(int groupId) {
         addParam("group_id", groupId);
         return this;
     }

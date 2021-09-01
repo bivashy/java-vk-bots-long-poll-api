@@ -24,7 +24,7 @@ public class DeleteChatPhoto extends AuthorizedVkApiMethod<DeleteChatPhoto.Respo
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

@@ -1,36 +1,20 @@
 package api.longpoll.bots.methods.impl.upload;
 
-import api.longpoll.bots.methods.FileUploadingVkApiMethod;
 import api.longpoll.bots.model.objects.media.FileType;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Implements uploading story in VK API.
  */
-public class UploadStory extends FileUploadingVkApiMethod<UploadStory.Response> {
-    /**
-     * Upload URL.
-     */
-    private String uploadUrl;
-
+public class UploadStory extends AbstractUploadMethod<UploadStory.Response> {
     @Override
     protected FileType getType() {
         return FileType.VIDEO_FILE;
     }
 
     @Override
-    protected String getUrl() {
-        return uploadUrl;
-    }
-
-    @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
-    }
-
-    public UploadStory setUploadUrl(String uploadUrl) {
-        this.uploadUrl = uploadUrl;
-        return this;
     }
 
     /**

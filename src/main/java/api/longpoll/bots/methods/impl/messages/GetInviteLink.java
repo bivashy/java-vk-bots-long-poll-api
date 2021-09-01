@@ -24,7 +24,7 @@ public class GetInviteLink extends AuthorizedVkApiMethod<GetInviteLink.Response>
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

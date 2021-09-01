@@ -1,17 +1,18 @@
-package api.longpoll.bots.server;
+package api.longpoll.bots.client;
 
 import api.longpoll.bots.LongPollBot;
+import api.longpoll.bots.converters.json.GsonConverter;
+import api.longpoll.bots.converters.json.JsonConverter;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.methods.impl.events.GetUpdates;
 import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
 import api.longpoll.bots.model.events.VkEvent;
+import com.google.gson.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Default client to get VK  Long Poll updates.
@@ -37,8 +38,18 @@ public class DefaultLongPollClient implements LongPollClient {
      */
     private GetUpdates getUpdates;
 
+    /**
+     * JSON converter.
+     */
+    private JsonConverter jsonConverter;
+
     public DefaultLongPollClient(LongPollBot bot) {
-        getLongPollServer = new GetLongPollServer(bot.getAccessToken()).setGroupId(bot.getGroupId());
+        this(bot, new GsonConverter());
+    }
+
+    public DefaultLongPollClient(LongPollBot bot, JsonConverter jsonConverter) {
+        this.getLongPollServer = new GetLongPollServer(bot.getAccessToken()).setGroupId(bot.getGroupId());
+        this.jsonConverter = jsonConverter;
     }
 
     @Override
@@ -72,35 +83,20 @@ public class DefaultLongPollClient implements LongPollClient {
     private void tryHandle(VkApiResponseException e) throws VkApiException {
         log.warn("Failed to get events from VK Long Poll Server.", e);
 
-        Map<String, String> params = toParams(e.getMessage());
-        if (!params.containsKey("failed") || !params.containsKey("ts")) {
+        JsonObject jsonObject = jsonConverter.convert(e.getMessage(), JsonObject.class);
+
+        if (jsonObject == null || !jsonObject.has("failed")) {
             throw e;
         }
 
-        switch (Integer.parseInt(params.get("failed"))) {
+        switch (jsonObject.get("failed").getAsInt()) {
             case 1:
-                getUpdates.setTs(Integer.parseInt(params.get("ts")));
+                getUpdates.setTs(jsonObject.get("ts").getAsInt());
                 break;
             case 2:
             case 3:
                 init();
                 break;
         }
-    }
-
-    private Map<String, String> toParams(String json) {
-        String[] keyVal = json.trim()
-                .substring(1, json.length() - 1)
-                .replaceAll("[\\s\\n]", "")
-                .split(":");
-
-        HashMap<String, String> params = new HashMap<>();
-        if (keyVal.length % 2 == 0) {
-            for (int i = 0; i < keyVal.length; i++) {
-                params.put(keyVal[i], keyVal[++i]);
-            }
-        }
-
-        return params;
     }
 }

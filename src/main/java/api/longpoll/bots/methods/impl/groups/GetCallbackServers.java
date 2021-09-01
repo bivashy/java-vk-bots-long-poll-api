@@ -27,7 +27,7 @@ public class GetCallbackServers extends AuthorizedVkApiMethod<GetCallbackServers
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

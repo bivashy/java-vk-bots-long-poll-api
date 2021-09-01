@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
-import api.longpoll.bots.model.objects.additional.Button;
+import api.longpoll.bots.model.objects.additional.EventData;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
@@ -21,7 +21,7 @@ public class SendEventAnswer extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResultType() {
+    protected Class<IntegerResponse> getResponseType() {
         return IntegerResponse.class;
     }
 
@@ -40,7 +40,7 @@ public class SendEventAnswer extends AuthorizedVkApiMethod<IntegerResponse> {
         return this;
     }
 
-    public SendEventAnswer setEventData(Button.EventData eventData) {
+    public SendEventAnswer setEventData(EventData eventData) {
         addParam("event_data", eventData);
         return this;
     }

@@ -22,7 +22,7 @@ public class Search extends AuthorizedVkApiMethod<Search.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

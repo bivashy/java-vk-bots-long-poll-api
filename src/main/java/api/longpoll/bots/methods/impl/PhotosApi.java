@@ -1,5 +1,6 @@
 package api.longpoll.bots.methods.impl;
 
+import api.longpoll.bots.methods.impl.photos.GetChatUploadServer;
 import api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer;
 import api.longpoll.bots.methods.impl.photos.GetOwnerCoverPhotoUploadServer;
 import api.longpoll.bots.methods.impl.photos.SaveOwnerCoverPhoto;
@@ -11,6 +12,10 @@ import api.longpoll.bots.methods.impl.photos.SaveMessagesPhoto;
 public class PhotosApi extends AbstractVkApi {
     public PhotosApi(String accessToken) {
         super(accessToken);
+    }
+
+    public GetChatUploadServer getChatUploadServer() {
+        return new GetChatUploadServer(getAccessToken());
     }
 
     public GetMessagesUploadServer getMessagesUploadServer() {

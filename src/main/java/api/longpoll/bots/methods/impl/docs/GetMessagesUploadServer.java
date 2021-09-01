@@ -23,7 +23,7 @@ public class GetMessagesUploadServer extends AuthorizedVkApiMethod<GetMessagesUp
     }
 
     @Override
-    protected Class<GetMessagesUploadServer.Response> getResultType() {
+    protected Class<GetMessagesUploadServer.Response> getResponseType() {
         return GetMessagesUploadServer.Response.class;
     }
 

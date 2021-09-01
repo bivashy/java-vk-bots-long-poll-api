@@ -23,7 +23,7 @@ public class ResolveScreenName extends AuthorizedVkApiMethod<ResolveScreenName.R
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return null;
     }
 

@@ -13,7 +13,9 @@ import api.longpoll.bots.methods.impl.messages.GetConversations;
 import api.longpoll.bots.methods.impl.messages.GetConversationsById;
 import api.longpoll.bots.methods.impl.messages.GetHistory;
 import api.longpoll.bots.methods.impl.messages.GetHistoryAttachments;
+import api.longpoll.bots.methods.impl.messages.GetImportantMessages;
 import api.longpoll.bots.methods.impl.messages.GetInviteLink;
+import api.longpoll.bots.methods.impl.messages.IsMessagesFromGroupAllowed;
 import api.longpoll.bots.methods.impl.messages.MarkAsAnsweredConversation;
 import api.longpoll.bots.methods.impl.messages.MarkAsImportantConversation;
 import api.longpoll.bots.methods.impl.messages.MarkAsRead;
@@ -23,6 +25,9 @@ import api.longpoll.bots.methods.impl.messages.Restore;
 import api.longpoll.bots.methods.impl.messages.SearchConversations;
 import api.longpoll.bots.methods.impl.messages.Send;
 import api.longpoll.bots.methods.impl.messages.SendEventAnswer;
+import api.longpoll.bots.methods.impl.messages.SetActivity;
+import api.longpoll.bots.methods.impl.messages.SetChatPhoto;
+import api.longpoll.bots.methods.impl.messages.Unpin;
 
 /**
  * Provides Messages methods.
@@ -84,8 +89,16 @@ public class MessagesApi extends AbstractVkApi {
         return new GetHistoryAttachments(getAccessToken());
     }
 
+    public GetImportantMessages getImportantMessages() {
+        return new GetImportantMessages(getAccessToken());
+    }
+
     public GetInviteLink getInviteLink() {
         return new GetInviteLink(getAccessToken());
+    }
+
+    public IsMessagesFromGroupAllowed isMessagesFromGroupAllowed() {
+        return new IsMessagesFromGroupAllowed(getAccessToken());
     }
 
     public MarkAsAnsweredConversation markAsAnsweredConversation() {
@@ -122,5 +135,17 @@ public class MessagesApi extends AbstractVkApi {
 
     public SendEventAnswer sendEventAnswer() {
         return new SendEventAnswer(getAccessToken());
+    }
+
+    public SetActivity setActivity() {
+        return new SetActivity(getAccessToken());
+    }
+
+    public SetChatPhoto setChatPhoto() {
+        return new SetChatPhoto(getAccessToken());
+    }
+
+    public Unpin unpin() {
+        return new Unpin(getAccessToken());
     }
 }

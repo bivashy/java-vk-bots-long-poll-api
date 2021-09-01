@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/utils.checkLink">https://vk.com/dev/utils.checkLink</a>
  */
-public class CheckLink extends AuthorizedVkApiMethod<CheckLink.UtilsCheckLinkResult> {
+public class CheckLink extends AuthorizedVkApiMethod<CheckLink.Response> {
     public CheckLink(String accessToken) {
         super(accessToken);
     }
@@ -23,8 +23,8 @@ public class CheckLink extends AuthorizedVkApiMethod<CheckLink.UtilsCheckLinkRes
     }
 
     @Override
-    protected Class<UtilsCheckLinkResult> getResultType() {
-        return UtilsCheckLinkResult.class;
+    protected Class<Response> getResponseType() {
+        return Response.class;
     }
 
     public CheckLink setUrl(String url) {
@@ -35,7 +35,7 @@ public class CheckLink extends AuthorizedVkApiMethod<CheckLink.UtilsCheckLinkRes
     /**
      * Response to <b>utils.checkLink</b> request.
      */
-    public static class UtilsCheckLinkResult extends GenericResponse<UtilsCheckLinkResult.ResponseObject> {
+    public static class Response extends GenericResponse<Response.ResponseObject> {
         /**
          * Response object.
          */

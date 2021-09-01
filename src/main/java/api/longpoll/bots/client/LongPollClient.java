@@ -1,4 +1,4 @@
-package api.longpoll.bots.server;
+package api.longpoll.bots.client;
 
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.model.events.VkEvent;

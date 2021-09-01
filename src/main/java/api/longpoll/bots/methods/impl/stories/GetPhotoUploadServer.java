@@ -27,7 +27,7 @@ public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadSe
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

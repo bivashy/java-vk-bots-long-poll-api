@@ -1,11 +1,12 @@
 package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.objects.media.MarketItem;
 import api.longpoll.bots.model.objects.additional.Price;
+import api.longpoll.bots.model.objects.media.MarketItem;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Describes <b>market_order_new</b> and <b>market_order_edit</b> event objects.
@@ -202,6 +203,9 @@ public class MarketOrder implements EventObject {
         @SerializedName("track_link")
         private String trackLink;
 
+        @SerializedName("delivery_point")
+        private Map<String, Object> deliveryPoint;
+
         public String getAddress() {
             return address;
         }
@@ -234,6 +238,16 @@ public class MarketOrder implements EventObject {
             this.trackLink = trackLink;
         }
 
+
+        public Map<String, Object> getDeliveryPoint() {
+            return deliveryPoint;
+        }
+
+        public void setDeliveryPoint(Map<String, Object> deliveryPoint) {
+            this.deliveryPoint = deliveryPoint;
+        }
+
+
         @Override
         public String toString() {
             return "Delivery{" +
@@ -241,6 +255,7 @@ public class MarketOrder implements EventObject {
                     ", type='" + type + '\'' +
                     ", trackNumber='" + trackNumber + '\'' +
                     ", trackLink='" + trackLink + '\'' +
+                    ", deliveryPoint=" + deliveryPoint +
                     '}';
         }
     }

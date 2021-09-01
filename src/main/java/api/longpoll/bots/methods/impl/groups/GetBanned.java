@@ -30,7 +30,7 @@ public class GetBanned extends AuthorizedVkApiMethod<GetBanned.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

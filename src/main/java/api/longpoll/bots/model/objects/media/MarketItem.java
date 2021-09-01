@@ -75,6 +75,12 @@ public class MarketItem implements Attachable {
     private boolean favourite;
 
     /**
+     * Product SKU.
+     */
+    @SerializedName("sku")
+    private String sku;
+
+    /**
      * Describes item price.
      */
     public static class ItemPrice extends Price {
@@ -278,6 +284,14 @@ public class MarketItem implements Attachable {
         this.favourite = favourite;
     }
 
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+
     @Override
     public String toString() {
         return "MarketItem{" +
@@ -291,6 +305,7 @@ public class MarketItem implements Attachable {
                 ", date=" + date +
                 ", availability=" + availability +
                 ", favourite=" + favourite +
+                ", sku='" + sku + '\'' +
                 '}';
     }
 }

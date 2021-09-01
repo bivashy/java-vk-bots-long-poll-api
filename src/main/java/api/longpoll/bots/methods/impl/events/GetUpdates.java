@@ -21,7 +21,7 @@ public class GetUpdates extends VkApiMethod<GetUpdates.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

@@ -24,7 +24,7 @@ public class GetOrderById extends AuthorizedVkApiMethod<GetOrderById.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

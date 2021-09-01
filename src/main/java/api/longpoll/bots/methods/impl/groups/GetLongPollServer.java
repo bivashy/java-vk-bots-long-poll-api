@@ -18,7 +18,7 @@ public class GetLongPollServer extends AuthorizedVkApiMethod<GetLongPollServer.R
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

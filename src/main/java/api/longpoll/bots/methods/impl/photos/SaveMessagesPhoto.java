@@ -26,7 +26,7 @@ public class SaveMessagesPhoto extends AuthorizedVkApiMethod<SaveMessagesPhoto.R
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 

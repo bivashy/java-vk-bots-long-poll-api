@@ -25,7 +25,7 @@ public class CreateChat extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResultType() {
+    protected Class<IntegerResponse> getResponseType() {
         return IntegerResponse.class;
     }
 

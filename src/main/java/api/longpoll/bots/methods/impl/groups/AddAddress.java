@@ -23,7 +23,7 @@ public class AddAddress extends AuthorizedVkApiMethod<AddAddress.Response> {
     }
 
     @Override
-    protected Class<Response> getResultType() {
+    protected Class<Response> getResponseType() {
         return Response.class;
     }
 
