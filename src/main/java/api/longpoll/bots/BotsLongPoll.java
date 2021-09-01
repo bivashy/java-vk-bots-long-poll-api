@@ -1,10 +1,10 @@
 package api.longpoll.bots;
 
+import api.longpoll.bots.client.DefaultLongPollClient;
+import api.longpoll.bots.client.LongPollClient;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.handlers.update.LongPollBotEventHandler;
 import api.longpoll.bots.handlers.update.VkEventHandler;
-import api.longpoll.bots.server.LongPollClient;
-import api.longpoll.bots.server.DefaultLongPollClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
