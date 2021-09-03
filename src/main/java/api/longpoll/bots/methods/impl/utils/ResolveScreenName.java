@@ -24,7 +24,7 @@ public class ResolveScreenName extends AuthorizedVkApiMethod<ResolveScreenName.R
 
     @Override
     protected Class<Response> getResponseType() {
-        return null;
+        return Response.class;
     }
 
     public ResolveScreenName setScreenName(String screenName) {
