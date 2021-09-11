@@ -5,6 +5,7 @@ import api.longpoll.bots.converters.json.JsonConverter;
 import api.longpoll.bots.converters.params.VkApiParamsConverter;
 import api.longpoll.bots.converters.params.DefaultVkApiParamsConverter;
 import api.longpoll.bots.exceptions.VkApiException;
+import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.JsoupHttpClient;
 import api.longpoll.bots.utils.async.AsyncCaller;
@@ -95,7 +96,7 @@ public abstract class VkApiMethod<Response> {
             return getJsonConverter().convert(body, getResponseType());
         }
 
-        throw new VkApiException(body);
+        throw new VkApiResponseException(body);
     }
 
     /**
