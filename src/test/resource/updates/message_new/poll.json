@@ -1,0 +1,97 @@
+{
+  "ts": "3710",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1633280348,
+          "from_id": 381980625,
+          "id": 0,
+          "out": 0,
+          "peer_id": 2000000008,
+          "text": "",
+          "conversation_message_id": 98,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "poll",
+              "poll": {
+                "multiple": false,
+                "end_date": 0,
+                "closed": false,
+                "is_board": false,
+                "can_edit": false,
+                "can_vote": false,
+                "can_report": false,
+                "can_share": false,
+                "created": 1633280345,
+                "id": 635116213,
+                "owner_id": 381980625,
+                "question": "Poll text",
+                "votes": 0,
+                "disable_unvote": false,
+                "anonymous": false,
+                "answer_ids": [],
+                "embed_hash": "635116213_1257f7fd69583de453",
+                "answers": [
+                  {
+                    "id": 1835901542,
+                    "rate": 0.000000,
+                    "text": "Option A",
+                    "votes": 0
+                  },
+                  {
+                    "id": 1835901543,
+                    "rate": 0.000000,
+                    "text": "Option B",
+                    "votes": 0
+                  }
+                ],
+                "author_id": 381980625,
+                "background": {
+                  "angle": 225,
+                  "color": "6248cb",
+                  "id": 1,
+                  "name": "фон в тёплых тонах",
+                  "points": [
+                    {
+                      "color": "f24973",
+                      "position": 0.000000
+                    },
+                    {
+                      "color": "3948e6",
+                      "position": 1.000000
+                    }
+                  ],
+                  "type": "gradient"
+                }
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link",
+            "callback",
+            "intent_subscribe",
+            "intent_unsubscribe"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": true,
+          "lang_id": 0
+        }
+      },
+      "group_id": 168975658,
+      "event_id": "b5fe86bb33d074b43e05937ee1d75bd9aa0a5e14"
+    }
+  ]
+}

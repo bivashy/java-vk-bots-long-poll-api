@@ -1,5 +1,6 @@
 package api.longpoll.bots.adapters.deserializers;
 
+import api.longpoll.bots.model.objects.basic.Poll;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import api.longpoll.bots.model.objects.basic.WallPost;
 import api.longpoll.bots.model.objects.media.AttachedLink;
@@ -71,6 +72,9 @@ public class AttachmentDeserializer implements JsonDeserializer<Attachment> {
 
             case PHOTO:
                 return Photo.class;
+
+            case POLL:
+                return Poll.class;
 
             case STICKER:
                 return Sticker.class;
