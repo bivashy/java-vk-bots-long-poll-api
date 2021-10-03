@@ -1,6 +1,7 @@
 package api.longpoll.bots.model.objects.media;
 
 import api.longpoll.bots.adapters.deserializers.DocPreviewDeserializer;
+import api.longpoll.bots.model.objects.additional.PhotoSize;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -99,92 +100,13 @@ public class Doc implements Attachable {
          * Array with the photo copies of different sizes.
          */
         @SerializedName("sizes")
-        private List<Size> sizes;
+        private List<PhotoSize> sizes;
 
-        /**
-         * Describes photo size.
-         */
-        public static class Size {
-            /**
-             * Photo URL.
-             */
-            @SerializedName("src")
-            private String src;
-
-            /**
-             * Photo width in pixels.
-             */
-            @SerializedName("width")
-            private Integer width;
-
-            /**
-             * Photo height in pixels.
-             */
-            @SerializedName("height")
-            private Integer height;
-
-            /**
-             * Photo preview type. Possible values:
-             * <ul>
-             * <li><b>s</b> — proportional copy with max side of 100 px;</li>
-             * <li><b>m</b> — proportional copy with max side of 130 px;</li>
-             * <li><b>x</b> — proportional copy with max side of 604 px;</li>
-             * <li><b>y</b> — proportional copy with max side of 807 px;</li>
-             * <li><b>z</b> — proportional copy with max size of 1080x1024 px;</li>
-             * <li><b>o</b> — original size image.</li>
-             * </ul>
-             */
-            @SerializedName("type")
-            private String type;
-
-            public String getSrc() {
-                return src;
-            }
-
-            public void setSrc(String src) {
-                this.src = src;
-            }
-
-            public Integer getWidth() {
-                return width;
-            }
-
-            public void setWidth(Integer width) {
-                this.width = width;
-            }
-
-            public Integer getHeight() {
-                return height;
-            }
-
-            public void setHeight(Integer height) {
-                this.height = height;
-            }
-
-            public String getType() {
-                return type;
-            }
-
-            public void setType(String type) {
-                this.type = type;
-            }
-
-            @Override
-            public String toString() {
-                return "Size{" +
-                        "src='" + src + '\'' +
-                        ", width=" + width +
-                        ", height=" + height +
-                        ", type='" + type + '\'' +
-                        '}';
-            }
-        }
-
-        public List<Size> getSizes() {
+        public List<PhotoSize> getSizes() {
             return sizes;
         }
 
-        public void setSizes(List<Size> sizes) {
+        public void setSizes(List<PhotoSize> sizes) {
             this.sizes = sizes;
         }
 

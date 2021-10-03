@@ -118,7 +118,7 @@ public class MessageNewParseTest {
         assertEquals(130, photoSize.getHeight());
         assertEquals(130, photoSize.getWidth());
         assertEquals("m", photoSize.getType());
-        assertEquals("https://sun9-49.userapi.com/m0bXxRbjkI0X2SAClsqAZsRYVpiSgc6MEBAVtA/2VVGupYl8uM.jpg", photoSize.getUrl());
+        assertEquals("https://sun9-49.userapi.com/m0bXxRbjkI0X2SAClsqAZsRYVpiSgc6MEBAVtA/2VVGupYl8uM.jpg", photoSize.getSrc());
     }
 
     @Test
@@ -202,11 +202,11 @@ public class MessageNewParseTest {
         assertNotNull(photoPreview);
         assertTrue(photoPreview instanceof Doc.Photo);
 
-        List<Doc.Photo.Size> sizes = ((Doc.Photo) photoPreview).getSizes();
+        List<PhotoSize> sizes = ((Doc.Photo) photoPreview).getSizes();
         assertNotNull(sizes);
         assertFalse(sizes.isEmpty());
 
-        Doc.Photo.Size size = sizes.get(0);
+        PhotoSize size = sizes.get(0);
         assertNotNull(size);
         assertEquals(130, size.getWidth());
         assertEquals(100, size.getHeight());
