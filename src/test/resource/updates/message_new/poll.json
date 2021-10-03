@@ -6,7 +6,7 @@
       "object": {
         "message": {
           "date": 1633280348,
-          "from_id": 381980625,
+          "from_id": 918650328,
           "id": 0,
           "out": 0,
           "peer_id": 2000000008,
@@ -29,7 +29,7 @@
                 "can_share": false,
                 "created": 1633280345,
                 "id": 635116213,
-                "owner_id": 381980625,
+                "owner_id": 918650328,
                 "question": "Poll text",
                 "votes": 0,
                 "disable_unvote": false,
@@ -50,7 +50,7 @@
                     "votes": 0
                   }
                 ],
-                "author_id": 381980625,
+                "author_id": 918650328,
                 "background": {
                   "angle": 225,
                   "color": "6248cb",
@@ -90,7 +90,7 @@
           "lang_id": 0
         }
       },
-      "group_id": 168975658,
+      "group_id": 886761559,
       "event_id": "b5fe86bb33d074b43e05937ee1d75bd9aa0a5e14"
     }
   ]

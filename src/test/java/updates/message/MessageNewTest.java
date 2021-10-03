@@ -71,11 +71,11 @@ public class MessageNewTest {
         assertFalse(poll.getCanShare());
         assertEquals(1633280345, poll.getCreated());
         assertEquals(635116213, poll.getId());
-        assertEquals(381980625, poll.getOwnerId());
+        assertEquals(918650328, poll.getOwnerId());
         assertEquals("Poll text", poll.getQuestion());
         assertEquals(0, poll.getVotes());
         assertFalse(poll.getAnonymous());
-        assertEquals(381980625, poll.getAuthorId());
+        assertEquals(918650328, poll.getAuthorId());
 
         List<Integer> answerIds = poll.getAnswerIds();
         assertNotNull(answerIds);
