@@ -65,37 +65,66 @@ public class MessageNewTest {
         assertFalse(poll.getMultiple());
         assertEquals(0, poll.getEndDate());
         assertFalse(poll.getBoard());
-        assertFalse(poll.getCanEdit());
-        assertFalse(poll.getCanVote());
+        assertTrue(poll.getCanEdit());
+        assertTrue(poll.getCanVote());
         assertFalse(poll.getCanReport());
-        assertFalse(poll.getCanShare());
-        assertEquals(1633280345, poll.getCreated());
-        assertEquals(635116213, poll.getId());
+        assertTrue(poll.getCanShare());
+        assertEquals(1632906778, poll.getCreated());
+        assertEquals(633308954, poll.getId());
         assertEquals(918650328, poll.getOwnerId());
-        assertEquals("Poll text", poll.getQuestion());
-        assertEquals(0, poll.getVotes());
+        assertEquals("What is better?", poll.getQuestion());
+        assertEquals(21, poll.getVotes());
         assertFalse(poll.getAnonymous());
         assertEquals(918650328, poll.getAuthorId());
 
+        List<Poll.Friend> friends = poll.getFriends();
+        assertNotNull(friends);
+        assertEquals(3, friends.size());
+
+        Poll.Friend friend = friends.get(0);
+        assertNotNull(friend);
+        assertEquals(918650328, friend.getId());
+
+        friend = friends.get(1);
+        assertNotNull(friend);
+        assertEquals(25627166, friend.getId());
+
+        friend = friends.get(2);
+        assertNotNull(friend);
+        assertEquals(40490031, friend.getId());
+
         List<Integer> answerIds = poll.getAnswerIds();
         assertNotNull(answerIds);
-        assertTrue(answerIds.isEmpty());
+        assertFalse(answerIds.isEmpty());
+        assertEquals(1831815044, answerIds.get(0));
 
         List<Poll.Answer> answers = poll.getAnswers();
         assertNotNull(answers);
-        assertEquals(2, answers.size());
+        assertEquals(4, answers.size());
 
         Poll.Answer answer = answers.get(0);
         assertNotNull(answer);
-        assertEquals(1835901542, answer.getId());
-        assertEquals("Option A", answer.getText());
-        assertEquals(0, answer.getVotes());
+        assertEquals(1831812069, answer.getId());
+        assertEquals("Google drive", answer.getText());
+        assertEquals(10, answer.getVotes());
 
         answer = answers.get(1);
         assertNotNull(answer);
-        assertEquals(1835901543, answer.getId());
-        assertEquals("Option B", answer.getText());
-        assertEquals(0, answer.getVotes());
+        assertEquals(1831812070, answer.getId());
+        assertEquals("One drive", answer.getText());
+        assertEquals(1, answer.getVotes());
+
+        answer = answers.get(2);
+        assertNotNull(answer);
+        assertEquals(1831812071, answer.getId());
+        assertEquals("Drop box", answer.getText());
+        assertEquals(2, answer.getVotes());
+
+        answer = answers.get(3);
+        assertNotNull(answer);
+        assertEquals(1831815044, answer.getId());
+        assertEquals("Other", answer.getText());
+        assertEquals(8, answer.getVotes());
 
         Poll.Background background = poll.getBackground();
         assertNotNull(background);
