@@ -131,7 +131,7 @@ public class Poll implements Attachable {
      * IDs of 3 friends voted the poll.
      */
     @SerializedName("friends")
-    private List<Integer> friends;
+    private List<Friend> friends;
 
     /**
      * Poll option.
@@ -377,6 +377,32 @@ public class Poll implements Attachable {
         }
     }
 
+    /**
+     * Friend ID.
+     */
+    public static class Friend {
+        /**
+         * Friend ID.
+         */
+        @SerializedName("id")
+        private Integer id;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        @Override
+        public String toString() {
+            return "Friend{" +
+                    "id=" + id +
+                    '}';
+        }
+    }
+
     public Integer getId() {
         return id;
     }
@@ -529,11 +555,11 @@ public class Poll implements Attachable {
         this.background = background;
     }
 
-    public List<Integer> getFriends() {
+    public List<Friend> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<Integer> friends) {
+    public void setFriends(List<Friend> friends) {
         this.friends = friends;
     }
 
