@@ -30,6 +30,10 @@ public class TextButton extends Button {
         @SerializedName("label")
         private String label;
 
+        public Action(String label) {
+            this(label, null);
+        }
+
         public Action(String label, JsonElement payload) {
             super("text", payload);
             this.label = label;

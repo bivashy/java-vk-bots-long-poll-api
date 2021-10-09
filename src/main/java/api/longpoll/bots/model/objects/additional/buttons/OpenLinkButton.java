@@ -27,6 +27,10 @@ public class OpenLinkButton extends Button {
         @SerializedName("label")
         private String label;
 
+        public Action(String link, String label) {
+            this(link, label, null);
+        }
+
         public Action(String link, String label, JsonElement payload) {
             super("open_link", payload);
             this.link = link;
