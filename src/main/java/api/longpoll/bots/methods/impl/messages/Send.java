@@ -42,33 +42,27 @@ public class Send extends AuthorizedVkApiMethod<Send.Response> {
     }
 
     public Send setAttachments(List<AttachableParam> attachments) {
-        addParam("attachment", attachments);
-        return this;
+        return addParam("attachment", attachments);
     }
 
     public Send setUserId(int userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
     }
 
     public Send setRandomId(int randomId) {
-        addParam("random_id", randomId);
-        return this;
+        return addParam("random_id", randomId);
     }
 
     public Send setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public Send setDomain(String domain) {
-        addParam("domain", domain);
-        return this;
+        return addParam("domain", domain);
     }
 
     public Send setChatId(int chatId) {
-        addParam("chat_id", chatId);
-        return this;
+        return addParam("chat_id", chatId);
     }
 
     public Send setUserIds(Integer... userIds) {
@@ -76,28 +70,23 @@ public class Send extends AuthorizedVkApiMethod<Send.Response> {
     }
 
     public Send setUserIds(List<Integer> userIds) {
-        addParam("user_ids", userIds);
-        return this;
+        return addParam("user_ids", userIds);
     }
 
     public Send setMessage(String message) {
-        addParam("message", message);
-        return this;
+        return addParam("message", message);
     }
 
     public Send setLatitude(float latitude) {
-        addParam("lat", latitude);
-        return this;
+        return addParam("lat", latitude);
     }
 
     public Send setLongitude(float longitude) {
-        addParam("long", longitude);
-        return this;
+        return addParam("long", longitude);
     }
 
     public Send setReplyTo(int replyTo) {
-        addParam("reply_to", replyTo);
-        return this;
+        return addParam("reply_to", replyTo);
     }
 
     public Send setForwardMessages(Integer... forwardMessages) {
@@ -105,33 +94,32 @@ public class Send extends AuthorizedVkApiMethod<Send.Response> {
     }
 
     public Send setForwardMessages(List<Integer> forwardMessages) {
-        addParam("forward_messages", forwardMessages);
-        return this;
+        return addParam("forward_messages", forwardMessages);
     }
 
     public Send setStickerId(int stickerId) {
-        addParam("sticker_id", stickerId);
-        return this;
+        return addParam("sticker_id", stickerId);
     }
 
     public Send setDontParseLinks(boolean dontParseLinks) {
-        addParam("dont_parse_links", new BoolInt(dontParseLinks));
-        return this;
+        return addParam("dont_parse_links", new BoolInt(dontParseLinks));
     }
 
     public Send setDisableMentions(boolean disableMentions) {
-        addParam("disable_mentions", new BoolInt(disableMentions));
-        return this;
+        return addParam("disable_mentions", new BoolInt(disableMentions));
     }
 
     public Send setKeyboard(Keyboard keyboard) {
-        addParam("keyboard", keyboard);
-        return this;
+        return addParam("keyboard", keyboard);
     }
 
     public Send setTemplate(Template template) {
-        addParam("template", template);
-        return this;
+        return addParam("template", template);
+    }
+
+    @Override
+    public Send addParam(String key, Object value) {
+        return (Send) super.addParam(key, value);
     }
 
     /**

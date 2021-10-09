@@ -29,18 +29,20 @@ public class GetGroupOrders extends AuthorizedVkApiMethod<GetGroupOrders.Respons
     }
 
     public GetGroupOrders setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public GetGroupOrders setOffset(int offset) {
-        addParam("offset", offset);
-        return this;
+        return addParam("offset", offset);
     }
 
     public GetGroupOrders setCount(int count) {
-        addParam("count", count);
-        return this;
+        return addParam("count", count);
+    }
+
+    @Override
+    public GetGroupOrders addParam(String key, Object value) {
+        return (GetGroupOrders) super.addParam(key, value);
     }
 
     /**

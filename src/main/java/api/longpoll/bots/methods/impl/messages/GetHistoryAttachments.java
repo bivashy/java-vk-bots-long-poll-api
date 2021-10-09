@@ -35,28 +35,23 @@ public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttac
     }
 
     public GetHistoryAttachments setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public GetHistoryAttachments setMediaType(String mediaType) {
-        addParam("media_type", mediaType);
-        return this;
+        return addParam("media_type", mediaType);
     }
 
     public GetHistoryAttachments setStartFrom(String startFrom) {
-        addParam("start_from", startFrom);
-        return this;
+        return addParam("start_from", startFrom);
     }
 
     public GetHistoryAttachments setCount(int count) {
-        addParam("count", count);
-        return this;
+        return addParam("count", count);
     }
 
     public GetHistoryAttachments setPhotoSizes(boolean photoSizes) {
-        addParam("photo_sizes", new BoolInt(photoSizes));
-        return this;
+        return addParam("photo_sizes", new BoolInt(photoSizes));
     }
 
     public GetHistoryAttachments setFields(String... fields) {
@@ -64,23 +59,24 @@ public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttac
     }
 
     public GetHistoryAttachments setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public GetHistoryAttachments setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public GetHistoryAttachments setPreserveOrder(boolean preserveOrder) {
-        addParam("preserve_order", new BoolInt(preserveOrder));
-        return this;
+        return addParam("preserve_order", new BoolInt(preserveOrder));
     }
 
     public GetHistoryAttachments setMaxForwardsLevel(int maxForwardsLevel) {
-        addParam("max_forwards_level", maxForwardsLevel);
-        return this;
+        return addParam("max_forwards_level", maxForwardsLevel);
+    }
+
+    @Override
+    public GetHistoryAttachments addParam(String key, Object value) {
+        return (GetHistoryAttachments) super.addParam(key, value);
     }
 
     /**

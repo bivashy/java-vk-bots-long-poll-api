@@ -28,227 +28,187 @@ public class SetLongPollSettings extends AuthorizedVkApiMethod<IntegerResponse> 
     }
 
     public SetLongPollSettings setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public SetLongPollSettings setEnabled(boolean enabled) {
-        addParam("enabled", new BoolInt(enabled));
-        return this;
+        return addParam("enabled", new BoolInt(enabled));
     }
 
     public SetLongPollSettings setApiVersion(String apiVersion) {
-        addParam("api_version", apiVersion);
-        return this;
+        return addParam("api_version", apiVersion);
     }
 
     public SetLongPollSettings setMessageNew(boolean messageNew) {
-        addParam("message_new", messageNew);
-        return this;
+        return addParam("message_new", messageNew);
     }
 
     public SetLongPollSettings setMessageReply(boolean messageReply) {
-        addParam("message_reply", messageReply);
-        return this;
+        return addParam("message_reply", messageReply);
     }
 
     public SetLongPollSettings setMessageAllow(boolean messageAllow) {
-        addParam("message_allow", messageAllow);
-        return this;
+        return addParam("message_allow", messageAllow);
     }
 
     public SetLongPollSettings setMessageEdit(boolean messageEdit) {
-        addParam("message_edit", messageEdit);
-        return this;
+        return addParam("message_edit", messageEdit);
     }
 
     public SetLongPollSettings setMessageDeny(boolean messageDeny) {
-        addParam("message_deny", messageDeny);
-        return this;
+        return addParam("message_deny", messageDeny);
     }
 
     public SetLongPollSettings setMessageTypingState(boolean messageTypingState) {
-        addParam("message_typing_state", messageTypingState);
-        return this;
+        return addParam("message_typing_state", messageTypingState);
     }
 
     public SetLongPollSettings setPhotoNew(boolean photoNew) {
-        addParam("photo_new", photoNew);
-        return this;
+        return addParam("photo_new", photoNew);
     }
 
     public SetLongPollSettings setAudioNew(boolean audioNew) {
-        addParam("audio_new", audioNew);
-        return this;
+        return addParam("audio_new", audioNew);
     }
 
     public SetLongPollSettings setVideoNew(boolean videoNew) {
-        addParam("video_new", videoNew);
-        return this;
+        return addParam("video_new", videoNew);
     }
 
     public SetLongPollSettings setWallReplyNew(boolean wallReplyNew) {
-        addParam("wall_reply_new", wallReplyNew);
-        return this;
+        return addParam("wall_reply_new", wallReplyNew);
     }
 
     public SetLongPollSettings setWallReplyEdit(boolean wallReplyEdit) {
-        addParam("wall_reply_edit", wallReplyEdit);
-        return this;
+        return addParam("wall_reply_edit", wallReplyEdit);
     }
 
     public SetLongPollSettings setWallReplyDelete(boolean wallReplyDelete) {
-        addParam("wall_reply_delete", wallReplyDelete);
-        return this;
+        return addParam("wall_reply_delete", wallReplyDelete);
     }
 
     public SetLongPollSettings setWallReplyRestore(boolean wallReplyRestore) {
-        addParam("wall_reply_restore", wallReplyRestore);
-        return this;
+        return addParam("wall_reply_restore", wallReplyRestore);
     }
 
     public SetLongPollSettings setWallPostNew(boolean wallPostNew) {
-        addParam("wall_post_new", wallPostNew);
-        return this;
+        return addParam("wall_post_new", wallPostNew);
     }
 
     public SetLongPollSettings setWallPostRepost(boolean wallPostRepost) {
-        addParam("wall_repost", wallPostRepost);
-        return this;
+        return addParam("wall_repost", wallPostRepost);
     }
 
     public SetLongPollSettings setBoardPostNew(boolean boardPostNew) {
-        addParam("board_post_new", boardPostNew);
-        return this;
+        return addParam("board_post_new", boardPostNew);
     }
 
     public SetLongPollSettings setBoardPostEdit(boolean boardPostEdit) {
-        addParam("board_post_edit", boardPostEdit);
-        return this;
+        return addParam("board_post_edit", boardPostEdit);
     }
 
     public SetLongPollSettings setBoardPostRestore(boolean boardPostRestore) {
-        addParam("board_post_restore", boardPostRestore);
-        return this;
+        return addParam("board_post_restore", boardPostRestore);
     }
 
     public SetLongPollSettings setBoardPostDelete(boolean boardPostDelete) {
-        addParam("board_post_delete", boardPostDelete);
-        return this;
+        return addParam("board_post_delete", boardPostDelete);
     }
 
     public SetLongPollSettings setPhotoCommentNew(boolean photoCommentNew) {
-        addParam("photo_comment_new", photoCommentNew);
-        return this;
+        return addParam("photo_comment_new", photoCommentNew);
     }
 
     public SetLongPollSettings setPhotoCommentEdit(boolean photoCommentEdit) {
-        addParam("photo_comment_edit", photoCommentEdit);
-        return this;
+        return addParam("photo_comment_edit", photoCommentEdit);
     }
 
     public SetLongPollSettings setPhotoCommentDelete(boolean photoCommentDelete) {
-        addParam("photo_comment_delete", photoCommentDelete);
-        return this;
+        return addParam("photo_comment_delete", photoCommentDelete);
     }
 
     public SetLongPollSettings setPhotoCommentRestore(boolean photoCommentRestore) {
-        addParam("photo_comment_restore", photoCommentRestore);
-        return this;
+        return addParam("photo_comment_restore", photoCommentRestore);
     }
 
     public SetLongPollSettings setVideoCommentNew(boolean videoCommentNew) {
-        addParam("video_comment_new", videoCommentNew);
-        return this;
+        return addParam("video_comment_new", videoCommentNew);
     }
 
     public SetLongPollSettings setVideoCommentEdit(boolean videoCommentEdit) {
-        addParam("video_comment_edit", videoCommentEdit);
-        return this;
+        return addParam("video_comment_edit", videoCommentEdit);
     }
 
     public SetLongPollSettings setVideoCommentDelete(boolean videoCommentDelete) {
-        addParam("video_comment_delete", videoCommentDelete);
-        return this;
+        return addParam("video_comment_delete", videoCommentDelete);
     }
 
     public SetLongPollSettings setVideoCommentRestore(boolean videoCommentRestore) {
-        addParam("video_comment_restore", videoCommentRestore);
-        return this;
+        return addParam("video_comment_restore", videoCommentRestore);
     }
 
     public SetLongPollSettings setMarketCommentNew(boolean marketCommentNew) {
-        addParam("market_comment_new", marketCommentNew);
-        return this;
+        return addParam("market_comment_new", marketCommentNew);
     }
 
     public SetLongPollSettings setMarketCommentEdit(boolean marketCommentEdit) {
-        addParam("market_comment_edit", marketCommentEdit);
-        return this;
+        return addParam("market_comment_edit", marketCommentEdit);
     }
 
     public SetLongPollSettings setMarketCommentDelete(boolean marketCommentDelete) {
-        addParam("market_comment_delete", marketCommentDelete);
-        return this;
+        return addParam("market_comment_delete", marketCommentDelete);
     }
 
     public SetLongPollSettings setMarketCommentRestore(boolean marketCommentRestore) {
-        addParam("market_comment_restore", marketCommentRestore);
-        return this;
+        return addParam("market_comment_restore", marketCommentRestore);
     }
 
     public SetLongPollSettings setPollVoteNew(boolean pollVoteNew) {
-        addParam("poll_vote_new", pollVoteNew);
-        return this;
+        return addParam("poll_vote_new", pollVoteNew);
     }
 
     public SetLongPollSettings setGroupJoin(boolean groupJoin) {
-        addParam("group_join", groupJoin);
-        return this;
+        return addParam("group_join", groupJoin);
     }
 
     public SetLongPollSettings setGroupLeave(boolean groupLeave) {
-        addParam("group_leave", groupLeave);
-        return this;
+        return addParam("group_leave", groupLeave);
     }
 
     public SetLongPollSettings setGroupChangeSettings(boolean groupChangeSettings) {
-        addParam("group_change_settings", groupChangeSettings);
-        return this;
+        return addParam("group_change_settings", groupChangeSettings);
     }
 
     public SetLongPollSettings setGroupChangePhoto(boolean groupChangePhoto) {
-        addParam("group_change_photo", groupChangePhoto);
-        return this;
+        return addParam("group_change_photo", groupChangePhoto);
     }
 
     public SetLongPollSettings setGroupOfficersEdit(boolean groupOfficersEdit) {
-        addParam("group_officers_edit", groupOfficersEdit);
-        return this;
+        return addParam("group_officers_edit", groupOfficersEdit);
     }
 
     public SetLongPollSettings setUserBlock(boolean userBlock) {
-        addParam("user_block", userBlock);
-        return this;
+        return addParam("user_block", userBlock);
     }
 
     public SetLongPollSettings setUserUnblock(boolean userUnblock) {
-        addParam("user_unblock", userUnblock);
-        return this;
+        return addParam("user_unblock", userUnblock);
     }
 
     public SetLongPollSettings setLeadFormsNew(boolean leadFormsNew) {
-        addParam("lead_forms_new", leadFormsNew);
-        return this;
+        return addParam("lead_forms_new", leadFormsNew);
     }
 
     public SetLongPollSettings setLikeAdd(boolean likeAdd) {
-        addParam("like_add", likeAdd);
-        return this;
+        return addParam("like_add", likeAdd);
     }
 
     public SetLongPollSettings setLikeRemove(boolean likeRemove) {
-        addParam("like_remove", likeRemove);
-        return this;
+        return addParam("like_remove", likeRemove);
+    }
+
+    @Override
+    public SetLongPollSettings addParam(String key, Object value) {
+        return (SetLongPollSettings) super.addParam(key, value);
     }
 }

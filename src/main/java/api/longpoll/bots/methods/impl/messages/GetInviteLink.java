@@ -29,18 +29,20 @@ public class GetInviteLink extends AuthorizedVkApiMethod<GetInviteLink.Response>
     }
 
     public GetInviteLink setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public GetInviteLink setReset(boolean reset) {
-        addParam("reset", new BoolInt(reset));
-        return this;
+        return addParam("reset", new BoolInt(reset));
     }
 
     public GetInviteLink setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetInviteLink addParam(String key, Object value) {
+        return (GetInviteLink) super.addParam(key, value);
     }
 
     /**

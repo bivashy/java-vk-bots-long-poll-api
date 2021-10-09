@@ -29,13 +29,16 @@ public class DeleteChatPhoto extends AuthorizedVkApiMethod<DeleteChatPhoto.Respo
     }
 
     public DeleteChatPhoto setChatId(int chatId) {
-        addParam("chat_id", chatId);
-        return this;
+        return addParam("chat_id", chatId);
     }
 
     public DeleteChatPhoto setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public DeleteChatPhoto addParam(String key, Object value) {
+        return (DeleteChatPhoto) super.addParam(key, value);
     }
 
     /**

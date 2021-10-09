@@ -28,23 +28,24 @@ public class AddCallbackServer extends AuthorizedVkApiMethod<AddCallbackServer.R
     }
 
     public AddCallbackServer setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public AddCallbackServer setUrl(String url) {
-        addParam("url", url);
-        return this;
+        return addParam("url", url);
     }
 
     public AddCallbackServer setTitle(String title) {
-        addParam("title", title);
-        return this;
+        return addParam("title", title);
     }
 
     public AddCallbackServer setSecretKey(String secretKey) {
-        addParam("secret_key", secretKey);
-        return this;
+        return addParam("secret_key", secretKey);
+    }
+
+    @Override
+    public AddCallbackServer addParam(String key, Object value) {
+        return (AddCallbackServer) super.addParam(key, value);
     }
 
     /**

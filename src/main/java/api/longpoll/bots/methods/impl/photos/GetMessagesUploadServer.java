@@ -28,8 +28,12 @@ public class GetMessagesUploadServer extends AuthorizedVkApiMethod<GetMessagesUp
     }
 
     public GetMessagesUploadServer setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
+    }
+
+    @Override
+    public GetMessagesUploadServer addParam(String key, Object value) {
+        return (GetMessagesUploadServer) super.addParam(key, value);
     }
 
     /**

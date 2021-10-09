@@ -31,33 +31,32 @@ public class GetLinkStats extends AuthorizedVkApiMethod<GetLinkStats.Response> {
     }
 
     public GetLinkStats setKey(String key) {
-        addParam("key", key);
-        return this;
+        return addParam("key", key);
     }
 
     public GetLinkStats setSource(String source) {
-        addParam("source", source);
-        return this;
+        return addParam("source", source);
     }
 
     public GetLinkStats setAccessKey(String accessKey) {
-        addParam("access_key", accessKey);
-        return this;
+        return addParam("access_key", accessKey);
     }
 
     public GetLinkStats setInterval(String interval) {
-        addParam("interval", interval);
-        return this;
+        return addParam("interval", interval);
     }
 
     public GetLinkStats setIntervalsCount(int intervalsCount) {
-        addParam("intervals_count", intervalsCount);
-        return this;
+        return addParam("intervals_count", intervalsCount);
     }
 
     public GetLinkStats setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
+    }
+
+    @Override
+    public GetLinkStats addParam(String key, Object value) {
+        return (GetLinkStats) super.addParam(key, value);
     }
 
     /**

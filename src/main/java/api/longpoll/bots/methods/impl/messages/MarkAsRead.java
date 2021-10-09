@@ -28,22 +28,23 @@ public class MarkAsRead extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public MarkAsRead setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public MarkAsRead setStartMessageId(int startMessageId) {
-        addParam("start_message_id", startMessageId);
-        return this;
+        return addParam("start_message_id", startMessageId);
     }
 
     public MarkAsRead setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public MarkAsRead setMarkConversationAsRead(boolean markConversationAsRead) {
-        addParam("mark_conversation_as_read", new BoolInt(markConversationAsRead));
-        return this;
+        return addParam("mark_conversation_as_read", new BoolInt(markConversationAsRead));
+    }
+
+    @Override
+    public MarkAsRead addParam(String key, Object value) {
+        return (MarkAsRead) super.addParam(key, value);
     }
 }

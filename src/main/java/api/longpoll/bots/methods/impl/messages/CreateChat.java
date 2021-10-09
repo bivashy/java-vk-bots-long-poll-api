@@ -34,17 +34,19 @@ public class CreateChat extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public CreateChat setUserIds(List<Integer> userIds) {
-        addParam("user_ids", userIds);
-        return this;
+        return addParam("user_ids", userIds);
     }
 
     public CreateChat setTitle(String title) {
-        addParam("title", title);
-        return this;
+        return addParam("title", title);
     }
 
     public CreateChat setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public CreateChat addParam(String key, Object value) {
+        return (CreateChat) super.addParam(key, value);
     }
 }

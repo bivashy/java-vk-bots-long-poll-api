@@ -29,13 +29,16 @@ public class GetShortLink extends AuthorizedVkApiMethod<GetShortLink.Response> {
     }
 
     public GetShortLink setUrl(String url) {
-        addParam("url", url);
-        return this;
+        return addParam("url", url);
     }
 
     public GetShortLink setPrivate(boolean isPrivate) {
-        addParam("private", new BoolInt(isPrivate));
-        return this;
+        return addParam("private", new BoolInt(isPrivate));
+    }
+
+    @Override
+    public GetShortLink addParam(String key, Object value) {
+        return (GetShortLink) super.addParam(key, value);
     }
 
     /**

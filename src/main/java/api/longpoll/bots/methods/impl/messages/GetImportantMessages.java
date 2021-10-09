@@ -33,23 +33,19 @@ public class GetImportantMessages extends AuthorizedVkApiMethod<GetImportantMess
     }
 
     public GetImportantMessages setCount(int count) {
-        addParam("count", count);
-        return this;
+        return addParam("count", count);
     }
 
     public GetImportantMessages setOffset(int offset) {
-        addParam("offset", offset);
-        return this;
+        return addParam("offset", offset);
     }
 
     public GetImportantMessages setStartMessageId(int startMessageId) {
-        addParam("start_message_id", startMessageId);
-        return this;
+        return addParam("start_message_id", startMessageId);
     }
 
     public GetImportantMessages setPreviewLength(int previewLength) {
-        addParam("preview_length", previewLength);
-        return this;
+        return addParam("preview_length", previewLength);
     }
 
     public GetImportantMessages setFields(String... fields) {
@@ -57,18 +53,20 @@ public class GetImportantMessages extends AuthorizedVkApiMethod<GetImportantMess
     }
 
     public GetImportantMessages setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public GetImportantMessages setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
     }
 
     public GetImportantMessages setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetImportantMessages addParam(String key, Object value) {
+        return (GetImportantMessages) super.addParam(key, value);
     }
 
     /**

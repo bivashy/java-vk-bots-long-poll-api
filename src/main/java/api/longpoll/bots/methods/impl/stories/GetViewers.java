@@ -39,18 +39,15 @@ public class GetViewers extends AuthorizedVkApiMethod<GetViewers.Response> {
     }
 
     public GetViewers setMessageIds(List<Integer> messageIds) {
-        addParam("message_ids", messageIds);
-        return this;
+        return addParam("message_ids", messageIds);
     }
 
     public GetViewers setPreviewLength(int previewLength) {
-        addParam("preview_length", previewLength);
-        return this;
+        return addParam("preview_length", previewLength);
     }
 
     public GetViewers setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
     }
 
     public GetViewers setFields(String... fields) {
@@ -58,13 +55,16 @@ public class GetViewers extends AuthorizedVkApiMethod<GetViewers.Response> {
     }
 
     public GetViewers setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public GetViewers setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetViewers addParam(String key, Object value) {
+        return (GetViewers) super.addParam(key, value);
     }
 
     /**

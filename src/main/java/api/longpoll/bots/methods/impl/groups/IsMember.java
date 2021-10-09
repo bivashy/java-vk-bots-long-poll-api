@@ -35,13 +35,11 @@ public class IsMember extends AuthorizedVkApiMethod<IsMember.Response> {
     }
 
     public IsMember setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public IsMember setUserId(int userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
     }
 
     public IsMember setUserIds(Integer... userIds) {
@@ -49,13 +47,16 @@ public class IsMember extends AuthorizedVkApiMethod<IsMember.Response> {
     }
 
     public IsMember setUserIds(List<Integer> userIds) {
-        addParam("user_ids", userIds);
-        return this;
+        return addParam("user_ids", userIds);
     }
 
     public IsMember setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
+    }
+
+    @Override
+    public IsMember addParam(String key, Object value) {
+        return (IsMember) super.addParam(key, value);
     }
 
     /**

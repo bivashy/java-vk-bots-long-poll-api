@@ -30,13 +30,16 @@ public class GetCallbackSettings extends AuthorizedVkApiMethod<GetCallbackSettin
     }
 
     public GetCallbackSettings setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public GetCallbackSettings setServerId(int serverId) {
-        addParam("server_id", serverId);
-        return this;
+        return addParam("server_id", serverId);
+    }
+
+    @Override
+    public GetCallbackSettings addParam(String key, Object value) {
+        return (GetCallbackSettings) super.addParam(key, value);
     }
 
     /**

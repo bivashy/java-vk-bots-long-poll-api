@@ -28,68 +28,60 @@ public class AddAddress extends AuthorizedVkApiMethod<AddAddress.Response> {
     }
 
     public AddAddress setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public AddAddress setTitle(String title) {
-        addParam("title", title);
-        return this;
+        return addParam("title", title);
     }
 
     public AddAddress setAddress(String address) {
-        addParam("address", address);
-        return this;
+        return addParam("address", address);
     }
 
     public AddAddress setAdditionalAddress(String additionalAddress) {
-        addParam("additional_address", additionalAddress);
-        return this;
+        return addParam("additional_address", additionalAddress);
     }
 
     public AddAddress setCountryId(int countryId) {
-        addParam("country_id", countryId);
-        return this;
+        return addParam("country_id", countryId);
     }
 
     public AddAddress setCityId(int cityId) {
-        addParam("city_id", cityId);
-        return this;
+        return addParam("city_id", cityId);
     }
 
     public AddAddress setMetroId(int metroId) {
-        addParam("metro_id", metroId);
-        return this;
+        return addParam("metro_id", metroId);
     }
 
     public AddAddress setLatitude(float latitude) {
-        addParam("latitude", latitude);
-        return this;
+        return addParam("latitude", latitude);
     }
 
     public AddAddress setLongitude(float longitude) {
-        addParam("longitude", longitude);
-        return this;
+        return addParam("longitude", longitude);
     }
 
     public AddAddress setPhone(String phone) {
-        addParam("phone", phone);
-        return this;
+        return addParam("phone", phone);
     }
 
     public AddAddress setWorkInfoStatus(String workInfoStatus) {
-        addParam("work_info_status", workInfoStatus);
-        return this;
+        return addParam("work_info_status", workInfoStatus);
     }
 
     public AddAddress setTimeTable(String timeTable) {
-        addParam("timetable", timeTable);
-        return this;
+        return addParam("timetable", timeTable);
     }
 
     public AddAddress setMainAddress(boolean mainAddress) {
-        addParam("is_main_address", new BoolInt(mainAddress));
-        return this;
+        return addParam("is_main_address", new BoolInt(mainAddress));
+    }
+
+    @Override
+    public AddAddress addParam(String key, Object value) {
+        return (AddAddress) super.addParam(key, value);
     }
 
     /**

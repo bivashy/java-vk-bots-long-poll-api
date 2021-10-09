@@ -27,12 +27,15 @@ public class Unpin extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public Unpin setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public Unpin setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public Unpin addParam(String key, Object value) {
+        return (Unpin) super.addParam(key, value);
     }
 }

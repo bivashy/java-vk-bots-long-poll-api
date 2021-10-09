@@ -30,13 +30,16 @@ public class IsMessagesFromGroupAllowed extends AuthorizedVkApiMethod<IsMessages
     }
 
     public IsMessagesFromGroupAllowed setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public IsMessagesFromGroupAllowed setUserId(int userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
+    }
+
+    @Override
+    public IsMessagesFromGroupAllowed addParam(String key, Object value) {
+        return (IsMessagesFromGroupAllowed) super.addParam(key, value);
     }
 
     /**

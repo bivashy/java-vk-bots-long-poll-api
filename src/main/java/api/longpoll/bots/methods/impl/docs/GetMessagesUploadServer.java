@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Implements <b>docs.getMessagesUploadServer</b> method.
- *
+ * <p>
  * Returns the server address for document upload.
  *
  * @see <a href="https://vk.com/dev/docs.getMessagesUploadServer">https://vk.com/dev/docs.getMessagesUploadServer</a>
@@ -28,13 +28,16 @@ public class GetMessagesUploadServer extends AuthorizedVkApiMethod<GetMessagesUp
     }
 
     public GetMessagesUploadServer setType(String type) {
-        addParam("type", type);
-        return this;
+        return addParam("type", type);
     }
 
     public GetMessagesUploadServer setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
+    }
+
+    @Override
+    public GetMessagesUploadServer addParam(String key, Object value) {
+        return (GetMessagesUploadServer) super.addParam(key, value);
     }
 
     /**

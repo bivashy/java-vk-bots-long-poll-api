@@ -27,23 +27,24 @@ public class Search extends AuthorizedVkApiMethod<Search.Response> {
     }
 
     public Search setQ(String q) {
-        addParam("q", q);
-        return this;
+        return addParam("q", q);
     }
 
     public Search setCount(int count) {
-        addParam("count", count);
-        return this;
+        return addParam("count", count);
     }
 
     public Search setOffset(int offset) {
-        addParam("offset", offset);
-        return this;
+        return addParam("offset", offset);
     }
 
     public Search setReturnTags(boolean returnTags) {
-        addParam("return_tags", new BoolInt(returnTags));
-        return this;
+        return addParam("return_tags", new BoolInt(returnTags));
+    }
+
+    @Override
+    public Search addParam(String key, Object value) {
+        return (Search) super.addParam(key, value);
     }
 
     /**

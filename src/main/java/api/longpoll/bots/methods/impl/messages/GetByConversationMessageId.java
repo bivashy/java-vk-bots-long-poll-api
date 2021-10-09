@@ -31,8 +31,7 @@ public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConve
     }
 
     public GetByConversationMessageId setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public GetByConversationMessageId setConversationMessageIds(Integer... conversationMessageIds) {
@@ -40,13 +39,11 @@ public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConve
     }
 
     public GetByConversationMessageId setConversationMessageIds(List<Integer> conversationMessageIds) {
-        addParam("conversation_message_ids", conversationMessageIds);
-        return this;
+        return addParam("conversation_message_ids", conversationMessageIds);
     }
 
     public GetByConversationMessageId setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
     }
 
     public GetByConversationMessageId setFields(String... fields) {
@@ -54,13 +51,16 @@ public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConve
     }
 
     public GetByConversationMessageId setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public GetByConversationMessageId setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetByConversationMessageId addParam(String key, Object value) {
+        return (GetByConversationMessageId) super.addParam(key, value);
     }
 
     /**

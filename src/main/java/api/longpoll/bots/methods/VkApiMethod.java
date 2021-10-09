@@ -2,16 +2,16 @@ package api.longpoll.bots.methods;
 
 import api.longpoll.bots.converters.json.GsonConverter;
 import api.longpoll.bots.converters.json.JsonConverter;
-import api.longpoll.bots.converters.params.VkApiParamsConverter;
 import api.longpoll.bots.converters.params.DefaultVkApiParamsConverter;
+import api.longpoll.bots.converters.params.VkApiParamsConverter;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.JsoupHttpClient;
 import api.longpoll.bots.utils.async.AsyncCaller;
 import api.longpoll.bots.utils.async.DefaultAsyncCaller;
-import api.longpoll.bots.validators.VkApiResponseValidator;
 import api.longpoll.bots.validators.DefaultVkApiResponseValidator;
+import api.longpoll.bots.validators.VkApiResponseValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -134,9 +134,11 @@ public abstract class VkApiMethod<Response> {
      *
      * @param key   URL parameter key.
      * @param value URL parameter value.
+     * @return current instance.
      */
-    public void addParam(String key, Object value) {
+    public VkApiMethod<Response> addParam(String key, Object value) {
         getParams().put(key, value);
+        return this;
     }
 
     public JsonConverter getJsonConverter() {

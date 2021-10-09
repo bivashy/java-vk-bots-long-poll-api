@@ -26,22 +26,23 @@ public class SendEventAnswer extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public SendEventAnswer setEventId(String eventId) {
-        addParam("event_id", eventId);
-        return this;
+        return addParam("event_id", eventId);
     }
 
     public SendEventAnswer setUserId(int userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
     }
 
     public SendEventAnswer setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public SendEventAnswer setEventData(EventData eventData) {
-        addParam("event_data", eventData);
-        return this;
+        return addParam("event_data", eventData);
+    }
+
+    @Override
+    public SendEventAnswer addParam(String key, Object value) {
+        return (SendEventAnswer) super.addParam(key, value);
     }
 }

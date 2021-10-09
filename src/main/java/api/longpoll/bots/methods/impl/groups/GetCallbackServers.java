@@ -32,8 +32,7 @@ public class GetCallbackServers extends AuthorizedVkApiMethod<GetCallbackServers
     }
 
     public GetCallbackServers setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public GetCallbackServers setServerIds(Integer... serverIds) {
@@ -41,8 +40,12 @@ public class GetCallbackServers extends AuthorizedVkApiMethod<GetCallbackServers
     }
 
     public GetCallbackServers setServerIds(List<Integer> serverIds) {
-        addParam("server_ids", serverIds);
-        return this;
+        return addParam("server_ids", serverIds);
+    }
+
+    @Override
+    public GetCallbackServers addParam(String key, Object value) {
+        return (GetCallbackServers) super.addParam(key, value);
     }
 
     /**

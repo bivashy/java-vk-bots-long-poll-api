@@ -30,13 +30,11 @@ public class Delete extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public Delete setOwnerId(int ownerId) {
-        addParam("owner_id", ownerId);
-        return this;
+        return addParam("owner_id", ownerId);
     }
 
     public Delete setStoryId(int storyId) {
-        addParam("story_id", storyId);
-        return this;
+        return addParam("story_id", storyId);
     }
 
     public Delete setStories(String... stories) {
@@ -44,7 +42,11 @@ public class Delete extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public Delete setStories(List<String> stories) {
-        addParam("stories", stories);
-        return this;
+        return addParam("stories", stories);
+    }
+
+    @Override
+    public Delete addParam(String key, Object value) {
+        return (Delete) super.addParam(key, value);
     }
 }

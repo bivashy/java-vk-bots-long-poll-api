@@ -35,18 +35,15 @@ public class GetBanned extends AuthorizedVkApiMethod<GetBanned.Response> {
     }
 
     public GetBanned setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public GetBanned setOffset(int offset) {
-        addParam("offset", offset);
-        return this;
+        return addParam("offset", offset);
     }
 
     public GetBanned setCount(int count) {
-        addParam("count", count);
-        return this;
+        return addParam("count", count);
     }
 
     public GetBanned setFields(String... fields) {
@@ -54,13 +51,16 @@ public class GetBanned extends AuthorizedVkApiMethod<GetBanned.Response> {
     }
 
     public GetBanned setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public GetBanned setOwnerId(int ownerId) {
-        addParam("owner_id", ownerId);
-        return this;
+        return addParam("owner_id", ownerId);
+    }
+
+    @Override
+    public GetBanned addParam(String key, Object value) {
+        return (GetBanned) super.addParam(key, value);
     }
 
     /**

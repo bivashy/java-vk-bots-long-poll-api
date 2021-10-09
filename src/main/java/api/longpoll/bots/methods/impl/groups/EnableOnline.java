@@ -27,7 +27,11 @@ public class EnableOnline extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public EnableOnline setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public EnableOnline addParam(String key, Object value) {
+        return (EnableOnline) super.addParam(key, value);
     }
 }

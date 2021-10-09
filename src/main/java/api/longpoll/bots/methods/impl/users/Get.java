@@ -35,8 +35,7 @@ public class Get extends AuthorizedVkApiMethod<Get.Response> {
     }
 
     public Get setUserIds(List<Integer> userIds) {
-        addParam("user_ids", userIds);
-        return this;
+        return addParam("user_ids", userIds);
     }
 
     public Get setFields(String... fields) {
@@ -44,13 +43,16 @@ public class Get extends AuthorizedVkApiMethod<Get.Response> {
     }
 
     public Get setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public Get setNameCase(String nameCase) {
-        addParam("name_case", nameCase);
-        return this;
+        return addParam("name_case", nameCase);
+    }
+
+    @Override
+    public Get addParam(String key, Object value) {
+        return (Get) super.addParam(key, value);
     }
 
     /**

@@ -39,13 +39,11 @@ public class GetConversationsById extends AuthorizedVkApiMethod<GetConversations
     }
 
     public GetConversationsById setPeerIds(List<Integer> peerIds) {
-        addParam("peer_ids", peerIds);
-        return this;
+        return addParam("peer_ids", peerIds);
     }
 
     public GetConversationsById setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
     }
 
     public GetConversationsById setFields(String... fields) {
@@ -53,13 +51,16 @@ public class GetConversationsById extends AuthorizedVkApiMethod<GetConversations
     }
 
     public GetConversationsById setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public GetConversationsById setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetConversationsById addParam(String key, Object value) {
+        return (GetConversationsById) super.addParam(key, value);
     }
 
     /**

@@ -25,12 +25,15 @@ public class DeleteAddress extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public DeleteAddress setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public DeleteAddress setAddressId(int addressId) {
-        addParam("address_id", addressId);
-        return this;
+        return addParam("address_id", addressId);
+    }
+
+    @Override
+    public DeleteAddress addParam(String key, Object value) {
+        return (DeleteAddress) super.addParam(key, value);
     }
 }

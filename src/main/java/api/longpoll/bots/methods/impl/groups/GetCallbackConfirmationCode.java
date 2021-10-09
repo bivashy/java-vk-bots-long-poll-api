@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Implements <b>groups.getCallbackConfirmationCode</b> method.
- *
+ * <p>
  * Returns Callback API confirmation code for the community.
  *
  * @see <a href="https://vk.com/dev/groups.getCallbackConfirmationCode">https://vk.com/dev/groups.getCallbackConfirmationCode</a>
@@ -28,8 +28,12 @@ public class GetCallbackConfirmationCode extends AuthorizedVkApiMethod<GetCallba
     }
 
     public GetCallbackConfirmationCode setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetCallbackConfirmationCode addParam(String key, Object value) {
+        return (GetCallbackConfirmationCode) super.addParam(key, value);
     }
 
     /**

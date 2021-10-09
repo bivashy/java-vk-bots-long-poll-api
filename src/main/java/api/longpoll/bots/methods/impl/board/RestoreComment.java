@@ -27,17 +27,19 @@ public class RestoreComment extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public RestoreComment setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public RestoreComment setTopicId(int topicId) {
-        addParam("topic_id", topicId);
-        return this;
+        return addParam("topic_id", topicId);
     }
 
     public RestoreComment setCommentId(int commentId) {
-        addParam("comment_id", commentId);
-        return this;
+        return addParam("comment_id", commentId);
+    }
+
+    @Override
+    public RestoreComment addParam(String key, Object value) {
+        return (RestoreComment) super.addParam(key, value);
     }
 }

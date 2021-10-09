@@ -27,12 +27,15 @@ public class Restore extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public Restore setMessageId(int messageId) {
-        addParam("message_id", messageId);
-        return this;
+        return addParam("message_id", messageId);
     }
 
     public Restore setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public Restore addParam(String key, Object value) {
+        return (Restore) super.addParam(key, value);
     }
 }

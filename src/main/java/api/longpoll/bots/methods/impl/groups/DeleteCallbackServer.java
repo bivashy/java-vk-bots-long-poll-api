@@ -27,12 +27,15 @@ public class DeleteCallbackServer extends AuthorizedVkApiMethod<IntegerResponse>
     }
 
     public DeleteCallbackServer setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public DeleteCallbackServer setServerId(int serverId) {
-        addParam("server_id", serverId);
-        return this;
+        return addParam("server_id", serverId);
+    }
+
+    @Override
+    public DeleteCallbackServer addParam(String key, Object value) {
+        return (DeleteCallbackServer) super.addParam(key, value);
     }
 }

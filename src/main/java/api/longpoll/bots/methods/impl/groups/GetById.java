@@ -35,13 +35,11 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     }
 
     public GetById setGroupIds(List<Integer> groupIds) {
-        addParam("group_ids", groupIds);
-        return this;
+        return addParam("group_ids", groupIds);
     }
 
     public GetById setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public GetById setFields(String... fields) {
@@ -49,8 +47,12 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     }
 
     public GetById setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
+    }
+
+    @Override
+    public GetById addParam(String key, Object value) {
+        return (GetById) super.addParam(key, value);
     }
 
     /**

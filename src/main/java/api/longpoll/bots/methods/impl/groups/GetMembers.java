@@ -35,23 +35,19 @@ public class GetMembers extends AuthorizedVkApiMethod<GetMembers.Response> {
     }
 
     public GetMembers setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public GetMembers setSort(String sort) {
-        addParam("sort", sort);
-        return this;
+        return addParam("sort", sort);
     }
 
     public GetMembers setOffset(int offset) {
-        addParam("offset", offset);
-        return this;
+        return addParam("offset", offset);
     }
 
     public GetMembers setCount(int count) {
-        addParam("count", count);
-        return this;
+        return addParam("count", count);
     }
 
     public GetMembers setFields(String... fields) {
@@ -59,13 +55,16 @@ public class GetMembers extends AuthorizedVkApiMethod<GetMembers.Response> {
     }
 
     public GetMembers setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public GetMembers setFilter(String filter) {
-        addParam("filter", filter);
-        return this;
+        return addParam("filter", filter);
+    }
+
+    @Override
+    public GetMembers addParam(String key, Object value) {
+        return (GetMembers) super.addParam(key, value);
     }
 
     /**

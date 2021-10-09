@@ -33,23 +33,19 @@ public class GetReplies extends AuthorizedVkApiMethod<GetReplies.Response> {
     }
 
     public GetReplies setOwnerId(int ownerId) {
-        addParam("owner_id", ownerId);
-        return this;
+        return addParam("owner_id", ownerId);
     }
 
     public GetReplies setStoryId(int storyId) {
-        addParam("story_id", storyId);
-        return this;
+        return addParam("story_id", storyId);
     }
 
     public GetReplies setAccessKey(String accessKey) {
-        addParam("access_key", accessKey);
-        return this;
+        return addParam("access_key", accessKey);
     }
 
     public GetReplies setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
     }
 
     public GetReplies setFields(String... fields) {
@@ -57,8 +53,12 @@ public class GetReplies extends AuthorizedVkApiMethod<GetReplies.Response> {
     }
 
     public GetReplies setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
+    }
+
+    @Override
+    public GetReplies addParam(String key, Object value) {
+        return (GetReplies) super.addParam(key, value);
     }
 
     /**

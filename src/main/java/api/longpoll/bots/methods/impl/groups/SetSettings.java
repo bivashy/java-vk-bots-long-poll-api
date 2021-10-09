@@ -26,22 +26,23 @@ public class SetSettings extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public SetSettings setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public SetSettings setMessages(boolean messages) {
-        addParam("messages", new BoolInt(messages));
-        return this;
+        return addParam("messages", new BoolInt(messages));
     }
 
     public SetSettings setBotsCapabilities(boolean botsCapabilities) {
-        addParam("bots_capabilities", new BoolInt(botsCapabilities));
-        return this;
+        return addParam("bots_capabilities", new BoolInt(botsCapabilities));
     }
 
     public SetSettings setBotsAddToChat(boolean botsAddToChat) {
-        addParam("bots_add_to_chat", new BoolInt(botsAddToChat));
-        return this;
+        return addParam("bots_add_to_chat", new BoolInt(botsAddToChat));
+    }
+
+    @Override
+    public SetSettings addParam(String key, Object value) {
+        return (SetSettings) super.addParam(key, value);
     }
 }

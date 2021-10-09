@@ -28,13 +28,16 @@ public class GetStats extends AuthorizedVkApiMethod<GetStats.Response> {
     }
 
     public GetStats setOwnerId(int ownerId) {
-        addParam("owner_id", ownerId);
-        return this;
+        return addParam("owner_id", ownerId);
     }
 
     public GetStats setStoryId(int storyId) {
-        addParam("story_id", storyId);
-        return this;
+        return addParam("story_id", storyId);
+    }
+
+    @Override
+    public GetStats addParam(String key, Object value) {
+        return (GetStats) super.addParam(key, value);
     }
 
     /**

@@ -36,57 +36,51 @@ public class Edit extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public Edit setAttachments(List<AttachableParam> attachments) {
-        addParam("attachment", attachments);
-        return this;
+        return addParam("attachment", attachments);
     }
 
     public Edit setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public Edit setMessage(String message) {
-        addParam("message", message);
-        return this;
+        return addParam("message", message);
     }
 
     public Edit setLatitude(float latitude) {
-        addParam("lat", latitude);
-        return this;
+        return addParam("lat", latitude);
     }
 
     public Edit setLongitude(float longitude) {
-        addParam("long", longitude);
-        return this;
+        return addParam("long", longitude);
     }
 
     public Edit setKeepForwardMessages(boolean keepForwardMessages) {
-        addParam("keep_forward_messages", new BoolInt(keepForwardMessages));
-        return this;
+        return addParam("keep_forward_messages", new BoolInt(keepForwardMessages));
     }
 
     public Edit setKeepSnippets(boolean keepSnippets) {
-        addParam("keep_snippets", new BoolInt(keepSnippets));
-        return this;
+        return addParam("keep_snippets", new BoolInt(keepSnippets));
     }
 
     public Edit setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public Edit setDontParseLinks(boolean dontParseLinks) {
-        addParam("dont_parse_links", new BoolInt(dontParseLinks));
-        return this;
+        return addParam("dont_parse_links", new BoolInt(dontParseLinks));
     }
 
     public Edit setMessageId(int messageId) {
-        addParam("message_id", messageId);
-        return this;
+        return addParam("message_id", messageId);
     }
 
     public Edit setConversationMessageId(int conversationMessageId) {
-        addParam("conversation_message_id", conversationMessageId);
-        return this;
+        return addParam("conversation_message_id", conversationMessageId);
+    }
+
+    @Override
+    public Edit addParam(String key, Object value) {
+        return (Edit) super.addParam(key, value);
     }
 }

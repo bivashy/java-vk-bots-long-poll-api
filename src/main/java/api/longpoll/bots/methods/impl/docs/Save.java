@@ -27,23 +27,24 @@ public class Save extends AuthorizedVkApiMethod<Save.Response> {
     }
 
     public Save setFile(String file) {
-        addParam("file", file);
-        return this;
+        return addParam("file", file);
     }
 
     public Save setTitle(String title) {
-        addParam("title", title);
-        return this;
+        return addParam("title", title);
     }
 
     public Save setTags(String tags) {
-        addParam("tags", tags);
-        return this;
+        return addParam("tags", tags);
     }
 
     public Save setReturnTags(boolean returnTags) {
-        addParam("return_tags", new BoolInt(returnTags));
-        return this;
+        return addParam("return_tags", new BoolInt(returnTags));
+    }
+
+    @Override
+    public Save addParam(String key, Object value) {
+        return (Save) super.addParam(key, value);
     }
 
     /**

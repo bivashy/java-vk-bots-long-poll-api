@@ -25,4 +25,9 @@ public class GetServerTime extends AuthorizedVkApiMethod<IntegerResponse> {
     protected Class<IntegerResponse> getResponseType() {
         return IntegerResponse.class;
     }
+
+    @Override
+    public GetServerTime addParam(String key, Object value) {
+        return (GetServerTime) super.addParam(key, value);
+    }
 }

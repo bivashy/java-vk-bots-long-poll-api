@@ -27,67 +27,59 @@ public class EditOrder extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public EditOrder setUserId(int userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
     }
 
     public EditOrder setOrderId(int orderId) {
-        addParam("order_id", orderId);
-        return this;
+        return addParam("order_id", orderId);
     }
 
     public EditOrder setMerchantComment(String merchantComment) {
-        addParam("merchant_comment", merchantComment);
-        return this;
+        return addParam("merchant_comment", merchantComment);
     }
 
     public EditOrder setStatus(int status) {
-        addParam("status", status);
-        return this;
+        return addParam("status", status);
     }
 
     public EditOrder setTrackNumber(String trackNumber) {
-        addParam("track_number", trackNumber);
-        return this;
+        return addParam("track_number", trackNumber);
     }
 
     public EditOrder setPaymentStatus(String paymentStatus) {
-        addParam("payment_status", paymentStatus);
-        return this;
+        return addParam("payment_status", paymentStatus);
     }
 
     public EditOrder setDeliveryPrice(int deliveryPrice) {
-        addParam("delivery_price", deliveryPrice);
-        return this;
+        return addParam("delivery_price", deliveryPrice);
     }
 
     public EditOrder setWidth(int width) {
-        addParam("width", width);
-        return this;
+        return addParam("width", width);
     }
 
     public EditOrder setLength(int length) {
-        addParam("length", length);
-        return this;
+        return addParam("length", length);
     }
 
     public EditOrder setHeight(int height) {
-        addParam("height", height);
-        return this;
+        return addParam("height", height);
     }
 
     public EditOrder setWeight(int weight) {
-        addParam("weight", weight);
-        return this;
+        return addParam("weight", weight);
     }
 
     public EditOrder setCommentForUser(String commentForUser) {
-        addParam("comment_for_user", commentForUser);
-        return this;
+        return addParam("comment_for_user", commentForUser);
     }
 
     public EditOrder setReceiptLink(String receiptLink) {
-        addParam("receipt_link", receiptLink);
-        return this;
+        return addParam("receipt_link", receiptLink);
+    }
+
+    @Override
+    public EditOrder addParam(String key, Object value) {
+        return (EditOrder) super.addParam(key, value);
     }
 }
