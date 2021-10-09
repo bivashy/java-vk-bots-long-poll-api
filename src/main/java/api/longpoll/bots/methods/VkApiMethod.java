@@ -84,31 +84,21 @@ public abstract class VkApiMethod<Response> {
     public Response execute() throws VkApiException {
         Map<String, String> stringParams = getVkApiParamsConverter().toStringParams(getParams());
         log.debug("Sending: method={}, url={}, params={}", getMethod(), getUrl(), stringParams);
-        String body = execute(
-                getVkApiHttpClient()
-                        .setMethod(getMethod())
-                        .setUrl(getUrl())
-                        .setParams(stringParams)
-        );
-        log.debug("Received: {}", body);
 
-        if (getVkApiResponseValidator().isValid(body)) {
-            return getJsonConverter().convert(body, getResponseType());
-        }
+        HttpClient vkApiHttpClient = getVkApiHttpClient();
+        vkApiHttpClient.setMethod(getMethod());
+        vkApiHttpClient.setUrl(getUrl());
+        vkApiHttpClient.setParams(stringParams);
 
-        throw new VkApiResponseException(body);
-    }
-
-    /**
-     * Executes HTTP request to VK API.
-     *
-     * @param httpClient HTTP client.
-     * @return response body.
-     * @throws VkApiException if errors occur.
-     */
-    protected String execute(HttpClient httpClient) throws VkApiException {
         try {
-            return httpClient.execute();
+            String body = vkApiHttpClient.execute();
+            log.debug("Received: {}", body);
+
+            if (getVkApiResponseValidator().isValid(body)) {
+                return getJsonConverter().convert(body, getResponseType());
+            }
+
+            throw new VkApiResponseException(body);
         } catch (IOException e) {
             throw new VkApiException(e);
         }

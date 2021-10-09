@@ -12,25 +12,22 @@ public interface HttpClient {
      * Sets HTTP method. E.g. "GET" or "POST".
      *
      * @param method HTTP method.
-     * @return {@link HttpClient} instance.
      */
-    HttpClient setMethod(String method);
+    void setMethod(String method);
 
     /**
      * Sets request URL.
      *
      * @param url request URL.
-     * @return {@link HttpClient} instance.
      */
-    HttpClient setUrl(String url);
+    void setUrl(String url);
 
     /**
      * Sets request URL params.
      *
      * @param params URL params.
-     * @return {@link HttpClient} instance.
      */
-    HttpClient setParams(Map<String, String> params);
+    void setParams(Map<String, String> params);
 
     /**
      * Sets file to be uploaded.
@@ -38,14 +35,13 @@ public interface HttpClient {
      * @param key      param name.
      * @param fileName file name.
      * @param file     file to upload.
-     * @return {@link HttpClient} instance.
      */
-    HttpClient setFile(String key, String fileName, File file);
+    void setFile(String key, String fileName, File file);
 
     /**
      * Executes HTTP request.
      *
-     * @return response bode.
+     * @return response body.
      * @throws IOException if errors occur.
      */
     String execute() throws IOException;
