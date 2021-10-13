@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.wall;
 
-import api.longpoll.bots.http.params.AttachableParam;
+import api.longpoll.bots.http.params.BaseAttachable;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -31,11 +31,11 @@ public class CreateComment extends AuthorizedVkApiMethod<CreateComment.Response>
         return Response.class;
     }
 
-    public CreateComment setAttachments(AttachableParam... attachments) {
+    public CreateComment setAttachments(BaseAttachable... attachments) {
         return setAttachments(Arrays.asList(attachments));
     }
 
-    public CreateComment setAttachments(List<AttachableParam> attachments) {
+    public CreateComment setAttachments(List<BaseAttachable> attachments) {
         return addParam("attachment", attachments);
     }
 

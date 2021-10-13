@@ -9,18 +9,8 @@ public class BoolInt {
      */
     private boolean booleanValue;
 
-    /**
-     * Integer value:
-     * <ul>
-     *     <li>1 if {@link BoolInt#booleanValue} is <b>true</b>.</li>
-     *     <li>0 if {@link BoolInt#booleanValue} is <b>false</b>.</li>
-     * </ul>
-     */
-    private int intValue;
-
     public BoolInt(boolean booleanValue) {
         this.booleanValue = booleanValue;
-        this.intValue = booleanValue ? 1 : 0;
     }
 
     public boolean getBooleanValue() {
@@ -28,14 +18,13 @@ public class BoolInt {
     }
 
     public int getIntValue() {
-        return intValue;
+        return booleanValue ? 1 : 0;
     }
 
     @Override
     public String toString() {
         return "BoolInt{" +
                 "booleanValue=" + booleanValue +
-                ", intValue=" + intValue +
                 '}';
     }
 }

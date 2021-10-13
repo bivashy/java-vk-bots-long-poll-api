@@ -8,7 +8,7 @@ import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.methods.impl.events.GetUpdates;
 import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
 import api.longpoll.bots.model.events.VkEvent;
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -83,15 +83,15 @@ public class DefaultLongPollClient implements LongPollClient {
     private void tryHandle(VkApiResponseException e) throws VkApiException {
         log.warn("Failed to get events from VK Long Poll Server.", e);
 
-        JsonObject jsonObject = jsonConverter.convert(e.getMessage(), JsonObject.class);
+        JsonElement jsonElement = jsonConverter.convert(e.getMessage(), JsonElement.class);
 
-        if (jsonObject == null || !jsonObject.has("failed")) {
+        if (!jsonElement.isJsonObject() || !jsonElement.getAsJsonObject().has("failed")) {
             throw e;
         }
 
-        switch (jsonObject.get("failed").getAsInt()) {
+        switch (jsonElement.getAsJsonObject().get("failed").getAsInt()) {
             case 1:
-                getUpdates.setTs(jsonObject.get("ts").getAsInt());
+                getUpdates.setTs(jsonElement.getAsJsonObject().get("ts").getAsInt());
                 break;
             case 2:
             case 3:

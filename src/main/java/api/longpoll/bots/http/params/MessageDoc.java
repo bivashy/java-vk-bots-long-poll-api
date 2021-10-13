@@ -11,7 +11,7 @@ import java.io.File;
 /**
  * Document attachment represented by {@link File}. Can be attached to messages.
  */
-public class MessageDoc extends AbstractAttachable {
+public class MessageDoc implements AttachableParam {
     private String accessToken;
     private int peerId;
     private File doc;
