@@ -26,17 +26,19 @@ public class MarkAsImportantConversation extends AuthorizedVkApiMethod<IntegerRe
     }
 
     public MarkAsImportantConversation setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public MarkAsImportantConversation setAnswered(boolean answered) {
-        addParam("answered", new BoolInt(answered));
-        return this;
+        return addParam("answered", new BoolInt(answered));
     }
 
     public MarkAsImportantConversation setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public MarkAsImportantConversation addParam(String key, Object value) {
+        return (MarkAsImportantConversation) super.addParam(key, value);
     }
 }

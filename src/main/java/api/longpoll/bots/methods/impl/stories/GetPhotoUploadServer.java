@@ -32,33 +32,27 @@ public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadSe
     }
 
     public GetPhotoUploadServer setAddToNews(boolean addToNews) {
-        addParam("add_to_news", new BoolInt(addToNews));
-        return this;
+        return addParam("add_to_news", new BoolInt(addToNews));
     }
 
     public GetPhotoUploadServer setReplyToStory(String replyToStory) {
-        addParam("reply_to_story", replyToStory);
-        return this;
+        return addParam("reply_to_story", replyToStory);
     }
 
     public GetPhotoUploadServer setLinkText(String linkText) {
-        addParam("link_text", linkText);
-        return this;
+        return addParam("link_text", linkText);
     }
 
     public GetPhotoUploadServer setLinkUrl(String linkUrl) {
-        addParam("link_url", linkUrl);
-        return this;
+        return addParam("link_url", linkUrl);
     }
 
     public GetPhotoUploadServer setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public GetPhotoUploadServer setClickableStickers(String clickableStickers) {
-        addParam("clickable_stickers", clickableStickers);
-        return this;
+        return addParam("clickable_stickers", clickableStickers);
     }
 
     public GetPhotoUploadServer setUserIds(Integer... userIds) {
@@ -66,8 +60,12 @@ public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadSe
     }
 
     public GetPhotoUploadServer setUserIds(List<Integer> userIds) {
-        addParam("user_ids", userIds);
-        return this;
+        return addParam("user_ids", userIds);
+    }
+
+    @Override
+    public GetPhotoUploadServer addParam(String key, Object value) {
+        return (GetPhotoUploadServer) super.addParam(key, value);
     }
 
     /**

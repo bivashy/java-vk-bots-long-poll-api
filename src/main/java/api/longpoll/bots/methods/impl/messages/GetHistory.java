@@ -36,38 +36,31 @@ public class GetHistory extends AuthorizedVkApiMethod<GetHistory.Response> {
     }
 
     public GetHistory setOffset(int offset) {
-        addParam("offset", offset);
-        return this;
+        return addParam("offset", offset);
     }
 
     public GetHistory setCount(int count) {
-        addParam("count", count);
-        return this;
+        return addParam("count", count);
     }
 
     public GetHistory setUserId(int userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
     }
 
     public GetHistory setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public GetHistory setStartMessageId(int startMessageId) {
-        addParam("start_message_id", startMessageId);
-        return this;
+        return addParam("start_message_id", startMessageId);
     }
 
     public GetHistory setRev(boolean rev) {
-        addParam("rev", new BoolInt(rev));
-        return this;
+        return addParam("rev", new BoolInt(rev));
     }
 
     public GetHistory setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
     }
 
     public GetHistory setFields(String... fields) {
@@ -75,13 +68,16 @@ public class GetHistory extends AuthorizedVkApiMethod<GetHistory.Response> {
     }
 
     public GetHistory setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public GetHistory setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetHistory addParam(String key, Object value) {
+        return (GetHistory) super.addParam(key, value);
     }
 
     /**

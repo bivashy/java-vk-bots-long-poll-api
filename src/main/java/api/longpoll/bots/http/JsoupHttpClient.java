@@ -19,7 +19,7 @@ public class JsoupHttpClient implements HttpClient {
     private MultipartData multipartData;
 
     @Override
-    public HttpClient setMethod(String method) {
+    public void setMethod(String method) {
         switch (method.toLowerCase()) {
             case "get":
                 this.method = Connection.Method.GET;
@@ -29,25 +29,21 @@ public class JsoupHttpClient implements HttpClient {
                 this.method = Connection.Method.POST;
                 break;
         }
-        return this;
     }
 
     @Override
-    public HttpClient setUrl(String url) {
+    public void setUrl(String url) {
         this.url = url;
-        return this;
     }
 
     @Override
-    public HttpClient setParams(Map<String, String> params) {
+    public void setParams(Map<String, String> params) {
         this.params = params;
-        return this;
     }
 
     @Override
-    public HttpClient setFile(String key, String fileName, File file) {
+    public void setFile(String key, String fileName, File file) {
         multipartData = new MultipartData(key, fileName, file);
-        return this;
     }
 
     @Override

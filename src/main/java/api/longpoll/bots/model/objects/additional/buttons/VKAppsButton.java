@@ -39,6 +39,10 @@ public class VKAppsButton extends Button {
         @SerializedName("hash")
         private String hash;
 
+        public Action(int appId, int ownerId, String label, String hash) {
+            this(appId, ownerId, label, hash, null);
+        }
+
         public Action(int appId, int ownerId, String label, String hash, JsonElement payload) {
             super("open_app", payload);
             this.appId = appId;

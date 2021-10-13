@@ -27,8 +27,12 @@ public class Save extends AuthorizedVkApiMethod<Save.Response> {
     }
 
     public Save setUploadResults(String uploadResults) {
-        addParam("upload_results", uploadResults);
-        return this;
+        return addParam("upload_results", uploadResults);
+    }
+
+    @Override
+    public Save addParam(String key, Object value) {
+        return (Save) super.addParam(key, value);
     }
 
     /**

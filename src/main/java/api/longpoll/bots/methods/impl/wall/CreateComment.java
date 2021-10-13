@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.wall;
 
-import api.longpoll.bots.http.params.AttachableParam;
+import api.longpoll.bots.http.params.BaseAttachable;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -31,48 +31,45 @@ public class CreateComment extends AuthorizedVkApiMethod<CreateComment.Response>
         return Response.class;
     }
 
-    public CreateComment setAttachments(AttachableParam... attachments) {
+    public CreateComment setAttachments(BaseAttachable... attachments) {
         return setAttachments(Arrays.asList(attachments));
     }
 
-    public CreateComment setAttachments(List<AttachableParam> attachments) {
-        addParam("attachment", attachments);
-        return this;
+    public CreateComment setAttachments(List<BaseAttachable> attachments) {
+        return addParam("attachment", attachments);
     }
 
     public CreateComment setOwnerId(int ownerId) {
-        addParam("owner_id", ownerId);
-        return this;
+        return addParam("owner_id", ownerId);
     }
 
     public CreateComment setPostId(int postId) {
-        addParam("post_id", postId);
-        return this;
+        return addParam("post_id", postId);
     }
 
     public CreateComment setFromGroupId(int fromGroupId) {
-        addParam("from_group", fromGroupId);
-        return this;
+        return addParam("from_group", fromGroupId);
     }
 
     public CreateComment setMessage(String message) {
-        addParam("message", message);
-        return this;
+        return addParam("message", message);
     }
 
     public CreateComment setReplyToComment(int replyToComment) {
-        addParam("reply_to_comment", replyToComment);
-        return this;
+        return addParam("reply_to_comment", replyToComment);
     }
 
     public CreateComment setStickerId(int stickerId) {
-        addParam("sticker_id", stickerId);
-        return this;
+        return addParam("sticker_id", stickerId);
     }
 
     public CreateComment setGuid(String guid) {
-        addParam("guid", guid);
-        return this;
+        return addParam("guid", guid);
+    }
+
+    @Override
+    public CreateComment addParam(String key, Object value) {
+        return (CreateComment) super.addParam(key, value);
     }
 
     /**

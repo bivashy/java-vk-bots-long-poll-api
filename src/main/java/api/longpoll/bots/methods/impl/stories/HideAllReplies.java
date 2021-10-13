@@ -27,12 +27,15 @@ public class HideAllReplies extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public HideAllReplies setOwnerId(int ownerId) {
-        addParam("owner_id", ownerId);
-        return this;
+        return addParam("owner_id", ownerId);
     }
 
     public HideAllReplies setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public HideAllReplies addParam(String key, Object value) {
+        return (HideAllReplies) super.addParam(key, value);
     }
 }

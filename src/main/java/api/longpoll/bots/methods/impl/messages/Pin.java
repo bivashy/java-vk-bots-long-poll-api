@@ -28,13 +28,16 @@ public class Pin extends AuthorizedVkApiMethod<Pin.Response> {
     }
 
     public Pin setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public Pin setConversationMessageId(int conversationMessageId) {
-        addParam("conversation_message_id", conversationMessageId);
-        return this;
+        return addParam("conversation_message_id", conversationMessageId);
+    }
+
+    @Override
+    public Pin addParam(String key, Object value) {
+        return (Pin) super.addParam(key, value);
     }
 
     /**

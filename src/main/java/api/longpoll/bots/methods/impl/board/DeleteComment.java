@@ -6,7 +6,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
  * Implements <b>board.deleteComment</b> method.
- *
+ * <p>
  * Deletes a comment on a topic on a community's discussion board.
  *
  * @see <a href="https://vk.com/dev/board.deleteComment">https://vk.com/dev/board.deleteComment</a>
@@ -27,17 +27,19 @@ public class DeleteComment extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public DeleteComment setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public DeleteComment setTopicId(int topicId) {
-        addParam("topic_id", topicId);
-        return this;
+        return addParam("topic_id", topicId);
     }
 
     public DeleteComment setCommentId(int commentId) {
-        addParam("comment_id", commentId);
-        return this;
+        return addParam("comment_id", commentId);
+    }
+
+    @Override
+    public DeleteComment addParam(String key, Object value) {
+        return (DeleteComment) super.addParam(key, value);
     }
 }

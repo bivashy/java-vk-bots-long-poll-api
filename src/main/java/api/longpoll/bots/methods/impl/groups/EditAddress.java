@@ -26,73 +26,64 @@ public class EditAddress extends AuthorizedVkApiMethod<EditAddress.Response> {
     }
 
     public EditAddress setAddressId(int addressId) {
-        addParam("address_id", addressId);
-        return this;
+        return addParam("address_id", addressId);
     }
 
     public EditAddress setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public EditAddress setTitle(String title) {
-        addParam("title", title);
-        return this;
+        return addParam("title", title);
     }
 
     public EditAddress setAddress(String address) {
-        addParam("address", address);
-        return this;
+        return addParam("address", address);
     }
 
     public EditAddress setAdditionalAddress(String additionalAddress) {
-        addParam("additional_address", additionalAddress);
-        return this;
+        return addParam("additional_address", additionalAddress);
     }
 
     public EditAddress setCountryId(int countryId) {
-        addParam("country_id", countryId);
-        return this;
+        return addParam("country_id", countryId);
     }
 
     public EditAddress setCityId(int cityId) {
-        addParam("city_id", cityId);
-        return this;
+        return addParam("city_id", cityId);
     }
 
     public EditAddress setMetroId(int metroId) {
-        addParam("metro_id", metroId);
-        return this;
+        return addParam("metro_id", metroId);
     }
 
     public EditAddress setLatitude(float latitude) {
-        addParam("latitude", latitude);
-        return this;
+        return addParam("latitude", latitude);
     }
 
     public EditAddress setLongitude(float longitude) {
-        addParam("longitude", longitude);
-        return this;
+        return addParam("longitude", longitude);
     }
 
     public EditAddress setPhone(String phone) {
-        addParam("phone", phone);
-        return this;
+        return addParam("phone", phone);
     }
 
     public EditAddress setWorkInfoStatus(String workInfoStatus) {
-        addParam("work_info_status", workInfoStatus);
-        return this;
+        return addParam("work_info_status", workInfoStatus);
     }
 
     public EditAddress setTimeTable(String timeTable) {
-        addParam("timetable", timeTable);
-        return this;
+        return addParam("timetable", timeTable);
     }
 
     public EditAddress setMainAddress(boolean mainAddress) {
-        addParam("is_main_address", new BoolInt(mainAddress));
-        return this;
+        return addParam("is_main_address", new BoolInt(mainAddress));
+    }
+
+    @Override
+    public EditAddress addParam(String key, Object value) {
+        return (EditAddress) super.addParam(key, value);
     }
 
     /**

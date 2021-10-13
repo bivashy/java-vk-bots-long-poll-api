@@ -24,8 +24,12 @@ public class GetWallUploadServer extends AuthorizedVkApiMethod<GetWallUploadServ
     }
 
     public GetWallUploadServer setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetWallUploadServer addParam(String key, Object value) {
+        return (GetWallUploadServer) super.addParam(key, value);
     }
 
     /**

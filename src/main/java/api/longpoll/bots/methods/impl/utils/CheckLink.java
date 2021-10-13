@@ -28,8 +28,12 @@ public class CheckLink extends AuthorizedVkApiMethod<CheckLink.Response> {
     }
 
     public CheckLink setUrl(String url) {
-        addParam("url", url);
-        return this;
+        return addParam("url", url);
+    }
+
+    @Override
+    public CheckLink addParam(String key, Object value) {
+        return (CheckLink) super.addParam(key, value);
     }
 
     /**

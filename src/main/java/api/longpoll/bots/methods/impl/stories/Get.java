@@ -33,13 +33,11 @@ public class Get extends AuthorizedVkApiMethod<Get.Response> {
     }
 
     public Get setOwnerId(int ownerId) {
-        addParam("owner_id", ownerId);
-        return this;
+        return addParam("owner_id", ownerId);
     }
 
     public Get setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
     }
 
     public Get setFields(String... fields) {
@@ -47,8 +45,12 @@ public class Get extends AuthorizedVkApiMethod<Get.Response> {
     }
 
     public Get setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
+    }
+
+    @Override
+    public Get addParam(String key, Object value) {
+        return (Get) super.addParam(key, value);
     }
 
     /**

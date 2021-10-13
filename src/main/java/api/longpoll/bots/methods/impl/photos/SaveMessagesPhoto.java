@@ -31,18 +31,20 @@ public class SaveMessagesPhoto extends AuthorizedVkApiMethod<SaveMessagesPhoto.R
     }
 
     public SaveMessagesPhoto setPhoto(String photo) {
-        addParam("photo", photo);
-        return this;
+        return addParam("photo", photo);
     }
 
     public SaveMessagesPhoto setServer(Integer server) {
-        addParam("server", server);
-        return this;
+        return addParam("server", server);
     }
 
     public SaveMessagesPhoto setHash(String hash) {
-        addParam("hash", hash);
-        return this;
+        return addParam("hash", hash);
+    }
+
+    @Override
+    public SaveMessagesPhoto addParam(String key, Object value) {
+        return (SaveMessagesPhoto) super.addParam(key, value);
     }
 
     /**

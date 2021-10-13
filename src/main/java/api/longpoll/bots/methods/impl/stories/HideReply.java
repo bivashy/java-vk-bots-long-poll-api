@@ -27,12 +27,15 @@ public class HideReply extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public HideReply setOwnerId(int ownerId) {
-        addParam("owner_id", ownerId);
-        return this;
+        return addParam("owner_id", ownerId);
     }
 
     public HideReply setStoryId(int storyId) {
-        addParam("story_id", storyId);
-        return this;
+        return addParam("story_id", storyId);
+    }
+
+    @Override
+    public HideReply addParam(String key, Object value) {
+        return (HideReply) super.addParam(key, value);
     }
 }

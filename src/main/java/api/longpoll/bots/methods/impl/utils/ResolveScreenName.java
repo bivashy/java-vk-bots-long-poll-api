@@ -28,8 +28,12 @@ public class ResolveScreenName extends AuthorizedVkApiMethod<ResolveScreenName.R
     }
 
     public ResolveScreenName setScreenName(String screenName) {
-        addParam("screen_name", screenName);
-        return this;
+        return addParam("screen_name", screenName);
+    }
+
+    @Override
+    public ResolveScreenName addParam(String key, Object value) {
+        return (ResolveScreenName) super.addParam(key, value);
     }
 
     /**

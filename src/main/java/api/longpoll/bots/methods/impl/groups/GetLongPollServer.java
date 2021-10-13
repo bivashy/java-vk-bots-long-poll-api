@@ -28,8 +28,12 @@ public class GetLongPollServer extends AuthorizedVkApiMethod<GetLongPollServer.R
     }
 
     public GetLongPollServer setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetLongPollServer addParam(String key, Object value) {
+        return (GetLongPollServer) super.addParam(key, value);
     }
 
     /**

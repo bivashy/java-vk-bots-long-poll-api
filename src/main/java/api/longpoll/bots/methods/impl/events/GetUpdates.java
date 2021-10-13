@@ -36,13 +36,16 @@ public class GetUpdates extends VkApiMethod<GetUpdates.Response> {
     }
 
     public GetUpdates setKey(String key) {
-        addParam("key", key);
-        return this;
+        return addParam("key", key);
     }
 
     public GetUpdates setTs(int ts) {
-        addParam("ts", ts);
-        return this;
+        return addParam("ts", ts);
+    }
+
+    @Override
+    public GetUpdates addParam(String key, Object value) {
+        return (GetUpdates) super.addParam(key, value);
     }
 
     /**

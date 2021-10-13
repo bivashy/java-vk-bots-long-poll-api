@@ -27,7 +27,11 @@ public class DisableOnline extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public DisableOnline setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public DisableOnline addParam(String key, Object value) {
+        return (DisableOnline) super.addParam(key, value);
     }
 }

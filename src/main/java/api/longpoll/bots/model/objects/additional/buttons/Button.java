@@ -54,7 +54,6 @@ public abstract class Button {
             this.payload = payload;
         }
 
-
         @Override
         public String toString() {
             return "Action{" +

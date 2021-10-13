@@ -30,28 +30,23 @@ public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Res
     }
 
     public GetConversations setOffset(int offset) {
-        addParam("offset", offset);
-        return this;
+        return addParam("offset", offset);
     }
 
     public GetConversations setCount(int count) {
-        addParam("count", count);
-        return this;
+        return addParam("count", count);
     }
 
     public GetConversations setFilter(String filter) {
-        addParam("filter", filter);
-        return this;
+        return addParam("filter", filter);
     }
 
     public GetConversations setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
     }
 
     public GetConversations setStartMessageId(int startMessageId) {
-        addParam("start_message_id", startMessageId);
-        return this;
+        return addParam("start_message_id", startMessageId);
     }
 
     public GetConversations setFields(String... fields) {
@@ -59,13 +54,16 @@ public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Res
     }
 
     public GetConversations setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public GetConversations setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetConversations addParam(String key, Object value) {
+        return (GetConversations) super.addParam(key, value);
     }
 
     /**

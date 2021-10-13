@@ -11,6 +11,10 @@ public class LocationButton extends Button {
     }
 
     public static class Action extends Button.Action {
+        public Action() {
+            this(null);
+        }
+
         public Action(JsonElement payload) {
             super("location", payload);
         }

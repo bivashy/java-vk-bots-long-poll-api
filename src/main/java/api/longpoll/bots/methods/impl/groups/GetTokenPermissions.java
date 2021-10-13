@@ -29,6 +29,11 @@ public class GetTokenPermissions extends AuthorizedVkApiMethod<GetTokenPermissio
         return Response.class;
     }
 
+    @Override
+    public GetTokenPermissions addParam(String key, Object value) {
+        return (GetTokenPermissions) super.addParam(key, value);
+    }
+
     /**
      * Response to <b>groups.getTokenPermissions</b> request.
      */

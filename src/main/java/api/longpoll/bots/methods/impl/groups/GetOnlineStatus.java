@@ -29,8 +29,12 @@ public class GetOnlineStatus extends AuthorizedVkApiMethod<GetOnlineStatus.Respo
     }
 
     public GetOnlineStatus setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetOnlineStatus addParam(String key, Object value) {
+        return (GetOnlineStatus) super.addParam(key, value);
     }
 
     /**

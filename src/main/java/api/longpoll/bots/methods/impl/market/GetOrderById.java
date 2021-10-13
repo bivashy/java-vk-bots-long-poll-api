@@ -29,18 +29,20 @@ public class GetOrderById extends AuthorizedVkApiMethod<GetOrderById.Response> {
     }
 
     public GetOrderById setUserId(int userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
     }
 
     public GetOrderById setOrderId(int orderId) {
-        addParam("order_id", orderId);
-        return this;
+        return addParam("order_id", orderId);
     }
 
     public GetOrderById setExtended(boolean extended) {
-        addParam("extended", new BoolInt(extended));
-        return this;
+        return addParam("extended", new BoolInt(extended));
+    }
+
+    @Override
+    public GetOrderById addParam(String key, Object value) {
+        return (GetOrderById) super.addParam(key, value);
     }
 
     /**

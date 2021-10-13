@@ -31,13 +31,16 @@ public class SaveOwnerCoverPhoto extends AuthorizedVkApiMethod<SaveOwnerCoverPho
     }
 
     public SaveOwnerCoverPhoto setHash(String hash) {
-        addParam("hash", hash);
-        return this;
+        return addParam("hash", hash);
     }
 
     public SaveOwnerCoverPhoto setPhoto(String photo) {
-        addParam("photo", photo);
-        return this;
+        return addParam("photo", photo);
+    }
+
+    @Override
+    public SaveOwnerCoverPhoto addParam(String key, Object value) {
+        return (SaveOwnerCoverPhoto) super.addParam(key, value);
     }
 
     /**

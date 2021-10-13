@@ -27,22 +27,23 @@ public class SetActivity extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public SetActivity setUserId(int userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
     }
 
     public SetActivity setType(String type) {
-        addParam("type", type);
-        return this;
+        return addParam("type", type);
     }
 
     public SetActivity setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public SetActivity setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public SetActivity addParam(String key, Object value) {
+        return (SetActivity) super.addParam(key, value);
     }
 }

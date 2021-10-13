@@ -27,17 +27,19 @@ public class RemoveChatUser extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public RemoveChatUser setChatId(int chatId) {
-        addParam("chat_id", chatId);
-        return this;
+        return addParam("chat_id", chatId);
     }
 
     public RemoveChatUser setUserId(int userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
     }
 
     public RemoveChatUser setMemberId(int memberId) {
-        addParam("member_id", memberId);
-        return this;
+        return addParam("member_id", memberId);
+    }
+
+    @Override
+    public RemoveChatUser addParam(String key, Object value) {
+        return (RemoveChatUser) super.addParam(key, value);
     }
 }

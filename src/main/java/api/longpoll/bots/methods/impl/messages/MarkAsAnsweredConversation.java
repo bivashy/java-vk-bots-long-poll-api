@@ -26,17 +26,19 @@ public class MarkAsAnsweredConversation extends AuthorizedVkApiMethod<IntegerRes
     }
 
     public MarkAsAnsweredConversation setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public MarkAsAnsweredConversation setAnswered(boolean answered) {
-        addParam("answered", new BoolInt(answered));
-        return this;
+        return addParam("answered", new BoolInt(answered));
     }
 
     public MarkAsAnsweredConversation setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public MarkAsAnsweredConversation addParam(String key, Object value) {
+        return (MarkAsAnsweredConversation) super.addParam(key, value);
     }
 }

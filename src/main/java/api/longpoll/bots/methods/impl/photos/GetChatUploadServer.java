@@ -26,23 +26,24 @@ public class GetChatUploadServer extends AuthorizedVkApiMethod<GetChatUploadServ
     }
 
     public GetChatUploadServer setChatId(int chatId) {
-        addParam("chat_id", chatId);
-        return this;
+        return addParam("chat_id", chatId);
     }
 
     public GetChatUploadServer setCropX(int cropX) {
-        addParam("crop_x", cropX);
-        return this;
+        return addParam("crop_x", cropX);
     }
 
     public GetChatUploadServer setCropY(int cropY) {
-        addParam("crop_y", cropY);
-        return this;
+        return addParam("crop_y", cropY);
     }
 
     public GetChatUploadServer setCropWidth(int cropWidth) {
-        addParam("crop_width", cropWidth);
-        return this;
+        return addParam("crop_width", cropWidth);
+    }
+
+    @Override
+    public GetChatUploadServer addParam(String key, Object value) {
+        return (GetChatUploadServer) super.addParam(key, value);
     }
 
     /**

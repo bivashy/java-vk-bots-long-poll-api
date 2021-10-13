@@ -25,12 +25,15 @@ public class OpenComments extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public OpenComments setOwnerId(int ownerId) {
-        addParam("owner_id", ownerId);
-        return this;
+        return addParam("owner_id", ownerId);
     }
 
     public OpenComments setPostId(int postId) {
-        addParam("post_id", postId);
-        return this;
+        return addParam("post_id", postId);
+    }
+
+    @Override
+    public OpenComments addParam(String key, Object value) {
+        return (OpenComments) super.addParam(key, value);
     }
 }

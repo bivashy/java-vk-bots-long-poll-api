@@ -28,28 +28,28 @@ public class GetOwnerCoverPhotoUploadServer extends AuthorizedVkApiMethod<GetOwn
     }
 
     public GetOwnerCoverPhotoUploadServer setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public GetOwnerCoverPhotoUploadServer setCropX(int cropX) {
-        addParam("crop_x", cropX);
-        return this;
+        return addParam("crop_x", cropX);
     }
 
     public GetOwnerCoverPhotoUploadServer setCropY(int cropY) {
-        addParam("crop_y", cropY);
-        return this;
+        return addParam("crop_y", cropY);
     }
 
     public GetOwnerCoverPhotoUploadServer setCropX2(int cropX2) {
-        addParam("crop_x2", cropX2);
-        return this;
+        return addParam("crop_x2", cropX2);
     }
 
     public GetOwnerCoverPhotoUploadServer setCropY2(int cropY2) {
-        addParam("crop_y2", cropY2);
-        return this;
+        return addParam("crop_y2", cropY2);
+    }
+
+    @Override
+    public GetOwnerCoverPhotoUploadServer addParam(String key, Object value) {
+        return (GetOwnerCoverPhotoUploadServer) super.addParam(key, value);
     }
 
     /**

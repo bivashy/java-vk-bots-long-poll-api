@@ -28,18 +28,20 @@ public class DeleteConversation extends AuthorizedVkApiMethod<DeleteConversation
     }
 
     public DeleteConversation setUserId(String userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
     }
 
     public DeleteConversation setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public DeleteConversation setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public DeleteConversation addParam(String key, Object value) {
+        return (DeleteConversation) super.addParam(key, value);
     }
 
     /**

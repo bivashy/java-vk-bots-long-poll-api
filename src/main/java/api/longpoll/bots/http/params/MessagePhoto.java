@@ -10,7 +10,7 @@ import java.io.File;
 /**
  * Photo attachment represented by {@link File}. Can be attached to messages.
  */
-public class MessagePhoto extends AbstractAttachable {
+public class MessagePhoto implements AttachableParam {
     private String accessToken;
     private int peerId;
     private File photo;
@@ -24,7 +24,7 @@ public class MessagePhoto extends AbstractAttachable {
     @Override
     public String attach() throws VkApiException {
         SaveMessagesPhoto.Response.ResponseObject uploadedPhoto = uploadPhoto().getResponseObject().get(0);
-        return toAttachmentString("photo", uploadedPhoto.getOwnerId(), uploadedPhoto.getId(), uploadedPhoto.getAccessKey());
+        return new BaseAttachable("photo", uploadedPhoto.getOwnerId(), uploadedPhoto.getId(), uploadedPhoto.getAccessKey()).attach();
     }
 
     private SaveMessagesPhoto.Response uploadPhoto() throws VkApiException {

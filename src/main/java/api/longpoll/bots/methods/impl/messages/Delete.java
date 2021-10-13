@@ -36,23 +36,19 @@ public class Delete extends AuthorizedVkApiMethod<Delete.Response> {
     }
 
     public Delete setMessageIds(List<Integer> messageIds) {
-        addParam("message_ids", messageIds);
-        return this;
+        return addParam("message_ids", messageIds);
     }
 
     public Delete setSpam(boolean spam) {
-        addParam("spam", new BoolInt(spam));
-        return this;
+        return addParam("spam", new BoolInt(spam));
     }
 
     public Delete setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public Delete setDeleteForAll(boolean deleteForAll) {
-        addParam("delete_for_all", new BoolInt(deleteForAll));
-        return this;
+        return addParam("delete_for_all", new BoolInt(deleteForAll));
     }
 
     public Delete setConversationMessageIds(Integer... conversationMessageIds) {
@@ -60,13 +56,16 @@ public class Delete extends AuthorizedVkApiMethod<Delete.Response> {
     }
 
     public Delete setConversationMessageIds(List<Integer> conversationMessageIds) {
-        addParam("conversation_message_ids", conversationMessageIds);
-        return this;
+        return addParam("conversation_message_ids", conversationMessageIds);
     }
 
     public Delete setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
+    }
+
+    @Override
+    public Delete addParam(String key, Object value) {
+        return (Delete) super.addParam(key, value);
     }
 
     /**

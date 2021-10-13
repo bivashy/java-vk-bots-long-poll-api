@@ -25,12 +25,15 @@ public class CloseComments extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public CloseComments setOwnerId(int ownerId) {
-        addParam("owner_id", ownerId);
-        return this;
+        return addParam("owner_id", ownerId);
     }
 
     public CloseComments setPostId(int postId) {
-        addParam("post_id", postId);
-        return this;
+        return addParam("post_id", postId);
+    }
+
+    @Override
+    public CloseComments addParam(String key, Object value) {
+        return (CloseComments) super.addParam(key, value);
     }
 }

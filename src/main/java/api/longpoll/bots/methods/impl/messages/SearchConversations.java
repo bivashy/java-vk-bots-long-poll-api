@@ -30,13 +30,11 @@ public class SearchConversations extends AuthorizedVkApiMethod<SearchConversatio
     }
 
     public SearchConversations setQ(String q) {
-        addParam("q", q);
-        return this;
+        return addParam("q", q);
     }
 
     public SearchConversations setCount(int count) {
-        addParam("count", count);
-        return this;
+        return addParam("count", count);
     }
 
     public SearchConversations setExtended(boolean extended) {
@@ -50,13 +48,16 @@ public class SearchConversations extends AuthorizedVkApiMethod<SearchConversatio
     }
 
     public SearchConversations setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public SearchConversations setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public SearchConversations addParam(String key, Object value) {
+        return (SearchConversations) super.addParam(key, value);
     }
 
     /**

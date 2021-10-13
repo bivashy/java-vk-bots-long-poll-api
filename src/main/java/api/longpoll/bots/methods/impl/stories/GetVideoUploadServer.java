@@ -30,33 +30,27 @@ public class GetVideoUploadServer extends AuthorizedVkApiMethod<GetVideoUploadSe
     }
 
     public GetVideoUploadServer setAddToNews(boolean addToNews) {
-        addParam("add_to_news", new BoolInt(addToNews));
-        return this;
+        return addParam("add_to_news", new BoolInt(addToNews));
     }
 
     public GetVideoUploadServer setReplyToStory(String replyToStory) {
-        addParam("reply_to_story", replyToStory);
-        return this;
+        return addParam("reply_to_story", replyToStory);
     }
 
     public GetVideoUploadServer setLinkText(String linkText) {
-        addParam("link_text", linkText);
-        return this;
+        return addParam("link_text", linkText);
     }
 
     public GetVideoUploadServer setLinkUrl(String linkUrl) {
-        addParam("link_url", linkUrl);
-        return this;
+        return addParam("link_url", linkUrl);
     }
 
     public GetVideoUploadServer setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public GetVideoUploadServer setClickableStickers(String clickableStickers) {
-        addParam("clickable_stickers", clickableStickers);
-        return this;
+        return addParam("clickable_stickers", clickableStickers);
     }
 
     public GetVideoUploadServer setUserIds(Integer... userIds) {
@@ -64,8 +58,12 @@ public class GetVideoUploadServer extends AuthorizedVkApiMethod<GetVideoUploadSe
     }
 
     public GetVideoUploadServer setUserIds(List<Integer> userIds) {
-        addParam("user_ids", userIds);
-        return this;
+        return addParam("user_ids", userIds);
+    }
+
+    @Override
+    public GetVideoUploadServer addParam(String key, Object value) {
+        return (GetVideoUploadServer) super.addParam(key, value);
     }
 
     /**

@@ -27,27 +27,27 @@ public class EditCallbackServer extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public EditCallbackServer setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
     }
 
     public EditCallbackServer setServerId(int serverId) {
-        addParam("server_id", serverId);
-        return this;
+        return addParam("server_id", serverId);
     }
 
     public EditCallbackServer setUrl(String url) {
-        addParam("url", url);
-        return this;
+        return addParam("url", url);
     }
 
     public EditCallbackServer setTitle(String title) {
-        addParam("title", title);
-        return this;
+        return addParam("title", title);
     }
 
     public EditCallbackServer setSecretKey(String secretKey) {
-        addParam("secret_key", secretKey);
-        return this;
+        return addParam("secret_key", secretKey);
+    }
+
+    @Override
+    public EditCallbackServer addParam(String key, Object value) {
+        return (EditCallbackServer) super.addParam(key, value);
     }
 }

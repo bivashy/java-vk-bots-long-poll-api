@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods;
 
-import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.model.objects.media.FileType;
 
@@ -20,8 +19,10 @@ public abstract class FileUploadingVkApiMethod<Response> extends VkApiMethod<Res
     private File file;
 
     @Override
-    protected String execute(HttpClient httpClient) throws VkApiException {
-        return super.execute(httpClient.setFile(getType().getKey(), file.getName(), file));
+    public HttpClient getVkApiHttpClient() {
+        HttpClient vkApiHttpClient = super.getVkApiHttpClient();
+        vkApiHttpClient.setFile(getType().getKey(), file.getName(), file);
+        return vkApiHttpClient;
     }
 
     /**

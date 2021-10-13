@@ -29,8 +29,12 @@ public class SetChatPhoto extends AuthorizedVkApiMethod<SetChatPhoto.Response> {
     }
 
     public SetChatPhoto setFile(String file) {
-        addParam("file", file);
-        return this;
+        return addParam("file", file);
+    }
+
+    @Override
+    public SetChatPhoto addParam(String key, Object value) {
+        return (SetChatPhoto) super.addParam(key, value);
     }
 
     /**

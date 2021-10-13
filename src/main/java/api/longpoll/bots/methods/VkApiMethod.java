@@ -2,16 +2,16 @@ package api.longpoll.bots.methods;
 
 import api.longpoll.bots.converters.json.GsonConverter;
 import api.longpoll.bots.converters.json.JsonConverter;
-import api.longpoll.bots.converters.params.VkApiParamsConverter;
 import api.longpoll.bots.converters.params.DefaultVkApiParamsConverter;
+import api.longpoll.bots.converters.params.VkApiParamsConverter;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.JsoupHttpClient;
 import api.longpoll.bots.utils.async.AsyncCaller;
 import api.longpoll.bots.utils.async.DefaultAsyncCaller;
-import api.longpoll.bots.validators.VkApiResponseValidator;
 import api.longpoll.bots.validators.DefaultVkApiResponseValidator;
+import api.longpoll.bots.validators.VkApiResponseValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -84,31 +84,21 @@ public abstract class VkApiMethod<Response> {
     public Response execute() throws VkApiException {
         Map<String, String> stringParams = getVkApiParamsConverter().toStringParams(getParams());
         log.debug("Sending: method={}, url={}, params={}", getMethod(), getUrl(), stringParams);
-        String body = execute(
-                getVkApiHttpClient()
-                        .setMethod(getMethod())
-                        .setUrl(getUrl())
-                        .setParams(stringParams)
-        );
-        log.debug("Received: {}", body);
 
-        if (getVkApiResponseValidator().isValid(body)) {
-            return getJsonConverter().convert(body, getResponseType());
-        }
+        HttpClient vkApiHttpClient = getVkApiHttpClient();
+        vkApiHttpClient.setMethod(getMethod());
+        vkApiHttpClient.setUrl(getUrl());
+        vkApiHttpClient.setParams(stringParams);
 
-        throw new VkApiResponseException(body);
-    }
-
-    /**
-     * Executes HTTP request to VK API.
-     *
-     * @param httpClient HTTP client.
-     * @return response body.
-     * @throws VkApiException if errors occur.
-     */
-    protected String execute(HttpClient httpClient) throws VkApiException {
         try {
-            return httpClient.execute();
+            String body = vkApiHttpClient.execute();
+            log.debug("Received: {}", body);
+
+            if (getVkApiResponseValidator().isValid(body)) {
+                return getJsonConverter().convert(body, getResponseType());
+            }
+
+            throw new VkApiResponseException(body);
         } catch (IOException e) {
             throw new VkApiException(e);
         }
@@ -134,9 +124,11 @@ public abstract class VkApiMethod<Response> {
      *
      * @param key   URL parameter key.
      * @param value URL parameter value.
+     * @return current instance.
      */
-    public void addParam(String key, Object value) {
+    public VkApiMethod<Response> addParam(String key, Object value) {
         getParams().put(key, value);
+        return this;
     }
 
     public JsonConverter getJsonConverter() {

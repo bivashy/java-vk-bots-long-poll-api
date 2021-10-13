@@ -29,23 +29,24 @@ public class GetOrderItems extends AuthorizedVkApiMethod<GetOrderItems.Response>
     }
 
     public GetOrderItems setUserId(int userId) {
-        addParam("user_id", userId);
-        return this;
+        return addParam("user_id", userId);
     }
 
     public GetOrderItems setOrderId(int orderId) {
-        addParam("order_id", orderId);
-        return this;
+        return addParam("order_id", orderId);
     }
 
     public GetOrderItems setOffset(int offset) {
-        addParam("offset", offset);
-        return this;
+        return addParam("offset", offset);
     }
 
     public GetOrderItems setCount(int count) {
-        addParam("count", count);
-        return this;
+        return addParam("count", count);
+    }
+
+    @Override
+    public GetOrderItems addParam(String key, Object value) {
+        return (GetOrderItems) super.addParam(key, value);
     }
 
     /**

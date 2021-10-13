@@ -27,12 +27,15 @@ public class EditChat extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public EditChat setChatId(int chatId) {
-        addParam("chat_id", chatId);
-        return this;
+        return addParam("chat_id", chatId);
     }
 
     public EditChat setTitle(String title) {
-        addParam("title", title);
-        return this;
+        return addParam("title", title);
+    }
+
+    @Override
+    public EditChat addParam(String key, Object value) {
+        return (EditChat) super.addParam(key, value);
     }
 }

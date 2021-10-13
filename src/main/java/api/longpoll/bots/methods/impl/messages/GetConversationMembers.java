@@ -33,8 +33,7 @@ public class GetConversationMembers extends AuthorizedVkApiMethod<GetConversatio
     }
 
     public GetConversationMembers setPeerId(int peerId) {
-        addParam("peer_id", peerId);
-        return this;
+        return addParam("peer_id", peerId);
     }
 
     public GetConversationMembers setFields(String... fields) {
@@ -42,13 +41,16 @@ public class GetConversationMembers extends AuthorizedVkApiMethod<GetConversatio
     }
 
     public GetConversationMembers setFields(List<String> fields) {
-        addParam("fields", fields);
-        return this;
+        return addParam("fields", fields);
     }
 
     public GetConversationMembers setGroupId(int groupId) {
-        addParam("group_id", groupId);
-        return this;
+        return addParam("group_id", groupId);
+    }
+
+    @Override
+    public GetConversationMembers addParam(String key, Object value) {
+        return (GetConversationMembers) super.addParam(key, value);
     }
 
     /**

@@ -22,6 +22,10 @@ public class VKPayButton extends Button {
         @SerializedName("hash")
         private String hash;
 
+        public Action(String hash) {
+            this(hash, null);
+        }
+
         public Action(String hash, JsonElement payload) {
             super("vkpay", payload);
             this.hash = hash;
