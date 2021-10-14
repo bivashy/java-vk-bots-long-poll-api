@@ -50,7 +50,7 @@ public class LongPollBotEventHandler implements VkEventHandler {
     /**
      * Bot which processes updates.
      */
-    private LongPollBot bot;
+    private final LongPollBot bot;
 
     public LongPollBotEventHandler(LongPollBot bot) {
         this.bot = bot;

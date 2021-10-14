@@ -11,9 +11,9 @@ import java.io.File;
  * Photo attachment represented by {@link File}. Can be attached to messages.
  */
 public class MessagePhoto implements AttachableParam {
-    private String accessToken;
-    private int peerId;
-    private File photo;
+    private final String accessToken;
+    private final int peerId;
+    private final File photo;
 
     public MessagePhoto(String accessToken, int peerId, File photo) {
         this.accessToken = accessToken;

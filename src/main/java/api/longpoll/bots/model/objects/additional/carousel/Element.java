@@ -48,7 +48,7 @@ public class Element {
          * Carousel action type.
          */
         @SerializedName("type")
-        private String type;
+        private final String type;
 
         public Action(String type) {
             this.type = type;

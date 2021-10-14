@@ -13,7 +13,7 @@ public enum FileType {
     /**
      * File type name to be passed as request argument.
      */
-    private String key;
+    private final String key;
 
     FileType(String key) {
         this.key = key;

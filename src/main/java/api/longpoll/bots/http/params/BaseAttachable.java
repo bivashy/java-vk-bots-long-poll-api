@@ -6,7 +6,7 @@ package api.longpoll.bots.http.params;
 public class BaseAttachable implements AttachableParam {
     private static final String ATTACHMENT_NO_KEY = "%s%d_%d";
     private static final String ATTACHMENT = ATTACHMENT_NO_KEY + "_%s";
-    private String attachment;
+    private final String attachment;
 
     public BaseAttachable(String attachment) {
         this.attachment = attachment;

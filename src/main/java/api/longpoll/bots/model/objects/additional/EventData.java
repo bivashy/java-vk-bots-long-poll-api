@@ -11,7 +11,7 @@ public abstract class EventData {
      * Action type.
      */
     @SerializedName("type")
-    private String type;
+    private final String type;
 
     public EventData(String type) {
         this.type = type;

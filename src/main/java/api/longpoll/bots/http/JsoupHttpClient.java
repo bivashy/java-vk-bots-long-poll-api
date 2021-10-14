@@ -76,17 +76,17 @@ public class JsoupHttpClient implements HttpClient {
         /**
          * Param name.
          */
-        private String key;
+        private final String key;
 
         /**
          * File name.
          */
-        private String fileName;
+        private final String fileName;
 
         /**
          * File to upload.
          */
-        private File file;
+        private final File file;
 
         public MultipartData(String key, String fileName, File file) {
             this.key = key;
