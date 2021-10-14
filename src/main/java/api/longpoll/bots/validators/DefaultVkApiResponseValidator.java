@@ -2,7 +2,7 @@ package api.longpoll.bots.validators;
 
 import api.longpoll.bots.converters.json.GsonConverter;
 import api.longpoll.bots.converters.json.JsonConverter;
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
 
 /**
  * Default implementation of VK API response validator.
@@ -23,7 +23,9 @@ public class DefaultVkApiResponseValidator implements VkApiResponseValidator {
 
     @Override
     public boolean isValid(String json) {
-        JsonObject jsonObject = jsonConverter.convert(json, JsonObject.class);
-        return jsonObject != null && !jsonObject.has("error") && !jsonObject.has("failed");
+        JsonElement jsonElement = jsonConverter.convert(json, JsonElement.class);
+        return !jsonElement.isJsonObject()
+                || !jsonElement.getAsJsonObject().has("error")
+                && !jsonElement.getAsJsonObject().has("failed");
     }
 }
