@@ -12,9 +12,9 @@ import java.io.File;
  * Document attachment represented by {@link File}. Can be attached to messages.
  */
 public class MessageDoc implements AttachableParam {
-    private String accessToken;
-    private int peerId;
-    private File doc;
+    private final String accessToken;
+    private final int peerId;
+    private final File doc;
 
     public MessageDoc(String accessToken, int peerId, File doc) {
         this.accessToken = accessToken;

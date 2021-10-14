@@ -7,7 +7,7 @@ public class VkBotsApi {
     /**
      * Bot access token.
      */
-    private String accessToken;
+    private final String accessToken;
 
     public VkBotsApi(String accessToken) {
         this.accessToken = accessToken;

@@ -10,7 +10,7 @@ public abstract class Template {
      * Type of message.
      */
     @SerializedName("type")
-    private String type;
+    private final String type;
 
     public Template(String type) {
         this.type = type;

@@ -7,7 +7,7 @@ public class BoolInt {
     /**
      * Original boolean value.
      */
-    private boolean booleanValue;
+    private final boolean booleanValue;
 
     public BoolInt(boolean booleanValue) {
         this.booleanValue = booleanValue;

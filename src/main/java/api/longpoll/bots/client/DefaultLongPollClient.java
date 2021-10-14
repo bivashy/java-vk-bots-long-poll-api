@@ -28,7 +28,7 @@ public class DefaultLongPollClient implements LongPollClient {
     /**
      * VK API request to get Long Poll server details.
      */
-    private GetLongPollServer getLongPollServer;
+    private final GetLongPollServer getLongPollServer;
 
     /**
      * VK API request to get VK events.

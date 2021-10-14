@@ -11,7 +11,7 @@ public class DefaultVkApiResponseValidator implements VkApiResponseValidator {
     /**
      * JSON converter.
      */
-    private JsonConverter jsonConverter;
+    private final JsonConverter jsonConverter;
 
     public DefaultVkApiResponseValidator() {
         this(new GsonConverter());

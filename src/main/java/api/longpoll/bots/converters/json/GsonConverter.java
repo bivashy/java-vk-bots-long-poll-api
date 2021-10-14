@@ -9,7 +9,7 @@ public class GsonConverter implements JsonConverter {
     /**
      * Gson object.
      */
-    private Gson gson;
+    private final Gson gson;
 
     public GsonConverter() {
         this(new Gson());

@@ -25,7 +25,7 @@ public class BotsLongPoll {
     /**
      * Running bot.
      */
-    private LongPollBot bot;
+    private final LongPollBot bot;
 
     /**
      * Listens to VK Long Poll events.
