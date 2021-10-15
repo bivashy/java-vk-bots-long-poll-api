@@ -17,7 +17,7 @@ public class MessageAllowEvent implements EventObject {
      * Key parameter.
      */
     @SerializedName("key")
-    private Integer key;
+    private String key;
 
     public Integer getUserId() {
         return userId;
@@ -27,11 +27,11 @@ public class MessageAllowEvent implements EventObject {
         this.userId = userId;
     }
 
-    public Integer getKey() {
+    public String getKey() {
         return key;
     }
 
-    public void setKey(Integer key) {
+    public void setKey(String key) {
         this.key = key;
     }
 
