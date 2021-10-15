@@ -4,14 +4,20 @@ import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Describes <b>message_deny</b> event object.
+ * Describes <b>message_allow</b> event object.
  */
-public class MessageDenyEvent implements EventObject {
+public class MessageAllow implements EventObject {
     /**
      * User ID.
      */
     @SerializedName("user_id")
     private Integer userId;
+
+    /**
+     * Key parameter.
+     */
+    @SerializedName("key")
+    private String key;
 
     public Integer getUserId() {
         return userId;
@@ -21,10 +27,19 @@ public class MessageDenyEvent implements EventObject {
         this.userId = userId;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Override
     public String toString() {
-        return "MessageDenyEvent{" +
+        return "MessageAllowEvent{" +
                 "userId=" + userId +
+                ", key=" + key +
                 '}';
     }
 }

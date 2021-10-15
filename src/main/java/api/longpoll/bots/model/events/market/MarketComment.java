@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>market_comment_new</b>, <b>market_comment_edit</b> and <b>market_comment_restore</b> event objects.
  */
-public class MarketCommentEvent extends WallComment {
+public class MarketComment extends WallComment {
     /**
      * Market owner ID.
      */

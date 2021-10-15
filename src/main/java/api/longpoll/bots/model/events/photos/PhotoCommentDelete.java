@@ -1,12 +1,18 @@
-package api.longpoll.bots.model.events.video;
+package api.longpoll.bots.model.events.photos;
 
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Describes <b>video_comment_delete</b> event objects.
+ * Describes <b>photo_comment_delete</b> event objects.
  */
-public class VideoCommentDeleteEvent implements EventObject {
+public class PhotoCommentDelete implements EventObject {
+    /**
+     * Photo owner ID.
+     */
+    @SerializedName("owner_id")
+    private Integer ownerId;
+
     /**
      * Comment ID.
      */
@@ -14,36 +20,22 @@ public class VideoCommentDeleteEvent implements EventObject {
     private Integer id;
 
     /**
-     * Video owner ID.
-     */
-    @SerializedName("owner_id")
-    private Integer ownerId;
-
-    /**
-     * User ID who deleted the comment.
+     * ID of the user who deleted a comment.
      */
     @SerializedName("deleter_id")
     private Integer deleterId;
 
     /**
-     * Video ID.
+     * Photo ID.
      */
-    @SerializedName("video_id")
-    private Integer videoId;
+    @SerializedName("photo_id")
+    private Integer photoId;
 
     /**
-     * ID of the user who deleted a comment.
+     * Comment author ID.
      */
     @SerializedName("user_id")
     private Integer userId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getOwnerId() {
         return ownerId;
@@ -51,6 +43,14 @@ public class VideoCommentDeleteEvent implements EventObject {
 
     public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getDeleterId() {
@@ -61,12 +61,12 @@ public class VideoCommentDeleteEvent implements EventObject {
         this.deleterId = deleterId;
     }
 
-    public Integer getVideoId() {
-        return videoId;
+    public Integer getPhotoId() {
+        return photoId;
     }
 
-    public void setVideoId(Integer videoId) {
-        this.videoId = videoId;
+    public void setPhotoId(Integer photoId) {
+        this.photoId = photoId;
     }
 
     public Integer getUserId() {
@@ -79,11 +79,11 @@ public class VideoCommentDeleteEvent implements EventObject {
 
     @Override
     public String toString() {
-        return "VideoCommentDeleteEvent{" +
-                "id=" + id +
-                ", ownerId=" + ownerId +
+        return "PhotoCommentDeleteEvent{" +
+                "ownerId=" + ownerId +
+                ", id=" + id +
                 ", deleterId=" + deleterId +
-                ", videoId=" + videoId +
+                ", photoId=" + photoId +
                 ", userId=" + userId +
                 '}';
     }

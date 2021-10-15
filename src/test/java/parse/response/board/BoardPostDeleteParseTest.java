@@ -3,7 +3,7 @@ package parse.response.board;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
+import api.longpoll.bots.model.events.boards.BoardPostDelete;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
 
@@ -20,8 +20,8 @@ public class BoardPostDeleteParseTest {
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
 
-        assertTrue(eventObject instanceof BoardPostDeleteEvent);
-        BoardPostDeleteEvent boardPostDeleteUpdate = (BoardPostDeleteEvent) eventObject;
+        assertTrue(eventObject instanceof BoardPostDelete);
+        BoardPostDelete boardPostDeleteUpdate = (BoardPostDelete) eventObject;
         assertEquals(-111, boardPostDeleteUpdate.getTopicOwnerId());
         assertEquals(3, boardPostDeleteUpdate.getId());
         assertEquals(333, boardPostDeleteUpdate.getTopicId());

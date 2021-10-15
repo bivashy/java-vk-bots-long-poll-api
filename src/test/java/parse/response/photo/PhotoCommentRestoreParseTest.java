@@ -3,7 +3,7 @@ package parse.response.photo;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.photos.PhotoCommentEvent;
+import api.longpoll.bots.model.events.photos.PhotoComment;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
@@ -20,9 +20,9 @@ public class PhotoCommentRestoreParseTest {
 
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
-        assertTrue(eventObject instanceof PhotoCommentEvent);
+        assertTrue(eventObject instanceof PhotoComment);
 
-        PhotoCommentEvent photoCommentUpdate = (PhotoCommentEvent) eventObject;
+        PhotoComment photoCommentUpdate = (PhotoComment) eventObject;
         assertEquals(3, photoCommentUpdate.getId());
         assertEquals(111, photoCommentUpdate.getFromId());
         assertEquals(1594285508, photoCommentUpdate.getDate());

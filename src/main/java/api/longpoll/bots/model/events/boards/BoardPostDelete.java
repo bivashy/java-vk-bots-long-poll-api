@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>board_post_delete</b> event objects.
  */
-public class BoardPostDeleteEvent implements EventObject {
+public class BoardPostDelete implements EventObject {
     /**
      * Topic owner ID.
      */

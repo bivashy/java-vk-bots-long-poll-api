@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>wall_reply_new</b>, <b>wall_reply_edit</b> and <b>wall_reply_restore</b> event objects.
  */
-public class WallReplyEvent extends WallComment {
+public class WallReply extends WallComment {
     /**
      * Post owner ID.
      */

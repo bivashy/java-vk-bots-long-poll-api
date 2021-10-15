@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>message_typing_state</b> event object.
  */
-public class MessageTypingStateEvent implements EventObject {
+public class MessageTypingState implements EventObject {
     /**
      * Typing status.
      */

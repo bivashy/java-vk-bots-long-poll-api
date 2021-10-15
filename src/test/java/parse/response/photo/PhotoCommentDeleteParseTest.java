@@ -3,7 +3,7 @@ package parse.response.photo;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.photos.PhotoCommentDeleteEvent;
+import api.longpoll.bots.model.events.photos.PhotoCommentDelete;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
 
@@ -19,9 +19,9 @@ public class PhotoCommentDeleteParseTest {
 
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
-        assertTrue(eventObject instanceof PhotoCommentDeleteEvent);
+        assertTrue(eventObject instanceof PhotoCommentDelete);
 
-        PhotoCommentDeleteEvent photoCommentDeleteUpdate = (PhotoCommentDeleteEvent) eventObject;
+        PhotoCommentDelete photoCommentDeleteUpdate = (PhotoCommentDelete) eventObject;
         assertEquals(-111, photoCommentDeleteUpdate.getOwnerId());
         assertEquals(333, photoCommentDeleteUpdate.getId());
         assertEquals(222, photoCommentDeleteUpdate.getDeleterId());

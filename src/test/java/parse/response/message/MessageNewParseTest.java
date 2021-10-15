@@ -3,7 +3,7 @@ package parse.response.message;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.messages.MessageNewEvent;
+import api.longpoll.bots.model.events.messages.MessageNew;
 import api.longpoll.bots.model.objects.additional.ClientInfo;
 import api.longpoll.bots.model.objects.additional.Geo;
 import api.longpoll.bots.model.objects.additional.Image;
@@ -35,8 +35,8 @@ public class MessageNewParseTest {
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
 
-        assertTrue(eventObject instanceof MessageNewEvent);
-        MessageNewEvent messageUpdate = (MessageNewEvent) eventObject;
+        assertTrue(eventObject instanceof MessageNew);
+        MessageNew messageUpdate = (MessageNew) eventObject;
         assertNotNull(messageUpdate);
 
         Message message = messageUpdate.getMessage();

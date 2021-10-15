@@ -3,7 +3,7 @@ package parse.response.message;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
+import api.longpoll.bots.model.events.messages.MessageTypingState;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
 
@@ -17,11 +17,11 @@ public class MessageTypingStateParseTest {
 
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
-        assertTrue(eventObject instanceof MessageTypingStateEvent);
+        assertTrue(eventObject instanceof MessageTypingState);
 
-        MessageTypingStateEvent messageTypingStateEvent = (MessageTypingStateEvent) eventObject;
-        assertEquals("typing", messageTypingStateEvent.getState());
-        assertEquals(789, messageTypingStateEvent.getFromId());
-        assertEquals(-456, messageTypingStateEvent.getToId());
+        MessageTypingState messageTypingState = (MessageTypingState) eventObject;
+        assertEquals("typing", messageTypingState.getState());
+        assertEquals(789, messageTypingState.getFromId());
+        assertEquals(-456, messageTypingState.getToId());
     }
 }

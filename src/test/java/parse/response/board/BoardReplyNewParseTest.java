@@ -3,7 +3,7 @@ package parse.response.board;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.boards.BoardPostEvent;
+import api.longpoll.bots.model.events.boards.BoardPost;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
 
@@ -20,8 +20,8 @@ public class BoardReplyNewParseTest {
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
 
-        assertTrue(eventObject instanceof BoardPostEvent);
-        BoardPostEvent boardPostUpdate = (BoardPostEvent) eventObject;
+        assertTrue(eventObject instanceof BoardPost);
+        BoardPost boardPostUpdate = (BoardPost) eventObject;
         assertEquals(2, boardPostUpdate.getId());
         assertEquals(111, boardPostUpdate.getFromId());
         assertEquals(1595841380, boardPostUpdate.getDate());

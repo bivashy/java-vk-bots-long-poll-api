@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>group_leave</b> event objects.
  */
-public class GroupLeaveEvent implements EventObject {
+public class GroupLeave implements EventObject {
     /**
      * User ID.
      */

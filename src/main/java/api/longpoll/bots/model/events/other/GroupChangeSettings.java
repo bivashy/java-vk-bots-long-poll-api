@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Describes <b>group_change_settings</b> event objects.
  */
-public class GroupChangeSettingsEvent implements EventObject {
+public class GroupChangeSettings implements EventObject {
     /**
      * ID of the user who made changes.
      */

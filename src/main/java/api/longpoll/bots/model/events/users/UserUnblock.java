@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>user_unblock</b> event objects.
  */
-public class UserUnblockEvent implements EventObject {
+public class UserUnblock implements EventObject {
     /**
      * Administrator ID.
      */

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>video_comment_new</b>, <b>video_comment_edit</b> and <b>video_comment_restore</b> event objects.
  */
-public class VideoCommentEvent extends WallComment {
+public class VideoComment extends WallComment {
     /**
      * Video ID.
      */

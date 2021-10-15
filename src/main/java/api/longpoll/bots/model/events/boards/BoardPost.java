@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>board_post_new</b>, <b>board_post_edit</b> and <b>board_post_restore</b> event objects.
  */
-public class BoardPostEvent extends TopicComment {
+public class BoardPost extends TopicComment {
     /**
      * Topic ID.
      */

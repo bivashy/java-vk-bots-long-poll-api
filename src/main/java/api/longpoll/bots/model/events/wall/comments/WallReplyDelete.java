@@ -1,14 +1,14 @@
-package api.longpoll.bots.model.events.market;
+package api.longpoll.bots.model.events.wall.comments;
 
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Describes <b>market_comment_delete</b> event objects.
+ * Describes <b>wall_reply_delete</b> event objects.
  */
-public class MarketCommentDeleteEvent implements EventObject {
+public class WallReplyDelete implements EventObject {
     /**
-     * Market owner ID.
+     * Wall owner ID.
      */
     @SerializedName("owner_id")
     private Integer ownerId;
@@ -20,22 +20,16 @@ public class MarketCommentDeleteEvent implements EventObject {
     private Integer id;
 
     /**
-     * Comment author ID.
-     */
-    @SerializedName("user_id")
-    private Integer userId;
-
-    /**
      * ID of the user who deleted a comment.
      */
     @SerializedName("deleter_id")
     private Integer deleterId;
 
     /**
-     * Market item ID.
+     * Post ID.
      */
-    @SerializedName("item_id")
-    private Integer itemId;
+    @SerializedName("post_id")
+    private Integer postId;
 
     public Integer getOwnerId() {
         return ownerId;
@@ -53,14 +47,6 @@ public class MarketCommentDeleteEvent implements EventObject {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public Integer getDeleterId() {
         return deleterId;
     }
@@ -69,22 +55,21 @@ public class MarketCommentDeleteEvent implements EventObject {
         this.deleterId = deleterId;
     }
 
-    public Integer getItemId() {
-        return itemId;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setItemId(Integer itemId) {
-        this.itemId = itemId;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 
     @Override
     public String toString() {
-        return "MarketCommentDeleteEvent{" +
+        return "WallReplyDeleteEvent{" +
                 "ownerId=" + ownerId +
                 ", id=" + id +
-                ", userId=" + userId +
                 ", deleterId=" + deleterId +
-                ", itemId=" + itemId +
+                ", postId=" + postId +
                 '}';
     }
 }

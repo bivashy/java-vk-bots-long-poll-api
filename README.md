@@ -39,9 +39,9 @@ This library uses the next third-party dependencies:
 ```java
 public class HelloBot extends LongPollBot {
     @Override
-    public void onMessageNew(MessageNewEvent messageNewEvent) {
+    public void onMessageNew(MessageNew messageNew) {
         try {
-            Message message = messageNewEvent.getMessage();
+            Message message = messageNew.getMessage();
             if (message.hasText()) {
                 String response = "Hello! Received your message: " + message.getText();
                 vkBotsApi.messages().send()
@@ -79,50 +79,50 @@ vkBotsApi.messages().send()
 ```
 `executeAsync()` method returns `CompletableFuture<T>` result.
 ## Bot capabilities
-`LongPollBot` supports next event handlers:
+`LongPollBot` supports the next event handlers:
 * `onAppPayload(AppPayload appPayload)`
 * `onAudioNew(Audio audio)`
-* `onBoardPostDelete(BoardPostDeleteEvent boardPostDeleteEvent)`
-* `onBoardPostEdit(BoardPostEvent boardPostEvent)`
-* `onBoardPostNew(BoardPostEvent boardPostEvent)`
-* `onBoardPostRestore(BoardPostEvent boardPostEvent)`
-* `onGroupChangePhoto(GroupChangePhotoEvent groupChangePhotoEvent)`
-* `onGroupChangeSettings(GroupChangeSettingsEvent groupChangeSettingsEvent)`
-* `onGroupJoin(GroupJoinEvent groupJoinEvent)`
-* `onGroupLeave(GroupLeaveEvent groupLeaveEvent)`
-* `onLikeAdd(LikeEvent likeEvent)`
-* `onLikeRemove(LikeEvent likeEvent)`
-* `onMarketCommentDelete(MarketCommentDeleteEvent marketCommentDeleteEvent)`
-* `onMarketCommentEdit(MarketCommentEvent marketCommentEvent)`
-* `onMarketCommentNew(MarketCommentEvent marketCommentEvent)`
-* `onMarketCommentRestore(MarketCommentEvent marketCommentEvent)`
+* `onBoardPostDelete(BoardPostDelete boardPostDelete)`
+* `onBoardPostEdit(BoardPost boardPost)`
+* `onBoardPostNew(BoardPost boardPost)`
+* `onBoardPostRestore(BoardPost boardPost)`
+* `onGroupChangePhoto(GroupChangePhoto groupChangePhoto)`
+* `onGroupChangeSettings(GroupChangeSettings groupChangeSettings)`
+* `onGroupJoin(GroupJoin groupJoin)`
+* `onGroupLeave(GroupLeave groupLeave)`
+* `onLikeAdd(Like like)`
+* `onLikeRemove(Like like)`
+* `onMarketCommentDelete(MarketCommentDelete marketCommentDelete)`
+* `onMarketCommentEdit(MarketComment marketComment)`
+* `onMarketCommentNew(MarketComment marketComment)`
+* `onMarketCommentRestore(MarketComment marketComment)`
 * `onMarketOrderEdit(MarketOrder marketOrder)`
 * `onMarketOrderNew(MarketOrder marketOrder)`
-* `onMessageAllow(MessageAllowEvent messageAllowEvent)`
-* `onMessageDeny(MessageDenyEvent messageDenyEvent)`
+* `onMessageAllow(MessageAllow messageAllow)`
+* `onMessageDeny(MessageDeny messageDeny)`
 * `onMessageEdit(Message message)`
 * `onMessageEvent(MessageEvent messageEvent)`
-* `onMessageNew(MessageNewEvent messageNewEvent)`
+* `onMessageNew(MessageNew messageNew)`
 * `onMessageReply(Message message)`
-* `onMessageTypingState(MessageTypingStateEvent messageTypingStateEvent)`
-* `onPhotoCommentDelete(PhotoCommentDeleteEvent photoCommentDeleteEvent)`
-* `onPhotoCommentEdit(PhotoCommentEvent photoCommentEvent)`
-* `onPhotoCommentNew(PhotoCommentEvent photoCommentEvent)`
-* `onPhotoCommentRestore(PhotoCommentEvent photoCommentEvent)`
+* `onMessageTypingState(MessageTypingState messageTypingState)`
+* `onPhotoCommentDelete(PhotoCommentDelete photoCommentDelete)`
+* `onPhotoCommentEdit(PhotoComment photoComment)`
+* `onPhotoCommentNew(PhotoComment photoComment)`
+* `onPhotoCommentRestore(PhotoComment photoComment)`
 * `onPhotoNew(Photo photo)`
-* `onUserBlock(UserBlockEvent userBlockEvent)`
-* `onUserUnblock(UserUnblockEvent userUnblockEvent)`
-* `onVideoCommentDelete(VideoCommentDeleteEvent videoCommentDeleteEvent)`
-* `onVideoCommentEdit(VideoCommentEvent videoCommentEvent)`
-* `onVideoCommentNew(VideoCommentEvent videoCommentEvent)`
-* `onVideoCommentRestore(VideoCommentEvent videoCommentEvent)`
+* `onUserBlock(UserBlock userBlock)`
+* `onUserUnblock(UserUnblock userUnblock)`
+* `onVideoCommentDelete(VideoCommentDelete videoCommentDelete)`
+* `onVideoCommentEdit(VideoComment videoComment)`
+* `onVideoCommentNew(VideoComment videoComment)`
+* `onVideoCommentRestore(VideoComment videoComment)`
 * `onVideoNew(Video video)`
 * `onVkpayTransaction(VkpayTransaction vkpayTransaction)`
 * `onWallPostNew(WallPost wallPost)`
-* `onWallReplyDelete(WallReplyDeleteEvent wallReplyDeleteEvent)`
-* `onWallReplyEdit(WallReplyEvent wallReplyEvent)`
-* `onWallReplyNew(WallReplyEvent wallReplyEvent)`
-* `onWallReplyRestore(WallReplyEvent wallReplyEvent)`
+* `onWallReplyDelete(WallReplyDelete wallReplyDelete)`
+* `onWallReplyEdit(WallReply wallReply)`
+* `onWallReplyNew(WallReply wallReply)`
+* `onWallReplyRestore(WallReply wallReply)`
 * `onWallRepost(WallPost wallPost)`
 
 ## Logging

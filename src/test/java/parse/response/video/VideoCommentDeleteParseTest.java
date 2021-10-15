@@ -3,7 +3,7 @@ package parse.response.video;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.video.VideoCommentDeleteEvent;
+import api.longpoll.bots.model.events.video.VideoCommentDelete;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
 
@@ -19,9 +19,9 @@ public class VideoCommentDeleteParseTest {
 
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
-        assertTrue(eventObject instanceof VideoCommentDeleteEvent);
+        assertTrue(eventObject instanceof VideoCommentDelete);
 
-        VideoCommentDeleteEvent videoCommentDeleteUpdate = (VideoCommentDeleteEvent) eventObject;
+        VideoCommentDelete videoCommentDeleteUpdate = (VideoCommentDelete) eventObject;
         assertEquals(1, videoCommentDeleteUpdate.getId());
         assertEquals(-111, videoCommentDeleteUpdate.getOwnerId());
         assertEquals(222, videoCommentDeleteUpdate.getDeleterId());

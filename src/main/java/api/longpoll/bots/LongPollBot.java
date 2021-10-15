@@ -1,30 +1,30 @@
 package api.longpoll.bots;
 
 import api.longpoll.bots.methods.impl.VkBotsApi;
-import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
-import api.longpoll.bots.model.events.boards.BoardPostEvent;
-import api.longpoll.bots.model.events.likes.LikeEvent;
-import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
-import api.longpoll.bots.model.events.market.MarketCommentEvent;
-import api.longpoll.bots.model.events.messages.MessageAllowEvent;
-import api.longpoll.bots.model.events.messages.MessageDenyEvent;
+import api.longpoll.bots.model.events.boards.BoardPost;
+import api.longpoll.bots.model.events.boards.BoardPostDelete;
+import api.longpoll.bots.model.events.likes.Like;
+import api.longpoll.bots.model.events.market.MarketCommentDelete;
+import api.longpoll.bots.model.events.market.MarketComment;
+import api.longpoll.bots.model.events.messages.MessageAllow;
+import api.longpoll.bots.model.events.messages.MessageDeny;
 import api.longpoll.bots.model.events.messages.MessageEvent;
-import api.longpoll.bots.model.events.messages.MessageNewEvent;
-import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
+import api.longpoll.bots.model.events.messages.MessageNew;
+import api.longpoll.bots.model.events.messages.MessageTypingState;
 import api.longpoll.bots.model.events.other.AppPayload;
-import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
-import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
+import api.longpoll.bots.model.events.other.GroupChangePhoto;
+import api.longpoll.bots.model.events.other.GroupChangeSettings;
 import api.longpoll.bots.model.events.other.VkpayTransaction;
-import api.longpoll.bots.model.events.photos.PhotoCommentDeleteEvent;
-import api.longpoll.bots.model.events.photos.PhotoCommentEvent;
-import api.longpoll.bots.model.events.users.GroupJoinEvent;
-import api.longpoll.bots.model.events.users.GroupLeaveEvent;
-import api.longpoll.bots.model.events.users.UserBlockEvent;
-import api.longpoll.bots.model.events.users.UserUnblockEvent;
-import api.longpoll.bots.model.events.video.VideoCommentDeleteEvent;
-import api.longpoll.bots.model.events.video.VideoCommentEvent;
-import api.longpoll.bots.model.events.wall.comments.WallReplyDeleteEvent;
-import api.longpoll.bots.model.events.wall.comments.WallReplyEvent;
+import api.longpoll.bots.model.events.photos.PhotoComment;
+import api.longpoll.bots.model.events.photos.PhotoCommentDelete;
+import api.longpoll.bots.model.events.users.GroupJoin;
+import api.longpoll.bots.model.events.users.GroupLeave;
+import api.longpoll.bots.model.events.users.UserBlock;
+import api.longpoll.bots.model.events.users.UserUnblock;
+import api.longpoll.bots.model.events.video.VideoCommentDelete;
+import api.longpoll.bots.model.events.video.VideoComment;
+import api.longpoll.bots.model.events.wall.comments.WallReplyDelete;
+import api.longpoll.bots.model.events.wall.comments.WallReply;
 import api.longpoll.bots.model.objects.basic.MarketOrder;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.basic.WallPost;
@@ -58,9 +58,9 @@ public abstract class LongPollBot {
     /**
      * Handles <b>message_new</b> events.
      *
-     * @param messageNewEvent event object.
+     * @param messageNew event object.
      */
-    public void onMessageNew(MessageNewEvent messageNewEvent) {
+    public void onMessageNew(MessageNew messageNew) {
     }
 
     /**
@@ -98,33 +98,33 @@ public abstract class LongPollBot {
     /**
      * Handles <b>photo_comment_new</b> events.
      *
-     * @param photoCommentEvent event object.
+     * @param photoComment event object.
      */
-    public void onPhotoCommentNew(PhotoCommentEvent photoCommentEvent) {
+    public void onPhotoCommentNew(PhotoComment photoComment) {
     }
 
     /**
      * Handles <b>photo_comment_edit</b> events.
      *
-     * @param photoCommentEvent event object.
+     * @param photoComment event object.
      */
-    public void onPhotoCommentEdit(PhotoCommentEvent photoCommentEvent) {
+    public void onPhotoCommentEdit(PhotoComment photoComment) {
     }
 
     /**
      * Handles <b>photo_comment_delete</b> events.
      *
-     * @param photoCommentDeleteEvent event object.
+     * @param photoCommentDelete event object.
      */
-    public void onPhotoCommentDelete(PhotoCommentDeleteEvent photoCommentDeleteEvent) {
+    public void onPhotoCommentDelete(PhotoCommentDelete photoCommentDelete) {
     }
 
     /**
      * Handles <b>photo_comment_restore</b> events.
      *
-     * @param photoCommentEvent event object.
+     * @param photoComment event object.
      */
-    public void onPhotoCommentRestore(PhotoCommentEvent photoCommentEvent) {
+    public void onPhotoCommentRestore(PhotoComment photoComment) {
     }
 
     /**
@@ -146,33 +146,33 @@ public abstract class LongPollBot {
     /**
      * Handles <b>video_comment_new</b> events.
      *
-     * @param videoCommentEvent event object.
+     * @param videoComment event object.
      */
-    public void onVideoCommentNew(VideoCommentEvent videoCommentEvent) {
+    public void onVideoCommentNew(VideoComment videoComment) {
     }
 
     /**
      * Handles <b>video_comment_edit</b> events.
      *
-     * @param videoCommentEvent event object.
+     * @param videoComment event object.
      */
-    public void onVideoCommentEdit(VideoCommentEvent videoCommentEvent) {
+    public void onVideoCommentEdit(VideoComment videoComment) {
     }
 
     /**
      * Handles <b>video_comment_delete</b> events.
      *
-     * @param videoCommentDeleteEvent event object.
+     * @param videoCommentDelete event object.
      */
-    public void onVideoCommentDelete(VideoCommentDeleteEvent videoCommentDeleteEvent) {
+    public void onVideoCommentDelete(VideoCommentDelete videoCommentDelete) {
     }
 
     /**
      * Handles <b>video_comment_restore</b> events.
      *
-     * @param videoCommentEvent event object.
+     * @param videoComment event object.
      */
-    public void onVideoCommentRestore(VideoCommentEvent videoCommentEvent) {
+    public void onVideoCommentRestore(VideoComment videoComment) {
     }
 
     /**
@@ -194,113 +194,113 @@ public abstract class LongPollBot {
     /**
      * Handles <b>like_add</b> events.
      *
-     * @param likeEvent event object.
+     * @param like event object.
      */
-    public void onLikeAdd(LikeEvent likeEvent) {
+    public void onLikeAdd(Like like) {
     }
 
     /**
      * Handles <b>like_remove</b> events.
      *
-     * @param likeEvent event object.
+     * @param like event object.
      */
-    public void onLikeRemove(LikeEvent likeEvent) {
+    public void onLikeRemove(Like like) {
     }
 
     /**
      * Handles <b>wall_reply_new</b> events.
      *
-     * @param wallReplyEvent event object.
+     * @param wallReply event object.
      */
-    public void onWallReplyNew(WallReplyEvent wallReplyEvent) {
+    public void onWallReplyNew(WallReply wallReply) {
     }
 
     /**
      * Handles <b>wall_reply_edit</b> events.
      *
-     * @param wallReplyEvent event object.
+     * @param wallReply event object.
      */
-    public void onWallReplyEdit(WallReplyEvent wallReplyEvent) {
+    public void onWallReplyEdit(WallReply wallReply) {
     }
 
     /**
      * Handles <b>wall_reply_delete</b> events.
      *
-     * @param wallReplyDeleteEvent event object.
+     * @param wallReplyDelete event object.
      */
-    public void onWallReplyDelete(WallReplyDeleteEvent wallReplyDeleteEvent) {
+    public void onWallReplyDelete(WallReplyDelete wallReplyDelete) {
     }
 
     /**
      * Handles <b>wall_reply_restore</b> events.
      *
-     * @param wallReplyEvent event object.
+     * @param wallReply event object.
      */
-    public void onWallReplyRestore(WallReplyEvent wallReplyEvent) {
+    public void onWallReplyRestore(WallReply wallReply) {
     }
 
     /**
      * Handles <b>board_post_new</b> events.
      *
-     * @param boardPostEvent event object.
+     * @param boardPost event object.
      */
-    public void onBoardPostNew(BoardPostEvent boardPostEvent) {
+    public void onBoardPostNew(BoardPost boardPost) {
     }
 
     /**
      * Handles <b>board_post_edit</b> events.
      *
-     * @param boardPostEvent event object.
+     * @param boardPost event object.
      */
-    public void onBoardPostEdit(BoardPostEvent boardPostEvent) {
+    public void onBoardPostEdit(BoardPost boardPost) {
     }
 
     /**
      * Handles <b>board_post_delete</b> events.
      *
-     * @param boardPostDeleteEvent event object.
+     * @param boardPostDelete event object.
      */
-    public void onBoardPostDelete(BoardPostDeleteEvent boardPostDeleteEvent) {
+    public void onBoardPostDelete(BoardPostDelete boardPostDelete) {
     }
 
     /**
      * Handles <b>board_post_restore</b> events.
      *
-     * @param boardPostEvent event object.
+     * @param boardPost event object.
      */
-    public void onBoardPostRestore(BoardPostEvent boardPostEvent) {
+    public void onBoardPostRestore(BoardPost boardPost) {
     }
 
     /**
      * Handles <b>market_comment_new</b> events.
      *
-     * @param marketCommentEvent event object.
+     * @param marketComment event object.
      */
-    public void onMarketCommentNew(MarketCommentEvent marketCommentEvent) {
+    public void onMarketCommentNew(MarketComment marketComment) {
     }
 
     /**
      * Handles <b>market_comment_edit</b> events.
      *
-     * @param marketCommentEvent event object.
+     * @param marketComment event object.
      */
-    public void onMarketCommentEdit(MarketCommentEvent marketCommentEvent) {
+    public void onMarketCommentEdit(MarketComment marketComment) {
     }
 
     /**
      * Handles <b>market_comment_restore</b> events.
      *
-     * @param marketCommentEvent event object.
+     * @param marketComment event object.
      */
-    public void onMarketCommentRestore(MarketCommentEvent marketCommentEvent) {
+    public void onMarketCommentRestore(MarketComment marketComment) {
     }
 
     /**
      * Handles <b>market_comment_delete</b> events.
      *
-     * @param marketCommentDeleteEvent event object.
+     * @param marketCommentDelete event object.
      */
-    public void onMarketCommentDelete(MarketCommentDeleteEvent marketCommentDeleteEvent) {
+    public void onMarketCommentDelete(MarketCommentDelete marketCommentDelete) {
     }
 
     /**
@@ -322,49 +322,49 @@ public abstract class LongPollBot {
     /**
      * Handles <b>group_leave</b> events.
      *
-     * @param groupLeaveEvent event object.
+     * @param groupLeave event object.
      */
-    public void onGroupLeave(GroupLeaveEvent groupLeaveEvent) {
+    public void onGroupLeave(GroupLeave groupLeave) {
     }
 
     /**
      * Handles <b>group_join</b> events.
      *
-     * @param groupJoinEvent event object.
+     * @param groupJoin event object.
      */
-    public void onGroupJoin(GroupJoinEvent groupJoinEvent) {
+    public void onGroupJoin(GroupJoin groupJoin) {
     }
 
     /**
      * Handles <b>user_block</b> events.
      *
-     * @param userBlockEvent event object.
+     * @param userBlock event object.
      */
-    public void onUserBlock(UserBlockEvent userBlockEvent) {
+    public void onUserBlock(UserBlock userBlock) {
     }
 
     /**
      * Handles <b>user_unblock</b> events.
      *
-     * @param userUnblockEvent event object.
+     * @param userUnblock event object.
      */
-    public void onUserUnblock(UserUnblockEvent userUnblockEvent) {
+    public void onUserUnblock(UserUnblock userUnblock) {
     }
 
     /**
      * Handles <b>group_change_settings</b> events.
      *
-     * @param groupChangeSettingsEvent event object.
+     * @param groupChangeSettings event object.
      */
-    public void onGroupChangeSettings(GroupChangeSettingsEvent groupChangeSettingsEvent) {
+    public void onGroupChangeSettings(GroupChangeSettings groupChangeSettings) {
     }
 
     /**
      * Handles <b>group_change_photo</b> events.
      *
-     * @param groupChangePhotoEvent event object.
+     * @param groupChangePhoto event object.
      */
-    public void onGroupChangePhoto(GroupChangePhotoEvent groupChangePhotoEvent) {
+    public void onGroupChangePhoto(GroupChangePhoto groupChangePhoto) {
     }
 
     /**
@@ -386,24 +386,24 @@ public abstract class LongPollBot {
     /**
      * Handles <b>message_typing_state</b> events.
      *
-     * @param messageTypingStateEvent event object.
+     * @param messageTypingState event object.
      */
-    public void onMessageTypingState(MessageTypingStateEvent messageTypingStateEvent) {
+    public void onMessageTypingState(MessageTypingState messageTypingState) {
     }
 
     /**
      * Handles <b>message_allow</b> events.
      *
-     * @param messageAllowEvent event object.
+     * @param messageAllow event object.
      */
-    public void onMessageAllow(MessageAllowEvent messageAllowEvent) {
+    public void onMessageAllow(MessageAllow messageAllow) {
     }
 
     /**
      * Handles <b>message_deny</b> events.
      *
-     * @param messageDenyEvent event object.
+     * @param messageDeny event object.
      */
-    public void onMessageDeny(MessageDenyEvent messageDenyEvent) {
+    public void onMessageDeny(MessageDeny messageDeny) {
     }
 }

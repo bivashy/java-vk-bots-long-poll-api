@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>photo_comment_new</b>, <b>photo_comment_edit</b> and <b>photo_comment_restore</b> event objects.
  */
-public class PhotoCommentEvent extends WallComment {
+public class PhotoComment extends WallComment {
     /**
      * Photo ID.
      */

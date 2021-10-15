@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>group_change_photo</b> event objects.
  */
-public class GroupChangePhotoEvent implements EventObject {
+public class GroupChangePhoto implements EventObject {
     /**
      * ID of the user who made changes.
      */

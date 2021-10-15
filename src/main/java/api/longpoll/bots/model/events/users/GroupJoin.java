@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>group_join</b> event objects.
  */
-public class GroupJoinEvent implements EventObject {
+public class GroupJoin implements EventObject {
     /**
      * User ID.
      */

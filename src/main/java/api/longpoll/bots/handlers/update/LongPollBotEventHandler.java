@@ -3,30 +3,30 @@ package api.longpoll.bots.handlers.update;
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
-import api.longpoll.bots.model.events.boards.BoardPostEvent;
-import api.longpoll.bots.model.events.likes.LikeEvent;
-import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
-import api.longpoll.bots.model.events.market.MarketCommentEvent;
-import api.longpoll.bots.model.events.messages.MessageAllowEvent;
-import api.longpoll.bots.model.events.messages.MessageDenyEvent;
+import api.longpoll.bots.model.events.boards.BoardPost;
+import api.longpoll.bots.model.events.boards.BoardPostDelete;
+import api.longpoll.bots.model.events.likes.Like;
+import api.longpoll.bots.model.events.market.MarketCommentDelete;
+import api.longpoll.bots.model.events.market.MarketComment;
+import api.longpoll.bots.model.events.messages.MessageAllow;
+import api.longpoll.bots.model.events.messages.MessageDeny;
 import api.longpoll.bots.model.events.messages.MessageEvent;
-import api.longpoll.bots.model.events.messages.MessageNewEvent;
-import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
+import api.longpoll.bots.model.events.messages.MessageNew;
+import api.longpoll.bots.model.events.messages.MessageTypingState;
 import api.longpoll.bots.model.events.other.AppPayload;
-import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
-import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
+import api.longpoll.bots.model.events.other.GroupChangePhoto;
+import api.longpoll.bots.model.events.other.GroupChangeSettings;
 import api.longpoll.bots.model.events.other.VkpayTransaction;
-import api.longpoll.bots.model.events.photos.PhotoCommentDeleteEvent;
-import api.longpoll.bots.model.events.photos.PhotoCommentEvent;
-import api.longpoll.bots.model.events.users.GroupJoinEvent;
-import api.longpoll.bots.model.events.users.GroupLeaveEvent;
-import api.longpoll.bots.model.events.users.UserBlockEvent;
-import api.longpoll.bots.model.events.users.UserUnblockEvent;
-import api.longpoll.bots.model.events.video.VideoCommentDeleteEvent;
-import api.longpoll.bots.model.events.video.VideoCommentEvent;
-import api.longpoll.bots.model.events.wall.comments.WallReplyDeleteEvent;
-import api.longpoll.bots.model.events.wall.comments.WallReplyEvent;
+import api.longpoll.bots.model.events.photos.PhotoComment;
+import api.longpoll.bots.model.events.photos.PhotoCommentDelete;
+import api.longpoll.bots.model.events.users.GroupJoin;
+import api.longpoll.bots.model.events.users.GroupLeave;
+import api.longpoll.bots.model.events.users.UserBlock;
+import api.longpoll.bots.model.events.users.UserUnblock;
+import api.longpoll.bots.model.events.video.VideoComment;
+import api.longpoll.bots.model.events.video.VideoCommentDelete;
+import api.longpoll.bots.model.events.wall.comments.WallReply;
+import api.longpoll.bots.model.events.wall.comments.WallReplyDelete;
 import api.longpoll.bots.model.objects.basic.MarketOrder;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.basic.WallPost;
@@ -63,7 +63,7 @@ public class LongPollBotEventHandler implements VkEventHandler {
 
             switch (eventType) {
                 case MESSAGE_NEW:
-                    bot.onMessageNew((MessageNewEvent) event.getObject());
+                    bot.onMessageNew((MessageNew) event.getObject());
                     break;
 
                 case MESSAGE_REPLY:
@@ -83,19 +83,19 @@ public class LongPollBotEventHandler implements VkEventHandler {
                     break;
 
                 case PHOTO_COMMENT_NEW:
-                    bot.onPhotoCommentNew((PhotoCommentEvent) event.getObject());
+                    bot.onPhotoCommentNew((PhotoComment) event.getObject());
                     break;
 
                 case PHOTO_COMMENT_EDIT:
-                    bot.onPhotoCommentEdit((PhotoCommentEvent) event.getObject());
+                    bot.onPhotoCommentEdit((PhotoComment) event.getObject());
                     break;
 
                 case PHOTO_COMMENT_DELETE:
-                    bot.onPhotoCommentDelete((PhotoCommentDeleteEvent) event.getObject());
+                    bot.onPhotoCommentDelete((PhotoCommentDelete) event.getObject());
                     break;
 
                 case PHOTO_COMMENT_RESTORE:
-                    bot.onPhotoCommentRestore((PhotoCommentEvent) event.getObject());
+                    bot.onPhotoCommentRestore((PhotoComment) event.getObject());
                     break;
 
                 case AUDIO_NEW:
@@ -107,19 +107,19 @@ public class LongPollBotEventHandler implements VkEventHandler {
                     break;
 
                 case VIDEO_COMMENT_NEW:
-                    bot.onVideoCommentNew((VideoCommentEvent) event.getObject());
+                    bot.onVideoCommentNew((VideoComment) event.getObject());
                     break;
 
                 case VIDEO_COMMENT_EDIT:
-                    bot.onVideoCommentEdit((VideoCommentEvent) event.getObject());
+                    bot.onVideoCommentEdit((VideoComment) event.getObject());
                     break;
 
                 case VIDEO_COMMENT_DELETE:
-                    bot.onVideoCommentDelete((VideoCommentDeleteEvent) event.getObject());
+                    bot.onVideoCommentDelete((VideoCommentDelete) event.getObject());
                     break;
 
                 case VIDEO_COMMENT_RESTORE:
-                    bot.onVideoCommentRestore((VideoCommentEvent) event.getObject());
+                    bot.onVideoCommentRestore((VideoComment) event.getObject());
                     break;
 
                 case WALL_POST_NEW:
@@ -131,59 +131,59 @@ public class LongPollBotEventHandler implements VkEventHandler {
                     break;
 
                 case LIKE_ADD:
-                    bot.onLikeAdd((LikeEvent) event.getObject());
+                    bot.onLikeAdd((Like) event.getObject());
                     break;
 
                 case LIKE_REMOVE:
-                    bot.onLikeRemove((LikeEvent) event.getObject());
+                    bot.onLikeRemove((Like) event.getObject());
                     break;
 
                 case WALL_REPLY_NEW:
-                    bot.onWallReplyNew((WallReplyEvent) event.getObject());
+                    bot.onWallReplyNew((WallReply) event.getObject());
                     break;
 
                 case WALL_REPLY_EDIT:
-                    bot.onWallReplyEdit((WallReplyEvent) event.getObject());
+                    bot.onWallReplyEdit((WallReply) event.getObject());
                     break;
 
                 case WALL_REPLY_DELETE:
-                    bot.onWallReplyDelete((WallReplyDeleteEvent) event.getObject());
+                    bot.onWallReplyDelete((WallReplyDelete) event.getObject());
                     break;
 
                 case WALL_REPLY_RESTORE:
-                    bot.onWallReplyRestore((WallReplyEvent) event.getObject());
+                    bot.onWallReplyRestore((WallReply) event.getObject());
                     break;
 
                 case BOARD_POST_NEW:
-                    bot.onBoardPostNew((BoardPostEvent) event.getObject());
+                    bot.onBoardPostNew((BoardPost) event.getObject());
                     break;
 
                 case BOARD_POST_EDIT:
-                    bot.onBoardPostEdit((BoardPostEvent) event.getObject());
+                    bot.onBoardPostEdit((BoardPost) event.getObject());
                     break;
 
                 case BOARD_POST_DELETE:
-                    bot.onBoardPostDelete((BoardPostDeleteEvent) event.getObject());
+                    bot.onBoardPostDelete((BoardPostDelete) event.getObject());
                     break;
 
                 case BOARD_POST_RESTORE:
-                    bot.onBoardPostRestore((BoardPostEvent) event.getObject());
+                    bot.onBoardPostRestore((BoardPost) event.getObject());
                     break;
 
                 case MARKET_COMMENT_NEW:
-                    bot.onMarketCommentNew((MarketCommentEvent) event.getObject());
+                    bot.onMarketCommentNew((MarketComment) event.getObject());
                     break;
 
                 case MARKET_COMMENT_EDIT:
-                    bot.onMarketCommentEdit((MarketCommentEvent) event.getObject());
+                    bot.onMarketCommentEdit((MarketComment) event.getObject());
                     break;
 
                 case MARKET_COMMENT_RESTORE:
-                    bot.onMarketCommentRestore((MarketCommentEvent) event.getObject());
+                    bot.onMarketCommentRestore((MarketComment) event.getObject());
                     break;
 
                 case MARKET_COMMENT_DELETE:
-                    bot.onMarketCommentDelete((MarketCommentDeleteEvent) event.getObject());
+                    bot.onMarketCommentDelete((MarketCommentDelete) event.getObject());
                     break;
 
                 case MARKET_ORDER_NEW:
@@ -195,27 +195,27 @@ public class LongPollBotEventHandler implements VkEventHandler {
                     break;
 
                 case GROUP_LEAVE:
-                    bot.onGroupLeave((GroupLeaveEvent) event.getObject());
+                    bot.onGroupLeave((GroupLeave) event.getObject());
                     break;
 
                 case GROUP_JOIN:
-                    bot.onGroupJoin((GroupJoinEvent) event.getObject());
+                    bot.onGroupJoin((GroupJoin) event.getObject());
                     break;
 
                 case USER_BLOCK:
-                    bot.onUserBlock((UserBlockEvent) event.getObject());
+                    bot.onUserBlock((UserBlock) event.getObject());
                     break;
 
                 case USER_UNBLOCK:
-                    bot.onUserUnblock((UserUnblockEvent) event.getObject());
+                    bot.onUserUnblock((UserUnblock) event.getObject());
                     break;
 
                 case GROUP_CHANGE_SETTINGS:
-                    bot.onGroupChangeSettings((GroupChangeSettingsEvent) event.getObject());
+                    bot.onGroupChangeSettings((GroupChangeSettings) event.getObject());
                     break;
 
                 case GROUP_CHANGE_PHOTO:
-                    bot.onGroupChangePhoto((GroupChangePhotoEvent) event.getObject());
+                    bot.onGroupChangePhoto((GroupChangePhoto) event.getObject());
                     break;
 
                 case VKPAY_TRANSACTION:
@@ -227,15 +227,15 @@ public class LongPollBotEventHandler implements VkEventHandler {
                     break;
 
                 case MESSAGE_TYPING_STATE:
-                    bot.onMessageTypingState((MessageTypingStateEvent) event.getObject());
+                    bot.onMessageTypingState((MessageTypingState) event.getObject());
                     break;
 
                 case MESSAGE_ALLOW:
-                    bot.onMessageAllow((MessageAllowEvent) event.getObject());
+                    bot.onMessageAllow((MessageAllow) event.getObject());
                     break;
 
                 case MESSAGE_DENY:
-                    bot.onMessageDeny((MessageDenyEvent) event.getObject());
+                    bot.onMessageDeny((MessageDeny) event.getObject());
                     break;
 
                 default:

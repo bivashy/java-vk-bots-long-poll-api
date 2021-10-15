@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>message_new</b>, <b>message_reply</b> and <b>message_edit</b> event objects.
  */
-public class MessageNewEvent implements EventObject {
+public class MessageNew implements EventObject {
     /**
      * Message object.
      */

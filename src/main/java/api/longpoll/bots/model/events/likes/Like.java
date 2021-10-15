@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>like_add</b> event objects.
  */
-public class LikeEvent implements EventObject {
+public class Like implements EventObject {
     /**
      * User ID.
      */

@@ -1,14 +1,14 @@
-package api.longpoll.bots.model.events.wall.comments;
+package api.longpoll.bots.model.events.market;
 
 import api.longpoll.bots.model.events.EventObject;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Describes <b>wall_reply_delete</b> event objects.
+ * Describes <b>market_comment_delete</b> event objects.
  */
-public class WallReplyDeleteEvent implements EventObject {
+public class MarketCommentDelete implements EventObject {
     /**
-     * Wall owner ID.
+     * Market owner ID.
      */
     @SerializedName("owner_id")
     private Integer ownerId;
@@ -20,16 +20,22 @@ public class WallReplyDeleteEvent implements EventObject {
     private Integer id;
 
     /**
+     * Comment author ID.
+     */
+    @SerializedName("user_id")
+    private Integer userId;
+
+    /**
      * ID of the user who deleted a comment.
      */
     @SerializedName("deleter_id")
     private Integer deleterId;
 
     /**
-     * Post ID.
+     * Market item ID.
      */
-    @SerializedName("post_id")
-    private Integer postId;
+    @SerializedName("item_id")
+    private Integer itemId;
 
     public Integer getOwnerId() {
         return ownerId;
@@ -47,6 +53,14 @@ public class WallReplyDeleteEvent implements EventObject {
         this.id = id;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Integer getDeleterId() {
         return deleterId;
     }
@@ -55,21 +69,22 @@ public class WallReplyDeleteEvent implements EventObject {
         this.deleterId = deleterId;
     }
 
-    public Integer getPostId() {
-        return postId;
+    public Integer getItemId() {
+        return itemId;
     }
 
-    public void setPostId(Integer postId) {
-        this.postId = postId;
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
     }
 
     @Override
     public String toString() {
-        return "WallReplyDeleteEvent{" +
+        return "MarketCommentDeleteEvent{" +
                 "ownerId=" + ownerId +
                 ", id=" + id +
+                ", userId=" + userId +
                 ", deleterId=" + deleterId +
-                ", postId=" + postId +
+                ", itemId=" + itemId +
                 '}';
     }
 }
