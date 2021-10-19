@@ -38,6 +38,6 @@ public class Save extends AuthorizedVkApiMethod<Save.Response> {
     /**
      * Response to <b>stories.get</b>
      */
-    public class Response extends GenericResponse<VkList<Story>> {
+    public static class Response extends GenericResponse<VkList<Story>> {
     }
 }
