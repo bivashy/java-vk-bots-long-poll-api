@@ -24,7 +24,7 @@ public class Conversation {
     private Integer inRead;
 
     /**
-     * ID of the last read outcoming message.
+     * ID of the last read outgoing message.
      */
     @SerializedName("out_read")
     private Integer outRead;

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GroupsGroupsGetLongPollServerResponseParseTest {
-    Gson gson = new Gson();
+    final Gson gson = new Gson();
 
     @Test
     void getLongPollServerResponseSuccessParse() {

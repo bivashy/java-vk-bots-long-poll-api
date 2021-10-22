@@ -1224,7 +1224,7 @@ public class User {
         private String inspired_by;
 
         /**
-         * Improtant in others.
+         * Important in others.
          */
         @SerializedName("people_main")
         private Integer people_main;
@@ -1617,7 +1617,7 @@ public class User {
         private Integer graduation;
 
         /**
-         * Eucation form.
+         * Education form.
          */
         @SerializedName("education_form")
         private String education_form;

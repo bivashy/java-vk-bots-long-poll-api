@@ -116,7 +116,7 @@ public class Application {
     private Integer catalogPosition;
 
     /**
-     * Whether the app is multilanguage.
+     * Whether the app is multilingual.
      */
     @SerializedName("international")
     @JsonAdapter(BoolIntDeserializer.class)
