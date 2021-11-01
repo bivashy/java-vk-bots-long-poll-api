@@ -76,4 +76,15 @@ public class MarketCommentDeleteEvent implements EventObject {
     public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
+
+    @Override
+    public String toString() {
+        return "MarketCommentDeleteEvent{" +
+                "ownerId=" + ownerId +
+                ", id=" + id +
+                ", userId=" + userId +
+                ", deleterId=" + deleterId +
+                ", itemId=" + itemId +
+                '}';
+    }
 }

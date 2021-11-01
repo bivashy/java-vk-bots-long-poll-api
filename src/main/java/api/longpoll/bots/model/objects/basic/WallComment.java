@@ -2,6 +2,7 @@ package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.objects.media.Attachable;
+import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/comment">Wall Comment</a>
  */
-public class WallComment extends AttachmentHolder implements Attachable {
+public class WallComment implements Attachable {
     /**
      * Comment ID.
      */
@@ -80,6 +81,12 @@ public class WallComment extends AttachmentHolder implements Attachable {
     private Likes likes;
 
     /**
+     * List of attachments in the comments (photos, links, etc.)
+     */
+    @SerializedName("attachments")
+    private List<Attachment> attachments;
+
+    /**
      * Describes thread.
      */
     public static class Thread {
@@ -141,6 +148,16 @@ public class WallComment extends AttachmentHolder implements Attachable {
         public void setGroupsCanPost(Boolean groupsCanPost) {
             this.groupsCanPost = groupsCanPost;
         }
+
+        @Override
+        public String toString() {
+            return "Thread{" +
+                    "count=" + count +
+                    ", canPost=" + canPost +
+                    ", showReplyButton=" + showReplyButton +
+                    ", groupsCanPost=" + groupsCanPost +
+                    '}';
+        }
     }
 
     /**
@@ -189,6 +206,15 @@ public class WallComment extends AttachmentHolder implements Attachable {
 
         public void setCanLike(Boolean canLike) {
             this.canLike = canLike;
+        }
+
+        @Override
+        public String toString() {
+            return "Likes{" +
+                    "count=" + count +
+                    ", userLikes=" + userLikes +
+                    ", canLike=" + canLike +
+                    '}';
         }
     }
 
@@ -278,5 +304,31 @@ public class WallComment extends AttachmentHolder implements Attachable {
 
     public void setLikes(Likes likes) {
         this.likes = likes;
+    }
+
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
+    }
+
+    @Override
+    public String toString() {
+        return "WallComment{" +
+                "id=" + id +
+                ", fromId=" + fromId +
+                ", date=" + date +
+                ", text='" + text + '\'' +
+                ", replyToUser=" + replyToUser +
+                ", replyToComment=" + replyToComment +
+                ", parentsStack=" + parentsStack +
+                ", thread=" + thread +
+                ", postId=" + postId +
+                ", ownerId=" + ownerId +
+                ", likes=" + likes +
+                ", attachments=" + attachments +
+                '}';
     }
 }

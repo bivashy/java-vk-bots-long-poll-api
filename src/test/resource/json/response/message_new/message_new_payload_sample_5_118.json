@@ -1,0 +1,43 @@
+{
+  "ts": "3464",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1622383770,
+          "from_id": 918650328,
+          "id": 844,
+          "out": 0,
+          "peer_id": 918650328,
+          "text": "Click me",
+          "conversation_message_id": 820,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [],
+          "payload": "{\"data\":\"clicked\",\"time\":1622383763657,\"values\":[11,22,33],\"status\":{\"active\":true}}",
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link",
+            "callback",
+            "intent_subscribe",
+            "intent_unsubscribe"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": true,
+          "lang_id": 0
+        }
+      },
+      "group_id": 886761559,
+      "event_id": "1a44b4b4ee2612d41e2860bbfda03201081b125d"
+    }
+  ]
+}

@@ -1,11 +1,12 @@
 package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.objects.media.MarketItem;
 import api.longpoll.bots.model.objects.additional.Price;
+import api.longpoll.bots.model.objects.media.MarketItem;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Describes <b>market_order_new</b> and <b>market_order_edit</b> event objects.
@@ -163,6 +164,15 @@ public class MarketOrder implements EventObject {
         public void setPropertyName(String propertyName) {
             this.propertyName = propertyName;
         }
+
+        @Override
+        public String toString() {
+            return "PropertyValue{" +
+                    "variantId=" + variantId +
+                    ", variantName='" + variantName + '\'' +
+                    ", propertyName='" + propertyName + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -192,6 +202,9 @@ public class MarketOrder implements EventObject {
          */
         @SerializedName("track_link")
         private String trackLink;
+
+        @SerializedName("delivery_point")
+        private Map<String, Object> deliveryPoint;
 
         public String getAddress() {
             return address;
@@ -223,6 +236,27 @@ public class MarketOrder implements EventObject {
 
         public void setTrackLink(String trackLink) {
             this.trackLink = trackLink;
+        }
+
+
+        public Map<String, Object> getDeliveryPoint() {
+            return deliveryPoint;
+        }
+
+        public void setDeliveryPoint(Map<String, Object> deliveryPoint) {
+            this.deliveryPoint = deliveryPoint;
+        }
+
+
+        @Override
+        public String toString() {
+            return "Delivery{" +
+                    "address='" + address + '\'' +
+                    ", type='" + type + '\'' +
+                    ", trackNumber='" + trackNumber + '\'' +
+                    ", trackLink='" + trackLink + '\'' +
+                    ", deliveryPoint=" + deliveryPoint +
+                    '}';
         }
     }
 
@@ -270,6 +304,15 @@ public class MarketOrder implements EventObject {
 
         public void setDisplay_text(String display_text) {
             this.display_text = display_text;
+        }
+
+        @Override
+        public String toString() {
+            return "Recipient{" +
+                    "name='" + name + '\'' +
+                    ", phone='" + phone + '\'' +
+                    ", display_text='" + display_text + '\'' +
+                    '}';
         }
     }
 
@@ -399,5 +442,27 @@ public class MarketOrder implements EventObject {
 
     public void setRecipient(Recipient recipient) {
         this.recipient = recipient;
+    }
+
+    @Override
+    public String toString() {
+        return "MarketOrder{" +
+                "id=" + id +
+                ", groupId=" + groupId +
+                ", userId=" + userId +
+                ", date=" + date +
+                ", variantsGroupingId=" + variantsGroupingId +
+                ", mainVariant=" + mainVariant +
+                ", propertyValues=" + propertyValues +
+                ", cartQuantity=" + cartQuantity +
+                ", status=" + status +
+                ", itemsCount=" + itemsCount +
+                ", totalPrice=" + totalPrice +
+                ", displayOrderId='" + displayOrderId + '\'' +
+                ", comment='" + comment + '\'' +
+                ", previewOrderItems=" + previewOrderItems +
+                ", delivery=" + delivery +
+                ", recipient=" + recipient +
+                '}';
     }
 }

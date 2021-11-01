@@ -55,6 +55,14 @@ public class Geo {
         public void setLongitude(Float longitude) {
             this.longitude = longitude;
         }
+
+        @Override
+        public String toString() {
+            return "Coordinates{" +
+                    "latitude=" + latitude +
+                    ", longitude=" + longitude +
+                    '}';
+        }
     }
 
     /**
@@ -172,6 +180,20 @@ public class Geo {
         public void setCity(String city) {
             this.city = city;
         }
+
+        @Override
+        public String toString() {
+            return "Place{" +
+                    "id=" + id +
+                    ", title='" + title + '\'' +
+                    ", latitude=" + latitude +
+                    ", longitude=" + longitude +
+                    ", created=" + created +
+                    ", icon='" + icon + '\'' +
+                    ", country='" + country + '\'' +
+                    ", city='" + city + '\'' +
+                    '}';
+        }
     }
 
     public String getType() {
@@ -196,5 +218,14 @@ public class Geo {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    @Override
+    public String toString() {
+        return "Geo{" +
+                "type='" + type + '\'' +
+                ", coordinates=" + coordinates +
+                ", place=" + place +
+                '}';
     }
 }

@@ -49,4 +49,13 @@ public class Price {
     public void setText(String text) {
         this.text = text;
     }
+
+    @Override
+    public String toString() {
+        return "Price{" +
+                "amount=" + amount +
+                ", currency=" + currency +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

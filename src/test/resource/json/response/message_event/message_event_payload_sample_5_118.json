@@ -1,0 +1,28 @@
+{
+  "ts": "3482",
+  "updates": [
+    {
+      "type": "message_event",
+      "object": {
+        "user_id": 918650328,
+        "peer_id": 918650328,
+        "event_id": "5bba1af2abf1",
+        "payload": {
+          "data": "clicked",
+          "time": 1622386091581,
+          "values": [
+            11,
+            22,
+            33
+          ],
+          "status": {
+            "active": true
+          }
+        },
+        "conversation_message_id": 833
+      },
+      "group_id": 886761559,
+      "event_id": "e82ea61c19c93ee32c8f4a26886b139009539d02"
+    }
+  ]
+}

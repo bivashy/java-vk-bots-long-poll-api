@@ -1,18 +1,18 @@
 package parse.response.message;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MessageTypingStateParseTest {
     @Test
     void messageTypingState() {
-        Event event = ParseTestUtil.getFirstEvent("json/response/message_typing_state/message_typing_state_sample_5_111.json");
+        VkEvent event = ParseUtil.getFirstEvent("json/response/message_typing_state/message_typing_state_sample_5_111.json");
         assertEquals(EventType.MESSAGE_TYPING_STATE, event.getType());
 
         EventObject eventObject = event.getObject();

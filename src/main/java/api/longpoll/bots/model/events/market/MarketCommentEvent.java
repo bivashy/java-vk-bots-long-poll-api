@@ -34,4 +34,13 @@ public class MarketCommentEvent extends WallComment {
     public void setItemId(Integer itemId) {
         this.itemId = itemId;
     }
+
+
+    @Override
+    public String toString() {
+        return "MarketCommentEvent{" +
+                "marketOwnerId=" + marketOwnerId +
+                ", itemId=" + itemId +
+                "} " + super.toString();
+    }
 }

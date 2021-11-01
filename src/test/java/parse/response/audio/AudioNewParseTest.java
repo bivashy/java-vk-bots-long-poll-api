@@ -1,18 +1,18 @@
 package parse.response.audio;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.objects.media.Audio;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AudioNewParseTest {
     @Test
     void audioNew() {
-        Event event = ParseTestUtil.getFirstEvent("json/response/audio_new/audio_new_sample_5_110.json");
+        VkEvent event = ParseUtil.getFirstEvent("json/response/audio_new/audio_new_sample_5_110.json");
         assertEquals(EventType.AUDIO_NEW, event.getType());
         assertEquals(123, event.getGroupId());
         assertEquals("abc", event.getEventId());

@@ -1,26 +1,24 @@
 package parse.response;
 
-import api.longpoll.bots.converters.JsonToPojoConverter;
-import api.longpoll.bots.converters.JsonToPojoConverterFactory;
-import api.longpoll.bots.model.response.GenericResult;
-import api.longpoll.bots.model.response.groups.GroupsGetLongPollServerResponse;
-import com.google.gson.reflect.TypeToken;
+import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class GroupsGroupsGetLongPollServerResponseParseTest {
+    final Gson gson = new Gson();
+
     @Test
     void getLongPollServerResponseSuccessParse() {
-        JsonToPojoConverter<GenericResult<GroupsGetLongPollServerResponse>> jsonToPojoConverter = JsonToPojoConverterFactory.get(new TypeToken<GenericResult<GroupsGetLongPollServerResponse>>(){}.getType());
-        GenericResult<GroupsGetLongPollServerResponse> groupsGetLongPollServerResponse = jsonToPojoConverter.convert(ParseTestUtil.readJson("json/response/get_long_poll_server_response_sample_5_110.json"));
-        assertNotNull(groupsGetLongPollServerResponse);
-
-        GroupsGetLongPollServerResponse response = groupsGetLongPollServerResponse.getResponse();
+        GetLongPollServer.Response response = gson.fromJson(ParseUtil.readJson("json/response/get_long_poll_server_response_sample_5_110.json"), GetLongPollServer.Response.class);
         assertNotNull(response);
-        assertEquals("aaa", response.getKey());
-        assertEquals("bbb", response.getServer());
-        assertEquals(2587, response.getTs());
+
+        GetLongPollServer.Response.ResponseObject responseObject = response.getResponseObject();
+        assertNotNull(responseObject);
+        assertEquals("aaa", responseObject.getKey());
+        assertEquals("bbb", responseObject.getServer());
+        assertEquals(2587, responseObject.getTs());
     }
 }

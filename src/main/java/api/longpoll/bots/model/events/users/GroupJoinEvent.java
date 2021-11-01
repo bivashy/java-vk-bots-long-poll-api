@@ -34,4 +34,12 @@ public class GroupJoinEvent implements EventObject {
     public void setJoinType(String joinType) {
         this.joinType = joinType;
     }
+
+    @Override
+    public String toString() {
+        return "GroupJoinEvent{" +
+                "userId=" + userId +
+                ", joinType='" + joinType + '\'' +
+                '}';
+    }
 }

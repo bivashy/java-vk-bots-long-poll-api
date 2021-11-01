@@ -75,6 +75,12 @@ public class MarketItem implements Attachable {
     private boolean favourite;
 
     /**
+     * Product SKU.
+     */
+    @SerializedName("sku")
+    private String sku;
+
+    /**
      * Describes item price.
      */
     public static class ItemPrice extends Price {
@@ -90,6 +96,14 @@ public class MarketItem implements Attachable {
 
         public void setOldAmount(Integer oldAmount) {
             this.oldAmount = oldAmount;
+        }
+
+
+        @Override
+        public String toString() {
+            return "ItemPrice{" +
+                    "oldAmount=" + oldAmount +
+                    "} " + super.toString();
         }
     }
 
@@ -146,6 +160,14 @@ public class MarketItem implements Attachable {
             public void setName(String name) {
                 this.name = name;
             }
+
+            @Override
+            public String toString() {
+                return "Section{" +
+                        "id=" + id +
+                        ", name='" + name + '\'' +
+                        '}';
+            }
         }
 
         public Integer getId() {
@@ -170,6 +192,15 @@ public class MarketItem implements Attachable {
 
         public void setSection(Section section) {
             this.section = section;
+        }
+
+        @Override
+        public String toString() {
+            return "Category{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    ", section=" + section +
+                    '}';
         }
     }
 
@@ -251,5 +282,30 @@ public class MarketItem implements Attachable {
 
     public void setFavourite(boolean favourite) {
         this.favourite = favourite;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+
+    @Override
+    public String toString() {
+        return "MarketItem{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", category=" + category +
+                ", thumbPhoto='" + thumbPhoto + '\'' +
+                ", date=" + date +
+                ", availability=" + availability +
+                ", favourite=" + favourite +
+                ", sku='" + sku + '\'' +
+                '}';
     }
 }

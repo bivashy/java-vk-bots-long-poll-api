@@ -79,4 +79,15 @@ public class ClientInfo {
     public void setLangId(Integer langId) {
         this.langId = langId;
     }
+
+    @Override
+    public String toString() {
+        return "ClientInfo{" +
+                "buttonActions=" + buttonActions +
+                ", keyboardAllowed=" + keyboardAllowed +
+                ", inlineKeyboardAllowed=" + inlineKeyboardAllowed +
+                ", carouselAllowed=" + carouselAllowed +
+                ", langId=" + langId +
+                '}';
+    }
 }

@@ -8,8 +8,9 @@ import com.google.gson.annotations.SerializedName;
  * @see <a href="https://vk.com/dev/objects/photo_sizes">Photo sizes format</a>
  */
 public class PhotoSize {
-    @SerializedName("url")
-    private String url;
+    @SerializedName(value = "src", alternate = "url")
+    private String src;
+
     /**
      * VideoImage width in pixels.
      */
@@ -36,12 +37,12 @@ public class PhotoSize {
     @SerializedName("type")
     private String type;
 
-    public String getUrl() {
-        return url;
+    public String getSrc() {
+        return src;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setSrc(String src) {
+        this.src = src;
     }
 
     public Integer getWidth() {
@@ -66,5 +67,15 @@ public class PhotoSize {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "PhotoSize{" +
+                "url='" + src + '\'' +
+                ", width=" + width +
+                ", height=" + height +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

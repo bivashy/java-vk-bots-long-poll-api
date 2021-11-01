@@ -62,4 +62,14 @@ public class WallReplyDeleteEvent implements EventObject {
     public void setPostId(Integer postId) {
         this.postId = postId;
     }
+
+    @Override
+    public String toString() {
+        return "WallReplyDeleteEvent{" +
+                "ownerId=" + ownerId +
+                ", id=" + id +
+                ", deleterId=" + deleterId +
+                ", postId=" + postId +
+                '}';
+    }
 }

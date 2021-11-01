@@ -1,0 +1,122 @@
+{
+  "ts": "3710",
+  "updates": [
+    {
+      "type": "message_new",
+      "object": {
+        "message": {
+          "date": 1633280348,
+          "from_id": 918650328,
+          "id": 0,
+          "out": 0,
+          "peer_id": 2000000008,
+          "text": "",
+          "conversation_message_id": 98,
+          "fwd_messages": [],
+          "important": false,
+          "random_id": 0,
+          "attachments": [
+            {
+              "type": "poll",
+              "poll": {
+                "multiple": false,
+                "end_date": 0,
+                "closed": false,
+                "is_board": false,
+                "can_edit": true,
+                "can_vote": true,
+                "can_report": false,
+                "can_share": true,
+                "created": 1632906778,
+                "id": 633308954,
+                "owner_id": 918650328,
+                "question": "What is better?",
+                "votes": 21,
+                "disable_unvote": false,
+                "anonymous": false,
+                "friends": [
+                  {
+                    "id": 918650328
+                  },
+                  {
+                    "id": 25627166
+                  },
+                  {
+                    "id": 40490031
+                  }
+                ],
+                "answer_ids": [
+                  1831815044
+                ],
+                "embed_hash": "633308954_b06f3c39871a55eec3",
+                "answers": [
+                  {
+                    "id": 1831812069,
+                    "rate": 47.62,
+                    "text": "Google drive",
+                    "votes": 10
+                  },
+                  {
+                    "id": 1831812070,
+                    "rate": 4.76,
+                    "text": "One drive",
+                    "votes": 1
+                  },
+                  {
+                    "id": 1831812071,
+                    "rate": 9.52,
+                    "text": "Drop box",
+                    "votes": 2
+                  },
+                  {
+                    "id": 1831815044,
+                    "rate": 38.1,
+                    "text": "Other",
+                    "votes": 8
+                  }
+                ],
+                "author_id": 918650328,
+                "background": {
+                  "angle": 225,
+                  "color": "6248cb",
+                  "id": 1,
+                  "name": "фон в тёплых тонах",
+                  "points": [
+                    {
+                      "color": "f24973",
+                      "position": 0
+                    },
+                    {
+                      "color": "3948e6",
+                      "position": 1
+                    }
+                  ],
+                  "type": "gradient"
+                }
+              }
+            }
+          ],
+          "is_hidden": false
+        },
+        "client_info": {
+          "button_actions": [
+            "text",
+            "vkpay",
+            "open_app",
+            "location",
+            "open_link",
+            "callback",
+            "intent_subscribe",
+            "intent_unsubscribe"
+          ],
+          "keyboard": true,
+          "inline_keyboard": true,
+          "carousel": true,
+          "lang_id": 0
+        }
+      },
+      "group_id": 886761559,
+      "event_id": "b5fe86bb33d074b43e05937ee1d75bd9aa0a5e14"
+    }
+  ]
+}

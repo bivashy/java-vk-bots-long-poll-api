@@ -34,4 +34,13 @@ public class PhotoCommentEvent extends WallComment {
     public void setPhotoOwnerId(Integer photoOwnerId) {
         this.photoOwnerId = photoOwnerId;
     }
+
+
+    @Override
+    public String toString() {
+        return "PhotoCommentEvent{" +
+                "photoId=" + photoId +
+                ", photoOwnerId=" + photoOwnerId +
+                "} " + super.toString();
+    }
 }

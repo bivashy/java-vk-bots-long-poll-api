@@ -48,4 +48,13 @@ public class UserUnblockEvent implements EventObject {
     public void setByEndDate(Integer byEndDate) {
         this.byEndDate = byEndDate;
     }
+
+    @Override
+    public String toString() {
+        return "UserUnblockEvent{" +
+                "adminId=" + adminId +
+                ", userId=" + userId +
+                ", byEndDate=" + byEndDate +
+                '}';
+    }
 }

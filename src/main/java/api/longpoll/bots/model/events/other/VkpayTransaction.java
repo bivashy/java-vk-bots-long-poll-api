@@ -62,4 +62,14 @@ public class VkpayTransaction implements EventObject {
     public void setDate(Integer date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "VkpayTransaction{" +
+                "fromId=" + fromId +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }

@@ -1,18 +1,18 @@
 package parse.response.photo;
 
-import api.longpoll.bots.model.events.Event;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
 import api.longpoll.bots.model.events.photos.PhotoCommentDeleteEvent;
 import org.junit.jupiter.api.Test;
-import parse.response.ParseTestUtil;
+import parse.response.ParseUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PhotoCommentDeleteParseTest {
     @Test
     void messageEdit() {
-        Event event = ParseTestUtil.getFirstEvent("json/response/photo_comment_delete/photo_comment_delete_sample_5_110.json");
+        VkEvent event = ParseUtil.getFirstEvent("json/response/photo_comment_delete/photo_comment_delete_sample_5_110.json");
         assertEquals(EventType.PHOTO_COMMENT_DELETE, event.getType());
         assertEquals(666, event.getGroupId());
         assertEquals("aaa", event.getEventId());

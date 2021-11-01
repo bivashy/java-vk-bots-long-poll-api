@@ -2,6 +2,9 @@ package api.longpoll.bots.model.events;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Event type.
+ */
 public enum EventType {
     @SerializedName("app_payload") APP_PAYLOAD,
     @SerializedName("audio_new") AUDIO_NEW,

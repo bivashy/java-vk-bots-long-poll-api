@@ -126,4 +126,18 @@ public class Photo implements Attachable {
     public void setAccessKey(String accessKey) {
         this.accessKey = accessKey;
     }
+
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id=" + id +
+                ", albumId=" + albumId +
+                ", ownerId=" + ownerId +
+                ", userId=" + userId +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                ", photoSizes=" + photoSizes +
+                ", accessKey='" + accessKey + '\'' +
+                '}';
+    }
 }

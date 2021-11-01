@@ -116,7 +116,7 @@ public class Application {
     private Integer catalogPosition;
 
     /**
-     * Whether the app is multilanguage.
+     * Whether the app is multilingual.
      */
     @SerializedName("international")
     @JsonAdapter(BoolIntDeserializer.class)
@@ -388,5 +388,37 @@ public class Application {
 
     public void setScreenshots(List<Photo> screenshots) {
         this.screenshots = screenshots;
+    }
+
+    @Override
+    public String toString() {
+        return "Application{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", icon278='" + icon278 + '\'' +
+                ", icon139='" + icon139 + '\'' +
+                ", icon150='" + icon150 + '\'' +
+                ", icon75='" + icon75 + '\'' +
+                ", banner560='" + banner560 + '\'' +
+                ", banner1120='" + banner1120 + '\'' +
+                ", type='" + type + '\'' +
+                ", section='" + section + '\'' +
+                ", authorUrl='" + authorUrl + '\'' +
+                ", authorId=" + authorId +
+                ", authorGroup=" + authorGroup +
+                ", membersCount=" + membersCount +
+                ", publishedDate=" + publishedDate +
+                ", catalogPosition=" + catalogPosition +
+                ", international=" + international +
+                ", leaderboardType=" + leaderboardType +
+                ", genreId=" + genreId +
+                ", genre='" + genre + '\'' +
+                ", platformId='" + platformId + '\'' +
+                ", isInCatalog=" + isInCatalog +
+                ", description='" + description + '\'' +
+                ", screenName='" + screenName + '\'' +
+                ", icon16='" + icon16 + '\'' +
+                ", screenshots=" + screenshots +
+                '}';
     }
 }

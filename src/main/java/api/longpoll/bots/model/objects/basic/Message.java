@@ -1,8 +1,11 @@
 package api.longpoll.bots.model.objects.basic;
 
+import api.longpoll.bots.adapters.deserializers.PayloadDeserializer;
 import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.objects.additional.Geo;
+import api.longpoll.bots.model.objects.media.Attachment;
+import com.google.gson.JsonElement;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -72,7 +75,8 @@ public class Message implements EventObject {
      * Service field (payload).
      */
     @SerializedName("payload")
-    private String payload;
+    @JsonAdapter(PayloadDeserializer.class)
+    private JsonElement payload;
 
     /**
      * List of forwarded messages (if any).
@@ -97,6 +101,12 @@ public class Message implements EventObject {
      */
     @SerializedName("conversation_message_id")
     private Integer conversationMessageId;
+
+    /**
+     * Message lifetime in seconds
+     */
+    @SerializedName("expire_ttl")
+    private Integer expireTtl;
 
     /**
      * Contains information about service action with conversation.
@@ -188,6 +198,15 @@ public class Message implements EventObject {
             public void setPhoto200(String photo200) {
                 this.photo200 = photo200;
             }
+
+            @Override
+            public String toString() {
+                return "Photo{" +
+                        "photo50='" + photo50 + '\'' +
+                        ", photo100='" + photo100 + '\'' +
+                        ", photo200='" + photo200 + '\'' +
+                        '}';
+            }
         }
 
         public String getType() {
@@ -229,6 +248,17 @@ public class Message implements EventObject {
         public void setPhoto(Photo photo) {
             this.photo = photo;
         }
+
+        @Override
+        public String toString() {
+            return "Action{" +
+                    "type='" + type + '\'' +
+                    ", memberId=" + memberId +
+                    ", text='" + text + '\'' +
+                    ", email='" + email + '\'' +
+                    ", photo=" + photo +
+                    '}';
+        }
     }
 
     public Boolean hasText() {
@@ -249,6 +279,10 @@ public class Message implements EventObject {
 
     public Boolean hasReplyMessage() {
         return replyMessage != null;
+    }
+
+    public boolean isTemporaryMessage() {
+        return expireTtl != null;
     }
 
     public Integer getId() {
@@ -323,11 +357,11 @@ public class Message implements EventObject {
         this.geo = geo;
     }
 
-    public String getPayload() {
+    public JsonElement getPayload() {
         return payload;
     }
 
-    public void setPayload(String payload) {
+    public void setPayload(JsonElement payload) {
         this.payload = payload;
     }
 
@@ -361,5 +395,33 @@ public class Message implements EventObject {
 
     public void setConversationMessageId(Integer conversationMessageId) {
         this.conversationMessageId = conversationMessageId;
+    }
+
+    public Integer getExpireTtl() {
+        return expireTtl;
+    }
+
+    public void setExpireTtl(Integer expireTtl) {
+        this.expireTtl = expireTtl;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", date=" + date +
+                ", peerId=" + peerId +
+                ", fromId=" + fromId +
+                ", text='" + text + '\'' +
+                ", randomId=" + randomId +
+                ", attachments=" + attachments +
+                ", important=" + important +
+                ", geo=" + geo +
+                ", payload='" + payload + '\'' +
+                ", fwdMessages=" + fwdMessages +
+                ", replyMessage=" + replyMessage +
+                ", action=" + action +
+                ", conversationMessageId=" + conversationMessageId +
+                '}';
     }
 }

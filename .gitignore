@@ -4,3 +4,7 @@
 target
 ~*.xlsx
 src/test/java/*.java
+*.jar
+replacement.properties
+replace.bat
+revertReplace.bat

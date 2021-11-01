@@ -112,6 +112,14 @@ public class Chat {
         public void setDisabledUntil(Integer disabledUntil) {
             this.disabledUntil = disabledUntil;
         }
+
+        @Override
+        public String toString() {
+            return "PushSettings{" +
+                    "soundEnabled=" + soundEnabled +
+                    ", disabledUntil=" + disabledUntil +
+                    '}';
+        }
     }
 
     public Integer getId() {
@@ -200,5 +208,22 @@ public class Chat {
 
     public void setKicked(Boolean kicked) {
         this.kicked = kicked;
+    }
+
+    @Override
+    public String toString() {
+        return "Chat{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", title='" + title + '\'' +
+                ", adminId=" + adminId +
+                ", users=" + users +
+                ", pushSettings=" + pushSettings +
+                ", photo50='" + photo50 + '\'' +
+                ", photo100='" + photo100 + '\'' +
+                ", photo200='" + photo200 + '\'' +
+                ", left=" + left +
+                ", kicked=" + kicked +
+                '}';
     }
 }

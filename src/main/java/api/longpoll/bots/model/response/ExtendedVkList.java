@@ -40,4 +40,12 @@ public class ExtendedVkList<T> extends VkList<T> {
     public void setGroups(List<Community> groups) {
         this.groups = groups;
     }
+
+    @Override
+    public String toString() {
+        return "ExtendedVkList{" +
+                "profiles=" + profiles +
+                ", groups=" + groups +
+                "} " + super.toString();
+    }
 }

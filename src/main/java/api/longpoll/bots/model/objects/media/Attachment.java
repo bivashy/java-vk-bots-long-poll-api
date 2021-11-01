@@ -1,10 +1,13 @@
 package api.longpoll.bots.model.objects.media;
 
+import api.longpoll.bots.adapters.deserializers.AttachmentDeserializer;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes attachment.
  */
+@JsonAdapter(AttachmentDeserializer.class)
 public class Attachment {
     /**
      * Attachment type.
@@ -31,5 +34,13 @@ public class Attachment {
 
     public void setAttachable(Attachable attachable) {
         this.attachable = attachable;
+    }
+
+    @Override
+    public String toString() {
+        return "Attachment{" +
+                "type=" + type +
+                ", attachable=" + attachable +
+                '}';
     }
 }

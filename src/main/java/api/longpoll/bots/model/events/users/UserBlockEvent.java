@@ -76,4 +76,15 @@ public class UserBlockEvent implements EventObject {
     public void setComment(Integer comment) {
         this.comment = comment;
     }
+
+    @Override
+    public String toString() {
+        return "UserBlockEvent{" +
+                "adminId=" + adminId +
+                ", userId=" + userId +
+                ", unblockDate=" + unblockDate +
+                ", reason=" + reason +
+                ", comment=" + comment +
+                '}';
+    }
 }

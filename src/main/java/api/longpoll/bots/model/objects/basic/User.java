@@ -637,6 +637,20 @@ public class User {
         public void setPosition(String position) {
             this.position = position;
         }
+
+        @Override
+        public String toString() {
+            return "Career{" +
+                    "groupId=" + groupId +
+                    ", company='" + company + '\'' +
+                    ", countryId=" + countryId +
+                    ", cityId=" + cityId +
+                    ", cityName=" + cityName +
+                    ", from=" + from +
+                    ", until=" + until +
+                    ", position='" + position + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -670,6 +684,14 @@ public class User {
         public void setTitle(String title) {
             this.title = title;
         }
+
+        @Override
+        public String toString() {
+            return "City{" +
+                    "id=" + id +
+                    ", title='" + title + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -702,6 +724,14 @@ public class User {
 
         public void setHomePhone(String homePhone) {
             this.homePhone = homePhone;
+        }
+
+        @Override
+        public String toString() {
+            return "Contacts{" +
+                    "mobilePhone='" + mobilePhone + '\'' +
+                    ", homePhone='" + homePhone + '\'' +
+                    '}';
         }
     }
 
@@ -876,6 +906,24 @@ public class User {
         public void setPages(Integer pages) {
             this.pages = pages;
         }
+
+        @Override
+        public String toString() {
+            return "Counters{" +
+                    "albums=" + albums +
+                    ", videos=" + videos +
+                    ", audios=" + audios +
+                    ", photos=" + photos +
+                    ", notes=" + notes +
+                    ", friends=" + friends +
+                    ", groups=" + groups +
+                    ", onlineFriends=" + onlineFriends +
+                    ", mutualFriends=" + mutualFriends +
+                    ", userVideos=" + userVideos +
+                    ", followers=" + followers +
+                    ", pages=" + pages +
+                    '}';
+        }
     }
 
     /**
@@ -951,6 +999,17 @@ public class User {
         public void setGraduation(Integer graduation) {
             this.graduation = graduation;
         }
+
+        @Override
+        public String toString() {
+            return "Education{" +
+                    "university=" + university +
+                    ", universityName='" + universityName + '\'' +
+                    ", faculty=" + faculty +
+                    ", facultyName='" + facultyName + '\'' +
+                    ", graduation=" + graduation +
+                    '}';
+        }
     }
 
     /**
@@ -983,6 +1042,14 @@ public class User {
 
         public void setPlatform(Integer platform) {
             this.platform = platform;
+        }
+
+        @Override
+        public String toString() {
+            return "LastSeen{" +
+                    "time=" + time +
+                    ", platform=" + platform +
+                    '}';
         }
     }
 
@@ -1059,6 +1126,17 @@ public class User {
         public void setUntil(Integer until) {
             this.until = until;
         }
+
+        @Override
+        public String toString() {
+            return "Military{" +
+                    "unit='" + unit + '\'' +
+                    ", unitId=" + unitId +
+                    ", countyId=" + countyId +
+                    ", from=" + from +
+                    ", until=" + until +
+                    '}';
+        }
     }
 
     /**
@@ -1106,6 +1184,15 @@ public class User {
         public void setName(String name) {
             this.name = name;
         }
+
+        @Override
+        public String toString() {
+            return "Occupation{" +
+                    "type='" + type + '\'' +
+                    ", id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -1137,7 +1224,7 @@ public class User {
         private String inspired_by;
 
         /**
-         * Improtant in others.
+         * Important in others.
          */
         @SerializedName("people_main")
         private Integer people_main;
@@ -1223,6 +1310,20 @@ public class User {
         public void setAlcohol(Integer alcohol) {
             this.alcohol = alcohol;
         }
+
+        @Override
+        public String toString() {
+            return "Personal{" +
+                    "political=" + political +
+                    ", langs=" + langs +
+                    ", religion='" + religion + '\'' +
+                    ", inspired_by='" + inspired_by + '\'' +
+                    ", people_main=" + people_main +
+                    ", life_main=" + life_main +
+                    ", smoking=" + smoking +
+                    ", alcohol=" + alcohol +
+                    '}';
+        }
     }
 
     /**
@@ -1269,6 +1370,15 @@ public class User {
 
         public void setType(String type) {
             this.type = type;
+        }
+
+        @Override
+        public String toString() {
+            return "Relative{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    ", type='" + type + '\'' +
+                    '}';
         }
     }
 
@@ -1429,6 +1539,23 @@ public class User {
         public void setType_str(String type_str) {
             this.type_str = type_str;
         }
+
+        @Override
+        public String toString() {
+            return "School{" +
+                    "id=" + id +
+                    ", country=" + country +
+                    ", city=" + city +
+                    ", name='" + name + '\'' +
+                    ", yearFrom=" + yearFrom +
+                    ", yearTo=" + yearTo +
+                    ", yearGraduated=" + yearGraduated +
+                    ", className='" + className + '\'' +
+                    ", speciality='" + speciality + '\'' +
+                    ", type=" + type +
+                    ", type_str='" + type_str + '\'' +
+                    '}';
+        }
     }
 
     /**
@@ -1490,7 +1617,7 @@ public class User {
         private Integer graduation;
 
         /**
-         * Eucation form.
+         * Education form.
          */
         @SerializedName("education_form")
         private String education_form;
@@ -1587,6 +1714,23 @@ public class User {
 
         public void setEducation_status(String education_status) {
             this.education_status = education_status;
+        }
+
+        @Override
+        public String toString() {
+            return "University{" +
+                    "id=" + id +
+                    ", country=" + country +
+                    ", city=" + city +
+                    ", name='" + name + '\'' +
+                    ", faculty=" + faculty +
+                    ", faculty_name='" + faculty_name + '\'' +
+                    ", chair='" + chair + '\'' +
+                    ", chair_name='" + chair_name + '\'' +
+                    ", graduation=" + graduation +
+                    ", education_form='" + education_form + '\'' +
+                    ", education_status='" + education_status + '\'' +
+                    '}';
         }
     }
 
@@ -2244,5 +2388,93 @@ public class User {
 
     public void setWall_default(String wall_default) {
         this.wall_default = wall_default;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", deactivated='" + deactivated + '\'' +
+                ", closed=" + closed +
+                ", canAccessClosed=" + canAccessClosed +
+                ", about='" + about + '\'' +
+                ", activities='" + activities + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", blacklisted=" + blacklisted +
+                ", blacklistedByMe=" + blacklistedByMe +
+                ", books='" + books + '\'' +
+                ", canPost=" + canPost +
+                ", canSeeAllPosts=" + canSeeAllPosts +
+                ", canSeeAudio=" + canSeeAudio +
+                ", canSendFriendRequest=" + canSendFriendRequest +
+                ", canWritePrivateMessage=" + canWritePrivateMessage +
+                ", career=" + career +
+                ", military=" + military +
+                ", movies='" + movies + '\'' +
+                ", music='" + music + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", city='" + city + '\'' +
+                ", commonCount=" + commonCount +
+                ", connections=" + connections +
+                ", contacts=" + contacts +
+                ", counters=" + counters +
+                ", country=" + country +
+                ", cropPhoto=" + cropPhoto +
+                ", domain='" + domain + '\'' +
+                ", education=" + education +
+                ", exports='" + exports + '\'' +
+                ", firstNameNom='" + firstNameNom + '\'' +
+                ", firstNameGen='" + firstNameGen + '\'' +
+                ", firstNameDat='" + firstNameDat + '\'' +
+                ", firstNameAcc='" + firstNameAcc + '\'' +
+                ", firstNameIns='" + firstNameIns + '\'' +
+                ", firstNameAbl='" + firstNameAbl + '\'' +
+                ", followersCount=" + followersCount +
+                ", friendStatus=" + friendStatus +
+                ", games='" + games + '\'' +
+                ", hasMobile=" + hasMobile +
+                ", hasPhoto=" + hasPhoto +
+                ", homeTown='" + homeTown + '\'' +
+                ", interests='" + interests + '\'' +
+                ", favorite=" + favorite +
+                ", friend=" + friend +
+                ", hiddenFromFeed=" + hiddenFromFeed +
+                ", lastNameNom='" + lastNameNom + '\'' +
+                ", lastNameGen='" + lastNameGen + '\'' +
+                ", lastNameDat='" + lastNameDat + '\'' +
+                ", lastNameAcc='" + lastNameAcc + '\'' +
+                ", lastNameIns='" + lastNameIns + '\'' +
+                ", lastNameAbl='" + lastNameAbl + '\'' +
+                ", lastSeen=" + lastSeen +
+                ", lists='" + lists + '\'' +
+                ", maidenName='" + maidenName + '\'' +
+                ", occupation=" + occupation +
+                ", online=" + online +
+                ", personal=" + personal +
+                ", photo_50='" + photo_50 + '\'' +
+                ", photo_100='" + photo_100 + '\'' +
+                ", photo_200_orig='" + photo_200_orig + '\'' +
+                ", photo_200='" + photo_200 + '\'' +
+                ", photo_400_orig='" + photo_400_orig + '\'' +
+                ", photo_id='" + photo_id + '\'' +
+                ", photo_max='" + photo_max + '\'' +
+                ", photo_max_orig='" + photo_max_orig + '\'' +
+                ", quotes='" + quotes + '\'' +
+                ", relatives=" + relatives +
+                ", relation=" + relation +
+                ", schools=" + schools +
+                ", screen_name='" + screen_name + '\'' +
+                ", sex=" + sex +
+                ", site='" + site + '\'' +
+                ", status='" + status + '\'' +
+                ", timezone=" + timezone +
+                ", trending=" + trending +
+                ", tv='" + tv + '\'' +
+                ", universities=" + universities +
+                ", verified=" + verified +
+                ", wall_default='" + wall_default + '\'' +
+                '}';
     }
 }

@@ -1,5 +1,6 @@
 package api.longpoll.bots.model.objects.additional;
 
+import api.longpoll.bots.model.objects.additional.buttons.Button;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
@@ -27,13 +28,12 @@ public class Keyboard {
     @SerializedName("buttons")
     private List<List<Button>> buttons;
 
-    public String toJson() {
-        return new Gson().toJson(this);
+    public Keyboard(List<List<Button>> buttons) {
+        this.buttons = buttons;
     }
 
-    @Override
-    public String toString() {
-        return toJson();
+    public String toJson() {
+        return new Gson().toJson(this);
     }
 
     public Boolean getOneTime() {
@@ -61,5 +61,10 @@ public class Keyboard {
     public Keyboard setButtons(List<List<Button>> buttons) {
         this.buttons = buttons;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return toJson();
     }
 }
