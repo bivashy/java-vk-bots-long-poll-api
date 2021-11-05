@@ -56,11 +56,6 @@ public abstract class VkApiMethod<Response> {
     private HttpClient httpClient;
 
     /**
-     * HTTP method. Default value is POST.
-     */
-    private String method;
-
-    /**
      * Async executor.
      */
     private AsyncCaller asyncCaller;
@@ -141,14 +136,7 @@ public abstract class VkApiMethod<Response> {
     }
 
     public String getMethod() {
-        if (method == null) {
-            method = "POST";
-        }
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
+        return "POST";
     }
 
     public VkApiParamsConverter getVkApiParamsConverter() {
