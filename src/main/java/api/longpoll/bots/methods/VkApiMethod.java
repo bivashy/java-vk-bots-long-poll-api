@@ -2,14 +2,10 @@ package api.longpoll.bots.methods;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converters.params.DefaultVkApiParamsConverter;
-import api.longpoll.bots.converters.params.VkApiParamsConverter;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.http.HttpClient;
-import api.longpoll.bots.http.JsoupHttpClient;
 import api.longpoll.bots.utils.async.AsyncCaller;
-import api.longpoll.bots.utils.async.DefaultAsyncCaller;
 import api.longpoll.bots.validators.VkApiResponseValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +49,7 @@ public abstract class VkApiMethod<Response> {
     /**
      * Async executor.
      */
-    private AsyncCaller asyncCaller;
+    private final AsyncCaller asyncCaller = VkBotsConfig.getInstance().getAsyncCaller();
 
     /**
      * Executes request to VK API asynchronously.
@@ -61,7 +57,7 @@ public abstract class VkApiMethod<Response> {
      * @return VK API response wrapped to CompletableFuture
      */
     public CompletableFuture<Response> executeAsync() {
-        return getAsyncCaller().call(this::execute);
+        return asyncCaller.call(this::execute);
     }
 
     /**
@@ -120,16 +116,5 @@ public abstract class VkApiMethod<Response> {
 
     public String getMethod() {
         return "POST";
-    }
-
-    public AsyncCaller getAsyncCaller() {
-        if (asyncCaller == null) {
-            asyncCaller = new DefaultAsyncCaller();
-        }
-        return asyncCaller;
-    }
-
-    public void setAsyncCaller(AsyncCaller asyncCaller) {
-        this.asyncCaller = asyncCaller;
     }
 }

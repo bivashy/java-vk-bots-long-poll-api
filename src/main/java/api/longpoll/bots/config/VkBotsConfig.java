@@ -10,6 +10,8 @@ import api.longpoll.bots.factory.JsonConverterFactory;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.JsoupHttpClient;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
+import api.longpoll.bots.utils.async.AsyncCaller;
+import api.longpoll.bots.utils.async.DefaultAsyncCaller;
 import api.longpoll.bots.validators.DefaultVkApiResponseValidator;
 import api.longpoll.bots.validators.VkApiResponseValidator;
 import com.google.gson.Gson;
@@ -26,6 +28,7 @@ public class VkBotsConfig {
     private JsonConverterFactory jsonConverterFactory;
     private VkApiResponseValidator vkApiResponseValidator;
     private HttpClient httpClient;
+    private AsyncCaller asyncCaller;
 
     private VkBotsConfig() {
     }
@@ -120,5 +123,16 @@ public class VkBotsConfig {
 
     public void setHttpClient(HttpClient httpClient) {
         this.httpClient = httpClient;
+    }
+
+    public AsyncCaller getAsyncCaller() {
+        if (asyncCaller == null) {
+            asyncCaller = new DefaultAsyncCaller();
+        }
+        return asyncCaller;
+    }
+
+    public void setAsyncCaller(AsyncCaller asyncCaller) {
+        this.asyncCaller = asyncCaller;
     }
 }

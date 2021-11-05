@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods;
 
-import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.model.objects.media.FileType;
 
 import java.io.File;
@@ -17,13 +16,6 @@ public abstract class FileUploadingVkApiMethod<Response> extends VkApiMethod<Res
      * File to be uploaded to VK server.
      */
     private File file;
-
-    @Override
-    public HttpClient getVkApiHttpClient() {
-        HttpClient vkApiHttpClient = super.getVkApiHttpClient();
-        vkApiHttpClient.setFile(getType().getKey(), file.getName(), file);
-        return vkApiHttpClient;
-    }
 
     /**
      * Gets file type.
