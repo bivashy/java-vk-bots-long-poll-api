@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 
@@ -15,6 +16,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getConversations">https://vk.com/dev/messages.getConversations</a>
  */
 public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public GetConversations(String accessToken) {
         super(accessToken);
     }
@@ -42,7 +45,7 @@ public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Res
     }
 
     public GetConversations setExtended(boolean extended) {
-        return addParam("extended", new BoolInt(extended));
+        return addParam("extended", boolIntConverter.convert(extended));
     }
 
     public GetConversations setStartMessageId(int startMessageId) {

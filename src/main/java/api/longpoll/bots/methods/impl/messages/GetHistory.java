@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.VkList;
@@ -21,6 +22,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
  */
 public class GetHistory extends AuthorizedVkApiMethod<GetHistory.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public GetHistory(String accessToken) {
         super(accessToken);
     }
@@ -56,11 +59,11 @@ public class GetHistory extends AuthorizedVkApiMethod<GetHistory.Response> {
     }
 
     public GetHistory setRev(boolean rev) {
-        return addParam("rev", new BoolInt(rev));
+        return addParam("rev", boolIntConverter.convert(rev));
     }
 
     public GetHistory setExtended(boolean extended) {
-        return addParam("extended", new BoolInt(extended));
+        return addParam("extended", boolIntConverter.convert(extended));
     }
 
     public GetHistory setFields(String... fields) {

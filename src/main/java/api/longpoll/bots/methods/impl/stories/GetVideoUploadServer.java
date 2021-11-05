@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 
@@ -15,6 +16,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/stories.getVideoUploadServer">https://vk.com/dev/stories.getVideoUploadServer</a>
  */
 public class GetVideoUploadServer extends AuthorizedVkApiMethod<GetVideoUploadServer.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public GetVideoUploadServer(String accessToken) {
         super(accessToken);
     }
@@ -30,7 +33,7 @@ public class GetVideoUploadServer extends AuthorizedVkApiMethod<GetVideoUploadSe
     }
 
     public GetVideoUploadServer setAddToNews(boolean addToNews) {
-        return addParam("add_to_news", new BoolInt(addToNews));
+        return addParam("add_to_news", boolIntConverter.convert(addToNews));
     }
 
     public GetVideoUploadServer setReplyToStory(String replyToStory) {

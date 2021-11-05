@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.utils;
 
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -14,6 +15,8 @@ import com.google.gson.annotations.SerializedName;
  * @see <a href="https://vk.com/dev/utils.getShortLink">https://vk.com/dev/utils.getShortLink</a>
  */
 public class GetShortLink extends AuthorizedVkApiMethod<GetShortLink.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public GetShortLink(String accessToken) {
         super(accessToken);
     }
@@ -33,7 +36,7 @@ public class GetShortLink extends AuthorizedVkApiMethod<GetShortLink.Response> {
     }
 
     public GetShortLink setPrivate(boolean isPrivate) {
-        return addParam("private", new BoolInt(isPrivate));
+        return addParam("private", boolIntConverter.convert(isPrivate));
     }
 
     @Override

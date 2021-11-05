@@ -1,7 +1,8 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.AttachmentDeserializer;
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.media.Attachment;
@@ -20,6 +21,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
  */
 public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttachments.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public GetHistoryAttachments(String accessToken) {
         super(accessToken);
     }
@@ -51,7 +54,7 @@ public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttac
     }
 
     public GetHistoryAttachments setPhotoSizes(boolean photoSizes) {
-        return addParam("photo_sizes", new BoolInt(photoSizes));
+        return addParam("photo_sizes", boolIntConverter.convert(photoSizes));
     }
 
     public GetHistoryAttachments setFields(String... fields) {
@@ -67,7 +70,7 @@ public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttac
     }
 
     public GetHistoryAttachments setPreserveOrder(boolean preserveOrder) {
-        return addParam("preserve_order", new BoolInt(preserveOrder));
+        return addParam("preserve_order", boolIntConverter.convert(preserveOrder));
     }
 
     public GetHistoryAttachments setMaxForwardsLevel(int maxForwardsLevel) {

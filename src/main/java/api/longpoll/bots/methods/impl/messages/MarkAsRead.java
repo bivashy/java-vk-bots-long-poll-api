@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
@@ -13,6 +14,8 @@ import api.longpoll.bots.model.response.IntegerResponse;
  * @see <a href="https://vk.com/dev/messages.markAsRead">https://vk.com/dev/messages.markAsRead</a>
  */
 public class MarkAsRead extends AuthorizedVkApiMethod<IntegerResponse> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public MarkAsRead(String accessToken) {
         super(accessToken);
     }
@@ -40,7 +43,7 @@ public class MarkAsRead extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public MarkAsRead setMarkConversationAsRead(boolean markConversationAsRead) {
-        return addParam("mark_conversation_as_read", new BoolInt(markConversationAsRead));
+        return addParam("mark_conversation_as_read", boolIntConverter.convert(markConversationAsRead));
     }
 
     @Override

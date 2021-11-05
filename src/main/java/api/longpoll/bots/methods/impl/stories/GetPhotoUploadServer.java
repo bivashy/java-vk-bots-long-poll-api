@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -17,6 +18,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/stories.getPhotoUploadServer">https://vk.com/dev/stories.getPhotoUploadServer</a>
  */
 public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadServer.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public GetPhotoUploadServer(String accessToken) {
         super(accessToken);
     }
@@ -32,7 +35,7 @@ public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadSe
     }
 
     public GetPhotoUploadServer setAddToNews(boolean addToNews) {
-        return addParam("add_to_news", new BoolInt(addToNews));
+        return addParam("add_to_news", boolIntConverter.convert(addToNews));
     }
 
     public GetPhotoUploadServer setReplyToStory(String replyToStory) {

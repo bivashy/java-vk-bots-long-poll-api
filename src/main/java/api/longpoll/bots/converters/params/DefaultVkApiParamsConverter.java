@@ -2,7 +2,6 @@ package api.longpoll.bots.converters.params;
 
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.http.params.AttachableParam;
-import api.longpoll.bots.http.params.BoolInt;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,8 +24,6 @@ public class DefaultVkApiParamsConverter implements VkApiParamsConverter {
     private String mapToString(Object value) throws VkApiException {
         if (value instanceof List) {
             return mapToString((List<?>) value);
-        } else if (value instanceof BoolInt) {
-            return mapToString(((BoolInt) value).getIntValue());
         } else if (value instanceof AttachableParam) {
             return ((AttachableParam) value).attach();
         } else {

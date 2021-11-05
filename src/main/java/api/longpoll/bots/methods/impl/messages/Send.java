@@ -1,8 +1,9 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.MessagesSendResultDeserializer;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.http.params.AttachableParam;
-import api.longpoll.bots.http.params.BoolInt;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.Keyboard;
@@ -22,6 +23,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
 public class Send extends AuthorizedVkApiMethod<Send.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public Send(String accessToken) {
         super(accessToken);
         addParam("random_id", (int) System.currentTimeMillis());
@@ -102,11 +105,11 @@ public class Send extends AuthorizedVkApiMethod<Send.Response> {
     }
 
     public Send setDontParseLinks(boolean dontParseLinks) {
-        return addParam("dont_parse_links", new BoolInt(dontParseLinks));
+        return addParam("dont_parse_links", boolIntConverter.convert(dontParseLinks));
     }
 
     public Send setDisableMentions(boolean disableMentions) {
-        return addParam("disable_mentions", new BoolInt(disableMentions));
+        return addParam("disable_mentions", boolIntConverter.convert(disableMentions));
     }
 
     public Send setKeyboard(Keyboard keyboard) {

@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.StoriesFeedBlock;
@@ -18,6 +19,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/stories.get">https://vk.com/dev/stories.get</a>
  */
 public class Get extends AuthorizedVkApiMethod<Get.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public Get(String accessToken) {
         super(accessToken);
     }
@@ -37,7 +40,7 @@ public class Get extends AuthorizedVkApiMethod<Get.Response> {
     }
 
     public Get setExtended(boolean extended) {
-        return addParam("extended", new BoolInt(extended));
+        return addParam("extended", boolIntConverter.convert(extended));
     }
 
     public Get setFields(String... fields) {

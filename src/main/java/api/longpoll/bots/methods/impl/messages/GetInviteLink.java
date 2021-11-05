@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -14,6 +15,8 @@ import com.google.gson.annotations.SerializedName;
  * @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
  */
 public class GetInviteLink extends AuthorizedVkApiMethod<GetInviteLink.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public GetInviteLink(String accessToken) {
         super(accessToken);
     }
@@ -33,7 +36,7 @@ public class GetInviteLink extends AuthorizedVkApiMethod<GetInviteLink.Response>
     }
 
     public GetInviteLink setReset(boolean reset) {
-        return addParam("reset", new BoolInt(reset));
+        return addParam("reset", boolIntConverter.convert(reset));
     }
 
     public GetInviteLink setGroupId(int groupId) {

@@ -2,7 +2,8 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.adapters.deserializers.GroupsIsMemberResponseDeserializer;
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -20,6 +21,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
  */
 public class IsMember extends AuthorizedVkApiMethod<IsMember.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public IsMember(String accessToken) {
         super(accessToken);
     }
@@ -51,7 +54,7 @@ public class IsMember extends AuthorizedVkApiMethod<IsMember.Response> {
     }
 
     public IsMember setExtended(boolean extended) {
-        return addParam("extended", new BoolInt(extended));
+        return addParam("extended", boolIntConverter.convert(extended));
     }
 
     @Override

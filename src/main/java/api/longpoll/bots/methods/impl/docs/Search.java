@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.docs;
 
-import api.longpoll.bots.http.params.BoolInt;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.VkList;
@@ -12,6 +13,8 @@ import api.longpoll.bots.model.objects.media.Doc;
  * @see <a href="https://vk.com/dev/docs.search">https://vk.com/dev/docs.search</a>
  */
 public class Search extends AuthorizedVkApiMethod<Search.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public Search(String accessToken) {
         super(accessToken);
     }
@@ -39,7 +42,7 @@ public class Search extends AuthorizedVkApiMethod<Search.Response> {
     }
 
     public Search setReturnTags(boolean returnTags) {
-        return addParam("return_tags", new BoolInt(returnTags));
+        return addParam("return_tags", boolIntConverter.convert(returnTags));
     }
 
     @Override
