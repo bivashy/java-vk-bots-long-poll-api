@@ -8,6 +8,8 @@ import api.longpoll.bots.converter.impl.VkAttachmentConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentsListConverter;
 import api.longpoll.bots.factory.JsonConverterFactory;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
+import api.longpoll.bots.validators.DefaultVkApiResponseValidator;
+import api.longpoll.bots.validators.VkApiResponseValidator;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -20,6 +22,7 @@ public class VkBotsConfig {
     private Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverterConverter;
     private Gson gson;
     private JsonConverterFactory jsonConverterFactory;
+    private VkApiResponseValidator vkApiResponseValidator;
 
     private VkBotsConfig() {
     }
@@ -92,5 +95,16 @@ public class VkBotsConfig {
 
     public void setJsonConverterFactory(JsonConverterFactory jsonConverterFactory) {
         this.jsonConverterFactory = jsonConverterFactory;
+    }
+
+    public VkApiResponseValidator getVkApiResponseValidator() {
+        if (vkApiResponseValidator == null) {
+            vkApiResponseValidator = new DefaultVkApiResponseValidator();
+        }
+        return vkApiResponseValidator;
+    }
+
+    public void setVkApiResponseValidator(VkApiResponseValidator vkApiResponseValidator) {
+        this.vkApiResponseValidator = vkApiResponseValidator;
     }
 }

@@ -34,12 +34,12 @@ public abstract class VkApiMethod<Response> {
     /**
      * Converts JSON string to POJO.
      */
-    private Converter<String, Response> jsonConverter = VkBotsConfig.getInstance().getJsonConverterFactory().get(getResponseType());
+    private final Converter<String, Response> jsonConverter = VkBotsConfig.getInstance().getJsonConverterFactory().get(getResponseType());
 
     /**
      * Validator to check if VK API response is valid.
      */
-    private VkApiResponseValidator vkApiResponseValidator;
+    private final VkApiResponseValidator vkApiResponseValidator = VkBotsConfig.getInstance().getVkApiResponseValidator();
 
     /**
      * Request params.
@@ -93,7 +93,7 @@ public abstract class VkApiMethod<Response> {
             String body = vkApiHttpClient.execute();
             log.debug("Received: {}", body);
 
-            if (getVkApiResponseValidator().isValid(body)) {
+            if (vkApiResponseValidator.isValid(body)) {
                 return jsonConverter.convert(body);
             }
 
@@ -128,17 +128,6 @@ public abstract class VkApiMethod<Response> {
     public VkApiMethod<Response> addParam(String key, Object value) {
         getParams().put(key, String.valueOf(value));
         return this;
-    }
-
-    public VkApiResponseValidator getVkApiResponseValidator() {
-        if (vkApiResponseValidator == null) {
-            vkApiResponseValidator = new DefaultVkApiResponseValidator();
-        }
-        return vkApiResponseValidator;
-    }
-
-    public void setVkApiResponseValidator(VkApiResponseValidator vkApiResponseValidator) {
-        this.vkApiResponseValidator = vkApiResponseValidator;
     }
 
     public Map<String, String> getParams() {
