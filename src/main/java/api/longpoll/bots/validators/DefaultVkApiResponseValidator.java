@@ -1,7 +1,7 @@
 package api.longpoll.bots.validators;
 
-import api.longpoll.bots.converters.json.GsonConverter;
-import api.longpoll.bots.converters.json.JsonConverter;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import com.google.gson.JsonElement;
 
 /**
@@ -11,19 +11,11 @@ public class DefaultVkApiResponseValidator implements VkApiResponseValidator {
     /**
      * JSON converter.
      */
-    private final JsonConverter jsonConverter;
-
-    public DefaultVkApiResponseValidator() {
-        this(new GsonConverter());
-    }
-
-    public DefaultVkApiResponseValidator(JsonConverter jsonConverter) {
-        this.jsonConverter = jsonConverter;
-    }
+    private final Converter<String, JsonElement> jsonConverter = VkBotsConfig.getInstance().getJsonConverterFactory().get(JsonElement.class);
 
     @Override
     public boolean isValid(String json) {
-        JsonElement jsonElement = jsonConverter.convert(json, JsonElement.class);
+        JsonElement jsonElement = jsonConverter.convert(json);
         return !jsonElement.isJsonObject()
                 || !jsonElement.getAsJsonObject().has("error")
                 && !jsonElement.getAsJsonObject().has("failed");

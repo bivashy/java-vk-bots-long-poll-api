@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods;
 
-import api.longpoll.bots.converters.json.GsonConverter;
-import api.longpoll.bots.converters.json.JsonConverter;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.converters.params.DefaultVkApiParamsConverter;
 import api.longpoll.bots.converters.params.VkApiParamsConverter;
 import api.longpoll.bots.exceptions.VkApiException;
@@ -34,7 +34,7 @@ public abstract class VkApiMethod<Response> {
     /**
      * Converts JSON string to POJO.
      */
-    private JsonConverter jsonConverter;
+    private Converter<String, Response> jsonConverter = VkBotsConfig.getInstance().getJsonConverterFactory().get(getResponseType());
 
     /**
      * Validator to check if VK API response is valid.
@@ -94,7 +94,7 @@ public abstract class VkApiMethod<Response> {
             log.debug("Received: {}", body);
 
             if (getVkApiResponseValidator().isValid(body)) {
-                return getJsonConverter().convert(body, getResponseType());
+                return jsonConverter.convert(body);
             }
 
             throw new VkApiResponseException(body);
@@ -128,17 +128,6 @@ public abstract class VkApiMethod<Response> {
     public VkApiMethod<Response> addParam(String key, Object value) {
         getParams().put(key, String.valueOf(value));
         return this;
-    }
-
-    public JsonConverter getJsonConverter() {
-        if (jsonConverter == null) {
-            jsonConverter = new GsonConverter();
-        }
-        return jsonConverter;
-    }
-
-    public void setJsonConverter(JsonConverter jsonConverter) {
-        this.jsonConverter = jsonConverter;
     }
 
     public VkApiResponseValidator getVkApiResponseValidator() {

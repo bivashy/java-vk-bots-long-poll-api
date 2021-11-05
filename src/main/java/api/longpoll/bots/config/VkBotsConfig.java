@@ -2,10 +2,13 @@ package api.longpoll.bots.config;
 
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.converter.impl.BoolIntConverter;
+import api.longpoll.bots.converter.impl.GsonConverter;
 import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentsListConverter;
+import api.longpoll.bots.factory.JsonConverterFactory;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -15,6 +18,8 @@ public class VkBotsConfig {
     private Converter<List<?>, String> listConverter;
     private Converter<VkAttachment, String> vkAttachmentConverter;
     private Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverterConverter;
+    private Gson gson;
+    private JsonConverterFactory jsonConverterFactory;
 
     private VkBotsConfig() {
     }
@@ -65,5 +70,27 @@ public class VkBotsConfig {
 
     public void setVkAttachmentsListConverterConverter(Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverterConverter) {
         this.vkAttachmentsListConverterConverter = vkAttachmentsListConverterConverter;
+    }
+
+    public Gson getGson() {
+        if (gson == null) {
+            gson = new Gson();
+        }
+        return gson;
+    }
+
+    public void setGson(Gson gson) {
+        this.gson = gson;
+    }
+
+    public JsonConverterFactory getJsonConverterFactory() {
+        if (jsonConverterFactory == null) {
+            jsonConverterFactory = GsonConverter::new;
+        }
+        return jsonConverterFactory;
+    }
+
+    public void setJsonConverterFactory(JsonConverterFactory jsonConverterFactory) {
+        this.jsonConverterFactory = jsonConverterFactory;
     }
 }
