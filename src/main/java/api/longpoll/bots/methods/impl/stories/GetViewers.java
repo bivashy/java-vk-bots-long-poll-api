@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class GetViewers extends AuthorizedVkApiMethod<GetViewers.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public GetViewers(String accessToken) {
         super(accessToken);
@@ -42,7 +43,7 @@ public class GetViewers extends AuthorizedVkApiMethod<GetViewers.Response> {
     }
 
     public GetViewers setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", messageIds);
+        return addParam("message_ids", listConverter.convert(messageIds));
     }
 
     public GetViewers setPreviewLength(int previewLength) {
@@ -58,7 +59,7 @@ public class GetViewers extends AuthorizedVkApiMethod<GetViewers.Response> {
     }
 
     public GetViewers setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetViewers setGroupId(int groupId) {

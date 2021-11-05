@@ -1,5 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.VkList;
@@ -17,6 +19,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/groups.getCallbackServers">https://vk.com/dev/groups.getCallbackServers</a>
  */
 public class GetCallbackServers extends AuthorizedVkApiMethod<GetCallbackServers.Response> {
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public GetCallbackServers(String accessToken) {
         super(accessToken);
     }
@@ -40,7 +44,7 @@ public class GetCallbackServers extends AuthorizedVkApiMethod<GetCallbackServers
     }
 
     public GetCallbackServers setServerIds(List<Integer> serverIds) {
-        return addParam("server_ids", serverIds);
+        return addParam("server_ids", listConverter.convert(serverIds));
     }
 
     @Override

@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class GetVideoUploadServer extends AuthorizedVkApiMethod<GetVideoUploadServer.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public GetVideoUploadServer(String accessToken) {
         super(accessToken);
@@ -61,7 +62,7 @@ public class GetVideoUploadServer extends AuthorizedVkApiMethod<GetVideoUploadSe
     }
 
     public GetVideoUploadServer setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", userIds);
+        return addParam("user_ids", listConverter.convert(userIds));
     }
 
     @Override

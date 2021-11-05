@@ -17,6 +17,8 @@ import java.util.List;
  */
 public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
 
     public GetById(String accessToken) {
         super(accessToken);
@@ -37,7 +39,7 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     }
 
     public GetById setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", messageIds);
+        return addParam("message_ids", listConverter.convert(messageIds));
     }
 
     public GetById setPreviewLength(int previewLength) {
@@ -53,7 +55,7 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetById setGroupId(int groupId) {

@@ -2,9 +2,9 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.http.params.AttachableParam;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 import java.util.Arrays;
@@ -19,6 +19,8 @@ import java.util.List;
  */
 public class Edit extends AuthorizedVkApiMethod<IntegerResponse> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = VkBotsConfig.getInstance().getVkAttachmentsListConverterConverter();
 
     public Edit(String accessToken) {
         super(accessToken);
@@ -34,12 +36,12 @@ public class Edit extends AuthorizedVkApiMethod<IntegerResponse> {
         return IntegerResponse.class;
     }
 
-    public Edit setAttachments(AttachableParam... attachments) {
+    public Edit setAttachments(VkAttachment... attachments) {
         return setAttachments(Arrays.asList(attachments));
     }
 
-    public Edit setAttachments(List<AttachableParam> attachments) {
-        return addParam("attachment", attachments);
+    public Edit setAttachments(List<VkAttachment> attachments) {
+        return addParam("attachment", listConverter.convert(vkAttachmentsListConverter.convert(attachments)));
     }
 
     public Edit setPeerId(int peerId) {

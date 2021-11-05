@@ -20,6 +20,7 @@ import java.util.List;
  */
 public class GetImportantMessages extends AuthorizedVkApiMethod<GetImportantMessages.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public GetImportantMessages(String accessToken) {
         super(accessToken);
@@ -56,7 +57,7 @@ public class GetImportantMessages extends AuthorizedVkApiMethod<GetImportantMess
     }
 
     public GetImportantMessages setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetImportantMessages setExtended(boolean extended) {

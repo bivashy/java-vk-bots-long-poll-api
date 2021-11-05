@@ -1,5 +1,7 @@
 package api.longpoll.bots.methods.impl.users;
 
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.basic.User;
@@ -16,6 +18,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/users.get">https://vk.com/dev/users.get</a>
  */
 public class Get extends AuthorizedVkApiMethod<Get.Response> {
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public Get(String accessToken) {
         super(accessToken);
     }
@@ -35,7 +39,7 @@ public class Get extends AuthorizedVkApiMethod<Get.Response> {
     }
 
     public Get setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", userIds);
+        return addParam("user_ids", listConverter.convert(userIds));
     }
 
     public Get setFields(String... fields) {
@@ -43,7 +47,7 @@ public class Get extends AuthorizedVkApiMethod<Get.Response> {
     }
 
     public Get setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public Get setNameCase(String nameCase) {

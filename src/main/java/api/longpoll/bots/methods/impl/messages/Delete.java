@@ -19,6 +19,8 @@ import java.util.Map;
  */
 public class Delete extends AuthorizedVkApiMethod<Delete.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
 
     public Delete(String accessToken) {
         super(accessToken);
@@ -39,7 +41,7 @@ public class Delete extends AuthorizedVkApiMethod<Delete.Response> {
     }
 
     public Delete setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", messageIds);
+        return addParam("message_ids", listConverter.convert(messageIds));
     }
 
     public Delete setSpam(boolean spam) {
@@ -59,7 +61,7 @@ public class Delete extends AuthorizedVkApiMethod<Delete.Response> {
     }
 
     public Delete setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", conversationMessageIds);
+        return addParam("conversation_message_ids", listConverter.convert(conversationMessageIds));
     }
 
     public Delete setPeerId(int peerId) {

@@ -1,5 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.basic.Community;
@@ -16,6 +18,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/groups.getById">https://vk.com/dev/groups.getById</a>
  */
 public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public GetById(String accessToken) {
         super(accessToken);
     }
@@ -35,7 +39,7 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     }
 
     public GetById setGroupIds(List<Integer> groupIds) {
-        return addParam("group_ids", groupIds);
+        return addParam("group_ids", listConverter.convert(groupIds));
     }
 
     public GetById setGroupId(int groupId) {
@@ -47,7 +51,7 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     @Override

@@ -1,5 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.ExtendedVkList;
@@ -17,6 +19,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getConversationMembers">https://vk.com/dev/messages.getConversationMembers</a>
  */
 public class GetConversationMembers extends AuthorizedVkApiMethod<GetConversationMembers.Response> {
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public GetConversationMembers(String accessToken) {
         super(accessToken);
     }
@@ -41,7 +45,7 @@ public class GetConversationMembers extends AuthorizedVkApiMethod<GetConversatio
     }
 
     public GetConversationMembers setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetConversationMembers setGroupId(int groupId) {

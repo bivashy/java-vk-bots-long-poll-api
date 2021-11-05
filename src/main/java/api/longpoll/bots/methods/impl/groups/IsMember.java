@@ -22,6 +22,8 @@ import java.util.List;
  */
 public class IsMember extends AuthorizedVkApiMethod<IsMember.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
 
     public IsMember(String accessToken) {
         super(accessToken);
@@ -50,7 +52,7 @@ public class IsMember extends AuthorizedVkApiMethod<IsMember.Response> {
     }
 
     public IsMember setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", userIds);
+        return addParam("user_ids", listConverter.convert(userIds));
     }
 
     public IsMember setExtended(boolean extended) {

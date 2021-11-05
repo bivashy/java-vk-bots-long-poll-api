@@ -1,5 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
@@ -15,6 +17,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.createChat">https://vk.com/dev/messages.createChat</a>
  */
 public class CreateChat extends AuthorizedVkApiMethod<IntegerResponse> {
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public CreateChat(String accessToken) {
         super(accessToken);
     }
@@ -34,7 +38,7 @@ public class CreateChat extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public CreateChat setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", userIds);
+        return addParam("user_ids", listConverter.convert(userIds));
     }
 
     public CreateChat setTitle(String title) {

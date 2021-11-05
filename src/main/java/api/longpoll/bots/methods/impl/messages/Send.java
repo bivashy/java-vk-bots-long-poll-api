@@ -3,11 +3,11 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.adapters.deserializers.MessagesSendResultDeserializer;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.http.params.AttachableParam;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
+import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,6 +24,8 @@ import java.util.List;
  */
 public class Send extends AuthorizedVkApiMethod<Send.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = VkBotsConfig.getInstance().getVkAttachmentsListConverterConverter();
 
     public Send(String accessToken) {
         super(accessToken);
@@ -40,12 +42,12 @@ public class Send extends AuthorizedVkApiMethod<Send.Response> {
         return Response.class;
     }
 
-    public Send setAttachments(AttachableParam... attachments) {
+    public Send setAttachments(VkAttachment... attachments) {
         return setAttachments(Arrays.asList(attachments));
     }
 
-    public Send setAttachments(List<AttachableParam> attachments) {
-        return addParam("attachment", attachments);
+    public Send setAttachments(List<VkAttachment> attachments) {
+        return addParam("attachment", listConverter.convert(vkAttachmentsListConverter.convert(attachments)));
     }
 
     public Send setUserId(int userId) {
@@ -73,7 +75,7 @@ public class Send extends AuthorizedVkApiMethod<Send.Response> {
     }
 
     public Send setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", userIds);
+        return addParam("user_ids", listConverter.convert(userIds));
     }
 
     public Send setMessage(String message) {
@@ -97,7 +99,7 @@ public class Send extends AuthorizedVkApiMethod<Send.Response> {
     }
 
     public Send setForwardMessages(List<Integer> forwardMessages) {
-        return addParam("forward_messages", forwardMessages);
+        return addParam("forward_messages", listConverter.convert(forwardMessages));
     }
 
     public Send setStickerId(int stickerId) {

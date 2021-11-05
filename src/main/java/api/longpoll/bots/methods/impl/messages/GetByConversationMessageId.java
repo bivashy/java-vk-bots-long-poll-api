@@ -18,6 +18,8 @@ import java.util.List;
  */
 public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConversationMessageId.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
 
     public GetByConversationMessageId(String accessToken) {
         super(accessToken);
@@ -42,7 +44,7 @@ public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConve
     }
 
     public GetByConversationMessageId setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", conversationMessageIds);
+        return addParam("conversation_message_ids", listConverter.convert(conversationMessageIds));
     }
 
     public GetByConversationMessageId setExtended(boolean extended) {
@@ -54,7 +56,7 @@ public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConve
     }
 
     public GetByConversationMessageId setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetByConversationMessageId setGroupId(int groupId) {

@@ -19,6 +19,7 @@ import java.util.List;
  */
 public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadServer.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public GetPhotoUploadServer(String accessToken) {
         super(accessToken);
@@ -63,7 +64,7 @@ public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadSe
     }
 
     public GetPhotoUploadServer setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", userIds);
+        return addParam("user_ids", listConverter.convert(userIds));
     }
 
     @Override

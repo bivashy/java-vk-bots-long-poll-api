@@ -1,8 +1,10 @@
 package api.longpoll.bots.methods.impl.wall;
 
-import api.longpoll.bots.http.params.BaseAttachable;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.AuthorizedVkApiMethod;
 import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
 
@@ -17,6 +19,9 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
  */
 public class CreateComment extends AuthorizedVkApiMethod<CreateComment.Response> {
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = VkBotsConfig.getInstance().getVkAttachmentsListConverterConverter();
+
     public CreateComment(String accessToken) {
         super(accessToken);
     }
@@ -31,12 +36,12 @@ public class CreateComment extends AuthorizedVkApiMethod<CreateComment.Response>
         return Response.class;
     }
 
-    public CreateComment setAttachments(BaseAttachable... attachments) {
+    public CreateComment setAttachments(VkAttachment... attachments) {
         return setAttachments(Arrays.asList(attachments));
     }
 
-    public CreateComment setAttachments(List<BaseAttachable> attachments) {
-        return addParam("attachment", attachments);
+    public CreateComment setAttachments(List<VkAttachment> attachments) {
+        return addParam("attachment", listConverter.convert(vkAttachmentsListConverter.convert(attachments)));
     }
 
     public CreateComment setOwnerId(int ownerId) {

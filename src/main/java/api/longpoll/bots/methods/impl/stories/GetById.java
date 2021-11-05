@@ -20,6 +20,7 @@ import java.util.List;
  */
 public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public GetById(String accessToken) {
         super(accessToken);
@@ -40,7 +41,7 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     }
 
     public GetById setStories(List<String> stories) {
-        return addParam("stories", stories);
+        return addParam("stories", listConverter.convert(stories));
     }
 
     public GetById setExtended(boolean extended) {
@@ -52,7 +53,7 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     @Override

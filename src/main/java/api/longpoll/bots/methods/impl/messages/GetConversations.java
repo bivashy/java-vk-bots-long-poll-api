@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public GetConversations(String accessToken) {
         super(accessToken);
@@ -57,7 +58,7 @@ public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Res
     }
 
     public GetConversations setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetConversations setGroupId(int groupId) {

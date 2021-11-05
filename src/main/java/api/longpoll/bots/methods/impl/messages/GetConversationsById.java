@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class GetConversationsById extends AuthorizedVkApiMethod<GetConversationsById.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public GetConversationsById(String accessToken) {
         super(accessToken);
@@ -42,7 +43,7 @@ public class GetConversationsById extends AuthorizedVkApiMethod<GetConversations
     }
 
     public GetConversationsById setPeerIds(List<Integer> peerIds) {
-        return addParam("peer_ids", peerIds);
+        return addParam("peer_ids", listConverter.convert(peerIds));
     }
 
     public GetConversationsById setExtended(boolean extended) {
@@ -54,7 +55,7 @@ public class GetConversationsById extends AuthorizedVkApiMethod<GetConversations
     }
 
     public GetConversationsById setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetConversationsById setGroupId(int groupId) {

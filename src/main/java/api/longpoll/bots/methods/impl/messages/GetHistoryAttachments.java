@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttachments.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public GetHistoryAttachments(String accessToken) {
         super(accessToken);
@@ -62,7 +63,7 @@ public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttac
     }
 
     public GetHistoryAttachments setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetHistoryAttachments setGroupId(int groupId) {

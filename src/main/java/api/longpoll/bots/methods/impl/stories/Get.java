@@ -20,6 +20,7 @@ import java.util.List;
  */
 public class Get extends AuthorizedVkApiMethod<Get.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public Get(String accessToken) {
         super(accessToken);
@@ -48,7 +49,7 @@ public class Get extends AuthorizedVkApiMethod<Get.Response> {
     }
 
     public Get setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     @Override
