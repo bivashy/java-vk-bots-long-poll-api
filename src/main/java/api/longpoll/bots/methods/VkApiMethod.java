@@ -69,14 +69,10 @@ public abstract class VkApiMethod<Response> implements HttpRequest {
      * @throws VkApiException if errors occur.
      */
     public Response execute() throws VkApiException {
-        log.debug("Sending: method={}, url={}, params={}", getRequestMethod(), getUrl(), params);
-
-        httpClient.setMethod(getRequestMethod());
-        httpClient.setUrl(getUrl());
-        httpClient.setParams(params);
-
         try {
-            String body = httpClient.execute();
+            log.debug("Sending: method={}, url={}, params={}", getRequestMethod(), getUrl(), params);
+
+            String body = httpClient.execute(this);
             log.debug("Received: {}", body);
 
             if (vkApiResponseValidator.isValid(body)) {
