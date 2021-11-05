@@ -46,11 +46,6 @@ public abstract class VkApiMethod<Response> {
     private final Map<String, String> params = new HashMap<>();
 
     /**
-     * Params converter.
-     */
-    private VkApiParamsConverter vkApiParamsConverter;
-
-    /**
      * HTTP client.
      */
     private HttpClient httpClient;
@@ -137,17 +132,6 @@ public abstract class VkApiMethod<Response> {
 
     public String getMethod() {
         return "POST";
-    }
-
-    public VkApiParamsConverter getVkApiParamsConverter() {
-        if (vkApiParamsConverter == null) {
-            vkApiParamsConverter = new DefaultVkApiParamsConverter();
-        }
-        return vkApiParamsConverter;
-    }
-
-    public void setVkApiParamsConverter(VkApiParamsConverter vkApiParamsConverter) {
-        this.vkApiParamsConverter = vkApiParamsConverter;
     }
 
     public AsyncCaller getAsyncCaller() {
