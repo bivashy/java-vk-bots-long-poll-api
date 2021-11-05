@@ -7,6 +7,8 @@ import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentsListConverter;
 import api.longpoll.bots.factory.JsonConverterFactory;
+import api.longpoll.bots.http.HttpClient;
+import api.longpoll.bots.http.JsoupHttpClient;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.validators.DefaultVkApiResponseValidator;
 import api.longpoll.bots.validators.VkApiResponseValidator;
@@ -23,6 +25,7 @@ public class VkBotsConfig {
     private Gson gson;
     private JsonConverterFactory jsonConverterFactory;
     private VkApiResponseValidator vkApiResponseValidator;
+    private HttpClient httpClient;
 
     private VkBotsConfig() {
     }
@@ -106,5 +109,16 @@ public class VkBotsConfig {
 
     public void setVkApiResponseValidator(VkApiResponseValidator vkApiResponseValidator) {
         this.vkApiResponseValidator = vkApiResponseValidator;
+    }
+
+    public HttpClient getHttpClient() {
+        if (httpClient == null) {
+            httpClient = new JsoupHttpClient();
+        }
+        return httpClient;
+    }
+
+    public void setHttpClient(HttpClient httpClient) {
+        this.httpClient = httpClient;
     }
 }

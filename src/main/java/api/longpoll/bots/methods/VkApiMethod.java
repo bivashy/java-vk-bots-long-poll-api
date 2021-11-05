@@ -48,7 +48,7 @@ public abstract class VkApiMethod<Response> {
     /**
      * HTTP client.
      */
-    private HttpClient httpClient;
+    private final HttpClient httpClient = VkBotsConfig.getInstance().getHttpClient();
 
     /**
      * Async executor.
@@ -73,13 +73,12 @@ public abstract class VkApiMethod<Response> {
     public Response execute() throws VkApiException {
         log.debug("Sending: method={}, url={}, params={}", getMethod(), getUrl(), params);
 
-        HttpClient vkApiHttpClient = getVkApiHttpClient();
-        vkApiHttpClient.setMethod(getMethod());
-        vkApiHttpClient.setUrl(getUrl());
-        vkApiHttpClient.setParams(params);
+        httpClient.setMethod(getMethod());
+        httpClient.setUrl(getUrl());
+        httpClient.setParams(params);
 
         try {
-            String body = vkApiHttpClient.execute();
+            String body = httpClient.execute();
             log.debug("Received: {}", body);
 
             if (vkApiResponseValidator.isValid(body)) {
@@ -117,17 +116,6 @@ public abstract class VkApiMethod<Response> {
     public VkApiMethod<Response> addParam(String key, Object value) {
         params.put(key, String.valueOf(value));
         return this;
-    }
-
-    public HttpClient getVkApiHttpClient() {
-        if (httpClient == null) {
-            httpClient = new JsoupHttpClient();
-        }
-        return httpClient;
-    }
-
-    public void setVkApiHttpClient(HttpClient httpClient) {
-        this.httpClient = httpClient;
     }
 
     public String getMethod() {
