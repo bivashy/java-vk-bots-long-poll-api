@@ -22,7 +22,7 @@ public class GetInviteLink extends AuthorizedVkApiMethod<GetInviteLink.Response>
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.getInviteLink");
     }
 

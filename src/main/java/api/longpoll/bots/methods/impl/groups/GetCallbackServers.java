@@ -26,7 +26,7 @@ public class GetCallbackServers extends AuthorizedVkApiMethod<GetCallbackServers
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.getCallbackServers");
     }
 

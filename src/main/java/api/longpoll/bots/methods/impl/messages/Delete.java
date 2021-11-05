@@ -27,7 +27,7 @@ public class Delete extends AuthorizedVkApiMethod<Delete.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.delete");
     }
 

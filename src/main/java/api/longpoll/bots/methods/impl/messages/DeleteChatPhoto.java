@@ -19,7 +19,7 @@ public class DeleteChatPhoto extends AuthorizedVkApiMethod<DeleteChatPhoto.Respo
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.deleteChatPhoto");
     }
 

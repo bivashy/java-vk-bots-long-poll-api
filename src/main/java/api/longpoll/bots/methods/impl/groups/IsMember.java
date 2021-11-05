@@ -30,7 +30,7 @@ public class IsMember extends AuthorizedVkApiMethod<IsMember.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.isMember");
     }
 

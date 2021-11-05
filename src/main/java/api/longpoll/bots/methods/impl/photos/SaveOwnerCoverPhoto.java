@@ -21,7 +21,7 @@ public class SaveOwnerCoverPhoto extends AuthorizedVkApiMethod<SaveOwnerCoverPho
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("photos.saveOwnerCoverPhoto");
     }
 

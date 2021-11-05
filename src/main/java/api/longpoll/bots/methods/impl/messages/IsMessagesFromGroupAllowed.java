@@ -20,7 +20,7 @@ public class IsMessagesFromGroupAllowed extends AuthorizedVkApiMethod<IsMessages
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.isMessagesFromGroupAllowed");
     }
 

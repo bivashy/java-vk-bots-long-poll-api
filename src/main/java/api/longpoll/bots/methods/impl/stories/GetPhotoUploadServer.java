@@ -26,7 +26,7 @@ public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadSe
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("stories.getPhotoUploadServer");
     }
 

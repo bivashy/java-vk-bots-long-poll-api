@@ -18,7 +18,7 @@ public class GetLongPollSettings extends AuthorizedVkApiMethod<GetLongPollSettin
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.getLongPollSettings");
     }
 

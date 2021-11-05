@@ -21,7 +21,7 @@ public class SaveMessagesPhoto extends AuthorizedVkApiMethod<SaveMessagesPhoto.R
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("photos.saveMessagesPhoto");
     }
 

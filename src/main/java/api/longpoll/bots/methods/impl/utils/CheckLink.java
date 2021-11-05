@@ -18,7 +18,7 @@ public class CheckLink extends AuthorizedVkApiMethod<CheckLink.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("utils.checkLink");
     }
 

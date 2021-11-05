@@ -14,7 +14,7 @@ public class GetWallUploadServer extends AuthorizedVkApiMethod<GetWallUploadServ
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("docs.getWallUploadServer");
     }
 

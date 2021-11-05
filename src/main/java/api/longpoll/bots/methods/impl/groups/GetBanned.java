@@ -28,7 +28,7 @@ public class GetBanned extends AuthorizedVkApiMethod<GetBanned.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.getBanned");
     }
 

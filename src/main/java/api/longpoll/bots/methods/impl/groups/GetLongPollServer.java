@@ -23,7 +23,7 @@ public class GetLongPollServer extends AuthorizedVkApiMethod<GetLongPollServer.R
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.getLongPollServer");
     }
 

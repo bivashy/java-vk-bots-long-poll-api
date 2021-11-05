@@ -22,7 +22,7 @@ public class GetShortLink extends AuthorizedVkApiMethod<GetShortLink.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("utils.getShortLink");
     }
 

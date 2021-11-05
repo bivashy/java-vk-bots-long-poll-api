@@ -18,7 +18,7 @@ public class Pin extends AuthorizedVkApiMethod<Pin.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.pin");
     }
 

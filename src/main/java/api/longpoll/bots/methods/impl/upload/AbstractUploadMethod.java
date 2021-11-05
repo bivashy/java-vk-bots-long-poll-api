@@ -6,7 +6,7 @@ public abstract class AbstractUploadMethod<Response> extends FileUploadingVkApiM
     private String uploadUrl;
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return uploadUrl;
     }
 

@@ -29,7 +29,7 @@ public class GetMembers extends AuthorizedVkApiMethod<GetMembers.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.getMembers");
     }
 

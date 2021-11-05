@@ -18,7 +18,7 @@ public class GetStats extends AuthorizedVkApiMethod<GetStats.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("stories.getStats");
     }
 

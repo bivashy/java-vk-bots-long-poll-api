@@ -27,7 +27,7 @@ public class GetImportantMessages extends AuthorizedVkApiMethod<GetImportantMess
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.getImportantMessages");
     }
 

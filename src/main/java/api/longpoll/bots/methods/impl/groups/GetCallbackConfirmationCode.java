@@ -18,7 +18,7 @@ public class GetCallbackConfirmationCode extends AuthorizedVkApiMethod<GetCallba
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.getCallbackConfirmationCode");
     }
 

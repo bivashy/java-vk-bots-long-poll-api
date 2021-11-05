@@ -19,7 +19,7 @@ public class GetGroupOrders extends AuthorizedVkApiMethod<GetGroupOrders.Respons
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("market.getGroupOrders");
     }
 

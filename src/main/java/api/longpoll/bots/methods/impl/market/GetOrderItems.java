@@ -19,7 +19,7 @@ public class GetOrderItems extends AuthorizedVkApiMethod<GetOrderItems.Response>
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("market.getOrderItems");
     }
 

@@ -18,7 +18,7 @@ public class GetMessagesUploadServer extends AuthorizedVkApiMethod<GetMessagesUp
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("docs.getMessagesUploadServer");
     }
 

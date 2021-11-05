@@ -24,7 +24,7 @@ public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Res
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.getConversations");
     }
 

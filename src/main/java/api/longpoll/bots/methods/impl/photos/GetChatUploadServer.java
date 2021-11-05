@@ -16,7 +16,7 @@ public class GetChatUploadServer extends AuthorizedVkApiMethod<GetChatUploadServ
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("photos.getChatUploadServer");
     }
 

@@ -27,7 +27,7 @@ public class Get extends AuthorizedVkApiMethod<Get.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("stories.get");
     }
 

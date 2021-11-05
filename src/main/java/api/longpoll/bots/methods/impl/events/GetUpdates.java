@@ -26,7 +26,7 @@ public class GetUpdates extends VkApiMethod<GetUpdates.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return server;
     }
 

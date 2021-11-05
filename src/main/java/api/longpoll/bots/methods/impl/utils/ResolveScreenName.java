@@ -18,7 +18,7 @@ public class ResolveScreenName extends AuthorizedVkApiMethod<ResolveScreenName.R
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("utils.resolveScreenName");
     }
 

@@ -25,7 +25,7 @@ public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.getById");
     }
 

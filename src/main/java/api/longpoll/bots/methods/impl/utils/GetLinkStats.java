@@ -24,7 +24,7 @@ public class GetLinkStats extends AuthorizedVkApiMethod<GetLinkStats.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("utils.getLinkStats");
     }
 

@@ -20,7 +20,7 @@ public class Search extends AuthorizedVkApiMethod<Search.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("docs.search");
     }
 

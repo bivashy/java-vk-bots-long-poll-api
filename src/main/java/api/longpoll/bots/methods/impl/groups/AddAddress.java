@@ -21,7 +21,7 @@ public class AddAddress extends AuthorizedVkApiMethod<AddAddress.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.addAddress");
     }
 

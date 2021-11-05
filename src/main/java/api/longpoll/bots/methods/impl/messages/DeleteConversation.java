@@ -18,7 +18,7 @@ public class DeleteConversation extends AuthorizedVkApiMethod<DeleteConversation
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.deleteConversation");
     }
 

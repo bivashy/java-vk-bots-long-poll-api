@@ -24,7 +24,7 @@ public class SearchConversations extends AuthorizedVkApiMethod<SearchConversatio
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.searchConversations");
     }
 

@@ -29,7 +29,7 @@ public class GetConversationsById extends AuthorizedVkApiMethod<GetConversations
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.getConversationsById");
     }
 

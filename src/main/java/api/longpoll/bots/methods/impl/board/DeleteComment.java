@@ -17,7 +17,7 @@ public class DeleteComment extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("board.deleteComment");
     }
 

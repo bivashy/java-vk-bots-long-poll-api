@@ -27,7 +27,7 @@ public class CreateComment extends AuthorizedVkApiMethod<CreateComment.Response>
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("wall.createComment");
     }
 

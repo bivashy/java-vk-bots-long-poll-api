@@ -29,7 +29,7 @@ public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttac
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.getHistoryAttachments");
     }
 

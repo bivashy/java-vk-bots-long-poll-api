@@ -22,7 +22,7 @@ public class GetOrderById extends AuthorizedVkApiMethod<GetOrderById.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("market.getOrderById");
     }
 

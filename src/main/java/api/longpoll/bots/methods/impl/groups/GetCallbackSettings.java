@@ -20,7 +20,7 @@ public class GetCallbackSettings extends AuthorizedVkApiMethod<GetCallbackSettin
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.getCallbackSettings");
     }
 

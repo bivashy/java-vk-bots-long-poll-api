@@ -26,7 +26,7 @@ public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConve
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.getByConversationMessageId");
     }
 

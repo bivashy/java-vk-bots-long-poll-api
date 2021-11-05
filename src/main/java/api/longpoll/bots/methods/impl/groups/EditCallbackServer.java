@@ -17,7 +17,7 @@ public class EditCallbackServer extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.editCallbackServer");
     }
 

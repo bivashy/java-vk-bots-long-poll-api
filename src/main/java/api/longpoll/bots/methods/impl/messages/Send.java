@@ -33,7 +33,7 @@ public class Send extends AuthorizedVkApiMethod<Send.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.send");
     }
 

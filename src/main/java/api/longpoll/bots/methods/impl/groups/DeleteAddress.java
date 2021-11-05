@@ -15,7 +15,7 @@ public class DeleteAddress extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.deleteAddress");
     }
 

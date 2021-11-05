@@ -20,7 +20,7 @@ public class GetTokenPermissions extends AuthorizedVkApiMethod<GetTokenPermissio
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.getTokenPermissions");
     }
 

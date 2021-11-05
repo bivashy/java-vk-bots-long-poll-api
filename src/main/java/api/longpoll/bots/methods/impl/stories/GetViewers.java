@@ -29,7 +29,7 @@ public class GetViewers extends AuthorizedVkApiMethod<GetViewers.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("stories.getViewers");
     }
 

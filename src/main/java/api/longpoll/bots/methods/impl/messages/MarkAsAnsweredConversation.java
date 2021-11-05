@@ -19,7 +19,7 @@ public class MarkAsAnsweredConversation extends AuthorizedVkApiMethod<IntegerRes
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("messages.markAsAnsweredConversation");
     }
 

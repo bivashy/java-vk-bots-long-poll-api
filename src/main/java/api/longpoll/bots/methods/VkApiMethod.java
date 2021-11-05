@@ -5,6 +5,8 @@ import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.http.HttpClient;
+import api.longpoll.bots.http.HttpRequest;
+import api.longpoll.bots.http.MultipartFormData;
 import api.longpoll.bots.utils.async.AsyncCaller;
 import api.longpoll.bots.validators.VkApiResponseValidator;
 import org.slf4j.Logger;
@@ -20,21 +22,11 @@ import java.util.concurrent.CompletableFuture;
  *
  * @param <Response> VK API response type.
  */
-public abstract class VkApiMethod<Response> {
+public abstract class VkApiMethod<Response> implements HttpRequest {
     /**
      * Logger object.
      */
     private static final Logger log = LoggerFactory.getLogger(VkApiMethod.class);
-
-    /**
-     * Converts JSON string to POJO.
-     */
-    private final Converter<String, Response> jsonConverter = VkBotsConfig.getInstance().getJsonConverterFactory().get(getResponseType());
-
-    /**
-     * Validator to check if VK API response is valid.
-     */
-    private final VkApiResponseValidator vkApiResponseValidator = VkBotsConfig.getInstance().getVkApiResponseValidator();
 
     /**
      * Request params.
@@ -42,14 +34,24 @@ public abstract class VkApiMethod<Response> {
     private final Map<String, String> params = new HashMap<>();
 
     /**
+     * Async executor.
+     */
+    private final AsyncCaller asyncCaller = VkBotsConfig.getInstance().getAsyncCaller();
+
+    /**
      * HTTP client.
      */
     private final HttpClient httpClient = VkBotsConfig.getInstance().getHttpClient();
 
     /**
-     * Async executor.
+     * Validator to check if VK API response is valid.
      */
-    private final AsyncCaller asyncCaller = VkBotsConfig.getInstance().getAsyncCaller();
+    private final VkApiResponseValidator vkApiResponseValidator = VkBotsConfig.getInstance().getVkApiResponseValidator();
+
+    /**
+     * Converts JSON string to POJO.
+     */
+    private final Converter<String, Response> jsonConverter = VkBotsConfig.getInstance().getJsonConverterFactory().get(getResponseType());
 
     /**
      * Executes request to VK API asynchronously.
@@ -67,9 +69,9 @@ public abstract class VkApiMethod<Response> {
      * @throws VkApiException if errors occur.
      */
     public Response execute() throws VkApiException {
-        log.debug("Sending: method={}, url={}, params={}", getMethod(), getUrl(), params);
+        log.debug("Sending: method={}, url={}, params={}", getRequestMethod(), getUrl(), params);
 
-        httpClient.setMethod(getMethod());
+        httpClient.setMethod(getRequestMethod());
         httpClient.setUrl(getUrl());
         httpClient.setParams(params);
 
@@ -86,13 +88,6 @@ public abstract class VkApiMethod<Response> {
             throw new VkApiException(e);
         }
     }
-
-    /**
-     * Gets VK API URL.
-     *
-     * @return VK API URL.
-     */
-    protected abstract String getUrl();
 
     /**
      * Gets type of VK API response.
@@ -114,7 +109,18 @@ public abstract class VkApiMethod<Response> {
         return this;
     }
 
-    public String getMethod() {
+    @Override
+    public String getRequestMethod() {
         return "POST";
+    }
+
+    @Override
+    public Map<String, String> getParams() {
+        return params;
+    }
+
+    @Override
+    public MultipartFormData getMultipartFormData() {
+        return null;
     }
 }

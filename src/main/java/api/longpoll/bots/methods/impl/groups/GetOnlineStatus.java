@@ -19,7 +19,7 @@ public class GetOnlineStatus extends AuthorizedVkApiMethod<GetOnlineStatus.Respo
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.getOnlineStatus");
     }
 

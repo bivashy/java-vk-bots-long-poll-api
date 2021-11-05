@@ -19,7 +19,7 @@ public class EditAddress extends AuthorizedVkApiMethod<EditAddress.Response> {
     }
 
     @Override
-    protected String getUrl() {
+    public String getUrl() {
         return VkApiProperties.get("groups.editAddress");
     }
 
