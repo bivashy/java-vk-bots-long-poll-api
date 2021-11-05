@@ -1,5 +1,6 @@
-package api.longpoll.bots.http;
+package api.longpoll.bots.http.impl;
 
+import api.longpoll.bots.http.HttpClient;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 

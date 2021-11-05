@@ -8,7 +8,7 @@ import api.longpoll.bots.converter.impl.VkAttachmentConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentsListConverter;
 import api.longpoll.bots.factory.JsonConverterFactory;
 import api.longpoll.bots.http.HttpClient;
-import api.longpoll.bots.http.JsoupHttpClient;
+import api.longpoll.bots.http.impl.JsoupHttpClient;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.utils.async.AsyncCaller;
 import api.longpoll.bots.utils.async.DefaultAsyncCaller;
