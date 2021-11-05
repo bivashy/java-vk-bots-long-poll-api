@@ -44,7 +44,7 @@ public abstract class VkApiMethod<Response> {
     /**
      * Request params.
      */
-    private Map<String, Object> params;
+    private Map<String, String> params;
 
     /**
      * Params converter.
@@ -82,13 +82,12 @@ public abstract class VkApiMethod<Response> {
      * @throws VkApiException if errors occur.
      */
     public Response execute() throws VkApiException {
-        Map<String, String> stringParams = getVkApiParamsConverter().toStringParams(getParams());
-        log.debug("Sending: method={}, url={}, params={}", getMethod(), getUrl(), stringParams);
+        log.debug("Sending: method={}, url={}, params={}", getMethod(), getUrl(), params);
 
         HttpClient vkApiHttpClient = getVkApiHttpClient();
         vkApiHttpClient.setMethod(getMethod());
         vkApiHttpClient.setUrl(getUrl());
-        vkApiHttpClient.setParams(stringParams);
+        vkApiHttpClient.setParams(params);
 
         try {
             String body = vkApiHttpClient.execute();
@@ -127,7 +126,7 @@ public abstract class VkApiMethod<Response> {
      * @return current instance.
      */
     public VkApiMethod<Response> addParam(String key, Object value) {
-        getParams().put(key, value);
+        getParams().put(key, String.valueOf(value));
         return this;
     }
 
@@ -153,14 +152,14 @@ public abstract class VkApiMethod<Response> {
         this.vkApiResponseValidator = vkApiResponseValidator;
     }
 
-    public Map<String, Object> getParams() {
+    public Map<String, String> getParams() {
         if (params == null) {
             params = new HashMap<>();
         }
         return params;
     }
 
-    public void setParams(Map<String, Object> params) {
+    public void setParams(Map<String, String> params) {
         this.params = params;
     }
 
