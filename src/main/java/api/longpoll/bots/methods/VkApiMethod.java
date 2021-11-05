@@ -10,7 +10,6 @@ import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.JsoupHttpClient;
 import api.longpoll.bots.utils.async.AsyncCaller;
 import api.longpoll.bots.utils.async.DefaultAsyncCaller;
-import api.longpoll.bots.validators.DefaultVkApiResponseValidator;
 import api.longpoll.bots.validators.VkApiResponseValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +43,7 @@ public abstract class VkApiMethod<Response> {
     /**
      * Request params.
      */
-    private Map<String, String> params;
+    private final Map<String, String> params = new HashMap<>();
 
     /**
      * Params converter.
@@ -126,19 +125,8 @@ public abstract class VkApiMethod<Response> {
      * @return current instance.
      */
     public VkApiMethod<Response> addParam(String key, Object value) {
-        getParams().put(key, String.valueOf(value));
+        params.put(key, String.valueOf(value));
         return this;
-    }
-
-    public Map<String, String> getParams() {
-        if (params == null) {
-            params = new HashMap<>();
-        }
-        return params;
-    }
-
-    public void setParams(Map<String, String> params) {
-        this.params = params;
     }
 
     public HttpClient getVkApiHttpClient() {
