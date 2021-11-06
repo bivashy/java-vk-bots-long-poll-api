@@ -4,7 +4,7 @@ package api.longpoll.bots.validators;
  * VK API response validator.
  */
 @FunctionalInterface
-public interface VkApiResponseValidator {
+public interface VkResponseValidator {
     /**
      * Checks whether VK API response represented by JSON is valid
      *

@@ -10,10 +10,10 @@ import api.longpoll.bots.factory.JsonConverterFactory;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.impl.JsoupHttpClient;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
-import api.longpoll.bots.utils.async.AsyncCaller;
-import api.longpoll.bots.utils.async.DefaultAsyncCaller;
-import api.longpoll.bots.validators.DefaultVkApiResponseValidator;
-import api.longpoll.bots.validators.VkApiResponseValidator;
+import api.longpoll.bots.async.AsyncCaller;
+import api.longpoll.bots.async.DefaultAsyncCaller;
+import api.longpoll.bots.validators.DefaultVkResponseValidator;
+import api.longpoll.bots.validators.VkResponseValidator;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class VkBotsConfig {
     private Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverterConverter;
     private Gson gson;
     private JsonConverterFactory jsonConverterFactory;
-    private VkApiResponseValidator vkApiResponseValidator;
+    private VkResponseValidator vkResponseValidator;
     private HttpClient httpClient;
     private AsyncCaller asyncCaller;
 
@@ -103,15 +103,15 @@ public class VkBotsConfig {
         this.jsonConverterFactory = jsonConverterFactory;
     }
 
-    public VkApiResponseValidator getVkApiResponseValidator() {
-        if (vkApiResponseValidator == null) {
-            vkApiResponseValidator = new DefaultVkApiResponseValidator();
+    public VkResponseValidator getVkResponseValidator() {
+        if (vkResponseValidator == null) {
+            vkResponseValidator = new DefaultVkResponseValidator();
         }
-        return vkApiResponseValidator;
+        return vkResponseValidator;
     }
 
-    public void setVkApiResponseValidator(VkApiResponseValidator vkApiResponseValidator) {
-        this.vkApiResponseValidator = vkApiResponseValidator;
+    public void setVkResponseValidator(VkResponseValidator vkResponseValidator) {
+        this.vkResponseValidator = vkResponseValidator;
     }
 
     public HttpClient getHttpClient() {

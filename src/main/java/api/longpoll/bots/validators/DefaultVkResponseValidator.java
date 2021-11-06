@@ -7,7 +7,7 @@ import com.google.gson.JsonElement;
 /**
  * Default implementation of VK API response validator.
  */
-public class DefaultVkApiResponseValidator implements VkApiResponseValidator {
+public class DefaultVkResponseValidator implements VkResponseValidator {
     /**
      * JSON converter.
      */
