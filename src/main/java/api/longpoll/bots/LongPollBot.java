@@ -1,6 +1,6 @@
 package api.longpoll.bots;
 
-import api.longpoll.bots.methods.impl.VkBotsApi;
+import api.longpoll.bots.methods.impl.VkBotsMethods;
 import api.longpoll.bots.model.events.boards.BoardPost;
 import api.longpoll.bots.model.events.boards.BoardPostDelete;
 import api.longpoll.bots.model.events.likes.Like;
@@ -39,7 +39,7 @@ public abstract class LongPollBot {
     /**
      * VK Bots API methods.
      */
-    protected VkBotsApi vkBotsApi = new VkBotsApi(getAccessToken());
+    protected VkBotsMethods vk = new VkBotsMethods(getAccessToken());
 
     /**
      * Gets bot access token.
