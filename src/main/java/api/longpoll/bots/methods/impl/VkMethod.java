@@ -58,7 +58,7 @@ public abstract class VkMethod<Response> implements HttpRequest {
 
     public VkMethod(String accessToken) {
         addParam("access_token", accessToken);
-        addParam("v", VkApiProperties.get("api.version"));
+        addParam("v", VkBotsConfig.getInstance().getApiVersion());
     }
 
     public VkMethod() {

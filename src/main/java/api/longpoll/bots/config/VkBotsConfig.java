@@ -29,6 +29,7 @@ public class VkBotsConfig {
     private Validator<String> vkResponseValidator;
     private HttpClient httpClient;
     private AsyncCaller asyncCaller;
+    private String apiVersion;
 
     private VkBotsConfig() {
     }
@@ -134,5 +135,16 @@ public class VkBotsConfig {
 
     public void setAsyncCaller(AsyncCaller asyncCaller) {
         this.asyncCaller = asyncCaller;
+    }
+
+    public String getApiVersion() {
+        if (apiVersion == null) {
+            apiVersion = "5.131";
+        }
+        return apiVersion;
+    }
+
+    public void setApiVersion(String apiVersion) {
+        this.apiVersion = apiVersion;
     }
 }
