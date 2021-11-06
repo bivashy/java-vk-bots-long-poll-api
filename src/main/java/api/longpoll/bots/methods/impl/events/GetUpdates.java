@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.events;
 
-import api.longpoll.bots.methods.VkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.events.VkEvent;
 import com.google.gson.annotations.SerializedName;
 

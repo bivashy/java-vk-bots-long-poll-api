@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.docs;
 
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 
 /**
@@ -8,7 +8,7 @@ import api.longpoll.bots.methods.VkApiProperties;
  *
  * @see <a href="https://vk.com/dev/docs.getWallUploadServer">https://vk.com/dev/docs.getWallUploadServer</a>
  */
-public class GetWallUploadServer extends AuthorizedVkMethod<GetWallUploadServer.Response> {
+public class GetWallUploadServer extends VkMethod<GetWallUploadServer.Response> {
     public GetWallUploadServer(String accessToken) {
         super(accessToken);
     }

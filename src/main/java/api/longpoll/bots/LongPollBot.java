@@ -1,6 +1,6 @@
 package api.longpoll.bots;
 
-import api.longpoll.bots.methods.impl.VkBotsMethods;
+import api.longpoll.bots.methods.VkBotsMethods;
 import api.longpoll.bots.model.events.boards.BoardPost;
 import api.longpoll.bots.model.events.boards.BoardPostDelete;
 import api.longpoll.bots.model.events.likes.Like;

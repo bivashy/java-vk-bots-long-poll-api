@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.PinnedMessage;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -12,7 +12,7 @@ import api.longpoll.bots.model.response.GenericResponse;
  *
  * @see <a href="https://vk.com/dev/messages.pin">https://vk.com/dev/messages.pin</a>
  */
-public class Pin extends AuthorizedVkMethod<Pin.Response> {
+public class Pin extends VkMethod<Pin.Response> {
     public Pin(String accessToken) {
         super(accessToken);
     }

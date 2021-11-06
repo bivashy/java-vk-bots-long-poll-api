@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Community;
@@ -20,7 +20,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/groups.getBanned">https://vk.com/dev/groups.getBanned</a>
  */
-public class GetBanned extends AuthorizedVkMethod<GetBanned.Response> {
+public class GetBanned extends VkMethod<GetBanned.Response> {
     private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public GetBanned(String accessToken) {

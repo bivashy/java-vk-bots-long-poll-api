@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.StoriesFeedBlock;
 import api.longpoll.bots.model.response.ExtendedVkList;
@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/stories.getReplies">https://vk.com/dev/stories.getReplies</a>
  */
-public class GetReplies extends AuthorizedVkMethod<GetReplies.Response> {
+public class GetReplies extends VkMethod<GetReplies.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
     private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 

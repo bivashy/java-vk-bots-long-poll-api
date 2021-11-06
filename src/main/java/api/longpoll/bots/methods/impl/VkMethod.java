@@ -1,4 +1,4 @@
-package api.longpoll.bots.methods;
+package api.longpoll.bots.methods.impl;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
@@ -8,6 +8,7 @@ import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.HttpRequest;
 import api.longpoll.bots.http.MultipartFormData;
 import api.longpoll.bots.async.AsyncCaller;
+import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.validator.Validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +34,8 @@ public abstract class VkMethod<Response> implements HttpRequest {
      */
     private final Map<String, String> params = new HashMap<>();
 
+    private MultipartFormData multipartFormData;
+
     /**
      * Async executor.
      */
@@ -52,6 +55,14 @@ public abstract class VkMethod<Response> implements HttpRequest {
      * Converts JSON string to POJO.
      */
     private final Converter<String, Response> jsonConverter = VkBotsConfig.getInstance().getJsonConverterFactory().get(getResponseType());
+
+    public VkMethod(String accessToken) {
+        addParam("access_token", accessToken);
+        addParam("v", VkApiProperties.get("api.version"));
+    }
+
+    public VkMethod() {
+    }
 
     /**
      * Executes request to VK API asynchronously.
@@ -117,6 +128,11 @@ public abstract class VkMethod<Response> implements HttpRequest {
 
     @Override
     public MultipartFormData getMultipartFormData() {
-        return null;
+        return multipartFormData;
+    }
+
+    public VkMethod<Response> setMultipartFormData(MultipartFormData multipartFormData) {
+        this.multipartFormData = multipartFormData;
+        return this;
     }
 }

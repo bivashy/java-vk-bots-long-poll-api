@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.basic.Chat;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/messages.setChatPhoto">https://vk.com/dev/messages.setChatPhoto</a>
  */
-public class SetChatPhoto extends AuthorizedVkMethod<SetChatPhoto.Response> {
+public class SetChatPhoto extends VkMethod<SetChatPhoto.Response> {
     public SetChatPhoto(String accessToken) {
         super(accessToken);
     }

@@ -1,4 +1,4 @@
-package api.longpoll.bots.methods.impl;
+package api.longpoll.bots.methods;
 
 /**
  * Provides all VK APIs available for Bots.

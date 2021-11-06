@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/stories.delete">https://vk.com/dev/stories.delete</a>
  */
-public class Delete extends AuthorizedVkMethod<IntegerResponse> {
+public class Delete extends VkMethod<IntegerResponse> {
     private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public Delete(String accessToken) {

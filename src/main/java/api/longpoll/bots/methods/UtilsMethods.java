@@ -1,4 +1,4 @@
-package api.longpoll.bots.methods.impl;
+package api.longpoll.bots.methods;
 
 import api.longpoll.bots.methods.impl.utils.CheckLink;
 import api.longpoll.bots.methods.impl.utils.GetLinkStats;

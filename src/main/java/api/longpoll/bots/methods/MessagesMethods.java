@@ -1,4 +1,4 @@
-package api.longpoll.bots.methods.impl;
+package api.longpoll.bots.methods;
 
 import api.longpoll.bots.methods.impl.messages.CreateChat;
 import api.longpoll.bots.methods.impl.messages.Delete;

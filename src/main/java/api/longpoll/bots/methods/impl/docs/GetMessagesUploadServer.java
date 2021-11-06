@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.docs;
 
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/docs.getMessagesUploadServer">https://vk.com/dev/docs.getMessagesUploadServer</a>
  */
-public class GetMessagesUploadServer extends AuthorizedVkMethod<GetMessagesUploadServer.Response> {
+public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.Response> {
     public GetMessagesUploadServer(String accessToken) {
         super(accessToken);
     }

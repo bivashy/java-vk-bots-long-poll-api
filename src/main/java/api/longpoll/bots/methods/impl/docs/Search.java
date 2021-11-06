@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.docs;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.media.Doc;
@@ -12,7 +12,7 @@ import api.longpoll.bots.model.objects.media.Doc;
  *
  * @see <a href="https://vk.com/dev/docs.search">https://vk.com/dev/docs.search</a>
  */
-public class Search extends AuthorizedVkMethod<Search.Response> {
+public class Search extends VkMethod<Search.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public Search(String accessToken) {

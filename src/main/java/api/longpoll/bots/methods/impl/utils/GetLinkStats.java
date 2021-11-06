@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.utils;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
  */
-public class GetLinkStats extends AuthorizedVkMethod<GetLinkStats.Response> {
+public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public GetLinkStats(String accessToken) {

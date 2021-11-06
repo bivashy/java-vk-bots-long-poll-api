@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.wall;
 
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -9,7 +9,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/wall.openComments">https://vk.com/dev/wall.openComments</a>
  */
-public class OpenComments extends AuthorizedVkMethod<IntegerResponse> {
+public class OpenComments extends VkMethod<IntegerResponse> {
     public OpenComments(String accessToken) {
         super(accessToken);
     }

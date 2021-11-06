@@ -1,20 +1,32 @@
 package api.longpoll.bots.methods.impl.upload;
 
+import api.longpoll.bots.http.MultipartFormData;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.FileType;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.InputStream;
 
 /**
  * Implements uploading photo in VK API.
  */
-public class UploadPhoto extends AbstractUploadMethod<UploadPhoto.Response> {
+public class UploadPhoto extends UploadMethod<UploadPhoto.Response> {
     @Override
     protected Class<Response> getResponseType() {
         return Response.class;
     }
 
     @Override
-    protected FileType getType() {
-        return FileType.PHOTO;
+    public UploadPhoto setUrl(String uploadUrl) {
+        return (UploadPhoto) super.setUrl(uploadUrl);
+    }
+
+    public UploadPhoto setPhoto(InputStream photo) {
+        return (UploadPhoto) super.setMultipartFormData(new MultipartFormData(
+                FileType.PHOTO,
+                "photo",
+                photo
+        ));
     }
 
     /**

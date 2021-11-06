@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.market;
 
-import api.longpoll.bots.methods.AuthorizedVkMethod;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -11,7 +11,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/market.editOrder">https://vk.com/dev/market.editOrder</a>
  */
-public class EditOrder extends AuthorizedVkMethod<IntegerResponse> {
+public class EditOrder extends VkMethod<IntegerResponse> {
     public EditOrder(String accessToken) {
         super(accessToken);
     }
