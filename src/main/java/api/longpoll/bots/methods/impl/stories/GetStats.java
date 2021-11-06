@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/stories.getStats">https://vk.com/dev/stories.getStats</a>
  */
-public class GetStats extends AuthorizedVkApiMethod<GetStats.Response> {
+public class GetStats extends AuthorizedVkMethod<GetStats.Response> {
     public GetStats(String accessToken) {
         super(accessToken);
     }

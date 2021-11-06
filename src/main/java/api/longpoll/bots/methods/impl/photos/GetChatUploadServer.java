@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.photos;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 
 /**
@@ -10,7 +10,7 @@ import api.longpoll.bots.methods.VkApiProperties;
  *
  * @see <a href="https://vk.com/dev/photos.getChatUploadServer">https://vk.com/dev/photos.getChatUploadServer</a>
  */
-public class GetChatUploadServer extends AuthorizedVkApiMethod<GetChatUploadServer.Response> {
+public class GetChatUploadServer extends AuthorizedVkMethod<GetChatUploadServer.Response> {
     public GetChatUploadServer(String accessToken) {
         super(accessToken);
     }

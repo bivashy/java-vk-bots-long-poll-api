@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -11,7 +11,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/stories.hideReply">https://vk.com/dev/stories.hideReply</a>
  */
-public class HideReply extends AuthorizedVkApiMethod<IntegerResponse> {
+public class HideReply extends AuthorizedVkMethod<IntegerResponse> {
     public HideReply(String accessToken) {
         super(accessToken);
     }

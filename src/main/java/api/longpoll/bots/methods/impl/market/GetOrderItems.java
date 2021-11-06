@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.market;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.media.MarketItem;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/market.getOrderItems">https://vk.com/dev/market.getOrderItems</a>
  */
-public class GetOrderItems extends AuthorizedVkApiMethod<GetOrderItems.Response> {
+public class GetOrderItems extends AuthorizedVkMethod<GetOrderItems.Response> {
     public GetOrderItems(String accessToken) {
         super(accessToken);
     }

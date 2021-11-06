@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.Story;
 import api.longpoll.bots.model.objects.additional.VkList;
@@ -11,7 +11,7 @@ import api.longpoll.bots.model.response.GenericResponse;
  *
  * @see <a href="https://vk.com/dev/stories.save">https://vk.com/dev/stories.save</a>
  */
-public class Save extends AuthorizedVkApiMethod<Save.Response> {
+public class Save extends AuthorizedVkMethod<Save.Response> {
     public Save(String accessToken) {
         super(accessToken);
     }

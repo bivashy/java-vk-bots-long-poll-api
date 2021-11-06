@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -11,7 +11,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/messages.editChat">https://vk.com/dev/messages.editChat</a>
  */
-public class EditChat extends AuthorizedVkApiMethod<IntegerResponse> {
+public class EditChat extends AuthorizedVkMethod<IntegerResponse> {
     public EditChat(String accessToken) {
         super(accessToken);
     }

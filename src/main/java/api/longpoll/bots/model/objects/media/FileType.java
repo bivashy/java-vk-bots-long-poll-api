@@ -1,9 +1,9 @@
 package api.longpoll.bots.model.objects.media;
 
-import api.longpoll.bots.methods.FileUploadingVkApiMethod;
+import api.longpoll.bots.methods.FileUploadingVkMethod;
 
 /**
- * Type of file to be uploaded to VK server in {@link FileUploadingVkApiMethod}.
+ * Type of file to be uploaded to VK server in {@link FileUploadingVkMethod}.
  */
 public enum FileType {
     FILE("file"),

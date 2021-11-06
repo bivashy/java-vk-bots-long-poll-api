@@ -4,7 +4,7 @@ import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.adapters.deserializers.GroupsIsMemberResponseDeserializer;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
@@ -20,7 +20,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
  */
-public class IsMember extends AuthorizedVkApiMethod<IsMember.Response> {
+public class IsMember extends AuthorizedVkMethod<IsMember.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
     private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 

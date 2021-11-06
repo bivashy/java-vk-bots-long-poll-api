@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.events;
 
-import api.longpoll.bots.methods.VkApiMethod;
+import api.longpoll.bots.methods.VkMethod;
 import api.longpoll.bots.model.events.VkEvent;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Gets update events from VK server.
  */
-public class GetUpdates extends VkApiMethod<GetUpdates.Response> {
+public class GetUpdates extends VkMethod<GetUpdates.Response> {
     /**
      * Server URL.
      */

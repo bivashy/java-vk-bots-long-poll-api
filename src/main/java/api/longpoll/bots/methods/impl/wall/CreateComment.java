@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.wall;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
  */
-public class CreateComment extends AuthorizedVkApiMethod<CreateComment.Response> {
+public class CreateComment extends AuthorizedVkMethod<CreateComment.Response> {
     private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
     private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = VkBotsConfig.getInstance().getVkAttachmentsListConverterConverter();
 

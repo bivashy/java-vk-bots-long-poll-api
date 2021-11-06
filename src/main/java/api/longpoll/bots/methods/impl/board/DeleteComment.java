@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.board;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -11,7 +11,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/board.deleteComment">https://vk.com/dev/board.deleteComment</a>
  */
-public class DeleteComment extends AuthorizedVkApiMethod<IntegerResponse> {
+public class DeleteComment extends AuthorizedVkMethod<IntegerResponse> {
     public DeleteComment(String accessToken) {
         super(accessToken);
     }

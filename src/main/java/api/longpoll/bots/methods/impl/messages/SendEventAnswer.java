@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.EventData;
 import api.longpoll.bots.model.response.IntegerResponse;
@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/messages.sendMessageEventAnswer">https://vk.com/dev/messages.sendMessageEventAnswer</a>
  */
-public class SendEventAnswer extends AuthorizedVkApiMethod<IntegerResponse> {
+public class SendEventAnswer extends AuthorizedVkMethod<IntegerResponse> {
     public SendEventAnswer(String accessToken) {
         super(accessToken);
     }

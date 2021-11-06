@@ -22,11 +22,11 @@ import java.util.concurrent.CompletableFuture;
  *
  * @param <Response> VK API response type.
  */
-public abstract class VkApiMethod<Response> implements HttpRequest {
+public abstract class VkMethod<Response> implements HttpRequest {
     /**
      * Logger object.
      */
-    private static final Logger log = LoggerFactory.getLogger(VkApiMethod.class);
+    private static final Logger log = LoggerFactory.getLogger(VkMethod.class);
 
     /**
      * Request params.
@@ -100,7 +100,7 @@ public abstract class VkApiMethod<Response> implements HttpRequest {
      * @param value URL parameter value.
      * @return current instance.
      */
-    public VkApiMethod<Response> addParam(String key, Object value) {
+    public VkMethod<Response> addParam(String key, Object value) {
         params.put(key, String.valueOf(value));
         return this;
     }

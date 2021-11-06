@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -11,7 +11,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/groups.disableOnline">https://vk.com/dev/groups.disableOnline</a>
  */
-public class DisableOnline extends AuthorizedVkApiMethod<IntegerResponse> {
+public class DisableOnline extends AuthorizedVkMethod<IntegerResponse> {
     public DisableOnline(String accessToken) {
         super(accessToken);
     }

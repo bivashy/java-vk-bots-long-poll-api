@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
@@ -14,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/messages.isMessagesFromGroupAllowed">https://vk.com/dev/messages.isMessagesFromGroupAllowed</a>
  */
-public class IsMessagesFromGroupAllowed extends AuthorizedVkApiMethod<IsMessagesFromGroupAllowed.Response> {
+public class IsMessagesFromGroupAllowed extends AuthorizedVkMethod<IsMessagesFromGroupAllowed.Response> {
     public IsMessagesFromGroupAllowed(String accessToken) {
         super(accessToken);
     }

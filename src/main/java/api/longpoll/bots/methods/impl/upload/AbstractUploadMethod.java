@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.upload;
 
-import api.longpoll.bots.methods.FileUploadingVkApiMethod;
+import api.longpoll.bots.methods.FileUploadingVkMethod;
 
-public abstract class AbstractUploadMethod<Response> extends FileUploadingVkApiMethod<Response> {
+public abstract class AbstractUploadMethod<Response> extends FileUploadingVkMethod<Response> {
     private String uploadUrl;
 
     @Override

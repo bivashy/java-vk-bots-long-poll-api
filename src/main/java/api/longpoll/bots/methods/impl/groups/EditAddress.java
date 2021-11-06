@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 
 /**
@@ -10,7 +10,7 @@ import api.longpoll.bots.methods.VkApiProperties;
  *
  * @see <a href="https://vk.com/dev/groups.editAddress">https://vk.com/dev/groups.editAddress</a>
  */
-public class EditAddress extends AuthorizedVkApiMethod<EditAddress.Response> {
+public class EditAddress extends AuthorizedVkMethod<EditAddress.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
 

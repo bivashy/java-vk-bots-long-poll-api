@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.JsonObject;
@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/groups.addAddress">https://vk.com/dev/groups.addAddress</a>
  */
-public class AddAddress extends AuthorizedVkApiMethod<AddAddress.Response> {
+public class AddAddress extends AuthorizedVkMethod<AddAddress.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public AddAddress(String accessToken) {

@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
+import api.longpoll.bots.methods.AuthorizedVkMethod;
 import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.basic.Community;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/groups.getById">https://vk.com/dev/groups.getById</a>
  */
-public class GetById extends AuthorizedVkApiMethod<GetById.Response> {
+public class GetById extends AuthorizedVkMethod<GetById.Response> {
     private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
 
     public GetById(String accessToken) {
