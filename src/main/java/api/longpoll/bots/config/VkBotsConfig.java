@@ -27,27 +27,113 @@ import com.google.gson.Gson;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * Holds the dependencies that are used in library. Implements singleton pattern.
+ */
 public class VkBotsConfig {
+    /**
+     * {@link VkBotsConfig} instance to implement singleton pattern.
+     */
     private static final VkBotsConfig INSTANCE = new VkBotsConfig();
+
+    /**
+     * Converts <i>boolean</i> value to <i>integer</i> (0 or 1).
+     */
     private Converter<Boolean, Integer> boolIntConverter;
+
+    /**
+     * Converts {@link List} object to {@link String} value to pass to VK API method parameters.
+     */
     private Converter<List<?>, String> listConverter;
+
+    /**
+     * Converts {@link VkAttachment} object to {@link String} value to pass to VK API method parameters.
+     */
     private Converter<VkAttachment, String> vkAttachmentConverter;
+
+    /**
+     * Converts {@link List<VkAttachment>} object to {@link List<String>}.
+     */
     private Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverterConverter;
+
+    /**
+     * {@link Gson} object.
+     */
     private Gson gson;
+
+    /**
+     * A factory to get JSON converter.
+     */
     private JsonConverterFactory jsonConverterFactory;
+
+    /**
+     * Validates VK API response.
+     */
     private Validator<String> vkResponseValidator;
+
+    /**
+     * Executes HTTP requests.
+     */
     private HttpClient httpClient;
+
+    /**
+     * Executes action asynchronously.
+     */
     private AsyncCaller asyncCaller;
+
+    /**
+     * Current VK API version.
+     */
     private String apiVersion;
-    private VkMethodFactory<api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer> photosGetMessagesUploadFactory;
+
+    /**
+     * A factory to get a link to upload photo to conversation.
+     */
+    private VkMethodFactory<api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer> photosGetMessagesUploadServerFactory;
+
+    /**
+     * Uploads photo to VK server.
+     */
     private UploadPhoto uploadPhoto;
+
+    /**
+     * Saves uploaded to conversation photo.
+     */
     private VkMethodFactory<SaveMessagesPhoto> saveMessagePhotoFactory;
+
+    /**
+     * A factory to get a link to upload document to conversation.
+     */
     private VkMethodFactory<api.longpoll.bots.methods.impl.docs.GetMessagesUploadServer> docsGetMessagesUploadServerFactory;
+
+    /**
+     * Uploads document to VK server.
+     */
     private UploadDoc uploadDoc;
+
+    /**
+     * Saves uploaded to conversation document.
+     */
     private VkMethodFactory<Save> docsSaveFactory;
+
+    /**
+     * Gets updates from VK server.
+     */
     private GetUpdates getUpdates;
+
+    /**
+     * A factory to get VK long poll server.
+     */
     private VkMethodFactory<GetLongPollServer> getLongPollServerFactory;
+
+    /**
+     * A factory to get a list of VK bot methods.
+     */
     private PropertiesFactory botMethodsFactory;
+
+    /**
+     * List of VK bots methods.
+     */
     private Properties botMethods;
 
     private VkBotsConfig() {
@@ -167,15 +253,15 @@ public class VkBotsConfig {
         this.apiVersion = apiVersion;
     }
 
-    public VkMethodFactory<api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer> getPhotosGetMessagesUploadFactory() {
-        if (photosGetMessagesUploadFactory == null) {
-            photosGetMessagesUploadFactory = api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer::new;
+    public VkMethodFactory<api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer> getPhotosGetMessagesUploadServerFactory() {
+        if (photosGetMessagesUploadServerFactory == null) {
+            photosGetMessagesUploadServerFactory = api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer::new;
         }
-        return photosGetMessagesUploadFactory;
+        return photosGetMessagesUploadServerFactory;
     }
 
-    public void setPhotosGetMessagesUploadFactory(VkMethodFactory<api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer> photosGetMessagesUploadFactory) {
-        this.photosGetMessagesUploadFactory = photosGetMessagesUploadFactory;
+    public void setPhotosGetMessagesUploadServerFactory(VkMethodFactory<api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer> photosGetMessagesUploadServerFactory) {
+        this.photosGetMessagesUploadServerFactory = photosGetMessagesUploadServerFactory;
     }
 
     public UploadPhoto getUploadPhoto() {

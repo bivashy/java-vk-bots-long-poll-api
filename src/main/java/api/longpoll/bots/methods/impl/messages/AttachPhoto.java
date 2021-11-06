@@ -20,7 +20,7 @@ public class AttachPhoto extends VkMethod<VkAttachment> {
 
     public AttachPhoto(String accessToken) {
         super(accessToken);
-        getMessagesUploadServer = VkBotsConfig.getInstance().getPhotosGetMessagesUploadFactory().get(accessToken);
+        getMessagesUploadServer = VkBotsConfig.getInstance().getPhotosGetMessagesUploadServerFactory().get(accessToken);
         saveMessagesPhoto = VkBotsConfig.getInstance().getSaveMessagePhotoFactory().get(accessToken);
     }
 

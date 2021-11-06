@@ -7,9 +7,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * Builds {@link Properties} object filled with values.
+ */
 public class PropertiesFactory {
+    /**
+     * {@link Logger} object.
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesFactory.class);
 
+    /**
+     * Gets {@link Properties} object filled with values.
+     *
+     * @param path path to <i>.properties</i> file
+     * @return {@link Properties} object filled with values.
+     */
     public Properties get(String path) {
         Properties properties = new Properties();
 
