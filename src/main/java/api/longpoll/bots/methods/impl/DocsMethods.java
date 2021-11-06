@@ -8,24 +8,29 @@ import api.longpoll.bots.methods.impl.docs.Search;
 /**
  * Provides Docs methods.
  */
-public class DocsApi extends AbstractVkApi {
-    public DocsApi(String accessToken) {
-        super(accessToken);
+public class DocsMethods {
+    /**
+     * Access token.
+     */
+    private final String accessToken;
+
+    public DocsMethods(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public GetMessagesUploadServer getMessagesUploadServer() {
-        return new GetMessagesUploadServer(getAccessToken());
+        return new GetMessagesUploadServer(accessToken);
     }
 
     public GetWallUploadServer getWallUploadServer() {
-        return new GetWallUploadServer(getAccessToken());
+        return new GetWallUploadServer(accessToken);
     }
 
     public Save save() {
-        return new Save(getAccessToken());
+        return new Save(accessToken);
     }
 
     public Search search() {
-        return new Search(getAccessToken());
+        return new Search(accessToken);
     }
 }

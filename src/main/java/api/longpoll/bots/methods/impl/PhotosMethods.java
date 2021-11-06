@@ -9,28 +9,33 @@ import api.longpoll.bots.methods.impl.photos.SaveMessagesPhoto;
 /**
  * Provides Photos methods.
  */
-public class PhotosApi extends AbstractVkApi {
-    public PhotosApi(String accessToken) {
-        super(accessToken);
+public class PhotosMethods {
+    /**
+     * Access token.
+     */
+    private final String accessToken;
+
+    public PhotosMethods(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public GetChatUploadServer getChatUploadServer() {
-        return new GetChatUploadServer(getAccessToken());
+        return new GetChatUploadServer(accessToken);
     }
 
     public GetMessagesUploadServer getMessagesUploadServer() {
-        return new GetMessagesUploadServer(getAccessToken());
+        return new GetMessagesUploadServer(accessToken);
     }
 
     public GetOwnerCoverPhotoUploadServer getOwnerCoverPhotoUploadServer() {
-        return new GetOwnerCoverPhotoUploadServer(getAccessToken());
+        return new GetOwnerCoverPhotoUploadServer(accessToken);
     }
 
     public SaveMessagesPhoto saveMessagesPhoto() {
-        return new SaveMessagesPhoto(getAccessToken());
+        return new SaveMessagesPhoto(accessToken);
     }
 
     public SaveOwnerCoverPhoto saveOwnerCoverPhoto() {
-        return new SaveOwnerCoverPhoto(getAccessToken());
+        return new SaveOwnerCoverPhoto(accessToken);
     }
 }

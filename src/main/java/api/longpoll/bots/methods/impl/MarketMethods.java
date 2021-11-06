@@ -8,24 +8,29 @@ import api.longpoll.bots.methods.impl.market.GetOrderItems;
 /**
  * Provides Market methods.
  */
-public class MarketApi extends AbstractVkApi {
-    public MarketApi(String accessToken) {
-        super(accessToken);
+public class MarketMethods {
+    /**
+     * Access token.
+     */
+    private final String accessToken;
+
+    public MarketMethods(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public EditOrder editOrder() {
-        return new EditOrder(getAccessToken());
+        return new EditOrder(accessToken);
     }
 
     public GetGroupOrders getGroupOrders() {
-        return new GetGroupOrders(getAccessToken());
+        return new GetGroupOrders(accessToken);
     }
 
     public GetOrderById getOrderById() {
-        return new GetOrderById(getAccessToken());
+        return new GetOrderById(accessToken);
     }
 
     public GetOrderItems getOrderItems() {
-        return new GetOrderItems(getAccessToken());
+        return new GetOrderItems(accessToken);
     }
 }

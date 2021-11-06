@@ -32,120 +32,125 @@ import api.longpoll.bots.methods.impl.messages.Unpin;
 /**
  * Provides Messages methods.
  */
-public class MessagesApi extends AbstractVkApi {
-    public MessagesApi(String accessToken) {
-        super(accessToken);
+public class MessagesMethods {
+    /**
+     * Access token.
+     */
+    private final String accessToken;
+
+    public MessagesMethods(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public CreateChat createChat() {
-        return new CreateChat(getAccessToken());
+        return new CreateChat(accessToken);
     }
 
     public Delete delete() {
-        return new Delete(getAccessToken());
+        return new Delete(accessToken);
     }
 
     public DeleteConversation deleteConversation() {
-        return new DeleteConversation(getAccessToken());
+        return new DeleteConversation(accessToken);
     }
 
     public DeleteChatPhoto deleteChatPhoto() {
-        return new DeleteChatPhoto(getAccessToken());
+        return new DeleteChatPhoto(accessToken);
     }
 
     public Edit edit() {
-        return new Edit(getAccessToken());
+        return new Edit(accessToken);
     }
 
     public EditChat editChat() {
-        return new EditChat(getAccessToken());
+        return new EditChat(accessToken);
     }
 
     public GetByConversationMessageId getByConversationMessageId() {
-        return new GetByConversationMessageId(getAccessToken());
+        return new GetByConversationMessageId(accessToken);
     }
 
     public GetById getById() {
-        return new GetById(getAccessToken());
+        return new GetById(accessToken);
     }
 
     public GetConversationMembers getConversationMembers() {
-        return new GetConversationMembers(getAccessToken());
+        return new GetConversationMembers(accessToken);
     }
 
     public GetConversations getConversations() {
-        return new GetConversations(getAccessToken());
+        return new GetConversations(accessToken);
     }
 
     public GetConversationsById getConversationsById() {
-        return new GetConversationsById(getAccessToken());
+        return new GetConversationsById(accessToken);
     }
 
     public GetHistory getHistory() {
-        return new GetHistory(getAccessToken());
+        return new GetHistory(accessToken);
     }
 
     public GetHistoryAttachments getHistoryAttachments() {
-        return new GetHistoryAttachments(getAccessToken());
+        return new GetHistoryAttachments(accessToken);
     }
 
     public GetImportantMessages getImportantMessages() {
-        return new GetImportantMessages(getAccessToken());
+        return new GetImportantMessages(accessToken);
     }
 
     public GetInviteLink getInviteLink() {
-        return new GetInviteLink(getAccessToken());
+        return new GetInviteLink(accessToken);
     }
 
     public IsMessagesFromGroupAllowed isMessagesFromGroupAllowed() {
-        return new IsMessagesFromGroupAllowed(getAccessToken());
+        return new IsMessagesFromGroupAllowed(accessToken);
     }
 
     public MarkAsAnsweredConversation markAsAnsweredConversation() {
-        return new MarkAsAnsweredConversation(getAccessToken());
+        return new MarkAsAnsweredConversation(accessToken);
     }
 
     public MarkAsImportantConversation markAsImportantConversation() {
-        return new MarkAsImportantConversation(getAccessToken());
+        return new MarkAsImportantConversation(accessToken);
     }
 
     public MarkAsRead markAsRead() {
-        return new MarkAsRead(getAccessToken());
+        return new MarkAsRead(accessToken);
     }
 
     public Pin pin() {
-        return new Pin(getAccessToken());
+        return new Pin(accessToken);
     }
 
     public RemoveChatUser removeChatUser() {
-        return new RemoveChatUser(getAccessToken());
+        return new RemoveChatUser(accessToken);
     }
 
     public Restore restore() {
-        return new Restore(getAccessToken());
+        return new Restore(accessToken);
     }
 
     public SearchConversations searchConversations() {
-        return new SearchConversations(getAccessToken());
+        return new SearchConversations(accessToken);
     }
 
     public Send send() {
-        return new Send(getAccessToken());
+        return new Send(accessToken);
     }
 
     public SendEventAnswer sendEventAnswer() {
-        return new SendEventAnswer(getAccessToken());
+        return new SendEventAnswer(accessToken);
     }
 
     public SetActivity setActivity() {
-        return new SetActivity(getAccessToken());
+        return new SetActivity(accessToken);
     }
 
     public SetChatPhoto setChatPhoto() {
-        return new SetChatPhoto(getAccessToken());
+        return new SetChatPhoto(accessToken);
     }
 
     public Unpin unpin() {
-        return new Unpin(getAccessToken());
+        return new Unpin(accessToken);
     }
 }

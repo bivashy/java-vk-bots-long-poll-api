@@ -26,96 +26,101 @@ import api.longpoll.bots.methods.impl.groups.SetSettings;
 /**
  * Provides Groups methods.
  */
-public class GroupsApi extends AbstractVkApi {
-    public GroupsApi(String accessToken) {
-        super(accessToken);
+public class GroupsMethods {
+    /**
+     * Access token.
+     */
+    private final String accessToken;
+
+    public GroupsMethods(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public AddAddress addAddress() {
-        return new AddAddress(getAccessToken());
+        return new AddAddress(accessToken);
     }
 
     public AddCallbackServer addCallbackServer() {
-        return new AddCallbackServer(getAccessToken());
+        return new AddCallbackServer(accessToken);
     }
 
     public DeleteAddress deleteAddress() {
-        return new DeleteAddress(getAccessToken());
+        return new DeleteAddress(accessToken);
     }
 
     public DeleteCallbackServer deleteCallbackServer() {
-        return new DeleteCallbackServer(getAccessToken());
+        return new DeleteCallbackServer(accessToken);
     }
 
     public DisableOnline disableOnline() {
-        return new DisableOnline(getAccessToken());
+        return new DisableOnline(accessToken);
     }
 
     public EditAddress editAddress() {
-        return new EditAddress(getAccessToken());
+        return new EditAddress(accessToken);
     }
 
     public EditCallbackServer editCallbackServer() {
-        return new EditCallbackServer(getAccessToken());
+        return new EditCallbackServer(accessToken);
     }
 
     public EnableOnline enableOnline() {
-        return new EnableOnline(getAccessToken());
+        return new EnableOnline(accessToken);
     }
 
     public GetBanned getBanned() {
-        return new GetBanned(getAccessToken());
+        return new GetBanned(accessToken);
     }
 
     public GetById getById() {
-        return new GetById(getAccessToken());
+        return new GetById(accessToken);
     }
 
     public GetCallbackConfirmationCode getCallbackConfirmationCode() {
-        return new GetCallbackConfirmationCode(getAccessToken());
+        return new GetCallbackConfirmationCode(accessToken);
     }
 
     public GetCallbackServers getCallbackServers() {
-        return new GetCallbackServers(getAccessToken());
+        return new GetCallbackServers(accessToken);
     }
 
     public GetCallbackSettings getCallbackSettings() {
-        return new GetCallbackSettings(getAccessToken());
+        return new GetCallbackSettings(accessToken);
     }
 
     public GetLongPollServer getLongPollServer() {
-        return new GetLongPollServer(getAccessToken());
+        return new GetLongPollServer(accessToken);
     }
 
     public GetLongPollSettings getLongPollSettings() {
-        return new GetLongPollSettings(getAccessToken());
+        return new GetLongPollSettings(accessToken);
     }
 
     public GetMembers getMembers() {
-        return new GetMembers(getAccessToken());
+        return new GetMembers(accessToken);
     }
 
     public GetOnlineStatus getOnlineStatus() {
-        return new GetOnlineStatus(getAccessToken());
+        return new GetOnlineStatus(accessToken);
     }
 
     public GetTokenPermissions getTokenPermissions() {
-        return new GetTokenPermissions(getAccessToken());
+        return new GetTokenPermissions(accessToken);
     }
 
     public IsMember isMember() {
-        return new IsMember(getAccessToken());
+        return new IsMember(accessToken);
     }
 
     public SetCallbackSettings setCallbackSettings() {
-        return new SetCallbackSettings(getAccessToken());
+        return new SetCallbackSettings(accessToken);
     }
 
     public SetLongPollSettings setLongPollSettings() {
-        return new SetLongPollSettings(getAccessToken());
+        return new SetLongPollSettings(accessToken);
     }
 
     public SetSettings setSettings() {
-        return new SetSettings(getAccessToken());
+        return new SetSettings(accessToken);
     }
 }

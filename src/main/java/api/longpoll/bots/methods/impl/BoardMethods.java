@@ -6,16 +6,21 @@ import api.longpoll.bots.methods.impl.board.RestoreComment;
 /**
  * Provides Board methods.
  */
-public class BoardApi extends AbstractVkApi {
-    public BoardApi(String accessToken) {
-        super(accessToken);
+public class BoardMethods {
+    /**
+     * Access token.
+     */
+    private final String accessToken;
+
+    public BoardMethods(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public DeleteComment deleteComment() {
-        return new DeleteComment(getAccessToken());
+        return new DeleteComment(accessToken);
     }
 
     public RestoreComment restoreComment() {
-        return new RestoreComment(getAccessToken());
+        return new RestoreComment(accessToken);
     }
 }

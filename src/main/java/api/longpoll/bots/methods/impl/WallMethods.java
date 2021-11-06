@@ -7,20 +7,25 @@ import api.longpoll.bots.methods.impl.wall.OpenComments;
 /**
  * Provides Utils methods.
  */
-public class WallApi extends AbstractVkApi {
-    public WallApi(String accessToken) {
-        super(accessToken);
+public class WallMethods {
+    /**
+     * Access token.
+     */
+    private final String accessToken;
+
+    public WallMethods(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public CloseComments closeComments() {
-        return new CloseComments(getAccessToken());
+        return new CloseComments(accessToken);
     }
 
     public CreateComment createComment() {
-        return new CreateComment(getAccessToken());
+        return new CreateComment(accessToken);
     }
 
     public OpenComments openComments() {
-        return new OpenComments(getAccessToken());
+        return new OpenComments(accessToken);
     }
 }

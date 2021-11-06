@@ -9,28 +9,33 @@ import api.longpoll.bots.methods.impl.utils.ResolveScreenName;
 /**
  * Provides Utils methods.
  */
-public class UtilsApi extends AbstractVkApi {
-    public UtilsApi(String accessToken) {
-        super(accessToken);
+public class UtilsMethods {
+    /**
+     * Access token.
+     */
+    private final String accessToken;
+
+    public UtilsMethods(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public CheckLink checkLink() {
-        return new CheckLink(getAccessToken());
+        return new CheckLink(accessToken);
     }
 
     public GetLinkStats getLinkStats() {
-        return new GetLinkStats(getAccessToken());
+        return new GetLinkStats(accessToken);
     }
 
     public GetServerTime getServerTime() {
-        return new GetServerTime(getAccessToken());
+        return new GetServerTime(accessToken);
     }
 
     public GetShortLink getShortLink() {
-        return new GetShortLink(getAccessToken());
+        return new GetShortLink(accessToken);
     }
 
     public ResolveScreenName resolveScreenName() {
-        return new ResolveScreenName(getAccessToken());
+        return new ResolveScreenName(accessToken);
     }
 }

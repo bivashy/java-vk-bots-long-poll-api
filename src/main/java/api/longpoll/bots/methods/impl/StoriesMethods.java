@@ -15,52 +15,57 @@ import api.longpoll.bots.methods.impl.stories.Save;
 /**
  * Provides Stories methods.
  */
-public class StoriesApi extends AbstractVkApi {
-    public StoriesApi(String accessToken) {
-        super(accessToken);
+public class StoriesMethods {
+    /**
+     * Access token.
+     */
+    private final String accessToken;
+
+    public StoriesMethods(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public Delete delete() {
-        return new Delete(getAccessToken());
+        return new Delete(accessToken);
     }
 
     public Get get() {
-        return new Get(getAccessToken());
+        return new Get(accessToken);
     }
 
     private GetById getById() {
-        return new GetById(getAccessToken());
+        return new GetById(accessToken);
     }
 
     public GetPhotoUploadServer getPhotoUploadServer() {
-        return new GetPhotoUploadServer(getAccessToken());
+        return new GetPhotoUploadServer(accessToken);
     }
 
     public GetReplies getReplies() {
-        return new GetReplies(getAccessToken());
+        return new GetReplies(accessToken);
     }
 
     public GetStats getStats() {
-        return new GetStats(getAccessToken());
+        return new GetStats(accessToken);
     }
 
     public GetVideoUploadServer getVideoUploadServer() {
-        return new GetVideoUploadServer(getAccessToken());
+        return new GetVideoUploadServer(accessToken);
     }
 
     public GetViewers getViewers() {
-        return new GetViewers(getAccessToken());
+        return new GetViewers(accessToken);
     }
 
     public HideAllReplies hideAllReplies() {
-        return new HideAllReplies(getAccessToken());
+        return new HideAllReplies(accessToken);
     }
 
     public HideReply hideReply() {
-        return new HideReply(getAccessToken());
+        return new HideReply(accessToken);
     }
 
     public Save save() {
-        return new Save(getAccessToken());
+        return new Save(accessToken);
     }
 }
