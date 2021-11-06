@@ -3,7 +3,6 @@ package api.longpoll.bots.methods.impl.groups;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 
 /**
  * Implements <b>groups.editAddress</b> method.
@@ -20,7 +19,7 @@ public class EditAddress extends VkMethod<EditAddress.Response> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("groups.editAddress");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.editAddress");
     }
 
     @Override

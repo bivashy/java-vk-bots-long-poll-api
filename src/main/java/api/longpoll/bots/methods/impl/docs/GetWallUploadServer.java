@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.docs;
 
+import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 
 /**
  * Implements <b>docs.getWallUploadServer</b> method.
@@ -15,7 +15,7 @@ public class GetWallUploadServer extends VkMethod<GetWallUploadServer.Response> 
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("docs.getWallUploadServer");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("docs.getWallUploadServer");
     }
 
     @Override

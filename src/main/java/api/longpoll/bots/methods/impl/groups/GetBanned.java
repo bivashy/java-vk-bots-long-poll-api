@@ -3,7 +3,6 @@ package api.longpoll.bots.methods.impl.groups;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Community;
 import api.longpoll.bots.model.objects.basic.User;
@@ -29,7 +28,7 @@ public class GetBanned extends VkMethod<GetBanned.Response> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("groups.getBanned");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getBanned");
     }
 
     @Override

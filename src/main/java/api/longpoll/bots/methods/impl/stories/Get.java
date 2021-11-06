@@ -3,7 +3,6 @@ package api.longpoll.bots.methods.impl.stories;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.StoriesFeedBlock;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -28,7 +27,7 @@ public class Get extends VkMethod<Get.Response> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("stories.get");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.get");
     }
 
     @Override

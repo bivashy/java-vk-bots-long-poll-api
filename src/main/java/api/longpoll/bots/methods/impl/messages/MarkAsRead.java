@@ -3,7 +3,6 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
@@ -22,7 +21,7 @@ public class MarkAsRead extends VkMethod<IntegerResponse> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("messages.markAsRead");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.markAsRead");
     }
 
     @Override

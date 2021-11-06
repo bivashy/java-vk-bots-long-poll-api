@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
+import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.Story;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -18,7 +18,7 @@ public class Save extends VkMethod<Save.Response> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("stories.save");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.save");
     }
 
     @Override

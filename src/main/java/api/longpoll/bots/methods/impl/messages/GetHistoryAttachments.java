@@ -4,7 +4,6 @@ import api.longpoll.bots.adapters.deserializers.AttachmentDeserializer;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
@@ -30,7 +29,7 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("messages.getHistoryAttachments");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.getHistoryAttachments");
     }
 
     @Override

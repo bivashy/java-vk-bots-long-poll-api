@@ -3,7 +3,6 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -27,7 +26,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("messages.getByConversationMessageId");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.getByConversationMessageId");
     }
 
     @Override

@@ -4,7 +4,6 @@ import api.longpoll.bots.adapters.deserializers.GroupsGetMemberResponseDeseriali
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -30,7 +29,7 @@ public class GetMembers extends VkMethod<GetMembers.Response> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("groups.getMembers");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getMembers");
     }
 
     @Override

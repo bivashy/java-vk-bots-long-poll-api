@@ -3,7 +3,6 @@ package api.longpoll.bots.methods.impl.users;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponse;
 
@@ -26,7 +25,7 @@ public class Get extends VkMethod<Get.Response> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("users.get");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("users.get");
     }
 
     @Override

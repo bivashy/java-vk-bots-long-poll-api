@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.market;
 
+import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.media.MarketItem;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -20,7 +20,7 @@ public class GetOrderItems extends VkMethod<GetOrderItems.Response> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("market.getOrderItems");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("market.getOrderItems");
     }
 
     @Override

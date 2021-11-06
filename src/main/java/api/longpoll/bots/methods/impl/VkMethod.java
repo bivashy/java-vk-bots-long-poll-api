@@ -8,7 +8,6 @@ import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.HttpRequest;
 import api.longpoll.bots.http.MultipartFormData;
 import api.longpoll.bots.async.AsyncCaller;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.validator.Validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

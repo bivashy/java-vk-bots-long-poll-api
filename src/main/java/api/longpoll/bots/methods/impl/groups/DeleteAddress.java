@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
+import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
@@ -16,7 +16,7 @@ public class DeleteAddress extends VkMethod<IntegerResponse> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("groups.deleteAddress");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.deleteAddress");
     }
 
     @Override

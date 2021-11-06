@@ -3,7 +3,6 @@ package api.longpoll.bots.methods.impl.docs;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.media.Doc;
 
@@ -21,7 +20,7 @@ public class Search extends VkMethod<Search.Response> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("docs.search");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("docs.search");
     }
 
     @Override

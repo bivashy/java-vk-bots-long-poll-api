@@ -4,7 +4,6 @@ import api.longpoll.bots.adapters.deserializers.MessagesSendResultDeserializer;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
@@ -34,7 +33,7 @@ public class Send extends VkMethod<Send.Response> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("messages.send");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.send");
     }
 
     @Override

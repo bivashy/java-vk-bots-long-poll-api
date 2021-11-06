@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
+import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -21,7 +21,7 @@ public class GetCallbackSettings extends VkMethod<GetCallbackSettings.Response> 
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("groups.getCallbackSettings");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getCallbackSettings");
     }
 
     @Override

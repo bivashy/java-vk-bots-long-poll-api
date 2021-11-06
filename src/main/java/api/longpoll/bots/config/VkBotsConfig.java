@@ -9,6 +9,7 @@ import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentsListConverter;
 import api.longpoll.bots.factory.JsonConverterFactory;
+import api.longpoll.bots.factory.PropertiesFactory;
 import api.longpoll.bots.factory.VkMethodFactory;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.impl.JsoupHttpClient;
@@ -24,6 +25,7 @@ import api.longpoll.bots.validator.VkResponseValidator;
 import com.google.gson.Gson;
 
 import java.util.List;
+import java.util.Properties;
 
 public class VkBotsConfig {
     private static final VkBotsConfig INSTANCE = new VkBotsConfig();
@@ -45,6 +47,8 @@ public class VkBotsConfig {
     private VkMethodFactory<Save> docsSaveFactory;
     private GetUpdates getUpdates;
     private VkMethodFactory<GetLongPollServer> getLongPollServerFactory;
+    private PropertiesFactory botMethodsFactory;
+    private Properties botMethods;
 
     private VkBotsConfig() {
     }
@@ -249,5 +253,27 @@ public class VkBotsConfig {
 
     public void setGetLongPollServerFactory(VkMethodFactory<GetLongPollServer> getLongPollServerFactory) {
         this.getLongPollServerFactory = getLongPollServerFactory;
+    }
+
+    public PropertiesFactory getBotMethodsFactory() {
+        if (botMethodsFactory == null) {
+            botMethodsFactory = new PropertiesFactory();
+        }
+        return botMethodsFactory;
+    }
+
+    public void setBotMethodsFactory(PropertiesFactory botMethodsFactory) {
+        this.botMethodsFactory = botMethodsFactory;
+    }
+
+    public Properties getBotMethods() {
+        if (botMethods == null) {
+            botMethods = getBotMethodsFactory().get("/vk/bot_methods.properties");
+        }
+        return botMethods;
+    }
+
+    public void setBotMethods(Properties botMethods) {
+        this.botMethods = botMethods;
     }
 }

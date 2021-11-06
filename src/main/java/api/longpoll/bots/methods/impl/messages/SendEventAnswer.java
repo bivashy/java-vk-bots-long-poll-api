@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
+import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 import api.longpoll.bots.model.objects.additional.EventData;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -17,7 +17,7 @@ public class SendEventAnswer extends VkMethod<IntegerResponse> {
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("messages.sendMessageEventAnswer");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.sendMessageEventAnswer");
     }
 
     @Override

@@ -3,7 +3,6 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.methods.VkApiProperties;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +24,7 @@ public class SearchConversations extends VkMethod<SearchConversations.Response> 
 
     @Override
     public String getUrl() {
-        return VkApiProperties.get("messages.searchConversations");
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.searchConversations");
     }
 
     @Override
