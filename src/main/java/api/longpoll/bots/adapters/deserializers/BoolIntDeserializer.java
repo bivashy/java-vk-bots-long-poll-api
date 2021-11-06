@@ -8,7 +8,7 @@ import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 
 /**
- * Deserializes Integer JSON value to {@code Boolean}. (0 = false, 1 = true)
+ * Deserializes Integer JSON value to {@link Boolean}. (0 = false, 1 = true)
  */
 public class BoolIntDeserializer implements JsonDeserializer<Boolean> {
     @Override
