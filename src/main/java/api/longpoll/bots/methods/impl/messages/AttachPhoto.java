@@ -41,24 +41,20 @@ public class AttachPhoto extends VkMethod<VkAttachment> {
         return new VkAttachment(savedPhoto);
     }
 
-    @Override
-    protected Class<VkAttachment> getResponseType() {
-        return null;
-    }
-
     public AttachPhoto setPeerId(int peerId) {
         this.peerId = peerId;
         return this;
     }
 
-    public AttachPhoto setFilename(String filename) {
+    public AttachPhoto setPhoto(String filename, InputStream photo) {
         this.filename = filename;
+        this.photo = photo;
         return this;
     }
 
-    public AttachPhoto setPhoto(InputStream photo) {
-        this.photo = photo;
-        return this;
+    @Override
+    protected Class<VkAttachment> getResponseType() {
+        return null;
     }
 
     @Override

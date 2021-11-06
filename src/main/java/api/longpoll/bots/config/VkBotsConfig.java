@@ -12,8 +12,9 @@ import api.longpoll.bots.factory.JsonConverterFactory;
 import api.longpoll.bots.factory.VkMethodFactory;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.impl.JsoupHttpClient;
-import api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer;
+import api.longpoll.bots.methods.impl.docs.Save;
 import api.longpoll.bots.methods.impl.photos.SaveMessagesPhoto;
+import api.longpoll.bots.methods.impl.upload.UploadDoc;
 import api.longpoll.bots.methods.impl.upload.UploadPhoto;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.validator.Validator;
@@ -34,9 +35,12 @@ public class VkBotsConfig {
     private HttpClient httpClient;
     private AsyncCaller asyncCaller;
     private String apiVersion;
-    private VkMethodFactory<GetMessagesUploadServer> photosGetMessagesUploadFactory;
+    private VkMethodFactory<api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer> photosGetMessagesUploadFactory;
     private UploadPhoto uploadPhoto;
     private VkMethodFactory<SaveMessagesPhoto> saveMessagePhotoFactory;
+    private VkMethodFactory<api.longpoll.bots.methods.impl.docs.GetMessagesUploadServer> docsGetMessagesUploadServerFactory;
+    private UploadDoc uploadDoc;
+    private VkMethodFactory<Save> docsSaveFactory;
 
     private VkBotsConfig() {
     }
@@ -155,14 +159,14 @@ public class VkBotsConfig {
         this.apiVersion = apiVersion;
     }
 
-    public VkMethodFactory<GetMessagesUploadServer> getPhotosGetMessagesUploadFactory() {
+    public VkMethodFactory<api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer> getPhotosGetMessagesUploadFactory() {
         if (photosGetMessagesUploadFactory == null) {
-            photosGetMessagesUploadFactory = GetMessagesUploadServer::new;
+            photosGetMessagesUploadFactory = api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer::new;
         }
         return photosGetMessagesUploadFactory;
     }
 
-    public void setPhotosGetMessagesUploadFactory(VkMethodFactory<GetMessagesUploadServer> photosGetMessagesUploadFactory) {
+    public void setPhotosGetMessagesUploadFactory(VkMethodFactory<api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer> photosGetMessagesUploadFactory) {
         this.photosGetMessagesUploadFactory = photosGetMessagesUploadFactory;
     }
 
@@ -186,5 +190,38 @@ public class VkBotsConfig {
 
     public void setSaveMessagePhotoFactory(VkMethodFactory<SaveMessagesPhoto> saveMessagePhotoFactory) {
         this.saveMessagePhotoFactory = saveMessagePhotoFactory;
+    }
+
+    public VkMethodFactory<api.longpoll.bots.methods.impl.docs.GetMessagesUploadServer> getDocsGetMessagesUploadServerFactory() {
+        if (docsGetMessagesUploadServerFactory == null) {
+            docsGetMessagesUploadServerFactory = api.longpoll.bots.methods.impl.docs.GetMessagesUploadServer::new;
+        }
+        return docsGetMessagesUploadServerFactory;
+    }
+
+    public void setDocsGetMessagesUploadServerFactory(VkMethodFactory<api.longpoll.bots.methods.impl.docs.GetMessagesUploadServer> docsGetMessagesUploadServerFactory) {
+        this.docsGetMessagesUploadServerFactory = docsGetMessagesUploadServerFactory;
+    }
+
+    public UploadDoc getUploadDoc() {
+        if (uploadDoc == null) {
+            uploadDoc = new UploadDoc();
+        }
+        return uploadDoc;
+    }
+
+    public void setUploadDoc(UploadDoc uploadDoc) {
+        this.uploadDoc = uploadDoc;
+    }
+
+    public VkMethodFactory<Save> getDocsSaveFactory() {
+        if (docsSaveFactory == null) {
+            docsSaveFactory = Save::new;
+        }
+        return docsSaveFactory;
+    }
+
+    public void setDocsSaveFactory(VkMethodFactory<Save> docsSaveFactory) {
+        this.docsSaveFactory = docsSaveFactory;
     }
 }
