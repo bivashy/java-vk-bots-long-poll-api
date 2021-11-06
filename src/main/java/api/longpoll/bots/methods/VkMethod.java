@@ -8,7 +8,7 @@ import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.HttpRequest;
 import api.longpoll.bots.http.MultipartFormData;
 import api.longpoll.bots.async.AsyncCaller;
-import api.longpoll.bots.validators.VkResponseValidator;
+import api.longpoll.bots.validator.Validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,7 +46,7 @@ public abstract class VkMethod<Response> implements HttpRequest {
     /**
      * Validator to check if VK API response is valid.
      */
-    private final VkResponseValidator vkResponseValidator = VkBotsConfig.getInstance().getVkResponseValidator();
+    private final Validator<String> vkResponseValidator = VkBotsConfig.getInstance().getVkResponseValidator();
 
     /**
      * Converts JSON string to POJO.

@@ -1,4 +1,4 @@
-package api.longpoll.bots.validators;
+package api.longpoll.bots.validator;
 
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
@@ -7,7 +7,7 @@ import com.google.gson.JsonElement;
 /**
  * Default implementation of VK API response validator.
  */
-public class DefaultVkResponseValidator implements VkResponseValidator {
+public class VkResponseValidator implements Validator<String> {
     /**
      * JSON converter.
      */

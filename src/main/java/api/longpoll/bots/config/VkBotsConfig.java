@@ -12,8 +12,8 @@ import api.longpoll.bots.http.impl.JsoupHttpClient;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.async.AsyncCaller;
 import api.longpoll.bots.async.DefaultAsyncCaller;
-import api.longpoll.bots.validators.DefaultVkResponseValidator;
-import api.longpoll.bots.validators.VkResponseValidator;
+import api.longpoll.bots.validator.VkResponseValidator;
+import api.longpoll.bots.validator.Validator;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class VkBotsConfig {
     private Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverterConverter;
     private Gson gson;
     private JsonConverterFactory jsonConverterFactory;
-    private VkResponseValidator vkResponseValidator;
+    private Validator<String> vkResponseValidator;
     private HttpClient httpClient;
     private AsyncCaller asyncCaller;
 
@@ -103,14 +103,14 @@ public class VkBotsConfig {
         this.jsonConverterFactory = jsonConverterFactory;
     }
 
-    public VkResponseValidator getVkResponseValidator() {
+    public Validator<String> getVkResponseValidator() {
         if (vkResponseValidator == null) {
-            vkResponseValidator = new DefaultVkResponseValidator();
+            vkResponseValidator = new VkResponseValidator();
         }
         return vkResponseValidator;
     }
 
-    public void setVkResponseValidator(VkResponseValidator vkResponseValidator) {
+    public void setVkResponseValidator(Validator<String> vkResponseValidator) {
         this.vkResponseValidator = vkResponseValidator;
     }
 
