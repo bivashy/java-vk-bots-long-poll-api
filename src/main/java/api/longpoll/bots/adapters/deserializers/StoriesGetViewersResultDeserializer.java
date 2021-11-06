@@ -18,10 +18,8 @@ import java.util.List;
  * Deserializes JSON object to {@link GetViewers.Response}.
  */
 public class StoriesGetViewersResultDeserializer implements JsonDeserializer<GetViewers.Response> {
-    private static final Type ITEM_LIST = new TypeToken<List<GetViewers.Response.ResponseObject>>() {
-    }.getType();
-    private static final Type USER_LIST = new TypeToken<List<User>>() {
-    }.getType();
+    private static final Type ITEM_LIST = new TypeToken<List<GetViewers.Response.ResponseObject>>() {}.getType();
+    private static final Type USER_LIST = new TypeToken<List<User>>() {}.getType();
 
     @Override
     public GetViewers.Response deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {

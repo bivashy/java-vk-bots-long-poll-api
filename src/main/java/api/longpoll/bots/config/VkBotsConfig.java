@@ -13,6 +13,8 @@ import api.longpoll.bots.factory.VkMethodFactory;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.impl.JsoupHttpClient;
 import api.longpoll.bots.methods.impl.docs.Save;
+import api.longpoll.bots.methods.impl.events.GetUpdates;
+import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
 import api.longpoll.bots.methods.impl.photos.SaveMessagesPhoto;
 import api.longpoll.bots.methods.impl.upload.UploadDoc;
 import api.longpoll.bots.methods.impl.upload.UploadPhoto;
@@ -41,6 +43,8 @@ public class VkBotsConfig {
     private VkMethodFactory<api.longpoll.bots.methods.impl.docs.GetMessagesUploadServer> docsGetMessagesUploadServerFactory;
     private UploadDoc uploadDoc;
     private VkMethodFactory<Save> docsSaveFactory;
+    private GetUpdates getUpdates;
+    private VkMethodFactory<GetLongPollServer> getLongPollServerFactory;
 
     private VkBotsConfig() {
     }
@@ -223,5 +227,27 @@ public class VkBotsConfig {
 
     public void setDocsSaveFactory(VkMethodFactory<Save> docsSaveFactory) {
         this.docsSaveFactory = docsSaveFactory;
+    }
+
+    public GetUpdates getGetUpdates() {
+        if (getUpdates == null) {
+            getUpdates = new GetUpdates();
+        }
+        return getUpdates;
+    }
+
+    public void setGetUpdates(GetUpdates getUpdates) {
+        this.getUpdates = getUpdates;
+    }
+
+    public VkMethodFactory<GetLongPollServer> getGetLongPollServerFactory() {
+        if (getLongPollServerFactory == null) {
+            getLongPollServerFactory = GetLongPollServer::new;
+        }
+        return getLongPollServerFactory;
+    }
+
+    public void setGetLongPollServerFactory(VkMethodFactory<GetLongPollServer> getLongPollServerFactory) {
+        this.getLongPollServerFactory = getLongPollServerFactory;
     }
 }
