@@ -1,5 +1,7 @@
 package api.longpoll.bots.config;
 
+import api.longpoll.bots.async.AsyncCaller;
+import api.longpoll.bots.async.DefaultAsyncCaller;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.converter.impl.BoolIntConverter;
 import api.longpoll.bots.converter.impl.GsonConverter;
@@ -7,13 +9,15 @@ import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentsListConverter;
 import api.longpoll.bots.factory.JsonConverterFactory;
+import api.longpoll.bots.factory.VkMethodFactory;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.impl.JsoupHttpClient;
+import api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer;
+import api.longpoll.bots.methods.impl.photos.SaveMessagesPhoto;
+import api.longpoll.bots.methods.impl.upload.UploadPhoto;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
-import api.longpoll.bots.async.AsyncCaller;
-import api.longpoll.bots.async.DefaultAsyncCaller;
-import api.longpoll.bots.validator.VkResponseValidator;
 import api.longpoll.bots.validator.Validator;
+import api.longpoll.bots.validator.VkResponseValidator;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -30,6 +34,9 @@ public class VkBotsConfig {
     private HttpClient httpClient;
     private AsyncCaller asyncCaller;
     private String apiVersion;
+    private VkMethodFactory<GetMessagesUploadServer> photosGetMessagesUploadFactory;
+    private UploadPhoto uploadPhoto;
+    private VkMethodFactory<SaveMessagesPhoto> saveMessagePhotoFactory;
 
     private VkBotsConfig() {
     }
@@ -146,5 +153,38 @@ public class VkBotsConfig {
 
     public void setApiVersion(String apiVersion) {
         this.apiVersion = apiVersion;
+    }
+
+    public VkMethodFactory<GetMessagesUploadServer> getPhotosGetMessagesUploadFactory() {
+        if (photosGetMessagesUploadFactory == null) {
+            photosGetMessagesUploadFactory = GetMessagesUploadServer::new;
+        }
+        return photosGetMessagesUploadFactory;
+    }
+
+    public void setPhotosGetMessagesUploadFactory(VkMethodFactory<GetMessagesUploadServer> photosGetMessagesUploadFactory) {
+        this.photosGetMessagesUploadFactory = photosGetMessagesUploadFactory;
+    }
+
+    public UploadPhoto getUploadPhoto() {
+        if (uploadPhoto == null) {
+            uploadPhoto = new UploadPhoto();
+        }
+        return uploadPhoto;
+    }
+
+    public void setUploadPhoto(UploadPhoto uploadPhoto) {
+        this.uploadPhoto = uploadPhoto;
+    }
+
+    public VkMethodFactory<SaveMessagesPhoto> getSaveMessagePhotoFactory() {
+        if (saveMessagePhotoFactory == null) {
+            saveMessagePhotoFactory = SaveMessagesPhoto::new;
+        }
+        return saveMessagePhotoFactory;
+    }
+
+    public void setSaveMessagePhotoFactory(VkMethodFactory<SaveMessagesPhoto> saveMessagePhotoFactory) {
+        this.saveMessagePhotoFactory = saveMessagePhotoFactory;
     }
 }

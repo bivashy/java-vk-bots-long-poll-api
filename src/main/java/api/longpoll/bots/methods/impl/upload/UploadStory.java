@@ -15,10 +15,10 @@ public class UploadStory extends UploadMethod<UploadStory.Response> {
         return (UploadStory) super.setUrl(uploadUrl);
     }
 
-    public UploadStory setStory(InputStream story) {
+    public UploadStory setStory(String filename, InputStream story) {
         return (UploadStory) super.setMultipartFormData(new MultipartFormData(
                 FileType.VIDEO_FILE,
-                "story",
+                filename,
                 story
         ));
     }

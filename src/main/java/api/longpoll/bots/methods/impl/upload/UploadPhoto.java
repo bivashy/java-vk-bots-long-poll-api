@@ -21,10 +21,10 @@ public class UploadPhoto extends UploadMethod<UploadPhoto.Response> {
         return (UploadPhoto) super.setUrl(uploadUrl);
     }
 
-    public UploadPhoto setPhoto(InputStream photo) {
+    public UploadPhoto setPhoto(String filename, InputStream photo) {
         return (UploadPhoto) super.setMultipartFormData(new MultipartFormData(
                 FileType.PHOTO,
-                "photo",
+                filename,
                 photo
         ));
     }

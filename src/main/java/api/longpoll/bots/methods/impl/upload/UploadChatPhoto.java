@@ -15,10 +15,10 @@ public class UploadChatPhoto extends UploadMethod<UploadChatPhoto.Response> {
         return (UploadChatPhoto) super.setUrl(uploadUrl);
     }
 
-    public UploadChatPhoto setChatPhoto(InputStream chatPhoto) {
+    public UploadChatPhoto setChatPhoto(String filename, InputStream chatPhoto) {
         return (UploadChatPhoto) super.setMultipartFormData(new MultipartFormData(
                 FileType.FILE,
-                "chat_photo",
+                filename,
                 chatPhoto
         ));
     }

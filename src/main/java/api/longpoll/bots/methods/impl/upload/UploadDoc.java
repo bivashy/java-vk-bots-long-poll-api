@@ -15,10 +15,10 @@ public class UploadDoc extends UploadMethod<UploadDoc.Response> {
         return (UploadDoc) super.setUrl(uploadUrl);
     }
 
-    public UploadDoc setDoc(InputStream doc) {
+    public UploadDoc setDoc(String filename, InputStream doc) {
         return (UploadDoc) super.setMultipartFormData(new MultipartFormData(
                 FileType.FILE,
-                "doc",
+                filename,
                 doc
         ));
     }
