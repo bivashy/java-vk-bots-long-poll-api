@@ -30,6 +30,7 @@ import api.longpoll.bots.methods.impl.messages.SendEventAnswer;
 import api.longpoll.bots.methods.impl.messages.SetActivity;
 import api.longpoll.bots.methods.impl.messages.SetChatPhoto;
 import api.longpoll.bots.methods.impl.messages.Unpin;
+import api.longpoll.bots.methods.impl.upload.UploadChatPhoto;
 
 /**
  * Provides Messages methods.
@@ -162,5 +163,9 @@ public class MessagesMethods {
 
     public AttachDoc attachDoc() {
         return new AttachDoc(accessToken);
+    }
+
+    public UploadChatPhoto uploadChatPhoto() {
+        return new UploadChatPhoto();
     }
 }

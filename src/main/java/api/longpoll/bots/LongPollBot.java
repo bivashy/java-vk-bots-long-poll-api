@@ -37,8 +37,7 @@ public abstract class LongPollBot extends VkBot {
 
     private void resetGetUpdates() throws VkApiException {
         GetLongPollServer.Response longPollServer = getLongPollServer.setGroupId(getGroupId()).execute();
-        getUpdates
-                .setServer(longPollServer.getResponseObject().getServer())
+        getUpdates.setServer(longPollServer.getResponseObject().getServer())
                 .setKey(longPollServer.getResponseObject().getKey())
                 .setTs(longPollServer.getResponseObject().getTs());
     }
