@@ -3,7 +3,7 @@ package parse.response.wall;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.wall.comments.WallReplyDeleteEvent;
+import api.longpoll.bots.model.events.wall.comments.WallReplyDelete;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
 
@@ -19,9 +19,9 @@ public class WallCommentDeleteParseTest {
 
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
-        assertTrue(eventObject instanceof WallReplyDeleteEvent);
+        assertTrue(eventObject instanceof WallReplyDelete);
 
-        WallReplyDeleteEvent wallReplyDeleteUpdate = (WallReplyDeleteEvent) eventObject;
+        WallReplyDelete wallReplyDeleteUpdate = (WallReplyDelete) eventObject;
         assertEquals(-111, wallReplyDeleteUpdate.getOwnerId());
         assertEquals(4, wallReplyDeleteUpdate.getId());
         assertEquals(222, wallReplyDeleteUpdate.getDeleterId());

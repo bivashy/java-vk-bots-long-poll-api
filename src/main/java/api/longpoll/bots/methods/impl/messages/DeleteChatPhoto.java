@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Chat;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -13,14 +13,14 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/messages.deleteChatPhoto">https://vk.com/dev/messages.deleteChatPhoto</a>
  */
-public class DeleteChatPhoto extends AuthorizedVkApiMethod<DeleteChatPhoto.Response> {
+public class DeleteChatPhoto extends VkMethod<DeleteChatPhoto.Response> {
     public DeleteChatPhoto(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("messages.deleteChatPhoto");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.deleteChatPhoto");
     }
 
     @Override

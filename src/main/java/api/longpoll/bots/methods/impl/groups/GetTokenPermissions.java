@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
 
@@ -14,14 +14,14 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/groups.getTokenPermissions">https://vk.com/dev/groups.getTokenPermissions</a>
  */
-public class GetTokenPermissions extends AuthorizedVkApiMethod<GetTokenPermissions.Response> {
+public class GetTokenPermissions extends VkMethod<GetTokenPermissions.Response> {
     public GetTokenPermissions(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("groups.getTokenPermissions");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getTokenPermissions");
     }
 
     @Override

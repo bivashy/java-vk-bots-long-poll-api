@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.wall;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
@@ -9,14 +9,14 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/wall.closeComments">https://vk.com/dev/wall.closeComments</a>
  */
-public class CloseComments extends AuthorizedVkApiMethod<IntegerResponse> {
+public class CloseComments extends VkMethod<IntegerResponse> {
     public CloseComments(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("wall.closeComments");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("wall.closeComments");
     }
 
     @Override

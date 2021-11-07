@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
@@ -11,14 +11,14 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/messages.removeChatUser">https://vk.com/dev/messages.removeChatUser</a>
  */
-public class RemoveChatUser extends AuthorizedVkApiMethod<IntegerResponse> {
+public class RemoveChatUser extends VkMethod<IntegerResponse> {
     public RemoveChatUser(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("messages.removeChatUser");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.removeChatUser");
     }
 
     @Override

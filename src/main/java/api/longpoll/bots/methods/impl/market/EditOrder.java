@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.market;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
@@ -11,14 +11,14 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/market.editOrder">https://vk.com/dev/market.editOrder</a>
  */
-public class EditOrder extends AuthorizedVkApiMethod<IntegerResponse> {
+public class EditOrder extends VkMethod<IntegerResponse> {
     public EditOrder(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("market.editOrder");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("market.editOrder");
     }
 
     @Override

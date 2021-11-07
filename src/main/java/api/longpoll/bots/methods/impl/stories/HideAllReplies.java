@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
@@ -11,14 +11,14 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/stories.hideAllReplies">https://vk.com/dev/stories.hideAllReplies</a>
  */
-public class HideAllReplies extends AuthorizedVkApiMethod<IntegerResponse> {
+public class HideAllReplies extends VkMethod<IntegerResponse> {
     public HideAllReplies(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("stories.hideAllReplies");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.hideAllReplies");
     }
 
     @Override

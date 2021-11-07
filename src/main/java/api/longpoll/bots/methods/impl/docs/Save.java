@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.docs;
 
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.response.GenericResponse;
 
@@ -11,14 +11,16 @@ import api.longpoll.bots.model.response.GenericResponse;
  *
  * @see <a href="https://vk.com/dev/docs.save">https://vk.com/dev/docs.save</a>
  */
-public class Save extends AuthorizedVkApiMethod<Save.Response> {
+public class Save extends VkMethod<Save.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public Save(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("docs.save");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("docs.save");
     }
 
     @Override
@@ -39,7 +41,7 @@ public class Save extends AuthorizedVkApiMethod<Save.Response> {
     }
 
     public Save setReturnTags(boolean returnTags) {
-        return addParam("return_tags", new BoolInt(returnTags));
+        return addParam("return_tags", boolIntConverter.convert(returnTags));
     }
 
     @Override

@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,14 +12,14 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/groups.getCallbackConfirmationCode">https://vk.com/dev/groups.getCallbackConfirmationCode</a>
  */
-public class GetCallbackConfirmationCode extends AuthorizedVkApiMethod<GetCallbackConfirmationCode.Response> {
+public class GetCallbackConfirmationCode extends VkMethod<GetCallbackConfirmationCode.Response> {
     public GetCallbackConfirmationCode(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("groups.getCallbackConfirmationCode");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getCallbackConfirmationCode");
     }
 
     @Override

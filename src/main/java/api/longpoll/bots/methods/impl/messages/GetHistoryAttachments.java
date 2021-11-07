@@ -1,9 +1,9 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.AttachmentDeserializer;
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
@@ -19,14 +19,17 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
  */
-public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttachments.Response> {
+public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public GetHistoryAttachments(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("messages.getHistoryAttachments");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.getHistoryAttachments");
     }
 
     @Override
@@ -51,7 +54,7 @@ public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttac
     }
 
     public GetHistoryAttachments setPhotoSizes(boolean photoSizes) {
-        return addParam("photo_sizes", new BoolInt(photoSizes));
+        return addParam("photo_sizes", boolIntConverter.convert(photoSizes));
     }
 
     public GetHistoryAttachments setFields(String... fields) {
@@ -59,7 +62,7 @@ public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttac
     }
 
     public GetHistoryAttachments setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetHistoryAttachments setGroupId(int groupId) {
@@ -67,7 +70,7 @@ public class GetHistoryAttachments extends AuthorizedVkApiMethod<GetHistoryAttac
     }
 
     public GetHistoryAttachments setPreserveOrder(boolean preserveOrder) {
-        return addParam("preserve_order", new BoolInt(preserveOrder));
+        return addParam("preserve_order", boolIntConverter.convert(preserveOrder));
     }
 
     public GetHistoryAttachments setMaxForwardsLevel(int maxForwardsLevel) {

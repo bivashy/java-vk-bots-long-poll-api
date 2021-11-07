@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
@@ -11,14 +11,14 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/groups.deleteCallbackServer">https://vk.com/dev/groups.deleteCallbackServer</a>
  */
-public class DeleteCallbackServer extends AuthorizedVkApiMethod<IntegerResponse> {
+public class DeleteCallbackServer extends VkMethod<IntegerResponse> {
     public DeleteCallbackServer(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("groups.deleteCallbackServer");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.deleteCallbackServer");
     }
 
     @Override

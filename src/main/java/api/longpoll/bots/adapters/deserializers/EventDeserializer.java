@@ -2,30 +2,30 @@ package api.longpoll.bots.adapters.deserializers;
 
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.boards.BoardPostDeleteEvent;
-import api.longpoll.bots.model.events.boards.BoardPostEvent;
-import api.longpoll.bots.model.events.likes.LikeEvent;
-import api.longpoll.bots.model.events.market.MarketCommentDeleteEvent;
-import api.longpoll.bots.model.events.market.MarketCommentEvent;
-import api.longpoll.bots.model.events.messages.MessageAllowEvent;
-import api.longpoll.bots.model.events.messages.MessageDenyEvent;
+import api.longpoll.bots.model.events.boards.BoardPost;
+import api.longpoll.bots.model.events.boards.BoardPostDelete;
+import api.longpoll.bots.model.events.likes.Like;
+import api.longpoll.bots.model.events.market.MarketComment;
+import api.longpoll.bots.model.events.market.MarketCommentDelete;
+import api.longpoll.bots.model.events.messages.MessageAllow;
+import api.longpoll.bots.model.events.messages.MessageDeny;
 import api.longpoll.bots.model.events.messages.MessageEvent;
-import api.longpoll.bots.model.events.messages.MessageNewEvent;
-import api.longpoll.bots.model.events.messages.MessageTypingStateEvent;
+import api.longpoll.bots.model.events.messages.MessageNew;
+import api.longpoll.bots.model.events.messages.MessageTypingState;
 import api.longpoll.bots.model.events.other.AppPayload;
-import api.longpoll.bots.model.events.other.GroupChangePhotoEvent;
-import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
+import api.longpoll.bots.model.events.other.GroupChangePhoto;
+import api.longpoll.bots.model.events.other.GroupChangeSettings;
 import api.longpoll.bots.model.events.other.VkpayTransaction;
-import api.longpoll.bots.model.events.photos.PhotoCommentDeleteEvent;
-import api.longpoll.bots.model.events.photos.PhotoCommentEvent;
-import api.longpoll.bots.model.events.users.GroupJoinEvent;
-import api.longpoll.bots.model.events.users.GroupLeaveEvent;
-import api.longpoll.bots.model.events.users.UserBlockEvent;
-import api.longpoll.bots.model.events.users.UserUnblockEvent;
-import api.longpoll.bots.model.events.video.VideoCommentDeleteEvent;
-import api.longpoll.bots.model.events.video.VideoCommentEvent;
-import api.longpoll.bots.model.events.wall.comments.WallReplyDeleteEvent;
-import api.longpoll.bots.model.events.wall.comments.WallReplyEvent;
+import api.longpoll.bots.model.events.photos.PhotoCommentDelete;
+import api.longpoll.bots.model.events.photos.PhotoComment;
+import api.longpoll.bots.model.events.users.GroupJoin;
+import api.longpoll.bots.model.events.users.GroupLeave;
+import api.longpoll.bots.model.events.users.UserBlock;
+import api.longpoll.bots.model.events.users.UserUnblock;
+import api.longpoll.bots.model.events.video.VideoComment;
+import api.longpoll.bots.model.events.video.VideoCommentDelete;
+import api.longpoll.bots.model.events.wall.comments.WallReplyDelete;
+import api.longpoll.bots.model.events.wall.comments.WallReply;
 import api.longpoll.bots.model.objects.basic.MarketOrder;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.basic.WallPost;
@@ -71,32 +71,32 @@ public class EventDeserializer implements JsonDeserializer<VkEvent> {
                 return Audio.class;
 
             case BOARD_POST_DELETE:
-                return BoardPostDeleteEvent.class;
+                return BoardPostDelete.class;
 
             case BOARD_POST_EDIT:
             case BOARD_POST_NEW:
             case BOARD_POST_RESTORE:
-                return BoardPostEvent.class;
+                return BoardPost.class;
 
             case GROUP_CHANGE_PHOTO:
-                return GroupChangePhotoEvent.class;
+                return GroupChangePhoto.class;
 
             case GROUP_CHANGE_SETTINGS:
-                return GroupChangeSettingsEvent.class;
+                return GroupChangeSettings.class;
 
             case GROUP_JOIN:
-                return GroupJoinEvent.class;
+                return GroupJoin.class;
 
             case GROUP_LEAVE:
-                return GroupLeaveEvent.class;
+                return GroupLeave.class;
 
             case MARKET_COMMENT_DELETE:
-                return MarketCommentDeleteEvent.class;
+                return MarketCommentDelete.class;
 
             case MARKET_COMMENT_EDIT:
             case MARKET_COMMENT_NEW:
             case MARKET_COMMENT_RESTORE:
-                return MarketCommentEvent.class;
+                return MarketComment.class;
 
             case MARKET_ORDER_EDIT:
             case MARKET_ORDER_NEW:
@@ -109,48 +109,48 @@ public class EventDeserializer implements JsonDeserializer<VkEvent> {
                 return MessageEvent.class;
 
             case MESSAGE_NEW:
-                return MessageNewEvent.class;
+                return MessageNew.class;
 
             case MESSAGE_REPLY:
                 return Message.class;
 
             case MESSAGE_ALLOW:
-                return MessageAllowEvent.class;
+                return MessageAllow.class;
 
             case MESSAGE_DENY:
-                return MessageDenyEvent.class;
+                return MessageDeny.class;
 
             case MESSAGE_TYPING_STATE:
-                return MessageTypingStateEvent.class;
+                return MessageTypingState.class;
 
             case LIKE_ADD:
             case LIKE_REMOVE:
-                return LikeEvent.class;
+                return Like.class;
 
             case PHOTO_COMMENT_DELETE:
-                return PhotoCommentDeleteEvent.class;
+                return PhotoCommentDelete.class;
 
             case PHOTO_COMMENT_EDIT:
             case PHOTO_COMMENT_NEW:
             case PHOTO_COMMENT_RESTORE:
-                return PhotoCommentEvent.class;
+                return PhotoComment.class;
 
             case PHOTO_NEW:
                 return Photo.class;
 
             case USER_BLOCK:
-                return UserBlockEvent.class;
+                return UserBlock.class;
 
             case USER_UNBLOCK:
-                return UserUnblockEvent.class;
+                return UserUnblock.class;
 
             case VIDEO_COMMENT_DELETE:
-                return VideoCommentDeleteEvent.class;
+                return VideoCommentDelete.class;
 
             case VIDEO_COMMENT_EDIT:
             case VIDEO_COMMENT_NEW:
             case VIDEO_COMMENT_RESTORE:
-                return VideoCommentEvent.class;
+                return VideoComment.class;
 
             case VIDEO_NEW:
                 return Video.class;
@@ -159,12 +159,12 @@ public class EventDeserializer implements JsonDeserializer<VkEvent> {
                 return WallPost.class;
 
             case WALL_REPLY_DELETE:
-                return WallReplyDeleteEvent.class;
+                return WallReplyDelete.class;
 
             case WALL_REPLY_EDIT:
             case WALL_REPLY_NEW:
             case WALL_REPLY_RESTORE:
-                return WallReplyEvent.class;
+                return WallReply.class;
 
             case WALL_REPOST:
                 return WallPost.class;

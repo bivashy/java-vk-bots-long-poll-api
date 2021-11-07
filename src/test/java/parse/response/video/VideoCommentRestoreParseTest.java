@@ -3,7 +3,7 @@ package parse.response.video;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.video.VideoCommentEvent;
+import api.longpoll.bots.model.events.video.VideoComment;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
@@ -20,9 +20,9 @@ public class VideoCommentRestoreParseTest {
 
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
-        assertTrue(eventObject instanceof VideoCommentEvent);
+        assertTrue(eventObject instanceof VideoComment);
 
-        VideoCommentEvent videoCommentUpdate = (VideoCommentEvent) eventObject;
+        VideoComment videoCommentUpdate = (VideoComment) eventObject;
         assertEquals(2, videoCommentUpdate.getId());
         assertEquals(111, videoCommentUpdate.getFromId());
         assertEquals(1594834849, videoCommentUpdate.getDate());

@@ -3,7 +3,7 @@ package parse.response.likes;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.likes.LikeEvent;
+import api.longpoll.bots.model.events.likes.Like;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
 
@@ -26,8 +26,8 @@ public class LikeRemoveParseTest {
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
 
-        assertTrue(eventObject instanceof LikeEvent);
-        LikeEvent audio = (LikeEvent) eventObject;
+        assertTrue(eventObject instanceof Like);
+        Like audio = (Like) eventObject;
         assertEquals(111, audio.getLikerId());
         assertEquals("post", audio.getObjectType());
         assertEquals(-222, audio.getObjectOwnerId());

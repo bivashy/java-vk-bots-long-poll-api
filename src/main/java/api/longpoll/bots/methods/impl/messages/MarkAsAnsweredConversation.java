@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
@@ -10,14 +10,16 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/messages.markAsAnsweredConversation">https://vk.com/dev/messages.markAsAnsweredConversation</a>
  */
-public class MarkAsAnsweredConversation extends AuthorizedVkApiMethod<IntegerResponse> {
+public class MarkAsAnsweredConversation extends VkMethod<IntegerResponse> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
     public MarkAsAnsweredConversation(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("messages.markAsAnsweredConversation");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.markAsAnsweredConversation");
     }
 
     @Override
@@ -30,7 +32,7 @@ public class MarkAsAnsweredConversation extends AuthorizedVkApiMethod<IntegerRes
     }
 
     public MarkAsAnsweredConversation setAnswered(boolean answered) {
-        return addParam("answered", new BoolInt(answered));
+        return addParam("answered", boolIntConverter.convert(answered));
     }
 
     public MarkAsAnsweredConversation setGroupId(int groupId) {

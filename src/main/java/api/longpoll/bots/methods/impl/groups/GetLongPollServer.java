@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/groups.getLongPollServer">https://vk.com/dev/groups.getLongPollServer</a>
  */
-public class GetLongPollServer extends AuthorizedVkApiMethod<GetLongPollServer.Response> {
+public class GetLongPollServer extends VkMethod<GetLongPollServer.Response> {
     public GetLongPollServer(String accessToken) {
         super(accessToken);
     }
@@ -23,8 +23,8 @@ public class GetLongPollServer extends AuthorizedVkApiMethod<GetLongPollServer.R
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("groups.getLongPollServer");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getLongPollServer");
     }
 
     public GetLongPollServer setGroupId(int groupId) {

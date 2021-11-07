@@ -1,7 +1,8 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -16,14 +17,16 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/groups.getCallbackServers">https://vk.com/dev/groups.getCallbackServers</a>
  */
-public class GetCallbackServers extends AuthorizedVkApiMethod<GetCallbackServers.Response> {
+public class GetCallbackServers extends VkMethod<GetCallbackServers.Response> {
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public GetCallbackServers(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("groups.getCallbackServers");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getCallbackServers");
     }
 
     @Override
@@ -40,7 +43,7 @@ public class GetCallbackServers extends AuthorizedVkApiMethod<GetCallbackServers
     }
 
     public GetCallbackServers setServerIds(List<Integer> serverIds) {
-        return addParam("server_ids", serverIds);
+        return addParam("server_ids", listConverter.convert(serverIds));
     }
 
     @Override

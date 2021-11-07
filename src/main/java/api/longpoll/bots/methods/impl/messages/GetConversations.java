@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,14 +14,17 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getConversations">https://vk.com/dev/messages.getConversations</a>
  */
-public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Response> {
+public class GetConversations extends VkMethod<GetConversations.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public GetConversations(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("messages.getConversations");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.getConversations");
     }
 
     @Override
@@ -42,7 +45,7 @@ public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Res
     }
 
     public GetConversations setExtended(boolean extended) {
-        return addParam("extended", new BoolInt(extended));
+        return addParam("extended", boolIntConverter.convert(extended));
     }
 
     public GetConversations setStartMessageId(int startMessageId) {
@@ -54,7 +57,7 @@ public class GetConversations extends AuthorizedVkApiMethod<GetConversations.Res
     }
 
     public GetConversations setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetConversations setGroupId(int groupId) {

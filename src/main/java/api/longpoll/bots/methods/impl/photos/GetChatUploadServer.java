@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.photos;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 
 /**
  * Implements <b>photos.getChatUploadServer</b> method.
@@ -10,14 +10,14 @@ import api.longpoll.bots.methods.VkApiProperties;
  *
  * @see <a href="https://vk.com/dev/photos.getChatUploadServer">https://vk.com/dev/photos.getChatUploadServer</a>
  */
-public class GetChatUploadServer extends AuthorizedVkApiMethod<GetChatUploadServer.Response> {
+public class GetChatUploadServer extends VkMethod<GetChatUploadServer.Response> {
     public GetChatUploadServer(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("photos.getChatUploadServer");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("photos.getChatUploadServer");
     }
 
     @Override

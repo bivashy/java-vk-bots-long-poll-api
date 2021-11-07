@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.photos;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.PhotoSize;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -15,14 +15,14 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/photos.saveMessagesPhoto">https://vk.com/dev/photos.saveMessagesPhoto</a>
  */
-public class SaveMessagesPhoto extends AuthorizedVkApiMethod<SaveMessagesPhoto.Response> {
+public class SaveMessagesPhoto extends VkMethod<SaveMessagesPhoto.Response> {
     public SaveMessagesPhoto(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("photos.saveMessagesPhoto");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("photos.saveMessagesPhoto");
     }
 
     @Override

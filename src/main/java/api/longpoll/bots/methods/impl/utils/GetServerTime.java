@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.utils;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 /**
@@ -11,14 +11,14 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/utils.getServerTime">https://vk.com/dev/utils.getServerTime</a>
  */
-public class GetServerTime extends AuthorizedVkApiMethod<IntegerResponse> {
+public class GetServerTime extends VkMethod<IntegerResponse> {
     public GetServerTime(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("utils.getServerTime");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("utils.getServerTime");
     }
 
     @Override

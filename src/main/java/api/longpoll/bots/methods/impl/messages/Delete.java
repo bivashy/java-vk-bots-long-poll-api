@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 
 import java.util.Arrays;
@@ -16,14 +16,18 @@ import java.util.Map;
  *
  * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
  */
-public class Delete extends AuthorizedVkApiMethod<Delete.Response> {
+public class Delete extends VkMethod<Delete.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
+
     public Delete(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("messages.delete");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.delete");
     }
 
     @Override
@@ -36,11 +40,11 @@ public class Delete extends AuthorizedVkApiMethod<Delete.Response> {
     }
 
     public Delete setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", messageIds);
+        return addParam("message_ids", listConverter.convert(messageIds));
     }
 
     public Delete setSpam(boolean spam) {
-        return addParam("spam", new BoolInt(spam));
+        return addParam("spam", boolIntConverter.convert(spam));
     }
 
     public Delete setGroupId(int groupId) {
@@ -48,7 +52,7 @@ public class Delete extends AuthorizedVkApiMethod<Delete.Response> {
     }
 
     public Delete setDeleteForAll(boolean deleteForAll) {
-        return addParam("delete_for_all", new BoolInt(deleteForAll));
+        return addParam("delete_for_all", boolIntConverter.convert(deleteForAll));
     }
 
     public Delete setConversationMessageIds(Integer... conversationMessageIds) {
@@ -56,7 +60,7 @@ public class Delete extends AuthorizedVkApiMethod<Delete.Response> {
     }
 
     public Delete setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", conversationMessageIds);
+        return addParam("conversation_message_ids", listConverter.convert(conversationMessageIds));
     }
 
     public Delete setPeerId(int peerId) {

@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -15,14 +15,18 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getByConversationMessageId">https://vk.com/dev/messages.getByConversationMessageId</a>
  */
-public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConversationMessageId.Response> {
+public class GetByConversationMessageId extends VkMethod<GetByConversationMessageId.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
+
     public GetByConversationMessageId(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("messages.getByConversationMessageId");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.getByConversationMessageId");
     }
 
     @Override
@@ -39,11 +43,11 @@ public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConve
     }
 
     public GetByConversationMessageId setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", conversationMessageIds);
+        return addParam("conversation_message_ids", listConverter.convert(conversationMessageIds));
     }
 
     public GetByConversationMessageId setExtended(boolean extended) {
-        return addParam("extended", new BoolInt(extended));
+        return addParam("extended", boolIntConverter.convert(extended));
     }
 
     public GetByConversationMessageId setFields(String... fields) {
@@ -51,7 +55,7 @@ public class GetByConversationMessageId extends AuthorizedVkApiMethod<GetByConve
     }
 
     public GetByConversationMessageId setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetByConversationMessageId setGroupId(int groupId) {

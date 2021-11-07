@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.photos;
 
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,14 +12,14 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer">https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer</a>
  */
-public class GetOwnerCoverPhotoUploadServer extends AuthorizedVkApiMethod<GetOwnerCoverPhotoUploadServer.Response> {
+public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoUploadServer.Response> {
     public GetOwnerCoverPhotoUploadServer(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("photos.getOwnerCoverPhotoUploadServer");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("photos.getOwnerCoverPhotoUploadServer");
     }
 
     @Override

@@ -1,23 +1,25 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 
 /**
  * Implements <b>groups.editAddress</b> method.
  *
  * @see <a href="https://vk.com/dev/groups.editAddress">https://vk.com/dev/groups.editAddress</a>
  */
-public class EditAddress extends AuthorizedVkApiMethod<EditAddress.Response> {
+public class EditAddress extends VkMethod<EditAddress.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+
 
     public EditAddress(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("groups.editAddress");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.editAddress");
     }
 
     @Override
@@ -78,7 +80,7 @@ public class EditAddress extends AuthorizedVkApiMethod<EditAddress.Response> {
     }
 
     public EditAddress setMainAddress(boolean mainAddress) {
-        return addParam("is_main_address", new BoolInt(mainAddress));
+        return addParam("is_main_address", boolIntConverter.convert(mainAddress));
     }
 
     @Override

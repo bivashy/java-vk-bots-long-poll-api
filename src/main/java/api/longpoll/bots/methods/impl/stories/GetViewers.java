@@ -1,9 +1,9 @@
 package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.adapters.deserializers.StoriesGetViewersResultDeserializer;
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
@@ -19,14 +19,17 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
-public class GetViewers extends AuthorizedVkApiMethod<GetViewers.Response> {
+public class GetViewers extends VkMethod<GetViewers.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public GetViewers(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("stories.getViewers");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.getViewers");
     }
 
     @Override
@@ -39,7 +42,7 @@ public class GetViewers extends AuthorizedVkApiMethod<GetViewers.Response> {
     }
 
     public GetViewers setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", messageIds);
+        return addParam("message_ids", listConverter.convert(messageIds));
     }
 
     public GetViewers setPreviewLength(int previewLength) {
@@ -47,7 +50,7 @@ public class GetViewers extends AuthorizedVkApiMethod<GetViewers.Response> {
     }
 
     public GetViewers setExtended(boolean extended) {
-        return addParam("extended", new BoolInt(extended));
+        return addParam("extended", boolIntConverter.convert(extended));
     }
 
     public GetViewers setFields(String... fields) {
@@ -55,7 +58,7 @@ public class GetViewers extends AuthorizedVkApiMethod<GetViewers.Response> {
     }
 
     public GetViewers setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public GetViewers setGroupId(int groupId) {

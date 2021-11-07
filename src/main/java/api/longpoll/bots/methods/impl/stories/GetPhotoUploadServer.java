@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
 
@@ -16,14 +16,17 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/stories.getPhotoUploadServer">https://vk.com/dev/stories.getPhotoUploadServer</a>
  */
-public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadServer.Response> {
+public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public GetPhotoUploadServer(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("stories.getPhotoUploadServer");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.getPhotoUploadServer");
     }
 
     @Override
@@ -32,7 +35,7 @@ public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadSe
     }
 
     public GetPhotoUploadServer setAddToNews(boolean addToNews) {
-        return addParam("add_to_news", new BoolInt(addToNews));
+        return addParam("add_to_news", boolIntConverter.convert(addToNews));
     }
 
     public GetPhotoUploadServer setReplyToStory(String replyToStory) {
@@ -60,7 +63,7 @@ public class GetPhotoUploadServer extends AuthorizedVkApiMethod<GetPhotoUploadSe
     }
 
     public GetPhotoUploadServer setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", userIds);
+        return addParam("user_ids", listConverter.convert(userIds));
     }
 
     @Override

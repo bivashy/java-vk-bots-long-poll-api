@@ -1,4 +1,4 @@
 /**
- * Bots Long Poll API model.
+ * VK API model.
  */
 package api.longpoll.bots.model;

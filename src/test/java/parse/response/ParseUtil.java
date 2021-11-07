@@ -3,7 +3,7 @@ package parse.response;
 import api.longpoll.bots.methods.impl.events.GetUpdates;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.VkEvent;
-import api.longpoll.bots.model.events.messages.MessageNewEvent;
+import api.longpoll.bots.model.events.messages.MessageNew;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.Gson;
@@ -57,10 +57,10 @@ public class ParseUtil {
         return notNull(getFirstEvent(relativePath).getObject());
     }
 
-    public static MessageNewEvent getFirstMessageNewEvent(String relativePath) {
+    public static MessageNew getFirstMessageNewEvent(String relativePath) {
         EventObject eventObject = getFirstEventObject(relativePath);
-        assertTrue(eventObject instanceof MessageNewEvent);
-        return (MessageNewEvent) eventObject;
+        assertTrue(eventObject instanceof MessageNew);
+        return (MessageNew) eventObject;
     }
 
     public static Message getFirstMessage(String relativePath) {

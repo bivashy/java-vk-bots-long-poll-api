@@ -1,15 +1,26 @@
 package api.longpoll.bots.methods.impl.upload;
 
+import api.longpoll.bots.http.MultipartFormData;
 import api.longpoll.bots.model.objects.media.FileType;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.InputStream;
 
 /**
  * Implements uploading story in VK API.
  */
-public class UploadStory extends AbstractUploadMethod<UploadStory.Response> {
+public class UploadStory extends UploadMethod<UploadStory.Response> {
     @Override
-    protected FileType getType() {
-        return FileType.VIDEO_FILE;
+    public UploadStory setUrl(String uploadUrl) {
+        return (UploadStory) super.setUrl(uploadUrl);
+    }
+
+    public UploadStory setStory(String filename, InputStream story) {
+        return (UploadStory) super.setMultipartFormData(new MultipartFormData(
+                FileType.VIDEO_FILE,
+                filename,
+                story
+        ));
     }
 
     @Override

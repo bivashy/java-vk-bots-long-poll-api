@@ -3,7 +3,7 @@ package parse.response.other;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.other.GroupChangeSettingsEvent;
+import api.longpoll.bots.model.events.other.GroupChangeSettings;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
 
@@ -21,17 +21,17 @@ public class GroupChangeSettingsParseTest {
 
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
-        assertTrue(eventObject instanceof GroupChangeSettingsEvent);
+        assertTrue(eventObject instanceof GroupChangeSettings);
 
-        GroupChangeSettingsEvent groupChangeSettingsUpdate = (GroupChangeSettingsEvent) eventObject;
+        GroupChangeSettings groupChangeSettingsUpdate = (GroupChangeSettings) eventObject;
         assertEquals(111, groupChangeSettingsUpdate.getUserId());
 
-        Map<String, GroupChangeSettingsEvent.Change> changes = groupChangeSettingsUpdate.getChanges();
+        Map<String, GroupChangeSettings.Change> changes = groupChangeSettingsUpdate.getChanges();
         assertNotNull(changes);
         assertFalse(changes.isEmpty());
         assertTrue(changes.containsKey("description"));
 
-        GroupChangeSettingsEvent.Change change = changes.get("description");
+        GroupChangeSettings.Change change = changes.get("description");
         assertNotNull(change);
         assertEquals("test", change.getOldValue());
         assertEquals("test1", change.getNewValue());

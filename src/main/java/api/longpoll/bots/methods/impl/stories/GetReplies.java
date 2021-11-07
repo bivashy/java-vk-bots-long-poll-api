@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.StoriesFeedBlock;
 import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -17,14 +17,17 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/stories.getReplies">https://vk.com/dev/stories.getReplies</a>
  */
-public class GetReplies extends AuthorizedVkApiMethod<GetReplies.Response> {
+public class GetReplies extends VkMethod<GetReplies.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public GetReplies(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("stories.getReplies");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.getReplies");
     }
 
     @Override
@@ -45,7 +48,7 @@ public class GetReplies extends AuthorizedVkApiMethod<GetReplies.Response> {
     }
 
     public GetReplies setExtended(boolean extended) {
-        return addParam("extended", new BoolInt(extended));
+        return addParam("extended", boolIntConverter.convert(extended));
     }
 
     public GetReplies setFields(String... fields) {
@@ -53,7 +56,7 @@ public class GetReplies extends AuthorizedVkApiMethod<GetReplies.Response> {
     }
 
     public GetReplies setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     @Override

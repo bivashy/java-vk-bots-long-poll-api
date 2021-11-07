@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,14 +14,17 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/stories.getVideoUploadServer">https://vk.com/dev/stories.getVideoUploadServer</a>
  */
-public class GetVideoUploadServer extends AuthorizedVkApiMethod<GetVideoUploadServer.Response> {
+public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public GetVideoUploadServer(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("stories.getVideoUploadServer");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.getVideoUploadServer");
     }
 
     @Override
@@ -30,7 +33,7 @@ public class GetVideoUploadServer extends AuthorizedVkApiMethod<GetVideoUploadSe
     }
 
     public GetVideoUploadServer setAddToNews(boolean addToNews) {
-        return addParam("add_to_news", new BoolInt(addToNews));
+        return addParam("add_to_news", boolIntConverter.convert(addToNews));
     }
 
     public GetVideoUploadServer setReplyToStory(String replyToStory) {
@@ -58,7 +61,7 @@ public class GetVideoUploadServer extends AuthorizedVkApiMethod<GetVideoUploadSe
     }
 
     public GetVideoUploadServer setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", userIds);
+        return addParam("user_ids", listConverter.convert(userIds));
     }
 
     @Override

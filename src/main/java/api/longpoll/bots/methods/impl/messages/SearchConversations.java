@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,14 +14,17 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.searchConversations">https://vk.com/dev/messages.searchConversations</a>
  */
-public class SearchConversations extends AuthorizedVkApiMethod<SearchConversations.Response> {
+public class SearchConversations extends VkMethod<SearchConversations.Response> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+
     public SearchConversations(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("messages.searchConversations");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.searchConversations");
     }
 
     @Override
@@ -38,8 +41,7 @@ public class SearchConversations extends AuthorizedVkApiMethod<SearchConversatio
     }
 
     public SearchConversations setExtended(boolean extended) {
-        addParam("extended", new
-                BoolInt(extended));
+        addParam("extended", boolIntConverter.convert(extended));
         return this;
     }
 
@@ -48,7 +50,7 @@ public class SearchConversations extends AuthorizedVkApiMethod<SearchConversatio
     }
 
     public SearchConversations setFields(List<String> fields) {
-        return addParam("fields", fields);
+        return addParam("fields", listConverter.convert(fields));
     }
 
     public SearchConversations setGroupId(int groupId) {

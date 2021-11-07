@@ -3,7 +3,7 @@ package parse.response.wall;
 import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventObject;
 import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.wall.comments.WallReplyEvent;
+import api.longpoll.bots.model.events.wall.comments.WallReply;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
@@ -20,9 +20,9 @@ public class WallCommentRestoreParseTest {
 
         EventObject eventObject = event.getObject();
         assertNotNull(eventObject);
-        assertTrue(eventObject instanceof WallReplyEvent);
+        assertTrue(eventObject instanceof WallReply);
 
-        WallReplyEvent wallReplyUpdate = (WallReplyEvent) eventObject;
+        WallReply wallReplyUpdate = (WallReply) eventObject;
         assertEquals(4, wallReplyUpdate.getId());
         assertEquals(111, wallReplyUpdate.getFromId());
         assertEquals(3, wallReplyUpdate.getPostId());

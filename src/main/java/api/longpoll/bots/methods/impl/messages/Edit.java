@@ -1,9 +1,9 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.http.params.AttachableParam;
-import api.longpoll.bots.http.params.BoolInt;
-import api.longpoll.bots.methods.AuthorizedVkApiMethod;
-import api.longpoll.bots.methods.VkApiProperties;
+import api.longpoll.bots.config.VkBotsConfig;
+import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.IntegerResponse;
 
 import java.util.Arrays;
@@ -16,14 +16,18 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
  */
-public class Edit extends AuthorizedVkApiMethod<IntegerResponse> {
+public class Edit extends VkMethod<IntegerResponse> {
+    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
+    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = VkBotsConfig.getInstance().getVkAttachmentsListConverterConverter();
+
     public Edit(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected String getUrl() {
-        return VkApiProperties.get("messages.edit");
+    public String getUrl() {
+        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.edit");
     }
 
     @Override
@@ -31,12 +35,12 @@ public class Edit extends AuthorizedVkApiMethod<IntegerResponse> {
         return IntegerResponse.class;
     }
 
-    public Edit setAttachments(AttachableParam... attachments) {
+    public Edit setAttachments(VkAttachment... attachments) {
         return setAttachments(Arrays.asList(attachments));
     }
 
-    public Edit setAttachments(List<AttachableParam> attachments) {
-        return addParam("attachment", attachments);
+    public Edit setAttachments(List<VkAttachment> attachments) {
+        return addParam("attachment", listConverter.convert(vkAttachmentsListConverter.convert(attachments)));
     }
 
     public Edit setPeerId(int peerId) {
@@ -56,11 +60,11 @@ public class Edit extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public Edit setKeepForwardMessages(boolean keepForwardMessages) {
-        return addParam("keep_forward_messages", new BoolInt(keepForwardMessages));
+        return addParam("keep_forward_messages", boolIntConverter.convert(keepForwardMessages));
     }
 
     public Edit setKeepSnippets(boolean keepSnippets) {
-        return addParam("keep_snippets", new BoolInt(keepSnippets));
+        return addParam("keep_snippets", boolIntConverter.convert(keepSnippets));
     }
 
     public Edit setGroupId(int groupId) {
@@ -68,7 +72,7 @@ public class Edit extends AuthorizedVkApiMethod<IntegerResponse> {
     }
 
     public Edit setDontParseLinks(boolean dontParseLinks) {
-        return addParam("dont_parse_links", new BoolInt(dontParseLinks));
+        return addParam("dont_parse_links", boolIntConverter.convert(dontParseLinks));
     }
 
     public Edit setMessageId(int messageId) {
