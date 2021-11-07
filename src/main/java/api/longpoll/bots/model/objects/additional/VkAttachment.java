@@ -5,10 +5,28 @@ import api.longpoll.bots.methods.impl.photos.SaveMessagesPhoto;
 import api.longpoll.bots.model.objects.media.Doc;
 import api.longpoll.bots.model.objects.media.Photo;
 
+/**
+ * VK attachment wrapper.
+ */
 public class VkAttachment {
+    /**
+     * Attachment type.
+     */
     private final String type;
+
+    /**
+     * Attachment owner ID.
+     */
     private final int ownerId;
+
+    /**
+     * Attachment ID.
+     */
     private final int mediaId;
+
+    /**
+     * Attachment <i>access_key</i>.
+     */
     private final String accessKey;
 
     public VkAttachment(String type, int ownerId, int mediaId) {

@@ -10,13 +10,54 @@ import api.longpoll.bots.model.objects.additional.VkAttachment;
 
 import java.io.InputStream;
 
+/**
+ * Uploads document to conversation.
+ * Executes:
+ * <ol>
+ *     <li>docs.getMessagesUploadServer</li>
+ *     <li>[uploading document to VK server]</li>
+ *     <li>docs.save</li>
+ * </ol>
+ * The result of execution can be passed as <b>messages.send</b> parameter.
+ */
 public class AttachDoc extends VkMethod<VkAttachment> {
+    /**
+     * ID of conversation.
+     */
     private int peerId;
+
+    /**
+     * Document type. Possible values:
+     * <ol>
+     *     <li>doc - for any files.</li>
+     *     <li>audio_message - for voice messages.</li>
+     * </ol>
+     */
     private String type;
+
+    /**
+     * Name of file.
+     */
     private String filename;
+
+    /**
+     * File {@link InputStream}.
+     */
     private InputStream doc;
+
+    /**
+     * Gets upload server.
+     */
     private final GetMessagesUploadServer getMessagesUploadServer;
+
+    /**
+     * Upload file to VK server.
+     */
     private final UploadDoc uploadDoc = VkBotsConfig.getInstance().getUploadDoc();
+
+    /**
+     * Saves uploaded document.
+     */
     private final Save save;
 
     public AttachDoc(String accessToken) {

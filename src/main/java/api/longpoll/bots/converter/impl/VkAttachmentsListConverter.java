@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Converts {@link List<VkAttachment>} object to {@link List<String>}.
+ * Converts {@link VkAttachment} object to {@link String} value to pass to VK API method parameters.
  */
 public class VkAttachmentsListConverter implements Converter<List<VkAttachment>, List<String>> {
     /**

@@ -10,12 +10,45 @@ import api.longpoll.bots.model.objects.additional.VkAttachment;
 
 import java.io.InputStream;
 
+/**
+ * Uploads photo to conversation.
+ * Executes:
+ * <ol>
+ *     <li>photos.getMessagesUploadServer</li>
+ *     <li>[uploading photo to VK server]</li>
+ *     <li>photos.saveMessagesPhoto</li>
+ * </ol>
+ * The result of execution can be passed as <b>messages.send</b> parameter.
+ */
 public class AttachPhoto extends VkMethod<VkAttachment> {
+    /**
+     * ID of conversation.
+     */
     private int peerId;
+
+    /**
+     * Name of file.
+     */
     private String filename;
+
+    /**
+     * File {@link InputStream}.
+     */
     private InputStream photo;
+
+    /**
+     * Gets upload server.
+     */
     private final GetMessagesUploadServer getMessagesUploadServer;
+
+    /**
+     * Upload file to VK server.
+     */
     private final UploadPhoto uploadPhoto = VkBotsConfig.getInstance().getUploadPhoto();
+
+    /**
+     * Saves uploaded document.
+     */
     private final SaveMessagesPhoto saveMessagesPhoto;
 
     public AttachPhoto(String accessToken) {

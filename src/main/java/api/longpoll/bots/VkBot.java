@@ -38,8 +38,15 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
+/**
+ * VK bot.
+ */
 public abstract class VkBot {
+    /**
+     * {@link Logger} object.
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(VkBot.class);
+
     /**
      * VK Bots API methods.
      */
@@ -52,6 +59,11 @@ public abstract class VkBot {
      */
     public abstract String getAccessToken();
 
+    /**
+     * Handles list of VK events.
+     *
+     * @param events list of VK events.
+     */
     public void handle(List<VkEvent> events) {
         events.forEach(event -> {
             EventType eventType = event.getType();

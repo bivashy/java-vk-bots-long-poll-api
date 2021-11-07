@@ -12,11 +12,31 @@ import org.slf4j.LoggerFactory;
  * Abstract bot to handle VK events.
  */
 public abstract class LongPollBot extends VkBot {
+    /**
+     * {@link Logger} object.
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(LongPollBot.class);
+
+    /**
+     * Whether infinite loop should be continued.
+     */
     private boolean polling = true;
+
+    /**
+     * Gets VK long poll server.
+     */
     private final GetLongPollServer getLongPollServer = VkBotsConfig.getInstance().getGetLongPollServerFactory().get(getAccessToken());
+
+    /**
+     * Gets VK updates.
+     */
     private final GetUpdates getUpdates = VkBotsConfig.getInstance().getGetUpdates();
 
+    /**
+     * Begins listening to VK updates.
+     *
+     * @throws VkApiException if errors occur.
+     */
     public void startPolling() throws VkApiException {
         resetGetUpdates();
         while (polling) {
@@ -31,10 +51,18 @@ public abstract class LongPollBot extends VkBot {
         }
     }
 
+    /**
+     * Stops listening to VK updates.
+     */
     public void stopPolling() {
         polling = false;
     }
 
+    /**
+     * Initialises {@link LongPollBot#getUpdates} object.
+     *
+     * @throws VkApiException if errors occur.
+     */
     private void resetGetUpdates() throws VkApiException {
         GetLongPollServer.Response longPollServer = getLongPollServer.setGroupId(getGroupId()).execute();
         getUpdates.setServer(longPollServer.getResponseObject().getServer())

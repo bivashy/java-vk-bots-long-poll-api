@@ -52,7 +52,7 @@ public class VkBotsConfig {
     private Converter<VkAttachment, String> vkAttachmentConverter;
 
     /**
-     * Converts {@link List<VkAttachment>} object to {@link List<String>}.
+     * Converts a list of {@link VkAttachment} to list of {@link String}.
      */
     private Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverterConverter;
 

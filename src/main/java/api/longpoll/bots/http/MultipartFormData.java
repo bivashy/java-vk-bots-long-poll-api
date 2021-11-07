@@ -2,9 +2,23 @@ package api.longpoll.bots.http;
 
 import java.io.InputStream;
 
+/**
+ * Multipart form data wrapper.
+ */
 public class MultipartFormData {
+    /**
+     * Form data key.
+     */
     private String key;
+
+    /**
+     * Name of file.
+     */
     private String filename;
+
+    /**
+     * File {@link InputStream}.
+     */
     private InputStream inputStream;
 
     public MultipartFormData(String key, String filename, InputStream inputStream) {
