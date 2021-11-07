@@ -74,7 +74,7 @@ public class GetCallbackSettings extends VkMethod<GetCallbackSettings.Response> 
                 private Boolean messageNew;
 
                 /**
-                 * New outcoming message.
+                 * New outgoing message.
                  */
                 @SerializedName("message_reply")
                 @JsonAdapter(BoolIntDeserializer.class)

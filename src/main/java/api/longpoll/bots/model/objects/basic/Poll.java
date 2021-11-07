@@ -262,13 +262,13 @@ public class Poll implements Attachable {
          */
         public static class Point {
             /**
-             * Gradient't point position.
+             * Gradient's point position.
              */
             @SerializedName("position")
             private Double position;
 
             /**
-             * Gradient't point color.
+             * Gradient's point color.
              */
             @SerializedName("color")
             private String color;

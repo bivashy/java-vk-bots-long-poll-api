@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MessagesSendResultConverterTest {
-    Gson gson = new Gson();
+    final Gson gson = new Gson();
 
     @Test
     void responses() {

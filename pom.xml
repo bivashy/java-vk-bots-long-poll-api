@@ -7,7 +7,6 @@
     <artifactId>java-vk-bots-longpoll-api</artifactId>
     <packaging>jar</packaging>
     <version>3.0.0</version>
-
     <name>Java VK Bots Long Poll API</name>
     <description>A Java library to create VK bots using Bots Long Poll API</description>
     <url>https://github.com/yvasyliev/java-vk-bots-long-poll-api</url>
@@ -15,7 +14,7 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <url>https://www.opensource.org/licenses/mit-license.php</url>
         </license>
     </licenses>
 
@@ -221,7 +220,7 @@
     <scm>
         <connection>scm:git:ssh://github.com/yvasyliev/java-vk-bots-long-poll-api.git</connection>
         <developerConnection>scm:git:ssh://github.com/yvasyliev/java-vk-bots-long-poll-api.git</developerConnection>
-        <url>http://github.com/yvasyliev/java-vk-bots-longpoll-api</url>
+        <url>https://github.com/yvasyliev/java-vk-bots-longpoll-api</url>
     </scm>
 
     <developers>

@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MessageEventParseTest {
     @Test

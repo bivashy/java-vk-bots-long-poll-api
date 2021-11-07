@@ -26,7 +26,7 @@ public class Element {
      * ID of an image that needs to be attached.
      */
     @SerializedName("photo_id")
-    private Integer photoId;
+    private String photoId;
 
     /**
      * List of buttons. One carousel element can contain up to 3 buttons.
@@ -121,12 +121,12 @@ public class Element {
         return this;
     }
 
-    public Integer getPhotoId() {
+    public String getPhotoId() {
         return photoId;
     }
 
-    public Element setPhotoId(Integer photoId) {
-        this.photoId = photoId;
+    public Element setPhotoId(int ownerId, int mediaId) {
+        this.photoId = ownerId + "_" + mediaId;
         return this;
     }
 
