@@ -4,6 +4,7 @@ import api.longpoll.bots.adapters.deserializers.MessagesSendResultDeserializer;
 import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.model.objects.additional.Forward;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
@@ -25,6 +26,7 @@ public class Send extends VkMethod<Send.Response> {
     private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
     private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
     private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = VkBotsConfig.getInstance().getVkAttachmentsListConverterConverter();
+    private final Converter<Forward, String> forwardConverter = VkBotsConfig.getInstance().getForwardConverter();
 
     public Send(String accessToken) {
         super(accessToken);
@@ -119,6 +121,10 @@ public class Send extends VkMethod<Send.Response> {
 
     public Send setTemplate(Template template) {
         return addParam("template", template);
+    }
+
+    public Send setForward(Forward forward) {
+        return addParam("forward", forwardConverter.convert(forward));
     }
 
     @Override
