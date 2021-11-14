@@ -4,6 +4,7 @@ import api.longpoll.bots.async.AsyncCaller;
 import api.longpoll.bots.async.DefaultAsyncCaller;
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.converter.impl.BoolIntConverter;
+import api.longpoll.bots.converter.impl.ForwardConverter;
 import api.longpoll.bots.converter.impl.GsonConverter;
 import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.converter.impl.VkAttachmentConverter;
@@ -19,6 +20,7 @@ import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
 import api.longpoll.bots.methods.impl.photos.SaveMessagesPhoto;
 import api.longpoll.bots.methods.impl.upload.UploadDoc;
 import api.longpoll.bots.methods.impl.upload.UploadPhoto;
+import api.longpoll.bots.model.objects.additional.Forward;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.validator.Validator;
 import api.longpoll.bots.validator.VkResponseValidator;
@@ -135,6 +137,8 @@ public class VkBotsConfig {
      * List of VK bots methods.
      */
     private Properties botMethods;
+
+    private Converter<Forward, String> forwardConverter;
 
     private VkBotsConfig() {
     }
@@ -361,5 +365,16 @@ public class VkBotsConfig {
 
     public void setBotMethods(Properties botMethods) {
         this.botMethods = botMethods;
+    }
+
+    public Converter<Forward, String> getForwardConverter() {
+        if (forwardConverter == null) {
+            forwardConverter = new ForwardConverter();
+        }
+        return forwardConverter;
+    }
+
+    public void setForwardConverter(Converter<Forward, String> forwardConverter) {
+        this.forwardConverter = forwardConverter;
     }
 }
