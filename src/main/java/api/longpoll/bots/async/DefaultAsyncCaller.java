@@ -5,7 +5,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
 /**
- * Default async caller.
+ * Default async caller implementation.
  */
 public class DefaultAsyncCaller implements AsyncCaller {
     @Override

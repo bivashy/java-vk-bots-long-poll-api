@@ -181,261 +181,6 @@ public class WallPost implements Attachable {
     @SerializedName("attachments")
     private List<Attachment> attachments;
 
-    /**
-     * Describes post comments info.
-     */
-    public static class Comments {
-        /**
-         * Comments count.
-         */
-        @SerializedName("count")
-        private Integer count;
-
-        /**
-         * <b>true</b> if current user can comment the post.
-         */
-        @SerializedName("can_post")
-        @JsonAdapter(BoolIntDeserializer.class)
-        private Boolean canPost;
-
-        /**
-         * Whether communities can comment this post.
-         */
-        @SerializedName("groups_can_post")
-        @JsonAdapter(BoolIntDeserializer.class)
-        private Boolean groupsCanPost;
-
-        /**
-         * <b>true</b> if current user can close comments.
-         */
-        @SerializedName("can_close")
-        private Boolean canClose;
-
-        /**
-         * <b>true</b> if current user can open comments.
-         */
-        @SerializedName("can_open")
-        private Boolean canOpen;
-
-        public Integer getCount() {
-            return count;
-        }
-
-        public void setCount(Integer count) {
-            this.count = count;
-        }
-
-        public Boolean getCanPost() {
-            return canPost;
-        }
-
-        public void setCanPost(Boolean canPost) {
-            this.canPost = canPost;
-        }
-
-        public Boolean getGroupsCanPost() {
-            return groupsCanPost;
-        }
-
-        public void setGroupsCanPost(Boolean groupsCanPost) {
-            this.groupsCanPost = groupsCanPost;
-        }
-
-        public Boolean getCanClose() {
-            return canClose;
-        }
-
-        public void setCanClose(Boolean canClose) {
-            this.canClose = canClose;
-        }
-
-        public Boolean getCanOpen() {
-            return canOpen;
-        }
-
-        public void setCanOpen(Boolean canOpen) {
-            this.canOpen = canOpen;
-        }
-
-        @Override
-        public String toString() {
-            return "Comments{" +
-                    "count=" + count +
-                    ", canPost=" + canPost +
-                    ", groupsCanPost=" + groupsCanPost +
-                    ", canClose=" + canClose +
-                    ", canOpen=" + canOpen +
-                    '}';
-        }
-    }
-
-    /**
-     * Describes post likes info.
-     */
-    public static class Likes extends WallComment.Likes {
-        /**
-         * Whether the user can repost.
-         */
-        @SerializedName("can_publish")
-        @JsonAdapter(BoolIntDeserializer.class)
-        private Boolean canPublish;
-
-        public Boolean getCanPublish() {
-            return canPublish;
-        }
-
-        public void setCanPublish(Boolean canPublish) {
-            this.canPublish = canPublish;
-        }
-
-
-        @Override
-        public String toString() {
-            return "Likes{" +
-                    "canPublish=" + canPublish +
-                    "} " + super.toString();
-        }
-    }
-
-    /**
-     * Describes reposts.
-     */
-    public static class Reposts {
-        /**
-         * Number of users who copied the post.
-         */
-        @SerializedName("count")
-        private Integer count;
-
-        /**
-         * Whether the user reposted the post.
-         */
-        @SerializedName("user_reposted")
-        @JsonAdapter(BoolIntDeserializer.class)
-        private Boolean userReposted;
-
-        public Integer getCount() {
-            return count;
-        }
-
-        public void setCount(Integer count) {
-            this.count = count;
-        }
-
-        public Boolean getUserReposted() {
-            return userReposted;
-        }
-
-        public void setUserReposted(Boolean userReposted) {
-            this.userReposted = userReposted;
-        }
-
-        @Override
-        public String toString() {
-            return "Reposts{" +
-                    "count=" + count +
-                    ", userReposted=" + userReposted +
-                    '}';
-        }
-    }
-
-    /**
-     * Describes post views.
-     */
-    public static class Views {
-        /**
-         * Number of views.
-         */
-        @SerializedName("count")
-        private Integer count;
-
-        public Integer getCount() {
-            return count;
-        }
-
-        public void setCount(Integer count) {
-            this.count = count;
-        }
-
-        @Override
-        public String toString() {
-            return "Views{" +
-                    "count=" + count +
-                    '}';
-        }
-    }
-
-    /**
-     * Describes way of posting on the wall.
-     */
-    public static class PostSource {
-        /**
-         * Source type.
-         */
-        @SerializedName("type")
-        private String type;
-
-        /**
-         * Platform name.
-         */
-        @SerializedName("platform")
-        private String platform;
-
-        /**
-         * Action type.
-         */
-        @SerializedName("data")
-        private String data;
-
-        /**
-         * Resource URL.
-         */
-        @SerializedName("url")
-        private String url;
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public String getPlatform() {
-            return platform;
-        }
-
-        public void setPlatform(String platform) {
-            this.platform = platform;
-        }
-
-        public String getData() {
-            return data;
-        }
-
-        public void setData(String data) {
-            this.data = data;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        @Override
-        public String toString() {
-            return "PostSource{" +
-                    "type='" + type + '\'' +
-                    ", platform='" + platform + '\'' +
-                    ", data='" + data + '\'' +
-                    ", url='" + url + '\'' +
-                    '}';
-        }
-    }
-
     public Integer getId() {
         return id;
     }
@@ -692,5 +437,260 @@ public class WallPost implements Attachable {
                 ", postSource=" + postSource +
                 ", attachments=" + attachments +
                 '}';
+    }
+
+    /**
+     * Describes post comments info.
+     */
+    public static class Comments {
+        /**
+         * Comments count.
+         */
+        @SerializedName("count")
+        private Integer count;
+
+        /**
+         * <b>true</b> if current user can comment the post.
+         */
+        @SerializedName("can_post")
+        @JsonAdapter(BoolIntDeserializer.class)
+        private Boolean canPost;
+
+        /**
+         * Whether communities can comment this post.
+         */
+        @SerializedName("groups_can_post")
+        @JsonAdapter(BoolIntDeserializer.class)
+        private Boolean groupsCanPost;
+
+        /**
+         * <b>true</b> if current user can close comments.
+         */
+        @SerializedName("can_close")
+        private Boolean canClose;
+
+        /**
+         * <b>true</b> if current user can open comments.
+         */
+        @SerializedName("can_open")
+        private Boolean canOpen;
+
+        public Integer getCount() {
+            return count;
+        }
+
+        public void setCount(Integer count) {
+            this.count = count;
+        }
+
+        public Boolean getCanPost() {
+            return canPost;
+        }
+
+        public void setCanPost(Boolean canPost) {
+            this.canPost = canPost;
+        }
+
+        public Boolean getGroupsCanPost() {
+            return groupsCanPost;
+        }
+
+        public void setGroupsCanPost(Boolean groupsCanPost) {
+            this.groupsCanPost = groupsCanPost;
+        }
+
+        public Boolean getCanClose() {
+            return canClose;
+        }
+
+        public void setCanClose(Boolean canClose) {
+            this.canClose = canClose;
+        }
+
+        public Boolean getCanOpen() {
+            return canOpen;
+        }
+
+        public void setCanOpen(Boolean canOpen) {
+            this.canOpen = canOpen;
+        }
+
+        @Override
+        public String toString() {
+            return "Comments{" +
+                    "count=" + count +
+                    ", canPost=" + canPost +
+                    ", groupsCanPost=" + groupsCanPost +
+                    ", canClose=" + canClose +
+                    ", canOpen=" + canOpen +
+                    '}';
+        }
+    }
+
+    /**
+     * Describes post likes info.
+     */
+    public static class Likes extends WallComment.Likes {
+        /**
+         * Whether the user can repost.
+         */
+        @SerializedName("can_publish")
+        @JsonAdapter(BoolIntDeserializer.class)
+        private Boolean canPublish;
+
+        public Boolean getCanPublish() {
+            return canPublish;
+        }
+
+        public void setCanPublish(Boolean canPublish) {
+            this.canPublish = canPublish;
+        }
+
+
+        @Override
+        public String toString() {
+            return "Likes{" +
+                    "canPublish=" + canPublish +
+                    "} " + super.toString();
+        }
+    }
+
+    /**
+     * Describes reposts.
+     */
+    public static class Reposts {
+        /**
+         * Number of users who copied the post.
+         */
+        @SerializedName("count")
+        private Integer count;
+
+        /**
+         * Whether the user reposted the post.
+         */
+        @SerializedName("user_reposted")
+        @JsonAdapter(BoolIntDeserializer.class)
+        private Boolean userReposted;
+
+        public Integer getCount() {
+            return count;
+        }
+
+        public void setCount(Integer count) {
+            this.count = count;
+        }
+
+        public Boolean getUserReposted() {
+            return userReposted;
+        }
+
+        public void setUserReposted(Boolean userReposted) {
+            this.userReposted = userReposted;
+        }
+
+        @Override
+        public String toString() {
+            return "Reposts{" +
+                    "count=" + count +
+                    ", userReposted=" + userReposted +
+                    '}';
+        }
+    }
+
+    /**
+     * Describes post views.
+     */
+    public static class Views {
+        /**
+         * Number of views.
+         */
+        @SerializedName("count")
+        private Integer count;
+
+        public Integer getCount() {
+            return count;
+        }
+
+        public void setCount(Integer count) {
+            this.count = count;
+        }
+
+        @Override
+        public String toString() {
+            return "Views{" +
+                    "count=" + count +
+                    '}';
+        }
+    }
+
+    /**
+     * Describes way of posting on the wall.
+     */
+    public static class PostSource {
+        /**
+         * Source type.
+         */
+        @SerializedName("type")
+        private String type;
+
+        /**
+         * Platform name.
+         */
+        @SerializedName("platform")
+        private String platform;
+
+        /**
+         * Action type.
+         */
+        @SerializedName("data")
+        private String data;
+
+        /**
+         * Resource URL.
+         */
+        @SerializedName("url")
+        private String url;
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getPlatform() {
+            return platform;
+        }
+
+        public void setPlatform(String platform) {
+            this.platform = platform;
+        }
+
+        public String getData() {
+            return data;
+        }
+
+        public void setData(String data) {
+            this.data = data;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        @Override
+        public String toString() {
+            return "PostSource{" +
+                    "type='" + type + '\'' +
+                    ", platform='" + platform + '\'' +
+                    ", data='" + data + '\'' +
+                    ", url='" + url + '\'' +
+                    '}';
+        }
     }
 }

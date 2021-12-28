@@ -65,6 +65,93 @@ public class Conversation {
     @SerializedName("chat_settings")
     private ChatSettings chatSettings;
 
+    public Peer getPeer() {
+        return peer;
+    }
+
+    public void setPeer(Peer peer) {
+        this.peer = peer;
+    }
+
+    public Integer getInRead() {
+        return inRead;
+    }
+
+    public void setInRead(Integer inRead) {
+        this.inRead = inRead;
+    }
+
+    public Integer getOutRead() {
+        return outRead;
+    }
+
+    public void setOutRead(Integer outRead) {
+        this.outRead = outRead;
+    }
+
+    public Integer getUnreadAmount() {
+        return unreadAmount;
+    }
+
+    public void setUnreadAmount(Integer unreadAmount) {
+        this.unreadAmount = unreadAmount;
+    }
+
+    public Boolean getImportant() {
+        return important;
+    }
+
+    public void setImportant(Boolean important) {
+        this.important = important;
+    }
+
+    public Boolean getUnanswered() {
+        return unanswered;
+    }
+
+    public void setUnanswered(Boolean unanswered) {
+        this.unanswered = unanswered;
+    }
+
+    public PushSettings getPushSettings() {
+        return pushSettings;
+    }
+
+    public void setPushSettings(PushSettings pushSettings) {
+        this.pushSettings = pushSettings;
+    }
+
+    public CanWrite getCanWrite() {
+        return canWrite;
+    }
+
+    public void setCanWrite(CanWrite canWrite) {
+        this.canWrite = canWrite;
+    }
+
+    public ChatSettings getChatSettings() {
+        return chatSettings;
+    }
+
+    public void setChatSettings(ChatSettings chatSettings) {
+        this.chatSettings = chatSettings;
+    }
+
+    @Override
+    public String toString() {
+        return "Conversation{" +
+                "peer=" + peer +
+                ", inRead=" + inRead +
+                ", outRead=" + outRead +
+                ", unreadAmount=" + unreadAmount +
+                ", important=" + important +
+                ", unanswered=" + unanswered +
+                ", pushSettings=" + pushSettings +
+                ", canWrite=" + canWrite +
+                ", chatSettings=" + chatSettings +
+                '}';
+    }
+
     /**
      * Describes location.
      */
@@ -264,62 +351,6 @@ public class Conversation {
         @SerializedName("is_group_channel")
         private Boolean groupChannel;
 
-        /**
-         * Describes conversation cover image.
-         */
-        public static class Photo {
-            /**
-             * URL of conversation image with width size of 50 px.
-             */
-            @SerializedName("photo_50")
-            private String photo50;
-
-            /**
-             * URL of conversation image with width size of 100 px.
-             */
-            @SerializedName("photo_100")
-            private String photo100;
-
-            /**
-             * URL of conversation image with width size of 200 px.
-             */
-            @SerializedName("photo_200")
-            private String photo200;
-
-            public String getPhoto50() {
-                return photo50;
-            }
-
-            public void setPhoto50(String photo50) {
-                this.photo50 = photo50;
-            }
-
-            public String getPhoto100() {
-                return photo100;
-            }
-
-            public void setPhoto100(String photo100) {
-                this.photo100 = photo100;
-            }
-
-            public String getPhoto200() {
-                return photo200;
-            }
-
-            public void setPhoto200(String photo200) {
-                this.photo200 = photo200;
-            }
-
-            @Override
-            public String toString() {
-                return "Photo{" +
-                        "photo50='" + photo50 + '\'' +
-                        ", photo100='" + photo100 + '\'' +
-                        ", photo200='" + photo200 + '\'' +
-                        '}';
-            }
-        }
-
         public Integer getMembersCount() {
             return membersCount;
         }
@@ -388,92 +419,61 @@ public class Conversation {
                     ", groupChannel=" + groupChannel +
                     '}';
         }
-    }
 
-    public Peer getPeer() {
-        return peer;
-    }
+        /**
+         * Describes conversation cover image.
+         */
+        public static class Photo {
+            /**
+             * URL of conversation image with width size of 50 px.
+             */
+            @SerializedName("photo_50")
+            private String photo50;
 
-    public void setPeer(Peer peer) {
-        this.peer = peer;
-    }
+            /**
+             * URL of conversation image with width size of 100 px.
+             */
+            @SerializedName("photo_100")
+            private String photo100;
 
-    public Integer getInRead() {
-        return inRead;
-    }
+            /**
+             * URL of conversation image with width size of 200 px.
+             */
+            @SerializedName("photo_200")
+            private String photo200;
 
-    public void setInRead(Integer inRead) {
-        this.inRead = inRead;
-    }
+            public String getPhoto50() {
+                return photo50;
+            }
 
-    public Integer getOutRead() {
-        return outRead;
-    }
+            public void setPhoto50(String photo50) {
+                this.photo50 = photo50;
+            }
 
-    public void setOutRead(Integer outRead) {
-        this.outRead = outRead;
-    }
+            public String getPhoto100() {
+                return photo100;
+            }
 
-    public Integer getUnreadAmount() {
-        return unreadAmount;
-    }
+            public void setPhoto100(String photo100) {
+                this.photo100 = photo100;
+            }
 
-    public void setUnreadAmount(Integer unreadAmount) {
-        this.unreadAmount = unreadAmount;
-    }
+            public String getPhoto200() {
+                return photo200;
+            }
 
-    public Boolean getImportant() {
-        return important;
-    }
+            public void setPhoto200(String photo200) {
+                this.photo200 = photo200;
+            }
 
-    public void setImportant(Boolean important) {
-        this.important = important;
-    }
-
-    public Boolean getUnanswered() {
-        return unanswered;
-    }
-
-    public void setUnanswered(Boolean unanswered) {
-        this.unanswered = unanswered;
-    }
-
-    public PushSettings getPushSettings() {
-        return pushSettings;
-    }
-
-    public void setPushSettings(PushSettings pushSettings) {
-        this.pushSettings = pushSettings;
-    }
-
-    public CanWrite getCanWrite() {
-        return canWrite;
-    }
-
-    public void setCanWrite(CanWrite canWrite) {
-        this.canWrite = canWrite;
-    }
-
-    public ChatSettings getChatSettings() {
-        return chatSettings;
-    }
-
-    public void setChatSettings(ChatSettings chatSettings) {
-        this.chatSettings = chatSettings;
-    }
-
-    @Override
-    public String toString() {
-        return "Conversation{" +
-                "peer=" + peer +
-                ", inRead=" + inRead +
-                ", outRead=" + outRead +
-                ", unreadAmount=" + unreadAmount +
-                ", important=" + important +
-                ", unanswered=" + unanswered +
-                ", pushSettings=" + pushSettings +
-                ", canWrite=" + canWrite +
-                ", chatSettings=" + chatSettings +
-                '}';
+            @Override
+            public String toString() {
+                return "Photo{" +
+                        "photo50='" + photo50 + '\'' +
+                        ", photo100='" + photo100 + '\'' +
+                        ", photo200='" + photo200 + '\'' +
+                        '}';
+            }
+        }
     }
 }

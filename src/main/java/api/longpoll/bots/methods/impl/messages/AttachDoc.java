@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.impl.docs.GetMessagesUploadServer;
@@ -22,10 +21,21 @@ import java.io.InputStream;
  */
 public class AttachDoc extends VkMethod<VkAttachment> {
     /**
+     * Gets upload server.
+     */
+    private final GetMessagesUploadServer getMessagesUploadServer;
+    /**
+     * Upload file to VK server.
+     */
+    private final UploadDoc uploadDoc = new UploadDoc();
+    /**
+     * Saves uploaded document.
+     */
+    private final Save save;
+    /**
      * ID of conversation.
      */
     private int peerId;
-
     /**
      * Document type. Possible values:
      * <ol>
@@ -34,36 +44,19 @@ public class AttachDoc extends VkMethod<VkAttachment> {
      * </ol>
      */
     private String type;
-
     /**
      * Name of file.
      */
     private String filename;
-
     /**
      * File {@link InputStream}.
      */
     private InputStream doc;
 
-    /**
-     * Gets upload server.
-     */
-    private final GetMessagesUploadServer getMessagesUploadServer;
-
-    /**
-     * Upload file to VK server.
-     */
-    private final UploadDoc uploadDoc = VkBotsConfig.getInstance().getUploadDoc();
-
-    /**
-     * Saves uploaded document.
-     */
-    private final Save save;
-
     public AttachDoc(String accessToken) {
         super(accessToken);
-        getMessagesUploadServer = VkBotsConfig.getInstance().getDocsGetMessagesUploadServerFactory().get(accessToken);
-        save = VkBotsConfig.getInstance().getDocsSaveFactory().get(accessToken);
+        getMessagesUploadServer = new GetMessagesUploadServer(accessToken);
+        save = new Save(accessToken);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -19,7 +18,7 @@ public class GetStats extends VkMethod<GetStats.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.getStats");
+        return VK_METHODS.getProperty("stories.getStats");
     }
 
     @Override
@@ -90,47 +89,6 @@ public class GetStats extends VkMethod<GetStats.Response> {
             @SerializedName("open_link")
             private Stats openLink;
 
-            /**
-             * Describes stats object.
-             */
-            public static class Stats {
-                /**
-                 * Counter's availability (on — available, off — unavailable).
-                 */
-                @SerializedName("state")
-                private String state;
-
-                /**
-                 * Counter's value.
-                 */
-                @SerializedName("count")
-                private Integer count;
-
-                public String getState() {
-                    return state;
-                }
-
-                public void setState(String state) {
-                    this.state = state;
-                }
-
-                public Integer getCount() {
-                    return count;
-                }
-
-                public void setCount(Integer count) {
-                    this.count = count;
-                }
-
-                @Override
-                public String toString() {
-                    return "Stats{" +
-                            "state='" + state + '\'' +
-                            ", count=" + count +
-                            '}';
-                }
-            }
-
             public Stats getViews() {
                 return views;
             }
@@ -198,6 +156,47 @@ public class GetStats extends VkMethod<GetStats.Response> {
                         ", bans=" + bans +
                         ", openLink=" + openLink +
                         '}';
+            }
+
+            /**
+             * Describes stats object.
+             */
+            public static class Stats {
+                /**
+                 * Counter's availability (on — available, off — unavailable).
+                 */
+                @SerializedName("state")
+                private String state;
+
+                /**
+                 * Counter's value.
+                 */
+                @SerializedName("count")
+                private Integer count;
+
+                public String getState() {
+                    return state;
+                }
+
+                public void setState(String state) {
+                    this.state = state;
+                }
+
+                public Integer getCount() {
+                    return count;
+                }
+
+                public void setCount(Integer count) {
+                    this.count = count;
+                }
+
+                @Override
+                public String toString() {
+                    return "Stats{" +
+                            "state='" + state + '\'' +
+                            ", count=" + count +
+                            '}';
+                }
             }
         }
     }

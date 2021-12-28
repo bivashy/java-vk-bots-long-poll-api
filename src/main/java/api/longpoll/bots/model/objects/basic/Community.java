@@ -343,6 +343,480 @@ public class Community {
     @SerializedName("wiki_page")
     private String wikiPage;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getScreenName() {
+        return screenName;
+    }
+
+    public void setScreenName(String screenName) {
+        this.screenName = screenName;
+    }
+
+    public Integer getIsClosed() {
+        return isClosed;
+    }
+
+    public void setIsClosed(Integer isClosed) {
+        this.isClosed = isClosed;
+    }
+
+    public String getDeactivated() {
+        return deactivated;
+    }
+
+    public void setDeactivated(String deactivated) {
+        this.deactivated = deactivated;
+    }
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
+    public Integer getAdminLevel() {
+        return adminLevel;
+    }
+
+    public void setAdminLevel(Integer adminLevel) {
+        this.adminLevel = adminLevel;
+    }
+
+    public Boolean getMember() {
+        return member;
+    }
+
+    public void setMember(Boolean member) {
+        this.member = member;
+    }
+
+    public Boolean getAdvertiser() {
+        return advertiser;
+    }
+
+    public void setAdvertiser(Boolean advertiser) {
+        this.advertiser = advertiser;
+    }
+
+    public Integer getInvitedBy() {
+        return invitedBy;
+    }
+
+    public void setInvitedBy(Integer invitedBy) {
+        this.invitedBy = invitedBy;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getPhoto50() {
+        return photo50;
+    }
+
+    public void setPhoto50(String photo50) {
+        this.photo50 = photo50;
+    }
+
+    public String getPhoto100() {
+        return photo100;
+    }
+
+    public void setPhoto100(String photo100) {
+        this.photo100 = photo100;
+    }
+
+    public String getPhoto200() {
+        return photo200;
+    }
+
+    public void setPhoto200(String photo200) {
+        this.photo200 = photo200;
+    }
+
+    public String getActivity() {
+        return activity;
+    }
+
+    public void setActivity(String activity) {
+        this.activity = activity;
+    }
+
+    public Addresses getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Addresses addresses) {
+        this.addresses = addresses;
+    }
+
+    public Integer getAgeLimits() {
+        return ageLimits;
+    }
+
+    public void setAgeLimits(Integer ageLimits) {
+        this.ageLimits = ageLimits;
+    }
+
+    public BanInfo getBanInfo() {
+        return banInfo;
+    }
+
+    public void setBanInfo(BanInfo banInfo) {
+        this.banInfo = banInfo;
+    }
+
+    public Boolean getCanCreateTopic() {
+        return canCreateTopic;
+    }
+
+    public void setCanCreateTopic(Boolean canCreateTopic) {
+        this.canCreateTopic = canCreateTopic;
+    }
+
+    public Boolean getCanMessage() {
+        return canMessage;
+    }
+
+    public void setCanMessage(Boolean canMessage) {
+        this.canMessage = canMessage;
+    }
+
+    public Boolean getCanPost() {
+        return canPost;
+    }
+
+    public void setCanPost(Boolean canPost) {
+        this.canPost = canPost;
+    }
+
+    public Boolean getCanSeeAllPosts() {
+        return canSeeAllPosts;
+    }
+
+    public void setCanSeeAllPosts(Boolean canSeeAllPosts) {
+        this.canSeeAllPosts = canSeeAllPosts;
+    }
+
+    public Boolean getCanUploadDoc() {
+        return canUploadDoc;
+    }
+
+    public void setCanUploadDoc(Boolean canUploadDoc) {
+        this.canUploadDoc = canUploadDoc;
+    }
+
+    public Boolean getCanUploadVideo() {
+        return canUploadVideo;
+    }
+
+    public void setCanUploadVideo(Boolean canUploadVideo) {
+        this.canUploadVideo = canUploadVideo;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
+    public Counters getCounters() {
+        return counters;
+    }
+
+    public void setCounters(Counters counters) {
+        this.counters = counters;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public Cover getCover() {
+        return cover;
+    }
+
+    public void setCover(Cover cover) {
+        this.cover = cover;
+    }
+
+    public CropPhoto getCropPhoto() {
+        return cropPhoto;
+    }
+
+    public void setCropPhoto(CropPhoto cropPhoto) {
+        this.cropPhoto = cropPhoto;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getFixedPost() {
+        return fixedPost;
+    }
+
+    public void setFixedPost(Integer fixedPost) {
+        this.fixedPost = fixedPost;
+    }
+
+    public Boolean getHasPhoto() {
+        return hasPhoto;
+    }
+
+    public void setHasPhoto(Boolean hasPhoto) {
+        this.hasPhoto = hasPhoto;
+    }
+
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
+    }
+
+    public Boolean getHiddenFromFeed() {
+        return hiddenFromFeed;
+    }
+
+    public void setHiddenFromFeed(Boolean hiddenFromFeed) {
+        this.hiddenFromFeed = hiddenFromFeed;
+    }
+
+    public Boolean getMessagesBlocked() {
+        return messagesBlocked;
+    }
+
+    public void setMessagesBlocked(Boolean messagesBlocked) {
+        this.messagesBlocked = messagesBlocked;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
+
+    public Integer getMainAlbumId() {
+        return mainAlbumId;
+    }
+
+    public void setMainAlbumId(Integer mainAlbumId) {
+        this.mainAlbumId = mainAlbumId;
+    }
+
+    public Integer getMainSection() {
+        return mainSection;
+    }
+
+    public void setMainSection(Integer mainSection) {
+        this.mainSection = mainSection;
+    }
+
+    public Market getMarket() {
+        return market;
+    }
+
+    public void setMarket(Market market) {
+        this.market = market;
+    }
+
+    public Integer getMemberStatus() {
+        return memberStatus;
+    }
+
+    public void setMemberStatus(Integer memberStatus) {
+        this.memberStatus = memberStatus;
+    }
+
+    public Integer getMembersCount() {
+        return membersCount;
+    }
+
+    public void setMembersCount(Integer membersCount) {
+        this.membersCount = membersCount;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
+
+    public String getPublic_date_label() {
+        return public_date_label;
+    }
+
+    public void setPublic_date_label(String public_date_label) {
+        this.public_date_label = public_date_label;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
+    public Object getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Object startDate) {
+        this.startDate = startDate;
+    }
+
+    public Integer getFinishDate() {
+        return finishDate;
+    }
+
+    public void setFinishDate(Integer finishDate) {
+        this.finishDate = finishDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Boolean getTrending() {
+        return trending;
+    }
+
+    public void setTrending(Boolean trending) {
+        this.trending = trending;
+    }
+
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
+    }
+
+    public Integer getWall() {
+        return wall;
+    }
+
+    public void setWall(Integer wall) {
+        this.wall = wall;
+    }
+
+    public String getWikiPage() {
+        return wikiPage;
+    }
+
+    public void setWikiPage(String wikiPage) {
+        this.wikiPage = wikiPage;
+    }
+
+    @Override
+    public String toString() {
+        return "Community{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", screenName='" + screenName + '\'' +
+                ", isClosed=" + isClosed +
+                ", deactivated='" + deactivated + '\'' +
+                ", admin=" + admin +
+                ", adminLevel=" + adminLevel +
+                ", member=" + member +
+                ", advertiser=" + advertiser +
+                ", invitedBy=" + invitedBy +
+                ", type='" + type + '\'' +
+                ", photo50='" + photo50 + '\'' +
+                ", photo100='" + photo100 + '\'' +
+                ", photo200='" + photo200 + '\'' +
+                ", activity='" + activity + '\'' +
+                ", addresses=" + addresses +
+                ", ageLimits=" + ageLimits +
+                ", banInfo=" + banInfo +
+                ", canCreateTopic=" + canCreateTopic +
+                ", canMessage=" + canMessage +
+                ", canPost=" + canPost +
+                ", canSeeAllPosts=" + canSeeAllPosts +
+                ", canUploadDoc=" + canUploadDoc +
+                ", canUploadVideo=" + canUploadVideo +
+                ", city=" + city +
+                ", contacts=" + contacts +
+                ", counters=" + counters +
+                ", country=" + country +
+                ", cover=" + cover +
+                ", cropPhoto=" + cropPhoto +
+                ", description='" + description + '\'' +
+                ", fixedPost=" + fixedPost +
+                ", hasPhoto=" + hasPhoto +
+                ", favorite=" + favorite +
+                ", hiddenFromFeed=" + hiddenFromFeed +
+                ", messagesBlocked=" + messagesBlocked +
+                ", links=" + links +
+                ", mainAlbumId=" + mainAlbumId +
+                ", mainSection=" + mainSection +
+                ", market=" + market +
+                ", memberStatus=" + memberStatus +
+                ", membersCount=" + membersCount +
+                ", place=" + place +
+                ", public_date_label='" + public_date_label + '\'' +
+                ", site='" + site + '\'' +
+                ", startDate=" + startDate +
+                ", finishDate=" + finishDate +
+                ", status='" + status + '\'' +
+                ", trending=" + trending +
+                ", verified=" + verified +
+                ", wall=" + wall +
+                ", wikiPage='" + wikiPage + '\'' +
+                '}';
+    }
+
     /**
      * Describes addresses.
      */
@@ -1027,479 +1501,5 @@ public class Community {
                     ", address='" + address + '\'' +
                     '}';
         }
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getScreenName() {
-        return screenName;
-    }
-
-    public void setScreenName(String screenName) {
-        this.screenName = screenName;
-    }
-
-    public Integer getIsClosed() {
-        return isClosed;
-    }
-
-    public void setIsClosed(Integer isClosed) {
-        this.isClosed = isClosed;
-    }
-
-    public String getDeactivated() {
-        return deactivated;
-    }
-
-    public void setDeactivated(String deactivated) {
-        this.deactivated = deactivated;
-    }
-
-    public Boolean getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        this.admin = admin;
-    }
-
-    public Integer getAdminLevel() {
-        return adminLevel;
-    }
-
-    public void setAdminLevel(Integer adminLevel) {
-        this.adminLevel = adminLevel;
-    }
-
-    public Boolean getMember() {
-        return member;
-    }
-
-    public void setMember(Boolean member) {
-        this.member = member;
-    }
-
-    public Boolean getAdvertiser() {
-        return advertiser;
-    }
-
-    public void setAdvertiser(Boolean advertiser) {
-        this.advertiser = advertiser;
-    }
-
-    public Integer getInvitedBy() {
-        return invitedBy;
-    }
-
-    public void setInvitedBy(Integer invitedBy) {
-        this.invitedBy = invitedBy;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getPhoto50() {
-        return photo50;
-    }
-
-    public void setPhoto50(String photo50) {
-        this.photo50 = photo50;
-    }
-
-    public String getPhoto100() {
-        return photo100;
-    }
-
-    public void setPhoto100(String photo100) {
-        this.photo100 = photo100;
-    }
-
-    public String getPhoto200() {
-        return photo200;
-    }
-
-    public void setPhoto200(String photo200) {
-        this.photo200 = photo200;
-    }
-
-    public String getActivity() {
-        return activity;
-    }
-
-    public void setActivity(String activity) {
-        this.activity = activity;
-    }
-
-    public Addresses getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(Addresses addresses) {
-        this.addresses = addresses;
-    }
-
-    public Integer getAgeLimits() {
-        return ageLimits;
-    }
-
-    public void setAgeLimits(Integer ageLimits) {
-        this.ageLimits = ageLimits;
-    }
-
-    public BanInfo getBanInfo() {
-        return banInfo;
-    }
-
-    public void setBanInfo(BanInfo banInfo) {
-        this.banInfo = banInfo;
-    }
-
-    public Boolean getCanCreateTopic() {
-        return canCreateTopic;
-    }
-
-    public void setCanCreateTopic(Boolean canCreateTopic) {
-        this.canCreateTopic = canCreateTopic;
-    }
-
-    public Boolean getCanMessage() {
-        return canMessage;
-    }
-
-    public void setCanMessage(Boolean canMessage) {
-        this.canMessage = canMessage;
-    }
-
-    public Boolean getCanPost() {
-        return canPost;
-    }
-
-    public void setCanPost(Boolean canPost) {
-        this.canPost = canPost;
-    }
-
-    public Boolean getCanSeeAllPosts() {
-        return canSeeAllPosts;
-    }
-
-    public void setCanSeeAllPosts(Boolean canSeeAllPosts) {
-        this.canSeeAllPosts = canSeeAllPosts;
-    }
-
-    public Boolean getCanUploadDoc() {
-        return canUploadDoc;
-    }
-
-    public void setCanUploadDoc(Boolean canUploadDoc) {
-        this.canUploadDoc = canUploadDoc;
-    }
-
-    public Boolean getCanUploadVideo() {
-        return canUploadVideo;
-    }
-
-    public void setCanUploadVideo(Boolean canUploadVideo) {
-        this.canUploadVideo = canUploadVideo;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public List<Contact> getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(List<Contact> contacts) {
-        this.contacts = contacts;
-    }
-
-    public Counters getCounters() {
-        return counters;
-    }
-
-    public void setCounters(Counters counters) {
-        this.counters = counters;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
-    public Cover getCover() {
-        return cover;
-    }
-
-    public void setCover(Cover cover) {
-        this.cover = cover;
-    }
-
-    public CropPhoto getCropPhoto() {
-        return cropPhoto;
-    }
-
-    public void setCropPhoto(CropPhoto cropPhoto) {
-        this.cropPhoto = cropPhoto;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getFixedPost() {
-        return fixedPost;
-    }
-
-    public void setFixedPost(Integer fixedPost) {
-        this.fixedPost = fixedPost;
-    }
-
-    public Boolean getHasPhoto() {
-        return hasPhoto;
-    }
-
-    public void setHasPhoto(Boolean hasPhoto) {
-        this.hasPhoto = hasPhoto;
-    }
-
-    public Boolean getFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(Boolean favorite) {
-        this.favorite = favorite;
-    }
-
-    public Boolean getHiddenFromFeed() {
-        return hiddenFromFeed;
-    }
-
-    public void setHiddenFromFeed(Boolean hiddenFromFeed) {
-        this.hiddenFromFeed = hiddenFromFeed;
-    }
-
-    public Boolean getMessagesBlocked() {
-        return messagesBlocked;
-    }
-
-    public void setMessagesBlocked(Boolean messagesBlocked) {
-        this.messagesBlocked = messagesBlocked;
-    }
-
-    public List<Link> getLinks() {
-        return links;
-    }
-
-    public void setLinks(List<Link> links) {
-        this.links = links;
-    }
-
-    public Integer getMainAlbumId() {
-        return mainAlbumId;
-    }
-
-    public void setMainAlbumId(Integer mainAlbumId) {
-        this.mainAlbumId = mainAlbumId;
-    }
-
-    public Integer getMainSection() {
-        return mainSection;
-    }
-
-    public void setMainSection(Integer mainSection) {
-        this.mainSection = mainSection;
-    }
-
-    public Market getMarket() {
-        return market;
-    }
-
-    public void setMarket(Market market) {
-        this.market = market;
-    }
-
-    public Integer getMemberStatus() {
-        return memberStatus;
-    }
-
-    public void setMemberStatus(Integer memberStatus) {
-        this.memberStatus = memberStatus;
-    }
-
-    public Integer getMembersCount() {
-        return membersCount;
-    }
-
-    public void setMembersCount(Integer membersCount) {
-        this.membersCount = membersCount;
-    }
-
-    public Place getPlace() {
-        return place;
-    }
-
-    public void setPlace(Place place) {
-        this.place = place;
-    }
-
-    public String getPublic_date_label() {
-        return public_date_label;
-    }
-
-    public void setPublic_date_label(String public_date_label) {
-        this.public_date_label = public_date_label;
-    }
-
-    public String getSite() {
-        return site;
-    }
-
-    public void setSite(String site) {
-        this.site = site;
-    }
-
-    public Object getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Object startDate) {
-        this.startDate = startDate;
-    }
-
-    public Integer getFinishDate() {
-        return finishDate;
-    }
-
-    public void setFinishDate(Integer finishDate) {
-        this.finishDate = finishDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Boolean getTrending() {
-        return trending;
-    }
-
-    public void setTrending(Boolean trending) {
-        this.trending = trending;
-    }
-
-    public Boolean getVerified() {
-        return verified;
-    }
-
-    public void setVerified(Boolean verified) {
-        this.verified = verified;
-    }
-
-    public Integer getWall() {
-        return wall;
-    }
-
-    public void setWall(Integer wall) {
-        this.wall = wall;
-    }
-
-    public String getWikiPage() {
-        return wikiPage;
-    }
-
-    public void setWikiPage(String wikiPage) {
-        this.wikiPage = wikiPage;
-    }
-
-    @Override
-    public String toString() {
-        return "Community{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", screenName='" + screenName + '\'' +
-                ", isClosed=" + isClosed +
-                ", deactivated='" + deactivated + '\'' +
-                ", admin=" + admin +
-                ", adminLevel=" + adminLevel +
-                ", member=" + member +
-                ", advertiser=" + advertiser +
-                ", invitedBy=" + invitedBy +
-                ", type='" + type + '\'' +
-                ", photo50='" + photo50 + '\'' +
-                ", photo100='" + photo100 + '\'' +
-                ", photo200='" + photo200 + '\'' +
-                ", activity='" + activity + '\'' +
-                ", addresses=" + addresses +
-                ", ageLimits=" + ageLimits +
-                ", banInfo=" + banInfo +
-                ", canCreateTopic=" + canCreateTopic +
-                ", canMessage=" + canMessage +
-                ", canPost=" + canPost +
-                ", canSeeAllPosts=" + canSeeAllPosts +
-                ", canUploadDoc=" + canUploadDoc +
-                ", canUploadVideo=" + canUploadVideo +
-                ", city=" + city +
-                ", contacts=" + contacts +
-                ", counters=" + counters +
-                ", country=" + country +
-                ", cover=" + cover +
-                ", cropPhoto=" + cropPhoto +
-                ", description='" + description + '\'' +
-                ", fixedPost=" + fixedPost +
-                ", hasPhoto=" + hasPhoto +
-                ", favorite=" + favorite +
-                ", hiddenFromFeed=" + hiddenFromFeed +
-                ", messagesBlocked=" + messagesBlocked +
-                ", links=" + links +
-                ", mainAlbumId=" + mainAlbumId +
-                ", mainSection=" + mainSection +
-                ", market=" + market +
-                ", memberStatus=" + memberStatus +
-                ", membersCount=" + membersCount +
-                ", place=" + place +
-                ", public_date_label='" + public_date_label + '\'' +
-                ", site='" + site + '\'' +
-                ", startDate=" + startDate +
-                ", finishDate=" + finishDate +
-                ", status='" + status + '\'' +
-                ", trending=" + trending +
-                ", verified=" + verified +
-                ", wall=" + wall +
-                ", wikiPage='" + wikiPage + '\'' +
-                '}';
     }
 }

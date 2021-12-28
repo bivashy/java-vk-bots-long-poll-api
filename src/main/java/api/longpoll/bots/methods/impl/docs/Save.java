@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.docs;
 
-import api.longpoll.bots.config.VkBotsConfig;
-import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -12,7 +10,6 @@ import api.longpoll.bots.model.response.GenericResponse;
  * @see <a href="https://vk.com/dev/docs.save">https://vk.com/dev/docs.save</a>
  */
 public class Save extends VkMethod<Save.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public Save(String accessToken) {
         super(accessToken);
@@ -20,7 +17,7 @@ public class Save extends VkMethod<Save.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("docs.save");
+        return VK_METHODS.getProperty("docs.save");
     }
 
     @Override
@@ -41,7 +38,7 @@ public class Save extends VkMethod<Save.Response> {
     }
 
     public Save setReturnTags(boolean returnTags) {
-        return addParam("return_tags", boolIntConverter.convert(returnTags));
+        return addParam("return_tags", returnTags ? 1 : 0);
     }
 
     @Override

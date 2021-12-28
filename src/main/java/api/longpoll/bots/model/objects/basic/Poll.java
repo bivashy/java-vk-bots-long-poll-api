@@ -133,276 +133,6 @@ public class Poll implements Attachable {
     @SerializedName("friends")
     private List<Friend> friends;
 
-    /**
-     * Poll option.
-     */
-    public static class Answer {
-        /**
-         * Option ID
-         */
-        @SerializedName("id")
-        private Integer id;
-
-        /**
-         * Option text.
-         */
-        @SerializedName("text")
-        private String text;
-
-        /**
-         * Voters count.
-         */
-        @SerializedName("votes")
-        private Integer votes;
-
-        /**
-         * Option rate.
-         */
-        @SerializedName("rate")
-        private Double rate;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getText() {
-            return text;
-        }
-
-        public void setText(String text) {
-            this.text = text;
-        }
-
-        public Integer getVotes() {
-            return votes;
-        }
-
-        public void setVotes(Integer votes) {
-            this.votes = votes;
-        }
-
-        public Double getRate() {
-            return rate;
-        }
-
-        public void setRate(Double rate) {
-            this.rate = rate;
-        }
-
-
-        @Override
-        public String toString() {
-            return "Answer{" +
-                    "id=" + id +
-                    ", text='" + text + '\'' +
-                    ", votes=" + votes +
-                    ", rate=" + rate +
-                    '}';
-        }
-    }
-
-    /**
-     * Describes poll's background.
-     */
-    public static class Background {
-        /**
-         * Background ID.
-         */
-        @SerializedName("id")
-        private Integer id;
-
-        /**
-         * Background type. Possible values: gradient, tile.
-         */
-        @SerializedName("type")
-        private String type;
-
-        /**
-         * (for type = gradient) gradient angle for X axe.
-         */
-        @SerializedName("angle")
-        private Integer angle;
-
-        /**
-         * HEX-code for alternative color (without #).
-         */
-        @SerializedName("color")
-        private String color;
-
-        /**
-         * (for type = tile) tile's width.
-         */
-        @SerializedName("width")
-        private Integer width;
-
-        /**
-         * (for type = tile) tile's height.
-         */
-        @SerializedName("height")
-        private Integer height;
-
-        /**
-         * (for type = tile) tile's image.
-         */
-        @SerializedName("images")
-        private List<PhotoSize> images;
-
-        /**
-         * (for type = gradient) gradient's points.
-         */
-        @SerializedName("points")
-        private List<Point> points;
-
-        /**
-         * Describes gradient's point.
-         */
-        public static class Point {
-            /**
-             * Gradient's point position.
-             */
-            @SerializedName("position")
-            private Double position;
-
-            /**
-             * Gradient's point color.
-             */
-            @SerializedName("color")
-            private String color;
-
-            public Double getPosition() {
-                return position;
-            }
-
-            public void setPosition(Double position) {
-                this.position = position;
-            }
-
-            public String getColor() {
-                return color;
-            }
-
-            public void setColor(String color) {
-                this.color = color;
-            }
-
-            @Override
-            public String toString() {
-                return "Point{" +
-                        "position=" + position +
-                        ", color='" + color + '\'' +
-                        '}';
-            }
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public Integer getAngle() {
-            return angle;
-        }
-
-        public void setAngle(Integer angle) {
-            this.angle = angle;
-        }
-
-        public String getColor() {
-            return color;
-        }
-
-        public void setColor(String color) {
-            this.color = color;
-        }
-
-        public Integer getWidth() {
-            return width;
-        }
-
-        public void setWidth(Integer width) {
-            this.width = width;
-        }
-
-        public Integer getHeight() {
-            return height;
-        }
-
-        public void setHeight(Integer height) {
-            this.height = height;
-        }
-
-        public List<PhotoSize> getImages() {
-            return images;
-        }
-
-        public void setImages(List<PhotoSize> images) {
-            this.images = images;
-        }
-
-        public List<Point> getPoints() {
-            return points;
-        }
-
-        public void setPoints(List<Point> points) {
-            this.points = points;
-        }
-
-        @Override
-        public String toString() {
-            return "Background{" +
-                    "id=" + id +
-                    ", type='" + type + '\'' +
-                    ", angle=" + angle +
-                    ", color='" + color + '\'' +
-                    ", width=" + width +
-                    ", height=" + height +
-                    ", images=" + images +
-                    ", points=" + points +
-                    '}';
-        }
-    }
-
-    /**
-     * Friend ID.
-     */
-    public static class Friend {
-        /**
-         * Friend ID.
-         */
-        @SerializedName("id")
-        private Integer id;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        @Override
-        public String toString() {
-            return "Friend{" +
-                    "id=" + id +
-                    '}';
-        }
-    }
-
     public Integer getId() {
         return id;
     }
@@ -587,5 +317,275 @@ public class Poll implements Attachable {
                 ", background=" + background +
                 ", friends=" + friends +
                 '}';
+    }
+
+    /**
+     * Poll option.
+     */
+    public static class Answer {
+        /**
+         * Option ID
+         */
+        @SerializedName("id")
+        private Integer id;
+
+        /**
+         * Option text.
+         */
+        @SerializedName("text")
+        private String text;
+
+        /**
+         * Voters count.
+         */
+        @SerializedName("votes")
+        private Integer votes;
+
+        /**
+         * Option rate.
+         */
+        @SerializedName("rate")
+        private Double rate;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        public Integer getVotes() {
+            return votes;
+        }
+
+        public void setVotes(Integer votes) {
+            this.votes = votes;
+        }
+
+        public Double getRate() {
+            return rate;
+        }
+
+        public void setRate(Double rate) {
+            this.rate = rate;
+        }
+
+
+        @Override
+        public String toString() {
+            return "Answer{" +
+                    "id=" + id +
+                    ", text='" + text + '\'' +
+                    ", votes=" + votes +
+                    ", rate=" + rate +
+                    '}';
+        }
+    }
+
+    /**
+     * Describes poll's background.
+     */
+    public static class Background {
+        /**
+         * Background ID.
+         */
+        @SerializedName("id")
+        private Integer id;
+
+        /**
+         * Background type. Possible values: gradient, tile.
+         */
+        @SerializedName("type")
+        private String type;
+
+        /**
+         * (for type = gradient) gradient angle for X axe.
+         */
+        @SerializedName("angle")
+        private Integer angle;
+
+        /**
+         * HEX-code for alternative color (without #).
+         */
+        @SerializedName("color")
+        private String color;
+
+        /**
+         * (for type = tile) tile's width.
+         */
+        @SerializedName("width")
+        private Integer width;
+
+        /**
+         * (for type = tile) tile's height.
+         */
+        @SerializedName("height")
+        private Integer height;
+
+        /**
+         * (for type = tile) tile's image.
+         */
+        @SerializedName("images")
+        private List<PhotoSize> images;
+
+        /**
+         * (for type = gradient) gradient's points.
+         */
+        @SerializedName("points")
+        private List<Point> points;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public Integer getAngle() {
+            return angle;
+        }
+
+        public void setAngle(Integer angle) {
+            this.angle = angle;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public Integer getWidth() {
+            return width;
+        }
+
+        public void setWidth(Integer width) {
+            this.width = width;
+        }
+
+        public Integer getHeight() {
+            return height;
+        }
+
+        public void setHeight(Integer height) {
+            this.height = height;
+        }
+
+        public List<PhotoSize> getImages() {
+            return images;
+        }
+
+        public void setImages(List<PhotoSize> images) {
+            this.images = images;
+        }
+
+        public List<Point> getPoints() {
+            return points;
+        }
+
+        public void setPoints(List<Point> points) {
+            this.points = points;
+        }
+
+        @Override
+        public String toString() {
+            return "Background{" +
+                    "id=" + id +
+                    ", type='" + type + '\'' +
+                    ", angle=" + angle +
+                    ", color='" + color + '\'' +
+                    ", width=" + width +
+                    ", height=" + height +
+                    ", images=" + images +
+                    ", points=" + points +
+                    '}';
+        }
+
+        /**
+         * Describes gradient's point.
+         */
+        public static class Point {
+            /**
+             * Gradient's point position.
+             */
+            @SerializedName("position")
+            private Double position;
+
+            /**
+             * Gradient's point color.
+             */
+            @SerializedName("color")
+            private String color;
+
+            public Double getPosition() {
+                return position;
+            }
+
+            public void setPosition(Double position) {
+                this.position = position;
+            }
+
+            public String getColor() {
+                return color;
+            }
+
+            public void setColor(String color) {
+                this.color = color;
+            }
+
+            @Override
+            public String toString() {
+                return "Point{" +
+                        "position=" + position +
+                        ", color='" + color + '\'' +
+                        '}';
+            }
+        }
+    }
+
+    /**
+     * Friend ID.
+     */
+    public static class Friend {
+        /**
+         * Friend ID.
+         */
+        @SerializedName("id")
+        private Integer id;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        @Override
+        public String toString() {
+            return "Friend{" +
+                    "id=" + id +
+                    '}';
+        }
     }
 }

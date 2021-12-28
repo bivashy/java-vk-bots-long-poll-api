@@ -86,6 +86,120 @@ public class WallComment implements Attachable {
     @SerializedName("attachments")
     private List<Attachment> attachments;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getFromId() {
+        return fromId;
+    }
+
+    public void setFromId(Integer fromId) {
+        this.fromId = fromId;
+    }
+
+    public Integer getDate() {
+        return date;
+    }
+
+    public void setDate(Integer date) {
+        this.date = date;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Integer getReplyToUser() {
+        return replyToUser;
+    }
+
+    public void setReplyToUser(Integer replyToUser) {
+        this.replyToUser = replyToUser;
+    }
+
+    public Integer getReplyToComment() {
+        return replyToComment;
+    }
+
+    public void setReplyToComment(Integer replyToComment) {
+        this.replyToComment = replyToComment;
+    }
+
+    public List<Integer> getParentsStack() {
+        return parentsStack;
+    }
+
+    public void setParentsStack(List<Integer> parentsStack) {
+        this.parentsStack = parentsStack;
+    }
+
+    public Thread getThread() {
+        return thread;
+    }
+
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public Likes getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Likes likes) {
+        this.likes = likes;
+    }
+
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
+    }
+
+    @Override
+    public String toString() {
+        return "WallComment{" +
+                "id=" + id +
+                ", fromId=" + fromId +
+                ", date=" + date +
+                ", text='" + text + '\'' +
+                ", replyToUser=" + replyToUser +
+                ", replyToComment=" + replyToComment +
+                ", parentsStack=" + parentsStack +
+                ", thread=" + thread +
+                ", postId=" + postId +
+                ", ownerId=" + ownerId +
+                ", likes=" + likes +
+                ", attachments=" + attachments +
+                '}';
+    }
+
     /**
      * Describes thread.
      */
@@ -216,119 +330,5 @@ public class WallComment implements Attachable {
                     ", canLike=" + canLike +
                     '}';
         }
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getFromId() {
-        return fromId;
-    }
-
-    public void setFromId(Integer fromId) {
-        this.fromId = fromId;
-    }
-
-    public Integer getDate() {
-        return date;
-    }
-
-    public void setDate(Integer date) {
-        this.date = date;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public Integer getReplyToUser() {
-        return replyToUser;
-    }
-
-    public void setReplyToUser(Integer replyToUser) {
-        this.replyToUser = replyToUser;
-    }
-
-    public Integer getReplyToComment() {
-        return replyToComment;
-    }
-
-    public void setReplyToComment(Integer replyToComment) {
-        this.replyToComment = replyToComment;
-    }
-
-    public List<Integer> getParentsStack() {
-        return parentsStack;
-    }
-
-    public void setParentsStack(List<Integer> parentsStack) {
-        this.parentsStack = parentsStack;
-    }
-
-    public Thread getThread() {
-        return thread;
-    }
-
-    public void setThread(Thread thread) {
-        this.thread = thread;
-    }
-
-    public Integer getPostId() {
-        return postId;
-    }
-
-    public void setPostId(Integer postId) {
-        this.postId = postId;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public Likes getLikes() {
-        return likes;
-    }
-
-    public void setLikes(Likes likes) {
-        this.likes = likes;
-    }
-
-    public List<Attachment> getAttachments() {
-        return attachments;
-    }
-
-    public void setAttachments(List<Attachment> attachments) {
-        this.attachments = attachments;
-    }
-
-    @Override
-    public String toString() {
-        return "WallComment{" +
-                "id=" + id +
-                ", fromId=" + fromId +
-                ", date=" + date +
-                ", text='" + text + '\'' +
-                ", replyToUser=" + replyToUser +
-                ", replyToComment=" + replyToComment +
-                ", parentsStack=" + parentsStack +
-                ", thread=" + thread +
-                ", postId=" + postId +
-                ", ownerId=" + ownerId +
-                ", likes=" + likes +
-                ", attachments=" + attachments +
-                '}';
     }
 }

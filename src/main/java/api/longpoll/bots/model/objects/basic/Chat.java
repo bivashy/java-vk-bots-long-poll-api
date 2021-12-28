@@ -80,48 +80,6 @@ public class Chat {
     @JsonAdapter(BoolIntDeserializer.class)
     private Boolean kicked;
 
-    /**
-     * Describes push settings.
-     */
-    public static class PushSettings {
-        /**
-         * <b>true</b>, if the sound is enabled.
-         */
-        @SerializedName("sound")
-        @JsonAdapter(BoolIntDeserializer.class)
-        private Boolean soundEnabled;
-
-        /**
-         * Time until notifications is disabled. -1 — forever.
-         */
-        @SerializedName("disabled_until")
-        private Integer disabledUntil;
-
-        public Boolean getSoundEnabled() {
-            return soundEnabled;
-        }
-
-        public void setSoundEnabled(Boolean soundEnabled) {
-            this.soundEnabled = soundEnabled;
-        }
-
-        public Integer getDisabledUntil() {
-            return disabledUntil;
-        }
-
-        public void setDisabledUntil(Integer disabledUntil) {
-            this.disabledUntil = disabledUntil;
-        }
-
-        @Override
-        public String toString() {
-            return "PushSettings{" +
-                    "soundEnabled=" + soundEnabled +
-                    ", disabledUntil=" + disabledUntil +
-                    '}';
-        }
-    }
-
     public Integer getId() {
         return id;
     }
@@ -225,5 +183,47 @@ public class Chat {
                 ", left=" + left +
                 ", kicked=" + kicked +
                 '}';
+    }
+
+    /**
+     * Describes push settings.
+     */
+    public static class PushSettings {
+        /**
+         * <b>true</b>, if the sound is enabled.
+         */
+        @SerializedName("sound")
+        @JsonAdapter(BoolIntDeserializer.class)
+        private Boolean soundEnabled;
+
+        /**
+         * Time until notifications is disabled. -1 — forever.
+         */
+        @SerializedName("disabled_until")
+        private Integer disabledUntil;
+
+        public Boolean getSoundEnabled() {
+            return soundEnabled;
+        }
+
+        public void setSoundEnabled(Boolean soundEnabled) {
+            this.soundEnabled = soundEnabled;
+        }
+
+        public Integer getDisabledUntil() {
+            return disabledUntil;
+        }
+
+        public void setDisabledUntil(Integer disabledUntil) {
+            this.disabledUntil = disabledUntil;
+        }
+
+        @Override
+        public String toString() {
+            return "PushSettings{" +
+                    "soundEnabled=" + soundEnabled +
+                    ", disabledUntil=" + disabledUntil +
+                    '}';
+        }
     }
 }

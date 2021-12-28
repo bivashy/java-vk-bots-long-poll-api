@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.config.VkBotsConfig;
-import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -11,7 +9,6 @@ import api.longpoll.bots.model.response.IntegerResponse;
  * @see <a href="https://vk.com/dev/groups.setSettings">https://vk.com/dev/groups.setSettings</a>
  */
 public class SetSettings extends VkMethod<IntegerResponse> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public SetSettings(String accessToken) {
         super(accessToken);
@@ -19,7 +16,7 @@ public class SetSettings extends VkMethod<IntegerResponse> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.setSettings");
+        return VK_METHODS.getProperty("groups.setSettings");
     }
 
     @Override
@@ -32,15 +29,15 @@ public class SetSettings extends VkMethod<IntegerResponse> {
     }
 
     public SetSettings setMessages(boolean messages) {
-        return addParam("messages", boolIntConverter.convert(messages));
+        return addParam("messages", messages ? 1 : 0);
     }
 
     public SetSettings setBotsCapabilities(boolean botsCapabilities) {
-        return addParam("bots_capabilities", boolIntConverter.convert(botsCapabilities));
+        return addParam("bots_capabilities", botsCapabilities ? 1 : 0);
     }
 
     public SetSettings setBotsAddToChat(boolean botsAddToChat) {
-        return addParam("bots_add_to_chat", boolIntConverter.convert(botsAddToChat));
+        return addParam("bots_add_to_chat", botsAddToChat ? 1 : 0);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer;
@@ -22,39 +21,34 @@ import java.io.InputStream;
  */
 public class AttachPhoto extends VkMethod<VkAttachment> {
     /**
+     * Gets upload server.
+     */
+    private final GetMessagesUploadServer getMessagesUploadServer;
+    /**
+     * Upload file to VK server.
+     */
+    private final UploadPhoto uploadPhoto = new UploadPhoto();
+    /**
+     * Saves uploaded document.
+     */
+    private final SaveMessagesPhoto saveMessagesPhoto;
+    /**
      * ID of conversation.
      */
     private int peerId;
-
     /**
      * Name of file.
      */
     private String filename;
-
     /**
      * File {@link InputStream}.
      */
     private InputStream photo;
 
-    /**
-     * Gets upload server.
-     */
-    private final GetMessagesUploadServer getMessagesUploadServer;
-
-    /**
-     * Upload file to VK server.
-     */
-    private final UploadPhoto uploadPhoto = VkBotsConfig.getInstance().getUploadPhoto();
-
-    /**
-     * Saves uploaded document.
-     */
-    private final SaveMessagesPhoto saveMessagesPhoto;
-
     public AttachPhoto(String accessToken) {
         super(accessToken);
-        getMessagesUploadServer = VkBotsConfig.getInstance().getPhotosGetMessagesUploadServerFactory().get(accessToken);
-        saveMessagesPhoto = VkBotsConfig.getInstance().getSaveMessagePhotoFactory().get(accessToken);
+        getMessagesUploadServer = new GetMessagesUploadServer(accessToken);
+        saveMessagesPhoto = new SaveMessagesPhoto(accessToken);
     }
 
     @Override

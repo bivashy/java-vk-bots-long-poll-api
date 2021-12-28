@@ -2,8 +2,8 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.adapters.deserializers.GroupsIsMemberResponseDeserializer;
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
@@ -20,9 +20,7 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
  */
 public class IsMember extends VkMethod<IsMember.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
-
+    private final Converter<List<?>, String> listConverter = new ListConverter();
 
     public IsMember(String accessToken) {
         super(accessToken);
@@ -30,7 +28,7 @@ public class IsMember extends VkMethod<IsMember.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.isMember");
+        return VK_METHODS.getProperty("groups.isMember");
     }
 
     @Override
@@ -55,7 +53,7 @@ public class IsMember extends VkMethod<IsMember.Response> {
     }
 
     public IsMember setExtended(boolean extended) {
-        return addParam("extended", boolIntConverter.convert(extended));
+        return addParam("extended", extended ? 1 : 0);
     }
 
     @Override

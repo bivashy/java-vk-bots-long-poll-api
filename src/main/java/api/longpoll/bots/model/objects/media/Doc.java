@@ -86,6 +86,102 @@ public class Doc implements Attachable {
     @SerializedName("access_key")
     private String accessKey;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String ext) {
+        this.ext = ext;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Integer getDate() {
+        return date;
+    }
+
+    public void setDate(Integer date) {
+        this.date = date;
+    }
+
+    public DocType getType() {
+        return type;
+    }
+
+    public void setType(DocType type) {
+        this.type = type;
+    }
+
+    public Map<DocPreviewType, Preview> getPreview() {
+        return preview;
+    }
+
+    public void setPreview(Map<DocPreviewType, Preview> preview) {
+        this.preview = preview;
+    }
+
+    public String getAccessKey() {
+        return accessKey;
+    }
+
+    public void setAccessKey(String accessKey) {
+        this.accessKey = accessKey;
+    }
+
+    @Override
+    public String toString() {
+        return "Doc{" +
+                "id=" + id +
+                ", ownerId=" + ownerId +
+                ", title='" + title + '\'' +
+                ", size=" + size +
+                ", ext='" + ext + '\'' +
+                ", url='" + url + '\'' +
+                ", date=" + date +
+                ", type=" + type +
+                ", preview=" + preview +
+                ", accessKey='" + accessKey + '\'' +
+                '}';
+    }
+
     /**
      * Describes document preview data.
      */
@@ -311,101 +407,5 @@ public class Doc implements Attachable {
                     ", fileSize=" + fileSize +
                     '}';
         }
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getSize() {
-        return size;
-    }
-
-    public void setSize(Integer size) {
-        this.size = size;
-    }
-
-    public String getExt() {
-        return ext;
-    }
-
-    public void setExt(String ext) {
-        this.ext = ext;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Integer getDate() {
-        return date;
-    }
-
-    public void setDate(Integer date) {
-        this.date = date;
-    }
-
-    public DocType getType() {
-        return type;
-    }
-
-    public void setType(DocType type) {
-        this.type = type;
-    }
-
-    public Map<DocPreviewType, Preview> getPreview() {
-        return preview;
-    }
-
-    public void setPreview(Map<DocPreviewType, Preview> preview) {
-        this.preview = preview;
-    }
-
-    public String getAccessKey() {
-        return accessKey;
-    }
-
-    public void setAccessKey(String accessKey) {
-        this.accessKey = accessKey;
-    }
-
-    @Override
-    public String toString() {
-        return "Doc{" +
-                "id=" + id +
-                ", ownerId=" + ownerId +
-                ", title='" + title + '\'' +
-                ", size=" + size +
-                ", ext='" + ext + '\'' +
-                ", url='" + url + '\'' +
-                ", date=" + date +
-                ", type=" + type +
-                ", preview=" + preview +
-                ", accessKey='" + accessKey + '\'' +
-                '}';
     }
 }

@@ -522,6 +522,750 @@ public class User {
     @SerializedName("wall_default")
     private String wall_default;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getDeactivated() {
+        return deactivated;
+    }
+
+    public void setDeactivated(String deactivated) {
+        this.deactivated = deactivated;
+    }
+
+    public Boolean getClosed() {
+        return closed;
+    }
+
+    public void setClosed(Boolean closed) {
+        this.closed = closed;
+    }
+
+    public Boolean getCanAccessClosed() {
+        return canAccessClosed;
+    }
+
+    public void setCanAccessClosed(Boolean canAccessClosed) {
+        this.canAccessClosed = canAccessClosed;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public String getActivities() {
+        return activities;
+    }
+
+    public void setActivities(String activities) {
+        this.activities = activities;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Boolean getBlacklisted() {
+        return blacklisted;
+    }
+
+    public void setBlacklisted(Boolean blacklisted) {
+        this.blacklisted = blacklisted;
+    }
+
+    public Boolean getBlacklistedByMe() {
+        return blacklistedByMe;
+    }
+
+    public void setBlacklistedByMe(Boolean blacklistedByMe) {
+        this.blacklistedByMe = blacklistedByMe;
+    }
+
+    public String getBooks() {
+        return books;
+    }
+
+    public void setBooks(String books) {
+        this.books = books;
+    }
+
+    public Boolean getCanPost() {
+        return canPost;
+    }
+
+    public void setCanPost(Boolean canPost) {
+        this.canPost = canPost;
+    }
+
+    public Boolean getCanSeeAllPosts() {
+        return canSeeAllPosts;
+    }
+
+    public void setCanSeeAllPosts(Boolean canSeeAllPosts) {
+        this.canSeeAllPosts = canSeeAllPosts;
+    }
+
+    public Boolean getCanSeeAudio() {
+        return canSeeAudio;
+    }
+
+    public void setCanSeeAudio(Boolean canSeeAudio) {
+        this.canSeeAudio = canSeeAudio;
+    }
+
+    public Boolean getCanSendFriendRequest() {
+        return canSendFriendRequest;
+    }
+
+    public void setCanSendFriendRequest(Boolean canSendFriendRequest) {
+        this.canSendFriendRequest = canSendFriendRequest;
+    }
+
+    public Boolean getCanWritePrivateMessage() {
+        return canWritePrivateMessage;
+    }
+
+    public void setCanWritePrivateMessage(Boolean canWritePrivateMessage) {
+        this.canWritePrivateMessage = canWritePrivateMessage;
+    }
+
+    public Career getCareer() {
+        return career;
+    }
+
+    public void setCareer(Career career) {
+        this.career = career;
+    }
+
+    public Military getMilitary() {
+        return military;
+    }
+
+    public void setMilitary(Military military) {
+        this.military = military;
+    }
+
+    public String getMovies() {
+        return movies;
+    }
+
+    public void setMovies(String movies) {
+        this.movies = movies;
+    }
+
+    public String getMusic() {
+        return music;
+    }
+
+    public void setMusic(String music) {
+        this.music = music;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Integer getCommonCount() {
+        return commonCount;
+    }
+
+    public void setCommonCount(Integer commonCount) {
+        this.commonCount = commonCount;
+    }
+
+    public Map<String, String> getConnections() {
+        return connections;
+    }
+
+    public void setConnections(Map<String, String> connections) {
+        this.connections = connections;
+    }
+
+    public Contacts getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(Contacts contacts) {
+        this.contacts = contacts;
+    }
+
+    public Counters getCounters() {
+        return counters;
+    }
+
+    public void setCounters(Counters counters) {
+        this.counters = counters;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public CropPhoto getCropPhoto() {
+        return cropPhoto;
+    }
+
+    public void setCropPhoto(CropPhoto cropPhoto) {
+        this.cropPhoto = cropPhoto;
+    }
+
+    public String getDomain() {
+        return domain;
+    }
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    public Education getEducation() {
+        return education;
+    }
+
+    public void setEducation(Education education) {
+        this.education = education;
+    }
+
+    public String getExports() {
+        return exports;
+    }
+
+    public void setExports(String exports) {
+        this.exports = exports;
+    }
+
+    public String getFirstNameNom() {
+        return firstNameNom;
+    }
+
+    public void setFirstNameNom(String firstNameNom) {
+        this.firstNameNom = firstNameNom;
+    }
+
+    public String getFirstNameGen() {
+        return firstNameGen;
+    }
+
+    public void setFirstNameGen(String firstNameGen) {
+        this.firstNameGen = firstNameGen;
+    }
+
+    public String getFirstNameDat() {
+        return firstNameDat;
+    }
+
+    public void setFirstNameDat(String firstNameDat) {
+        this.firstNameDat = firstNameDat;
+    }
+
+    public String getFirstNameAcc() {
+        return firstNameAcc;
+    }
+
+    public void setFirstNameAcc(String firstNameAcc) {
+        this.firstNameAcc = firstNameAcc;
+    }
+
+    public String getFirstNameIns() {
+        return firstNameIns;
+    }
+
+    public void setFirstNameIns(String firstNameIns) {
+        this.firstNameIns = firstNameIns;
+    }
+
+    public String getFirstNameAbl() {
+        return firstNameAbl;
+    }
+
+    public void setFirstNameAbl(String firstNameAbl) {
+        this.firstNameAbl = firstNameAbl;
+    }
+
+    public Integer getFollowersCount() {
+        return followersCount;
+    }
+
+    public void setFollowersCount(Integer followersCount) {
+        this.followersCount = followersCount;
+    }
+
+    public Integer getFriendStatus() {
+        return friendStatus;
+    }
+
+    public void setFriendStatus(Integer friendStatus) {
+        this.friendStatus = friendStatus;
+    }
+
+    public String getGames() {
+        return games;
+    }
+
+    public void setGames(String games) {
+        this.games = games;
+    }
+
+    public Boolean getHasMobile() {
+        return hasMobile;
+    }
+
+    public void setHasMobile(Boolean hasMobile) {
+        this.hasMobile = hasMobile;
+    }
+
+    public Boolean getHasPhoto() {
+        return hasPhoto;
+    }
+
+    public void setHasPhoto(Boolean hasPhoto) {
+        this.hasPhoto = hasPhoto;
+    }
+
+    public String getHomeTown() {
+        return homeTown;
+    }
+
+    public void setHomeTown(String homeTown) {
+        this.homeTown = homeTown;
+    }
+
+    public String getInterests() {
+        return interests;
+    }
+
+    public void setInterests(String interests) {
+        this.interests = interests;
+    }
+
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
+    }
+
+    public Boolean getFriend() {
+        return friend;
+    }
+
+    public void setFriend(Boolean friend) {
+        this.friend = friend;
+    }
+
+    public Boolean getHiddenFromFeed() {
+        return hiddenFromFeed;
+    }
+
+    public void setHiddenFromFeed(Boolean hiddenFromFeed) {
+        this.hiddenFromFeed = hiddenFromFeed;
+    }
+
+    public String getLastNameNom() {
+        return lastNameNom;
+    }
+
+    public void setLastNameNom(String lastNameNom) {
+        this.lastNameNom = lastNameNom;
+    }
+
+    public String getLastNameGen() {
+        return lastNameGen;
+    }
+
+    public void setLastNameGen(String lastNameGen) {
+        this.lastNameGen = lastNameGen;
+    }
+
+    public String getLastNameDat() {
+        return lastNameDat;
+    }
+
+    public void setLastNameDat(String lastNameDat) {
+        this.lastNameDat = lastNameDat;
+    }
+
+    public String getLastNameAcc() {
+        return lastNameAcc;
+    }
+
+    public void setLastNameAcc(String lastNameAcc) {
+        this.lastNameAcc = lastNameAcc;
+    }
+
+    public String getLastNameIns() {
+        return lastNameIns;
+    }
+
+    public void setLastNameIns(String lastNameIns) {
+        this.lastNameIns = lastNameIns;
+    }
+
+    public String getLastNameAbl() {
+        return lastNameAbl;
+    }
+
+    public void setLastNameAbl(String lastNameAbl) {
+        this.lastNameAbl = lastNameAbl;
+    }
+
+    public LastSeen getLastSeen() {
+        return lastSeen;
+    }
+
+    public void setLastSeen(LastSeen lastSeen) {
+        this.lastSeen = lastSeen;
+    }
+
+    public String getLists() {
+        return lists;
+    }
+
+    public void setLists(String lists) {
+        this.lists = lists;
+    }
+
+    public String getMaidenName() {
+        return maidenName;
+    }
+
+    public void setMaidenName(String maidenName) {
+        this.maidenName = maidenName;
+    }
+
+    public Occupation getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(Occupation occupation) {
+        this.occupation = occupation;
+    }
+
+    public Boolean getOnline() {
+        return online;
+    }
+
+    public void setOnline(Boolean online) {
+        this.online = online;
+    }
+
+    public Personal getPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
+    }
+
+    public String getPhoto_50() {
+        return photo_50;
+    }
+
+    public void setPhoto_50(String photo_50) {
+        this.photo_50 = photo_50;
+    }
+
+    public String getPhoto_100() {
+        return photo_100;
+    }
+
+    public void setPhoto_100(String photo_100) {
+        this.photo_100 = photo_100;
+    }
+
+    public String getPhoto_200_orig() {
+        return photo_200_orig;
+    }
+
+    public void setPhoto_200_orig(String photo_200_orig) {
+        this.photo_200_orig = photo_200_orig;
+    }
+
+    public String getPhoto_200() {
+        return photo_200;
+    }
+
+    public void setPhoto_200(String photo_200) {
+        this.photo_200 = photo_200;
+    }
+
+    public String getPhoto_400_orig() {
+        return photo_400_orig;
+    }
+
+    public void setPhoto_400_orig(String photo_400_orig) {
+        this.photo_400_orig = photo_400_orig;
+    }
+
+    public String getPhoto_id() {
+        return photo_id;
+    }
+
+    public void setPhoto_id(String photo_id) {
+        this.photo_id = photo_id;
+    }
+
+    public String getPhoto_max() {
+        return photo_max;
+    }
+
+    public void setPhoto_max(String photo_max) {
+        this.photo_max = photo_max;
+    }
+
+    public String getPhoto_max_orig() {
+        return photo_max_orig;
+    }
+
+    public void setPhoto_max_orig(String photo_max_orig) {
+        this.photo_max_orig = photo_max_orig;
+    }
+
+    public String getQuotes() {
+        return quotes;
+    }
+
+    public void setQuotes(String quotes) {
+        this.quotes = quotes;
+    }
+
+    public List<Relative> getRelatives() {
+        return relatives;
+    }
+
+    public void setRelatives(List<Relative> relatives) {
+        this.relatives = relatives;
+    }
+
+    public Integer getRelation() {
+        return relation;
+    }
+
+    public void setRelation(Integer relation) {
+        this.relation = relation;
+    }
+
+    public List<School> getSchools() {
+        return schools;
+    }
+
+    public void setSchools(List<School> schools) {
+        this.schools = schools;
+    }
+
+    public String getScreen_name() {
+        return screen_name;
+    }
+
+    public void setScreen_name(String screen_name) {
+        this.screen_name = screen_name;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getTimezone() {
+        return timezone;
+    }
+
+    public void setTimezone(Integer timezone) {
+        this.timezone = timezone;
+    }
+
+    public Boolean getTrending() {
+        return trending;
+    }
+
+    public void setTrending(Boolean trending) {
+        this.trending = trending;
+    }
+
+    public String getTv() {
+        return tv;
+    }
+
+    public void setTv(String tv) {
+        this.tv = tv;
+    }
+
+    public List<University> getUniversities() {
+        return universities;
+    }
+
+    public void setUniversities(List<University> universities) {
+        this.universities = universities;
+    }
+
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
+    }
+
+    public String getWall_default() {
+        return wall_default;
+    }
+
+    public void setWall_default(String wall_default) {
+        this.wall_default = wall_default;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", deactivated='" + deactivated + '\'' +
+                ", closed=" + closed +
+                ", canAccessClosed=" + canAccessClosed +
+                ", about='" + about + '\'' +
+                ", activities='" + activities + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", blacklisted=" + blacklisted +
+                ", blacklistedByMe=" + blacklistedByMe +
+                ", books='" + books + '\'' +
+                ", canPost=" + canPost +
+                ", canSeeAllPosts=" + canSeeAllPosts +
+                ", canSeeAudio=" + canSeeAudio +
+                ", canSendFriendRequest=" + canSendFriendRequest +
+                ", canWritePrivateMessage=" + canWritePrivateMessage +
+                ", career=" + career +
+                ", military=" + military +
+                ", movies='" + movies + '\'' +
+                ", music='" + music + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", city='" + city + '\'' +
+                ", commonCount=" + commonCount +
+                ", connections=" + connections +
+                ", contacts=" + contacts +
+                ", counters=" + counters +
+                ", country=" + country +
+                ", cropPhoto=" + cropPhoto +
+                ", domain='" + domain + '\'' +
+                ", education=" + education +
+                ", exports='" + exports + '\'' +
+                ", firstNameNom='" + firstNameNom + '\'' +
+                ", firstNameGen='" + firstNameGen + '\'' +
+                ", firstNameDat='" + firstNameDat + '\'' +
+                ", firstNameAcc='" + firstNameAcc + '\'' +
+                ", firstNameIns='" + firstNameIns + '\'' +
+                ", firstNameAbl='" + firstNameAbl + '\'' +
+                ", followersCount=" + followersCount +
+                ", friendStatus=" + friendStatus +
+                ", games='" + games + '\'' +
+                ", hasMobile=" + hasMobile +
+                ", hasPhoto=" + hasPhoto +
+                ", homeTown='" + homeTown + '\'' +
+                ", interests='" + interests + '\'' +
+                ", favorite=" + favorite +
+                ", friend=" + friend +
+                ", hiddenFromFeed=" + hiddenFromFeed +
+                ", lastNameNom='" + lastNameNom + '\'' +
+                ", lastNameGen='" + lastNameGen + '\'' +
+                ", lastNameDat='" + lastNameDat + '\'' +
+                ", lastNameAcc='" + lastNameAcc + '\'' +
+                ", lastNameIns='" + lastNameIns + '\'' +
+                ", lastNameAbl='" + lastNameAbl + '\'' +
+                ", lastSeen=" + lastSeen +
+                ", lists='" + lists + '\'' +
+                ", maidenName='" + maidenName + '\'' +
+                ", occupation=" + occupation +
+                ", online=" + online +
+                ", personal=" + personal +
+                ", photo_50='" + photo_50 + '\'' +
+                ", photo_100='" + photo_100 + '\'' +
+                ", photo_200_orig='" + photo_200_orig + '\'' +
+                ", photo_200='" + photo_200 + '\'' +
+                ", photo_400_orig='" + photo_400_orig + '\'' +
+                ", photo_id='" + photo_id + '\'' +
+                ", photo_max='" + photo_max + '\'' +
+                ", photo_max_orig='" + photo_max_orig + '\'' +
+                ", quotes='" + quotes + '\'' +
+                ", relatives=" + relatives +
+                ", relation=" + relation +
+                ", schools=" + schools +
+                ", screen_name='" + screen_name + '\'' +
+                ", sex=" + sex +
+                ", site='" + site + '\'' +
+                ", status='" + status + '\'' +
+                ", timezone=" + timezone +
+                ", trending=" + trending +
+                ", tv='" + tv + '\'' +
+                ", universities=" + universities +
+                ", verified=" + verified +
+                ", wall_default='" + wall_default + '\'' +
+                '}';
+    }
+
     /**
      * Describes career.
      */
@@ -1732,749 +2476,5 @@ public class User {
                     ", education_status='" + education_status + '\'' +
                     '}';
         }
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getDeactivated() {
-        return deactivated;
-    }
-
-    public void setDeactivated(String deactivated) {
-        this.deactivated = deactivated;
-    }
-
-    public Boolean getClosed() {
-        return closed;
-    }
-
-    public void setClosed(Boolean closed) {
-        this.closed = closed;
-    }
-
-    public Boolean getCanAccessClosed() {
-        return canAccessClosed;
-    }
-
-    public void setCanAccessClosed(Boolean canAccessClosed) {
-        this.canAccessClosed = canAccessClosed;
-    }
-
-    public String getAbout() {
-        return about;
-    }
-
-    public void setAbout(String about) {
-        this.about = about;
-    }
-
-    public String getActivities() {
-        return activities;
-    }
-
-    public void setActivities(String activities) {
-        this.activities = activities;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public Boolean getBlacklisted() {
-        return blacklisted;
-    }
-
-    public void setBlacklisted(Boolean blacklisted) {
-        this.blacklisted = blacklisted;
-    }
-
-    public Boolean getBlacklistedByMe() {
-        return blacklistedByMe;
-    }
-
-    public void setBlacklistedByMe(Boolean blacklistedByMe) {
-        this.blacklistedByMe = blacklistedByMe;
-    }
-
-    public String getBooks() {
-        return books;
-    }
-
-    public void setBooks(String books) {
-        this.books = books;
-    }
-
-    public Boolean getCanPost() {
-        return canPost;
-    }
-
-    public void setCanPost(Boolean canPost) {
-        this.canPost = canPost;
-    }
-
-    public Boolean getCanSeeAllPosts() {
-        return canSeeAllPosts;
-    }
-
-    public void setCanSeeAllPosts(Boolean canSeeAllPosts) {
-        this.canSeeAllPosts = canSeeAllPosts;
-    }
-
-    public Boolean getCanSeeAudio() {
-        return canSeeAudio;
-    }
-
-    public void setCanSeeAudio(Boolean canSeeAudio) {
-        this.canSeeAudio = canSeeAudio;
-    }
-
-    public Boolean getCanSendFriendRequest() {
-        return canSendFriendRequest;
-    }
-
-    public void setCanSendFriendRequest(Boolean canSendFriendRequest) {
-        this.canSendFriendRequest = canSendFriendRequest;
-    }
-
-    public Boolean getCanWritePrivateMessage() {
-        return canWritePrivateMessage;
-    }
-
-    public void setCanWritePrivateMessage(Boolean canWritePrivateMessage) {
-        this.canWritePrivateMessage = canWritePrivateMessage;
-    }
-
-    public Career getCareer() {
-        return career;
-    }
-
-    public void setCareer(Career career) {
-        this.career = career;
-    }
-
-    public Military getMilitary() {
-        return military;
-    }
-
-    public void setMilitary(Military military) {
-        this.military = military;
-    }
-
-    public String getMovies() {
-        return movies;
-    }
-
-    public void setMovies(String movies) {
-        this.movies = movies;
-    }
-
-    public String getMusic() {
-        return music;
-    }
-
-    public void setMusic(String music) {
-        this.music = music;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Integer getCommonCount() {
-        return commonCount;
-    }
-
-    public void setCommonCount(Integer commonCount) {
-        this.commonCount = commonCount;
-    }
-
-    public Map<String, String> getConnections() {
-        return connections;
-    }
-
-    public void setConnections(Map<String, String> connections) {
-        this.connections = connections;
-    }
-
-    public Contacts getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(Contacts contacts) {
-        this.contacts = contacts;
-    }
-
-    public Counters getCounters() {
-        return counters;
-    }
-
-    public void setCounters(Counters counters) {
-        this.counters = counters;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
-    public CropPhoto getCropPhoto() {
-        return cropPhoto;
-    }
-
-    public void setCropPhoto(CropPhoto cropPhoto) {
-        this.cropPhoto = cropPhoto;
-    }
-
-    public String getDomain() {
-        return domain;
-    }
-
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
-
-    public Education getEducation() {
-        return education;
-    }
-
-    public void setEducation(Education education) {
-        this.education = education;
-    }
-
-    public String getExports() {
-        return exports;
-    }
-
-    public void setExports(String exports) {
-        this.exports = exports;
-    }
-
-    public String getFirstNameNom() {
-        return firstNameNom;
-    }
-
-    public void setFirstNameNom(String firstNameNom) {
-        this.firstNameNom = firstNameNom;
-    }
-
-    public String getFirstNameGen() {
-        return firstNameGen;
-    }
-
-    public void setFirstNameGen(String firstNameGen) {
-        this.firstNameGen = firstNameGen;
-    }
-
-    public String getFirstNameDat() {
-        return firstNameDat;
-    }
-
-    public void setFirstNameDat(String firstNameDat) {
-        this.firstNameDat = firstNameDat;
-    }
-
-    public String getFirstNameAcc() {
-        return firstNameAcc;
-    }
-
-    public void setFirstNameAcc(String firstNameAcc) {
-        this.firstNameAcc = firstNameAcc;
-    }
-
-    public String getFirstNameIns() {
-        return firstNameIns;
-    }
-
-    public void setFirstNameIns(String firstNameIns) {
-        this.firstNameIns = firstNameIns;
-    }
-
-    public String getFirstNameAbl() {
-        return firstNameAbl;
-    }
-
-    public void setFirstNameAbl(String firstNameAbl) {
-        this.firstNameAbl = firstNameAbl;
-    }
-
-    public Integer getFollowersCount() {
-        return followersCount;
-    }
-
-    public void setFollowersCount(Integer followersCount) {
-        this.followersCount = followersCount;
-    }
-
-    public Integer getFriendStatus() {
-        return friendStatus;
-    }
-
-    public void setFriendStatus(Integer friendStatus) {
-        this.friendStatus = friendStatus;
-    }
-
-    public String getGames() {
-        return games;
-    }
-
-    public void setGames(String games) {
-        this.games = games;
-    }
-
-    public Boolean getHasMobile() {
-        return hasMobile;
-    }
-
-    public void setHasMobile(Boolean hasMobile) {
-        this.hasMobile = hasMobile;
-    }
-
-    public Boolean getHasPhoto() {
-        return hasPhoto;
-    }
-
-    public void setHasPhoto(Boolean hasPhoto) {
-        this.hasPhoto = hasPhoto;
-    }
-
-    public String getHomeTown() {
-        return homeTown;
-    }
-
-    public void setHomeTown(String homeTown) {
-        this.homeTown = homeTown;
-    }
-
-    public String getInterests() {
-        return interests;
-    }
-
-    public void setInterests(String interests) {
-        this.interests = interests;
-    }
-
-    public Boolean getFavorite() {
-        return favorite;
-    }
-
-    public void setFavorite(Boolean favorite) {
-        this.favorite = favorite;
-    }
-
-    public Boolean getFriend() {
-        return friend;
-    }
-
-    public void setFriend(Boolean friend) {
-        this.friend = friend;
-    }
-
-    public Boolean getHiddenFromFeed() {
-        return hiddenFromFeed;
-    }
-
-    public void setHiddenFromFeed(Boolean hiddenFromFeed) {
-        this.hiddenFromFeed = hiddenFromFeed;
-    }
-
-    public String getLastNameNom() {
-        return lastNameNom;
-    }
-
-    public void setLastNameNom(String lastNameNom) {
-        this.lastNameNom = lastNameNom;
-    }
-
-    public String getLastNameGen() {
-        return lastNameGen;
-    }
-
-    public void setLastNameGen(String lastNameGen) {
-        this.lastNameGen = lastNameGen;
-    }
-
-    public String getLastNameDat() {
-        return lastNameDat;
-    }
-
-    public void setLastNameDat(String lastNameDat) {
-        this.lastNameDat = lastNameDat;
-    }
-
-    public String getLastNameAcc() {
-        return lastNameAcc;
-    }
-
-    public void setLastNameAcc(String lastNameAcc) {
-        this.lastNameAcc = lastNameAcc;
-    }
-
-    public String getLastNameIns() {
-        return lastNameIns;
-    }
-
-    public void setLastNameIns(String lastNameIns) {
-        this.lastNameIns = lastNameIns;
-    }
-
-    public String getLastNameAbl() {
-        return lastNameAbl;
-    }
-
-    public void setLastNameAbl(String lastNameAbl) {
-        this.lastNameAbl = lastNameAbl;
-    }
-
-    public LastSeen getLastSeen() {
-        return lastSeen;
-    }
-
-    public void setLastSeen(LastSeen lastSeen) {
-        this.lastSeen = lastSeen;
-    }
-
-    public String getLists() {
-        return lists;
-    }
-
-    public void setLists(String lists) {
-        this.lists = lists;
-    }
-
-    public String getMaidenName() {
-        return maidenName;
-    }
-
-    public void setMaidenName(String maidenName) {
-        this.maidenName = maidenName;
-    }
-
-    public Occupation getOccupation() {
-        return occupation;
-    }
-
-    public void setOccupation(Occupation occupation) {
-        this.occupation = occupation;
-    }
-
-    public Boolean getOnline() {
-        return online;
-    }
-
-    public void setOnline(Boolean online) {
-        this.online = online;
-    }
-
-    public Personal getPersonal() {
-        return personal;
-    }
-
-    public void setPersonal(Personal personal) {
-        this.personal = personal;
-    }
-
-    public String getPhoto_50() {
-        return photo_50;
-    }
-
-    public void setPhoto_50(String photo_50) {
-        this.photo_50 = photo_50;
-    }
-
-    public String getPhoto_100() {
-        return photo_100;
-    }
-
-    public void setPhoto_100(String photo_100) {
-        this.photo_100 = photo_100;
-    }
-
-    public String getPhoto_200_orig() {
-        return photo_200_orig;
-    }
-
-    public void setPhoto_200_orig(String photo_200_orig) {
-        this.photo_200_orig = photo_200_orig;
-    }
-
-    public String getPhoto_200() {
-        return photo_200;
-    }
-
-    public void setPhoto_200(String photo_200) {
-        this.photo_200 = photo_200;
-    }
-
-    public String getPhoto_400_orig() {
-        return photo_400_orig;
-    }
-
-    public void setPhoto_400_orig(String photo_400_orig) {
-        this.photo_400_orig = photo_400_orig;
-    }
-
-    public String getPhoto_id() {
-        return photo_id;
-    }
-
-    public void setPhoto_id(String photo_id) {
-        this.photo_id = photo_id;
-    }
-
-    public String getPhoto_max() {
-        return photo_max;
-    }
-
-    public void setPhoto_max(String photo_max) {
-        this.photo_max = photo_max;
-    }
-
-    public String getPhoto_max_orig() {
-        return photo_max_orig;
-    }
-
-    public void setPhoto_max_orig(String photo_max_orig) {
-        this.photo_max_orig = photo_max_orig;
-    }
-
-    public String getQuotes() {
-        return quotes;
-    }
-
-    public void setQuotes(String quotes) {
-        this.quotes = quotes;
-    }
-
-    public List<Relative> getRelatives() {
-        return relatives;
-    }
-
-    public void setRelatives(List<Relative> relatives) {
-        this.relatives = relatives;
-    }
-
-    public Integer getRelation() {
-        return relation;
-    }
-
-    public void setRelation(Integer relation) {
-        this.relation = relation;
-    }
-
-    public List<School> getSchools() {
-        return schools;
-    }
-
-    public void setSchools(List<School> schools) {
-        this.schools = schools;
-    }
-
-    public String getScreen_name() {
-        return screen_name;
-    }
-
-    public void setScreen_name(String screen_name) {
-        this.screen_name = screen_name;
-    }
-
-    public Integer getSex() {
-        return sex;
-    }
-
-    public void setSex(Integer sex) {
-        this.sex = sex;
-    }
-
-    public String getSite() {
-        return site;
-    }
-
-    public void setSite(String site) {
-        this.site = site;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Integer getTimezone() {
-        return timezone;
-    }
-
-    public void setTimezone(Integer timezone) {
-        this.timezone = timezone;
-    }
-
-    public Boolean getTrending() {
-        return trending;
-    }
-
-    public void setTrending(Boolean trending) {
-        this.trending = trending;
-    }
-
-    public String getTv() {
-        return tv;
-    }
-
-    public void setTv(String tv) {
-        this.tv = tv;
-    }
-
-    public List<University> getUniversities() {
-        return universities;
-    }
-
-    public void setUniversities(List<University> universities) {
-        this.universities = universities;
-    }
-
-    public Boolean getVerified() {
-        return verified;
-    }
-
-    public void setVerified(Boolean verified) {
-        this.verified = verified;
-    }
-
-    public String getWall_default() {
-        return wall_default;
-    }
-
-    public void setWall_default(String wall_default) {
-        this.wall_default = wall_default;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", deactivated='" + deactivated + '\'' +
-                ", closed=" + closed +
-                ", canAccessClosed=" + canAccessClosed +
-                ", about='" + about + '\'' +
-                ", activities='" + activities + '\'' +
-                ", birthDate='" + birthDate + '\'' +
-                ", blacklisted=" + blacklisted +
-                ", blacklistedByMe=" + blacklistedByMe +
-                ", books='" + books + '\'' +
-                ", canPost=" + canPost +
-                ", canSeeAllPosts=" + canSeeAllPosts +
-                ", canSeeAudio=" + canSeeAudio +
-                ", canSendFriendRequest=" + canSendFriendRequest +
-                ", canWritePrivateMessage=" + canWritePrivateMessage +
-                ", career=" + career +
-                ", military=" + military +
-                ", movies='" + movies + '\'' +
-                ", music='" + music + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", city='" + city + '\'' +
-                ", commonCount=" + commonCount +
-                ", connections=" + connections +
-                ", contacts=" + contacts +
-                ", counters=" + counters +
-                ", country=" + country +
-                ", cropPhoto=" + cropPhoto +
-                ", domain='" + domain + '\'' +
-                ", education=" + education +
-                ", exports='" + exports + '\'' +
-                ", firstNameNom='" + firstNameNom + '\'' +
-                ", firstNameGen='" + firstNameGen + '\'' +
-                ", firstNameDat='" + firstNameDat + '\'' +
-                ", firstNameAcc='" + firstNameAcc + '\'' +
-                ", firstNameIns='" + firstNameIns + '\'' +
-                ", firstNameAbl='" + firstNameAbl + '\'' +
-                ", followersCount=" + followersCount +
-                ", friendStatus=" + friendStatus +
-                ", games='" + games + '\'' +
-                ", hasMobile=" + hasMobile +
-                ", hasPhoto=" + hasPhoto +
-                ", homeTown='" + homeTown + '\'' +
-                ", interests='" + interests + '\'' +
-                ", favorite=" + favorite +
-                ", friend=" + friend +
-                ", hiddenFromFeed=" + hiddenFromFeed +
-                ", lastNameNom='" + lastNameNom + '\'' +
-                ", lastNameGen='" + lastNameGen + '\'' +
-                ", lastNameDat='" + lastNameDat + '\'' +
-                ", lastNameAcc='" + lastNameAcc + '\'' +
-                ", lastNameIns='" + lastNameIns + '\'' +
-                ", lastNameAbl='" + lastNameAbl + '\'' +
-                ", lastSeen=" + lastSeen +
-                ", lists='" + lists + '\'' +
-                ", maidenName='" + maidenName + '\'' +
-                ", occupation=" + occupation +
-                ", online=" + online +
-                ", personal=" + personal +
-                ", photo_50='" + photo_50 + '\'' +
-                ", photo_100='" + photo_100 + '\'' +
-                ", photo_200_orig='" + photo_200_orig + '\'' +
-                ", photo_200='" + photo_200 + '\'' +
-                ", photo_400_orig='" + photo_400_orig + '\'' +
-                ", photo_id='" + photo_id + '\'' +
-                ", photo_max='" + photo_max + '\'' +
-                ", photo_max_orig='" + photo_max_orig + '\'' +
-                ", quotes='" + quotes + '\'' +
-                ", relatives=" + relatives +
-                ", relation=" + relation +
-                ", schools=" + schools +
-                ", screen_name='" + screen_name + '\'' +
-                ", sex=" + sex +
-                ", site='" + site + '\'' +
-                ", status='" + status + '\'' +
-                ", timezone=" + timezone +
-                ", trending=" + trending +
-                ", tv='" + tv + '\'' +
-                ", universities=" + universities +
-                ", verified=" + verified +
-                ", wall_default='" + wall_default + '\'' +
-                '}';
     }
 }

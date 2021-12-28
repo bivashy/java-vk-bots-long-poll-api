@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -16,7 +16,7 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/stories.delete">https://vk.com/dev/stories.delete</a>
  */
 public class Delete extends VkMethod<IntegerResponse> {
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
 
     public Delete(String accessToken) {
         super(accessToken);
@@ -24,7 +24,7 @@ public class Delete extends VkMethod<IntegerResponse> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.delete");
+        return VK_METHODS.getProperty("stories.delete");
     }
 
     @Override

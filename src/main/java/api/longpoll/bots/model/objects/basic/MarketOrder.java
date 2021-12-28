@@ -119,6 +119,156 @@ public class MarketOrder implements EventObject {
     @SerializedName("recipient")
     private Recipient recipient;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getDate() {
+        return date;
+    }
+
+    public void setDate(Integer date) {
+        this.date = date;
+    }
+
+    public Integer getVariantsGroupingId() {
+        return variantsGroupingId;
+    }
+
+    public void setVariantsGroupingId(Integer variantsGroupingId) {
+        this.variantsGroupingId = variantsGroupingId;
+    }
+
+    public Boolean getMainVariant() {
+        return mainVariant;
+    }
+
+    public void setMainVariant(Boolean mainVariant) {
+        this.mainVariant = mainVariant;
+    }
+
+    public List<PropertyValue> getPropertyValues() {
+        return propertyValues;
+    }
+
+    public void setPropertyValues(List<PropertyValue> propertyValues) {
+        this.propertyValues = propertyValues;
+    }
+
+    public Integer getCartQuantity() {
+        return cartQuantity;
+    }
+
+    public void setCartQuantity(Integer cartQuantity) {
+        this.cartQuantity = cartQuantity;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getItemsCount() {
+        return itemsCount;
+    }
+
+    public void setItemsCount(Integer itemsCount) {
+        this.itemsCount = itemsCount;
+    }
+
+    public Price getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Price totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public String getDisplayOrderId() {
+        return displayOrderId;
+    }
+
+    public void setDisplayOrderId(String displayOrderId) {
+        this.displayOrderId = displayOrderId;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public List<MarketItem> getPreviewOrderItems() {
+        return previewOrderItems;
+    }
+
+    public void setPreviewOrderItems(List<MarketItem> previewOrderItems) {
+        this.previewOrderItems = previewOrderItems;
+    }
+
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
+
+    public Recipient getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(Recipient recipient) {
+        this.recipient = recipient;
+    }
+
+    @Override
+    public String toString() {
+        return "MarketOrder{" +
+                "id=" + id +
+                ", groupId=" + groupId +
+                ", userId=" + userId +
+                ", date=" + date +
+                ", variantsGroupingId=" + variantsGroupingId +
+                ", mainVariant=" + mainVariant +
+                ", propertyValues=" + propertyValues +
+                ", cartQuantity=" + cartQuantity +
+                ", status=" + status +
+                ", itemsCount=" + itemsCount +
+                ", totalPrice=" + totalPrice +
+                ", displayOrderId='" + displayOrderId + '\'' +
+                ", comment='" + comment + '\'' +
+                ", previewOrderItems=" + previewOrderItems +
+                ", delivery=" + delivery +
+                ", recipient=" + recipient +
+                '}';
+    }
+
     /**
      * Describes order property.
      */
@@ -314,155 +464,5 @@ public class MarketOrder implements EventObject {
                     ", display_text='" + display_text + '\'' +
                     '}';
         }
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getDate() {
-        return date;
-    }
-
-    public void setDate(Integer date) {
-        this.date = date;
-    }
-
-    public Integer getVariantsGroupingId() {
-        return variantsGroupingId;
-    }
-
-    public void setVariantsGroupingId(Integer variantsGroupingId) {
-        this.variantsGroupingId = variantsGroupingId;
-    }
-
-    public Boolean getMainVariant() {
-        return mainVariant;
-    }
-
-    public void setMainVariant(Boolean mainVariant) {
-        this.mainVariant = mainVariant;
-    }
-
-    public List<PropertyValue> getPropertyValues() {
-        return propertyValues;
-    }
-
-    public void setPropertyValues(List<PropertyValue> propertyValues) {
-        this.propertyValues = propertyValues;
-    }
-
-    public Integer getCartQuantity() {
-        return cartQuantity;
-    }
-
-    public void setCartQuantity(Integer cartQuantity) {
-        this.cartQuantity = cartQuantity;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Integer getItemsCount() {
-        return itemsCount;
-    }
-
-    public void setItemsCount(Integer itemsCount) {
-        this.itemsCount = itemsCount;
-    }
-
-    public Price getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Price totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public String getDisplayOrderId() {
-        return displayOrderId;
-    }
-
-    public void setDisplayOrderId(String displayOrderId) {
-        this.displayOrderId = displayOrderId;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public List<MarketItem> getPreviewOrderItems() {
-        return previewOrderItems;
-    }
-
-    public void setPreviewOrderItems(List<MarketItem> previewOrderItems) {
-        this.previewOrderItems = previewOrderItems;
-    }
-
-    public Delivery getDelivery() {
-        return delivery;
-    }
-
-    public void setDelivery(Delivery delivery) {
-        this.delivery = delivery;
-    }
-
-    public Recipient getRecipient() {
-        return recipient;
-    }
-
-    public void setRecipient(Recipient recipient) {
-        this.recipient = recipient;
-    }
-
-    @Override
-    public String toString() {
-        return "MarketOrder{" +
-                "id=" + id +
-                ", groupId=" + groupId +
-                ", userId=" + userId +
-                ", date=" + date +
-                ", variantsGroupingId=" + variantsGroupingId +
-                ", mainVariant=" + mainVariant +
-                ", propertyValues=" + propertyValues +
-                ", cartQuantity=" + cartQuantity +
-                ", status=" + status +
-                ", itemsCount=" + itemsCount +
-                ", totalPrice=" + totalPrice +
-                ", displayOrderId='" + displayOrderId + '\'' +
-                ", comment='" + comment + '\'' +
-                ", previewOrderItems=" + previewOrderItems +
-                ", delivery=" + delivery +
-                ", recipient=" + recipient +
-                '}';
     }
 }

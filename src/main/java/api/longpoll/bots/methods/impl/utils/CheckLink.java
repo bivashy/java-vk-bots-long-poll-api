@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.utils;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -19,16 +18,16 @@ public class CheckLink extends VkMethod<CheckLink.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("utils.checkLink");
+        return VK_METHODS.getProperty("utils.checkLink");
+    }
+
+    public CheckLink setUrl(String url) {
+        return addParam("url", url);
     }
 
     @Override
     protected Class<Response> getResponseType() {
         return Response.class;
-    }
-
-    public CheckLink setUrl(String url) {
-        return addParam("url", url);
     }
 
     @Override

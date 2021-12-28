@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.adapters.deserializers.StoriesGetViewersResultDeserializer;
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -20,8 +20,7 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
 public class GetViewers extends VkMethod<GetViewers.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
 
     public GetViewers(String accessToken) {
         super(accessToken);
@@ -29,7 +28,7 @@ public class GetViewers extends VkMethod<GetViewers.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.getViewers");
+        return VK_METHODS.getProperty("stories.getViewers");
     }
 
     @Override
@@ -50,7 +49,7 @@ public class GetViewers extends VkMethod<GetViewers.Response> {
     }
 
     public GetViewers setExtended(boolean extended) {
-        return addParam("extended", boolIntConverter.convert(extended));
+        return addParam("extended", extended ? 1 : 0);
     }
 
     public GetViewers setFields(String... fields) {

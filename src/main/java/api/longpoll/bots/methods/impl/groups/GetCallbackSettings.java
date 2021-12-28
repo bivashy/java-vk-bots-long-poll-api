@@ -1,7 +1,6 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
@@ -21,7 +20,7 @@ public class GetCallbackSettings extends VkMethod<GetCallbackSettings.Response> 
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getCallbackSettings");
+        return VK_METHODS.getProperty("groups.getCallbackSettings");
     }
 
     @Override
@@ -61,6 +60,30 @@ public class GetCallbackSettings extends VkMethod<GetCallbackSettings.Response> 
              */
             @SerializedName("events")
             private Events events;
+
+            public String getApiVersion() {
+                return apiVersion;
+            }
+
+            public void setApiVersion(String apiVersion) {
+                this.apiVersion = apiVersion;
+            }
+
+            public Events getEvents() {
+                return events;
+            }
+
+            public void setEvents(Events events) {
+                this.events = events;
+            }
+
+            @Override
+            public String toString() {
+                return "Response{" +
+                        "apiVersion='" + apiVersion + '\'' +
+                        ", events=" + events +
+                        '}';
+            }
 
             /**
              * Describes events.
@@ -663,30 +686,6 @@ public class GetCallbackSettings extends VkMethod<GetCallbackSettings.Response> 
                             ", groupOfficersEdit=" + groupOfficersEdit +
                             '}';
                 }
-            }
-
-            public String getApiVersion() {
-                return apiVersion;
-            }
-
-            public void setApiVersion(String apiVersion) {
-                this.apiVersion = apiVersion;
-            }
-
-            public Events getEvents() {
-                return events;
-            }
-
-            public void setEvents(Events events) {
-                this.events = events;
-            }
-
-            @Override
-            public String toString() {
-                return "Response{" +
-                        "apiVersion='" + apiVersion + '\'' +
-                        ", events=" + events +
-                        '}';
             }
         }
     }

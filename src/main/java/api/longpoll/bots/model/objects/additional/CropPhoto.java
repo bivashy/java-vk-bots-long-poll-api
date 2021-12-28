@@ -25,6 +25,39 @@ public class CropPhoto {
     @SerializedName("rect")
     private Crop rect;
 
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
+    }
+
+    public Crop getCrop() {
+        return crop;
+    }
+
+    public void setCrop(Crop crop) {
+        this.crop = crop;
+    }
+
+    public Crop getRect() {
+        return rect;
+    }
+
+    public void setRect(Crop rect) {
+        this.rect = rect;
+    }
+
+    @Override
+    public String toString() {
+        return "CropPhoto{" +
+                "photo=" + photo +
+                ", crop=" + crop +
+                ", rect=" + rect +
+                '}';
+    }
+
     /**
      * Describes cropped photo.
      */
@@ -94,38 +127,5 @@ public class CropPhoto {
                     ", y2=" + y2 +
                     '}';
         }
-    }
-
-    public Photo getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(Photo photo) {
-        this.photo = photo;
-    }
-
-    public Crop getCrop() {
-        return crop;
-    }
-
-    public void setCrop(Crop crop) {
-        this.crop = crop;
-    }
-
-    public Crop getRect() {
-        return rect;
-    }
-
-    public void setRect(Crop rect) {
-        this.rect = rect;
-    }
-
-    @Override
-    public String toString() {
-        return "CropPhoto{" +
-                "photo=" + photo +
-                ", crop=" + crop +
-                ", rect=" + rect +
-                '}';
     }
 }

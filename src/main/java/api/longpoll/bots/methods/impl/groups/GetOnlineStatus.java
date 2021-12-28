@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -20,7 +19,7 @@ public class GetOnlineStatus extends VkMethod<GetOnlineStatus.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getOnlineStatus");
+        return VK_METHODS.getProperty("groups.getOnlineStatus");
     }
 
     @Override

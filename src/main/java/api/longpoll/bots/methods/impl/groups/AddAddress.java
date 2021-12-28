@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.config.VkBotsConfig;
-import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.JsonObject;
@@ -13,7 +11,6 @@ import com.google.gson.annotations.SerializedName;
  * @see <a href="https://vk.com/dev/groups.addAddress">https://vk.com/dev/groups.addAddress</a>
  */
 public class AddAddress extends VkMethod<AddAddress.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public AddAddress(String accessToken) {
         super(accessToken);
@@ -21,7 +18,7 @@ public class AddAddress extends VkMethod<AddAddress.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.addAddress");
+        return VK_METHODS.getProperty("groups.addAddress");
     }
 
     @Override
@@ -78,7 +75,7 @@ public class AddAddress extends VkMethod<AddAddress.Response> {
     }
 
     public AddAddress setMainAddress(boolean mainAddress) {
-        return addParam("is_main_address", boolIntConverter.convert(mainAddress));
+        return addParam("is_main_address", mainAddress ? 1 : 0);
     }
 
     @Override

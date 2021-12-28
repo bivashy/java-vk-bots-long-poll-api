@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.photos;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.PhotoSize;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -22,7 +21,7 @@ public class SaveMessagesPhoto extends VkMethod<SaveMessagesPhoto.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("photos.saveMessagesPhoto");
+        return VK_METHODS.getProperty("photos.saveMessagesPhoto");
     }
 
     @Override

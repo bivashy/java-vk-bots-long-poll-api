@@ -3,8 +3,8 @@ package api.longpoll.bots.methods;
 import api.longpoll.bots.methods.impl.photos.GetChatUploadServer;
 import api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer;
 import api.longpoll.bots.methods.impl.photos.GetOwnerCoverPhotoUploadServer;
-import api.longpoll.bots.methods.impl.photos.SaveOwnerCoverPhoto;
 import api.longpoll.bots.methods.impl.photos.SaveMessagesPhoto;
+import api.longpoll.bots.methods.impl.photos.SaveOwnerCoverPhoto;
 
 /**
  * Provides Photos methods.

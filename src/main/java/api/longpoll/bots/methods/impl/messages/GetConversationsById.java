@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Conversation;
 import api.longpoll.bots.model.objects.basic.Message;
@@ -20,8 +20,7 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getConversationsById">https://vk.com/dev/messages.getConversationsById</a>
  */
 public class GetConversationsById extends VkMethod<GetConversationsById.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
 
     public GetConversationsById(String accessToken) {
         super(accessToken);
@@ -29,7 +28,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.getConversationsById");
+        return VK_METHODS.getProperty("messages.getConversationsById");
     }
 
     @Override
@@ -46,7 +45,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     }
 
     public GetConversationsById setExtended(boolean extended) {
-        return addParam("extended", boolIntConverter.convert(extended));
+        return addParam("extended", extended ? 1 : 0);
     }
 
     public GetConversationsById setFields(String... fields) {
@@ -79,6 +78,21 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
              */
             @SerializedName("unread_count")
             private Integer unreadCount;
+
+            public Integer getUnreadCount() {
+                return unreadCount;
+            }
+
+            public void setUnreadCount(Integer unreadCount) {
+                this.unreadCount = unreadCount;
+            }
+
+            @Override
+            public String toString() {
+                return "ResponseObject{" +
+                        "unreadCount=" + unreadCount +
+                        "} " + super.toString();
+            }
 
             /**
              * Describes VkList item.
@@ -119,21 +133,6 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
                             ", message=" + message +
                             '}';
                 }
-            }
-
-            public Integer getUnreadCount() {
-                return unreadCount;
-            }
-
-            public void setUnreadCount(Integer unreadCount) {
-                this.unreadCount = unreadCount;
-            }
-
-            @Override
-            public String toString() {
-                return "ResponseObject{" +
-                        "unreadCount=" + unreadCount +
-                        "} " + super.toString();
             }
         }
     }

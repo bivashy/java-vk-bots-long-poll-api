@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -19,7 +18,7 @@ public class DeleteConversation extends VkMethod<DeleteConversation.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.deleteConversation");
+        return VK_METHODS.getProperty("messages.deleteConversation");
     }
 
     @Override

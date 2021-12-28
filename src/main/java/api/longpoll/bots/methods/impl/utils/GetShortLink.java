@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.utils;
 
-import api.longpoll.bots.config.VkBotsConfig;
-import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -14,7 +12,6 @@ import com.google.gson.annotations.SerializedName;
  * @see <a href="https://vk.com/dev/utils.getShortLink">https://vk.com/dev/utils.getShortLink</a>
  */
 public class GetShortLink extends VkMethod<GetShortLink.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public GetShortLink(String accessToken) {
         super(accessToken);
@@ -22,7 +19,11 @@ public class GetShortLink extends VkMethod<GetShortLink.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("utils.getShortLink");
+        return VK_METHODS.getProperty("utils.getShortLink");
+    }
+
+    public GetShortLink setUrl(String url) {
+        return addParam("url", url);
     }
 
     @Override
@@ -30,12 +31,8 @@ public class GetShortLink extends VkMethod<GetShortLink.Response> {
         return Response.class;
     }
 
-    public GetShortLink setUrl(String url) {
-        return addParam("url", url);
-    }
-
     public GetShortLink setPrivate(boolean isPrivate) {
-        return addParam("private", boolIntConverter.convert(isPrivate));
+        return addParam("private", isPrivate ? 1 : 0);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.config.VkBotsConfig;
-import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
 
 /**
@@ -10,7 +8,6 @@ import api.longpoll.bots.methods.impl.VkMethod;
  * @see <a href="https://vk.com/dev/groups.editAddress">https://vk.com/dev/groups.editAddress</a>
  */
 public class EditAddress extends VkMethod<EditAddress.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
 
     public EditAddress(String accessToken) {
@@ -19,7 +16,7 @@ public class EditAddress extends VkMethod<EditAddress.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.editAddress");
+        return VK_METHODS.getProperty("groups.editAddress");
     }
 
     @Override
@@ -80,7 +77,7 @@ public class EditAddress extends VkMethod<EditAddress.Response> {
     }
 
     public EditAddress setMainAddress(boolean mainAddress) {
-        return addParam("is_main_address", boolIntConverter.convert(mainAddress));
+        return addParam("is_main_address", mainAddress ? 1 : 0);
     }
 
     @Override
