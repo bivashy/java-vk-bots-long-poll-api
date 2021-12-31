@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -18,7 +17,7 @@ public class RemoveChatUser extends VkMethod<IntegerResponse> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.removeChatUser");
+        return VK_METHODS.getProperty("messages.removeChatUser");
     }
 
     @Override

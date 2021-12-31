@@ -8,11 +8,7 @@ import api.longpoll.bots.model.events.boards.BoardPostDelete;
 import api.longpoll.bots.model.events.likes.Like;
 import api.longpoll.bots.model.events.market.MarketComment;
 import api.longpoll.bots.model.events.market.MarketCommentDelete;
-import api.longpoll.bots.model.events.messages.MessageAllow;
-import api.longpoll.bots.model.events.messages.MessageDeny;
-import api.longpoll.bots.model.events.messages.MessageEvent;
-import api.longpoll.bots.model.events.messages.MessageNew;
-import api.longpoll.bots.model.events.messages.MessageTypingState;
+import api.longpoll.bots.model.events.messages.*;
 import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhoto;
 import api.longpoll.bots.model.events.other.GroupChangeSettings;
@@ -46,6 +42,11 @@ public abstract class VkBot {
      * {@link Logger} object.
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(VkBot.class);
+
+    /**
+     * VK Bot group_id.
+     */
+    private Integer groupId;
 
     /**
      * VK Bots API methods.
@@ -252,11 +253,22 @@ public abstract class VkBot {
     }
 
     /**
-     * Get bot group ID.
+     * Gets bot group ID.
      *
      * @return group ID.
      */
-    public abstract int getGroupId();
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    /**
+     * Sets bot group ID.
+     *
+     * @param groupId bot group ID.
+     */
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
 
     /**
      * Handles <b>message_new</b> events.

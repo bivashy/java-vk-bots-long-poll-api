@@ -72,121 +72,6 @@ public class AttachedLink implements Attachable {
     @JsonAdapter(BoolIntDeserializer.class)
     private Boolean external;
 
-    /**
-     * Describes product.
-     *
-     * @see <a href="https://vk.com/dev/link_product">Product</a>
-     */
-    public static class Product {
-        /**
-         * Product price.
-         */
-        @SerializedName("price")
-        private Price price;
-
-        public Price getPrice() {
-            return price;
-        }
-
-        public void setPrice(Price price) {
-            this.price = price;
-        }
-
-        @Override
-        public String toString() {
-            return "Product{" +
-                    "price=" + price +
-                    '}';
-        }
-    }
-
-    /**
-     * Describes link button.
-     *
-     * @see <a href="https://vk.com/dev/link_button">Link Button</a>
-     */
-    public static class Button {
-        /**
-         * Button title.
-         */
-        @SerializedName("title")
-        private String title;
-
-        /**
-         * Button action.
-         */
-        @SerializedName("action")
-        private Action action;
-
-        /**
-         * Describes button action.
-         */
-        public static class Action {
-            /**
-             * Action type. Possible values:
-             * <ul>
-             *     <li>open_url — open link using {@link Action#url} address.</li>
-             * </ul>
-             */
-            @SerializedName("type")
-            private String type;
-
-            /**
-             * URL address.
-             */
-            @SerializedName("url")
-            private String url;
-
-            public String getType() {
-                return type;
-            }
-
-            public void setType(String type) {
-                this.type = type;
-            }
-
-            public String getUrl() {
-                return url;
-            }
-
-            public void setUrl(String url) {
-                this.url = url;
-            }
-
-            @Override
-            public String toString() {
-                return "Action{" +
-                        "type='" + type + '\'' +
-                        ", url='" + url + '\'' +
-                        '}';
-            }
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public Action getAction() {
-            return action;
-        }
-
-        public void setAction(Action action) {
-            this.action = action;
-        }
-
-        @Override
-        public String toString() {
-            return "Button{" +
-                    "title='" + title + '\'' +
-                    ", action=" + action +
-                    '}';
-        }
-    }
-
     public String getUrl() {
         return url;
     }
@@ -281,5 +166,120 @@ public class AttachedLink implements Attachable {
                 ", previewUrl='" + previewUrl + '\'' +
                 ", external=" + external +
                 '}';
+    }
+
+    /**
+     * Describes product.
+     *
+     * @see <a href="https://vk.com/dev/link_product">Product</a>
+     */
+    public static class Product {
+        /**
+         * Product price.
+         */
+        @SerializedName("price")
+        private Price price;
+
+        public Price getPrice() {
+            return price;
+        }
+
+        public void setPrice(Price price) {
+            this.price = price;
+        }
+
+        @Override
+        public String toString() {
+            return "Product{" +
+                    "price=" + price +
+                    '}';
+        }
+    }
+
+    /**
+     * Describes link button.
+     *
+     * @see <a href="https://vk.com/dev/link_button">Link Button</a>
+     */
+    public static class Button {
+        /**
+         * Button title.
+         */
+        @SerializedName("title")
+        private String title;
+
+        /**
+         * Button action.
+         */
+        @SerializedName("action")
+        private Action action;
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public Action getAction() {
+            return action;
+        }
+
+        public void setAction(Action action) {
+            this.action = action;
+        }
+
+        @Override
+        public String toString() {
+            return "Button{" +
+                    "title='" + title + '\'' +
+                    ", action=" + action +
+                    '}';
+        }
+
+        /**
+         * Describes button action.
+         */
+        public static class Action {
+            /**
+             * Action type. Possible values:
+             * <ul>
+             *     <li>open_url — open link using {@link Action#url} address.</li>
+             * </ul>
+             */
+            @SerializedName("type")
+            private String type;
+
+            /**
+             * URL address.
+             */
+            @SerializedName("url")
+            private String url;
+
+            public String getType() {
+                return type;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+
+            @Override
+            public String toString() {
+                return "Action{" +
+                        "type='" + type + '\'' +
+                        ", url='" + url + '\'' +
+                        '}';
+            }
+        }
     }
 }

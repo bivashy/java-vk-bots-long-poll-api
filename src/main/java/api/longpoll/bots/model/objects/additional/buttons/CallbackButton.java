@@ -20,6 +20,21 @@ public class CallbackButton extends Button {
         this.color = color;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return "CallbackButton{" +
+                "color=" + color +
+                "} " + super.toString();
+    }
+
     /**
      * Describes action for button type of Callback.
      */
@@ -53,20 +68,5 @@ public class CallbackButton extends Button {
                     "label='" + label + '\'' +
                     "} " + super.toString();
         }
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    @Override
-    public String toString() {
-        return "CallbackButton{" +
-                "color=" + color +
-                "} " + super.toString();
     }
 }

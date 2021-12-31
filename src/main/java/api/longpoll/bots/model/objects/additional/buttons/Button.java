@@ -17,6 +17,43 @@ public abstract class Button {
         this.action = action;
     }
 
+    public Action getAction() {
+        return action;
+    }
+
+    public void setAction(Action action) {
+        this.action = action;
+    }
+
+    @Override
+    public String toString() {
+        return "Button{" +
+                "action=" + action +
+                '}';
+    }
+
+    /**
+     * Describes possible button colors.
+     */
+    public enum Color {
+        /**
+         * Blue button, indicates the main action. #5181B8
+         */
+        @SerializedName("primary") PRIMARY,
+        /**
+         * Default white button. #FFFFFF
+         */
+        @SerializedName("secondary") SECONDARY,
+        /**
+         * Dangerous or negative action (cancel, delete etc.) #E64646
+         */
+        @SerializedName("negative") NEGATIVE,
+        /**
+         * Accept, agree. #4BB34B
+         */
+        @SerializedName("positive") POSITIVE
+    }
+
     /**
      * Describes button action.
      */
@@ -61,43 +98,5 @@ public abstract class Button {
                     ", payload=" + payload +
                     '}';
         }
-    }
-
-    /**
-     * Describes possible button colors.
-     */
-    public enum Color {
-        /**
-         * Blue button, indicates the main action. #5181B8
-         */
-        @SerializedName("primary") PRIMARY,
-        /**
-         * Default white button. #FFFFFF
-         */
-        @SerializedName("secondary") SECONDARY,
-        /**
-         * Dangerous or negative action (cancel, delete etc.) #E64646
-         */
-        @SerializedName("negative") NEGATIVE,
-        /**
-         * Accept, agree. #4BB34B
-         */
-        @SerializedName("positive") POSITIVE
-    }
-
-    public Action getAction() {
-        return action;
-    }
-
-    public void setAction(Action action) {
-        this.action = action;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Button{" +
-                "action=" + action +
-                '}';
     }
 }

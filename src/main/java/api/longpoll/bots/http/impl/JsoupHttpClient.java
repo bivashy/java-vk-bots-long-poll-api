@@ -2,6 +2,7 @@ package api.longpoll.bots.http.impl;
 
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.HttpRequest;
+import api.longpoll.bots.http.HttpResponse;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 
@@ -12,7 +13,7 @@ import java.io.IOException;
  */
 public class JsoupHttpClient implements HttpClient {
     @Override
-    public String execute(HttpRequest httpRequest) throws IOException {
+    public HttpResponse execute(HttpRequest httpRequest) throws IOException {
         Connection connection = Jsoup.connect(httpRequest.getUrl())
                 .ignoreContentType(true)
                 .timeout(0)
@@ -23,16 +24,15 @@ public class JsoupHttpClient implements HttpClient {
         }
 
         if (httpRequest.getMultipartFormData() != null) {
-            return connection.data(
-                            httpRequest.getMultipartFormData().getKey(),
-                            httpRequest.getMultipartFormData().getFilename(),
-                            httpRequest.getMultipartFormData().getInputStream()
-                    )
-                    .execute()
-                    .body();
+            connection.data(
+                    httpRequest.getMultipartFormData().getKey(),
+                    httpRequest.getMultipartFormData().getFilename(),
+                    httpRequest.getMultipartFormData().getInputStream()
+            );
         }
 
-        return connection.execute().body();
+        Connection.Response response = connection.execute();
+        return new HttpResponse(response.statusCode(), response.body());
 
     }
 

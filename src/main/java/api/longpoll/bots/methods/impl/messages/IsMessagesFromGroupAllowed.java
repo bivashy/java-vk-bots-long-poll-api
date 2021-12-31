@@ -1,7 +1,6 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
@@ -21,7 +20,7 @@ public class IsMessagesFromGroupAllowed extends VkMethod<IsMessagesFromGroupAllo
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.isMessagesFromGroupAllowed");
+        return VK_METHODS.getProperty("messages.isMessagesFromGroupAllowed");
     }
 
     @Override

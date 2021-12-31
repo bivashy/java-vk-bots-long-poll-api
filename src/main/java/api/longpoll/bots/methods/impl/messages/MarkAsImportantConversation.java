@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
-import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -11,7 +9,6 @@ import api.longpoll.bots.model.response.IntegerResponse;
  * @see <a href="https://vk.com/dev/messages.markAsImportantConversation">https://vk.com/dev/messages.markAsImportantConversation</a>
  */
 public class MarkAsImportantConversation extends VkMethod<IntegerResponse> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public MarkAsImportantConversation(String accessToken) {
         super(accessToken);
@@ -19,7 +16,7 @@ public class MarkAsImportantConversation extends VkMethod<IntegerResponse> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.markAsImportantConversation");
+        return VK_METHODS.getProperty("messages.markAsImportantConversation");
     }
 
     @Override
@@ -32,7 +29,7 @@ public class MarkAsImportantConversation extends VkMethod<IntegerResponse> {
     }
 
     public MarkAsImportantConversation setAnswered(boolean answered) {
-        return addParam("answered", boolIntConverter.convert(answered));
+        return addParam("answered", answered ? 1 : 0);
     }
 
     public MarkAsImportantConversation setGroupId(int groupId) {

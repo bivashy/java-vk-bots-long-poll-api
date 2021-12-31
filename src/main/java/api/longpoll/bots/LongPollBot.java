@@ -1,6 +1,5 @@
 package api.longpoll.bots;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.methods.impl.events.GetUpdates;
@@ -16,21 +15,18 @@ public abstract class LongPollBot extends VkBot {
      * {@link Logger} object.
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(LongPollBot.class);
-
+    /**
+     * Gets VK long poll server.
+     */
+    private final GetLongPollServer getLongPollServer = new GetLongPollServer(getAccessToken());
+    /**
+     * Gets VK updates.
+     */
+    private final GetUpdates getUpdates = new GetUpdates();
     /**
      * Whether infinite loop should be continued.
      */
     private boolean polling = true;
-
-    /**
-     * Gets VK long poll server.
-     */
-    private final GetLongPollServer getLongPollServer = VkBotsConfig.getInstance().getGetLongPollServerFactory().get(getAccessToken());
-
-    /**
-     * Gets VK updates.
-     */
-    private final GetUpdates getUpdates = VkBotsConfig.getInstance().getGetUpdates();
 
     /**
      * Begins listening to VK updates.
@@ -38,6 +34,7 @@ public abstract class LongPollBot extends VkBot {
      * @throws VkApiException if errors occur.
      */
     public void startPolling() throws VkApiException {
+        propagateGroupId();
         resetGetUpdates();
         while (polling) {
             try {
@@ -68,5 +65,16 @@ public abstract class LongPollBot extends VkBot {
         getUpdates.setServer(longPollServer.getResponseObject().getServer())
                 .setKey(longPollServer.getResponseObject().getKey())
                 .setTs(longPollServer.getResponseObject().getTs());
+    }
+
+    private void propagateGroupId() throws VkApiException {
+        if (getGroupId() == null) {
+            setGroupId(vk.groups.getById()
+                    .execute()
+                    .getResponseObject()
+                    .get(0)
+                    .getId()
+            );
+        }
     }
 }

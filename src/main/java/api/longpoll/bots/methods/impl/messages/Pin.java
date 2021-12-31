@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.PinnedMessage;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -19,7 +18,7 @@ public class Pin extends VkMethod<Pin.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.pin");
+        return VK_METHODS.getProperty("messages.pin");
     }
 
     @Override

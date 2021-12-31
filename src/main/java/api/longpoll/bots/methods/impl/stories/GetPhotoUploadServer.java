@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -17,8 +17,7 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/stories.getPhotoUploadServer">https://vk.com/dev/stories.getPhotoUploadServer</a>
  */
 public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
 
     public GetPhotoUploadServer(String accessToken) {
         super(accessToken);
@@ -26,7 +25,7 @@ public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("stories.getPhotoUploadServer");
+        return VK_METHODS.getProperty("stories.getPhotoUploadServer");
     }
 
     @Override
@@ -35,7 +34,7 @@ public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response
     }
 
     public GetPhotoUploadServer setAddToNews(boolean addToNews) {
-        return addParam("add_to_news", boolIntConverter.convert(addToNews));
+        return addParam("add_to_news", addToNews ? 1 : 0);
     }
 
     public GetPhotoUploadServer setReplyToStory(String replyToStory) {

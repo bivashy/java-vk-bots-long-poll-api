@@ -145,31 +145,6 @@ public class Video implements Attachable {
     @SerializedName("local_views")
     private Integer localViews;
 
-    /**
-     * Describes video preview image.
-     */
-    public static class VideoImage extends Image {
-        @SerializedName("with_padding")
-        @JsonAdapter(BoolIntDeserializer.class)
-        private Boolean withPadding;
-
-        public Boolean getWithPadding() {
-            return withPadding;
-        }
-
-        public void setWithPadding(Boolean withPadding) {
-            this.withPadding = withPadding;
-        }
-
-
-        @Override
-        public String toString() {
-            return "VideoImage{" +
-                    "withPadding=" + withPadding +
-                    "} " + super.toString();
-        }
-    }
-
     public Integer getId() {
         return id;
     }
@@ -381,5 +356,30 @@ public class Video implements Attachable {
                 ", type='" + type + '\'' +
                 ", localViews=" + localViews +
                 '}';
+    }
+
+    /**
+     * Describes video preview image.
+     */
+    public static class VideoImage extends Image {
+        @SerializedName("with_padding")
+        @JsonAdapter(BoolIntDeserializer.class)
+        private Boolean withPadding;
+
+        public Boolean getWithPadding() {
+            return withPadding;
+        }
+
+        public void setWithPadding(Boolean withPadding) {
+            this.withPadding = withPadding;
+        }
+
+
+        @Override
+        public String toString() {
+            return "VideoImage{" +
+                    "withPadding=" + withPadding +
+                    "} " + super.toString();
+        }
     }
 }

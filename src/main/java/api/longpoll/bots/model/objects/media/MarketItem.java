@@ -80,130 +80,6 @@ public class MarketItem implements Attachable {
     @SerializedName("sku")
     private String sku;
 
-    /**
-     * Describes item price.
-     */
-    public static class ItemPrice extends Price {
-        /**
-         * Old price value multiplied by 100.
-         */
-        @SerializedName("old_amount")
-        private Integer oldAmount;
-
-        public Integer getOldAmount() {
-            return oldAmount;
-        }
-
-        public void setOldAmount(Integer oldAmount) {
-            this.oldAmount = oldAmount;
-        }
-
-
-        @Override
-        public String toString() {
-            return "ItemPrice{" +
-                    "oldAmount=" + oldAmount +
-                    "} " + super.toString();
-        }
-    }
-
-    /**
-     * Describes item category.
-     */
-    public static class Category {
-        /**
-         * Category ID.
-         */
-        @SerializedName("id")
-        private Integer id;
-
-        /**
-         * Category name.
-         */
-        @SerializedName("name")
-        private String name;
-
-        /**
-         * Category section.
-         */
-        @SerializedName("section")
-        private Section section;
-
-        /**
-         * Describes category section.
-         */
-        public static class Section {
-            /**
-             * Section ID.
-             */
-            @SerializedName("id")
-            private Integer id;
-
-            /**
-             * Section name.
-             */
-            @SerializedName("name")
-            private String name;
-
-            public Integer getId() {
-                return id;
-            }
-
-            public void setId(Integer id) {
-                this.id = id;
-            }
-
-            public String getName() {
-                return name;
-            }
-
-            public void setName(String name) {
-                this.name = name;
-            }
-
-            @Override
-            public String toString() {
-                return "Section{" +
-                        "id=" + id +
-                        ", name='" + name + '\'' +
-                        '}';
-            }
-        }
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Section getSection() {
-            return section;
-        }
-
-        public void setSection(Section section) {
-            this.section = section;
-        }
-
-        @Override
-        public String toString() {
-            return "Category{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    ", section=" + section +
-                    '}';
-        }
-    }
-
     public Integer getId() {
         return id;
     }
@@ -307,5 +183,129 @@ public class MarketItem implements Attachable {
                 ", favourite=" + favourite +
                 ", sku='" + sku + '\'' +
                 '}';
+    }
+
+    /**
+     * Describes item price.
+     */
+    public static class ItemPrice extends Price {
+        /**
+         * Old price value multiplied by 100.
+         */
+        @SerializedName("old_amount")
+        private Integer oldAmount;
+
+        public Integer getOldAmount() {
+            return oldAmount;
+        }
+
+        public void setOldAmount(Integer oldAmount) {
+            this.oldAmount = oldAmount;
+        }
+
+
+        @Override
+        public String toString() {
+            return "ItemPrice{" +
+                    "oldAmount=" + oldAmount +
+                    "} " + super.toString();
+        }
+    }
+
+    /**
+     * Describes item category.
+     */
+    public static class Category {
+        /**
+         * Category ID.
+         */
+        @SerializedName("id")
+        private Integer id;
+
+        /**
+         * Category name.
+         */
+        @SerializedName("name")
+        private String name;
+
+        /**
+         * Category section.
+         */
+        @SerializedName("section")
+        private Section section;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Section getSection() {
+            return section;
+        }
+
+        public void setSection(Section section) {
+            this.section = section;
+        }
+
+        @Override
+        public String toString() {
+            return "Category{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    ", section=" + section +
+                    '}';
+        }
+
+        /**
+         * Describes category section.
+         */
+        public static class Section {
+            /**
+             * Section ID.
+             */
+            @SerializedName("id")
+            private Integer id;
+
+            /**
+             * Section name.
+             */
+            @SerializedName("name")
+            private String name;
+
+            public Integer getId() {
+                return id;
+            }
+
+            public void setId(Integer id) {
+                this.id = id;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            @Override
+            public String toString() {
+                return "Section{" +
+                        "id=" + id +
+                        ", name='" + name + '\'' +
+                        '}';
+            }
+        }
     }
 }

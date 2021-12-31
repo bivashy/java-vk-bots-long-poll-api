@@ -1,7 +1,6 @@
 package api.longpoll.bots.methods.impl.upload;
 
 import api.longpoll.bots.http.MultipartFormData;
-import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.FileType;
 import com.google.gson.annotations.SerializedName;
 

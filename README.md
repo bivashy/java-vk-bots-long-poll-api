@@ -25,14 +25,14 @@ This library uses the next third-party dependencies:
 2. Maven (or other build tool)
 
 ## Quickstart
-1. Create VK Community and get `group_id` (from browser URL).
+1. Create VK Community.
 2. Go to `Manage` - `API usage` - `Access tokens` and create `access_token`.
 3. Add the library to your project using Maven:
 ```xml
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
   <artifactId>java-vk-bots-longpoll-api</artifactId>
-  <version>3.0.1</version>
+  <version>3.1.0</version>
 </dependency>
 ```
 4. Extend `LongPollBot` class and override necessary methods:
@@ -57,11 +57,6 @@ public class HelloBot extends LongPollBot {
     @Override
     public String getAccessToken() {
         return "your_access_token";
-    }
-
-    @Override
-    public int getGroupId() {
-        return 999999999;
     }
 
     public static void main(String[] args) throws VkApiException {

@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.utils;
 
-import api.longpoll.bots.config.VkBotsConfig;
-import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -16,7 +14,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
  */
 public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public GetLinkStats(String accessToken) {
         super(accessToken);
@@ -24,7 +21,7 @@ public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("utils.getLinkStats");
+        return VK_METHODS.getProperty("utils.getLinkStats");
     }
 
     @Override
@@ -53,7 +50,7 @@ public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
     }
 
     public GetLinkStats setExtended(boolean extended) {
-        return addParam("extended", boolIntConverter.convert(extended));
+        return addParam("extended", extended ? 1 : 0);
     }
 
     @Override
@@ -80,6 +77,30 @@ public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
              */
             @SerializedName("stats")
             private List<Stat> stats;
+
+            public String getKey() {
+                return key;
+            }
+
+            public void setKey(String key) {
+                this.key = key;
+            }
+
+            public List<Stat> getStats() {
+                return stats;
+            }
+
+            public void setStats(List<Stat> stats) {
+                this.stats = stats;
+            }
+
+            @Override
+            public String toString() {
+                return "ResponseObject{" +
+                        "key='" + key + '\'' +
+                        ", stats=" + stats +
+                        '}';
+            }
 
             /**
              * Describes stat.
@@ -114,6 +135,57 @@ public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
                  */
                 @SerializedName("cities")
                 private List<City> cities;
+
+                public Integer getTimestamp() {
+                    return timestamp;
+                }
+
+                public void setTimestamp(Integer timestamp) {
+                    this.timestamp = timestamp;
+                }
+
+                public Integer getViews() {
+                    return views;
+                }
+
+                public void setViews(Integer views) {
+                    this.views = views;
+                }
+
+                public List<SexAge> getSexAges() {
+                    return sexAges;
+                }
+
+                public void setSexAges(List<SexAge> sexAges) {
+                    this.sexAges = sexAges;
+                }
+
+                public List<Country> getCountries() {
+                    return countries;
+                }
+
+                public void setCountries(List<Country> countries) {
+                    this.countries = countries;
+                }
+
+                public List<City> getCities() {
+                    return cities;
+                }
+
+                public void setCities(List<City> cities) {
+                    this.cities = cities;
+                }
+
+                @Override
+                public String toString() {
+                    return "Stat{" +
+                            "timestamp=" + timestamp +
+                            ", views=" + views +
+                            ", sexAges=" + sexAges +
+                            ", countries=" + countries +
+                            ", cities=" + cities +
+                            '}';
+                }
 
                 /**
                  * Describes sex_age.
@@ -252,81 +324,6 @@ public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
                                 '}';
                     }
                 }
-
-                public Integer getTimestamp() {
-                    return timestamp;
-                }
-
-                public void setTimestamp(Integer timestamp) {
-                    this.timestamp = timestamp;
-                }
-
-                public Integer getViews() {
-                    return views;
-                }
-
-                public void setViews(Integer views) {
-                    this.views = views;
-                }
-
-                public List<SexAge> getSexAges() {
-                    return sexAges;
-                }
-
-                public void setSexAges(List<SexAge> sexAges) {
-                    this.sexAges = sexAges;
-                }
-
-                public List<Country> getCountries() {
-                    return countries;
-                }
-
-                public void setCountries(List<Country> countries) {
-                    this.countries = countries;
-                }
-
-                public List<City> getCities() {
-                    return cities;
-                }
-
-                public void setCities(List<City> cities) {
-                    this.cities = cities;
-                }
-
-                @Override
-                public String toString() {
-                    return "Stat{" +
-                            "timestamp=" + timestamp +
-                            ", views=" + views +
-                            ", sexAges=" + sexAges +
-                            ", countries=" + countries +
-                            ", cities=" + cities +
-                            '}';
-                }
-            }
-
-            public String getKey() {
-                return key;
-            }
-
-            public void setKey(String key) {
-                this.key = key;
-            }
-
-            public List<Stat> getStats() {
-                return stats;
-            }
-
-            public void setStats(List<Stat> stats) {
-                this.stats = stats;
-            }
-
-            @Override
-            public String toString() {
-                return "ResponseObject{" +
-                        "key='" + key + '\'' +
-                        ", stats=" + stats +
-                        '}';
             }
         }
     }

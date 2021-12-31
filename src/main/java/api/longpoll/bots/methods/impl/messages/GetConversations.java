@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 
 import java.util.Arrays;
@@ -15,8 +15,7 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getConversations">https://vk.com/dev/messages.getConversations</a>
  */
 public class GetConversations extends VkMethod<GetConversations.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
 
     public GetConversations(String accessToken) {
         super(accessToken);
@@ -24,7 +23,7 @@ public class GetConversations extends VkMethod<GetConversations.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.getConversations");
+        return VK_METHODS.getProperty("messages.getConversations");
     }
 
     @Override
@@ -45,7 +44,7 @@ public class GetConversations extends VkMethod<GetConversations.Response> {
     }
 
     public GetConversations setExtended(boolean extended) {
-        return addParam("extended", boolIntConverter.convert(extended));
+        return addParam("extended", extended ? 1 : 0);
     }
 
     public GetConversations setStartMessageId(int startMessageId) {

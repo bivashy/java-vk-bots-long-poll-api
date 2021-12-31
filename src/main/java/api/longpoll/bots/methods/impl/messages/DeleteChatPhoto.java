@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Chat;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -20,7 +19,7 @@ public class DeleteChatPhoto extends VkMethod<DeleteChatPhoto.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.deleteChatPhoto");
+        return VK_METHODS.getProperty("messages.deleteChatPhoto");
     }
 
     @Override

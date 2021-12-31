@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.docs;
 
-import api.longpoll.bots.config.VkBotsConfig;
-import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.media.Doc;
@@ -12,7 +10,6 @@ import api.longpoll.bots.model.objects.media.Doc;
  * @see <a href="https://vk.com/dev/docs.search">https://vk.com/dev/docs.search</a>
  */
 public class Search extends VkMethod<Search.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public Search(String accessToken) {
         super(accessToken);
@@ -20,7 +17,7 @@ public class Search extends VkMethod<Search.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("docs.search");
+        return VK_METHODS.getProperty("docs.search");
     }
 
     @Override
@@ -41,7 +38,7 @@ public class Search extends VkMethod<Search.Response> {
     }
 
     public Search setReturnTags(boolean returnTags) {
-        return addParam("return_tags", boolIntConverter.convert(returnTags));
+        return addParam("return_tags", returnTags ? 1 : 0);
     }
 
     @Override

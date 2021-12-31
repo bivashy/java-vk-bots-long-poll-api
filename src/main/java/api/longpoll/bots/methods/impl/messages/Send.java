@@ -1,8 +1,9 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.MessagesSendResultDeserializer;
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
+import api.longpoll.bots.converter.impl.VkAttachmentsConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Forward;
 import api.longpoll.bots.model.objects.additional.Keyboard;
@@ -23,10 +24,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
 public class Send extends VkMethod<Send.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
-    private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = VkBotsConfig.getInstance().getVkAttachmentsListConverterConverter();
-    private final Converter<Forward, String> forwardConverter = VkBotsConfig.getInstance().getForwardConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
+    private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = new VkAttachmentsConverter();
 
     public Send(String accessToken) {
         super(accessToken);
@@ -35,7 +34,7 @@ public class Send extends VkMethod<Send.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.send");
+        return VK_METHODS.getProperty("messages.send");
     }
 
     @Override
@@ -108,11 +107,11 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send setDontParseLinks(boolean dontParseLinks) {
-        return addParam("dont_parse_links", boolIntConverter.convert(dontParseLinks));
+        return addParam("dont_parse_links", dontParseLinks ? 1 : 0);
     }
 
     public Send setDisableMentions(boolean disableMentions) {
-        return addParam("disable_mentions", boolIntConverter.convert(disableMentions));
+        return addParam("disable_mentions", disableMentions ? 1 : 0);
     }
 
     public Send setKeyboard(Keyboard keyboard) {
@@ -124,7 +123,7 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send setForward(Forward forward) {
-        return addParam("forward", forwardConverter.convert(forward));
+        return addParam("forward", getGson().toJson(forward));
     }
 
     @Override

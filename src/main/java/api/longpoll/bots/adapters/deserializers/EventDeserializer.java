@@ -1,7 +1,7 @@
 package api.longpoll.bots.adapters.deserializers;
 
-import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.EventType;
+import api.longpoll.bots.model.events.VkEvent;
 import api.longpoll.bots.model.events.boards.BoardPost;
 import api.longpoll.bots.model.events.boards.BoardPostDelete;
 import api.longpoll.bots.model.events.likes.Like;
@@ -16,16 +16,16 @@ import api.longpoll.bots.model.events.other.AppPayload;
 import api.longpoll.bots.model.events.other.GroupChangePhoto;
 import api.longpoll.bots.model.events.other.GroupChangeSettings;
 import api.longpoll.bots.model.events.other.VkpayTransaction;
-import api.longpoll.bots.model.events.photos.PhotoCommentDelete;
 import api.longpoll.bots.model.events.photos.PhotoComment;
+import api.longpoll.bots.model.events.photos.PhotoCommentDelete;
 import api.longpoll.bots.model.events.users.GroupJoin;
 import api.longpoll.bots.model.events.users.GroupLeave;
 import api.longpoll.bots.model.events.users.UserBlock;
 import api.longpoll.bots.model.events.users.UserUnblock;
 import api.longpoll.bots.model.events.video.VideoComment;
 import api.longpoll.bots.model.events.video.VideoCommentDelete;
-import api.longpoll.bots.model.events.wall.comments.WallReplyDelete;
 import api.longpoll.bots.model.events.wall.comments.WallReply;
+import api.longpoll.bots.model.events.wall.comments.WallReplyDelete;
 import api.longpoll.bots.model.objects.basic.MarketOrder;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.basic.WallPost;

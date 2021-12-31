@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.market;
 
-import api.longpoll.bots.config.VkBotsConfig;
-import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.MarketOrder;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -14,7 +12,6 @@ import api.longpoll.bots.model.response.GenericResponse;
  * @see <a href="https://vk.com/dev/market.getOrderById">https://vk.com/dev/market.getOrderById</a>
  */
 public class GetOrderById extends VkMethod<GetOrderById.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
 
     public GetOrderById(String accessToken) {
         super(accessToken);
@@ -22,7 +19,7 @@ public class GetOrderById extends VkMethod<GetOrderById.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("market.getOrderById");
+        return VK_METHODS.getProperty("market.getOrderById");
     }
 
     @Override
@@ -39,7 +36,7 @@ public class GetOrderById extends VkMethod<GetOrderById.Response> {
     }
 
     public GetOrderById setExtended(boolean extended) {
-        return addParam("extended", boolIntConverter.convert(extended));
+        return addParam("extended", extended ? 1 : 0);
     }
 
     @Override

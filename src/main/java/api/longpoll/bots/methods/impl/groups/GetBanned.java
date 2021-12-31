@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Community;
@@ -20,7 +20,7 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/groups.getBanned">https://vk.com/dev/groups.getBanned</a>
  */
 public class GetBanned extends VkMethod<GetBanned.Response> {
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
 
     public GetBanned(String accessToken) {
         super(accessToken);
@@ -28,7 +28,7 @@ public class GetBanned extends VkMethod<GetBanned.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getBanned");
+        return VK_METHODS.getProperty("groups.getBanned");
     }
 
     @Override
@@ -96,6 +96,48 @@ public class GetBanned extends VkMethod<GetBanned.Response> {
              */
             @SerializedName("ban_info")
             private BanInfo banInfo;
+
+            public String getType() {
+                return type;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+
+            public Community getGroup() {
+                return group;
+            }
+
+            public void setGroup(Community group) {
+                this.group = group;
+            }
+
+            public User getProfile() {
+                return profile;
+            }
+
+            public void setProfile(User profile) {
+                this.profile = profile;
+            }
+
+            public BanInfo getBanInfo() {
+                return banInfo;
+            }
+
+            public void setBanInfo(BanInfo banInfo) {
+                this.banInfo = banInfo;
+            }
+
+            @Override
+            public String toString() {
+                return "Item{" +
+                        "type='" + type + '\'' +
+                        ", group=" + group +
+                        ", profile=" + profile +
+                        ", banInfo=" + banInfo +
+                        '}';
+            }
 
             /**
              * Describes ban information.
@@ -181,48 +223,6 @@ public class GetBanned extends VkMethod<GetBanned.Response> {
                             ", endDate=" + endDate +
                             '}';
                 }
-            }
-
-            public String getType() {
-                return type;
-            }
-
-            public void setType(String type) {
-                this.type = type;
-            }
-
-            public Community getGroup() {
-                return group;
-            }
-
-            public void setGroup(Community group) {
-                this.group = group;
-            }
-
-            public User getProfile() {
-                return profile;
-            }
-
-            public void setProfile(User profile) {
-                this.profile = profile;
-            }
-
-            public BanInfo getBanInfo() {
-                return banInfo;
-            }
-
-            public void setBanInfo(BanInfo banInfo) {
-                this.banInfo = banInfo;
-            }
-
-            @Override
-            public String toString() {
-                return "Item{" +
-                        "type='" + type + '\'' +
-                        ", group=" + group +
-                        ", profile=" + profile +
-                        ", banInfo=" + banInfo +
-                        '}';
             }
         }
     }

@@ -40,6 +40,66 @@ public class Element {
     @SerializedName("action")
     private Action action;
 
+    public String getTitle() {
+        return title;
+    }
+
+    public Element setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Element setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public String getPhotoId() {
+        return photoId;
+    }
+
+    public Element setPhotoId(int ownerId, int mediaId) {
+        this.photoId = ownerId + "_" + mediaId;
+        return this;
+    }
+
+    public List<Button> getButtons() {
+        return buttons;
+    }
+
+    public Element setButtons(Button... buttons) {
+        return setButtons(Arrays.asList(buttons));
+    }
+
+    public Element setButtons(List<Button> buttons) {
+        this.buttons = buttons;
+        return this;
+    }
+
+    public Action getAction() {
+        return action;
+    }
+
+    public Element setAction(Action action) {
+        this.action = action;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Element{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", photoId='" + photoId + '\'' +
+                ", buttons=" + buttons +
+                ", action=" + action +
+                '}';
+    }
+
     /**
      * Describes carousel action.
      */
@@ -101,65 +161,5 @@ public class Element {
         public OpenPhoto() {
             super("open_photo");
         }
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Element setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Element setDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public String getPhotoId() {
-        return photoId;
-    }
-
-    public Element setPhotoId(int ownerId, int mediaId) {
-        this.photoId = ownerId + "_" + mediaId;
-        return this;
-    }
-
-    public List<Button> getButtons() {
-        return buttons;
-    }
-
-    public Element setButtons(Button... buttons) {
-        return setButtons(Arrays.asList(buttons));
-    }
-
-    public Element setButtons(List<Button> buttons) {
-        this.buttons = buttons;
-        return this;
-    }
-
-    public Action getAction() {
-        return action;
-    }
-
-    public Element setAction(Action action) {
-        this.action = action;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "Element{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", photoId='" + photoId + '\'' +
-                ", buttons=" + buttons +
-                ", action=" + action +
-                '}';
     }
 }

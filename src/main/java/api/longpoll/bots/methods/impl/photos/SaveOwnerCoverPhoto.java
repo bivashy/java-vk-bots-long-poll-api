@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.photos;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Image;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -22,7 +21,7 @@ public class SaveOwnerCoverPhoto extends VkMethod<SaveOwnerCoverPhoto.Response> 
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("photos.saveOwnerCoverPhoto");
+        return VK_METHODS.getProperty("photos.saveOwnerCoverPhoto");
     }
 
     @Override

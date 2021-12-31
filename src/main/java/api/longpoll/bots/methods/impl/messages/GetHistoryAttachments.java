@@ -1,8 +1,8 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.AttachmentDeserializer;
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -20,8 +20,7 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
  */
 public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
 
     public GetHistoryAttachments(String accessToken) {
         super(accessToken);
@@ -29,7 +28,7 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.getHistoryAttachments");
+        return VK_METHODS.getProperty("messages.getHistoryAttachments");
     }
 
     @Override
@@ -54,7 +53,7 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
     }
 
     public GetHistoryAttachments setPhotoSizes(boolean photoSizes) {
-        return addParam("photo_sizes", boolIntConverter.convert(photoSizes));
+        return addParam("photo_sizes", photoSizes ? 1 : 0);
     }
 
     public GetHistoryAttachments setFields(String... fields) {
@@ -70,7 +69,7 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
     }
 
     public GetHistoryAttachments setPreserveOrder(boolean preserveOrder) {
-        return addParam("preserve_order", boolIntConverter.convert(preserveOrder));
+        return addParam("preserve_order", preserveOrder ? 1 : 0);
     }
 
     public GetHistoryAttachments setMaxForwardsLevel(int maxForwardsLevel) {
@@ -101,6 +100,30 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
              */
             @SerializedName("next_from")
             private String nextFrom;
+
+            public List<Item> getItems() {
+                return items;
+            }
+
+            public void setItems(List<Item> items) {
+                this.items = items;
+            }
+
+            public String getNextFrom() {
+                return nextFrom;
+            }
+
+            public void setNextFrom(String nextFrom) {
+                this.nextFrom = nextFrom;
+            }
+
+            @Override
+            public String toString() {
+                return "ResponseObject{" +
+                        "items=" + items +
+                        ", nextFrom='" + nextFrom + '\'' +
+                        '}';
+            }
 
             /**
              * Describes list item.
@@ -142,31 +165,6 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
                             ", attachment=" + attachment +
                             '}';
                 }
-            }
-
-            public List<Item> getItems() {
-                return items;
-            }
-
-            public void setItems(List<Item> items) {
-                this.items = items;
-            }
-
-            public String getNextFrom() {
-                return nextFrom;
-            }
-
-            public void setNextFrom(String nextFrom) {
-                this.nextFrom = nextFrom;
-            }
-
-
-            @Override
-            public String toString() {
-                return "ResponseObject{" +
-                        "items=" + items +
-                        ", nextFrom='" + nextFrom + '\'' +
-                        '}';
             }
         }
     }

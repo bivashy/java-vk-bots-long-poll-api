@@ -24,6 +24,39 @@ public class Geo {
     @SerializedName("place")
     private Place place;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
+
+    @Override
+    public String toString() {
+        return "Geo{" +
+                "type='" + type + '\'' +
+                ", coordinates=" + coordinates +
+                ", place=" + place +
+                '}';
+    }
+
     /**
      * A class describing location coordinates.
      */
@@ -194,38 +227,5 @@ public class Geo {
                     ", city='" + city + '\'' +
                     '}';
         }
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Coordinates getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public Place getPlace() {
-        return place;
-    }
-
-    public void setPlace(Place place) {
-        this.place = place;
-    }
-
-    @Override
-    public String toString() {
-        return "Geo{" +
-                "type='" + type + '\'' +
-                ", coordinates=" + coordinates +
-                ", place=" + place +
-                '}';
     }
 }

@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.utils;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -18,7 +17,7 @@ public class GetServerTime extends VkMethod<IntegerResponse> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("utils.getServerTime");
+        return VK_METHODS.getProperty("utils.getServerTime");
     }
 
     @Override

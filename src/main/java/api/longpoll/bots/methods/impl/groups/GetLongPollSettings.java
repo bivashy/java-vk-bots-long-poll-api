@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -19,7 +18,7 @@ public class GetLongPollSettings extends VkMethod<GetLongPollSettings.Response> 
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getLongPollSettings");
+        return VK_METHODS.getProperty("groups.getLongPollSettings");
     }
 
     @Override

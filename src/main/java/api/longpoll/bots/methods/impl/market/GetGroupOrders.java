@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.market;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.MarketOrder;
@@ -20,7 +19,7 @@ public class GetGroupOrders extends VkMethod<GetGroupOrders.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("market.getGroupOrders");
+        return VK_METHODS.getProperty("market.getGroupOrders");
     }
 
     @Override

@@ -50,64 +50,6 @@ public class TopicComment implements EventObject {
     @SerializedName("likes")
     private Likes likes;
 
-    /**
-     * Describes topic comment likes.
-     */
-    public static class Likes {
-        /**
-         * Likes count.
-         */
-        @SerializedName("count")
-        private Integer count;
-
-        /**
-         * <b>true</b>, if current user likes the comment.
-         */
-        @SerializedName("user_likes")
-        @JsonAdapter(BoolIntDeserializer.class)
-        private Boolean userLikes;
-
-        /**
-         * <b>true</b>, if current user can like the comment.
-         */
-        @SerializedName("can_like")
-        @JsonAdapter(BoolIntDeserializer.class)
-        private Boolean canLike;
-
-        public Integer getCount() {
-            return count;
-        }
-
-        public void setCount(Integer count) {
-            this.count = count;
-        }
-
-        public Boolean getUserLikes() {
-            return userLikes;
-        }
-
-        public void setUserLikes(Boolean userLikes) {
-            this.userLikes = userLikes;
-        }
-
-        public Boolean getCanLike() {
-            return canLike;
-        }
-
-        public void setCanLike(Boolean canLike) {
-            this.canLike = canLike;
-        }
-
-        @Override
-        public String toString() {
-            return "Likes{" +
-                    "count=" + count +
-                    ", userLikes=" + userLikes +
-                    ", canLike=" + canLike +
-                    '}';
-        }
-    }
-
     public Integer getId() {
         return id;
     }
@@ -166,5 +108,63 @@ public class TopicComment implements EventObject {
                 ", attachments=" + attachments +
                 ", likes=" + likes +
                 '}';
+    }
+
+    /**
+     * Describes topic comment likes.
+     */
+    public static class Likes {
+        /**
+         * Likes count.
+         */
+        @SerializedName("count")
+        private Integer count;
+
+        /**
+         * <b>true</b>, if current user likes the comment.
+         */
+        @SerializedName("user_likes")
+        @JsonAdapter(BoolIntDeserializer.class)
+        private Boolean userLikes;
+
+        /**
+         * <b>true</b>, if current user can like the comment.
+         */
+        @SerializedName("can_like")
+        @JsonAdapter(BoolIntDeserializer.class)
+        private Boolean canLike;
+
+        public Integer getCount() {
+            return count;
+        }
+
+        public void setCount(Integer count) {
+            this.count = count;
+        }
+
+        public Boolean getUserLikes() {
+            return userLikes;
+        }
+
+        public void setUserLikes(Boolean userLikes) {
+            this.userLikes = userLikes;
+        }
+
+        public Boolean getCanLike() {
+            return canLike;
+        }
+
+        public void setCanLike(Boolean canLike) {
+            this.canLike = canLike;
+        }
+
+        @Override
+        public String toString() {
+            return "Likes{" +
+                    "count=" + count +
+                    ", userLikes=" + userLikes +
+                    ", canLike=" + canLike +
+                    '}';
+        }
     }
 }

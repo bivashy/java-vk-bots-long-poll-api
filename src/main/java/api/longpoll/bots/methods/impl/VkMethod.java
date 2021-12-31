@@ -1,21 +1,28 @@
 package api.longpoll.bots.methods.impl;
 
-import api.longpoll.bots.config.VkBotsConfig;
-import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.async.AsyncCaller;
+import api.longpoll.bots.async.DefaultAsyncCaller;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.HttpRequest;
+import api.longpoll.bots.http.HttpResponse;
 import api.longpoll.bots.http.MultipartFormData;
-import api.longpoll.bots.async.AsyncCaller;
+import api.longpoll.bots.http.impl.JsoupHttpClient;
+import api.longpoll.bots.reader.impl.PropertiesReader;
 import api.longpoll.bots.validator.Validator;
+import api.longpoll.bots.validator.VkResponseValidator;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 /**
  * Executes generic HTTP request to VK API.
@@ -29,35 +36,49 @@ public abstract class VkMethod<Response> implements HttpRequest {
     private static final Logger log = LoggerFactory.getLogger(VkMethod.class);
 
     /**
+     * Path to VK methods list.
+     */
+    private static final String VK_METHODS_PROPERTIES_PATH = "/vk/vk_methods.properties";
+
+    /**
+     * VK methods.
+     */
+    public static final Properties VK_METHODS = new PropertiesReader().read(VK_METHODS_PROPERTIES_PATH);
+
+    /**
+     * VK API version.
+     */
+    private static final String API_VERSION = "5.131";
+
+    /**
      * Request params.
      */
     private final Map<String, String> params = new HashMap<>();
-
-    private MultipartFormData multipartFormData;
-
     /**
      * Async executor.
      */
-    private final AsyncCaller asyncCaller = VkBotsConfig.getInstance().getAsyncCaller();
-
+    private final AsyncCaller asyncCaller = new DefaultAsyncCaller();
     /**
      * HTTP client.
      */
-    private final HttpClient httpClient = VkBotsConfig.getInstance().getHttpClient();
-
+    private final HttpClient httpClient = new JsoupHttpClient();
     /**
      * Validator to check if VK API response is valid.
      */
-    private final Validator<String> vkResponseValidator = VkBotsConfig.getInstance().getVkResponseValidator();
+    private final Validator<JsonElement> vkResponseValidator = new VkResponseValidator();
+    /**
+     * {@link Gson} instance.
+     */
+    private final Gson gson = new Gson();
 
     /**
-     * Converts JSON string to POJO.
+     * Multipart object.
      */
-    private final Converter<String, Response> jsonConverter = VkBotsConfig.getInstance().getJsonConverterFactory().get(getResponseType());
+    private MultipartFormData multipartFormData;
 
     public VkMethod(String accessToken) {
         addParam("access_token", accessToken);
-        addParam("v", VkBotsConfig.getInstance().getApiVersion());
+        addParam("v", API_VERSION);
     }
 
     public VkMethod() {
@@ -80,16 +101,19 @@ public abstract class VkMethod<Response> implements HttpRequest {
      */
     public Response execute() throws VkApiException {
         try {
-            log.debug("Sending: method={}, url={}, params={}", getRequestMethod(), getUrl(), params);
+            log.debug("Request: {}", this);
 
-            String body = httpClient.execute(this);
-            log.debug("Received: {}", body);
+            HttpResponse httpResponse = httpClient.execute(this);
+            log.debug("Response: {}", httpResponse);
 
-            if (vkResponseValidator.isValid(body)) {
-                return jsonConverter.convert(body);
+            if (httpResponse.getStatusCode() >= 200 && httpResponse.getStatusCode() < 300) {
+                JsonElement jsonElement = gson.fromJson(httpResponse.getBody(), JsonElement.class);
+                if (vkResponseValidator.isValid(jsonElement)) {
+                    return gson.fromJson(jsonElement, getResponseType());
+                }
             }
 
-            throw new VkApiResponseException(body);
+            throw new VkApiResponseException(httpResponse.toString());
         } catch (IOException e) {
             throw new VkApiException(e);
         }
@@ -133,5 +157,36 @@ public abstract class VkMethod<Response> implements HttpRequest {
     public VkMethod<Response> setMultipartFormData(MultipartFormData multipartFormData) {
         this.multipartFormData = multipartFormData;
         return this;
+    }
+
+    public Gson getGson() {
+        return gson;
+    }
+
+    private Map<String, String> hideSensitiveData(Map<String, String> sensitiveData) {
+        return sensitiveData.entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> {
+                            switch (entry.getKey()) {
+                                case "access_token":
+                                case "key":
+                                    return entry.getValue().replaceAll(".", "*");
+                                default:
+                                    return entry.getValue();
+                            }
+                        }
+                ));
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Method=%s, URL=%s, Params=%s",
+                getRequestMethod(),
+                getUrl(),
+                hideSensitiveData(params)
+        );
     }
 }

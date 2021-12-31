@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.photos;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 
 /**
@@ -17,7 +16,7 @@ public class GetChatUploadServer extends VkMethod<GetChatUploadServer.Response> 
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("photos.getChatUploadServer");
+        return VK_METHODS.getProperty("photos.getChatUploadServer");
     }
 
     @Override

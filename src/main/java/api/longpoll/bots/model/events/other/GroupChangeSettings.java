@@ -32,6 +32,30 @@ public class GroupChangeSettings implements EventObject {
     @SerializedName("changes")
     private Map<String, Change> changes;
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Map<String, Change> getChanges() {
+        return changes;
+    }
+
+    public void setChanges(Map<String, Change> changes) {
+        this.changes = changes;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupChangeSettingsEvent{" +
+                "userId=" + userId +
+                ", changes=" + changes +
+                '}';
+    }
+
     /**
      * Describes changes.
      */
@@ -71,29 +95,5 @@ public class GroupChangeSettings implements EventObject {
                     ", newValue='" + newValue + '\'' +
                     '}';
         }
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Map<String, Change> getChanges() {
-        return changes;
-    }
-
-    public void setChanges(Map<String, Change> changes) {
-        this.changes = changes;
-    }
-
-    @Override
-    public String toString() {
-        return "GroupChangeSettingsEvent{" +
-                "userId=" + userId +
-                ", changes=" + changes +
-                '}';
     }
 }

@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponse;
 
@@ -18,7 +17,11 @@ public class EditCallbackServer extends VkMethod<IntegerResponse> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.editCallbackServer");
+        return VK_METHODS.getProperty("groups.editCallbackServer");
+    }
+
+    public EditCallbackServer setUrl(String url) {
+        return addParam("url", url);
     }
 
     @Override
@@ -32,10 +35,6 @@ public class EditCallbackServer extends VkMethod<IntegerResponse> {
 
     public EditCallbackServer setServerId(int serverId) {
         return addParam("server_id", serverId);
-    }
-
-    public EditCallbackServer setUrl(String url) {
-        return addParam("url", url);
     }
 
     public EditCallbackServer setTitle(String title) {

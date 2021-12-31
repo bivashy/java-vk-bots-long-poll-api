@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 
@@ -17,8 +17,7 @@ import java.util.Map;
  * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
  */
 public class Delete extends VkMethod<Delete.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
 
 
     public Delete(String accessToken) {
@@ -27,7 +26,7 @@ public class Delete extends VkMethod<Delete.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.delete");
+        return VK_METHODS.getProperty("messages.delete");
     }
 
     @Override
@@ -44,7 +43,7 @@ public class Delete extends VkMethod<Delete.Response> {
     }
 
     public Delete setSpam(boolean spam) {
-        return addParam("spam", boolIntConverter.convert(spam));
+        return addParam("spam", spam ? 1 : 0);
     }
 
     public Delete setGroupId(int groupId) {
@@ -52,7 +51,7 @@ public class Delete extends VkMethod<Delete.Response> {
     }
 
     public Delete setDeleteForAll(boolean deleteForAll) {
-        return addParam("delete_for_all", boolIntConverter.convert(deleteForAll));
+        return addParam("delete_for_all", deleteForAll ? 1 : 0);
     }
 
     public Delete setConversationMessageIds(Integer... conversationMessageIds) {

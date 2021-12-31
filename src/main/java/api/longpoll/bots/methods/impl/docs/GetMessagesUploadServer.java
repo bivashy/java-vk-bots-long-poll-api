@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.docs;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -19,7 +18,7 @@ public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.Re
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("docs.getMessagesUploadServer");
+        return VK_METHODS.getProperty("docs.getMessagesUploadServer");
     }
 
     @Override

@@ -1,7 +1,8 @@
 package api.longpoll.bots.methods.impl.wall;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
+import api.longpoll.bots.converter.impl.VkAttachmentsConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -18,8 +19,8 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
  */
 public class CreateComment extends VkMethod<CreateComment.Response> {
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
-    private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = VkBotsConfig.getInstance().getVkAttachmentsListConverterConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
+    private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = new VkAttachmentsConverter();
 
     public CreateComment(String accessToken) {
         super(accessToken);
@@ -27,7 +28,7 @@ public class CreateComment extends VkMethod<CreateComment.Response> {
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("wall.createComment");
+        return VK_METHODS.getProperty("wall.createComment");
     }
 
     @Override

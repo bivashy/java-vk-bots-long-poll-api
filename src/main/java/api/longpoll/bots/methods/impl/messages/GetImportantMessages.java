@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.converter.Converter;
+import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.ExtendedVkList;
@@ -18,8 +18,7 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getImportantMessages">https://vk.com/dev/messages.getImportantMessages</a>
  */
 public class GetImportantMessages extends VkMethod<GetImportantMessages.Response> {
-    private final Converter<Boolean, Integer> boolIntConverter = VkBotsConfig.getInstance().getBoolIntConverter();
-    private final Converter<List<?>, String> listConverter = VkBotsConfig.getInstance().getListConverter();
+    private final Converter<List<?>, String> listConverter = new ListConverter();
 
     public GetImportantMessages(String accessToken) {
         super(accessToken);
@@ -27,7 +26,7 @@ public class GetImportantMessages extends VkMethod<GetImportantMessages.Response
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("messages.getImportantMessages");
+        return VK_METHODS.getProperty("messages.getImportantMessages");
     }
 
     @Override
@@ -60,7 +59,7 @@ public class GetImportantMessages extends VkMethod<GetImportantMessages.Response
     }
 
     public GetImportantMessages setExtended(boolean extended) {
-        return addParam("extended", boolIntConverter.convert(extended));
+        return addParam("extended", extended ? 1 : 0);
     }
 
     public GetImportantMessages setGroupId(int groupId) {

@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.config.VkBotsConfig;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
@@ -21,7 +20,7 @@ public class GetTokenPermissions extends VkMethod<GetTokenPermissions.Response> 
 
     @Override
     public String getUrl() {
-        return VkBotsConfig.getInstance().getBotMethods().getProperty("groups.getTokenPermissions");
+        return VK_METHODS.getProperty("groups.getTokenPermissions");
     }
 
     @Override
@@ -53,6 +52,30 @@ public class GetTokenPermissions extends VkMethod<GetTokenPermissions.Response> 
              */
             @SerializedName("settings")
             private List<Setting> settings;
+
+            public Integer getMask() {
+                return mask;
+            }
+
+            public void setMask(Integer mask) {
+                this.mask = mask;
+            }
+
+            public List<Setting> getSettings() {
+                return settings;
+            }
+
+            public void setSettings(List<Setting> settings) {
+                this.settings = settings;
+            }
+
+            @Override
+            public String toString() {
+                return "ResponseObject{" +
+                        "mask=" + mask +
+                        ", settings=" + settings +
+                        '}';
+            }
 
             /**
              * Describes permissions.
@@ -93,30 +116,6 @@ public class GetTokenPermissions extends VkMethod<GetTokenPermissions.Response> 
                             ", name='" + name + '\'' +
                             '}';
                 }
-            }
-
-            public Integer getMask() {
-                return mask;
-            }
-
-            public void setMask(Integer mask) {
-                this.mask = mask;
-            }
-
-            public List<Setting> getSettings() {
-                return settings;
-            }
-
-            public void setSettings(List<Setting> settings) {
-                this.settings = settings;
-            }
-
-            @Override
-            public String toString() {
-                return "ResponseObject{" +
-                        "mask=" + mask +
-                        ", settings=" + settings +
-                        '}';
             }
         }
     }
