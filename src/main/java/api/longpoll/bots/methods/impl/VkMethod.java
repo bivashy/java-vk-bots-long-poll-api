@@ -8,7 +8,7 @@ import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.HttpRequest;
 import api.longpoll.bots.http.HttpResponse;
 import api.longpoll.bots.http.MultipartFormData;
-import api.longpoll.bots.http.impl.JsoupHttpClient;
+import api.longpoll.bots.http.impl.DefaultHttpClient;
 import api.longpoll.bots.reader.impl.PropertiesReader;
 import api.longpoll.bots.validator.Validator;
 import api.longpoll.bots.validator.VkResponseValidator;
@@ -61,7 +61,8 @@ public abstract class VkMethod<Response> implements HttpRequest {
     /**
      * HTTP client.
      */
-    private final HttpClient httpClient = new JsoupHttpClient();
+    private final HttpClient httpClient = new DefaultHttpClient();
+
     /**
      * Validator to check if VK API response is valid.
      */
