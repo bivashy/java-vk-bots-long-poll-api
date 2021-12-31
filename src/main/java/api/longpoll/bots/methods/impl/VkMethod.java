@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 /**
  * Executes generic HTTP request to VK API.
@@ -100,7 +101,7 @@ public abstract class VkMethod<Response> implements HttpRequest {
      */
     public Response execute() throws VkApiException {
         try {
-            log.debug("Request: method={}, url={}, params={}", getRequestMethod(), getUrl(), params);
+            log.debug("Request: {}", this);
 
             HttpResponse httpResponse = httpClient.execute(this);
             log.debug("Response: {}", httpResponse);
@@ -162,5 +163,30 @@ public abstract class VkMethod<Response> implements HttpRequest {
         return gson;
     }
 
+    private Map<String, String> hideSensitiveData(Map<String, String> sensitiveData) {
+        return sensitiveData.entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> {
+                            switch (entry.getKey()) {
+                                case "access_token":
+                                case "key":
+                                    return entry.getValue().replaceAll(".", "*");
+                                default:
+                                    return entry.getValue();
+                            }
+                        }
+                ));
+    }
 
+    @Override
+    public String toString() {
+        return String.format(
+                "Method=%s, URL=%s, Params=%s",
+                getRequestMethod(),
+                getUrl(),
+                hideSensitiveData(params)
+        );
+    }
 }

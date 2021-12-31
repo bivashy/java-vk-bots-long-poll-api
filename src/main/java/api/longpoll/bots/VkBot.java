@@ -44,6 +44,11 @@ public abstract class VkBot {
     private static final Logger LOGGER = LoggerFactory.getLogger(VkBot.class);
 
     /**
+     * VK Bot group_id.
+     */
+    private Integer groupId;
+
+    /**
      * VK Bots API methods.
      */
     protected VkBotsMethods vk = new VkBotsMethods(getAccessToken());
@@ -248,11 +253,22 @@ public abstract class VkBot {
     }
 
     /**
-     * Get bot group ID.
+     * Gets bot group ID.
      *
      * @return group ID.
      */
-    public abstract int getGroupId();
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    /**
+     * Sets bot group ID.
+     *
+     * @param groupId bot group ID.
+     */
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
+    }
 
     /**
      * Handles <b>message_new</b> events.

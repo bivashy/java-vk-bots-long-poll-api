@@ -27,11 +27,16 @@ public class HttpResponse {
         return body;
     }
 
+    private String hideSensitiveData(String sensitiveData) {
+        return sensitiveData.replaceAll("\"key\":\"\\w+\"", "\"key\":\"****************************************\"");
+    }
+
     @Override
     public String toString() {
-        return "HttpResponse{" +
-                "statusCode=" + statusCode +
-                ", body='" + body + '\'' +
-                '}';
+        return String.format(
+                "Status Code=%d, Body=%s",
+                statusCode,
+                hideSensitiveData(body)
+        );
     }
 }
