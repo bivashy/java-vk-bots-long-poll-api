@@ -8,7 +8,7 @@ import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.HttpRequest;
 import api.longpoll.bots.http.HttpResponse;
 import api.longpoll.bots.http.MultipartFormData;
-import api.longpoll.bots.http.impl.JsoupHttpClient;
+import api.longpoll.bots.http.impl.DefaultHttpClient;
 import api.longpoll.bots.reader.impl.PropertiesReader;
 import api.longpoll.bots.validator.Validator;
 import api.longpoll.bots.validator.VkResponseValidator;
@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 
 /**
  * Executes generic HTTP request to VK API.
@@ -61,7 +60,8 @@ public abstract class VkMethod<Response> implements HttpRequest {
     /**
      * HTTP client.
      */
-    private final HttpClient httpClient = new JsoupHttpClient();
+    private final HttpClient httpClient = new DefaultHttpClient();
+
     /**
      * Validator to check if VK API response is valid.
      */
@@ -163,21 +163,18 @@ public abstract class VkMethod<Response> implements HttpRequest {
         return gson;
     }
 
-    private Map<String, String> hideSensitiveData(Map<String, String> sensitiveData) {
-        return sensitiveData.entrySet()
-                .stream()
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        entry -> {
-                            switch (entry.getKey()) {
-                                case "access_token":
-                                case "key":
-                                    return entry.getValue().replaceAll(".", "*");
-                                default:
-                                    return entry.getValue();
-                            }
-                        }
-                ));
+    /**
+     * Hides <i>access_token</i> from logging.
+     *
+     * @return non-sensitive params.
+     */
+    private Map<String, String> getNonSensitiveParams() {
+        return new HashMap<String, String>(params) {{
+            computeIfPresent(
+                    "access_token",
+                    (key, value) -> value.replaceAll(".", "*")
+            );
+        }};
     }
 
     @Override
@@ -186,7 +183,7 @@ public abstract class VkMethod<Response> implements HttpRequest {
                 "Method=%s, URL=%s, Params=%s",
                 getRequestMethod(),
                 getUrl(),
-                hideSensitiveData(params)
+                getNonSensitiveParams()
         );
     }
 }
