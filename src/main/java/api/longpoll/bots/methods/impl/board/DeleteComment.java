@@ -25,14 +25,32 @@ public class DeleteComment extends VkMethod<IntegerResponse> {
         return IntegerResponse.class;
     }
 
+    /**
+     * Sets Group ID.
+     *
+     * @param groupId Group ID.
+     * @return this instance.
+     */
     public DeleteComment setGroupId(int groupId) {
         return addParam("group_id", groupId);
     }
 
+    /**
+     * Sets Topic ID.
+     *
+     * @param topicId Topic ID.
+     * @return this instance.
+     */
     public DeleteComment setTopicId(int topicId) {
         return addParam("topic_id", topicId);
     }
 
+    /**
+     * Sets Comment ID.
+     *
+     * @param commentId Comment ID.
+     * @return this instance.
+     */
     public DeleteComment setCommentId(int commentId) {
         return addParam("comment_id", commentId);
     }
