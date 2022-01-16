@@ -5,5 +5,5 @@ import api.longpoll.bots.model.events.EventObject;
 /**
  * Marks that class can be a part of "Attachment" field.
  */
-public interface Attachable extends EventObject {
+public interface AttachmentObject extends EventObject {
 }

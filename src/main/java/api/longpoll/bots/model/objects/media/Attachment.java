@@ -18,7 +18,7 @@ public class Attachment {
     /**
      * Attachment object.
      */
-    private Attachable attachable;
+    private AttachmentObject attachmentObject;
 
     public AttachmentType getType() {
         return type;
@@ -28,19 +28,19 @@ public class Attachment {
         this.type = type;
     }
 
-    public Attachable getAttachable() {
-        return attachable;
+    public AttachmentObject getAttachable() {
+        return attachmentObject;
     }
 
-    public void setAttachable(Attachable attachable) {
-        this.attachable = attachable;
+    public void setAttachable(AttachmentObject attachmentObject) {
+        this.attachmentObject = attachmentObject;
     }
 
     @Override
     public String toString() {
         return "Attachment{" +
                 "type=" + type +
-                ", attachable=" + attachable +
+                ", attachable=" + attachmentObject +
                 '}';
     }
 }

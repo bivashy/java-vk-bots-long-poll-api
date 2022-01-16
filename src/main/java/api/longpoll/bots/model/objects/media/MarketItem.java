@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/objects/market_item">Market Item</a>
  */
-public class MarketItem implements Attachable {
+public class MarketItem implements AttachmentObject {
     /**
      * Item ID.
      */

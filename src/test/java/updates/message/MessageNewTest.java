@@ -17,11 +17,11 @@ public class MessageNewTest {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("updates/message_new/attached_link.json");
         assertEquals(AttachmentType.LINK, attachment.getType());
 
-        Attachable attachable = attachment.getAttachable();
-        assertNotNull(attachable);
-        assertTrue(attachable instanceof AttachedLink);
+        AttachmentObject attachmentObject = attachment.getAttachable();
+        assertNotNull(attachmentObject);
+        assertTrue(attachmentObject instanceof AttachedLink);
 
-        AttachedLink attachedLink = (AttachedLink) attachable;
+        AttachedLink attachedLink = (AttachedLink) attachmentObject;
         assertEquals("https://github.com/yvasyliev/java-vk-bots-long-poll-api", attachedLink.getUrl());
         assertEquals("yvasyliev/java-vk-bots-long-poll-api", attachedLink.getTitle());
         assertEquals("github.com", attachedLink.getCaption());
@@ -57,11 +57,11 @@ public class MessageNewTest {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("updates/message_new/poll.json");
         assertEquals(AttachmentType.POLL, attachment.getType());
 
-        Attachable attachable = attachment.getAttachable();
-        assertNotNull(attachable);
-        assertTrue(attachable instanceof Poll);
+        AttachmentObject attachmentObject = attachment.getAttachable();
+        assertNotNull(attachmentObject);
+        assertTrue(attachmentObject instanceof Poll);
 
-        Poll poll = (Poll) attachable;
+        Poll poll = (Poll) attachmentObject;
         assertFalse(poll.getMultiple());
         assertEquals(0, poll.getEndDate());
         assertFalse(poll.getBoard());

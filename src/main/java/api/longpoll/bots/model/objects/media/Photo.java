@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/photo">Photo</a>
  */
-public class Photo implements Attachable {
+public class Photo implements AttachmentObject {
     /**
      * Photo ID.
      */
