@@ -28,11 +28,11 @@ public class Attachment {
         this.type = type;
     }
 
-    public AttachmentObject getAttachable() {
+    public AttachmentObject getAttachmentObject() {
         return attachmentObject;
     }
 
-    public void setAttachable(AttachmentObject attachmentObject) {
+    public void setAttachmentObject(AttachmentObject attachmentObject) {
         this.attachmentObject = attachmentObject;
     }
 
@@ -40,7 +40,7 @@ public class Attachment {
     public String toString() {
         return "Attachment{" +
                 "type=" + type +
-                ", attachable=" + attachmentObject +
+                ", attachmentObject=" + attachmentObject +
                 '}';
     }
 }
