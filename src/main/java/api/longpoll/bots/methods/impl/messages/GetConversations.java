@@ -56,7 +56,7 @@ public class GetConversations extends VkMethod<GetConversations.Response> {
     }
 
     public GetConversations setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public GetConversations setGroupId(int groupId) {

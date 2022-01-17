@@ -39,7 +39,7 @@ public class AttachmentDeserializer implements JsonDeserializer<Attachment> {
 
         Attachment attachment = new Attachment();
         attachment.setType(attachmentType);
-        attachment.setAttachable(jsonDeserializationContext.deserialize(
+        attachment.setAttachmentObject(jsonDeserializationContext.deserialize(
                 jsonAttachment.get(jsonAttachmentType.getAsString()),
                 getType(attachmentType)
         ));

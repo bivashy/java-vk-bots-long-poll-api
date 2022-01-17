@@ -36,6 +36,6 @@ class MessagesGetHistoryAttachmentsResultConverterTest {
         Attachment attachment = item.getAttachment();
         assertNotNull(attachment);
         assertEquals(AttachmentType.PHOTO, attachment.getType());
-        assertNotNull(attachment.getAttachable());
+        assertNotNull(attachment.getAttachmentObject());
     }
 }

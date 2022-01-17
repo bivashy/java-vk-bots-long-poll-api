@@ -38,7 +38,7 @@ public class GetById extends VkMethod<GetById.Response> {
     }
 
     public GetById setGroupIds(List<Integer> groupIds) {
-        return addParam("group_ids", listConverter.convert(groupIds));
+        return addParam("group_ids", toCommaSeparatedValues(groupIds));
     }
 
     public GetById setGroupId(int groupId) {
@@ -50,7 +50,7 @@ public class GetById extends VkMethod<GetById.Response> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     @Override

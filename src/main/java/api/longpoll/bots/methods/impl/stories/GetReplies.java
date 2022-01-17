@@ -55,7 +55,7 @@ public class GetReplies extends VkMethod<GetReplies.Response> {
     }
 
     public GetReplies setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     @Override

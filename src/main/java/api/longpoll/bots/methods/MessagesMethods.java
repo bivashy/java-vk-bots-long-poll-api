@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods;
 
-import api.longpoll.bots.methods.impl.messages.AttachDoc;
-import api.longpoll.bots.methods.impl.messages.AttachPhoto;
 import api.longpoll.bots.methods.impl.messages.CreateChat;
 import api.longpoll.bots.methods.impl.messages.Delete;
 import api.longpoll.bots.methods.impl.messages.DeleteChatPhoto;
@@ -30,7 +28,6 @@ import api.longpoll.bots.methods.impl.messages.SendEventAnswer;
 import api.longpoll.bots.methods.impl.messages.SetActivity;
 import api.longpoll.bots.methods.impl.messages.SetChatPhoto;
 import api.longpoll.bots.methods.impl.messages.Unpin;
-import api.longpoll.bots.methods.impl.upload.UploadChatPhoto;
 
 /**
  * Provides Messages methods.
@@ -155,17 +152,5 @@ public class MessagesMethods {
 
     public Unpin unpin() {
         return new Unpin(accessToken);
-    }
-
-    public AttachPhoto attachPhoto() {
-        return new AttachPhoto(accessToken);
-    }
-
-    public AttachDoc attachDoc() {
-        return new AttachDoc(accessToken);
-    }
-
-    public UploadChatPhoto uploadChatPhoto() {
-        return new UploadChatPhoto();
     }
 }

@@ -2,11 +2,17 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.converter.Converter;
 import api.longpoll.bots.converter.impl.ListConverter;
-import api.longpoll.bots.converter.impl.VkAttachmentsConverter;
+import api.longpoll.bots.exceptions.VkApiException;
+import api.longpoll.bots.helpers.attachments.Attachable;
+import api.longpoll.bots.helpers.attachments.MessageDocAttachable;
+import api.longpoll.bots.helpers.attachments.MessagePhotoAttachable;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.IntegerResponse;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +25,11 @@ import java.util.List;
  */
 public class Edit extends VkMethod<IntegerResponse> {
     private final Converter<List<?>, String> listConverter = new ListConverter();
-    private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = new VkAttachmentsConverter();
+
+    /**
+     * List of objects to attach.
+     */
+    private final List<Attachable> attachables = new ArrayList<>();
 
     public Edit(String accessToken) {
         super(accessToken);
@@ -35,12 +45,54 @@ public class Edit extends VkMethod<IntegerResponse> {
         return IntegerResponse.class;
     }
 
-    public Edit setAttachments(VkAttachment... attachments) {
-        return setAttachments(Arrays.asList(attachments));
+    @Override
+    public IntegerResponse execute() throws VkApiException {
+        List<VkAttachment> attachments = new ArrayList<>();
+        for (Attachable attachable : attachables) {
+            attachments.add(attachable.attach());
+        }
+        if (!attachments.isEmpty()) {
+            setAttachment(attachments);
+        }
+        return super.execute();
     }
 
-    public Edit setAttachments(List<VkAttachment> attachments) {
-        return addParam("attachment", listConverter.convert(vkAttachmentsListConverter.convert(attachments)));
+    public Edit addPhoto(File photo, int peerId) {
+        attachables.add(new MessagePhotoAttachable(
+                photo,
+                peerId,
+                getParams().get("access_token")
+        ));
+        return this;
+    }
+
+    public Edit addPhoto(Path photo, int peerId) {
+        return addPhoto(photo.toFile(), peerId);
+    }
+
+    public Edit addDoc(File doc, int peerId) {
+        attachables.add(new MessageDocAttachable(
+                doc,
+                peerId,
+                getParams().get("access_token")
+        ));
+        return this;
+    }
+
+    public Edit addDoc(Path doc, int peerId) {
+        return addDoc(doc.toFile(), peerId);
+    }
+
+    public Edit setAttachment(VkAttachment... vkAttachments) {
+        return setAttachment(Arrays.asList(vkAttachments));
+    }
+
+    public Edit setAttachment(List<VkAttachment> vkAttachments) {
+        return setAttachment(toCommaSeparatedValues(vkAttachments));
+    }
+
+    public Edit setAttachment(String attachment) {
+        return addParam("attachment", attachment);
     }
 
     public Edit setPeerId(int peerId) {

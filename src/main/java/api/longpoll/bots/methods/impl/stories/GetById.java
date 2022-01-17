@@ -39,7 +39,7 @@ public class GetById extends VkMethod<GetById.Response> {
     }
 
     public GetById setStories(List<String> stories) {
-        return addParam("stories", listConverter.convert(stories));
+        return addParam("stories", toCommaSeparatedValues(stories));
     }
 
     public GetById setExtended(boolean extended) {
@@ -51,7 +51,7 @@ public class GetById extends VkMethod<GetById.Response> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     @Override

@@ -47,7 +47,7 @@ public class Get extends VkMethod<Get.Response> {
     }
 
     public Get setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     @Override

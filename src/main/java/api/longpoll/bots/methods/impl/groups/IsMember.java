@@ -49,7 +49,7 @@ public class IsMember extends VkMethod<IsMember.Response> {
     }
 
     public IsMember setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", listConverter.convert(userIds));
+        return addParam("user_ids", toCommaSeparatedValues(userIds));
     }
 
     public IsMember setExtended(boolean extended) {

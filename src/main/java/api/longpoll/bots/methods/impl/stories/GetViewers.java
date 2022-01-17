@@ -41,7 +41,7 @@ public class GetViewers extends VkMethod<GetViewers.Response> {
     }
 
     public GetViewers setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", listConverter.convert(messageIds));
+        return addParam("message_ids", toCommaSeparatedValues(messageIds));
     }
 
     public GetViewers setPreviewLength(int previewLength) {
@@ -57,7 +57,7 @@ public class GetViewers extends VkMethod<GetViewers.Response> {
     }
 
     public GetViewers setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public GetViewers setGroupId(int groupId) {

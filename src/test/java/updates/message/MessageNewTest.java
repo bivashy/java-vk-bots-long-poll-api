@@ -17,7 +17,7 @@ public class MessageNewTest {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("updates/message_new/attached_link.json");
         assertEquals(AttachmentType.LINK, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachable();
+        AttachmentObject attachmentObject = attachment.getAttachmentObject();
         assertNotNull(attachmentObject);
         assertTrue(attachmentObject instanceof AttachedLink);
 
@@ -57,7 +57,7 @@ public class MessageNewTest {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("updates/message_new/poll.json");
         assertEquals(AttachmentType.POLL, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachable();
+        AttachmentObject attachmentObject = attachment.getAttachmentObject();
         assertNotNull(attachmentObject);
         assertTrue(attachmentObject instanceof Poll);
 

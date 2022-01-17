@@ -36,12 +36,16 @@ public class CreateComment extends VkMethod<CreateComment.Response> {
         return Response.class;
     }
 
-    public CreateComment setAttachments(VkAttachment... attachments) {
-        return setAttachments(Arrays.asList(attachments));
+    public CreateComment setAttachment(VkAttachment... attachments) {
+        return setAttachment(Arrays.asList(attachments));
     }
 
-    public CreateComment setAttachments(List<VkAttachment> attachments) {
-        return addParam("attachment", listConverter.convert(vkAttachmentsListConverter.convert(attachments)));
+    public CreateComment setAttachment(List<VkAttachment> attachments) {
+        return setAttachment(toCommaSeparatedValues(attachments));
+    }
+
+    public CreateComment setAttachment(String attachment) {
+        return addParam("attachment", attachment);
     }
 
     public CreateComment setOwnerId(int ownerId) {

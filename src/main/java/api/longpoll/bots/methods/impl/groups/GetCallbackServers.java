@@ -43,7 +43,7 @@ public class GetCallbackServers extends VkMethod<GetCallbackServers.Response> {
     }
 
     public GetCallbackServers setServerIds(List<Integer> serverIds) {
-        return addParam("server_ids", listConverter.convert(serverIds));
+        return addParam("server_ids", toCommaSeparatedValues(serverIds));
     }
 
     @Override

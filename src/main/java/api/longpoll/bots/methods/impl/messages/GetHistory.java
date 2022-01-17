@@ -70,7 +70,7 @@ public class GetHistory extends VkMethod<GetHistory.Response> {
     }
 
     public GetHistory setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public GetHistory setGroupId(int groupId) {

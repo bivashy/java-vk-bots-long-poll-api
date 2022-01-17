@@ -49,7 +49,7 @@ public class SearchConversations extends VkMethod<SearchConversations.Response> 
     }
 
     public SearchConversations setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public SearchConversations setGroupId(int groupId) {

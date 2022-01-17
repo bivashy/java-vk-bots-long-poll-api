@@ -53,7 +53,7 @@ public class GetBanned extends VkMethod<GetBanned.Response> {
     }
 
     public GetBanned setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public GetBanned setOwnerId(int ownerId) {

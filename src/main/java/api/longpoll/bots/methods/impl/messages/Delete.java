@@ -39,7 +39,7 @@ public class Delete extends VkMethod<Delete.Response> {
     }
 
     public Delete setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", listConverter.convert(messageIds));
+        return addParam("message_ids", toCommaSeparatedValues(messageIds));
     }
 
     public Delete setSpam(boolean spam) {
@@ -59,7 +59,7 @@ public class Delete extends VkMethod<Delete.Response> {
     }
 
     public Delete setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", listConverter.convert(conversationMessageIds));
+        return addParam("conversation_message_ids", toCommaSeparatedValues(conversationMessageIds));
     }
 
     public Delete setPeerId(int peerId) {

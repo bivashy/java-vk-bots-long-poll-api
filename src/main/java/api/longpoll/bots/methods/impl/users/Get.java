@@ -38,7 +38,7 @@ public class Get extends VkMethod<Get.Response> {
     }
 
     public Get setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", listConverter.convert(userIds));
+        return addParam("user_ids", toCommaSeparatedValues(userIds));
     }
 
     public Get setFields(String... fields) {
@@ -46,7 +46,7 @@ public class Get extends VkMethod<Get.Response> {
     }
 
     public Get setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public Get setNameCase(String nameCase) {

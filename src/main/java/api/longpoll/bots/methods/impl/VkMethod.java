@@ -19,9 +19,11 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 /**
  * Executes generic HTTP request to VK API.
@@ -175,6 +177,18 @@ public abstract class VkMethod<Response> implements HttpRequest {
                     (key, value) -> value.replaceAll(".", "*")
             );
         }};
+    }
+
+    /**
+     * Converts list of objects to comma separated values.
+     *
+     * @param values list of objects.
+     * @return comma separated values.
+     */
+    protected String toCommaSeparatedValues(List<?> values) {
+        return values.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(","));
     }
 
     @Override

@@ -60,7 +60,7 @@ public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response
     }
 
     public GetVideoUploadServer setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", listConverter.convert(userIds));
+        return addParam("user_ids", toCommaSeparatedValues(userIds));
     }
 
     @Override

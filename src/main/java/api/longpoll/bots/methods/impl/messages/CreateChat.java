@@ -37,7 +37,7 @@ public class CreateChat extends VkMethod<IntegerResponse> {
     }
 
     public CreateChat setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", listConverter.convert(userIds));
+        return addParam("user_ids", toCommaSeparatedValues(userIds));
     }
 
     public CreateChat setTitle(String title) {

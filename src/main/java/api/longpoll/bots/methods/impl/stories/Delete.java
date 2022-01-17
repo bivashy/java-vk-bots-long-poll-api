@@ -45,7 +45,7 @@ public class Delete extends VkMethod<IntegerResponse> {
     }
 
     public Delete setStories(List<String> stories) {
-        return addParam("stories", listConverter.convert(stories));
+        return addParam("stories", toCommaSeparatedValues(stories));
     }
 
     @Override
