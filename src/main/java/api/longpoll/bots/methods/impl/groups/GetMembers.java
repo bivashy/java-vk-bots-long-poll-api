@@ -1,8 +1,6 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.adapters.deserializers.GroupsGetMemberResponseDeserializer;
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.User;
@@ -21,8 +19,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/groups.getMembers">https://vk.com/dev/groups.getMembers</a>
  */
 public class GetMembers extends VkMethod<GetMembers.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     public GetMembers(String accessToken) {
         super(accessToken);
     }

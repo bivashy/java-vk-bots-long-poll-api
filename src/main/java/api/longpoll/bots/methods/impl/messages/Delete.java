@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 
@@ -17,9 +15,6 @@ import java.util.Map;
  * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
  */
 public class Delete extends VkMethod<Delete.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
-
     public Delete(String accessToken) {
         super(accessToken);
     }

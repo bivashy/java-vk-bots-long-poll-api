@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 
 import java.util.Arrays;
@@ -15,9 +13,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
 public class GetById extends VkMethod<GetById.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
-
     public GetById(String accessToken) {
         super(accessToken);
     }

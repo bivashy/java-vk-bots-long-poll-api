@@ -1,8 +1,6 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.MessagesSendResultDeserializer;
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.helpers.attachments.Attachable;
 import api.longpoll.bots.helpers.attachments.MessageDocAttachable;
@@ -30,11 +28,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
 public class Send extends VkMethod<Send.Response> {
-    /**
-     * Converts list of objects to comma-separated values.
-     */
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     /**
      * List of objects to attach.
      */

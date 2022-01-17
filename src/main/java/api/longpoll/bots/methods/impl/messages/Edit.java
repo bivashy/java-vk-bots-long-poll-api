@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.helpers.attachments.Attachable;
 import api.longpoll.bots.helpers.attachments.MessageDocAttachable;
@@ -24,8 +22,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
  */
 public class Edit extends VkMethod<IntegerResponse> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     /**
      * List of objects to attach.
      */

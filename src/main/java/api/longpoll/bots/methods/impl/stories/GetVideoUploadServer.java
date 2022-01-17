@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 
 import java.util.Arrays;
@@ -15,8 +13,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/stories.getVideoUploadServer">https://vk.com/dev/stories.getVideoUploadServer</a>
  */
 public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     public GetVideoUploadServer(String accessToken) {
         super(accessToken);
     }
