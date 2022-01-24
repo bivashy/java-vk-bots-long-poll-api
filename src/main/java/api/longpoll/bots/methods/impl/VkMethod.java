@@ -34,7 +34,7 @@ public abstract class VkMethod<Response> implements HttpRequest {
     /**
      * Logger object.
      */
-    private static final Logger log = LoggerFactory.getLogger(VkMethod.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(VkMethod.class);
 
     /**
      * Path to VK methods list.
@@ -103,10 +103,10 @@ public abstract class VkMethod<Response> implements HttpRequest {
      */
     public Response execute() throws VkApiException {
         try {
-            log.debug("Request: {}", this);
+            LOGGER.debug("Request: {}", this);
 
             HttpResponse httpResponse = httpClient.execute(this);
-            log.debug("Response: {}", httpResponse);
+            LOGGER.debug("Response: {}", httpResponse);
 
             if (httpResponse.getStatusCode() >= 200 && httpResponse.getStatusCode() < 300) {
                 JsonElement jsonElement = gson.fromJson(httpResponse.getBody(), JsonElement.class);
