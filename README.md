@@ -69,17 +69,17 @@ Easy:
 ```java
 @Override
 public void onMessageNew(MessageNew messageNew) {
-        try {
-            Message message = messageNew.getMessage();
-            vk.messages.send()
-                .setPeerId(message.getPeerId())
-                .setMessage("Sending some files to you...")
-                .addPhoto(new File("your_photo.png")) // to send photo as photo
-                .addDoc(new File("your_photo.png")) // to send photo as document
-                .execute();
-        } catch (VkApiException e) {
-            e.printStackTrace();
-        }
+    try {
+        Message message = messageNew.getMessage();
+        vk.messages.send()
+            .setPeerId(message.getPeerId())
+            .setMessage("Sending some files to you...")
+            .addPhoto(new File("your_photo.png")) // to send photo as photo
+            .addDoc(new File("your_photo.png")) // to send photo as document
+            .execute();
+    } catch (VkApiException e) {
+        e.printStackTrace();
+    }
 }
 ```
 ## More Examples
