@@ -11,6 +11,7 @@ import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.suppliers.PeerIdSupplier;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -32,6 +33,11 @@ public class Send extends VkMethod<Send.Response> {
      * List of objects to attach.
      */
     private final List<Attachable> attachables = new ArrayList<>();
+
+    /**
+     * Supplies {@code peer_id}.
+     */
+    private final PeerIdSupplier peerIdSupplier = new PeerIdSupplier();
 
     public Send(String accessToken) {
         super(accessToken);
@@ -60,30 +66,30 @@ public class Send extends VkMethod<Send.Response> {
         return super.execute();
     }
 
-    public Send addPhoto(File photo, int peerId) {
+    public Send addPhoto(File photo) {
         attachables.add(new MessagePhotoAttachable(
                 photo,
-                peerId,
+                peerIdSupplier,
                 getParams().get("access_token")
         ));
         return this;
     }
 
-    public Send addPhoto(Path photo, int peerId) {
-        return addPhoto(photo.toFile(), peerId);
+    public Send addPhoto(Path photo) {
+        return addPhoto(photo.toFile());
     }
 
-    public Send addDoc(File doc, int peerId) {
+    public Send addDoc(File doc) {
         attachables.add(new MessageDocAttachable(
                 doc,
-                peerId,
+                peerIdSupplier,
                 getParams().get("access_token")
         ));
         return this;
     }
 
-    public Send addDoc(Path doc, int peerId) {
-        return addDoc(doc.toFile(), peerId);
+    public Send addDoc(Path doc) {
+        return addDoc(doc.toFile());
     }
 
     public Send setAttachment(VkAttachment... vkAttachments) {
@@ -99,6 +105,7 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send setUserId(int userId) {
+        peerIdSupplier.setPeerId(userId);
         return addParam("user_id", userId);
     }
 
@@ -107,6 +114,7 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send setPeerId(int peerId) {
+        peerIdSupplier.setPeerId(peerId);
         return addParam("peer_id", peerId);
     }
 

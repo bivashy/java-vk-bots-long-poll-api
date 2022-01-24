@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.function.Supplier;
 
 /**
  * Attaches document to message.
@@ -35,9 +36,9 @@ public class MessageDocAttachable implements Attachable {
      */
     private final Save save;
 
-    public MessageDocAttachable(File doc, int peerId, String accessToken) {
+    public MessageDocAttachable(File doc, Supplier<Integer> peerIdSupplier, String accessToken) {
         this.doc = doc;
-        this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerId).setType("doc");
+        this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerIdSupplier.get()).setType("doc");
         this.uploadDoc = new UploadDoc();
         this.save = new Save(accessToken);
     }

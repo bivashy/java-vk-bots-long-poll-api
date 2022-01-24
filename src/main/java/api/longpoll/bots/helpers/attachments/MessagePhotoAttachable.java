@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.function.Supplier;
 
 /**
  * Attaches photo to message.
@@ -35,10 +36,10 @@ public class MessagePhotoAttachable implements Attachable {
      */
     private final SaveMessagesPhoto saveMessagesPhoto;
 
-    public MessagePhotoAttachable(File photo, int peerId, String accessToken) {
+    public MessagePhotoAttachable(File photo, Supplier<Integer> peerIdSupplier, String accessToken) {
         this.photo = photo;
         this.uploadPhoto = new UploadPhoto();
-        this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerId);
+        this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerIdSupplier.get());
         this.saveMessagesPhoto = new SaveMessagesPhoto(accessToken);
     }
 
