@@ -27,12 +27,12 @@ This library uses the next third-party dependencies:
 ## Quickstart
 1. Create VK Community.
 2. Go to `Manage` - `API usage` - `Access tokens` and create `access_token`.
-3. Add the library to your project using Maven:
+3. Add the library to your Maven project:
 ```xml
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
   <artifactId>java-vk-bots-longpoll-api</artifactId>
-  <version>3.1.1</version>
+  <version>3.2.0</version>
 </dependency>
 ```
 4. Extend `LongPollBot` class and override necessary methods:
@@ -64,15 +64,34 @@ public class HelloBot extends LongPollBot {
     }
 }
 ```
+## How to send photos or documents?
+Easy:
+```java
+@Override
+public void onMessageNew(MessageNew messageNew) {
+        try {
+            Message message = messageNew.getMessage();
+            vk.messages.send()
+                .setPeerId(message.getPeerId())
+                .setMessage("Sending some files to you...")
+                .addPhoto(new File("your_photo.png")) // to send photo as photo
+                .addDoc(new File("your_photo.png")) // to send photo as document
+                .execute();
+        } catch (VkApiException e) {
+            e.printStackTrace();
+        }
+}
+```
+## More Examples
+Find more examples of bot usage [here](https://github.com/yvasyliev/java-vk-bots-long-poll-api-examples)
 ## Async execution
 Each API method can be executed asynchronously:
 ```java
-vk.messages.send()
+CompletableFuture<Send.Response> future = vk.messages.send()
         .setPeerId(peerId)
         .setMessage("Sending message asynchronously...")
         .executeAsync();
 ```
-`executeAsync()` method returns `CompletableFuture<T>` result.
 ## Bot capabilities
 `LongPollBot` supports the next event handlers:
 * `onAppPayload(AppPayload appPayload)`
@@ -123,7 +142,4 @@ vk.messages.send()
 ## Logging
 This library uses SLF4J API to log all events. You can add any SLF4J binding to your project to register events the way you want.
 
-It is highly recommended enabling `DEBUG` log level to see sent and received data. 
-
-## Examples
-Check out [usage examples](https://github.com/yvasyliev/java-vk-bots-long-poll-api-examples) of Java VK Bots Long Poll API library.
+It is highly recommended enabling `DEBUG` log level to see sent and received data.

@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Conversation;
 import api.longpoll.bots.model.objects.basic.Message;
@@ -20,8 +18,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getConversationsById">https://vk.com/dev/messages.getConversationsById</a>
  */
 public class GetConversationsById extends VkMethod<GetConversationsById.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     public GetConversationsById(String accessToken) {
         super(accessToken);
     }
@@ -41,7 +37,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     }
 
     public GetConversationsById setPeerIds(List<Integer> peerIds) {
-        return addParam("peer_ids", listConverter.convert(peerIds));
+        return addParam("peer_ids", toCommaSeparatedValues(peerIds));
     }
 
     public GetConversationsById setExtended(boolean extended) {
@@ -53,7 +49,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     }
 
     public GetConversationsById setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public GetConversationsById setGroupId(int groupId) {

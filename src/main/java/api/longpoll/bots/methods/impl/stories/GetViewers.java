@@ -1,8 +1,6 @@
 package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.adapters.deserializers.StoriesGetViewersResultDeserializer;
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -20,8 +18,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
 public class GetViewers extends VkMethod<GetViewers.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     public GetViewers(String accessToken) {
         super(accessToken);
     }
@@ -41,7 +37,7 @@ public class GetViewers extends VkMethod<GetViewers.Response> {
     }
 
     public GetViewers setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", listConverter.convert(messageIds));
+        return addParam("message_ids", toCommaSeparatedValues(messageIds));
     }
 
     public GetViewers setPreviewLength(int previewLength) {
@@ -57,7 +53,7 @@ public class GetViewers extends VkMethod<GetViewers.Response> {
     }
 
     public GetViewers setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public GetViewers setGroupId(int groupId) {

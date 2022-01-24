@@ -2,7 +2,7 @@ package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.model.objects.additional.Geo;
-import api.longpoll.bots.model.objects.media.Attachable;
+import api.longpoll.bots.model.objects.media.AttachmentObject;
 import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/post">Wall Post</a>
  */
-public class WallPost implements Attachable {
+public class WallPost implements AttachmentObject {
     /**
      * Post ID on the wall.
      */

@@ -2,8 +2,6 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.adapters.deserializers.GroupsIsMemberResponseDeserializer;
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.JsonAdapter;
@@ -20,8 +18,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
  */
 public class IsMember extends VkMethod<IsMember.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     public IsMember(String accessToken) {
         super(accessToken);
     }
@@ -49,7 +45,7 @@ public class IsMember extends VkMethod<IsMember.Response> {
     }
 
     public IsMember setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", listConverter.convert(userIds));
+        return addParam("user_ids", toCommaSeparatedValues(userIds));
     }
 
     public IsMember setExtended(boolean extended) {

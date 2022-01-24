@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes audio objects.
  */
-public class Audio implements Attachable {
+public class Audio implements AttachmentObject {
     /**
      * Audio ID.
      */

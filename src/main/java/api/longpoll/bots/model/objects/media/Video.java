@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/video">Video</a>
  */
-public class Video implements Attachable {
+public class Video implements AttachmentObject {
     /**
      * Video ID.
      */

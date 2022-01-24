@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.StoriesFeedBlock;
 import api.longpoll.bots.model.objects.additional.VkList;
@@ -18,8 +16,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/stories.get">https://vk.com/dev/stories.get</a>
  */
 public class Get extends VkMethod<Get.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     public Get(String accessToken) {
         super(accessToken);
     }
@@ -47,7 +43,7 @@ public class Get extends VkMethod<Get.Response> {
     }
 
     public Get setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     @Override

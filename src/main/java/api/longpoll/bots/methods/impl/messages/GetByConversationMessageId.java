@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Message;
@@ -16,9 +14,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getByConversationMessageId">https://vk.com/dev/messages.getByConversationMessageId</a>
  */
 public class GetByConversationMessageId extends VkMethod<GetByConversationMessageId.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
-
     public GetByConversationMessageId(String accessToken) {
         super(accessToken);
     }
@@ -42,7 +37,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
     }
 
     public GetByConversationMessageId setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", listConverter.convert(conversationMessageIds));
+        return addParam("conversation_message_ids", toCommaSeparatedValues(conversationMessageIds));
     }
 
     public GetByConversationMessageId setExtended(boolean extended) {
@@ -54,7 +49,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
     }
 
     public GetByConversationMessageId setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public GetByConversationMessageId setGroupId(int groupId) {

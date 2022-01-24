@@ -1,7 +1,7 @@
 package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.model.objects.additional.PhotoSize;
-import api.longpoll.bots.model.objects.media.Attachable;
+import api.longpoll.bots.model.objects.media.AttachmentObject;
 import api.longpoll.bots.model.objects.media.Photo;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/poll">Poll</a>
  */
-public class Poll implements Attachable {
+public class Poll implements AttachmentObject {
     /**
      * Poll ID.
      */

@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Describes audio message object.
  */
-public class AudioMessage implements Attachable {
+public class AudioMessage implements AttachmentObject {
     /**
      * Audio message ID.
      */

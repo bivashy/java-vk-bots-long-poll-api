@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Conversation;
@@ -21,8 +19,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
  */
 public class GetHistory extends VkMethod<GetHistory.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     public GetHistory(String accessToken) {
         super(accessToken);
     }
@@ -70,7 +66,7 @@ public class GetHistory extends VkMethod<GetHistory.Response> {
     }
 
     public GetHistory setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public GetHistory setGroupId(int groupId) {

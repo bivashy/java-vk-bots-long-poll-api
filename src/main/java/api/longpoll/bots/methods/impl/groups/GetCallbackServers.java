@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponse;
@@ -18,8 +16,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/groups.getCallbackServers">https://vk.com/dev/groups.getCallbackServers</a>
  */
 public class GetCallbackServers extends VkMethod<GetCallbackServers.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     public GetCallbackServers(String accessToken) {
         super(accessToken);
     }
@@ -43,7 +39,7 @@ public class GetCallbackServers extends VkMethod<GetCallbackServers.Response> {
     }
 
     public GetCallbackServers setServerIds(List<Integer> serverIds) {
-        return addParam("server_ids", listConverter.convert(serverIds));
+        return addParam("server_ids", toCommaSeparatedValues(serverIds));
     }
 
     @Override

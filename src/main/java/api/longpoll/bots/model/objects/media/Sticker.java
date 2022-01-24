@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/sticker">Sticker</a>
  */
-public class Sticker implements Attachable {
+public class Sticker implements AttachmentObject {
     /**
      * Set ID.
      */

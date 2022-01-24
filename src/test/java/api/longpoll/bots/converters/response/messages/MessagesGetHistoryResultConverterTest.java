@@ -46,7 +46,7 @@ class MessagesGetHistoryResultConverterTest {
         assertNotNull(attachment);
         assertEquals(AttachmentType.PHOTO, attachment.getType());
 
-        Photo photo = (Photo) attachment.getAttachable();
+        Photo photo = (Photo) attachment.getAttachmentObject();
         assertNotNull(photo);
         assertEquals(-3, photo.getAlbumId());
         assertEquals(1616867830, photo.getDate());

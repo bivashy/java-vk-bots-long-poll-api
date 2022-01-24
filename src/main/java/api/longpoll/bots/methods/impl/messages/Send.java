@@ -1,18 +1,23 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.MessagesSendResultDeserializer;
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
-import api.longpoll.bots.converter.impl.VkAttachmentsConverter;
+import api.longpoll.bots.exceptions.VkApiException;
+import api.longpoll.bots.helpers.attachments.Attachable;
+import api.longpoll.bots.helpers.attachments.MessageDocAttachable;
+import api.longpoll.bots.helpers.attachments.MessagePhotoAttachable;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Forward;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.suppliers.PeerIdSupplier;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,8 +29,15 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
 public class Send extends VkMethod<Send.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-    private final Converter<List<VkAttachment>, List<String>> vkAttachmentsListConverter = new VkAttachmentsConverter();
+    /**
+     * List of objects to attach.
+     */
+    private final List<Attachable> attachables = new ArrayList<>();
+
+    /**
+     * Supplies {@code peer_id}.
+     */
+    private final PeerIdSupplier peerIdSupplier = new PeerIdSupplier();
 
     public Send(String accessToken) {
         super(accessToken);
@@ -42,15 +54,58 @@ public class Send extends VkMethod<Send.Response> {
         return Response.class;
     }
 
-    public Send setAttachments(VkAttachment... attachments) {
-        return setAttachments(Arrays.asList(attachments));
+    @Override
+    public Response execute() throws VkApiException {
+        List<VkAttachment> attachments = new ArrayList<>();
+        for (Attachable attachable : attachables) {
+            attachments.add(attachable.attach());
+        }
+        if (!attachments.isEmpty()) {
+            setAttachment(attachments);
+        }
+        return super.execute();
     }
 
-    public Send setAttachments(List<VkAttachment> attachments) {
-        return addParam("attachment", listConverter.convert(vkAttachmentsListConverter.convert(attachments)));
+    public Send addPhoto(File photo) {
+        attachables.add(new MessagePhotoAttachable(
+                photo,
+                peerIdSupplier,
+                getParams().get("access_token")
+        ));
+        return this;
+    }
+
+    public Send addPhoto(Path photo) {
+        return addPhoto(photo.toFile());
+    }
+
+    public Send addDoc(File doc) {
+        attachables.add(new MessageDocAttachable(
+                doc,
+                peerIdSupplier,
+                getParams().get("access_token")
+        ));
+        return this;
+    }
+
+    public Send addDoc(Path doc) {
+        return addDoc(doc.toFile());
+    }
+
+    public Send setAttachment(VkAttachment... vkAttachments) {
+        return setAttachment(Arrays.asList(vkAttachments));
+    }
+
+    public Send setAttachment(List<VkAttachment> vkAttachments) {
+        return setAttachment(toCommaSeparatedValues(vkAttachments));
+    }
+
+    public Send setAttachment(String attachment) {
+        return addParam("attachment", attachment);
     }
 
     public Send setUserId(int userId) {
+        peerIdSupplier.setPeerId(userId);
         return addParam("user_id", userId);
     }
 
@@ -59,6 +114,7 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send setPeerId(int peerId) {
+        peerIdSupplier.setPeerId(peerId);
         return addParam("peer_id", peerId);
     }
 
@@ -75,7 +131,7 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", listConverter.convert(userIds));
+        return addParam("user_ids", toCommaSeparatedValues(userIds));
     }
 
     public Send setMessage(String message) {
@@ -99,7 +155,7 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send setForwardMessages(List<Integer> forwardMessages) {
-        return addParam("forward_messages", listConverter.convert(forwardMessages));
+        return addParam("forward_messages", toCommaSeparatedValues(forwardMessages));
     }
 
     public Send setStickerId(int stickerId) {

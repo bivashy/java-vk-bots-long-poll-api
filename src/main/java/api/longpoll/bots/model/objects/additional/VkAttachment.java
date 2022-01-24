@@ -58,7 +58,7 @@ public class VkAttachment {
     }
 
     public VkAttachment(Save.Response response) {
-        this((Doc) response.getResponseObject().getAttachable());
+        this((Doc) response.getResponseObject().getAttachmentObject());
     }
 
     public String getType() {
@@ -79,11 +79,6 @@ public class VkAttachment {
 
     @Override
     public String toString() {
-        return "VkAttachment{" +
-                "type='" + type + '\'' +
-                ", ownerId=" + ownerId +
-                ", mediaId=" + mediaId +
-                ", accessKey='" + accessKey + '\'' +
-                '}';
+        return type + ownerId + "_" + mediaId + (accessKey != null ? "_" + accessKey : "");
     }
 }

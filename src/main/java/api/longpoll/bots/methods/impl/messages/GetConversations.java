@@ -1,7 +1,5 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.converter.Converter;
-import api.longpoll.bots.converter.impl.ListConverter;
 import api.longpoll.bots.methods.impl.VkMethod;
 
 import java.util.Arrays;
@@ -15,8 +13,6 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.getConversations">https://vk.com/dev/messages.getConversations</a>
  */
 public class GetConversations extends VkMethod<GetConversations.Response> {
-    private final Converter<List<?>, String> listConverter = new ListConverter();
-
     public GetConversations(String accessToken) {
         super(accessToken);
     }
@@ -56,7 +52,7 @@ public class GetConversations extends VkMethod<GetConversations.Response> {
     }
 
     public GetConversations setFields(List<String> fields) {
-        return addParam("fields", listConverter.convert(fields));
+        return addParam("fields", toCommaSeparatedValues(fields));
     }
 
     public GetConversations setGroupId(int groupId) {
