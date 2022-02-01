@@ -149,7 +149,7 @@ public class Edit extends VkMethod<IntegerResponse> {
     }
 
     public Edit setDisableMentions(boolean disableMentions) {
-        return addParam("disable_mentions", disableMentions);
+        return addParam("disable_mentions", disableMentions ? 1 : 0);
     }
 
     @Override

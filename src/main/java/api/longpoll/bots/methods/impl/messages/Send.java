@@ -184,7 +184,7 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send setPayload(JsonElement payload) {
-        return addParam("payload", payload);
+        return addParam("payload", getGson().toJson(payload));
     }
 
     @Override
