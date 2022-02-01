@@ -5,6 +5,7 @@ import api.longpoll.bots.helpers.attachments.Attachable;
 import api.longpoll.bots.helpers.attachments.MessageDocAttachable;
 import api.longpoll.bots.helpers.attachments.MessagePhotoAttachable;
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.IntegerResponse;
@@ -137,6 +138,10 @@ public class Edit extends VkMethod<IntegerResponse> {
 
     public Edit setConversationMessageId(int conversationMessageId) {
         return addParam("conversation_message_id", conversationMessageId);
+    }
+
+    public Edit setKeyboard(Keyboard keyboard) {
+        return addParam("keyboard", keyboard);
     }
 
     public Edit setTemplate(Template template) {
