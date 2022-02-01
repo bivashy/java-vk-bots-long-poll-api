@@ -15,4 +15,11 @@ public abstract class Template {
     public Template(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Template{" +
+                "type='" + type + '\'' +
+                '}';
+    }
 }

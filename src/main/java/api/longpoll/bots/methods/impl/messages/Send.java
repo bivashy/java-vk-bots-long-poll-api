@@ -176,7 +176,7 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send setTemplate(Template template) {
-        return addParam("template", template);
+        return addParam("template", getGson().toJson(template));
     }
 
     public Send setForward(Forward forward) {

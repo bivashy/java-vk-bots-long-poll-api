@@ -145,7 +145,7 @@ public class Edit extends VkMethod<IntegerResponse> {
     }
 
     public Edit setTemplate(Template template) {
-        return addParam("template", template);
+        return addParam("template", getGson().toJson(template));
     }
 
     public Edit setDisableMentions(boolean disableMentions) {
