@@ -143,6 +143,10 @@ public class Edit extends VkMethod<IntegerResponse> {
         return addParam("template", template);
     }
 
+    public Edit setDisableMentions(boolean disableMentions) {
+        return addParam("disable_mentions", disableMentions);
+    }
+
     @Override
     public Edit addParam(String key, Object value) {
         return (Edit) super.addParam(key, value);
