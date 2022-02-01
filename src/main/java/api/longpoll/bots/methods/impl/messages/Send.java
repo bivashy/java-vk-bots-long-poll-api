@@ -182,6 +182,10 @@ public class Send extends VkMethod<Send.Response> {
         return addParam("forward", getGson().toJson(forward));
     }
 
+    public Send setPayload(String payload) {
+        return addParam("payload", payload);
+    }
+
     @Override
     public Send addParam(String key, Object value) {
         return (Send) super.addParam(key, value);
