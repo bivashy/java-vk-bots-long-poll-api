@@ -1,7 +1,7 @@
 package api.longpoll.bots;
 
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.exceptions.VkApiResponseException;
+import api.longpoll.bots.exceptions.VkApiHttpException;
 import api.longpoll.bots.methods.impl.events.GetUpdates;
 import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
 import org.slf4j.Logger;
@@ -41,11 +41,7 @@ public abstract class LongPollBot extends VkBot {
                 GetUpdates.Response updates = getUpdates.execute();
                 getUpdates.setTs(updates.getTs());
                 handle(updates.getEvents());
-            } catch (VkApiException e) {
-                // W/A to avoid 504 Errors
-                if (!(e instanceof VkApiResponseException) && !e.getMessage().contains("HTTP response code: 504")) {
-                    throw e;
-                }
+            } catch (VkApiHttpException e) {
                 LOGGER.warn("Failed to get events from VK Long Poll Server.", e);
                 resetGetUpdates();
             }
