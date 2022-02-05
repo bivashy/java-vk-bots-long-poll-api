@@ -16,7 +16,6 @@ This library keeps on improving. Feel free to create issues or pull requests.
 
 ## Third-party dependencies
 This library uses the next third-party dependencies:
-* Jsoup
 * Gson
 * SLF4J
 
