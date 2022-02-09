@@ -117,7 +117,7 @@ public abstract class VkMethod<Response> implements HttpRequest {
             if (vkResponseValidator.isValid(jsonElement)) {
                 return gson.fromJson(jsonElement, getResponseType());
             }
-            throw new VkApiResponseException(httpResponse.getBody());
+            throw new VkApiResponseException(httpResponse.getBody(), jsonElement.getAsJsonObject());
         } catch (IOException e) {
             throw new VkApiException(e);
         }

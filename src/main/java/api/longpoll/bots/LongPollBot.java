@@ -2,6 +2,7 @@ package api.longpoll.bots;
 
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkApiHttpException;
+import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.methods.impl.events.GetUpdates;
 import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
 import org.slf4j.Logger;
@@ -43,6 +44,12 @@ public abstract class LongPollBot extends VkBot {
                 handle(updates.getEvents());
             } catch (VkApiHttpException e) {
                 LOGGER.warn("Failed to get events from VK Long Poll Server.", e);
+                resetGetUpdates();
+            } catch (VkApiResponseException e) {
+                LOGGER.warn("Failed to get events from VK Long Poll Server.", e);
+                if (!e.getError().has("failed")) {
+                    throw e;
+                }
                 resetGetUpdates();
             }
         }
