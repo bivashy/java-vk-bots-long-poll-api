@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl;
 import api.longpoll.bots.async.AsyncCaller;
 import api.longpoll.bots.async.DefaultAsyncCaller;
 import api.longpoll.bots.exceptions.VkApiException;
+import api.longpoll.bots.exceptions.VkApiHttpException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.HttpRequest;
@@ -108,14 +109,15 @@ public abstract class VkMethod<Response> implements HttpRequest {
             HttpResponse httpResponse = httpClient.execute(this);
             LOGGER.debug("Response: {}", httpResponse);
 
-            if (httpResponse.getStatusCode() >= 200 && httpResponse.getStatusCode() < 300) {
-                JsonElement jsonElement = gson.fromJson(httpResponse.getBody(), JsonElement.class);
-                if (vkResponseValidator.isValid(jsonElement)) {
-                    return gson.fromJson(jsonElement, getResponseType());
-                }
+            if (httpResponse.getStatusCode() >= 400) {
+                throw new VkApiHttpException(this, httpResponse);
             }
 
-            throw new VkApiResponseException(httpResponse.toString());
+            JsonElement jsonElement = gson.fromJson(httpResponse.getBody(), JsonElement.class);
+            if (vkResponseValidator.isValid(jsonElement)) {
+                return gson.fromJson(jsonElement, getResponseType());
+            }
+            throw new VkApiResponseException(httpResponse.getBody(), jsonElement.getAsJsonObject());
         } catch (IOException e) {
             throw new VkApiException(e);
         }

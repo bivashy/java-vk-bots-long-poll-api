@@ -67,12 +67,13 @@ public class DefaultHttpClient implements HttpClient {
                 }
             }
 
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()))) {
-                return new HttpResponse(
-                        httpURLConnection.getResponseCode(),
-                        reader.lines().collect(Collectors.joining())
-                );
+            HttpResponse httpResponse = new HttpResponse(httpURLConnection.getResponseCode());
+            if (httpResponse.getStatusCode() >= 200 && httpResponse.getStatusCode() < 300) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()))) {
+                    httpResponse.setBody(reader.lines().collect(Collectors.joining()));
+                }
             }
+            return httpResponse;
         } finally {
             if (httpURLConnection != null) {
                 httpURLConnection.disconnect();

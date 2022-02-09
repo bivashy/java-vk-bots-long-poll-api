@@ -16,7 +16,6 @@ This library keeps on improving. Feel free to create issues or pull requests.
 
 ## Third-party dependencies
 This library uses the next third-party dependencies:
-* Jsoup
 * Gson
 * SLF4J
 
@@ -32,7 +31,7 @@ This library uses the next third-party dependencies:
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
   <artifactId>java-vk-bots-longpoll-api</artifactId>
-  <version>3.2.0</version>
+  <version>3.2.3</version>
 </dependency>
 ```
 4. Extend `LongPollBot` class and override necessary methods:
@@ -69,17 +68,17 @@ Easy:
 ```java
 @Override
 public void onMessageNew(MessageNew messageNew) {
-        try {
-            Message message = messageNew.getMessage();
-            vk.messages.send()
-                .setPeerId(message.getPeerId())
-                .setMessage("Sending some files to you...")
-                .addPhoto(new File("your_photo.png")) // to send photo as photo
-                .addDoc(new File("your_photo.png")) // to send photo as document
-                .execute();
-        } catch (VkApiException e) {
-            e.printStackTrace();
-        }
+    try {
+        Message message = messageNew.getMessage();
+        vk.messages.send()
+            .setPeerId(message.getPeerId())
+            .setMessage("Sending some files to you...")
+            .addPhoto(new File("your_photo.png")) // to send photo as photo
+            .addDoc(new File("your_photo.png")) // to send photo as document
+            .execute();
+    } catch (VkApiException e) {
+        e.printStackTrace();
+    }
 }
 ```
 ## More Examples

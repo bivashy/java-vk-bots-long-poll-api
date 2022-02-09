@@ -1,7 +1,6 @@
 package api.longpoll.bots.model.objects.additional.carousel;
 
 import api.longpoll.bots.model.objects.additional.Template;
-import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -34,12 +33,10 @@ public class Carousel extends Template {
         this.elements = elements;
     }
 
-    public String toJson() {
-        return new Gson().toJson(this);
-    }
-
     @Override
     public String toString() {
-        return toJson();
+        return "Carousel{" +
+                "elements=" + elements +
+                "} " + super.toString();
     }
 }

@@ -6,7 +6,7 @@
     <groupId>com.github.yvasyliev</groupId>
     <artifactId>java-vk-bots-longpoll-api</artifactId>
     <packaging>jar</packaging>
-    <version>3.2.0</version>
+    <version>3.2.3</version>
     <name>Java VK Bots Long Poll API</name>
     <description>A Java library to create VK bots using Bots Long Poll API</description>
     <url>https://github.com/yvasyliev/java-vk-bots-long-poll-api</url>
@@ -34,12 +34,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.33</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.14.3</version>
+            <version>1.7.35</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

@@ -7,12 +7,16 @@ public class HttpResponse {
     /**
      * HTTP status code.
      */
-    private final int statusCode;
+    private int statusCode;
 
     /**
      * Response body.
      */
-    private final String body;
+    private String body;
+
+    public HttpResponse(int statusCode) {
+        this.statusCode = statusCode;
+    }
 
     public HttpResponse(int statusCode, String body) {
         this.statusCode = statusCode;
@@ -25,6 +29,14 @@ public class HttpResponse {
 
     public String getBody() {
         return body;
+    }
+
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 
     @Override

@@ -12,6 +12,7 @@ import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.VkAttachment;
 import api.longpoll.bots.model.response.GenericResponse;
 import api.longpoll.bots.suppliers.PeerIdSupplier;
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -175,11 +176,15 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send setTemplate(Template template) {
-        return addParam("template", template);
+        return addParam("template", getGson().toJson(template));
     }
 
     public Send setForward(Forward forward) {
         return addParam("forward", getGson().toJson(forward));
+    }
+
+    public Send setPayload(JsonElement payload) {
+        return addParam("payload", getGson().toJson(payload));
     }
 
     @Override
