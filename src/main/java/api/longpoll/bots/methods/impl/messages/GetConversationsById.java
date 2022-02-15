@@ -2,10 +2,8 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Conversation;
-import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResponse;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
 import java.util.List;
@@ -64,72 +62,6 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     /**
      * Response to <b>messages.getConversationsById</b> request.
      */
-    public static class Response extends GenericResponse<ExtendedVkList<Response.ResponseObject.Item>> {
-        /**
-         * Response object.
-         */
-        public static class ResponseObject extends ExtendedVkList<ResponseObject.Item> {
-            /**
-             * Number of unread conversations.
-             */
-            @SerializedName("unread_count")
-            private Integer unreadCount;
-
-            public Integer getUnreadCount() {
-                return unreadCount;
-            }
-
-            public void setUnreadCount(Integer unreadCount) {
-                this.unreadCount = unreadCount;
-            }
-
-            @Override
-            public String toString() {
-                return "ResponseObject{" +
-                        "unreadCount=" + unreadCount +
-                        "} " + super.toString();
-            }
-
-            /**
-             * Describes VkList item.
-             */
-            public static class Item {
-                /**
-                 * Conversation object.
-                 */
-                @SerializedName("conversation")
-                private Conversation conversation;
-
-                /**
-                 * Last message in conversation.
-                 */
-                @SerializedName("last_message")
-                private Message message;
-
-                public Conversation getConversation() {
-                    return conversation;
-                }
-
-                public void setConversation(Conversation conversation) {
-                    this.conversation = conversation;
-                }
-
-                public Message getMessage() {
-                    return message;
-                }
-
-                public void setMessage(Message message) {
-                    this.message = message;
-                }
-
-                @Override
-                public String toString() {
-                    return "Item{" +
-                            "conversation=" + conversation +
-                            ", message=" + message +
-                            '}';
-                }
-            }
-        }
+    public static class Response extends GenericResponse<ExtendedVkList<Conversation>> {
     }
 }

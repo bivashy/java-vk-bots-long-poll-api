@@ -16,14 +16,22 @@ public abstract class LongPollBot extends VkBot {
      * {@link Logger} object.
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(LongPollBot.class);
+
+    /**
+     * Group ID.
+     */
+    private Integer groupId;
+
     /**
      * Gets VK long poll server.
      */
     private final GetLongPollServer getLongPollServer = new GetLongPollServer(getAccessToken());
+
     /**
      * Gets VK updates.
      */
     private final GetUpdates getUpdates = new GetUpdates();
+
     /**
      * Whether infinite loop should be continued.
      */
@@ -35,7 +43,14 @@ public abstract class LongPollBot extends VkBot {
      * @throws VkApiException if errors occur.
      */
     public void startPolling() throws VkApiException {
-        propagateGroupId();
+        if (groupId == null) {
+            groupId = vk.groups.getById()
+                    .execute()
+                    .getResponseObject()
+                    .get(0)
+                    .getId();
+        }
+
         resetGetUpdates();
         while (polling) {
             try {
@@ -68,20 +83,19 @@ public abstract class LongPollBot extends VkBot {
      * @throws VkApiException if errors occur.
      */
     private void resetGetUpdates() throws VkApiException {
-        GetLongPollServer.Response longPollServer = getLongPollServer.setGroupId(getGroupId()).execute();
-        getUpdates.setServer(longPollServer.getResponseObject().getServer())
+        GetLongPollServer.Response longPollServer = getLongPollServer();
+        getUpdates.setServer(getLongPollServer().getResponseObject().getServer())
                 .setKey(longPollServer.getResponseObject().getKey())
                 .setTs(longPollServer.getResponseObject().getTs());
     }
 
-    private void propagateGroupId() throws VkApiException {
-        if (getGroupId() == null) {
-            setGroupId(vk.groups.getById()
-                    .execute()
-                    .getResponseObject()
-                    .get(0)
-                    .getId()
-            );
-        }
+    /**
+     * Gets Long Poll server.
+     *
+     * @return Long Poll server.
+     * @throws VkApiException if errors occur.
+     */
+    private GetLongPollServer.Response getLongPollServer() throws VkApiException {
+        return getLongPollServer.setGroupId(groupId).execute();
     }
 }

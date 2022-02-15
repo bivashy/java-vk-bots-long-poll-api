@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.users;
 
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.model.objects.additional.NameCase;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponse;
 
@@ -45,8 +46,8 @@ public class Get extends VkMethod<Get.Response> {
         return addParam("fields", toCommaSeparatedValues(fields));
     }
 
-    public Get setNameCase(String nameCase) {
-        return addParam("name_case", nameCase);
+    public Get setNameCase(NameCase nameCase) {
+        return addParam("name_case", nameCase.getValue());
     }
 
     @Override
