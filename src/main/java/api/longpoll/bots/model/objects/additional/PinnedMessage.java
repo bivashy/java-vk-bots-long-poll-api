@@ -1,6 +1,7 @@
 package api.longpoll.bots.model.objects.additional;
 
 import api.longpoll.bots.model.objects.basic.Message;
+import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class PinnedMessage {
      * Message attachments.
      */
     @SerializedName("attachments")
-    private List<String> attachments;
+    private List<Attachment> attachments;
 
     /**
      * Location information.
@@ -85,11 +86,11 @@ public class PinnedMessage {
         this.text = text;
     }
 
-    public List<String> getAttachments() {
+    public List<Attachment> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(List<String> attachments) {
+    public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
     }
 
