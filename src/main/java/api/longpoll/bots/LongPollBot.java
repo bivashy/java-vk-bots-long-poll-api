@@ -25,7 +25,7 @@ public abstract class LongPollBot extends VkBot {
     /**
      * Gets VK long poll server.
      */
-    private final GetLongPollServer getLongPollServer = new GetLongPollServer(getAccessToken());
+    private GetLongPollServer getLongPollServer;
 
     /**
      * Gets VK updates.
@@ -49,6 +49,10 @@ public abstract class LongPollBot extends VkBot {
                     .getResponseObject()
                     .get(0)
                     .getId();
+        }
+
+        if (getLongPollServer == null) {
+            getLongPollServer = new GetLongPollServer(getAccessToken());
         }
 
         resetGetUpdates();

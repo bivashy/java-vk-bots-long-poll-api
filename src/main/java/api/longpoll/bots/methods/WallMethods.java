@@ -4,6 +4,8 @@ import api.longpoll.bots.methods.impl.wall.CloseComments;
 import api.longpoll.bots.methods.impl.wall.CreateComment;
 import api.longpoll.bots.methods.impl.wall.OpenComments;
 
+import java.util.function.Supplier;
+
 /**
  * Provides Utils methods.
  */
@@ -11,21 +13,21 @@ public class WallMethods {
     /**
      * Access token.
      */
-    private final String accessToken;
+    private final Supplier<String> accessTokenSupplier;
 
-    public WallMethods(String accessToken) {
-        this.accessToken = accessToken;
+    public WallMethods(Supplier<String> accessTokenSupplier) {
+        this.accessTokenSupplier = accessTokenSupplier;
     }
 
     public CloseComments closeComments() {
-        return new CloseComments(accessToken);
+        return new CloseComments(accessTokenSupplier.get());
     }
 
     public CreateComment createComment() {
-        return new CreateComment(accessToken);
+        return new CreateComment(accessTokenSupplier.get());
     }
 
     public OpenComments openComments() {
-        return new OpenComments(accessToken);
+        return new OpenComments(accessTokenSupplier.get());
     }
 }

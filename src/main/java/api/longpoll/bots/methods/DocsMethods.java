@@ -5,6 +5,8 @@ import api.longpoll.bots.methods.impl.docs.GetWallUploadServer;
 import api.longpoll.bots.methods.impl.docs.Save;
 import api.longpoll.bots.methods.impl.docs.Search;
 
+import java.util.function.Supplier;
+
 /**
  * Provides Docs methods.
  */
@@ -12,25 +14,25 @@ public class DocsMethods {
     /**
      * Access token.
      */
-    private final String accessToken;
+    private final Supplier<String> accessTokenSupplier;
 
-    public DocsMethods(String accessToken) {
-        this.accessToken = accessToken;
+    public DocsMethods(Supplier<String> accessTokenSupplier) {
+        this.accessTokenSupplier = accessTokenSupplier;
     }
 
     public GetMessagesUploadServer getMessagesUploadServer() {
-        return new GetMessagesUploadServer(accessToken);
+        return new GetMessagesUploadServer(accessTokenSupplier.get());
     }
 
     public GetWallUploadServer getWallUploadServer() {
-        return new GetWallUploadServer(accessToken);
+        return new GetWallUploadServer(accessTokenSupplier.get());
     }
 
     public Save save() {
-        return new Save(accessToken);
+        return new Save(accessTokenSupplier.get());
     }
 
     public Search search() {
-        return new Search(accessToken);
+        return new Search(accessTokenSupplier.get());
     }
 }

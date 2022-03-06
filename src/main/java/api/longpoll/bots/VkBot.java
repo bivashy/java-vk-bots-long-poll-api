@@ -46,7 +46,7 @@ public abstract class VkBot {
     /**
      * VK Bots API methods.
      */
-    protected VkBotsMethods vk = new VkBotsMethods(getAccessToken());
+    protected VkBotsMethods vk = new VkBotsMethods(this::getAccessToken);
 
     /**
      * Gets bot access token.
