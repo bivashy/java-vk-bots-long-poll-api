@@ -6,6 +6,8 @@ import api.longpoll.bots.methods.impl.photos.GetOwnerCoverPhotoUploadServer;
 import api.longpoll.bots.methods.impl.photos.SaveMessagesPhoto;
 import api.longpoll.bots.methods.impl.photos.SaveOwnerCoverPhoto;
 
+import java.util.function.Supplier;
+
 /**
  * Provides Photos methods.
  */
@@ -13,29 +15,29 @@ public class PhotosMethods {
     /**
      * Access token.
      */
-    private final String accessToken;
+    private final Supplier<String> accessTokenSupplier;
 
-    public PhotosMethods(String accessToken) {
-        this.accessToken = accessToken;
+    public PhotosMethods(Supplier<String> accessTokenSupplier) {
+        this.accessTokenSupplier = accessTokenSupplier;
     }
 
     public GetChatUploadServer getChatUploadServer() {
-        return new GetChatUploadServer(accessToken);
+        return new GetChatUploadServer(accessTokenSupplier.get());
     }
 
     public GetMessagesUploadServer getMessagesUploadServer() {
-        return new GetMessagesUploadServer(accessToken);
+        return new GetMessagesUploadServer(accessTokenSupplier.get());
     }
 
     public GetOwnerCoverPhotoUploadServer getOwnerCoverPhotoUploadServer() {
-        return new GetOwnerCoverPhotoUploadServer(accessToken);
+        return new GetOwnerCoverPhotoUploadServer(accessTokenSupplier.get());
     }
 
     public SaveMessagesPhoto saveMessagesPhoto() {
-        return new SaveMessagesPhoto(accessToken);
+        return new SaveMessagesPhoto(accessTokenSupplier.get());
     }
 
     public SaveOwnerCoverPhoto saveOwnerCoverPhoto() {
-        return new SaveOwnerCoverPhoto(accessToken);
+        return new SaveOwnerCoverPhoto(accessTokenSupplier.get());
     }
 }

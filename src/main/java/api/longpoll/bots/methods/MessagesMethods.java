@@ -29,6 +29,8 @@ import api.longpoll.bots.methods.impl.messages.SetActivity;
 import api.longpoll.bots.methods.impl.messages.SetChatPhoto;
 import api.longpoll.bots.methods.impl.messages.Unpin;
 
+import java.util.function.Supplier;
+
 /**
  * Provides Messages methods.
  */
@@ -36,121 +38,121 @@ public class MessagesMethods {
     /**
      * Access token.
      */
-    private final String accessToken;
+    private final Supplier<String> accessTokenSupplier;
 
-    public MessagesMethods(String accessToken) {
-        this.accessToken = accessToken;
+    public MessagesMethods(Supplier<String> accessTokenSupplier) {
+        this.accessTokenSupplier = accessTokenSupplier;
     }
 
     public CreateChat createChat() {
-        return new CreateChat(accessToken);
+        return new CreateChat(accessTokenSupplier.get());
     }
 
     public Delete delete() {
-        return new Delete(accessToken);
+        return new Delete(accessTokenSupplier.get());
     }
 
     public DeleteConversation deleteConversation() {
-        return new DeleteConversation(accessToken);
+        return new DeleteConversation(accessTokenSupplier.get());
     }
 
     public DeleteChatPhoto deleteChatPhoto() {
-        return new DeleteChatPhoto(accessToken);
+        return new DeleteChatPhoto(accessTokenSupplier.get());
     }
 
     public Edit edit() {
-        return new Edit(accessToken);
+        return new Edit(accessTokenSupplier.get());
     }
 
     public EditChat editChat() {
-        return new EditChat(accessToken);
+        return new EditChat(accessTokenSupplier.get());
     }
 
     public GetByConversationMessageId getByConversationMessageId() {
-        return new GetByConversationMessageId(accessToken);
+        return new GetByConversationMessageId(accessTokenSupplier.get());
     }
 
     public GetById getById() {
-        return new GetById(accessToken);
+        return new GetById(accessTokenSupplier.get());
     }
 
     public GetConversationMembers getConversationMembers() {
-        return new GetConversationMembers(accessToken);
+        return new GetConversationMembers(accessTokenSupplier.get());
     }
 
     public GetConversations getConversations() {
-        return new GetConversations(accessToken);
+        return new GetConversations(accessTokenSupplier.get());
     }
 
     public GetConversationsById getConversationsById() {
-        return new GetConversationsById(accessToken);
+        return new GetConversationsById(accessTokenSupplier.get());
     }
 
     public GetHistory getHistory() {
-        return new GetHistory(accessToken);
+        return new GetHistory(accessTokenSupplier.get());
     }
 
     public GetHistoryAttachments getHistoryAttachments() {
-        return new GetHistoryAttachments(accessToken);
+        return new GetHistoryAttachments(accessTokenSupplier.get());
     }
 
     public GetImportantMessages getImportantMessages() {
-        return new GetImportantMessages(accessToken);
+        return new GetImportantMessages(accessTokenSupplier.get());
     }
 
     public GetInviteLink getInviteLink() {
-        return new GetInviteLink(accessToken);
+        return new GetInviteLink(accessTokenSupplier.get());
     }
 
     public IsMessagesFromGroupAllowed isMessagesFromGroupAllowed() {
-        return new IsMessagesFromGroupAllowed(accessToken);
+        return new IsMessagesFromGroupAllowed(accessTokenSupplier.get());
     }
 
     public MarkAsAnsweredConversation markAsAnsweredConversation() {
-        return new MarkAsAnsweredConversation(accessToken);
+        return new MarkAsAnsweredConversation(accessTokenSupplier.get());
     }
 
     public MarkAsImportantConversation markAsImportantConversation() {
-        return new MarkAsImportantConversation(accessToken);
+        return new MarkAsImportantConversation(accessTokenSupplier.get());
     }
 
     public MarkAsRead markAsRead() {
-        return new MarkAsRead(accessToken);
+        return new MarkAsRead(accessTokenSupplier.get());
     }
 
     public Pin pin() {
-        return new Pin(accessToken);
+        return new Pin(accessTokenSupplier.get());
     }
 
     public RemoveChatUser removeChatUser() {
-        return new RemoveChatUser(accessToken);
+        return new RemoveChatUser(accessTokenSupplier.get());
     }
 
     public Restore restore() {
-        return new Restore(accessToken);
+        return new Restore(accessTokenSupplier.get());
     }
 
     public SearchConversations searchConversations() {
-        return new SearchConversations(accessToken);
+        return new SearchConversations(accessTokenSupplier.get());
     }
 
     public Send send() {
-        return new Send(accessToken);
+        return new Send(accessTokenSupplier.get());
     }
 
     public SendEventAnswer sendEventAnswer() {
-        return new SendEventAnswer(accessToken);
+        return new SendEventAnswer(accessTokenSupplier.get());
     }
 
     public SetActivity setActivity() {
-        return new SetActivity(accessToken);
+        return new SetActivity(accessTokenSupplier.get());
     }
 
     public SetChatPhoto setChatPhoto() {
-        return new SetChatPhoto(accessToken);
+        return new SetChatPhoto(accessTokenSupplier.get());
     }
 
     public Unpin unpin() {
-        return new Unpin(accessToken);
+        return new Unpin(accessTokenSupplier.get());
     }
 }

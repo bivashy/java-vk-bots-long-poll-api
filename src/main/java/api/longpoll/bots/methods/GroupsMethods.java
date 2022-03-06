@@ -23,6 +23,8 @@ import api.longpoll.bots.methods.impl.groups.SetCallbackSettings;
 import api.longpoll.bots.methods.impl.groups.SetLongPollSettings;
 import api.longpoll.bots.methods.impl.groups.SetSettings;
 
+import java.util.function.Supplier;
+
 /**
  * Provides Groups methods.
  */
@@ -30,97 +32,97 @@ public class GroupsMethods {
     /**
      * Access token.
      */
-    private final String accessToken;
+    private final Supplier<String> accessTokenSupplier;
 
-    public GroupsMethods(String accessToken) {
-        this.accessToken = accessToken;
+    public GroupsMethods(Supplier<String> accessTokenSupplier) {
+        this.accessTokenSupplier = accessTokenSupplier;
     }
 
     public AddAddress addAddress() {
-        return new AddAddress(accessToken);
+        return new AddAddress(accessTokenSupplier.get());
     }
 
     public AddCallbackServer addCallbackServer() {
-        return new AddCallbackServer(accessToken);
+        return new AddCallbackServer(accessTokenSupplier.get());
     }
 
     public DeleteAddress deleteAddress() {
-        return new DeleteAddress(accessToken);
+        return new DeleteAddress(accessTokenSupplier.get());
     }
 
     public DeleteCallbackServer deleteCallbackServer() {
-        return new DeleteCallbackServer(accessToken);
+        return new DeleteCallbackServer(accessTokenSupplier.get());
     }
 
     public DisableOnline disableOnline() {
-        return new DisableOnline(accessToken);
+        return new DisableOnline(accessTokenSupplier.get());
     }
 
     public EditAddress editAddress() {
-        return new EditAddress(accessToken);
+        return new EditAddress(accessTokenSupplier.get());
     }
 
     public EditCallbackServer editCallbackServer() {
-        return new EditCallbackServer(accessToken);
+        return new EditCallbackServer(accessTokenSupplier.get());
     }
 
     public EnableOnline enableOnline() {
-        return new EnableOnline(accessToken);
+        return new EnableOnline(accessTokenSupplier.get());
     }
 
     public GetBanned getBanned() {
-        return new GetBanned(accessToken);
+        return new GetBanned(accessTokenSupplier.get());
     }
 
     public GetById getById() {
-        return new GetById(accessToken);
+        return new GetById(accessTokenSupplier.get());
     }
 
     public GetCallbackConfirmationCode getCallbackConfirmationCode() {
-        return new GetCallbackConfirmationCode(accessToken);
+        return new GetCallbackConfirmationCode(accessTokenSupplier.get());
     }
 
     public GetCallbackServers getCallbackServers() {
-        return new GetCallbackServers(accessToken);
+        return new GetCallbackServers(accessTokenSupplier.get());
     }
 
     public GetCallbackSettings getCallbackSettings() {
-        return new GetCallbackSettings(accessToken);
+        return new GetCallbackSettings(accessTokenSupplier.get());
     }
 
     public GetLongPollServer getLongPollServer() {
-        return new GetLongPollServer(accessToken);
+        return new GetLongPollServer(accessTokenSupplier.get());
     }
 
     public GetLongPollSettings getLongPollSettings() {
-        return new GetLongPollSettings(accessToken);
+        return new GetLongPollSettings(accessTokenSupplier.get());
     }
 
     public GetMembers getMembers() {
-        return new GetMembers(accessToken);
+        return new GetMembers(accessTokenSupplier.get());
     }
 
     public GetOnlineStatus getOnlineStatus() {
-        return new GetOnlineStatus(accessToken);
+        return new GetOnlineStatus(accessTokenSupplier.get());
     }
 
     public GetTokenPermissions getTokenPermissions() {
-        return new GetTokenPermissions(accessToken);
+        return new GetTokenPermissions(accessTokenSupplier.get());
     }
 
     public IsMember isMember() {
-        return new IsMember(accessToken);
+        return new IsMember(accessTokenSupplier.get());
     }
 
     public SetCallbackSettings setCallbackSettings() {
-        return new SetCallbackSettings(accessToken);
+        return new SetCallbackSettings(accessTokenSupplier.get());
     }
 
     public SetLongPollSettings setLongPollSettings() {
-        return new SetLongPollSettings(accessToken);
+        return new SetLongPollSettings(accessTokenSupplier.get());
     }
 
     public SetSettings setSettings() {
-        return new SetSettings(accessToken);
+        return new SetSettings(accessTokenSupplier.get());
     }
 }
