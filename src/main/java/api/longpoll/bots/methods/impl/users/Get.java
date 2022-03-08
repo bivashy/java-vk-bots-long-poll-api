@@ -30,11 +30,11 @@ public class Get extends VkMethod<Get.Response> {
         return Response.class;
     }
 
-    public Get setUserIds(Integer... userIds) {
+    public Get setUserIds(String... userIds) {
         return setUserIds(Arrays.asList(userIds));
     }
 
-    public Get setUserIds(List<Integer> userIds) {
+    public Get setUserIds(List<String> userIds) {
         return addParam("user_ids", toCommaSeparatedValues(userIds));
     }
 
