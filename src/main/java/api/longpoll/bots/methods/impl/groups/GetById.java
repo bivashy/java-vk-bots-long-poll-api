@@ -29,15 +29,15 @@ public class GetById extends VkMethod<GetById.Response> {
         return Response.class;
     }
 
-    public GetById setGroupIds(Integer... groupIds) {
+    public GetById setGroupIds(String... groupIds) {
         return setGroupIds(Arrays.asList(groupIds));
     }
 
-    public GetById setGroupIds(List<Integer> groupIds) {
+    public GetById setGroupIds(List<String> groupIds) {
         return addParam("group_ids", toCommaSeparatedValues(groupIds));
     }
 
-    public GetById setGroupId(int groupId) {
+    public GetById setGroupId(String groupId) {
         return addParam("group_id", groupId);
     }
 
