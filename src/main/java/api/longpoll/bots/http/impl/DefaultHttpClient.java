@@ -69,7 +69,7 @@ public class DefaultHttpClient implements HttpClient {
 
             HttpResponse httpResponse = new HttpResponse(httpURLConnection.getResponseCode());
             if (httpResponse.getStatusCode() >= 200 && httpResponse.getStatusCode() < 300) {
-                try (BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()))) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), StandardCharsets.UTF_8))) {
                     httpResponse.setBody(reader.lines().collect(Collectors.joining()));
                 }
             }
