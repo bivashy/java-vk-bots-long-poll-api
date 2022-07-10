@@ -104,7 +104,7 @@ public class DefaultHttpClient implements HttpClient {
      * @throws UnsupportedEncodingException when failed to encode.
      */
     private String encode(String s) throws UnsupportedEncodingException {
-        return URLEncoder.encode(s, "UTF-8");
+        return URLEncoder.encode(s, StandardCharsets.UTF_8.name());
     }
 
     /**

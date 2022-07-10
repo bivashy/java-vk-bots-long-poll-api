@@ -82,7 +82,7 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
              * Whether the user is conversation admin.
              */
             @SerializedName("is_admin")
-            private Boolean admin;
+            private boolean isAdmin;
 
             /**
              * Whether the user can kick.
@@ -114,12 +114,12 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
                 this.joinDate = joinDate;
             }
 
-            public Boolean getAdmin() {
-                return admin;
+            public boolean isAdmin() {
+                return isAdmin;
             }
 
-            public void setAdmin(Boolean admin) {
-                this.admin = admin;
+            public void setAdmin(boolean admin) {
+                isAdmin = admin;
             }
 
             public Boolean getCanKick() {
@@ -137,7 +137,7 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
                         "memberId=" + memberId +
                         ", invitedBy=" + invitedBy +
                         ", joinDate=" + joinDate +
-                        ", admin=" + admin +
+                        ", admin=" + isAdmin +
                         ", canKick=" + canKick +
                         '}';
             }
