@@ -11,6 +11,7 @@ public class VkBotsMethods {
     public final GroupsMethods groups;
     public final MarketMethods market;
     public final MessagesMethods messages;
+    public final OtherMethods other;
     public final PhotosMethods photos;
     public final StoriesMethods stories;
     public final UsersMethods users;
@@ -27,6 +28,7 @@ public class VkBotsMethods {
         groups = new GroupsMethods(accessTokenSupplier);
         market = new MarketMethods(accessTokenSupplier);
         messages = new MessagesMethods(accessTokenSupplier);
+        other = new OtherMethods(accessTokenSupplier);
         photos = new PhotosMethods(accessTokenSupplier);
         stories = new StoriesMethods(accessTokenSupplier);
         users = new UsersMethods(accessTokenSupplier);
