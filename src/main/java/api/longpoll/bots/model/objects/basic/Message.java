@@ -103,6 +103,12 @@ public class Message implements EventObject {
     private Integer conversationMessageId;
 
     /**
+     * Whether message is cropped. (For bots only)
+     */
+    @SerializedName("is_cropped")
+    private boolean cropped;
+
+    /**
      * Message lifetime in seconds
      */
     @SerializedName("expire_ttl")
@@ -244,6 +250,14 @@ public class Message implements EventObject {
         this.conversationMessageId = conversationMessageId;
     }
 
+    public boolean isCropped() {
+        return cropped;
+    }
+
+    public void setCropped(boolean cropped) {
+        this.cropped = cropped;
+    }
+
     public Integer getExpireTtl() {
         return expireTtl;
     }
@@ -264,11 +278,13 @@ public class Message implements EventObject {
                 ", attachments=" + attachments +
                 ", important=" + important +
                 ", geo=" + geo +
-                ", payload='" + payload + '\'' +
+                ", payload=" + payload +
                 ", fwdMessages=" + fwdMessages +
                 ", replyMessage=" + replyMessage +
                 ", action=" + action +
                 ", conversationMessageId=" + conversationMessageId +
+                ", cropped=" + cropped +
+                ", expireTtl=" + expireTtl +
                 '}';
     }
 
