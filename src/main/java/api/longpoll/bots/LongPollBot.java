@@ -67,7 +67,7 @@ public abstract class LongPollBot extends VkBot {
     }
 
     /**
-     * Initialises {@link LongPollBot#getUpdates} object.
+     * Initializes {@link LongPollBot}.
      *
      * @throws VkApiException if errors occur.
      */
@@ -84,19 +84,9 @@ public abstract class LongPollBot extends VkBot {
             getLongPollServer = new GetLongPollServer(getAccessToken());
         }
 
-        GetLongPollServer.Response longPollServer = getLongPollServer();
+        GetLongPollServer.Response longPollServer = getLongPollServer.setGroupId(groupId).execute();
         getUpdates.setServer(longPollServer.getResponseObject().getServer())
                 .setKey(longPollServer.getResponseObject().getKey())
                 .setTs(longPollServer.getResponseObject().getTs());
-    }
-
-    /**
-     * Gets Long Poll server.
-     *
-     * @return Long Poll server.
-     * @throws VkApiException if errors occur.
-     */
-    private GetLongPollServer.Response getLongPollServer() throws VkApiException {
-        return getLongPollServer.setGroupId(groupId).execute();
     }
 }
