@@ -16,6 +16,7 @@ public enum AttachmentType {
     @SerializedName("photo") PHOTO,
     @SerializedName("poll") POLL,
     @SerializedName("sticker") STICKER,
+    @SerializedName("story") STORY,
     @SerializedName("wall") WALL_POST,
     @SerializedName("wall_reply") WALL_REPLY,
     @SerializedName("video") VIDEO
