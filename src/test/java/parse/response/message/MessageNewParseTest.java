@@ -9,7 +9,15 @@ import api.longpoll.bots.model.objects.additional.PhotoSize;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import api.longpoll.bots.model.objects.basic.WallPost;
-import api.longpoll.bots.model.objects.media.*;
+import api.longpoll.bots.model.objects.media.Attachment;
+import api.longpoll.bots.model.objects.media.Audio;
+import api.longpoll.bots.model.objects.media.AudioMessage;
+import api.longpoll.bots.model.objects.media.Doc;
+import api.longpoll.bots.model.objects.media.DocType;
+import api.longpoll.bots.model.objects.media.Graffiti;
+import api.longpoll.bots.model.objects.media.Photo;
+import api.longpoll.bots.model.objects.media.Sticker;
+import api.longpoll.bots.model.objects.media.Video;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -18,9 +26,12 @@ import parse.response.ParseUtil;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MessageNewParseTest {
     @Test
@@ -181,15 +192,13 @@ public class MessageNewParseTest {
         assertEquals(1593165675, doc.getDate());
         assertEquals(DocType.IMAGES, doc.getType());
 
-        Map<DocPreviewType, Doc.Preview> preview = doc.getPreview();
+        Doc.Preview preview = doc.getPreview();
         assertNotNull(preview);
-        assertTrue(preview.containsKey(DocPreviewType.PHOTO));
 
-        Doc.Preview photoPreview = preview.get(DocPreviewType.PHOTO);
-        assertNotNull(photoPreview);
-        assertTrue(photoPreview instanceof Doc.Photo);
+        Doc.Preview.Photo photo = preview.getPhoto();
+        assertNotNull(photo);
 
-        List<PhotoSize> sizes = ((Doc.Photo) photoPreview).getSizes();
+        List<PhotoSize> sizes = photo.getSizes();
         assertNotNull(sizes);
         assertFalse(sizes.isEmpty());
 
