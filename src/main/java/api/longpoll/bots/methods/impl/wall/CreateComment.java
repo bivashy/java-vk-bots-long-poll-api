@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.wall;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.objects.additional.VkAttachment;
+import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.GenericResponse;
 import com.google.gson.annotations.SerializedName;
 
@@ -31,11 +31,11 @@ public class CreateComment extends VkMethod<CreateComment.Response> {
         return Response.class;
     }
 
-    public CreateComment setAttachment(VkAttachment... attachments) {
+    public CreateComment setAttachment(UploadedFile... attachments) {
         return setAttachment(Arrays.asList(attachments));
     }
 
-    public CreateComment setAttachment(List<VkAttachment> attachments) {
+    public CreateComment setAttachment(List<UploadedFile> attachments) {
         return setAttachment(toCommaSeparatedValues(attachments));
     }
 

@@ -4,30 +4,30 @@ import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.methods.impl.photos.GetMessagesUploadServer;
 import api.longpoll.bots.methods.impl.photos.SaveMessagesPhoto;
 import api.longpoll.bots.methods.impl.upload.UploadPhoto;
-import api.longpoll.bots.model.objects.additional.VkAttachment;
+import api.longpoll.bots.model.objects.additional.UploadedFile;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.function.Supplier;
 
 /**
- * Attaches photo to message.
+ * Uploads a photo to VK server.
  */
-public class MessagePhotoAttachable implements Attachable {
+public class UploadableMessagePhoto implements UploadableFile {
     /**
-     * Photo to attach.
+     * Photo to upload.
      */
     private final File photo;
 
     /**
-     * Gets upload server.
+     * Gets an upload server.
      */
     private final GetMessagesUploadServer getMessagesUploadServer;
 
     /**
-     * Uploads photo to VK.
+     * Uploads a photo to VK server.
      */
     private final UploadPhoto uploadPhoto;
 
@@ -36,7 +36,7 @@ public class MessagePhotoAttachable implements Attachable {
      */
     private final SaveMessagesPhoto saveMessagesPhoto;
 
-    public MessagePhotoAttachable(File photo, Supplier<Integer> peerIdSupplier, String accessToken) {
+    public UploadableMessagePhoto(File photo, Supplier<Integer> peerIdSupplier, String accessToken) {
         this.photo = photo;
         this.uploadPhoto = new UploadPhoto();
         this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerIdSupplier.get());
@@ -44,8 +44,8 @@ public class MessagePhotoAttachable implements Attachable {
     }
 
     @Override
-    public VkAttachment attach() throws VkApiException {
-        try (InputStream inputStream = new FileInputStream(photo)) {
+    public UploadedFile upload() throws VkApiException {
+        try (InputStream inputStream = Files.newInputStream(photo.toPath())) {
             GetMessagesUploadServer.Response uploadServer = getMessagesUploadServer.execute();
             UploadPhoto.Response uploadedPhoto = uploadPhoto
                     .setPhoto(photo.getName(), inputStream)
@@ -56,7 +56,28 @@ public class MessagePhotoAttachable implements Attachable {
                     .setPhoto(uploadedPhoto.getPhoto())
                     .setHash(uploadedPhoto.getHash())
                     .execute();
-            return new VkAttachment(savedPhoto);
+            SaveMessagesPhoto.Response.ResponseObject photo = savedPhoto.getResponseObject().get(0);
+            return new UploadedFile() {
+                @Override
+                public String getType() {
+                    return "photo";
+                }
+
+                @Override
+                public int getOwnerId() {
+                    return photo.getOwnerId();
+                }
+
+                @Override
+                public int getMediaId() {
+                    return photo.getId();
+                }
+
+                @Override
+                public String getAccessKey() {
+                    return photo.getAccessKey();
+                }
+            };
         } catch (IOException e) {
             throw new VkApiException(e);
         }

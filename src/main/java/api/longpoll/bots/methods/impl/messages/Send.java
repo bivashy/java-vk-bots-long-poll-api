@@ -2,14 +2,14 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.MessagesSendResultDeserializer;
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.helpers.attachments.Attachable;
-import api.longpoll.bots.helpers.attachments.MessageDocAttachable;
-import api.longpoll.bots.helpers.attachments.MessagePhotoAttachable;
+import api.longpoll.bots.helpers.attachments.UploadableMessageDoc;
+import api.longpoll.bots.helpers.attachments.UploadableMessagePhoto;
+import api.longpoll.bots.helpers.attachments.UploadableFile;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Forward;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
-import api.longpoll.bots.model.objects.additional.VkAttachment;
+import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.GenericResponse;
 import api.longpoll.bots.suppliers.PeerIdSupplier;
 import com.google.gson.JsonElement;
@@ -33,7 +33,7 @@ public class Send extends VkMethod<Send.Response> {
     /**
      * List of objects to attach.
      */
-    private final List<Attachable> attachables = new ArrayList<>();
+    private final List<UploadableFile> uploadableFiles = new ArrayList<>();
 
     /**
      * Supplies {@code peer_id}.
@@ -57,18 +57,18 @@ public class Send extends VkMethod<Send.Response> {
 
     @Override
     public Response execute() throws VkApiException {
-        List<VkAttachment> attachments = new ArrayList<>();
-        for (Attachable attachable : attachables) {
-            attachments.add(attachable.attach());
+        List<UploadedFile> uploadedFiles = new ArrayList<>();
+        for (UploadableFile uploadableFile : uploadableFiles) {
+            uploadedFiles.add(uploadableFile.upload());
         }
-        if (!attachments.isEmpty()) {
-            setAttachment(attachments);
+        if (!uploadedFiles.isEmpty()) {
+            setAttachment(uploadedFiles);
         }
         return super.execute();
     }
 
     public Send addPhoto(File photo) {
-        attachables.add(new MessagePhotoAttachable(
+        uploadableFiles.add(new UploadableMessagePhoto(
                 photo,
                 peerIdSupplier,
                 getParams().get("access_token")
@@ -81,7 +81,7 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     public Send addDoc(File doc) {
-        attachables.add(new MessageDocAttachable(
+        uploadableFiles.add(new UploadableMessageDoc(
                 doc,
                 peerIdSupplier,
                 getParams().get("access_token")
@@ -93,12 +93,12 @@ public class Send extends VkMethod<Send.Response> {
         return addDoc(doc.toFile());
     }
 
-    public Send setAttachment(VkAttachment... vkAttachments) {
-        return setAttachment(Arrays.asList(vkAttachments));
+    public Send setAttachment(UploadedFile... uploadedFiles) {
+        return setAttachment(Arrays.asList(uploadedFiles));
     }
 
-    public Send setAttachment(List<VkAttachment> vkAttachments) {
-        return setAttachment(toCommaSeparatedValues(vkAttachments));
+    public Send setAttachment(List<UploadedFile> uploadedFiles) {
+        return setAttachment(toCommaSeparatedValues(uploadedFiles));
     }
 
     public Send setAttachment(String attachment) {

@@ -1,13 +1,13 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.helpers.attachments.Attachable;
-import api.longpoll.bots.helpers.attachments.MessageDocAttachable;
-import api.longpoll.bots.helpers.attachments.MessagePhotoAttachable;
+import api.longpoll.bots.helpers.attachments.UploadableMessageDoc;
+import api.longpoll.bots.helpers.attachments.UploadableMessagePhoto;
+import api.longpoll.bots.helpers.attachments.UploadableFile;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
-import api.longpoll.bots.model.objects.additional.VkAttachment;
+import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.IntegerResponse;
 import api.longpoll.bots.suppliers.PeerIdSupplier;
 
@@ -28,7 +28,7 @@ public class Edit extends VkMethod<IntegerResponse> {
     /**
      * List of objects to attach.
      */
-    private final List<Attachable> attachables = new ArrayList<>();
+    private final List<UploadableFile> uploadableFiles = new ArrayList<>();
 
     /**
      * Supplies {@code peer_id}.
@@ -51,9 +51,9 @@ public class Edit extends VkMethod<IntegerResponse> {
 
     @Override
     public IntegerResponse execute() throws VkApiException {
-        List<VkAttachment> attachments = new ArrayList<>();
-        for (Attachable attachable : attachables) {
-            attachments.add(attachable.attach());
+        List<UploadedFile> attachments = new ArrayList<>();
+        for (UploadableFile uploadableFile : uploadableFiles) {
+            attachments.add(uploadableFile.upload());
         }
         if (!attachments.isEmpty()) {
             setAttachment(attachments);
@@ -62,7 +62,7 @@ public class Edit extends VkMethod<IntegerResponse> {
     }
 
     public Edit addPhoto(File photo) {
-        attachables.add(new MessagePhotoAttachable(
+        uploadableFiles.add(new UploadableMessagePhoto(
                 photo,
                 peerIdSupplier,
                 getParams().get("access_token")
@@ -75,7 +75,7 @@ public class Edit extends VkMethod<IntegerResponse> {
     }
 
     public Edit addDoc(File doc) {
-        attachables.add(new MessageDocAttachable(
+        uploadableFiles.add(new UploadableMessageDoc(
                 doc,
                 peerIdSupplier,
                 getParams().get("access_token")
@@ -87,12 +87,12 @@ public class Edit extends VkMethod<IntegerResponse> {
         return addDoc(doc.toFile());
     }
 
-    public Edit setAttachment(VkAttachment... vkAttachments) {
-        return setAttachment(Arrays.asList(vkAttachments));
+    public Edit setAttachment(UploadedFile... uploadedFiles) {
+        return setAttachment(Arrays.asList(uploadedFiles));
     }
 
-    public Edit setAttachment(List<VkAttachment> vkAttachments) {
-        return setAttachment(toCommaSeparatedValues(vkAttachments));
+    public Edit setAttachment(List<UploadedFile> uploadedFiles) {
+        return setAttachment(toCommaSeparatedValues(uploadedFiles));
     }
 
     public Edit setAttachment(String attachment) {
