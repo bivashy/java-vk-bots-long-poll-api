@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.utils;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/utils.getLinkStats">https://vk.com/dev/utils.getLinkStats</a>
  */
-public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
+public class GetLinkStats extends VkMethod<GetLinkStats.ResponseBody> {
 
     public GetLinkStats(String accessToken) {
         super(accessToken);
@@ -25,8 +25,8 @@ public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetLinkStats setKey(String key) {
@@ -61,11 +61,11 @@ public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
     /**
      * Response to <b>utils.getLinkStats</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Key.
              */
@@ -96,7 +96,7 @@ public class GetLinkStats extends VkMethod<GetLinkStats.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "key='" + key + '\'' +
                         ", stats=" + stats +
                         '}';

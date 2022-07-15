@@ -1,8 +1,6 @@
 package parse.response.wall;
 
-import api.longpoll.bots.model.events.VkEvent;
-import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.events.EventType;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.events.wall.comments.WallReply;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import org.junit.jupiter.api.Test;
@@ -13,16 +11,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class WallCommentNewParseTest {
     @Test
     void wallReplyNew() {
-        VkEvent event = ParseUtil.getFirstEvent("json/response/wall_reply_new/wall_reply_new_sample_5_110.json");
-        assertEquals(EventType.WALL_REPLY_NEW, event.getType());
+        Update event = ParseUtil.getFirstEvent("json/response/wall_reply_new/wall_reply_new_sample_5_110.json");
+        assertEquals(Update.Type.WALL_REPLY_NEW, event.getType());
         assertEquals(444, event.getGroupId());
         assertEquals("aaa", event.getEventId());
 
-        EventObject eventObject = event.getObject();
-        assertNotNull(eventObject);
-        assertTrue(eventObject instanceof WallReply);
+        Update.Object object = event.getObject();
+        assertNotNull(object);
+        assertTrue(object instanceof WallReply);
 
-        WallReply wallReplyUpdate = (WallReply) eventObject;
+        WallReply wallReplyUpdate = (WallReply) object;
         assertEquals(4, wallReplyUpdate.getId());
         assertEquals(111, wallReplyUpdate.getFromId());
         assertEquals(3, wallReplyUpdate.getPostId());

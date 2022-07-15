@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.photos;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer">https://vk.com/dev/photos.getOwnerCoverPhotoUploadServer</a>
  */
-public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoUploadServer.Response> {
+public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoUploadServer.ResponseBody> {
     public GetOwnerCoverPhotoUploadServer(String accessToken) {
         super(accessToken);
     }
@@ -22,8 +22,8 @@ public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoU
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetOwnerCoverPhotoUploadServer setGroupId(int groupId) {
@@ -54,11 +54,11 @@ public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoU
     /**
      * Response to <b>photos.getOwnerCoverPhotoUploadServer</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Photo upload URL.
              */
@@ -75,7 +75,7 @@ public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoU
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "uploadUrl='" + uploadUrl + '\'' +
                         '}';
             }

@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.ExtendedVkList;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getConversationMembers">https://vk.com/dev/messages.getConversationMembers</a>
  */
-public class GetConversationMembers extends VkMethod<GetConversationMembers.Response> {
+public class GetConversationMembers extends VkMethod<GetConversationMembers.ResponseBody> {
     public GetConversationMembers(String accessToken) {
         super(accessToken);
     }
@@ -27,8 +27,8 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
 
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetConversationMembers setPeerId(int peerId) {
@@ -55,7 +55,7 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
     /**
      * Response to <b>messages.getConversationMembers</b> request.
      */
-    public static class Response extends GenericResponse<ExtendedVkList<Response.Item>> {
+    public static class ResponseBody extends GenericResponseBody<ExtendedVkList<ResponseBody.Item>> {
         /**
          * Response item.
          */

@@ -1,14 +1,14 @@
 package api.longpoll.bots.methods.impl.wall;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>wall.openComments</b> method.
  *
  * @see <a href="https://vk.com/dev/wall.openComments">https://vk.com/dev/wall.openComments</a>
  */
-public class OpenComments extends VkMethod<IntegerResponse> {
+public class OpenComments extends VkMethod<IntegerResponseBody> {
     public OpenComments(String accessToken) {
         super(accessToken);
     }
@@ -19,8 +19,8 @@ public class OpenComments extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public OpenComments setOwnerId(int ownerId) {

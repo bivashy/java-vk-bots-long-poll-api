@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.likes;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>like_add</b> event objects.
  */
-public class Like implements EventObject {
+public class Like implements Update.Object {
     /**
      * User ID.
      */

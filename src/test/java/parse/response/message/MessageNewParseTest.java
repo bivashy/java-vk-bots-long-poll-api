@@ -1,8 +1,6 @@
 package parse.response.message;
 
-import api.longpoll.bots.model.events.VkEvent;
-import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.events.EventType;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.events.messages.MessageNew;
 import api.longpoll.bots.model.objects.additional.ClientInfo;
 import api.longpoll.bots.model.objects.additional.Geo;
@@ -11,7 +9,14 @@ import api.longpoll.bots.model.objects.additional.PhotoSize;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import api.longpoll.bots.model.objects.basic.WallPost;
-import api.longpoll.bots.model.objects.media.*;
+import api.longpoll.bots.model.objects.media.Attachment;
+import api.longpoll.bots.model.objects.media.Audio;
+import api.longpoll.bots.model.objects.media.AudioMessage;
+import api.longpoll.bots.model.objects.media.Doc;
+import api.longpoll.bots.model.objects.media.Graffiti;
+import api.longpoll.bots.model.objects.media.Photo;
+import api.longpoll.bots.model.objects.media.Sticker;
+import api.longpoll.bots.model.objects.media.Video;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -20,23 +25,26 @@ import parse.response.ParseUtil;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MessageNewParseTest {
     @Test
     void messageNewText() {
-        VkEvent event = ParseUtil.getFirstEvent("json/response/message_new/message_new_text_sample_5_110.json");
-        assertEquals(EventType.MESSAGE_NEW, event.getType());
+        Update event = ParseUtil.getFirstEvent("json/response/message_new/message_new_text_sample_5_110.json");
+        assertEquals(Update.Type.MESSAGE_NEW, event.getType());
         assertEquals(333, event.getGroupId());
         assertEquals("aaa", event.getEventId());
 
-        EventObject eventObject = event.getObject();
-        assertNotNull(eventObject);
+        Update.Object object = event.getObject();
+        assertNotNull(object);
 
-        assertTrue(eventObject instanceof MessageNew);
-        MessageNew messageUpdate = (MessageNew) eventObject;
+        assertTrue(object instanceof MessageNew);
+        MessageNew messageUpdate = (MessageNew) object;
         assertNotNull(messageUpdate);
 
         Message message = messageUpdate.getMessage();
@@ -98,12 +106,10 @@ public class MessageNewParseTest {
     @Test
     void messageNewPhoto() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_photo_sample_5_110.json");
-        assertEquals(AttachmentType.PHOTO, attachment.getType());
+        assertEquals(Attachment.Type.PHOTO, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof Photo);
-        Photo photo = (Photo) attachmentObject;
+        Photo photo = attachment.getPhoto();
+        assertNotNull(photo);
         assertEquals(-3, photo.getAlbumId());
         assertEquals(1593095192, photo.getDate());
         assertEquals(333, photo.getId());
@@ -124,13 +130,10 @@ public class MessageNewParseTest {
     @Test
     void messageNewVideo() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_video_sample_5_110.json");
-        assertEquals(AttachmentType.VIDEO, attachment.getType());
+        assertEquals(Attachment.Type.VIDEO, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof Video);
-
-        Video video = (Video) attachmentObject;
+        Video video = attachment.getVideo();
+        assertNotNull(video);
         assertEquals("aaa", video.getAccessKey());
         assertTrue(video.getCanAdd());
         assertEquals(0, video.getCommentsAmount());
@@ -161,13 +164,10 @@ public class MessageNewParseTest {
     @Test
     void messageNewAudio() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_audio_sample_5_110.json");
-        assertEquals(AttachmentType.AUDIO, attachment.getType());
+        assertEquals(Attachment.Type.AUDIO, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof Audio);
-
-        Audio audio = (Audio) attachmentObject;
+        Audio audio = attachment.getAudio();
+        assertNotNull(audio);
         assertEquals("Linkin Park", audio.getArtist());
         assertEquals(333, audio.getId());
         assertEquals(444, audio.getOwnerId());
@@ -179,30 +179,25 @@ public class MessageNewParseTest {
     @Test
     void messageNewDocPhoto() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_doc_photo_sample_5_110.json");
-        assertEquals(AttachmentType.DOCUMENT, attachment.getType());
+        assertEquals(Attachment.Type.DOC, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof Doc);
-
-        Doc doc = (Doc) attachmentObject;
+        Doc doc = attachment.getDoc();
+        assertNotNull(doc);
         assertEquals(333, doc.getId());
         assertEquals(444, doc.getOwnerId());
         assertEquals("x_fc4.png", doc.getTitle());
         assertEquals(756010, doc.getSize());
         assertEquals("png", doc.getExt());
         assertEquals(1593165675, doc.getDate());
-        assertEquals(DocType.IMAGES, doc.getType());
+        assertEquals(Doc.Type.IMAGES, doc.getType());
 
-        Map<DocPreviewType, Doc.Preview> preview = doc.getPreview();
+        Doc.Preview preview = doc.getPreview();
         assertNotNull(preview);
-        assertTrue(preview.containsKey(DocPreviewType.PHOTO));
 
-        Doc.Preview photoPreview = preview.get(DocPreviewType.PHOTO);
-        assertNotNull(photoPreview);
-        assertTrue(photoPreview instanceof Doc.Photo);
+        Doc.Preview.Photo photo = preview.getPhoto();
+        assertNotNull(photo);
 
-        List<PhotoSize> sizes = ((Doc.Photo) photoPreview).getSizes();
+        List<PhotoSize> sizes = photo.getSizes();
         assertNotNull(sizes);
         assertFalse(sizes.isEmpty());
 
@@ -216,13 +211,10 @@ public class MessageNewParseTest {
     @Test
     void messageNewAudioMessage() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_audio_message_sample_5_110.json");
-        assertEquals(AttachmentType.AUDIO_MESSAGE, attachment.getType());
+        assertEquals(Attachment.Type.AUDIO_MESSAGE, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof AudioMessage);
-
-        AudioMessage audioMessage = (AudioMessage) attachmentObject;
+        AudioMessage audioMessage = attachment.getAudioMessage();
+        assertNotNull(audioMessage);
         assertEquals(333, audioMessage.getId());
         assertEquals(444, audioMessage.getOwnerId());
         assertEquals(2, audioMessage.getDuration());
@@ -241,13 +233,10 @@ public class MessageNewParseTest {
     @Test
     void messageNewGraffiti() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_graffiti_sample_5_110.json");
-        assertEquals(AttachmentType.GRAFFITI, attachment.getType());
+        assertEquals(Attachment.Type.GRAFFITI, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof Graffiti);
-
-        Graffiti graffiti = (Graffiti) attachmentObject;
+        Graffiti graffiti = attachment.getGraffiti();
+        assertNotNull(graffiti);
         assertEquals(333, graffiti.getId());
         assertEquals(444, graffiti.getOwnerId());
         assertEquals(720, graffiti.getWidth());
@@ -270,13 +259,10 @@ public class MessageNewParseTest {
     @Test
     void messageNewSticker() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_sticker_sample_5_110.json");
-        assertEquals(AttachmentType.STICKER, attachment.getType());
+        assertEquals(Attachment.Type.STICKER, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof Sticker);
-
-        Sticker sticker = (Sticker) attachmentObject;
+        Sticker sticker = attachment.getSticker();
+        assertNotNull(sticker);
         assertEquals(279, sticker.getProductId());
         assertEquals(9012, sticker.getStickerId());
 
@@ -308,13 +294,10 @@ public class MessageNewParseTest {
     @Test
     void messageNewWall() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_wall_sample_5_110.json");
-        assertEquals(AttachmentType.WALL_POST, attachment.getType());
+        assertEquals(Attachment.Type.WALL_POST, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof WallPost);
-
-        WallPost wallPost = (WallPost) attachmentObject;
+        WallPost wallPost = attachment.getWall();
+        assertNotNull(wallPost);
         assertEquals(333, wallPost.getId());
         assertEquals(-444, wallPost.getFromId());
         assertEquals(1594228961, wallPost.getDate());
@@ -330,11 +313,9 @@ public class MessageNewParseTest {
 
         Attachment wallAttachment = wallAttachments.get(0);
         assertNotNull(wallAttachment);
-        assertEquals(AttachmentType.PHOTO, wallAttachment.getType());
+        assertEquals(Attachment.Type.PHOTO, wallAttachment.getType());
 
-        AttachmentObject wallAttachmentObject = wallAttachment.getAttachmentObject();
-        assertNotNull(wallAttachmentObject);
-        assertTrue(wallAttachmentObject instanceof Photo);
+        assertNotNull(wallAttachment.getPhoto());
 
         WallPost.Comments comments = wallPost.getComments();
         assertNotNull(comments);
@@ -356,13 +337,10 @@ public class MessageNewParseTest {
     @Test
     void messageNewWallReply() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_wall_reply_sample_5_110.json");
-        assertEquals(AttachmentType.WALL_REPLY, attachment.getType());
+        assertEquals(Attachment.Type.WALL_REPLY, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof WallComment);
-
-        WallComment wallReply = (WallComment) attachmentObject;
+        WallComment wallReply = attachment.getWallReply();
+        assertNotNull(wallReply);
         assertEquals(333, wallReply.getId());
         assertEquals(444, wallReply.getFromId());
         assertEquals(555, wallReply.getPostId());
@@ -392,20 +370,17 @@ public class MessageNewParseTest {
     @Test
     void messageNewDocNoPreview() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_doc_no_preview_sample_5_118.json");
-        assertEquals(AttachmentType.DOCUMENT, attachment.getType());
+        assertEquals(Attachment.Type.DOC, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof Doc);
-
-        Doc doc = (Doc) attachmentObject;
+        Doc doc = attachment.getDoc();
+        assertNotNull(doc);
         assertEquals(456, doc.getId());
         assertEquals(789, doc.getOwnerId());
         assertEquals("canvas.rar", doc.getTitle());
         assertEquals(2325, doc.getSize());
         assertEquals("rar", doc.getExt());
         assertEquals(1559985418, doc.getDate());
-        assertEquals(DocType.ARCHIVES, doc.getType());
+        assertEquals(Doc.Type.ARCHIVES, doc.getType());
         assertEquals("https://vk.com/doc1234", doc.getUrl());
         assertEquals("5678", doc.getAccessKey());
         assertNull(doc.getPreview());
@@ -426,20 +401,17 @@ public class MessageNewParseTest {
         List<Attachment> attachments = fwdMessage.getAttachments();
         Attachment attachment = attachments.get(0);
         assertNotNull(attachment);
-        assertEquals(AttachmentType.DOCUMENT, attachment.getType());
+        assertEquals(Attachment.Type.DOC, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof Doc);
-
-        Doc doc = (Doc) attachmentObject;
+        Doc doc = attachment.getDoc();
+        assertNotNull(doc);
         assertEquals(592161514, doc.getId());
         assertEquals(1234, doc.getOwnerId());
         assertEquals("my_file.docx", doc.getTitle());
         assertEquals(11614, doc.getSize());
         assertEquals("docx", doc.getExt());
         assertEquals(1615559548, doc.getDate());
-        assertEquals(DocType.TEXT_DOCUMENT, doc.getType());
+        assertEquals(Doc.Type.TEXT_DOCUMENT, doc.getType());
         assertNotNull(doc.getUrl());
     }
 
@@ -454,13 +426,10 @@ public class MessageNewParseTest {
         List<Attachment> attachments = replyMessage.getAttachments();
         Attachment attachment = attachments.get(0);
         assertNotNull(attachment);
-        assertEquals(AttachmentType.PHOTO, attachment.getType());
+        assertEquals(Attachment.Type.PHOTO, attachment.getType());
 
-        AttachmentObject attachmentObject = attachment.getAttachmentObject();
-        assertNotNull(attachmentObject);
-        assertTrue(attachmentObject instanceof Photo);
-
-        Photo photo = (Photo) attachmentObject;
+        Photo photo = attachment.getPhoto();
+        assertNotNull(photo);
         assertEquals(432, photo.getId());
 
         List<PhotoSize> photoSizes = photo.getPhotoSizes();

@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/stories.getPhotoUploadServer">https://vk.com/dev/stories.getPhotoUploadServer</a>
  */
-public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response> {
+public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.ResponseBody> {
     public GetPhotoUploadServer(String accessToken) {
         super(accessToken);
     }
@@ -25,8 +25,8 @@ public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetPhotoUploadServer setAddToNews(boolean addToNews) {
@@ -69,11 +69,11 @@ public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response
     /**
      * Response to <b>stories.getPhotoUploadServer</b> and <b>stories.getVideoUploadServer</b>
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Upload URL.
              */
@@ -104,7 +104,7 @@ public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "uploadUrl=" + uploadUrl +
                         ", userIds=" + userIds +
                         '}';

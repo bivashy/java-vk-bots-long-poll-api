@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.utils;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/utils.checkLink">https://vk.com/dev/utils.checkLink</a>
  */
-public class CheckLink extends VkMethod<CheckLink.Response> {
+public class CheckLink extends VkMethod<CheckLink.ResponseBody> {
     public CheckLink(String accessToken) {
         super(accessToken);
     }
@@ -26,8 +26,8 @@ public class CheckLink extends VkMethod<CheckLink.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     @Override
@@ -38,11 +38,11 @@ public class CheckLink extends VkMethod<CheckLink.Response> {
     /**
      * Response to <b>utils.checkLink</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Status.
              */
@@ -73,7 +73,7 @@ public class CheckLink extends VkMethod<CheckLink.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "status='" + status + '\'' +
                         ", link='" + link + '\'' +
                         '}';

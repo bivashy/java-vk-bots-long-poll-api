@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>groups.enableOnline</b> method.
@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/groups.enableOnline">https://vk.com/dev/groups.enableOnline</a>
  */
-public class EnableOnline extends VkMethod<IntegerResponse> {
+public class EnableOnline extends VkMethod<IntegerResponseBody> {
     public EnableOnline(String accessToken) {
         super(accessToken);
     }
@@ -21,8 +21,8 @@ public class EnableOnline extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public EnableOnline setGroupId(int groupId) {

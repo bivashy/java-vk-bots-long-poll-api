@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.messages;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>message_allow</b> event object.
  */
-public class MessageAllow implements EventObject {
+public class MessageAllow implements Update.Object {
     /**
      * User ID.
      */

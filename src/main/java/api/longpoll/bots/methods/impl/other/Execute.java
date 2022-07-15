@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.other;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.JsonElement;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gson.JsonElement;
  *
  * @see <a href="https://vk.com/dev/execute">https://vk.com/dev/execute</a>
  */
-public class Execute extends VkMethod<Execute.Response> {
+public class Execute extends VkMethod<Execute.ResponseBody> {
     public Execute(String accessToken) {
         super(accessToken);
     }
@@ -22,8 +22,8 @@ public class Execute extends VkMethod<Execute.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public Execute setCode(String code) {
@@ -42,6 +42,6 @@ public class Execute extends VkMethod<Execute.Response> {
     /**
      * Response to <b>execute</b> request.
      */
-    public static class Response extends GenericResponse<JsonElement> {
+    public static class ResponseBody extends GenericResponseBody<JsonElement> {
     }
 }

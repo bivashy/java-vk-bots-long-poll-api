@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>stories.hideAllReplies</b> method.
@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/stories.hideAllReplies">https://vk.com/dev/stories.hideAllReplies</a>
  */
-public class HideAllReplies extends VkMethod<IntegerResponse> {
+public class HideAllReplies extends VkMethod<IntegerResponseBody> {
     public HideAllReplies(String accessToken) {
         super(accessToken);
     }
@@ -21,8 +21,8 @@ public class HideAllReplies extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public HideAllReplies setOwnerId(int ownerId) {

@@ -1,13 +1,14 @@
 package api.longpoll.bots.model.objects.media;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes audio objects.
  */
-public class Audio implements AttachmentObject {
+public class Audio implements Update.Object {
     /**
      * Audio ID.
      */

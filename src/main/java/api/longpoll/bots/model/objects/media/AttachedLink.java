@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/objects/link">Attached Link</a>
  */
-public class AttachedLink implements AttachmentObject {
+public class AttachedLink {
     /**
      * Link URL.
      */

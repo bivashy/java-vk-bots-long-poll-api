@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getConversations">https://vk.com/dev/messages.getConversations</a>
  */
-public class GetConversations extends VkMethod<GetConversations.Response> {
+public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
     public GetConversations(String accessToken) {
         super(accessToken);
     }
@@ -23,8 +23,8 @@ public class GetConversations extends VkMethod<GetConversations.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetConversations setOffset(int offset) {
@@ -67,6 +67,6 @@ public class GetConversations extends VkMethod<GetConversations.Response> {
     /**
      * Response to <b>messages.getConversations</b> request.
      */
-    public static class Response extends GetConversationsById.Response {
+    public static class ResponseBody extends GetConversationsById.ResponseBody {
     }
 }

@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/groups.addAddress">https://vk.com/dev/groups.addAddress</a>
  */
-public class AddAddress extends VkMethod<AddAddress.Response> {
+public class AddAddress extends VkMethod<AddAddress.ResponseBody> {
 
     public AddAddress(String accessToken) {
         super(accessToken);
@@ -22,8 +22,8 @@ public class AddAddress extends VkMethod<AddAddress.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public AddAddress setGroupId(int groupId) {
@@ -86,11 +86,11 @@ public class AddAddress extends VkMethod<AddAddress.Response> {
     /**
      * Response to <b>groups.addAddress</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Address ID.
              */
@@ -275,7 +275,7 @@ public class AddAddress extends VkMethod<AddAddress.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "id=" + id +
                         ", title='" + title + '\'' +
                         ", address='" + address + '\'' +

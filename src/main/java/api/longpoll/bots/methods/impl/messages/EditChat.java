@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>messages.editChat</b> method.
@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/messages.editChat">https://vk.com/dev/messages.editChat</a>
  */
-public class EditChat extends VkMethod<IntegerResponse> {
+public class EditChat extends VkMethod<IntegerResponseBody> {
     public EditChat(String accessToken) {
         super(accessToken);
     }
@@ -21,8 +21,8 @@ public class EditChat extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public EditChat setChatId(int chatId) {

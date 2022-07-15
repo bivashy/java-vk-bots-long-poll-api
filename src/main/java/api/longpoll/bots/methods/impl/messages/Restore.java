@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>messages.restore</b> method.
@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/messages.restore">https://vk.com/dev/messages.restore</a>
  */
-public class Restore extends VkMethod<IntegerResponse> {
+public class Restore extends VkMethod<IntegerResponseBody> {
     public Restore(String accessToken) {
         super(accessToken);
     }
@@ -21,8 +21,8 @@ public class Restore extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public Restore setMessageId(int messageId) {

@@ -1,10 +1,8 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.adapters.deserializers.AttachmentDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.Attachment;
-import api.longpoll.bots.model.response.GenericResponse;
-import com.google.gson.annotations.JsonAdapter;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -17,7 +15,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getHistoryAttachments">https://vk.com/dev/messages.getHistoryAttachments</a>
  */
-public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Response> {
+public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.ResponseBody> {
     public GetHistoryAttachments(String accessToken) {
         super(accessToken);
     }
@@ -28,8 +26,8 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetHistoryAttachments setPeerId(int peerId) {
@@ -80,11 +78,11 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
     /**
      * Response to <b>messages.getHistoryAttachments</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * List of photo, video, audio or doc.
              */
@@ -115,7 +113,7 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "items=" + items +
                         ", nextFrom='" + nextFrom + '\'' +
                         '}';
@@ -135,7 +133,6 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
                  * Attachment.
                  */
                 @SerializedName("attachment")
-                @JsonAdapter(AttachmentDeserializer.class)
                 private Attachment attachment;
 
                 public Integer getMessageId() {

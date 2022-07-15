@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.users;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>user_unblock</b> event objects.
  */
-public class UserUnblock implements EventObject {
+public class UserUnblock implements Update.Object {
     /**
      * Administrator ID.
      */

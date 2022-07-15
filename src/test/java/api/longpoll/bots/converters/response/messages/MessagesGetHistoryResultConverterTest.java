@@ -4,7 +4,6 @@ import api.longpoll.bots.methods.impl.messages.GetHistory;
 import api.longpoll.bots.model.objects.additional.PhotoSize;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.media.Attachment;
-import api.longpoll.bots.model.objects.media.AttachmentType;
 import api.longpoll.bots.model.objects.media.Photo;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
@@ -22,10 +21,10 @@ class MessagesGetHistoryResultConverterTest {
 
     @Test
     void convert() {
-        GetHistory.Response result = GSON.fromJson(ParseUtil.readJson("json/response/messages_get_history/messages_get_history_sample_5_118.json"), GetHistory.Response.class);
+        GetHistory.ResponseBody result = GSON.fromJson(ParseUtil.readJson("json/response/messages_get_history/messages_get_history_sample_5_118.json"), GetHistory.ResponseBody.class);
         assertNotNull(result);
 
-        GetHistory.Response.ResponseObject response = result.getResponseObject();
+        GetHistory.ResponseBody.Response response = result.getResponse();
         assertNotNull(response);
         assertEquals(241, response.getCount());
 
@@ -44,9 +43,9 @@ class MessagesGetHistoryResultConverterTest {
 
         Attachment attachment = message.getAttachments().get(0);
         assertNotNull(attachment);
-        assertEquals(AttachmentType.PHOTO, attachment.getType());
+        assertEquals(Attachment.Type.PHOTO, attachment.getType());
 
-        Photo photo = (Photo) attachment.getAttachmentObject();
+        Photo photo = attachment.getPhoto();
         assertNotNull(photo);
         assertEquals(-3, photo.getAlbumId());
         assertEquals(1616867830, photo.getDate());

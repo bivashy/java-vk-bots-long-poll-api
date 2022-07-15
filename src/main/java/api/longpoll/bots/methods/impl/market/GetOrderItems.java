@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.market;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.MarketItem;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/market.getOrderItems">https://vk.com/dev/market.getOrderItems</a>
  */
-public class GetOrderItems extends VkMethod<GetOrderItems.Response> {
+public class GetOrderItems extends VkMethod<GetOrderItems.ResponseBody> {
     public GetOrderItems(String accessToken) {
         super(accessToken);
     }
@@ -23,8 +23,8 @@ public class GetOrderItems extends VkMethod<GetOrderItems.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetOrderItems setUserId(int userId) {
@@ -51,11 +51,11 @@ public class GetOrderItems extends VkMethod<GetOrderItems.Response> {
     /**
      * Response to <b>market.getOrderItems</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject extends MarketItem {
+        public static class Response extends MarketItem {
             /**
              * Product quantity.
              */
@@ -73,7 +73,7 @@ public class GetOrderItems extends VkMethod<GetOrderItems.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "quantity=" + quantity +
                         "} " + super.toString();
             }

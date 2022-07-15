@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/groups.getCallbackConfirmationCode">https://vk.com/dev/groups.getCallbackConfirmationCode</a>
  */
-public class GetCallbackConfirmationCode extends VkMethod<GetCallbackConfirmationCode.Response> {
+public class GetCallbackConfirmationCode extends VkMethod<GetCallbackConfirmationCode.ResponseBody> {
     public GetCallbackConfirmationCode(String accessToken) {
         super(accessToken);
     }
@@ -22,8 +22,8 @@ public class GetCallbackConfirmationCode extends VkMethod<GetCallbackConfirmatio
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetCallbackConfirmationCode setGroupId(int groupId) {
@@ -38,11 +38,11 @@ public class GetCallbackConfirmationCode extends VkMethod<GetCallbackConfirmatio
     /**
      * Response to <b>groups.getCallbackConfirmationCode</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Confirmation code.
              */
@@ -59,7 +59,7 @@ public class GetCallbackConfirmationCode extends VkMethod<GetCallbackConfirmatio
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "code='" + code + '\'' +
                         '}';
             }

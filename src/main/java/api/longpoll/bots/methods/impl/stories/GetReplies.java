@@ -3,7 +3,7 @@ package api.longpoll.bots.methods.impl.stories;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.StoriesFeedBlock;
 import api.longpoll.bots.model.response.ExtendedVkList;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/stories.getReplies">https://vk.com/dev/stories.getReplies</a>
  */
-public class GetReplies extends VkMethod<GetReplies.Response> {
+public class GetReplies extends VkMethod<GetReplies.ResponseBody> {
     public GetReplies(String accessToken) {
         super(accessToken);
     }
@@ -26,8 +26,8 @@ public class GetReplies extends VkMethod<GetReplies.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetReplies setOwnerId(int ownerId) {
@@ -62,6 +62,6 @@ public class GetReplies extends VkMethod<GetReplies.Response> {
     /**
      * Response to <b>stories.getReplies</b>
      */
-    public static class Response extends GenericResponse<ExtendedVkList<StoriesFeedBlock>> {
+    public static class ResponseBody extends GenericResponseBody<ExtendedVkList<StoriesFeedBlock>> {
     }
 }

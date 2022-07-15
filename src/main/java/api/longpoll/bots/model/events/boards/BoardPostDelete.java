@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.boards;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>board_post_delete</b> event objects.
  */
-public class BoardPostDelete implements EventObject {
+public class BoardPostDelete implements Update.Object {
     /**
      * Topic owner ID.
      */

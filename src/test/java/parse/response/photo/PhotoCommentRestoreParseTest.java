@@ -1,8 +1,6 @@
 package parse.response.photo;
 
-import api.longpoll.bots.model.events.VkEvent;
-import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.events.EventType;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.events.photos.PhotoComment;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import org.junit.jupiter.api.Test;
@@ -13,16 +11,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PhotoCommentRestoreParseTest {
     @Test
     void messageEdit() {
-        VkEvent event = ParseUtil.getFirstEvent("json/response/photo_comment_restore/photo_comment_restore_sample_5_110.json");
-        assertEquals(EventType.PHOTO_COMMENT_RESTORE, event.getType());
+        Update event = ParseUtil.getFirstEvent("json/response/photo_comment_restore/photo_comment_restore_sample_5_110.json");
+        assertEquals(Update.Type.PHOTO_COMMENT_RESTORE, event.getType());
         assertEquals(444, event.getGroupId());
         assertEquals("aaa", event.getEventId());
 
-        EventObject eventObject = event.getObject();
-        assertNotNull(eventObject);
-        assertTrue(eventObject instanceof PhotoComment);
+        Update.Object object = event.getObject();
+        assertNotNull(object);
+        assertTrue(object instanceof PhotoComment);
 
-        PhotoComment photoCommentUpdate = (PhotoComment) eventObject;
+        PhotoComment photoCommentUpdate = (PhotoComment) object;
         assertEquals(3, photoCommentUpdate.getId());
         assertEquals(111, photoCommentUpdate.getFromId());
         assertEquals(1594285508, photoCommentUpdate.getDate());

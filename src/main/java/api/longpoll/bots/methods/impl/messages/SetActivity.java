@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>messages.setActivity</b> method.
@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/messages.setActivity">https://vk.com/dev/messages.setActivity</a>
  */
-public class SetActivity extends VkMethod<IntegerResponse> {
+public class SetActivity extends VkMethod<IntegerResponseBody> {
     public SetActivity(String accessToken) {
         super(accessToken);
     }
@@ -21,8 +21,8 @@ public class SetActivity extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public SetActivity setUserId(int userId) {

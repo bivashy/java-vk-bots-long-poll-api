@@ -1,6 +1,7 @@
 package api.longpoll.bots.model.objects.media;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.objects.additional.Image;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/video">Video</a>
  */
-public class Video implements AttachmentObject {
+public class Video implements Update.Object {
     /**
      * Video ID.
      */

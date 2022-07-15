@@ -1,14 +1,14 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>groups.deleteAddress</b> method.
  *
  * @see <a href="https://vk.com/dev/groups.deleteAddress">https://vk.com/dev/groups.deleteAddress</a>
  */
-public class DeleteAddress extends VkMethod<IntegerResponse> {
+public class DeleteAddress extends VkMethod<IntegerResponseBody> {
     public DeleteAddress(String accessToken) {
         super(accessToken);
     }
@@ -19,8 +19,8 @@ public class DeleteAddress extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public DeleteAddress setGroupId(int groupId) {

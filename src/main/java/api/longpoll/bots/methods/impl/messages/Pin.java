@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.PinnedMessage;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 
 /**
  * Implements <b>messages.pin</b> method.
@@ -11,7 +11,7 @@ import api.longpoll.bots.model.response.GenericResponse;
  *
  * @see <a href="https://vk.com/dev/messages.pin">https://vk.com/dev/messages.pin</a>
  */
-public class Pin extends VkMethod<Pin.Response> {
+public class Pin extends VkMethod<Pin.ResponseBody> {
     public Pin(String accessToken) {
         super(accessToken);
     }
@@ -22,8 +22,8 @@ public class Pin extends VkMethod<Pin.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public Pin setPeerId(int peerId) {
@@ -42,6 +42,6 @@ public class Pin extends VkMethod<Pin.Response> {
     /**
      * Response to <b>messages.pin</b> request.
      */
-    public static class Response extends GenericResponse<PinnedMessage> {
+    public static class ResponseBody extends GenericResponseBody<PinnedMessage> {
     }
 }

@@ -1,5 +1,6 @@
 package api.longpoll.bots.model.objects.media;
 
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.objects.additional.Image;
 import com.google.gson.annotations.SerializedName;
 
@@ -10,7 +11,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/sticker">Sticker</a>
  */
-public class Sticker implements AttachmentObject {
+public class Sticker implements Update.Object {
     /**
      * Set ID.
      */

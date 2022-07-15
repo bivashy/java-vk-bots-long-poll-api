@@ -1,19 +1,17 @@
 package api.longpoll.bots.model.objects.media;
 
-import api.longpoll.bots.adapters.deserializers.DocPreviewDeserializer;
 import api.longpoll.bots.model.objects.additional.PhotoSize;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-import java.util.Map;
+import java.util.StringJoiner;
 
 /**
  * Describes document.
  *
  * @see <a href="https://vk.com/dev/objects/doc">Document</a>
  */
-public class Doc implements AttachmentObject {
+public class Doc {
     /**
      * Document ID.
      */
@@ -70,15 +68,13 @@ public class Doc implements AttachmentObject {
      * </ol>
      */
     @SerializedName("type")
-    private DocType type;
+    private Type type;
 
     /**
      * Document preview data.
      */
-    // TODO: 25.04.2021 change it
     @SerializedName("preview")
-    @JsonAdapter(DocPreviewDeserializer.class)
-    private Map<DocPreviewType, Preview> preview;
+    private Preview preview;
 
     /**
      * Document access key.
@@ -142,19 +138,19 @@ public class Doc implements AttachmentObject {
         this.date = date;
     }
 
-    public DocType getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(DocType type) {
+    public void setType(Type type) {
         this.type = type;
     }
 
-    public Map<DocPreviewType, Preview> getPreview() {
+    public Preview getPreview() {
         return preview;
     }
 
-    public void setPreview(Map<DocPreviewType, Preview> preview) {
+    public void setPreview(Preview preview) {
         this.preview = preview;
     }
 
@@ -183,229 +179,317 @@ public class Doc implements AttachmentObject {
     }
 
     /**
-     * Describes document preview data.
+     * Document preview data.
      */
-    public interface Preview {
-    }
-
-    /**
-     * Describes document photo preview data.
-     */
-    public static class Photo implements Preview {
+    public static class Preview {
         /**
-         * Array with the photo copies of different sizes.
+         * Preview image.
          */
-        @SerializedName("sizes")
-        private List<PhotoSize> sizes;
+        private Photo photo;
 
-        public List<PhotoSize> getSizes() {
-            return sizes;
+        /**
+         * Preview graffiti.
+         */
+        private Graffiti graffiti;
+
+        /**
+         * Preview audio message.
+         */
+        private AudioMessage audioMessage;
+
+        /**
+         * Preview video.
+         */
+        private Video video;
+
+        public Photo getPhoto() {
+            return photo;
         }
 
-        public void setSizes(List<PhotoSize> sizes) {
-            this.sizes = sizes;
+        public void setPhoto(Photo photo) {
+            this.photo = photo;
+        }
+
+        public Graffiti getGraffiti() {
+            return graffiti;
+        }
+
+        public void setGraffiti(Graffiti graffiti) {
+            this.graffiti = graffiti;
+        }
+
+        public AudioMessage getAudioMessage() {
+            return audioMessage;
+        }
+
+        public void setAudioMessage(AudioMessage audioMessage) {
+            this.audioMessage = audioMessage;
+        }
+
+        public Video getVideo() {
+            return video;
+        }
+
+        public void setVideo(Video video) {
+            this.video = video;
         }
 
         @Override
         public String toString() {
-            return "Photo{" +
-                    "sizes=" + sizes +
-                    '}';
+            StringJoiner stringJoiner = new StringJoiner(", ", Preview.class.getSimpleName() + "[", "]");
+
+            if (photo != null) {
+                stringJoiner.add("photo=" + photo);
+            }
+
+            if (graffiti != null) {
+                stringJoiner.add("graffiti=" + graffiti);
+            }
+
+            if (audioMessage != null) {
+                stringJoiner.add("audioMessage=" + audioMessage);
+            }
+
+            if (video != null) {
+                stringJoiner.add("video=" + video);
+            }
+
+            return stringJoiner.toString();
+        }
+
+        /**
+         * Describes document photo preview data.
+         */
+        public static class Photo {
+            /**
+             * Array with the photo copies of different sizes.
+             */
+            @SerializedName("sizes")
+            private List<PhotoSize> sizes;
+
+            public List<PhotoSize> getSizes() {
+                return sizes;
+            }
+
+            public void setSizes(List<PhotoSize> sizes) {
+                this.sizes = sizes;
+            }
+
+            @Override
+            public String toString() {
+                return "Photo{" +
+                        "sizes=" + sizes +
+                        '}';
+            }
+        }
+
+        /**
+         * Describes document graffiti preview data.
+         */
+        public static class Graffiti {
+            /**
+             * Doc URL with graffiti
+             */
+            @SerializedName("src")
+            private String src;
+
+            /**
+             * VideoImage width in pixels.
+             */
+            @SerializedName("width")
+            private Integer width;
+
+            /**
+             * VideoImage height in pixels.
+             */
+            @SerializedName("height")
+            private Integer height;
+
+            public String getSrc() {
+                return src;
+            }
+
+            public void setSrc(String src) {
+                this.src = src;
+            }
+
+            public Integer getWidth() {
+                return width;
+            }
+
+            public void setWidth(Integer width) {
+                this.width = width;
+            }
+
+            public Integer getHeight() {
+                return height;
+            }
+
+            public void setHeight(Integer height) {
+                this.height = height;
+            }
+
+            @Override
+            public String toString() {
+                return "Graffiti{" +
+                        "src='" + src + '\'' +
+                        ", width=" + width +
+                        ", height=" + height +
+                        '}';
+            }
+        }
+
+        /**
+         * Describes document audio message preview data.
+         */
+        public static class AudioMessage {
+            /**
+             * Audio message duration in seconds.
+             */
+            @SerializedName("duration")
+            private Integer duration;
+            /**
+             * List of integers to visualize the sound.
+             */
+            @SerializedName("waveform")
+            private List<Integer> waveform;
+            /**
+             * .ogg file URL.
+             */
+            @SerializedName("link_ogg")
+            private String linkOgg;
+            /**
+             * .mp3 file URL.
+             */
+            @SerializedName("link_mp3")
+            private String linkMp3;
+
+            public Integer getDuration() {
+                return duration;
+            }
+
+            public void setDuration(Integer duration) {
+                this.duration = duration;
+            }
+
+            public List<Integer> getWaveform() {
+                return waveform;
+            }
+
+            public void setWaveform(List<Integer> waveform) {
+                this.waveform = waveform;
+            }
+
+            public String getLinkOgg() {
+                return linkOgg;
+            }
+
+            public void setLinkOgg(String linkOgg) {
+                this.linkOgg = linkOgg;
+            }
+
+            public String getLinkMp3() {
+                return linkMp3;
+            }
+
+            public void setLinkMp3(String linkMp3) {
+                this.linkMp3 = linkMp3;
+            }
+
+            @Override
+            public String toString() {
+                return "AudioMessage{" +
+                        "duration=" + duration +
+                        ", waveform=" + waveform +
+                        ", linkOgg='" + linkOgg + '\'' +
+                        ", linkMp3='" + linkMp3 + '\'' +
+                        '}';
+            }
+        }
+
+        /**
+         * Describes document video preview data.
+         */
+        public static class Video {
+            /**
+             * Video link.
+             */
+            @SerializedName("src")
+            private String src;
+
+            /**
+             * Video width.
+             */
+            @SerializedName("width")
+            private Integer width;
+
+            /**
+             * Video height.
+             */
+            @SerializedName("height")
+            private Integer height;
+
+            /**
+             * Video size in bytes.
+             */
+            @SerializedName("file_size")
+            private Integer fileSize;
+
+            public String getSrc() {
+                return src;
+            }
+
+            public void setSrc(String src) {
+                this.src = src;
+            }
+
+            public Integer getWidth() {
+                return width;
+            }
+
+            public void setWidth(Integer width) {
+                this.width = width;
+            }
+
+            public Integer getHeight() {
+                return height;
+            }
+
+            public void setHeight(Integer height) {
+                this.height = height;
+            }
+
+            public Integer getFileSize() {
+                return fileSize;
+            }
+
+            public void setFileSize(Integer fileSize) {
+                this.fileSize = fileSize;
+            }
+
+            @Override
+            public String toString() {
+                return "Video{" +
+                        "src='" + src + '\'' +
+                        ", width=" + width +
+                        ", height=" + height +
+                        ", fileSize=" + fileSize +
+                        '}';
+            }
         }
     }
 
     /**
-     * Describes document graffiti preview data.
+     * Document type.
      */
-    public static class Graffiti implements Preview {
-        /**
-         * Doc URL with graffiti
-         */
-        @SerializedName("src")
-        private String src;
-
-        /**
-         * VideoImage width in pixels.
-         */
-        @SerializedName("width")
-        private Integer width;
-
-        /**
-         * VideoImage height in pixels.
-         */
-        @SerializedName("height")
-        private Integer height;
-
-        public String getSrc() {
-            return src;
-        }
-
-        public void setSrc(String src) {
-            this.src = src;
-        }
-
-        public Integer getWidth() {
-            return width;
-        }
-
-        public void setWidth(Integer width) {
-            this.width = width;
-        }
-
-        public Integer getHeight() {
-            return height;
-        }
-
-        public void setHeight(Integer height) {
-            this.height = height;
-        }
-
-        @Override
-        public String toString() {
-            return "Graffiti{" +
-                    "src='" + src + '\'' +
-                    ", width=" + width +
-                    ", height=" + height +
-                    '}';
-        }
-    }
-
-    /**
-     * Describes document audio message preview data.
-     */
-    public static class AudioMessage implements Preview {
-        /**
-         * Audio message duration in seconds.
-         */
-        @SerializedName("duration")
-        private Integer duration;
-        /**
-         * List of integers to visualize the sound.
-         */
-        @SerializedName("waveform")
-        private List<Integer> waveform;
-        /**
-         * .ogg file URL.
-         */
-        @SerializedName("link_ogg")
-        private String linkOgg;
-        /**
-         * .mp3 file URL.
-         */
-        @SerializedName("link_mp3")
-        private String linkMp3;
-
-        public Integer getDuration() {
-            return duration;
-        }
-
-        public void setDuration(Integer duration) {
-            this.duration = duration;
-        }
-
-        public List<Integer> getWaveform() {
-            return waveform;
-        }
-
-        public void setWaveform(List<Integer> waveform) {
-            this.waveform = waveform;
-        }
-
-        public String getLinkOgg() {
-            return linkOgg;
-        }
-
-        public void setLinkOgg(String linkOgg) {
-            this.linkOgg = linkOgg;
-        }
-
-        public String getLinkMp3() {
-            return linkMp3;
-        }
-
-        public void setLinkMp3(String linkMp3) {
-            this.linkMp3 = linkMp3;
-        }
-
-        @Override
-        public String toString() {
-            return "AudioMessage{" +
-                    "duration=" + duration +
-                    ", waveform=" + waveform +
-                    ", linkOgg='" + linkOgg + '\'' +
-                    ", linkMp3='" + linkMp3 + '\'' +
-                    '}';
-        }
-    }
-
-    /**
-     * Describes document video preview data.
-     */
-    public static class Video implements Preview {
-        /**
-         * Video link.
-         */
-        @SerializedName("src")
-        private String src;
-
-        /**
-         * Video width.
-         */
-        @SerializedName("width")
-        private Integer width;
-
-        /**
-         * Video height.
-         */
-        @SerializedName("height")
-        private Integer height;
-
-        /**
-         * Video size in bytes.
-         */
-        @SerializedName("file_size")
-        private Integer fileSize;
-
-        public String getSrc() {
-            return src;
-        }
-
-        public void setSrc(String src) {
-            this.src = src;
-        }
-
-        public Integer getWidth() {
-            return width;
-        }
-
-        public void setWidth(Integer width) {
-            this.width = width;
-        }
-
-        public Integer getHeight() {
-            return height;
-        }
-
-        public void setHeight(Integer height) {
-            this.height = height;
-        }
-
-        public Integer getFileSize() {
-            return fileSize;
-        }
-
-        public void setFileSize(Integer fileSize) {
-            this.fileSize = fileSize;
-        }
-
-        @Override
-        public String toString() {
-            return "Video{" +
-                    "src='" + src + '\'' +
-                    ", width=" + width +
-                    ", height=" + height +
-                    ", fileSize=" + fileSize +
-                    '}';
-        }
+    public enum Type {
+        @SerializedName("1") TEXT_DOCUMENT,
+        @SerializedName("2") ARCHIVES,
+        @SerializedName("3") GIF,
+        @SerializedName("4") IMAGES,
+        @SerializedName("5") AUDIO,
+        @SerializedName("6") VIDEO,
+        @SerializedName("7") E_BOOKS,
+        @SerializedName("8") UNKNOWN
     }
 }

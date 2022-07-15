@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes graffiti.
  */
-public class Graffiti implements AttachmentObject {
+public class Graffiti {
     /**
      * Graffiti ID.
      */

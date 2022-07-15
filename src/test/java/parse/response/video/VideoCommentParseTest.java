@@ -1,8 +1,6 @@
 package parse.response.video;
 
-import api.longpoll.bots.model.events.VkEvent;
-import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.events.EventType;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.events.video.VideoComment;
 import api.longpoll.bots.model.objects.basic.WallComment;
 import org.junit.jupiter.api.Test;
@@ -13,16 +11,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class VideoCommentParseTest {
     @Test
     void videoCommentEdit() {
-        VkEvent event = ParseUtil.getFirstEvent("json/response/video_comment_edit/video_comment_edit_sample_5_110.json");
-        assertEquals(EventType.VIDEO_COMMENT_EDIT, event.getType());
+        Update event = ParseUtil.getFirstEvent("json/response/video_comment_edit/video_comment_edit_sample_5_110.json");
+        assertEquals(Update.Type.VIDEO_COMMENT_EDIT, event.getType());
         assertEquals(555, event.getGroupId());
         assertEquals("aaa", event.getEventId());
 
-        EventObject eventObject = event.getObject();
-        assertNotNull(eventObject);
-        assertTrue(eventObject instanceof VideoComment);
+        Update.Object object = event.getObject();
+        assertNotNull(object);
+        assertTrue(object instanceof VideoComment);
 
-        VideoComment videoCommentUpdate = (VideoComment) eventObject;
+        VideoComment videoCommentUpdate = (VideoComment) object;
         assertEquals(1, videoCommentUpdate.getId());
         assertEquals(111, videoCommentUpdate.getFromId());
         assertEquals(222, videoCommentUpdate.getDate());

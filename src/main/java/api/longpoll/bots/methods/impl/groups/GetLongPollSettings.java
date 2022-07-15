@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/groups.getLongPollSettings">https://vk.com/dev/groups.getLongPollSettings</a>
  */
-public class GetLongPollSettings extends VkMethod<GetLongPollSettings.Response> {
+public class GetLongPollSettings extends VkMethod<GetLongPollSettings.ResponseBody> {
     public GetLongPollSettings(String accessToken) {
         super(accessToken);
     }
@@ -22,8 +22,8 @@ public class GetLongPollSettings extends VkMethod<GetLongPollSettings.Response> 
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetLongPollSettings setGroupId(Integer groupId) {
@@ -38,11 +38,11 @@ public class GetLongPollSettings extends VkMethod<GetLongPollSettings.Response> 
     /**
      * Response to <b>groups.getLongPollSettings</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject extends GetCallbackSettings.Response.ResponseObject {
+        public static class Response extends GetCallbackSettings.ResponseBody.Response {
             /**
              * <b>true</b> if Bots Long Poll API is enabled.
              */
@@ -59,7 +59,7 @@ public class GetLongPollSettings extends VkMethod<GetLongPollSettings.Response> 
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "enabled=" + enabled +
                         "} " + super.toString();
             }

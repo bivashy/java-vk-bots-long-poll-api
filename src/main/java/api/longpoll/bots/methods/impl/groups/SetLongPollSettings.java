@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>groups.setLongPollSettings</b> method.
@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/groups.setLongPollSettings">https://vk.com/dev/groups.setLongPollSettings</a>
  */
-public class SetLongPollSettings extends VkMethod<IntegerResponse> {
+public class SetLongPollSettings extends VkMethod<IntegerResponseBody> {
 
     public SetLongPollSettings(String accessToken) {
         super(accessToken);
@@ -22,8 +22,8 @@ public class SetLongPollSettings extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public SetLongPollSettings setGroupId(int groupId) {

@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Chat;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/messages.deleteChatPhoto">https://vk.com/dev/messages.deleteChatPhoto</a>
  */
-public class DeleteChatPhoto extends VkMethod<DeleteChatPhoto.Response> {
+public class DeleteChatPhoto extends VkMethod<DeleteChatPhoto.ResponseBody> {
     public DeleteChatPhoto(String accessToken) {
         super(accessToken);
     }
@@ -23,8 +23,8 @@ public class DeleteChatPhoto extends VkMethod<DeleteChatPhoto.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public DeleteChatPhoto setChatId(int chatId) {
@@ -43,11 +43,11 @@ public class DeleteChatPhoto extends VkMethod<DeleteChatPhoto.Response> {
     /**
      * Response to <b>messages.deleteChatPhoto</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * ID of the system message sent.
              */
@@ -78,7 +78,7 @@ public class DeleteChatPhoto extends VkMethod<DeleteChatPhoto.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "messageId=" + messageId +
                         ", chat=" + chat +
                         '}';

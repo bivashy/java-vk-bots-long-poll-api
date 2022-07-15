@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.wall.comments;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>wall_reply_delete</b> event objects.
  */
-public class WallReplyDelete implements EventObject {
+public class WallReplyDelete implements Update.Object {
     /**
      * Wall owner ID.
      */

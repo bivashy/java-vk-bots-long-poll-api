@@ -1,7 +1,7 @@
 package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/comment_board">Topic Comment</a>
  */
-public class TopicComment implements EventObject {
+public class TopicComment implements Update.Object {
     /**
      * Comment ID.
      */

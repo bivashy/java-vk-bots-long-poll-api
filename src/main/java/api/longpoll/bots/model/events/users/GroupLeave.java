@@ -1,14 +1,14 @@
 package api.longpoll.bots.model.events.users;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>group_leave</b> event objects.
  */
-public class GroupLeave implements EventObject {
+public class GroupLeave implements Update.Object {
     /**
      * User ID.
      */

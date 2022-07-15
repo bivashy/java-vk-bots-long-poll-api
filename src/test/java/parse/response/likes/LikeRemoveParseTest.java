@@ -1,8 +1,6 @@
 package parse.response.likes;
 
-import api.longpoll.bots.model.events.VkEvent;
-import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.events.EventType;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.events.likes.Like;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
@@ -14,20 +12,20 @@ import static org.junit.jupiter.api.Assertions.*;
 public class LikeRemoveParseTest {
     @Test
     void likeRemove() {
-        List<VkEvent> events = ParseUtil.getEvents("json/response/like_remove/like_remove_sample_5_110.json");
+        List<Update> events = ParseUtil.getEvents("json/response/like_remove/like_remove_sample_5_110.json");
         assertEquals(1, events.size());
 
-        VkEvent event = events.get(0);
+        Update event = events.get(0);
         assertNotNull(event);
-        assertEquals(EventType.LIKE_REMOVE, event.getType());
+        assertEquals(Update.Type.LIKE_REMOVE, event.getType());
         assertEquals(333, event.getGroupId());
         assertEquals("aaa", event.getEventId());
 
-        EventObject eventObject = event.getObject();
-        assertNotNull(eventObject);
+        Update.Object object = event.getObject();
+        assertNotNull(object);
 
-        assertTrue(eventObject instanceof Like);
-        Like audio = (Like) eventObject;
+        assertTrue(object instanceof Like);
+        Like audio = (Like) object;
         assertEquals(111, audio.getLikerId());
         assertEquals("post", audio.getObjectType());
         assertEquals(-222, audio.getObjectOwnerId());

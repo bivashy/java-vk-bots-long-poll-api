@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Community;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/groups.getById">https://vk.com/dev/groups.getById</a>
  */
-public class GetById extends VkMethod<GetById.Response> {
+public class GetById extends VkMethod<GetById.ResponseBody> {
     public GetById(String accessToken) {
         super(accessToken);
     }
@@ -25,8 +25,8 @@ public class GetById extends VkMethod<GetById.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetById setGroupIds(String... groupIds) {
@@ -57,6 +57,6 @@ public class GetById extends VkMethod<GetById.Response> {
     /**
      * Response to <b>groups.getById</b> request.
      */
-    public static class Response extends GenericResponse<List<Community>> {
+    public static class ResponseBody extends GenericResponseBody<List<Community>> {
     }
 }

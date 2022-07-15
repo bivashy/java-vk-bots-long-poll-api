@@ -12,13 +12,13 @@ public class GroupsGroupsGetLongPollServerResponseParseTest {
 
     @Test
     void getLongPollServerResponseSuccessParse() {
-        GetLongPollServer.Response response = gson.fromJson(ParseUtil.readJson("json/response/get_long_poll_server_response_sample_5_110.json"), GetLongPollServer.Response.class);
-        assertNotNull(response);
+        GetLongPollServer.ResponseBody vkResponse = gson.fromJson(ParseUtil.readJson("json/response/get_long_poll_server_response_sample_5_110.json"), GetLongPollServer.ResponseBody.class);
+        assertNotNull(vkResponse);
 
-        GetLongPollServer.Response.ResponseObject responseObject = response.getResponseObject();
-        assertNotNull(responseObject);
-        assertEquals("aaa", responseObject.getKey());
-        assertEquals("bbb", responseObject.getServer());
-        assertEquals(2587, responseObject.getTs());
+        GetLongPollServer.ResponseBody.Response response = vkResponse.getResponse();
+        assertNotNull(response);
+        assertEquals("aaa", response.getKey());
+        assertEquals("bbb", response.getServer());
+        assertEquals(2587, response.getTs());
     }
 }

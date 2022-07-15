@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/groups.getTokenPermissions">https://vk.com/dev/groups.getTokenPermissions</a>
  */
-public class GetTokenPermissions extends VkMethod<GetTokenPermissions.Response> {
+public class GetTokenPermissions extends VkMethod<GetTokenPermissions.ResponseBody> {
     public GetTokenPermissions(String accessToken) {
         super(accessToken);
     }
@@ -24,8 +24,8 @@ public class GetTokenPermissions extends VkMethod<GetTokenPermissions.Response> 
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     @Override
@@ -36,11 +36,11 @@ public class GetTokenPermissions extends VkMethod<GetTokenPermissions.Response> 
     /**
      * Response to <b>groups.getTokenPermissions</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * <i>access_token</i> permissions bit mask.
              */
@@ -71,7 +71,7 @@ public class GetTokenPermissions extends VkMethod<GetTokenPermissions.Response> 
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "mask=" + mask +
                         ", settings=" + settings +
                         '}';

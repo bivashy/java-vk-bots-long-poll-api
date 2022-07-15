@@ -1,8 +1,7 @@
 package parse.response;
 
 import api.longpoll.bots.methods.impl.events.GetUpdates;
-import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.events.VkEvent;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.events.messages.MessageNew;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.media.Attachment;
@@ -45,22 +44,22 @@ public class ParseUtil {
         return notNull(GSON.fromJson(readJson(relativePath), GetUpdates.Response.class));
     }
 
-    public static List<VkEvent> getEvents(String relativePath) {
+    public static List<Update> getEvents(String relativePath) {
         return notNull(getEventsResult(relativePath).getEvents());
     }
 
-    public static VkEvent getFirstEvent(String relativePath) {
+    public static Update getFirstEvent(String relativePath) {
         return getFirst(getEvents(relativePath));
     }
 
-    public static EventObject getFirstEventObject(String relativePath) {
+    public static Update.Object getFirstEventObject(String relativePath) {
         return notNull(getFirstEvent(relativePath).getObject());
     }
 
     public static MessageNew getFirstMessageNewEvent(String relativePath) {
-        EventObject eventObject = getFirstEventObject(relativePath);
-        assertTrue(eventObject instanceof MessageNew);
-        return (MessageNew) eventObject;
+        Update.Object object = getFirstEventObject(relativePath);
+        assertTrue(object instanceof MessageNew);
+        return (MessageNew) object;
     }
 
     public static Message getFirstMessage(String relativePath) {

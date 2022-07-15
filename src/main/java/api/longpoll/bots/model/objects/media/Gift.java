@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/objects/gift">Gift</a>
  */
-public class Gift implements AttachmentObject {
+public class Gift {
     /**
      * Gift ID.
      */

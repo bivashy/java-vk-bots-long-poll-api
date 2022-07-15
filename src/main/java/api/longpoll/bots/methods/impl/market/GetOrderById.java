@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.market;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.MarketOrder;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 
 /**
  * Implements <b>market.getOrderById</b> method.
@@ -11,7 +11,7 @@ import api.longpoll.bots.model.response.GenericResponse;
  *
  * @see <a href="https://vk.com/dev/market.getOrderById">https://vk.com/dev/market.getOrderById</a>
  */
-public class GetOrderById extends VkMethod<GetOrderById.Response> {
+public class GetOrderById extends VkMethod<GetOrderById.ResponseBody> {
 
     public GetOrderById(String accessToken) {
         super(accessToken);
@@ -23,8 +23,8 @@ public class GetOrderById extends VkMethod<GetOrderById.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetOrderById setUserId(int userId) {
@@ -47,6 +47,6 @@ public class GetOrderById extends VkMethod<GetOrderById.Response> {
     /**
      * Response to <b>market.getOrderById</b> request.
      */
-    public static class Response extends GenericResponse<MarketOrder> {
+    public static class ResponseBody extends GenericResponseBody<MarketOrder> {
     }
 }

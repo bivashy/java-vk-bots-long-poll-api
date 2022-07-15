@@ -3,7 +3,7 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Conversation;
 import api.longpoll.bots.model.response.ExtendedVkList;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getConversationsById">https://vk.com/dev/messages.getConversationsById</a>
  */
-public class GetConversationsById extends VkMethod<GetConversationsById.Response> {
+public class GetConversationsById extends VkMethod<GetConversationsById.ResponseBody> {
     public GetConversationsById(String accessToken) {
         super(accessToken);
     }
@@ -26,8 +26,8 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetConversationsById setPeerIds(Integer... peerIds) {
@@ -62,6 +62,6 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     /**
      * Response to <b>messages.getConversationsById</b> request.
      */
-    public static class Response extends GenericResponse<ExtendedVkList<Conversation>> {
+    public static class ResponseBody extends GenericResponseBody<ExtendedVkList<Conversation>> {
     }
 }

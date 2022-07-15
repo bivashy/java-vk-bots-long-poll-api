@@ -1,6 +1,6 @@
 package parse.response.message;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.events.messages.MessageEvent;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MessageEventParseTest {
     @Test
     void messageEventPayload() {
-        EventObject eventObject = ParseUtil.getFirstEventObject("json/response/message_event/message_event_payload_sample_5_118.json");
-        assertTrue(eventObject instanceof MessageEvent);
+        Update.Object object = ParseUtil.getFirstEventObject("json/response/message_event/message_event_payload_sample_5_118.json");
+        assertTrue(object instanceof MessageEvent);
 
-        MessageEvent messageEvent = (MessageEvent) eventObject;
+        MessageEvent messageEvent = (MessageEvent) object;
         JsonElement element = messageEvent.getPayload();
         assertNotNull(element);
         assertTrue(element.isJsonObject());

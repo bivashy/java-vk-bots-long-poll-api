@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * @see <a href="https://vk.com/dev/messages.delete">https://vk.com/dev/messages.delete</a>
  */
-public class Delete extends VkMethod<Delete.Response> {
+public class Delete extends VkMethod<Delete.ResponseBody> {
     public Delete(String accessToken) {
         super(accessToken);
     }
@@ -25,8 +25,8 @@ public class Delete extends VkMethod<Delete.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public Delete setMessageIds(Integer... messageIds) {
@@ -69,6 +69,6 @@ public class Delete extends VkMethod<Delete.Response> {
     /**
      * Response to <b>messages.delete</b> request.
      */
-    public static class Response extends GenericResponse<Map<String, Integer>> {
+    public static class ResponseBody extends GenericResponseBody<Map<String, Integer>> {
     }
 }

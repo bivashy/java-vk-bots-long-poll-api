@@ -43,33 +43,18 @@ public abstract class LongPollBot extends VkBot {
      * @throws VkApiException if errors occur.
      */
     public void startPolling() throws VkApiException {
-        if (groupId == null) {
-            groupId = vk.groups.getById()
-                    .execute()
-                    .getResponseObject()
-                    .get(0)
-                    .getId();
-        }
-
-        if (getLongPollServer == null) {
-            getLongPollServer = new GetLongPollServer(getAccessToken());
-        }
-
-        resetGetUpdates();
+        initialize();
         while (polling) {
             try {
                 GetUpdates.Response updates = getUpdates.execute();
                 getUpdates.setTs(updates.getTs());
                 handle(updates.getEvents());
-            } catch (VkApiHttpException e) {
+            }  catch (VkApiHttpException | VkApiResponseException e) {
                 LOGGER.warn("Failed to get events from VK Long Poll Server.", e);
-                resetGetUpdates();
-            } catch (VkApiResponseException e) {
-                LOGGER.warn("Failed to get events from VK Long Poll Server.", e);
-                if (!e.getError().has("failed")) {
+                if (e instanceof VkApiResponseException && !((VkApiResponseException) e).getError().has("failed")) {
                     throw e;
                 }
-                resetGetUpdates();
+                initialize();
             }
         }
     }
@@ -82,24 +67,26 @@ public abstract class LongPollBot extends VkBot {
     }
 
     /**
-     * Initialises {@link LongPollBot#getUpdates} object.
+     * Initializes {@link LongPollBot}.
      *
      * @throws VkApiException if errors occur.
      */
-    private void resetGetUpdates() throws VkApiException {
-        GetLongPollServer.Response longPollServer = getLongPollServer();
-        getUpdates.setServer(longPollServer.getResponseObject().getServer())
-                .setKey(longPollServer.getResponseObject().getKey())
-                .setTs(longPollServer.getResponseObject().getTs());
-    }
+    private void initialize() throws VkApiException {
+        if (groupId == null) {
+            groupId = vk.other.execute()
+                    .setCode("return API.groups.getById()@.id[0];")
+                    .execute()
+                    .getResponse()
+                    .getAsInt();
+        }
 
-    /**
-     * Gets Long Poll server.
-     *
-     * @return Long Poll server.
-     * @throws VkApiException if errors occur.
-     */
-    private GetLongPollServer.Response getLongPollServer() throws VkApiException {
-        return getLongPollServer.setGroupId(groupId).execute();
+        if (getLongPollServer == null) {
+            getLongPollServer = new GetLongPollServer(getAccessToken());
+        }
+
+        GetLongPollServer.ResponseBody longPollServer = getLongPollServer.setGroupId(groupId).execute();
+        getUpdates.setServer(longPollServer.getResponse().getServer())
+                .setKey(longPollServer.getResponse().getKey())
+                .setTs(longPollServer.getResponse().getTs());
     }
 }

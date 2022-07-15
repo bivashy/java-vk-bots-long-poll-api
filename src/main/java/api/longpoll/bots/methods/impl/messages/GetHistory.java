@@ -5,7 +5,7 @@ import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Conversation;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.basic.User;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getHistory">https://vk.com/dev/messages.getHistory</a>
  */
-public class GetHistory extends VkMethod<GetHistory.Response> {
+public class GetHistory extends VkMethod<GetHistory.ResponseBody> {
     public GetHistory(String accessToken) {
         super(accessToken);
     }
@@ -29,8 +29,8 @@ public class GetHistory extends VkMethod<GetHistory.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetHistory setOffset(int offset) {
@@ -81,11 +81,11 @@ public class GetHistory extends VkMethod<GetHistory.Response> {
     /**
      * Response to <b>messages.getHistory</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject extends VkList<Message> {
+        public static class Response extends VkList<Message> {
             /**
              * Number of unread messages.
              */
@@ -130,7 +130,7 @@ public class GetHistory extends VkMethod<GetHistory.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "unread=" + unread +
                         ", conversations=" + conversations +
                         ", profiles=" + profiles +

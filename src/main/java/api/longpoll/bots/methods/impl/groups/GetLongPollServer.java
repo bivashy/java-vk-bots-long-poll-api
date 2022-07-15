@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,14 +11,14 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/groups.getLongPollServer">https://vk.com/dev/groups.getLongPollServer</a>
  */
-public class GetLongPollServer extends VkMethod<GetLongPollServer.Response> {
+public class GetLongPollServer extends VkMethod<GetLongPollServer.ResponseBody> {
     public GetLongPollServer(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     @Override
@@ -38,11 +38,11 @@ public class GetLongPollServer extends VkMethod<GetLongPollServer.Response> {
     /**
      * Response to <b>groups.getLongPollServer</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Key.
              */

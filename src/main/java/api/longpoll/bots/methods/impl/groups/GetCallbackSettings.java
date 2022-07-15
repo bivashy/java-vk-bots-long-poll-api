@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/groups.getCallbackSettings">https://vk.com/dev/groups.getCallbackSettings</a>
  */
-public class GetCallbackSettings extends VkMethod<GetCallbackSettings.Response> {
+public class GetCallbackSettings extends VkMethod<GetCallbackSettings.ResponseBody> {
     public GetCallbackSettings(String accessToken) {
         super(accessToken);
     }
@@ -24,8 +24,8 @@ public class GetCallbackSettings extends VkMethod<GetCallbackSettings.Response> 
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetCallbackSettings setGroupId(int groupId) {
@@ -44,11 +44,11 @@ public class GetCallbackSettings extends VkMethod<GetCallbackSettings.Response> 
     /**
      * Response to <b>groups.getCallbackSettings</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * API version.
              */

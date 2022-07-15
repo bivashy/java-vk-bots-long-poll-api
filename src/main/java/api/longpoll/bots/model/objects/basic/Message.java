@@ -1,7 +1,7 @@
 package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.adapters.deserializers.PayloadDeserializer;
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.objects.additional.Geo;
 import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.JsonElement;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/message">Private Message</a>
  */
-public class Message implements EventObject {
+public class Message implements Update.Object {
     /**
      * Message ID.
      */

@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/messages.isMessagesFromGroupAllowed">https://vk.com/dev/messages.isMessagesFromGroupAllowed</a>
  */
-public class IsMessagesFromGroupAllowed extends VkMethod<IsMessagesFromGroupAllowed.Response> {
+public class IsMessagesFromGroupAllowed extends VkMethod<IsMessagesFromGroupAllowed.ResponseBody> {
     public IsMessagesFromGroupAllowed(String accessToken) {
         super(accessToken);
     }
@@ -24,8 +24,8 @@ public class IsMessagesFromGroupAllowed extends VkMethod<IsMessagesFromGroupAllo
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public IsMessagesFromGroupAllowed setGroupId(int groupId) {
@@ -44,11 +44,11 @@ public class IsMessagesFromGroupAllowed extends VkMethod<IsMessagesFromGroupAllo
     /**
      * Response to <b>messages.isMessagesFromGroupAllowed</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             @SerializedName("is_allowed")
             @JsonAdapter(BoolIntDeserializer.class)
             private Boolean isAllowed;
@@ -64,7 +64,7 @@ public class IsMessagesFromGroupAllowed extends VkMethod<IsMessagesFromGroupAllo
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "isAllowed=" + isAllowed +
                         '}';
             }

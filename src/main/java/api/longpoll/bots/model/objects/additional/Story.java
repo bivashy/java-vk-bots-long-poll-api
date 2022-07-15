@@ -1,7 +1,6 @@
 package api.longpoll.bots.model.objects.additional;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
-import api.longpoll.bots.model.objects.media.AttachmentObject;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.objects.media.Video;
 import com.google.gson.annotations.JsonAdapter;
@@ -12,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/objects/story">Story</a>
  */
-public class Story implements AttachmentObject {
+public class Story {
     /**
      * Story ID.
      */

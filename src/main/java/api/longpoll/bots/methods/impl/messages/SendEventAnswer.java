@@ -2,14 +2,14 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.EventData;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Sends an event with an action that will occur when the callback button is clicked.
  *
  * @see <a href="https://vk.com/dev/messages.sendMessageEventAnswer">https://vk.com/dev/messages.sendMessageEventAnswer</a>
  */
-public class SendEventAnswer extends VkMethod<IntegerResponse> {
+public class SendEventAnswer extends VkMethod<IntegerResponseBody> {
     public SendEventAnswer(String accessToken) {
         super(accessToken);
     }
@@ -20,8 +20,8 @@ public class SendEventAnswer extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public SendEventAnswer setEventId(String eventId) {

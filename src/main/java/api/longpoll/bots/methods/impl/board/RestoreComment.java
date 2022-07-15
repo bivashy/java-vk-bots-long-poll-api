@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.board;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>board.deleteComment</b> method.
@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/board.deleteComment">https://vk.com/dev/board.deleteComment</a>
  */
-public class RestoreComment extends VkMethod<IntegerResponse> {
+public class RestoreComment extends VkMethod<IntegerResponseBody> {
     public RestoreComment(String accessToken) {
         super(accessToken);
     }
@@ -21,8 +21,8 @@ public class RestoreComment extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     /**

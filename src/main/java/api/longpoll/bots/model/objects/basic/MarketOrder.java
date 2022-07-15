@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.objects.basic;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.objects.additional.Price;
 import api.longpoll.bots.model.objects.media.MarketItem;
 import com.google.gson.annotations.SerializedName;
@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @see <a href="https://vk.com/dev/objects/market_order">Market Order</a>
  */
-public class MarketOrder implements EventObject {
+public class MarketOrder implements Update.Object {
     /**
      * Order ID.
      */

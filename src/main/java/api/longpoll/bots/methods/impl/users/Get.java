@@ -3,7 +3,7 @@ package api.longpoll.bots.methods.impl.users;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.NameCase;
 import api.longpoll.bots.model.objects.basic.User;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/users.get">https://vk.com/dev/users.get</a>
  */
-public class Get extends VkMethod<Get.Response> {
+public class Get extends VkMethod<Get.ResponseBody> {
     public Get(String accessToken) {
         super(accessToken);
     }
@@ -26,8 +26,8 @@ public class Get extends VkMethod<Get.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public Get setUserIds(String... userIds) {
@@ -58,6 +58,6 @@ public class Get extends VkMethod<Get.Response> {
     /**
      * Response to <b>users.get</b>
      */
-    public static class Response extends GenericResponse<List<User>> {
+    public static class ResponseBody extends GenericResponseBody<List<User>> {
     }
 }
