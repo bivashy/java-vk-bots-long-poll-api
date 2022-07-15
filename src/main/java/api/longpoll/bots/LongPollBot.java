@@ -73,11 +73,11 @@ public abstract class LongPollBot extends VkBot {
      */
     private void initialize() throws VkApiException {
         if (groupId == null) {
-            groupId = vk.groups.getById()
+            groupId = vk.other.execute()
+                    .setCode("return API.groups.getById()@.id[0];")
                     .execute()
                     .getResponseObject()
-                    .get(0)
-                    .getId();
+                    .getAsInt();
         }
 
         if (getLongPollServer == null) {
