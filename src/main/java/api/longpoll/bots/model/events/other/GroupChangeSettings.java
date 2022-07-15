@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.events.other;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Map;
@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Describes <b>group_change_settings</b> event objects.
  */
-public class GroupChangeSettings implements EventObject {
+public class GroupChangeSettings implements Update.Object {
     /**
      * ID of the user who made changes.
      */

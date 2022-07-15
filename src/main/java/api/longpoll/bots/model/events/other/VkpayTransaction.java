@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.other;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>vkpay_transaction</b> event objects.
  */
-public class VkpayTransaction implements EventObject {
+public class VkpayTransaction implements Update.Object {
     /**
      * User ID who initiated the transaction.
      */

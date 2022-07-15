@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.market;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>market_comment_delete</b> event objects.
  */
-public class MarketCommentDelete implements EventObject {
+public class MarketCommentDelete implements Update.Object {
     /**
      * Market owner ID.
      */

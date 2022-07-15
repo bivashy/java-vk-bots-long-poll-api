@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @see <a href="https://vk.com/dev/objects/doc">Document</a>
  */
-public class Doc implements AttachmentObject {
+public class Doc {
     /**
      * Document ID.
      */

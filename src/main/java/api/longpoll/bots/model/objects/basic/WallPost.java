@@ -1,8 +1,8 @@
 package api.longpoll.bots.model.objects.basic;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.objects.additional.Geo;
-import api.longpoll.bots.model.objects.media.AttachmentObject;
 import api.longpoll.bots.model.objects.media.Attachment;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/objects/post">Wall Post</a>
  */
-public class WallPost implements AttachmentObject {
+public class WallPost implements Update.Object {
     /**
      * Post ID on the wall.
      */

@@ -1,13 +1,13 @@
 package api.longpoll.bots.model.events.other;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.objects.media.Photo;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>group_change_photo</b> event objects.
  */
-public class GroupChangePhoto implements EventObject {
+public class GroupChangePhoto implements Update.Object {
     /**
      * ID of the user who made changes.
      */

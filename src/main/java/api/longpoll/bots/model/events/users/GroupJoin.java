@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.users;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>group_join</b> event objects.
  */
-public class GroupJoin implements EventObject {
+public class GroupJoin implements Update.Object {
     /**
      * User ID.
      */

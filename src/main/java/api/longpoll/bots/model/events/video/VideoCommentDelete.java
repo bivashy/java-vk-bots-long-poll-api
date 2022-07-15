@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.video;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>video_comment_delete</b> event objects.
  */
-public class VideoCommentDelete implements EventObject {
+public class VideoCommentDelete implements Update.Object {
     /**
      * Comment ID.
      */

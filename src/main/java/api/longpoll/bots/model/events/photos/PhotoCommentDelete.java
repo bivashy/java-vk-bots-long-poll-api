@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.photos;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>photo_comment_delete</b> event objects.
  */
-public class PhotoCommentDelete implements EventObject {
+public class PhotoCommentDelete implements Update.Object {
     /**
      * Photo owner ID.
      */

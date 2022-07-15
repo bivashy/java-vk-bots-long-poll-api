@@ -1,7 +1,7 @@
 package api.longpoll.bots.model.events.messages;
 
 import api.longpoll.bots.adapters.deserializers.PayloadDeserializer;
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Action with message. Used to work with Callback buttons.
  */
-public class MessageEvent implements EventObject {
+public class MessageEvent implements Update.Object {
     /**
      * User ID.
      */

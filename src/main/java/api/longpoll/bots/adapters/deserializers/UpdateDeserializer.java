@@ -1,7 +1,6 @@
 package api.longpoll.bots.adapters.deserializers;
 
-import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.VkEvent;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.events.boards.BoardPost;
 import api.longpoll.bots.model.events.boards.BoardPostDelete;
 import api.longpoll.bots.model.events.likes.Like;
@@ -41,28 +40,28 @@ import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 
 /**
- * Deserializes JSON objects to {@link VkEvent}.
+ * Deserializes JSON objects to {@link Update}.
  */
-public class EventDeserializer implements JsonDeserializer<VkEvent> {
+public class UpdateDeserializer implements JsonDeserializer<Update> {
     @Override
-    public final VkEvent deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public final Update deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject jsonEvent = jsonElement.getAsJsonObject();
 
-        VkEvent event = new VkEvent();
-        event.setType(jsonDeserializationContext.deserialize(
+        Update update = new Update();
+        update.setType(jsonDeserializationContext.deserialize(
                 jsonEvent.get("type"),
-                EventType.class
+                Update.Type.class
         ));
-        event.setGroupId(jsonEvent.get("group_id").getAsInt());
-        event.setEventId(jsonEvent.get("event_id").getAsString());
-        event.setObject(jsonDeserializationContext.deserialize(
+        update.setGroupId(jsonEvent.get("group_id").getAsInt());
+        update.setEventId(jsonEvent.get("event_id").getAsString());
+        update.setObject(jsonDeserializationContext.deserialize(
                 jsonEvent.get("object"),
-                getType(event.getType())
+                getObjectClass(update.getType())
         ));
-        return event;
+        return update;
     }
 
-    private Type getType(EventType type) {
+    private Class<? extends Update.Object> getObjectClass(Update.Type type) {
         switch (type) {
             case APP_PAYLOAD:
                 return AppPayload.class;
@@ -170,8 +169,10 @@ public class EventDeserializer implements JsonDeserializer<VkEvent> {
                 return WallPost.class;
 
             case VKPAY_TRANSACTION:
-            default:
                 return VkpayTransaction.class;
+
+            default:
+                throw new RuntimeException("Update type '" + type + "' is not handled.");
         }
     }
 }

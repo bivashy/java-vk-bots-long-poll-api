@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.other;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>app_payload</b> event objects.
  */
-public class AppPayload implements EventObject {
+public class AppPayload implements Update.Object {
     /**
      * User ID whose action in the application triggered the event.
      */

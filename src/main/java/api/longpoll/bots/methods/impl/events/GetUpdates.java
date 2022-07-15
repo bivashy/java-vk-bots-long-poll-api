@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.events;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.events.VkEvent;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -62,7 +62,7 @@ public class GetUpdates extends VkMethod<GetUpdates.Response> {
          * List of events.
          */
         @SerializedName("updates")
-        private List<VkEvent> events;
+        private List<Update> events;
 
         public Integer getTs() {
             return ts;
@@ -72,11 +72,11 @@ public class GetUpdates extends VkMethod<GetUpdates.Response> {
             this.ts = ts;
         }
 
-        public List<VkEvent> getEvents() {
+        public List<Update> getEvents() {
             return events;
         }
 
-        public void setEvents(List<VkEvent> events) {
+        public void setEvents(List<Update> events) {
             this.events = events;
         }
 

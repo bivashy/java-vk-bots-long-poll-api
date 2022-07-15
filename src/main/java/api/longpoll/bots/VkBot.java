@@ -1,8 +1,7 @@
 package api.longpoll.bots;
 
 import api.longpoll.bots.methods.VkBotsMethods;
-import api.longpoll.bots.model.events.EventType;
-import api.longpoll.bots.model.events.VkEvent;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.events.boards.BoardPost;
 import api.longpoll.bots.model.events.boards.BoardPostDelete;
 import api.longpoll.bots.model.events.likes.Like;
@@ -56,192 +55,192 @@ public abstract class VkBot {
     public abstract String getAccessToken();
 
     /**
-     * Handles list of VK events.
+     * Handles list of VK updates.
      *
-     * @param events list of VK events.
+     * @param updates list of VK updates.
      */
-    public void handle(List<VkEvent> events) {
-        events.forEach(event -> {
-            EventType eventType = event.getType();
-            switch (eventType) {
+    public void handle(List<Update> updates) {
+        updates.forEach(update -> {
+            Update.Type updateType = update.getType();
+            switch (updateType) {
                 case MESSAGE_NEW:
-                    onMessageNew((MessageNew) event.getObject());
+                    onMessageNew((MessageNew) update.getObject());
                     break;
 
                 case MESSAGE_REPLY:
-                    onMessageReply((Message) event.getObject());
+                    onMessageReply((Message) update.getObject());
                     break;
 
                 case MESSAGE_EDIT:
-                    onMessageEdit((Message) event.getObject());
+                    onMessageEdit((Message) update.getObject());
                     break;
 
                 case MESSAGE_EVENT:
-                    onMessageEvent((MessageEvent) event.getObject());
+                    onMessageEvent((MessageEvent) update.getObject());
                     break;
 
                 case PHOTO_NEW:
-                    onPhotoNew((Photo) event.getObject());
+                    onPhotoNew((Photo) update.getObject());
                     break;
 
                 case PHOTO_COMMENT_NEW:
-                    onPhotoCommentNew((PhotoComment) event.getObject());
+                    onPhotoCommentNew((PhotoComment) update.getObject());
                     break;
 
                 case PHOTO_COMMENT_EDIT:
-                    onPhotoCommentEdit((PhotoComment) event.getObject());
+                    onPhotoCommentEdit((PhotoComment) update.getObject());
                     break;
 
                 case PHOTO_COMMENT_DELETE:
-                    onPhotoCommentDelete((PhotoCommentDelete) event.getObject());
+                    onPhotoCommentDelete((PhotoCommentDelete) update.getObject());
                     break;
 
                 case PHOTO_COMMENT_RESTORE:
-                    onPhotoCommentRestore((PhotoComment) event.getObject());
+                    onPhotoCommentRestore((PhotoComment) update.getObject());
                     break;
 
                 case AUDIO_NEW:
-                    onAudioNew((Audio) event.getObject());
+                    onAudioNew((Audio) update.getObject());
                     break;
 
                 case VIDEO_NEW:
-                    onVideoNew((Video) event.getObject());
+                    onVideoNew((Video) update.getObject());
                     break;
 
                 case VIDEO_COMMENT_NEW:
-                    onVideoCommentNew((VideoComment) event.getObject());
+                    onVideoCommentNew((VideoComment) update.getObject());
                     break;
 
                 case VIDEO_COMMENT_EDIT:
-                    onVideoCommentEdit((VideoComment) event.getObject());
+                    onVideoCommentEdit((VideoComment) update.getObject());
                     break;
 
                 case VIDEO_COMMENT_DELETE:
-                    onVideoCommentDelete((VideoCommentDelete) event.getObject());
+                    onVideoCommentDelete((VideoCommentDelete) update.getObject());
                     break;
 
                 case VIDEO_COMMENT_RESTORE:
-                    onVideoCommentRestore((VideoComment) event.getObject());
+                    onVideoCommentRestore((VideoComment) update.getObject());
                     break;
 
                 case WALL_POST_NEW:
-                    onWallPostNew((WallPost) event.getObject());
+                    onWallPostNew((WallPost) update.getObject());
                     break;
 
                 case WALL_REPOST:
-                    onWallRepost((WallPost) event.getObject());
+                    onWallRepost((WallPost) update.getObject());
                     break;
 
                 case LIKE_ADD:
-                    onLikeAdd((Like) event.getObject());
+                    onLikeAdd((Like) update.getObject());
                     break;
 
                 case LIKE_REMOVE:
-                    onLikeRemove((Like) event.getObject());
+                    onLikeRemove((Like) update.getObject());
                     break;
 
                 case WALL_REPLY_NEW:
-                    onWallReplyNew((WallReply) event.getObject());
+                    onWallReplyNew((WallReply) update.getObject());
                     break;
 
                 case WALL_REPLY_EDIT:
-                    onWallReplyEdit((WallReply) event.getObject());
+                    onWallReplyEdit((WallReply) update.getObject());
                     break;
 
                 case WALL_REPLY_DELETE:
-                    onWallReplyDelete((WallReplyDelete) event.getObject());
+                    onWallReplyDelete((WallReplyDelete) update.getObject());
                     break;
 
                 case WALL_REPLY_RESTORE:
-                    onWallReplyRestore((WallReply) event.getObject());
+                    onWallReplyRestore((WallReply) update.getObject());
                     break;
 
                 case BOARD_POST_NEW:
-                    onBoardPostNew((BoardPost) event.getObject());
+                    onBoardPostNew((BoardPost) update.getObject());
                     break;
 
                 case BOARD_POST_EDIT:
-                    onBoardPostEdit((BoardPost) event.getObject());
+                    onBoardPostEdit((BoardPost) update.getObject());
                     break;
 
                 case BOARD_POST_DELETE:
-                    onBoardPostDelete((BoardPostDelete) event.getObject());
+                    onBoardPostDelete((BoardPostDelete) update.getObject());
                     break;
 
                 case BOARD_POST_RESTORE:
-                    onBoardPostRestore((BoardPost) event.getObject());
+                    onBoardPostRestore((BoardPost) update.getObject());
                     break;
 
                 case MARKET_COMMENT_NEW:
-                    onMarketCommentNew((MarketComment) event.getObject());
+                    onMarketCommentNew((MarketComment) update.getObject());
                     break;
 
                 case MARKET_COMMENT_EDIT:
-                    onMarketCommentEdit((MarketComment) event.getObject());
+                    onMarketCommentEdit((MarketComment) update.getObject());
                     break;
 
                 case MARKET_COMMENT_RESTORE:
-                    onMarketCommentRestore((MarketComment) event.getObject());
+                    onMarketCommentRestore((MarketComment) update.getObject());
                     break;
 
                 case MARKET_COMMENT_DELETE:
-                    onMarketCommentDelete((MarketCommentDelete) event.getObject());
+                    onMarketCommentDelete((MarketCommentDelete) update.getObject());
                     break;
 
                 case MARKET_ORDER_NEW:
-                    onMarketOrderNew((MarketOrder) event.getObject());
+                    onMarketOrderNew((MarketOrder) update.getObject());
                     break;
 
                 case MARKET_ORDER_EDIT:
-                    onMarketOrderEdit((MarketOrder) event.getObject());
+                    onMarketOrderEdit((MarketOrder) update.getObject());
                     break;
 
                 case GROUP_LEAVE:
-                    onGroupLeave((GroupLeave) event.getObject());
+                    onGroupLeave((GroupLeave) update.getObject());
                     break;
 
                 case GROUP_JOIN:
-                    onGroupJoin((GroupJoin) event.getObject());
+                    onGroupJoin((GroupJoin) update.getObject());
                     break;
 
                 case USER_BLOCK:
-                    onUserBlock((UserBlock) event.getObject());
+                    onUserBlock((UserBlock) update.getObject());
                     break;
 
                 case USER_UNBLOCK:
-                    onUserUnblock((UserUnblock) event.getObject());
+                    onUserUnblock((UserUnblock) update.getObject());
                     break;
 
                 case GROUP_CHANGE_SETTINGS:
-                    onGroupChangeSettings((GroupChangeSettings) event.getObject());
+                    onGroupChangeSettings((GroupChangeSettings) update.getObject());
                     break;
 
                 case GROUP_CHANGE_PHOTO:
-                    onGroupChangePhoto((GroupChangePhoto) event.getObject());
+                    onGroupChangePhoto((GroupChangePhoto) update.getObject());
                     break;
 
                 case VKPAY_TRANSACTION:
-                    onVkpayTransaction((VkpayTransaction) event.getObject());
+                    onVkpayTransaction((VkpayTransaction) update.getObject());
                     break;
 
                 case APP_PAYLOAD:
-                    onAppPayload((AppPayload) event.getObject());
+                    onAppPayload((AppPayload) update.getObject());
                     break;
 
                 case MESSAGE_TYPING_STATE:
-                    onMessageTypingState((MessageTypingState) event.getObject());
+                    onMessageTypingState((MessageTypingState) update.getObject());
                     break;
 
                 case MESSAGE_ALLOW:
-                    onMessageAllow((MessageAllow) event.getObject());
+                    onMessageAllow((MessageAllow) update.getObject());
                     break;
 
                 case MESSAGE_DENY:
-                    onMessageDeny((MessageDeny) event.getObject());
+                    onMessageDeny((MessageDeny) update.getObject());
                     break;
 
                 default:
-                    LOGGER.warn("No event handler found event type: {}", eventType);
+                    LOGGER.warn("No update handler found update updateType: {}", updateType);
                     break;
             }
         });

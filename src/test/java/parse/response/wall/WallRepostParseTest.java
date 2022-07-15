@@ -1,8 +1,6 @@
 package parse.response.wall;
 
-import api.longpoll.bots.model.events.VkEvent;
-import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.events.EventType;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.objects.basic.WallPost;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
@@ -14,16 +12,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class WallRepostParseTest {
     @Test
     void wallRepost() {
-        VkEvent event = ParseUtil.getFirstEvent("json/response/wall_repost/wall_repost_sample_5_110.json");
-        assertEquals(EventType.WALL_REPOST, event.getType());
+        Update event = ParseUtil.getFirstEvent("json/response/wall_repost/wall_repost_sample_5_110.json");
+        assertEquals(Update.Type.WALL_REPOST, event.getType());
         assertEquals(555, event.getGroupId());
         assertEquals("aaa", event.getEventId());
 
-        EventObject eventObject = event.getObject();
-        assertNotNull(eventObject);
-        assertTrue(eventObject instanceof WallPost);
+        Update.Object object = event.getObject();
+        assertNotNull(object);
+        assertTrue(object instanceof WallPost);
 
-        WallPost wallPost = (WallPost) eventObject;
+        WallPost wallPost = (WallPost) object;
         assertEquals(34, wallPost.getId());
         assertEquals(111, wallPost.getFromId());
         assertEquals(222, wallPost.getOwnerId());

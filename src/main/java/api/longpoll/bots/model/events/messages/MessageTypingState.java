@@ -1,12 +1,12 @@
 package api.longpoll.bots.model.events.messages;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Describes <b>message_typing_state</b> event object.
  */
-public class MessageTypingState implements EventObject {
+public class MessageTypingState implements Update.Object {
     /**
      * Typing status.
      */

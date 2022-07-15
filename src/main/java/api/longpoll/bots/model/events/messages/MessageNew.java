@@ -1,6 +1,6 @@
 package api.longpoll.bots.model.events.messages;
 
-import api.longpoll.bots.model.events.EventObject;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.objects.additional.ClientInfo;
 import api.longpoll.bots.model.objects.basic.Message;
 import com.google.gson.annotations.SerializedName;
@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Describes <b>message_new</b>, <b>message_reply</b> and <b>message_edit</b> event objects.
  */
-public class MessageNew implements EventObject {
+public class MessageNew implements Update.Object {
     /**
      * Message object.
      */

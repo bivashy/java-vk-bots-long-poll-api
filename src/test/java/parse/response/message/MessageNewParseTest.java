@@ -1,8 +1,6 @@
 package parse.response.message;
 
-import api.longpoll.bots.model.events.VkEvent;
-import api.longpoll.bots.model.events.EventObject;
-import api.longpoll.bots.model.events.EventType;
+import api.longpoll.bots.model.events.Update;
 import api.longpoll.bots.model.events.messages.MessageNew;
 import api.longpoll.bots.model.objects.additional.ClientInfo;
 import api.longpoll.bots.model.objects.additional.Geo;
@@ -27,16 +25,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MessageNewParseTest {
     @Test
     void messageNewText() {
-        VkEvent event = ParseUtil.getFirstEvent("json/response/message_new/message_new_text_sample_5_110.json");
-        assertEquals(EventType.MESSAGE_NEW, event.getType());
+        Update event = ParseUtil.getFirstEvent("json/response/message_new/message_new_text_sample_5_110.json");
+        assertEquals(Update.Type.MESSAGE_NEW, event.getType());
         assertEquals(333, event.getGroupId());
         assertEquals("aaa", event.getEventId());
 
-        EventObject eventObject = event.getObject();
-        assertNotNull(eventObject);
+        Update.Object object = event.getObject();
+        assertNotNull(object);
 
-        assertTrue(eventObject instanceof MessageNew);
-        MessageNew messageUpdate = (MessageNew) eventObject;
+        assertTrue(object instanceof MessageNew);
+        MessageNew messageUpdate = (MessageNew) object;
         assertNotNull(messageUpdate);
 
         Message message = messageUpdate.getMessage();
