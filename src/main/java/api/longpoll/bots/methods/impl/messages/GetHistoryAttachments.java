@@ -1,10 +1,8 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.adapters.deserializers.AttachmentDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.response.GenericResponse;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -135,7 +133,6 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
                  * Attachment.
                  */
                 @SerializedName("attachment")
-                @JsonAdapter(AttachmentDeserializer.class)
                 private Attachment attachment;
 
                 public Integer getMessageId() {

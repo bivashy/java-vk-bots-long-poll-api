@@ -2,7 +2,6 @@ package api.longpoll.bots.converters.events.messages;
 
 import api.longpoll.bots.methods.impl.messages.GetHistoryAttachments;
 import api.longpoll.bots.model.objects.media.Attachment;
-import api.longpoll.bots.model.objects.media.AttachmentType;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 import parse.response.ParseUtil;
@@ -35,7 +34,7 @@ class MessagesGetHistoryAttachmentsResultConverterTest {
 
         Attachment attachment = item.getAttachment();
         assertNotNull(attachment);
-        assertEquals(AttachmentType.PHOTO, attachment.getType());
-        assertNotNull(attachment.getAttachmentObject());
+        assertEquals(Attachment.Type.PHOTO, attachment.getType());
+        assertNotNull(attachment.getPhoto());
     }
 }

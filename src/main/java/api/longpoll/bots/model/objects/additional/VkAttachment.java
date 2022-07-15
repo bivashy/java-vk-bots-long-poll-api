@@ -58,7 +58,7 @@ public class VkAttachment {
     }
 
     public VkAttachment(Save.Response response) {
-        this((Doc) response.getResponseObject().getAttachmentObject());
+        this(response.getResponseObject().getDoc());
     }
 
     public String getType() {
