@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Deserializes JSON object to {@link GetMembers.ResponseBody}.
  */
-public class GroupsGetMemberResponseDeserializer implements JsonDeserializer<GetMembers.ResponseBody> {
+public class GetMemberResponseBodyDeserializer implements JsonDeserializer<GetMembers.ResponseBody> {
     @Override
     public GetMembers.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject jsonResponse = jsonElement.getAsJsonObject().getAsJsonObject("response");

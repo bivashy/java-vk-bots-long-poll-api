@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.messages;
 
-import api.longpoll.bots.adapters.deserializers.MessagesSendResultDeserializer;
+import api.longpoll.bots.adapters.deserializers.SendResponseBodyDeserializer;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.helpers.attachments.UploadableMessageDoc;
 import api.longpoll.bots.helpers.attachments.UploadableMessagePhoto;
@@ -195,7 +195,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     /**
      * Result to <b>messages.send</b> request.
      */
-    @JsonAdapter(MessagesSendResultDeserializer.class)
+    @JsonAdapter(SendResponseBodyDeserializer.class)
     public static class ResponseBody extends GenericResponseBody<Object> {
         /**
          * Response object.

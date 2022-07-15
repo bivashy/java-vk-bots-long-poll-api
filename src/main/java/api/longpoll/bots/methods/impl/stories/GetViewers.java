@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.stories;
 
-import api.longpoll.bots.adapters.deserializers.StoriesGetViewersResultDeserializer;
+import api.longpoll.bots.adapters.deserializers.GetViewersResponseBodyDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
@@ -68,7 +68,7 @@ public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
     /**
      * Response to <b>stories.getViewers</b>.
      */
-    @JsonAdapter(StoriesGetViewersResultDeserializer.class)
+    @JsonAdapter(GetViewersResponseBodyDeserializer.class)
     public static class ResponseBody extends GenericResponseBody<VkList<Object>> {
         /**
          * Response item.

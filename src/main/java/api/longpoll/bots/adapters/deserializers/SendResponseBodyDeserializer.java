@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Deserializes JSON object to {@link Send.ResponseBody}.
  */
-public class MessagesSendResultDeserializer implements JsonDeserializer<Send.ResponseBody> {
+public class SendResponseBodyDeserializer implements JsonDeserializer<Send.ResponseBody> {
     @Override
     public Send.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonElement jsonResponse = jsonElement.getAsJsonObject().get("response");

@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Deserializes JSON object to {@link GetViewers.ResponseBody}.
  */
-public class StoriesGetViewersResultDeserializer implements JsonDeserializer<GetViewers.ResponseBody> {
+public class GetViewersResponseBodyDeserializer implements JsonDeserializer<GetViewers.ResponseBody> {
     private static final Type ITEM_LIST = new TypeToken<List<GetViewers.ResponseBody.Response>>() {}.getType();
     private static final Type USER_LIST = new TypeToken<List<User>>() {}.getType();
 

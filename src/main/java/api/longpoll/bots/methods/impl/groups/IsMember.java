@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
-import api.longpoll.bots.adapters.deserializers.GroupsIsMemberResponseDeserializer;
+import api.longpoll.bots.adapters.deserializers.IsMemberResponseBodyDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.JsonAdapter;
@@ -60,7 +60,7 @@ public class IsMember extends VkMethod<IsMember.ResponseBody> {
     /**
      * Response to <b>groups.isMember</b> request.
      */
-    @JsonAdapter(GroupsIsMemberResponseDeserializer.class)
+    @JsonAdapter(IsMemberResponseBodyDeserializer.class)
     public static class ResponseBody extends GenericResponseBody<Object> {
         /**
          * Response object.

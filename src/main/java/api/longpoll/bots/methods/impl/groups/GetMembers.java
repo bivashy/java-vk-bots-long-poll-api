@@ -1,6 +1,6 @@
 package api.longpoll.bots.methods.impl.groups;
 
-import api.longpoll.bots.adapters.deserializers.GroupsGetMemberResponseDeserializer;
+import api.longpoll.bots.adapters.deserializers.GetMemberResponseBodyDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.User;
@@ -69,7 +69,7 @@ public class GetMembers extends VkMethod<GetMembers.ResponseBody> {
     /**
      * Result to <b>groups.getMembers</b> request.
      */
-    @JsonAdapter(GroupsGetMemberResponseDeserializer.class)
+    @JsonAdapter(GetMemberResponseBodyDeserializer.class)
     public static class ResponseBody extends GenericResponseBody<VkList<Object>> {
         /**
          * Response Item.
