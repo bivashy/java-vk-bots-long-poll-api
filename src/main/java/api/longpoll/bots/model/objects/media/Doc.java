@@ -73,7 +73,6 @@ public class Doc {
     /**
      * Document preview data.
      */
-    // TODO: 25.04.2021 change it
     @SerializedName("preview")
     private Preview preview;
 
