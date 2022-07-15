@@ -292,7 +292,7 @@ public class Attachment {
     public enum Type {
         @SerializedName("audio") AUDIO,
         @SerializedName("audio_message") AUDIO_MESSAGE,
-        @SerializedName("doc") DOCUMENT,
+        @SerializedName("doc") DOC,
         @SerializedName("graffiti") GRAFFITI,
         @SerializedName("link") LINK,
         @SerializedName("market") MARKET,

@@ -179,7 +179,7 @@ public class MessageNewParseTest {
     @Test
     void messageNewDocPhoto() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_doc_photo_sample_5_110.json");
-        assertEquals(Attachment.Type.DOCUMENT, attachment.getType());
+        assertEquals(Attachment.Type.DOC, attachment.getType());
 
         Doc doc = attachment.getDoc();
         assertNotNull(doc);
@@ -370,7 +370,7 @@ public class MessageNewParseTest {
     @Test
     void messageNewDocNoPreview() {
         Attachment attachment = ParseUtil.getFirstMessageAttachment("json/response/message_new/message_new_doc_no_preview_sample_5_118.json");
-        assertEquals(Attachment.Type.DOCUMENT, attachment.getType());
+        assertEquals(Attachment.Type.DOC, attachment.getType());
 
         Doc doc = attachment.getDoc();
         assertNotNull(doc);
@@ -401,7 +401,7 @@ public class MessageNewParseTest {
         List<Attachment> attachments = fwdMessage.getAttachments();
         Attachment attachment = attachments.get(0);
         assertNotNull(attachment);
-        assertEquals(Attachment.Type.DOCUMENT, attachment.getType());
+        assertEquals(Attachment.Type.DOC, attachment.getType());
 
         Doc doc = attachment.getDoc();
         assertNotNull(doc);
