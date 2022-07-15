@@ -14,9 +14,6 @@ import java.util.List;
  * Deserializes JSON object to {@link IsMember.ResponseBody}.
  */
 public class GroupsIsMemberResponseDeserializer implements JsonDeserializer<IsMember.ResponseBody> {
-    private static final Type LIST_TYPE = new TypeToken<List<IsMember.ResponseBody.Response>>() {
-    }.getType();
-
     @Override
     public IsMember.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonElement jsonResponse = jsonElement.getAsJsonObject().get("response");
@@ -32,7 +29,10 @@ public class GroupsIsMemberResponseDeserializer implements JsonDeserializer<IsMe
         } else if (jsonResponse.isJsonObject()) {
             return jsonDeserializationContext.deserialize(jsonResponse, IsMember.ResponseBody.Response.class);
         } else {
-            return jsonDeserializationContext.deserialize(jsonResponse, LIST_TYPE);
+            return jsonDeserializationContext.deserialize(
+                    jsonResponse,
+                    TypeToken.getParameterized(List.class, IsMember.ResponseBody.Response.class).getType()
+            );
         }
     }
 }
