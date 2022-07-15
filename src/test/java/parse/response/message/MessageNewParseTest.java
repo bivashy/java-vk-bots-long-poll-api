@@ -13,7 +13,6 @@ import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.objects.media.Audio;
 import api.longpoll.bots.model.objects.media.AudioMessage;
 import api.longpoll.bots.model.objects.media.Doc;
-import api.longpoll.bots.model.objects.media.DocType;
 import api.longpoll.bots.model.objects.media.Graffiti;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.objects.media.Sticker;
@@ -190,7 +189,7 @@ public class MessageNewParseTest {
         assertEquals(756010, doc.getSize());
         assertEquals("png", doc.getExt());
         assertEquals(1593165675, doc.getDate());
-        assertEquals(DocType.IMAGES, doc.getType());
+        assertEquals(Doc.Type.IMAGES, doc.getType());
 
         Doc.Preview preview = doc.getPreview();
         assertNotNull(preview);
@@ -381,7 +380,7 @@ public class MessageNewParseTest {
         assertEquals(2325, doc.getSize());
         assertEquals("rar", doc.getExt());
         assertEquals(1559985418, doc.getDate());
-        assertEquals(DocType.ARCHIVES, doc.getType());
+        assertEquals(Doc.Type.ARCHIVES, doc.getType());
         assertEquals("https://vk.com/doc1234", doc.getUrl());
         assertEquals("5678", doc.getAccessKey());
         assertNull(doc.getPreview());
@@ -412,7 +411,7 @@ public class MessageNewParseTest {
         assertEquals(11614, doc.getSize());
         assertEquals("docx", doc.getExt());
         assertEquals(1615559548, doc.getDate());
-        assertEquals(DocType.TEXT_DOCUMENT, doc.getType());
+        assertEquals(Doc.Type.TEXT_DOCUMENT, doc.getType());
         assertNotNull(doc.getUrl());
     }
 

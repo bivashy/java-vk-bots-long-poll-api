@@ -68,7 +68,7 @@ public class Doc {
      * </ol>
      */
     @SerializedName("type")
-    private DocType type;
+    private Type type;
 
     /**
      * Document preview data.
@@ -139,11 +139,11 @@ public class Doc {
         this.date = date;
     }
 
-    public DocType getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(DocType type) {
+    public void setType(Type type) {
         this.type = type;
     }
 
@@ -478,5 +478,19 @@ public class Doc {
                         '}';
             }
         }
+    }
+
+    /**
+     * Document type.
+     */
+    public enum Type {
+        @SerializedName("1") TEXT_DOCUMENT,
+        @SerializedName("2") ARCHIVES,
+        @SerializedName("3") GIF,
+        @SerializedName("4") IMAGES,
+        @SerializedName("5") AUDIO,
+        @SerializedName("6") VIDEO,
+        @SerializedName("7") E_BOOKS,
+        @SerializedName("8") UNKNOWN
     }
 }
