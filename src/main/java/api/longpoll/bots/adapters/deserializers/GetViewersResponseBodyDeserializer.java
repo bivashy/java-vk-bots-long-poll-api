@@ -18,9 +18,6 @@ import java.util.List;
  * Deserializes JSON object to {@link GetViewers.ResponseBody}.
  */
 public class GetViewersResponseBodyDeserializer implements JsonDeserializer<GetViewers.ResponseBody> {
-    private static final Type ITEM_LIST = new TypeToken<List<GetViewers.ResponseBody.Response>>() {}.getType();
-    private static final Type USER_LIST = new TypeToken<List<User>>() {}.getType();
-
     @Override
     public GetViewers.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject jsonResponse = jsonElement.getAsJsonObject().get("response").getAsJsonObject();
@@ -30,7 +27,7 @@ public class GetViewersResponseBodyDeserializer implements JsonDeserializer<GetV
         response.setCount(jsonResponse.get("count").getAsInt());
         response.setItems(jsonDeserializationContext.deserialize(
                 jsonItems,
-                getType(jsonItems)
+                getItemListType(jsonItems)
         ));
 
         GetViewers.ResponseBody vkResponse = new GetViewers.ResponseBody();
@@ -38,9 +35,9 @@ public class GetViewersResponseBodyDeserializer implements JsonDeserializer<GetV
         return vkResponse;
     }
 
-    private Type getType(JsonArray jsonItems) {
+    private Type getItemListType(JsonArray jsonItems) {
         return jsonItems.size() == 0 || jsonItems.get(0).getAsJsonObject().has("user_id")
-                ? ITEM_LIST
-                : USER_LIST;
+                ? TypeToken.getParameterized(List.class, GetViewers.ResponseBody.Response.class).getType()
+                : TypeToken.getParameterized(List.class, User.class).getType();
     }
 }
