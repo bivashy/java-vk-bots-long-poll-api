@@ -43,18 +43,6 @@ public abstract class LongPollBot extends VkBot {
      * @throws VkApiException if errors occur.
      */
     public void startPolling() throws VkApiException {
-        if (groupId == null) {
-            groupId = vk.groups.getById()
-                    .execute()
-                    .getResponseObject()
-                    .get(0)
-                    .getId();
-        }
-
-        if (getLongPollServer == null) {
-            getLongPollServer = new GetLongPollServer(getAccessToken());
-        }
-
         initialize();
         while (polling) {
             try {
@@ -84,6 +72,18 @@ public abstract class LongPollBot extends VkBot {
      * @throws VkApiException if errors occur.
      */
     private void initialize() throws VkApiException {
+        if (groupId == null) {
+            groupId = vk.groups.getById()
+                    .execute()
+                    .getResponseObject()
+                    .get(0)
+                    .getId();
+        }
+
+        if (getLongPollServer == null) {
+            getLongPollServer = new GetLongPollServer(getAccessToken());
+        }
+
         GetLongPollServer.Response longPollServer = getLongPollServer();
         getUpdates.setServer(longPollServer.getResponseObject().getServer())
                 .setKey(longPollServer.getResponseObject().getKey())
