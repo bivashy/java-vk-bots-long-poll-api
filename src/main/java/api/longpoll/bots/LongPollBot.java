@@ -55,21 +55,18 @@ public abstract class LongPollBot extends VkBot {
             getLongPollServer = new GetLongPollServer(getAccessToken());
         }
 
-        resetGetUpdates();
+        initialize();
         while (polling) {
             try {
                 GetUpdates.Response updates = getUpdates.execute();
                 getUpdates.setTs(updates.getTs());
                 handle(updates.getEvents());
-            } catch (VkApiHttpException e) {
+            }  catch (VkApiHttpException | VkApiResponseException e) {
                 LOGGER.warn("Failed to get events from VK Long Poll Server.", e);
-                resetGetUpdates();
-            } catch (VkApiResponseException e) {
-                LOGGER.warn("Failed to get events from VK Long Poll Server.", e);
-                if (!e.getError().has("failed")) {
+                if (e instanceof VkApiResponseException && !((VkApiResponseException) e).getError().has("failed")) {
                     throw e;
                 }
-                resetGetUpdates();
+                initialize();
             }
         }
     }
@@ -86,7 +83,7 @@ public abstract class LongPollBot extends VkBot {
      *
      * @throws VkApiException if errors occur.
      */
-    private void resetGetUpdates() throws VkApiException {
+    private void initialize() throws VkApiException {
         GetLongPollServer.Response longPollServer = getLongPollServer();
         getUpdates.setServer(longPollServer.getResponseObject().getServer())
                 .setKey(longPollServer.getResponseObject().getKey())
