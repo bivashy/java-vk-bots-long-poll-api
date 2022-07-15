@@ -3,7 +3,7 @@ package api.longpoll.bots.methods.impl.stories;
 import api.longpoll.bots.adapters.deserializers.StoriesGetViewersResultDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
-public class GetViewers extends VkMethod<GetViewers.Response> {
+public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
     public GetViewers(String accessToken) {
         super(accessToken);
     }
@@ -28,8 +28,8 @@ public class GetViewers extends VkMethod<GetViewers.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetViewers setMessageIds(Integer... messageIds) {
@@ -69,11 +69,11 @@ public class GetViewers extends VkMethod<GetViewers.Response> {
      * Response to <b>stories.getViewers</b>.
      */
     @JsonAdapter(StoriesGetViewersResultDeserializer.class)
-    public static class Response extends GenericResponse<VkList<Object>> {
+    public static class ResponseBody extends GenericResponseBody<VkList<Object>> {
         /**
          * Response item.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Whether the story is liked.
              */
@@ -104,7 +104,7 @@ public class GetViewers extends VkMethod<GetViewers.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "isLiked=" + isLiked +
                         ", userId=" + userId +
                         '}';

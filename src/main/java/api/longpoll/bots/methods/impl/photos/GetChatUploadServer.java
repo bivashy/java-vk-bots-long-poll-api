@@ -9,7 +9,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
  *
  * @see <a href="https://vk.com/dev/photos.getChatUploadServer">https://vk.com/dev/photos.getChatUploadServer</a>
  */
-public class GetChatUploadServer extends VkMethod<GetChatUploadServer.Response> {
+public class GetChatUploadServer extends VkMethod<GetChatUploadServer.ResponseBody> {
     public GetChatUploadServer(String accessToken) {
         super(accessToken);
     }
@@ -20,8 +20,8 @@ public class GetChatUploadServer extends VkMethod<GetChatUploadServer.Response> 
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetChatUploadServer setChatId(int chatId) {
@@ -48,6 +48,6 @@ public class GetChatUploadServer extends VkMethod<GetChatUploadServer.Response> 
     /**
      * Response to <b>photos.getChatUploadServer</b> request.
      */
-    public static class Response extends GetOwnerCoverPhotoUploadServer.Response {
+    public static class ResponseBody extends GetOwnerCoverPhotoUploadServer.ResponseBody {
     }
 }

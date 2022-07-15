@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,14 +11,14 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/groups.addCallbackServer">https://vk.com/dev/groups.addCallbackServer</a>
  */
-public class AddCallbackServer extends VkMethod<AddCallbackServer.Response> {
+public class AddCallbackServer extends VkMethod<AddCallbackServer.ResponseBody> {
     public AddCallbackServer(String accessToken) {
         super(accessToken);
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     @Override
@@ -50,11 +50,11 @@ public class AddCallbackServer extends VkMethod<AddCallbackServer.Response> {
     /**
      * Response to <b>groups.addCallbackServer</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Server ID.
              */
@@ -71,7 +71,7 @@ public class AddCallbackServer extends VkMethod<AddCallbackServer.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "serverId=" + serverId +
                         '}';
             }

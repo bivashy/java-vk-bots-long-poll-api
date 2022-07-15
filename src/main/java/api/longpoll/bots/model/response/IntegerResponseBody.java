@@ -8,5 +8,5 @@ package api.longpoll.bots.model.response;
  * }
  * </pre>
  */
-public class IntegerResponse extends GenericResponse<Integer> {
+public class IntegerResponseBody extends GenericResponseBody<Integer> {
 }

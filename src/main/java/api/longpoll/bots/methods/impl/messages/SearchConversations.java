@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.searchConversations">https://vk.com/dev/messages.searchConversations</a>
  */
-public class SearchConversations extends VkMethod<SearchConversations.Response> {
+public class SearchConversations extends VkMethod<SearchConversations.ResponseBody> {
     public SearchConversations(String accessToken) {
         super(accessToken);
     }
@@ -23,8 +23,8 @@ public class SearchConversations extends VkMethod<SearchConversations.Response> 
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public SearchConversations setQ(String q) {
@@ -60,6 +60,6 @@ public class SearchConversations extends VkMethod<SearchConversations.Response> 
     /**
      * Response to <b>messages.searchConversations</b> request.
      */
-    public static class Response extends GetConversationsById.Response {
+    public static class ResponseBody extends GetConversationsById.ResponseBody {
     }
 }

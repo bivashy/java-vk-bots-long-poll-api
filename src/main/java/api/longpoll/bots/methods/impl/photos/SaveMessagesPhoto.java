@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.photos;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.PhotoSize;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/photos.saveMessagesPhoto">https://vk.com/dev/photos.saveMessagesPhoto</a>
  */
-public class SaveMessagesPhoto extends VkMethod<SaveMessagesPhoto.Response> {
+public class SaveMessagesPhoto extends VkMethod<SaveMessagesPhoto.ResponseBody> {
     public SaveMessagesPhoto(String accessToken) {
         super(accessToken);
     }
@@ -25,8 +25,8 @@ public class SaveMessagesPhoto extends VkMethod<SaveMessagesPhoto.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public SaveMessagesPhoto setPhoto(String photo) {
@@ -49,11 +49,11 @@ public class SaveMessagesPhoto extends VkMethod<SaveMessagesPhoto.Response> {
     /**
      * Response to <b>photos.saveMessagesPhoto</b> request.
      */
-    public static class Response extends GenericResponse<List<Response.ResponseObject>> {
+    public static class ResponseBody extends GenericResponseBody<List<ResponseBody.Response>> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Album ID.
              */
@@ -154,7 +154,7 @@ public class SaveMessagesPhoto extends VkMethod<SaveMessagesPhoto.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "albumId=" + albumId +
                         ", date=" + date +
                         ", id=" + id +

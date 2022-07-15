@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/stories.delete">https://vk.com/dev/stories.delete</a>
  */
-public class Delete extends VkMethod<IntegerResponse> {
+public class Delete extends VkMethod<IntegerResponseBody> {
     public Delete(String accessToken) {
         super(accessToken);
     }
@@ -24,8 +24,8 @@ public class Delete extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public Delete setOwnerId(int ownerId) {

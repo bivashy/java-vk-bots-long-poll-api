@@ -21,10 +21,10 @@ class MessagesGetHistoryResultConverterTest {
 
     @Test
     void convert() {
-        GetHistory.Response result = GSON.fromJson(ParseUtil.readJson("json/response/messages_get_history/messages_get_history_sample_5_118.json"), GetHistory.Response.class);
+        GetHistory.ResponseBody result = GSON.fromJson(ParseUtil.readJson("json/response/messages_get_history/messages_get_history_sample_5_118.json"), GetHistory.ResponseBody.class);
         assertNotNull(result);
 
-        GetHistory.Response.ResponseObject response = result.getResponseObject();
+        GetHistory.ResponseBody.Response response = result.getResponse();
         assertNotNull(response);
         assertEquals(241, response.getCount());
 

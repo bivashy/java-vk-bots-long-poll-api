@@ -7,7 +7,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
  *
  * @see <a href="https://vk.com/dev/groups.editAddress">https://vk.com/dev/groups.editAddress</a>
  */
-public class EditAddress extends VkMethod<EditAddress.Response> {
+public class EditAddress extends VkMethod<EditAddress.ResponseBody> {
 
 
     public EditAddress(String accessToken) {
@@ -20,7 +20,7 @@ public class EditAddress extends VkMethod<EditAddress.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
+    protected Class<ResponseBody> getResponseType() {
         return null;
     }
 
@@ -88,6 +88,6 @@ public class EditAddress extends VkMethod<EditAddress.Response> {
     /**
      * Response to <b>groups.editAddress</b> request.
      */
-    public static class Response extends AddAddress.Response {
+    public static class ResponseBody extends AddAddress.ResponseBody {
     }
 }

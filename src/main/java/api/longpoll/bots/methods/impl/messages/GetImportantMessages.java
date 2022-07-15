@@ -3,7 +3,7 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.ExtendedVkList;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getImportantMessages">https://vk.com/dev/messages.getImportantMessages</a>
  */
-public class GetImportantMessages extends VkMethod<GetImportantMessages.Response> {
+public class GetImportantMessages extends VkMethod<GetImportantMessages.ResponseBody> {
     public GetImportantMessages(String accessToken) {
         super(accessToken);
     }
@@ -26,8 +26,8 @@ public class GetImportantMessages extends VkMethod<GetImportantMessages.Response
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetImportantMessages setCount(int count) {
@@ -70,6 +70,6 @@ public class GetImportantMessages extends VkMethod<GetImportantMessages.Response
     /**
      * Response to <b>messages.getImportantMessages</b> request.
      */
-    public static class Response extends GenericResponse<ExtendedVkList<Message>> {
+    public static class ResponseBody extends GenericResponseBody<ExtendedVkList<Message>> {
     }
 }

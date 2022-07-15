@@ -14,14 +14,14 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * Deserializes JSON object to {@link GetMembers.Response}.
+ * Deserializes JSON object to {@link GetMembers.ResponseBody}.
  */
-public class GroupsGetMemberResponseDeserializer implements JsonDeserializer<GetMembers.Response> {
+public class GroupsGetMemberResponseDeserializer implements JsonDeserializer<GetMembers.ResponseBody> {
     private static final Type INTEGER_LIST = new TypeToken<List<Integer>>() {}.getType();
-    private static final Type ITEM_LIST = new TypeToken<List<GetMembers.Response.Item>>() {}.getType();
+    private static final Type ITEM_LIST = new TypeToken<List<GetMembers.ResponseBody.Item>>() {}.getType();
 
     @Override
-    public GetMembers.Response deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public GetMembers.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject jsonResponse = jsonElement.getAsJsonObject().getAsJsonObject("response");
         JsonArray jsonItems = jsonResponse.getAsJsonArray("items");
 
@@ -34,8 +34,8 @@ public class GroupsGetMemberResponseDeserializer implements JsonDeserializer<Get
                         : ITEM_LIST
         ));
 
-        GetMembers.Response response = new GetMembers.Response();
-        response.setResponseObject(vkList);
+        GetMembers.ResponseBody response = new GetMembers.ResponseBody();
+        response.setResponse(vkList);
         return response;
     }
 }

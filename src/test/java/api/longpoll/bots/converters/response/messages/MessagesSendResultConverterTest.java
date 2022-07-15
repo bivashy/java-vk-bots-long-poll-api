@@ -17,10 +17,10 @@ class MessagesSendResultConverterTest {
 
     @Test
     void responses() {
-        Send.Response result = gson.fromJson(ParseUtil.readJson("json/response/messages_send/message_send_responses_sample_5_110.json"), Send.Response.class);
+        Send.ResponseBody result = gson.fromJson(ParseUtil.readJson("json/response/messages_send/message_send_responses_sample_5_110.json"), Send.ResponseBody.class);
         assertNotNull(result);
 
-        Object response = result.getResponseObject();
+        Object response = result.getResponse();
         assertNotNull(response);
         assertTrue(response instanceof List);
 
@@ -29,9 +29,9 @@ class MessagesSendResultConverterTest {
 
         Object o = list.get(0);
         assertNotNull(o);
-        assertTrue(o instanceof Send.Response.ResponseObject);
+        assertTrue(o instanceof Send.ResponseBody.Response);
 
-        Send.Response.ResponseObject messagesSendResponse = (Send.Response.ResponseObject) o;
+        Send.ResponseBody.Response messagesSendResponse = (Send.ResponseBody.Response) o;
         assertEquals(111, messagesSendResponse.getPeerId());
         assertEquals(287, messagesSendResponse.getMessageId());
     }

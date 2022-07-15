@@ -1,14 +1,14 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>messages.markAsAnsweredConversation</b> method.
  *
  * @see <a href="https://vk.com/dev/messages.markAsAnsweredConversation">https://vk.com/dev/messages.markAsAnsweredConversation</a>
  */
-public class MarkAsAnsweredConversation extends VkMethod<IntegerResponse> {
+public class MarkAsAnsweredConversation extends VkMethod<IntegerResponseBody> {
 
     public MarkAsAnsweredConversation(String accessToken) {
         super(accessToken);
@@ -20,8 +20,8 @@ public class MarkAsAnsweredConversation extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public MarkAsAnsweredConversation setPeerId(int peerId) {

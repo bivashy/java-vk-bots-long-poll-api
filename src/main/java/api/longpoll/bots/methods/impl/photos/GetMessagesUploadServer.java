@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.photos;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/photos.getMessagesUploadServer">https://vk.com/dev/photos.getMessagesUploadServer</a>
  */
-public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.Response> {
+public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.ResponseBody> {
     public GetMessagesUploadServer(String accessToken) {
         super(accessToken);
     }
@@ -22,8 +22,8 @@ public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.Re
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetMessagesUploadServer setPeerId(int peerId) {
@@ -38,11 +38,11 @@ public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.Re
     /**
      * Response to <b>photos.getMessagesUploadServer</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Photo upload URL.
              */
@@ -87,7 +87,7 @@ public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.Re
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "uploadUrl='" + uploadUrl + '\'' +
                         ", albumId=" + albumId +
                         ", groupId=" + groupId +

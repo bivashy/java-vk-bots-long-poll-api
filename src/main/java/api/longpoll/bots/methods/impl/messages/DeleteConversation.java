@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/messages.deleteConversation">https://vk.com/dev/messages.deleteConversation</a>
  */
-public class DeleteConversation extends VkMethod<DeleteConversation.Response> {
+public class DeleteConversation extends VkMethod<DeleteConversation.ResponseBody> {
     public DeleteConversation(String accessToken) {
         super(accessToken);
     }
@@ -22,8 +22,8 @@ public class DeleteConversation extends VkMethod<DeleteConversation.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public DeleteConversation setUserId(String userId) {
@@ -46,11 +46,11 @@ public class DeleteConversation extends VkMethod<DeleteConversation.Response> {
     /**
      * Response to <b>messages.deleteConversation</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Last deleted message ID.
              */
@@ -67,7 +67,7 @@ public class DeleteConversation extends VkMethod<DeleteConversation.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "lastDeletedId=" + lastDeletedId +
                         '}';
             }

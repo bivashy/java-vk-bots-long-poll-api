@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.getById">https://vk.com/dev/messages.getById</a>
  */
-public class GetById extends VkMethod<GetById.Response> {
+public class GetById extends VkMethod<GetById.ResponseBody> {
     public GetById(String accessToken) {
         super(accessToken);
     }
@@ -23,8 +23,8 @@ public class GetById extends VkMethod<GetById.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetById setMessageIds(Integer... messageIds) {
@@ -63,6 +63,6 @@ public class GetById extends VkMethod<GetById.Response> {
     /**
      * Response to <b>messages.getById</b> request.
      */
-    public static class Response extends GetByConversationMessageId.Response {
+    public static class ResponseBody extends GetByConversationMessageId.ResponseBody {
     }
 }

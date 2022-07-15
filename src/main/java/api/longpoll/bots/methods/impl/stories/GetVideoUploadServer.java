@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/stories.getVideoUploadServer">https://vk.com/dev/stories.getVideoUploadServer</a>
  */
-public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response> {
+public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.ResponseBody> {
     public GetVideoUploadServer(String accessToken) {
         super(accessToken);
     }
@@ -23,8 +23,8 @@ public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetVideoUploadServer setAddToNews(boolean addToNews) {
@@ -67,6 +67,6 @@ public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response
     /**
      * Response to <b>stories.getVideoUploadServer</b> and <b>stories.getVideoUploadServer</b>
      */
-    public static class Response extends GetPhotoUploadServer.Response {
+    public static class ResponseBody extends GetPhotoUploadServer.ResponseBody {
     }
 }

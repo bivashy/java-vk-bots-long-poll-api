@@ -7,7 +7,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
  *
  * @see <a href="https://vk.com/dev/docs.getWallUploadServer">https://vk.com/dev/docs.getWallUploadServer</a>
  */
-public class GetWallUploadServer extends VkMethod<GetWallUploadServer.Response> {
+public class GetWallUploadServer extends VkMethod<GetWallUploadServer.ResponseBody> {
     public GetWallUploadServer(String accessToken) {
         super(accessToken);
     }
@@ -18,8 +18,8 @@ public class GetWallUploadServer extends VkMethod<GetWallUploadServer.Response> 
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetWallUploadServer setGroupId(int groupId) {
@@ -34,6 +34,6 @@ public class GetWallUploadServer extends VkMethod<GetWallUploadServer.Response> 
     /**
      * Response to <b>docs.getWallUploadServer</b> request.
      */
-    public static class Response extends GetMessagesUploadServer.Response {
+    public static class ResponseBody extends GetMessagesUploadServer.ResponseBody {
     }
 }

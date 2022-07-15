@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>messages.unpin</b> method.
@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/messages.unpin">https://vk.com/dev/messages.unpin</a>
  */
-public class Unpin extends VkMethod<IntegerResponse> {
+public class Unpin extends VkMethod<IntegerResponseBody> {
     public Unpin(String accessToken) {
         super(accessToken);
     }
@@ -21,8 +21,8 @@ public class Unpin extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public Unpin setPeerId(int peerId) {

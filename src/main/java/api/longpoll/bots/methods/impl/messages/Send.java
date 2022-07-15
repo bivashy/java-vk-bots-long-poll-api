@@ -10,7 +10,7 @@ import api.longpoll.bots.model.objects.additional.Forward;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.suppliers.PeerIdSupplier;
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
@@ -29,7 +29,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
-public class Send extends VkMethod<Send.Response> {
+public class Send extends VkMethod<Send.ResponseBody> {
     /**
      * List of objects to attach.
      */
@@ -51,12 +51,12 @@ public class Send extends VkMethod<Send.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     @Override
-    public Response execute() throws VkApiException {
+    public ResponseBody execute() throws VkApiException {
         List<UploadedFile> uploadedFiles = new ArrayList<>();
         for (UploadableFile uploadableFile : uploadableFiles) {
             uploadedFiles.add(uploadableFile.upload());
@@ -196,11 +196,11 @@ public class Send extends VkMethod<Send.Response> {
      * Result to <b>messages.send</b> request.
      */
     @JsonAdapter(MessagesSendResultDeserializer.class)
-    public static class Response extends GenericResponse<Object> {
+    public static class ResponseBody extends GenericResponseBody<Object> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Peer ID.
              */
@@ -245,7 +245,7 @@ public class Send extends VkMethod<Send.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "peerId=" + peerId +
                         ", messageId=" + messageId +
                         ", error='" + error + '\'' +

@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/messages.getInviteLink">https://vk.com/dev/messages.getInviteLink</a>
  */
-public class GetInviteLink extends VkMethod<GetInviteLink.Response> {
+public class GetInviteLink extends VkMethod<GetInviteLink.ResponseBody> {
 
     public GetInviteLink(String accessToken) {
         super(accessToken);
@@ -23,8 +23,8 @@ public class GetInviteLink extends VkMethod<GetInviteLink.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetInviteLink setPeerId(int peerId) {
@@ -47,11 +47,11 @@ public class GetInviteLink extends VkMethod<GetInviteLink.Response> {
     /**
      * Response to <b>messages.getInviteLink</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Link for inviting.
              */
@@ -68,7 +68,7 @@ public class GetInviteLink extends VkMethod<GetInviteLink.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "link='" + link + '\'' +
                         '}';
             }

@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.utils;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/utils.resolveScreenName">https://vk.com/dev/utils.resolveScreenName</a>
  */
-public class ResolveScreenName extends VkMethod<ResolveScreenName.Response> {
+public class ResolveScreenName extends VkMethod<ResolveScreenName.ResponseBody> {
     public ResolveScreenName(String accessToken) {
         super(accessToken);
     }
@@ -22,8 +22,8 @@ public class ResolveScreenName extends VkMethod<ResolveScreenName.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public ResolveScreenName setScreenName(String screenName) {
@@ -38,11 +38,11 @@ public class ResolveScreenName extends VkMethod<ResolveScreenName.Response> {
     /**
      * Response to <b>utils.resolveScreenName</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Object type (user, group, application).
              */
@@ -73,7 +73,7 @@ public class ResolveScreenName extends VkMethod<ResolveScreenName.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "type='" + type + '\'' +
                         ", objectId=" + objectId +
                         '}';

@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * @see <a href="https://vk.com/dev/stories.getStats">https://vk.com/dev/stories.getStats</a>
  */
-public class GetStats extends VkMethod<GetStats.Response> {
+public class GetStats extends VkMethod<GetStats.ResponseBody> {
     public GetStats(String accessToken) {
         super(accessToken);
     }
@@ -22,8 +22,8 @@ public class GetStats extends VkMethod<GetStats.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetStats setOwnerId(int ownerId) {
@@ -42,11 +42,11 @@ public class GetStats extends VkMethod<GetStats.Response> {
     /**
      * Response to <b>stories.getStats</b>
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Views.
              */
@@ -147,7 +147,7 @@ public class GetStats extends VkMethod<GetStats.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "views=" + views +
                         ", replies=" + replies +
                         ", answer=" + answer +

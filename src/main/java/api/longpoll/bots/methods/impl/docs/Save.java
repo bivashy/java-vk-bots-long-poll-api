@@ -2,14 +2,14 @@ package api.longpoll.bots.methods.impl.docs;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.Attachment;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 
 /**
  * Implements <b>docs.save</b> method.
  *
  * @see <a href="https://vk.com/dev/docs.save">https://vk.com/dev/docs.save</a>
  */
-public class Save extends VkMethod<Save.Response> {
+public class Save extends VkMethod<Save.ResponseBody> {
 
     public Save(String accessToken) {
         super(accessToken);
@@ -21,8 +21,8 @@ public class Save extends VkMethod<Save.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public Save setFile(String file) {
@@ -49,6 +49,6 @@ public class Save extends VkMethod<Save.Response> {
     /**
      * Response to <b>docs.save</b> request.
      */
-    public static class Response extends GenericResponse<Attachment> {
+    public static class ResponseBody extends GenericResponseBody<Attachment> {
     }
 }

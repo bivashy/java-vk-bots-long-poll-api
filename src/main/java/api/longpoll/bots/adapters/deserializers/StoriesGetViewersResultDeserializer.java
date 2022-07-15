@@ -15,27 +15,27 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * Deserializes JSON object to {@link GetViewers.Response}.
+ * Deserializes JSON object to {@link GetViewers.ResponseBody}.
  */
-public class StoriesGetViewersResultDeserializer implements JsonDeserializer<GetViewers.Response> {
-    private static final Type ITEM_LIST = new TypeToken<List<GetViewers.Response.ResponseObject>>() {}.getType();
+public class StoriesGetViewersResultDeserializer implements JsonDeserializer<GetViewers.ResponseBody> {
+    private static final Type ITEM_LIST = new TypeToken<List<GetViewers.ResponseBody.Response>>() {}.getType();
     private static final Type USER_LIST = new TypeToken<List<User>>() {}.getType();
 
     @Override
-    public GetViewers.Response deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public GetViewers.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject jsonResponse = jsonElement.getAsJsonObject().get("response").getAsJsonObject();
         JsonArray jsonItems = jsonResponse.getAsJsonArray("items");
 
-        VkList<Object> responseObject = new VkList<>();
-        responseObject.setCount(jsonResponse.get("count").getAsInt());
-        responseObject.setItems(jsonDeserializationContext.deserialize(
+        VkList<Object> response = new VkList<>();
+        response.setCount(jsonResponse.get("count").getAsInt());
+        response.setItems(jsonDeserializationContext.deserialize(
                 jsonItems,
                 getType(jsonItems)
         ));
 
-        GetViewers.Response response = new GetViewers.Response();
-        response.setResponseObject(responseObject);
-        return response;
+        GetViewers.ResponseBody vkResponse = new GetViewers.ResponseBody();
+        vkResponse.setResponse(response);
+        return vkResponse;
     }
 
     private Type getType(JsonArray jsonItems) {

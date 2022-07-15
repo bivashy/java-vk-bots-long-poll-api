@@ -11,17 +11,17 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * Deserializes JSON object to {@link Send.Response}.
+ * Deserializes JSON object to {@link Send.ResponseBody}.
  */
-public class MessagesSendResultDeserializer implements JsonDeserializer<Send.Response> {
-    private static final Type RESPONSE_TYPE = new TypeToken<List<Send.Response.ResponseObject>>() {}.getType();
+public class MessagesSendResultDeserializer implements JsonDeserializer<Send.ResponseBody> {
+    private static final Type RESPONSE_TYPE = new TypeToken<List<Send.ResponseBody.Response>>() {}.getType();
 
     @Override
-    public Send.Response deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public Send.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonElement jsonResponse = jsonElement.getAsJsonObject().get("response");
 
-        Send.Response response = new Send.Response();
-        response.setResponseObject(
+        Send.ResponseBody response = new Send.ResponseBody();
+        response.setResponse(
                 jsonResponse.isJsonPrimitive()
                         ? jsonResponse.getAsInt()
                         : jsonDeserializationContext.deserialize(jsonResponse, RESPONSE_TYPE)

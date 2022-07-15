@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>groups.editCallbackServer</b> method.
@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponse;
  *
  * @see <a href="https://vk.com/dev/groups.editCallbackServer">https://vk.com/dev/groups.editCallbackServer</a>
  */
-public class EditCallbackServer extends VkMethod<IntegerResponse> {
+public class EditCallbackServer extends VkMethod<IntegerResponseBody> {
     public EditCallbackServer(String accessToken) {
         super(accessToken);
     }
@@ -25,8 +25,8 @@ public class EditCallbackServer extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public EditCallbackServer setGroupId(int groupId) {

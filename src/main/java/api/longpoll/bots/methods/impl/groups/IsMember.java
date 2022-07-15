@@ -3,7 +3,7 @@ package api.longpoll.bots.methods.impl.groups;
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.adapters.deserializers.GroupsIsMemberResponseDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/groups.isMember">https://vk.com/dev/groups.isMember</a>
  */
-public class IsMember extends VkMethod<IsMember.Response> {
+public class IsMember extends VkMethod<IsMember.ResponseBody> {
     public IsMember(String accessToken) {
         super(accessToken);
     }
@@ -28,8 +28,8 @@ public class IsMember extends VkMethod<IsMember.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public IsMember setGroupId(int groupId) {
@@ -61,11 +61,11 @@ public class IsMember extends VkMethod<IsMember.Response> {
      * Response to <b>groups.isMember</b> request.
      */
     @JsonAdapter(GroupsIsMemberResponseDeserializer.class)
-    public static class Response extends GenericResponse<Object> {
+    public static class ResponseBody extends GenericResponseBody<Object> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Whether the user is a member of the community.
              */
@@ -157,7 +157,7 @@ public class IsMember extends VkMethod<IsMember.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "member=" + member +
                         ", request=" + request +
                         ", invitation=" + invitation +

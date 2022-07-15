@@ -47,13 +47,13 @@ public class UploadableMessageDoc implements UploadableFile {
     @Override
     public UploadedFile upload() throws VkApiException {
         try (InputStream inputStream = Files.newInputStream(doc.toPath())) {
-            GetMessagesUploadServer.Response uploadServer = getMessagesUploadServer.execute();
+            GetMessagesUploadServer.ResponseBody uploadServer = getMessagesUploadServer.execute();
             UploadDoc.Response uploadedDoc = uploadDoc
                     .setDoc(doc.getName(), inputStream)
-                    .setUrl(uploadServer.getResponseObject().getUploadUrl())
+                    .setUrl(uploadServer.getResponse().getUploadUrl())
                     .execute();
-            Save.Response savedFile = save.setFile(uploadedDoc.getFile()).execute();
-            Doc doc = savedFile.getResponseObject().getDoc();
+            Save.ResponseBody savedFile = save.setFile(uploadedDoc.getFile()).execute();
+            Doc doc = savedFile.getResponse().getDoc();
             return new UploadedFile() {
                 @Override
                 public String getType() {

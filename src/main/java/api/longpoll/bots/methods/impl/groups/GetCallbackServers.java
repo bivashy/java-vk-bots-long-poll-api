@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/groups.getCallbackServers">https://vk.com/dev/groups.getCallbackServers</a>
  */
-public class GetCallbackServers extends VkMethod<GetCallbackServers.Response> {
+public class GetCallbackServers extends VkMethod<GetCallbackServers.ResponseBody> {
     public GetCallbackServers(String accessToken) {
         super(accessToken);
     }
@@ -26,8 +26,8 @@ public class GetCallbackServers extends VkMethod<GetCallbackServers.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public GetCallbackServers setGroupId(int groupId) {
@@ -50,7 +50,7 @@ public class GetCallbackServers extends VkMethod<GetCallbackServers.Response> {
     /**
      * Response to <b>groups.getCallbackServers</b> request.
      */
-    public static class Response extends GenericResponse<VkList<Response.Item>> {
+    public static class ResponseBody extends GenericResponseBody<VkList<ResponseBody.Item>> {
         /**
          * Response item.
          */

@@ -11,18 +11,18 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * Deserializes JSON object to {@link IsMember.Response}.
+ * Deserializes JSON object to {@link IsMember.ResponseBody}.
  */
-public class GroupsIsMemberResponseDeserializer implements JsonDeserializer<IsMember.Response> {
-    private static final Type LIST_TYPE = new TypeToken<List<IsMember.Response.ResponseObject>>() {
+public class GroupsIsMemberResponseDeserializer implements JsonDeserializer<IsMember.ResponseBody> {
+    private static final Type LIST_TYPE = new TypeToken<List<IsMember.ResponseBody.Response>>() {
     }.getType();
 
     @Override
-    public IsMember.Response deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public IsMember.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonElement jsonResponse = jsonElement.getAsJsonObject().get("response");
 
-        IsMember.Response response = new IsMember.Response();
-        response.setResponseObject(deserializeResponse(jsonResponse, jsonDeserializationContext));
+        IsMember.ResponseBody response = new IsMember.ResponseBody();
+        response.setResponse(deserializeResponse(jsonResponse, jsonDeserializationContext));
         return response;
     }
 
@@ -30,7 +30,7 @@ public class GroupsIsMemberResponseDeserializer implements JsonDeserializer<IsMe
         if (jsonResponse.isJsonPrimitive()) {
             return jsonResponse.getAsInt() == 1;
         } else if (jsonResponse.isJsonObject()) {
-            return jsonDeserializationContext.deserialize(jsonResponse, IsMember.Response.ResponseObject.class);
+            return jsonDeserializationContext.deserialize(jsonResponse, IsMember.ResponseBody.Response.class);
         } else {
             return jsonDeserializationContext.deserialize(jsonResponse, LIST_TYPE);
         }

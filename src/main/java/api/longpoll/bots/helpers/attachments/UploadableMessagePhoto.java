@@ -46,17 +46,17 @@ public class UploadableMessagePhoto implements UploadableFile {
     @Override
     public UploadedFile upload() throws VkApiException {
         try (InputStream inputStream = Files.newInputStream(photo.toPath())) {
-            GetMessagesUploadServer.Response uploadServer = getMessagesUploadServer.execute();
+            GetMessagesUploadServer.ResponseBody uploadServer = getMessagesUploadServer.execute();
             UploadPhoto.Response uploadedPhoto = uploadPhoto
                     .setPhoto(photo.getName(), inputStream)
-                    .setUrl(uploadServer.getResponseObject().getUploadUrl())
+                    .setUrl(uploadServer.getResponse().getUploadUrl())
                     .execute();
-            SaveMessagesPhoto.Response savedPhoto = saveMessagesPhoto
+            SaveMessagesPhoto.ResponseBody savedPhoto = saveMessagesPhoto
                     .setServer(uploadedPhoto.getServer())
                     .setPhoto(uploadedPhoto.getPhoto())
                     .setHash(uploadedPhoto.getHash())
                     .execute();
-            SaveMessagesPhoto.Response.ResponseObject photo = savedPhoto.getResponseObject().get(0);
+            SaveMessagesPhoto.ResponseBody.Response photo = savedPhoto.getResponse().get(0);
             return new UploadedFile() {
                 @Override
                 public String getType() {

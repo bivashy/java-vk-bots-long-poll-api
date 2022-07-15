@@ -1,14 +1,14 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 
 /**
  * Implements <b>groups.setSettings</b> method.
  *
  * @see <a href="https://vk.com/dev/groups.setSettings">https://vk.com/dev/groups.setSettings</a>
  */
-public class SetSettings extends VkMethod<IntegerResponse> {
+public class SetSettings extends VkMethod<IntegerResponseBody> {
 
     public SetSettings(String accessToken) {
         super(accessToken);
@@ -20,8 +20,8 @@ public class SetSettings extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     public SetSettings setGroupId(int groupId) {

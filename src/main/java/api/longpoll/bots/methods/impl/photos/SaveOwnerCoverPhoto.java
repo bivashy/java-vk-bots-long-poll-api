@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.photos;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Image;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/photos.saveOwnerCoverPhoto">https://vk.com/dev/photos.saveOwnerCoverPhoto</a>
  */
-public class SaveOwnerCoverPhoto extends VkMethod<SaveOwnerCoverPhoto.Response> {
+public class SaveOwnerCoverPhoto extends VkMethod<SaveOwnerCoverPhoto.ResponseBody> {
     public SaveOwnerCoverPhoto(String accessToken) {
         super(accessToken);
     }
@@ -25,8 +25,8 @@ public class SaveOwnerCoverPhoto extends VkMethod<SaveOwnerCoverPhoto.Response> 
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public SaveOwnerCoverPhoto setHash(String hash) {
@@ -45,11 +45,11 @@ public class SaveOwnerCoverPhoto extends VkMethod<SaveOwnerCoverPhoto.Response> 
     /**
      * Response to <b>photos.saveOwnerCoverPhoto</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * List of photo copies.
              */
@@ -66,7 +66,7 @@ public class SaveOwnerCoverPhoto extends VkMethod<SaveOwnerCoverPhoto.Response> 
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "images=" + images +
                         '}';
             }

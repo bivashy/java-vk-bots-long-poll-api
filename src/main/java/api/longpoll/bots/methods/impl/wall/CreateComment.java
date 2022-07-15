@@ -2,7 +2,7 @@ package api.longpoll.bots.methods.impl.wall;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
-import api.longpoll.bots.model.response.GenericResponse;
+import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/wall.createComment">https://vk.com/dev/wall.createComment</a>
  */
-public class CreateComment extends VkMethod<CreateComment.Response> {
+public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
 
     public CreateComment(String accessToken) {
         super(accessToken);
@@ -27,8 +27,8 @@ public class CreateComment extends VkMethod<CreateComment.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseType() {
+        return ResponseBody.class;
     }
 
     public CreateComment setAttachment(UploadedFile... attachments) {
@@ -79,11 +79,11 @@ public class CreateComment extends VkMethod<CreateComment.Response> {
     /**
      * Response to <b>wall.createComment</b> request.
      */
-    public static class Response extends GenericResponse<Response.ResponseObject> {
+    public static class ResponseBody extends GenericResponseBody<ResponseBody.Response> {
         /**
          * Response object.
          */
-        public static class ResponseObject {
+        public static class Response {
             /**
              * Added comment ID.
              */
@@ -114,7 +114,7 @@ public class CreateComment extends VkMethod<CreateComment.Response> {
 
             @Override
             public String toString() {
-                return "ResponseObject{" +
+                return "Response{" +
                         "commentId=" + commentId +
                         ", parentStack=" + parentStack +
                         '}';

@@ -8,7 +8,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
-import api.longpoll.bots.model.response.IntegerResponse;
+import api.longpoll.bots.model.response.IntegerResponseBody;
 import api.longpoll.bots.suppliers.PeerIdSupplier;
 
 import java.io.File;
@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
  */
-public class Edit extends VkMethod<IntegerResponse> {
+public class Edit extends VkMethod<IntegerResponseBody> {
     /**
      * List of objects to attach.
      */
@@ -45,12 +45,12 @@ public class Edit extends VkMethod<IntegerResponse> {
     }
 
     @Override
-    protected Class<IntegerResponse> getResponseType() {
-        return IntegerResponse.class;
+    protected Class<IntegerResponseBody> getResponseType() {
+        return IntegerResponseBody.class;
     }
 
     @Override
-    public IntegerResponse execute() throws VkApiException {
+    public IntegerResponseBody execute() throws VkApiException {
         List<UploadedFile> attachments = new ArrayList<>();
         for (UploadableFile uploadableFile : uploadableFiles) {
             attachments.add(uploadableFile.upload());

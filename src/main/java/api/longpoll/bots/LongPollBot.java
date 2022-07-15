@@ -76,7 +76,7 @@ public abstract class LongPollBot extends VkBot {
             groupId = vk.other.execute()
                     .setCode("return API.groups.getById()@.id[0];")
                     .execute()
-                    .getResponseObject()
+                    .getResponse()
                     .getAsInt();
         }
 
@@ -84,9 +84,9 @@ public abstract class LongPollBot extends VkBot {
             getLongPollServer = new GetLongPollServer(getAccessToken());
         }
 
-        GetLongPollServer.Response longPollServer = getLongPollServer.setGroupId(groupId).execute();
-        getUpdates.setServer(longPollServer.getResponseObject().getServer())
-                .setKey(longPollServer.getResponseObject().getKey())
-                .setTs(longPollServer.getResponseObject().getTs());
+        GetLongPollServer.ResponseBody longPollServer = getLongPollServer.setGroupId(groupId).execute();
+        getUpdates.setServer(longPollServer.getResponse().getServer())
+                .setKey(longPollServer.getResponse().getKey())
+                .setTs(longPollServer.getResponse().getTs());
     }
 }
