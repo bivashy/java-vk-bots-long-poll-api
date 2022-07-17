@@ -1,8 +1,10 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.helpers.attachments.UploadableMessageDoc;
-import api.longpoll.bots.helpers.attachments.UploadableMessagePhoto;
+import api.longpoll.bots.helpers.attachments.InputStreamUploadableMessageDoc;
+import api.longpoll.bots.helpers.attachments.InputStreamUploadableMessagePhoto;
+import api.longpoll.bots.helpers.attachments.PathUploadableMessageDoc;
+import api.longpoll.bots.helpers.attachments.PathUploadableMessagePhoto;
 import api.longpoll.bots.helpers.attachments.UploadableFile;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Keyboard;
@@ -12,6 +14,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
 import api.longpoll.bots.suppliers.PeerIdSupplier;
 
 import java.io.File;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,7 +65,11 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit addPhoto(File photo) {
-        uploadableFiles.add(new UploadableMessagePhoto(
+        return addPhoto(photo.toPath());
+    }
+
+    public Edit addPhoto(Path photo) {
+        uploadableFiles.add(new PathUploadableMessagePhoto(
                 photo,
                 peerIdSupplier,
                 getParams().get("access_token")
@@ -70,12 +77,22 @@ public class Edit extends VkMethod<IntegerResponseBody> {
         return this;
     }
 
-    public Edit addPhoto(Path photo) {
-        return addPhoto(photo.toFile());
+    public Edit addPhoto(InputStream photo, String extension) {
+        uploadableFiles.add(new InputStreamUploadableMessagePhoto(
+                photo,
+                extension,
+                peerIdSupplier,
+                getParams().get("access_token")
+        ));
+        return this;
     }
 
     public Edit addDoc(File doc) {
-        uploadableFiles.add(new UploadableMessageDoc(
+        return addDoc(doc.toPath());
+    }
+
+    public Edit addDoc(Path doc) {
+        uploadableFiles.add(new PathUploadableMessageDoc(
                 doc,
                 peerIdSupplier,
                 getParams().get("access_token")
@@ -83,8 +100,14 @@ public class Edit extends VkMethod<IntegerResponseBody> {
         return this;
     }
 
-    public Edit addDoc(Path doc) {
-        return addDoc(doc.toFile());
+    public Edit addDoc(InputStream doc, String extension) {
+        uploadableFiles.add(new InputStreamUploadableMessageDoc(
+                doc,
+                extension,
+                peerIdSupplier,
+                getParams().get("access_token")
+        ));
+        return this;
     }
 
     public Edit setAttachment(UploadedFile... uploadedFiles) {
