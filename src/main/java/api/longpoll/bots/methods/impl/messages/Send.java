@@ -2,8 +2,10 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.SendResponseBodyDeserializer;
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.helpers.attachments.UploadableMessageDoc;
-import api.longpoll.bots.helpers.attachments.UploadableMessagePhoto;
+import api.longpoll.bots.helpers.attachments.InputStreamUploadableMessageDoc;
+import api.longpoll.bots.helpers.attachments.InputStreamUploadableMessagePhoto;
+import api.longpoll.bots.helpers.attachments.PathUploadableMessageDoc;
+import api.longpoll.bots.helpers.attachments.PathUploadableMessagePhoto;
 import api.longpoll.bots.helpers.attachments.UploadableFile;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Forward;
@@ -17,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.File;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,7 +71,11 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send addPhoto(File photo) {
-        uploadableFiles.add(new UploadableMessagePhoto(
+        return addPhoto(photo.toPath());
+    }
+
+    public Send addPhoto(Path photo) {
+        uploadableFiles.add(new PathUploadableMessagePhoto(
                 photo,
                 peerIdSupplier,
                 getParams().get("access_token")
@@ -76,12 +83,22 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return this;
     }
 
-    public Send addPhoto(Path photo) {
-        return addPhoto(photo.toFile());
+    public Send addPhoto(InputStream photo, String extension) {
+        uploadableFiles.add(new InputStreamUploadableMessagePhoto(
+                photo,
+                extension,
+                peerIdSupplier,
+                getParams().get("access_token")
+        ));
+        return this;
     }
 
     public Send addDoc(File doc) {
-        uploadableFiles.add(new UploadableMessageDoc(
+        return addDoc(doc.toPath());
+    }
+
+    public Send addDoc(Path doc) {
+        uploadableFiles.add(new PathUploadableMessageDoc(
                 doc,
                 peerIdSupplier,
                 getParams().get("access_token")
@@ -89,8 +106,14 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return this;
     }
 
-    public Send addDoc(Path doc) {
-        return addDoc(doc.toFile());
+    public Send addDoc(InputStream doc, String extension) {
+        uploadableFiles.add(new InputStreamUploadableMessageDoc(
+                doc,
+                extension,
+                peerIdSupplier,
+                getParams().get("access_token")
+        ));
+        return this;
     }
 
     public Send setAttachment(UploadedFile... uploadedFiles) {
