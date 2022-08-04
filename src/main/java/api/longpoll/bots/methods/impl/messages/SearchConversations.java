@@ -45,7 +45,7 @@ public class SearchConversations extends VkMethod<SearchConversations.ResponseBo
     }
 
     public SearchConversations setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     public SearchConversations setGroupId(int groupId) {

@@ -115,7 +115,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit setAttachment(List<UploadedFile> uploadedFiles) {
-        return setAttachment(toCSV(uploadedFiles));
+        return setAttachment(csv(uploadedFiles));
     }
 
     public Edit setAttachment(String attachment) {

@@ -43,7 +43,7 @@ public class Get extends VkMethod<Get.ResponseBody> {
     }
 
     public Get setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     @Override

@@ -41,7 +41,7 @@ public class Delete extends VkMethod<IntegerResponseBody> {
     }
 
     public Delete setStories(List<String> stories) {
-        return addParam("stories", toCSV(stories));
+        return addParam("stories", csv(stories));
     }
 
     @Override

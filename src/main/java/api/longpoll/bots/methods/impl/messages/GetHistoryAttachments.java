@@ -55,7 +55,7 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
     }
 
     public GetHistoryAttachments setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetHistoryAttachments setGroupId(int groupId) {

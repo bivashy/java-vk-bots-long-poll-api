@@ -36,7 +36,7 @@ public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
     }
 
     public CreateComment setAttachment(List<UploadedFile> attachments) {
-        return setAttachment(toCSV(attachments));
+        return setAttachment(csv(attachments));
     }
 
     public CreateComment setAttachment(String attachment) {

@@ -54,7 +54,7 @@ public class GetMembers extends VkMethod<GetMembers.ResponseBody> {
     }
 
     public GetMembers setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetMembers setFilter(String filter) {

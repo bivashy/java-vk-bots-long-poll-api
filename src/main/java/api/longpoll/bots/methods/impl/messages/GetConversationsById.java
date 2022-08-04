@@ -35,7 +35,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     }
 
     public GetConversationsById setPeerIds(List<Integer> peerIds) {
-        return addParam("peer_ids", toCSV(peerIds));
+        return addParam("peer_ids", csv(peerIds));
     }
 
     public GetConversationsById setExtended(boolean extended) {
@@ -47,7 +47,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     }
 
     public GetConversationsById setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetConversationsById setGroupId(int groupId) {

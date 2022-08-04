@@ -51,7 +51,7 @@ public class GetImportantMessages extends VkMethod<GetImportantMessages.Response
     }
 
     public GetImportantMessages setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetImportantMessages setExtended(boolean extended) {

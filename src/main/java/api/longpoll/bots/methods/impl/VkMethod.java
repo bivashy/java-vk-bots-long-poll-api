@@ -153,7 +153,7 @@ public abstract class VkMethod<Response> {
      * @param values list of objects.
      * @return comma separated values.
      */
-    protected String toCSV(List<?> values) {
+    protected String csv(List<?> values) {
         return values.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(","));

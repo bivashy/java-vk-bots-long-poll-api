@@ -34,7 +34,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setGroupIds(List<String> groupIds) {
-        return addParam("group_ids", toCSV(groupIds));
+        return addParam("group_ids", csv(groupIds));
     }
 
     public GetById setGroupId(String groupId) {
@@ -46,7 +46,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     @Override

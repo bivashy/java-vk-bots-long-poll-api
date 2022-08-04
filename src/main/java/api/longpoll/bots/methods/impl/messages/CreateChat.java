@@ -33,7 +33,7 @@ public class CreateChat extends VkMethod<IntegerResponseBody> {
     }
 
     public CreateChat setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", toCSV(userIds));
+        return addParam("user_ids", csv(userIds));
     }
 
     public CreateChat setTitle(String title) {

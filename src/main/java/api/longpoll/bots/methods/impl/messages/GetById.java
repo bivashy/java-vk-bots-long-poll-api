@@ -32,7 +32,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", toCSV(messageIds));
+        return addParam("message_ids", csv(messageIds));
     }
 
     public GetById setPreviewLength(int previewLength) {
@@ -48,7 +48,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetById setGroupId(int groupId) {

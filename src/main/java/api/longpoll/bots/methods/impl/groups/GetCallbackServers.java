@@ -39,7 +39,7 @@ public class GetCallbackServers extends VkMethod<GetCallbackServers.ResponseBody
     }
 
     public GetCallbackServers setServerIds(List<Integer> serverIds) {
-        return addParam("server_ids", toCSV(serverIds));
+        return addParam("server_ids", csv(serverIds));
     }
 
     @Override

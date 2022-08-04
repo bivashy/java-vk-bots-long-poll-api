@@ -51,7 +51,7 @@ public class GetReplies extends VkMethod<GetReplies.ResponseBody> {
     }
 
     public GetReplies setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     @Override

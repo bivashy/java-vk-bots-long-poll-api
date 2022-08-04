@@ -40,7 +40,7 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
     }
 
     public GetConversationMembers setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetConversationMembers setGroupId(int groupId) {

@@ -34,7 +34,7 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
     }
 
     public Delete setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", toCSV(messageIds));
+        return addParam("message_ids", csv(messageIds));
     }
 
     public Delete setSpam(boolean spam) {
@@ -54,7 +54,7 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
     }
 
     public Delete setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", toCSV(conversationMessageIds));
+        return addParam("conversation_message_ids", csv(conversationMessageIds));
     }
 
     public Delete setPeerId(int peerId) {

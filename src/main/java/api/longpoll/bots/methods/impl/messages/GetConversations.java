@@ -52,7 +52,7 @@ public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
     }
 
     public GetConversations setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetConversations setGroupId(int groupId) {

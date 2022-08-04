@@ -66,7 +66,7 @@ public class GetHistory extends VkMethod<GetHistory.ResponseBody> {
     }
 
     public GetHistory setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetHistory setGroupId(int groupId) {

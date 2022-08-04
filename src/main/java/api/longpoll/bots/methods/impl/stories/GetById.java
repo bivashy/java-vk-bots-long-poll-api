@@ -35,7 +35,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setStories(List<String> stories) {
-        return addParam("stories", toCSV(stories));
+        return addParam("stories", csv(stories));
     }
 
     public GetById setExtended(boolean extended) {
@@ -47,7 +47,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", toCSV(fields));
+        return addParam("fields", csv(fields));
     }
 
     @Override
