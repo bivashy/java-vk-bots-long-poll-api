@@ -21,7 +21,7 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("messages.getConversationMembers");
     }
 
@@ -40,7 +40,7 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
     }
 
     public GetConversationMembers setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", toCSV(fields));
     }
 
     public GetConversationMembers setGroupId(int groupId) {

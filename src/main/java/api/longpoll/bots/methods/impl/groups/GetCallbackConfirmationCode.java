@@ -17,7 +17,7 @@ public class GetCallbackConfirmationCode extends VkMethod<GetCallbackConfirmatio
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("groups.getCallbackConfirmationCode");
     }
 

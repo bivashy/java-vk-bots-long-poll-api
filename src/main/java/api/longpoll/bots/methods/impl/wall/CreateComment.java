@@ -22,7 +22,7 @@ public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("wall.createComment");
     }
 
@@ -36,7 +36,7 @@ public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
     }
 
     public CreateComment setAttachment(List<UploadedFile> attachments) {
-        return setAttachment(toCommaSeparatedValues(attachments));
+        return setAttachment(toCSV(attachments));
     }
 
     public CreateComment setAttachment(String attachment) {

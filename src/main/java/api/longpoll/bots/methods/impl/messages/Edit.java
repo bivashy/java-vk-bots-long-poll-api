@@ -43,7 +43,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("messages.edit");
     }
 
@@ -115,7 +115,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit setAttachment(List<UploadedFile> uploadedFiles) {
-        return setAttachment(toCommaSeparatedValues(uploadedFiles));
+        return setAttachment(toCSV(uploadedFiles));
     }
 
     public Edit setAttachment(String attachment) {

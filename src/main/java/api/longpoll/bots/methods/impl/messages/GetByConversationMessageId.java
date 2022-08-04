@@ -19,7 +19,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("messages.getByConversationMessageId");
     }
 
@@ -37,7 +37,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
     }
 
     public GetByConversationMessageId setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", toCommaSeparatedValues(conversationMessageIds));
+        return addParam("conversation_message_ids", toCSV(conversationMessageIds));
     }
 
     public GetByConversationMessageId setExtended(boolean extended) {
@@ -49,7 +49,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
     }
 
     public GetByConversationMessageId setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", toCSV(fields));
     }
 
     public GetByConversationMessageId setGroupId(int groupId) {

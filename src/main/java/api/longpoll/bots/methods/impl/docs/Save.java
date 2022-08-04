@@ -16,7 +16,7 @@ public class Save extends VkMethod<Save.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("docs.save");
     }
 

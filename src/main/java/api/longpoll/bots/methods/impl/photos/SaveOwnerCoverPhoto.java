@@ -20,7 +20,7 @@ public class SaveOwnerCoverPhoto extends VkMethod<SaveOwnerCoverPhoto.ResponseBo
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("photos.saveOwnerCoverPhoto");
     }
 

@@ -20,7 +20,7 @@ public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("stories.getPhotoUploadServer");
     }
 
@@ -58,7 +58,7 @@ public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response
     }
 
     public GetPhotoUploadServer setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", toCommaSeparatedValues(userIds));
+        return addParam("user_ids", toCSV(userIds));
     }
 
     @Override

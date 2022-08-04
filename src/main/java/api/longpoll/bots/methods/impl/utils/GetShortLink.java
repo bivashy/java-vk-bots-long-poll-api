@@ -18,7 +18,7 @@ public class GetShortLink extends VkMethod<GetShortLink.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("utils.getShortLink");
     }
 

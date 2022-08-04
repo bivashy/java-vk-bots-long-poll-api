@@ -15,7 +15,7 @@ public class GetChatUploadServer extends VkMethod<GetChatUploadServer.ResponseBo
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("photos.getChatUploadServer");
     }
 

@@ -18,7 +18,7 @@ public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("messages.getConversations");
     }
 
@@ -52,7 +52,7 @@ public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
     }
 
     public GetConversations setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", toCSV(fields));
     }
 
     public GetConversations setGroupId(int groupId) {

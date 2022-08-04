@@ -3,7 +3,9 @@ package api.longpoll.bots.http.impl;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.HttpRequest;
 import api.longpoll.bots.http.HttpResponse;
-import api.longpoll.bots.http.MultipartFormData;
+import api.longpoll.bots.http.RequestBody;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -13,15 +15,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
@@ -29,50 +25,42 @@ import java.util.stream.Collectors;
  */
 public class DefaultHttpClient implements HttpClient {
     /**
+     * {@link Logger} object.
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultHttpClient.class);
+
+    /**
      * New line.
      */
     private static final String CRLF = "\r\n";
 
     @Override
     public HttpResponse execute(HttpRequest httpRequest) throws IOException {
+        if (!"POST".equals(httpRequest.getRequestMethod())) {
+            throw new UnsupportedOperationException("Sending " + httpRequest.getRequestMethod() + " requests is not supported.");
+        }
+
         HttpURLConnection httpURLConnection = null;
         try {
-            httpURLConnection = (HttpURLConnection) new URL(httpRequest.getUrl()).openConnection();
+            long startTime = System.currentTimeMillis();
+            httpURLConnection = (HttpURLConnection) new URL(httpRequest.getUri()).openConnection();
             httpURLConnection.setRequestMethod(httpRequest.getRequestMethod());
             httpURLConnection.setDoOutput(true);
 
-            if (httpRequest.hasParams()) {
-                try (DataOutputStream output = new DataOutputStream(httpURLConnection.getOutputStream())) {
-                    output.writeBytes(toUrlParams(httpRequest.getParams()));
-                    output.flush();
-                }
-            } else if (httpRequest.hasMultipartFormData()) {
-                MultipartFormData multipartFormData = httpRequest.getMultipartFormData();
-                String boundary = UUID.randomUUID().toString();
-                httpURLConnection.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + boundary);
+            httpRequest.getHeaders().forEach(httpURLConnection::setRequestProperty);
+            RequestBody requestBody = httpRequest.getRequestBody();
 
-                try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(httpURLConnection.getOutputStream(), StandardCharsets.UTF_8), true)) {
-                    writer.append("--").append(boundary).append(CRLF);
-                    writer.append("Content-Disposition: form-data; name=\"").append(multipartFormData.getKey()).append("\"; filename=\"").append(multipartFormData.getFilename()).append("\"").append(CRLF);
-                    writer.append("Content-Type: ").append(HttpURLConnection.guessContentTypeFromName(multipartFormData.getFilename())).append(CRLF);
-                    writer.append("Content-Transfer-Encoding: binary").append(CRLF);
-                    writer.append(CRLF);
-                    writer.flush();
-
-                    copy(multipartFormData.getInputStream(), httpURLConnection.getOutputStream());
-
-                    writer.append(CRLF);
-                    writer.append("--").append(boundary).append("--").append(CRLF);
-                    writer.flush();
-                }
+            if (requestBody instanceof FormUrlencoded) {
+                sendFormUrlencoded(httpURLConnection, (FormUrlencoded) requestBody);
+            } else if (requestBody instanceof MultipartFormData) {
+                sendMultipartFormData(httpURLConnection, (MultipartFormData) requestBody);
+            } else {
+                throw new UnsupportedOperationException("RequestBody " + requestBody.getClass() + " is not supported.");
             }
 
-            HttpResponse httpResponse = new HttpResponse(httpURLConnection.getResponseCode());
-            if (httpResponse.getStatusCode() >= 200 && httpResponse.getStatusCode() < 300) {
-                try (BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), StandardCharsets.UTF_8))) {
-                    httpResponse.setBody(reader.lines().collect(Collectors.joining()));
-                }
-            }
+            HttpResponse httpResponse = readResponse(httpURLConnection);
+            long endTime = System.currentTimeMillis();
+            logExecution(httpRequest, httpResponse, endTime - startTime);
             return httpResponse;
         } finally {
             if (httpURLConnection != null) {
@@ -82,29 +70,68 @@ public class DefaultHttpClient implements HttpClient {
     }
 
     /**
-     * Converts params Map to URL params.
+     * Reads response from {@link HttpURLConnection}.
      *
-     * @param params params Map.
-     * @return URL params.
-     * @throws UnsupportedEncodingException when failed to encode params.
+     * @param httpURLConnection response source.
+     * @return HTTP response.
+     * @throws IOException if errors occur.
      */
-    private String toUrlParams(Map<String, String> params) throws UnsupportedEncodingException {
-        List<String> paramsList = new ArrayList<>(params.size());
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            paramsList.add(encode(entry.getKey()) + "=" + encode(entry.getValue()));
+    private HttpResponse readResponse(HttpURLConnection httpURLConnection) throws IOException {
+        DefaultHttpResponse httpResponse = new DefaultHttpResponse()
+                .setResponseCode(httpURLConnection.getResponseCode())
+                .setResponseMessage(httpURLConnection.getResponseMessage());
+
+        httpURLConnection.getHeaderFields().forEach((key, value) -> httpResponse.addHeader(key, String.join(",", value)));
+
+        if (httpResponse.getResponseCode() >= HttpURLConnection.HTTP_OK && httpResponse.getResponseCode() < HttpURLConnection.HTTP_MULT_CHOICE) {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), StandardCharsets.UTF_8))) {
+                httpResponse.setBody(reader.lines().collect(Collectors.joining()));
+            }
         }
-        return String.join("&", paramsList);
+        return httpResponse;
     }
 
     /**
-     * Encodes string value with UTF-8 encoding.
+     * Sends multipart/form-data.
      *
-     * @param s string to encode.
-     * @return encoded string.
-     * @throws UnsupportedEncodingException when failed to encode.
+     * @param httpURLConnection destination.
+     * @param requestBody       data to send.
+     * @throws IOException if errors occur.
      */
-    private String encode(String s) throws UnsupportedEncodingException {
-        return URLEncoder.encode(s, StandardCharsets.UTF_8.name());
+    private void sendMultipartFormData(HttpURLConnection httpURLConnection, MultipartFormData requestBody) throws IOException {
+        if (!(requestBody.getFormInput() instanceof FileInput)) {
+            throw new UnsupportedOperationException("FormInput " + requestBody.getFormInput().getClass() + " is not supported.");
+        }
+
+        try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(httpURLConnection.getOutputStream(), StandardCharsets.UTF_8), true)) {
+            FileInput fileInput = (FileInput) requestBody.getFormInput();
+            writer.append("--").append(requestBody.getBoundary()).append(CRLF);
+            writer.append("Content-Disposition: form-data; name=\"").append(fileInput.getName()).append("\"; filename=\"").append(fileInput.getFilename()).append("\"").append(CRLF);
+            writer.append("Content-Type: ").append(HttpURLConnection.guessContentTypeFromName(fileInput.getFilename())).append(CRLF);
+            writer.append("Content-Transfer-Encoding: binary").append(CRLF);
+            writer.append(CRLF);
+            writer.flush();
+
+            copy(fileInput.getInputStream(), httpURLConnection.getOutputStream());
+
+            writer.append(CRLF);
+            writer.append("--").append(requestBody.getBoundary()).append("--").append(CRLF);
+            writer.flush();
+        }
+    }
+
+    /**
+     * Sends application/x-www-form-urlencoded data.
+     *
+     * @param httpURLConnection destination.
+     * @param requestBody       data to send.
+     * @throws IOException if errors occur.
+     */
+    private void sendFormUrlencoded(HttpURLConnection httpURLConnection, FormUrlencoded requestBody) throws IOException {
+        try (DataOutputStream output = new DataOutputStream(httpURLConnection.getOutputStream())) {
+            output.writeBytes(requestBody.getContent());
+            output.flush();
+        }
     }
 
     /**
@@ -121,5 +148,27 @@ public class DefaultHttpClient implements HttpClient {
             to.write(buffer, 0, bytesRead);
         }
         to.flush();
+    }
+
+    /**
+     * Logs execution info.
+     *
+     * @param request       executed request.
+     * @param response      received response.
+     * @param executionTime execution time.
+     */
+    private void logExecution(HttpRequest request, HttpResponse response, long executionTime) {
+        RequestBody requestBody = request.getRequestBody();
+        LOGGER.debug(
+                "\nRequest:\n\tHeaders: {}\n\tMethod: {}\n\tURI: {}\n\tPayload: {}\n\tTime: {}\nResponse:\n\tStatus: {}\n\tHeaders: {}\n\tBody: {}",
+                request.getHeaders(),
+                request.getRequestMethod(),
+                request.getUri(),
+                requestBody instanceof FormUrlencoded ? ((FormUrlencoded) requestBody).getContent() : "-",
+                executionTime,
+                response.getResponseMessage(),
+                response.getHeaders(),
+                response.getBody()
+        );
     }
 }

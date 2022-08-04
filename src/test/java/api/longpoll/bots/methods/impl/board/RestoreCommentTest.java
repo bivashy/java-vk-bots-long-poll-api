@@ -16,7 +16,7 @@ class RestoreCommentTest {
                 .setTopicId(2)
                 .setCommentId(3);
 
-        assertEquals("https://api.vk.com/method/board.restoreComment", restoreComment.getUrl());
+        assertEquals("https://api.vk.com/method/board.restoreComment", restoreComment.getUri());
         assertEquals(IntegerResponseBody.class, restoreComment.getResponseType());
         assertEquals("1", restoreComment.getParams().get("group_id"));
         assertEquals("2", restoreComment.getParams().get("topic_id"));

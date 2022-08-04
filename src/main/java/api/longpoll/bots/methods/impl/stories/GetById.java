@@ -21,7 +21,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("stories.getById");
     }
 
@@ -35,7 +35,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setStories(List<String> stories) {
-        return addParam("stories", toCommaSeparatedValues(stories));
+        return addParam("stories", toCSV(stories));
     }
 
     public GetById setExtended(boolean extended) {
@@ -47,7 +47,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", toCSV(fields));
     }
 
     @Override

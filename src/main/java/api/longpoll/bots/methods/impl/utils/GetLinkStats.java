@@ -20,7 +20,7 @@ public class GetLinkStats extends VkMethod<GetLinkStats.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("utils.getLinkStats");
     }
 

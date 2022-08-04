@@ -21,7 +21,7 @@ public class GetCallbackServers extends VkMethod<GetCallbackServers.ResponseBody
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("groups.getCallbackServers");
     }
 
@@ -39,7 +39,7 @@ public class GetCallbackServers extends VkMethod<GetCallbackServers.ResponseBody
     }
 
     public GetCallbackServers setServerIds(List<Integer> serverIds) {
-        return addParam("server_ids", toCommaSeparatedValues(serverIds));
+        return addParam("server_ids", toCSV(serverIds));
     }
 
     @Override

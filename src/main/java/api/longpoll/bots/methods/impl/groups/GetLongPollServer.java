@@ -22,7 +22,7 @@ public class GetLongPollServer extends VkMethod<GetLongPollServer.ResponseBody> 
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("groups.getLongPollServer");
     }
 

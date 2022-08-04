@@ -18,7 +18,7 @@ public class GetGroupOrders extends VkMethod<GetGroupOrders.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("market.getGroupOrders");
     }
 

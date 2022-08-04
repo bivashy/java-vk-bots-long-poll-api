@@ -6,19 +6,19 @@ import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkApiHttpException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.http.HttpClient;
-import api.longpoll.bots.http.HttpRequest;
 import api.longpoll.bots.http.HttpResponse;
-import api.longpoll.bots.http.MultipartFormData;
+import api.longpoll.bots.http.RequestBody;
 import api.longpoll.bots.http.impl.DefaultHttpClient;
+import api.longpoll.bots.http.impl.FormUrlencoded;
+import api.longpoll.bots.http.impl.PostRequest;
 import api.longpoll.bots.reader.impl.PropertiesReader;
 import api.longpoll.bots.validator.Validator;
 import api.longpoll.bots.validator.VkResponseValidator;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,12 +31,7 @@ import java.util.stream.Collectors;
  *
  * @param <Response> VK API response type.
  */
-public abstract class VkMethod<Response> implements HttpRequest {
-    /**
-     * Logger object.
-     */
-    private static final Logger LOGGER = LoggerFactory.getLogger(VkMethod.class);
-
+public abstract class VkMethod<Response> {
     /**
      * Path to VK methods list.
      */
@@ -74,11 +69,6 @@ public abstract class VkMethod<Response> implements HttpRequest {
      */
     private final Gson gson = new Gson();
 
-    /**
-     * Multipart object.
-     */
-    private MultipartFormData multipartFormData;
-
     public VkMethod(String accessToken) {
         addParam("access_token", accessToken);
         addParam("v", API_VERSION);
@@ -104,13 +94,11 @@ public abstract class VkMethod<Response> implements HttpRequest {
      */
     public Response execute() throws VkApiException {
         try {
-            LOGGER.debug("Request: {}", this);
+            PostRequest request = new PostRequest(getUri()).setRequestBody(getRequestBody());
+            HttpResponse httpResponse = httpClient.execute(request);
 
-            HttpResponse httpResponse = httpClient.execute(this);
-            LOGGER.debug("Response: {}", httpResponse);
-
-            if (httpResponse.getStatusCode() >= 400) {
-                throw new VkApiHttpException(this, httpResponse);
+            if (httpResponse.getResponseCode() >= HttpURLConnection.HTTP_BAD_REQUEST) {
+                throw new VkApiHttpException(httpResponse.toString());
             }
 
             JsonElement jsonElement = gson.fromJson(httpResponse.getBody(), JsonElement.class);
@@ -131,6 +119,14 @@ public abstract class VkMethod<Response> implements HttpRequest {
      */
     protected abstract Class<Response> getResponseType();
 
+    public abstract String getUri();
+
+    protected RequestBody getRequestBody() {
+        FormUrlencoded requestBody = new FormUrlencoded();
+        params.forEach(requestBody::addParam);
+        return requestBody;
+    }
+
     /**
      * Adds URL parameter to HTTP request.
      *
@@ -143,42 +139,12 @@ public abstract class VkMethod<Response> implements HttpRequest {
         return this;
     }
 
-    @Override
-    public String getRequestMethod() {
-        return "POST";
-    }
-
-    @Override
     public Map<String, String> getParams() {
         return params;
     }
 
-    @Override
-    public MultipartFormData getMultipartFormData() {
-        return multipartFormData;
-    }
-
-    public VkMethod<Response> setMultipartFormData(MultipartFormData multipartFormData) {
-        this.multipartFormData = multipartFormData;
-        return this;
-    }
-
-    public Gson getGson() {
+    protected Gson getGson() {
         return gson;
-    }
-
-    /**
-     * Hides <i>access_token</i> from logging.
-     *
-     * @return non-sensitive params.
-     */
-    private Map<String, String> getNonSensitiveParams() {
-        return new HashMap<String, String>(params) {{
-            computeIfPresent(
-                    "access_token",
-                    (key, value) -> value.replaceAll(".", "*")
-            );
-        }};
     }
 
     /**
@@ -187,7 +153,7 @@ public abstract class VkMethod<Response> implements HttpRequest {
      * @param values list of objects.
      * @return comma separated values.
      */
-    protected String toCommaSeparatedValues(List<?> values) {
+    protected String toCSV(List<?> values) {
         return values.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(","));
@@ -195,11 +161,8 @@ public abstract class VkMethod<Response> implements HttpRequest {
 
     @Override
     public String toString() {
-        return String.format(
-                "Method=%s, URL=%s, Params=%s",
-                getRequestMethod(),
-                getUrl(),
-                getNonSensitiveParams()
-        );
+        return "VkMethod{" +
+                "params=" + params +
+                '}';
     }
 }

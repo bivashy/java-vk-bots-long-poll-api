@@ -49,7 +49,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("messages.send");
     }
 
@@ -121,7 +121,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setAttachment(List<UploadedFile> uploadedFiles) {
-        return setAttachment(toCommaSeparatedValues(uploadedFiles));
+        return setAttachment(toCSV(uploadedFiles));
     }
 
     public Send setAttachment(String attachment) {
@@ -155,7 +155,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", toCommaSeparatedValues(userIds));
+        return addParam("user_ids", toCSV(userIds));
     }
 
     public Send setMessage(String message) {
@@ -179,7 +179,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setForwardMessages(List<Integer> forwardMessages) {
-        return addParam("forward_messages", toCommaSeparatedValues(forwardMessages));
+        return addParam("forward_messages", toCSV(forwardMessages));
     }
 
     public Send setStickerId(int stickerId) {

@@ -17,7 +17,7 @@ public class AddAddress extends VkMethod<AddAddress.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("groups.addAddress");
     }
 

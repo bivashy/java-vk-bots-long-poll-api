@@ -18,7 +18,7 @@ public class SetChatPhoto extends VkMethod<SetChatPhoto.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("messages.setChatPhoto");
     }
 

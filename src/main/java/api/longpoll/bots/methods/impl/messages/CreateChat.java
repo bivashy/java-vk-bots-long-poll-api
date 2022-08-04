@@ -19,7 +19,7 @@ public class CreateChat extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("messages.createChat");
     }
 
@@ -33,7 +33,7 @@ public class CreateChat extends VkMethod<IntegerResponseBody> {
     }
 
     public CreateChat setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", toCommaSeparatedValues(userIds));
+        return addParam("user_ids", toCSV(userIds));
     }
 
     public CreateChat setTitle(String title) {

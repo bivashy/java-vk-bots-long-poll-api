@@ -20,7 +20,7 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("messages.delete");
     }
 
@@ -34,7 +34,7 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
     }
 
     public Delete setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", toCommaSeparatedValues(messageIds));
+        return addParam("message_ids", toCSV(messageIds));
     }
 
     public Delete setSpam(boolean spam) {
@@ -54,7 +54,7 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
     }
 
     public Delete setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", toCommaSeparatedValues(conversationMessageIds));
+        return addParam("conversation_message_ids", toCSV(conversationMessageIds));
     }
 
     public Delete setPeerId(int peerId) {

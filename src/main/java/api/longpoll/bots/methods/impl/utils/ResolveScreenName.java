@@ -17,7 +17,7 @@ public class ResolveScreenName extends VkMethod<ResolveScreenName.ResponseBody> 
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("utils.resolveScreenName");
     }
 

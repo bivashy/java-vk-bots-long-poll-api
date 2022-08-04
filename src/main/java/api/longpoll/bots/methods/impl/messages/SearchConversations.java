@@ -18,7 +18,7 @@ public class SearchConversations extends VkMethod<SearchConversations.ResponseBo
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("messages.searchConversations");
     }
 
@@ -45,7 +45,7 @@ public class SearchConversations extends VkMethod<SearchConversations.ResponseBo
     }
 
     public SearchConversations setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", toCSV(fields));
     }
 
     public SearchConversations setGroupId(int groupId) {

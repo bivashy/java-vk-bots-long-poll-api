@@ -19,17 +19,11 @@ public abstract class UploadableMessagePhoto extends AbstractUploadableFile {
     private final GetMessagesUploadServer getMessagesUploadServer;
 
     /**
-     * Uploads a photo to VK server.
-     */
-    private final UploadPhoto uploadPhoto;
-
-    /**
      * Saves photo.
      */
     private final SaveMessagesPhoto saveMessagesPhoto;
 
     public UploadableMessagePhoto(Supplier<Integer> peerIdSupplier, String accessToken) {
-        this.uploadPhoto = new UploadPhoto();
         this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerIdSupplier.get());
         this.saveMessagesPhoto = new SaveMessagesPhoto(accessToken);
     }
@@ -37,10 +31,12 @@ public abstract class UploadableMessagePhoto extends AbstractUploadableFile {
     @Override
     public UploadedFile uploadFile(String filename, InputStream inputStream) throws VkApiException {
         GetMessagesUploadServer.ResponseBody uploadServer = getMessagesUploadServer.execute();
-        UploadPhoto.Response uploadedPhoto = uploadPhoto
-                .setPhoto(filename, inputStream)
-                .setUrl(uploadServer.getResponse().getUploadUrl())
-                .execute();
+        UploadPhoto.Response uploadedPhoto = new UploadPhoto(
+                uploadServer.getResponse().getUploadUrl(),
+                filename,
+                inputStream
+        ).execute();
+
         SaveMessagesPhoto.ResponseBody savedPhoto = saveMessagesPhoto
                 .setServer(uploadedPhoto.getServer())
                 .setPhoto(uploadedPhoto.getPhoto())

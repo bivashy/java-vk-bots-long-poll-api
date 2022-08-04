@@ -18,7 +18,7 @@ public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("stories.getVideoUploadServer");
     }
 
@@ -56,7 +56,7 @@ public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response
     }
 
     public GetVideoUploadServer setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", toCommaSeparatedValues(userIds));
+        return addParam("user_ids", toCSV(userIds));
     }
 
     @Override

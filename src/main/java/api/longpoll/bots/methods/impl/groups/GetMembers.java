@@ -24,7 +24,7 @@ public class GetMembers extends VkMethod<GetMembers.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("groups.getMembers");
     }
 
@@ -54,7 +54,7 @@ public class GetMembers extends VkMethod<GetMembers.ResponseBody> {
     }
 
     public GetMembers setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", toCSV(fields));
     }
 
     public GetMembers setFilter(String filter) {

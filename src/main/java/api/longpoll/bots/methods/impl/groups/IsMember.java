@@ -23,7 +23,7 @@ public class IsMember extends VkMethod<IsMember.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("groups.isMember");
     }
 
@@ -45,7 +45,7 @@ public class IsMember extends VkMethod<IsMember.ResponseBody> {
     }
 
     public IsMember setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", toCommaSeparatedValues(userIds));
+        return addParam("user_ids", toCSV(userIds));
     }
 
     public IsMember setExtended(boolean extended) {

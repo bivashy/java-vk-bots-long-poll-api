@@ -21,7 +21,7 @@ public class GetReplies extends VkMethod<GetReplies.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("stories.getReplies");
     }
 
@@ -51,7 +51,7 @@ public class GetReplies extends VkMethod<GetReplies.ResponseBody> {
     }
 
     public GetReplies setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", toCSV(fields));
     }
 
     @Override

@@ -20,7 +20,7 @@ public class SaveMessagesPhoto extends VkMethod<SaveMessagesPhoto.ResponseBody> 
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("photos.saveMessagesPhoto");
     }
 

@@ -17,7 +17,7 @@ public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoU
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("photos.getOwnerCoverPhotoUploadServer");
     }
 

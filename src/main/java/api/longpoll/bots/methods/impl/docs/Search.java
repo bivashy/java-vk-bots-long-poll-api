@@ -16,7 +16,7 @@ public class Search extends VkMethod<Search.Response> {
     }
 
     @Override
-    public String getUrl() {
+    public String getUri() {
         return VK_METHODS.getProperty("docs.search");
     }
 
