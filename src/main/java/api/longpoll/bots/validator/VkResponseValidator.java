@@ -5,6 +5,9 @@ import api.longpoll.bots.http.HttpResponse;
 import java.net.HttpURLConnection;
 import java.util.function.Predicate;
 
+/**
+ * Validates Vk HTTP response.
+ */
 public class VkResponseValidator implements Predicate<HttpResponse> {
     @Override
     public boolean test(HttpResponse response) {

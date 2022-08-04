@@ -6,7 +6,7 @@ import com.google.gson.JsonElement;
 import java.util.function.Predicate;
 
 /**
- * Default implementation of VK API response validator.
+ * Validates Vk HTTP response body.
  */
 public class VkResponseBodyValidator implements Predicate<String> {
     /**
