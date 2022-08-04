@@ -12,18 +12,17 @@ import api.longpoll.bots.http.impl.DefaultHttpClient;
 import api.longpoll.bots.http.impl.FormUrlencoded;
 import api.longpoll.bots.http.impl.PostRequest;
 import api.longpoll.bots.reader.impl.PropertiesReader;
-import api.longpoll.bots.validator.Validator;
+import api.longpoll.bots.validator.VkResponseBodyValidator;
 import api.longpoll.bots.validator.VkResponseValidator;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -61,9 +60,15 @@ public abstract class VkMethod<Response> {
     private final HttpClient httpClient = new DefaultHttpClient();
 
     /**
+     * HTTP response validator.
+     */
+    private final Predicate<HttpResponse> httpResponseValidator = new VkResponseValidator();
+
+    /**
      * Validator to check if VK API response is valid.
      */
-    private final Validator<JsonElement> vkResponseValidator = new VkResponseValidator();
+    private final Predicate<String> responseBodyValidator = new VkResponseBodyValidator();
+
     /**
      * {@link Gson} instance.
      */
@@ -95,17 +100,16 @@ public abstract class VkMethod<Response> {
     public Response execute() throws VkApiException {
         try {
             PostRequest request = new PostRequest(getUri()).setRequestBody(getRequestBody());
-            HttpResponse httpResponse = httpClient.execute(request);
+            HttpResponse response = httpClient.execute(request);
 
-            if (httpResponse.getResponseCode() >= HttpURLConnection.HTTP_BAD_REQUEST) {
-                throw new VkApiHttpException(httpResponse.toString());
+            if (httpResponseValidator.negate().test(response)) {
+                throw new VkApiHttpException(response.toString());
             }
 
-            JsonElement jsonElement = gson.fromJson(httpResponse.getBody(), JsonElement.class);
-            if (vkResponseValidator.isValid(jsonElement)) {
-                return gson.fromJson(jsonElement, getResponseType());
+            if (responseBodyValidator.test(response.getBody())) {
+                return gson.fromJson(response.getBody(), getResponseType());
             }
-            throw new VkApiResponseException(httpResponse.getBody(), jsonElement.getAsJsonObject());
+            throw new VkApiResponseException(response.toString());
         } catch (IOException e) {
             throw new VkApiException(e);
         }
@@ -119,8 +123,18 @@ public abstract class VkMethod<Response> {
      */
     protected abstract Class<Response> getResponseType();
 
+    /**
+     * Gets request URI.
+     *
+     * @return request URI.
+     */
     public abstract String getUri();
 
+    /**
+     * Gets HTTP request body.
+     *
+     * @return HTTP request body.
+     */
     protected RequestBody getRequestBody() {
         FormUrlencoded requestBody = new FormUrlencoded();
         params.forEach(requestBody::addParam);
