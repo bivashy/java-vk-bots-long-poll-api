@@ -154,10 +154,20 @@ public abstract class VkMethod<Response> {
         return this;
     }
 
+    /**
+     * Gets Vk method params.
+     *
+     * @return Vk method params.
+     */
     public Map<String, String> getParams() {
         return params;
     }
 
+    /**
+     * Gets {@link VkMethod#gson} object.
+     *
+     * @return {@link VkMethod#gson} object.
+     */
     protected Gson getGson() {
         return gson;
     }
@@ -173,7 +183,13 @@ public abstract class VkMethod<Response> {
                 .map(String::valueOf)
                 .collect(Collectors.joining(","));
     }
-    
+
+    /**
+     * Gets a property from {@link VkMethod#VK_PROPERTIES}.
+     *
+     * @param key property key.
+     * @return property value.
+     */
     protected String property(String key) {
         return VK_PROPERTIES.getProperty(key);
     }
