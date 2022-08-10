@@ -28,6 +28,12 @@ public class WallPost implements Update.Object {
     private Integer ownerId;
 
     /**
+     * Wall owner ID.
+     */
+    @SerializedName("to_id")
+    private Integer toId;
+
+    /**
      * ID of the author.
      */
     @SerializedName("from_id")
@@ -405,11 +411,20 @@ public class WallPost implements Update.Object {
         this.attachments = attachments;
     }
 
+    public Integer getToId() {
+        return toId;
+    }
+
+    public void setToId(Integer toId) {
+        this.toId = toId;
+    }
+
     @Override
     public String toString() {
         return "WallPost{" +
                 "id=" + id +
                 ", ownerId=" + ownerId +
+                ", toId=" + toId +
                 ", fromId=" + fromId +
                 ", createdBy=" + createdBy +
                 ", date=" + date +
