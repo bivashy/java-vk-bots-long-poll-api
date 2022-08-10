@@ -50,10 +50,12 @@ public abstract class VkMethod<Response> {
      * Request params.
      */
     private final Map<String, String> params = new HashMap<>();
+
     /**
      * Async executor.
      */
     private final AsyncCaller asyncCaller = new DefaultAsyncCaller();
+
     /**
      * HTTP client.
      */
