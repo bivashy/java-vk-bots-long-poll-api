@@ -1,6 +1,11 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.model.objects.basic.Conversation;
+import api.longpoll.bots.model.objects.basic.Message;
+import api.longpoll.bots.model.response.ExtendedVkList;
+import api.longpoll.bots.model.response.GenericResponseBody;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
 import java.util.List;
@@ -67,6 +72,46 @@ public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
     /**
      * Response to <b>messages.getConversations</b> request.
      */
-    public static class ResponseBody extends GetConversationsById.ResponseBody {
+    public static class ResponseBody extends GenericResponseBody<ExtendedVkList<ResponseBody.Item>> {
+        /**
+         * Response item.
+         */
+        public static class Item {
+            /**
+             * Conversation object.
+             */
+            @SerializedName("conversation")
+            private Conversation conversation;
+
+            /**
+             * Last message.
+             */
+            @SerializedName("last_message")
+            private Message lastMessage;
+
+            public Conversation getConversation() {
+                return conversation;
+            }
+
+            public void setConversation(Conversation conversation) {
+                this.conversation = conversation;
+            }
+
+            public Message getLastMessage() {
+                return lastMessage;
+            }
+
+            public void setLastMessage(Message lastMessage) {
+                this.lastMessage = lastMessage;
+            }
+
+            @Override
+            public String toString() {
+                return "Item{" +
+                        "conversation=" + conversation +
+                        ", lastMessage=" + lastMessage +
+                        '}';
+            }
+        }
     }
 }
