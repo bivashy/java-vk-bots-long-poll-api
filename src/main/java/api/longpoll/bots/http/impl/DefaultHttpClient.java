@@ -83,11 +83,14 @@ public class DefaultHttpClient implements HttpClient {
 
         httpURLConnection.getHeaderFields().forEach((key, value) -> httpResponse.addHeader(key, String.join(",", value)));
 
-        if (httpResponse.getResponseCode() >= HttpURLConnection.HTTP_OK && httpResponse.getResponseCode() < HttpURLConnection.HTTP_MULT_CHOICE) {
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), StandardCharsets.UTF_8))) {
-                httpResponse.setBody(reader.lines().collect(Collectors.joining()));
-            }
+        InputStream inputStream = httpURLConnection.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST
+                ? httpURLConnection.getInputStream()
+                : httpURLConnection.getErrorStream();
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
+            httpResponse.setBody(reader.lines().collect(Collectors.joining()));
         }
+
         return httpResponse;
     }
 
