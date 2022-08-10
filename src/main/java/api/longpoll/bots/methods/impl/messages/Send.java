@@ -78,7 +78,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
         uploadableFiles.add(new PathUploadableMessagePhoto(
                 photo,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -88,7 +88,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
                 photo,
                 extension,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -101,7 +101,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
         uploadableFiles.add(new PathUploadableMessageDoc(
                 doc,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -111,7 +111,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
                 doc,
                 extension,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }

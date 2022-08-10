@@ -36,14 +36,24 @@ public abstract class VkMethod<Response> {
     private static final String VK_PROPERTIES_PATH = "/vk/vk_methods.properties";
 
     /**
+     * Access token key.
+     */
+    private static final String ACCESS_TOKEN_KEY = "access_token";
+
+    /**
+     * VK API version key.
+     */
+    private static final String API_VERSION_KEY = "v";
+
+    /**
+     * VK API version value.
+     */
+    private static final String API_VERSION_VALUE = "5.131";
+
+    /**
      * VK methods.
      */
     private static final VkProperties VK_PROPERTIES = new VkProperties(VK_PROPERTIES_PATH);
-
-    /**
-     * VK API version.
-     */
-    private static final String API_VERSION = "5.131";
 
     /**
      * Request params.
@@ -75,9 +85,15 @@ public abstract class VkMethod<Response> {
      */
     private final Gson gson = new Gson();
 
+    /**
+     * Access token.
+     */
+    private String accessToken;
+
     public VkMethod(String accessToken) {
-        addParam("access_token", accessToken);
-        addParam("v", API_VERSION);
+        this.accessToken = accessToken;
+        addParam(ACCESS_TOKEN_KEY, accessToken);
+        addParam(API_VERSION_KEY, API_VERSION_VALUE);
     }
 
     public VkMethod() {
@@ -155,15 +171,6 @@ public abstract class VkMethod<Response> {
     }
 
     /**
-     * Gets Vk method params.
-     *
-     * @return Vk method params.
-     */
-    public Map<String, String> getParams() {
-        return params;
-    }
-
-    /**
      * Gets {@link VkMethod#gson} object.
      *
      * @return {@link VkMethod#gson} object.
@@ -192,6 +199,15 @@ public abstract class VkMethod<Response> {
      */
     protected String property(String key) {
         return VK_PROPERTIES.getProperty(key);
+    }
+
+    /**
+     * Gets {@link VkMethod#accessToken}.
+     *
+     * @return {@link VkMethod#accessToken}.
+     */
+    protected String getAccessToken() {
+        return accessToken;
     }
 
     @Override

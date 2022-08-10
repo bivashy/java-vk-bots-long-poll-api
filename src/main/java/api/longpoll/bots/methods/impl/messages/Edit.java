@@ -72,7 +72,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
         uploadableFiles.add(new PathUploadableMessagePhoto(
                 photo,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -82,7 +82,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
                 photo,
                 extension,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -95,7 +95,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
         uploadableFiles.add(new PathUploadableMessageDoc(
                 doc,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -105,7 +105,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
                 doc,
                 extension,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
