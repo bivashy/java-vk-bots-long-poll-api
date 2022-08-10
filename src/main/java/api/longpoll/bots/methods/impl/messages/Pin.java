@@ -18,7 +18,7 @@ public class Pin extends VkMethod<Pin.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.pin");
+        return property("messages.pin");
     }
 
     @Override

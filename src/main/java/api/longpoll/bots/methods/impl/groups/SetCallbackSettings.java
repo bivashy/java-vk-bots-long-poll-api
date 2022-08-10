@@ -17,7 +17,7 @@ public class SetCallbackSettings extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.setCallbackSettings");
+        return property("groups.setCallbackSettings");
     }
 
     @Override

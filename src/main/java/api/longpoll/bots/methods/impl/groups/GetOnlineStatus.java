@@ -19,7 +19,7 @@ public class GetOnlineStatus extends VkMethod<GetOnlineStatus.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.getOnlineStatus");
+        return property("groups.getOnlineStatus");
     }
 
     @Override

@@ -16,7 +16,7 @@ public class SendEventAnswer extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.sendMessageEventAnswer");
+        return property("messages.sendMessageEventAnswer");
     }
 
     @Override

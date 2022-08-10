@@ -18,7 +18,7 @@ public class GetStats extends VkMethod<GetStats.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("stories.getStats");
+        return property("stories.getStats");
     }
 
     @Override

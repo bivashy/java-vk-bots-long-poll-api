@@ -25,7 +25,7 @@ public class GetMembers extends VkMethod<GetMembers.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.getMembers");
+        return property("groups.getMembers");
     }
 
     @Override

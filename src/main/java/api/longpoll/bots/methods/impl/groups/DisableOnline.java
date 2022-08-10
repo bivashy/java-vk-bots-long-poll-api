@@ -17,7 +17,7 @@ public class DisableOnline extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.disableOnline");
+        return property("groups.disableOnline");
     }
 
     @Override

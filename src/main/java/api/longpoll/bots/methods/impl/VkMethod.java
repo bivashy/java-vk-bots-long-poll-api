@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -34,12 +33,12 @@ public abstract class VkMethod<Response> {
     /**
      * Path to VK methods list.
      */
-    private static final String VK_METHODS_PROPERTIES_PATH = "/vk/vk_methods.properties";
+    private static final String VK_PROPERTIES_PATH = "/vk/vk_methods.properties";
 
     /**
      * VK methods.
      */
-    public static final Properties VK_METHODS = new VkProperties(VK_METHODS_PROPERTIES_PATH);
+    private static final VkProperties VK_PROPERTIES = new VkProperties(VK_PROPERTIES_PATH);
 
     /**
      * VK API version.
@@ -173,6 +172,10 @@ public abstract class VkMethod<Response> {
         return values.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(","));
+    }
+    
+    protected String property(String key) {
+        return VK_PROPERTIES.getProperty(key);
     }
 
     @Override

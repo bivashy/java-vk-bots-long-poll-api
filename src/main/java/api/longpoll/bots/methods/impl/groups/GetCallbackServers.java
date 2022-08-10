@@ -22,7 +22,7 @@ public class GetCallbackServers extends VkMethod<GetCallbackServers.ResponseBody
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.getCallbackServers");
+        return property("groups.getCallbackServers");
     }
 
     @Override

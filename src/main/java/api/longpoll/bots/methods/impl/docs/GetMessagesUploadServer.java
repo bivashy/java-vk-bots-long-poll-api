@@ -18,7 +18,7 @@ public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.Re
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("docs.getMessagesUploadServer");
+        return property("docs.getMessagesUploadServer");
     }
 
     @Override

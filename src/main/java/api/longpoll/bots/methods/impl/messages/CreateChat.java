@@ -20,7 +20,7 @@ public class CreateChat extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.createChat");
+        return property("messages.createChat");
     }
 
     @Override

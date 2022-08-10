@@ -15,7 +15,7 @@ public class CloseComments extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("wall.closeComments");
+        return property("wall.closeComments");
     }
 
     @Override

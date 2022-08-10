@@ -19,7 +19,7 @@ public class DeleteChatPhoto extends VkMethod<DeleteChatPhoto.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.deleteChatPhoto");
+        return property("messages.deleteChatPhoto");
     }
 
     @Override

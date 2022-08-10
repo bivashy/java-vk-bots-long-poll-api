@@ -19,7 +19,7 @@ public class SearchConversations extends VkMethod<SearchConversations.ResponseBo
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.searchConversations");
+        return property("messages.searchConversations");
     }
 
     @Override

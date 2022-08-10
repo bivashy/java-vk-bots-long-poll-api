@@ -25,7 +25,7 @@ public class GetHistory extends VkMethod<GetHistory.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.getHistory");
+        return property("messages.getHistory");
     }
 
     @Override

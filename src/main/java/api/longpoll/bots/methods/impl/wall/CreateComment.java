@@ -23,7 +23,7 @@ public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("wall.createComment");
+        return property("wall.createComment");
     }
 
     @Override

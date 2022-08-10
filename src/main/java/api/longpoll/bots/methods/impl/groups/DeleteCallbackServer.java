@@ -17,7 +17,7 @@ public class DeleteCallbackServer extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.deleteCallbackServer");
+        return property("groups.deleteCallbackServer");
     }
 
     @Override

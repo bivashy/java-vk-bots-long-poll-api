@@ -16,7 +16,7 @@ public class MarkAsAnsweredConversation extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.markAsAnsweredConversation");
+        return property("messages.markAsAnsweredConversation");
     }
 
     @Override

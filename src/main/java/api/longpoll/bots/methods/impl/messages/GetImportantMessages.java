@@ -22,7 +22,7 @@ public class GetImportantMessages extends VkMethod<GetImportantMessages.Response
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.getImportantMessages");
+        return property("messages.getImportantMessages");
     }
 
     @Override

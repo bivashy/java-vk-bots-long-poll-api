@@ -22,7 +22,7 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.getConversationMembers");
+        return property("messages.getConversationMembers");
     }
 
 

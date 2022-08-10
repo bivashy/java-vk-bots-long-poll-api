@@ -17,7 +17,7 @@ public class EnableOnline extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.enableOnline");
+        return property("groups.enableOnline");
     }
 
     @Override

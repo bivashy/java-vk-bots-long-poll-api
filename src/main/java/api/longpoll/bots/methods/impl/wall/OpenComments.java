@@ -15,7 +15,7 @@ public class OpenComments extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("wall.openComments");
+        return property("wall.openComments");
     }
 
     @Override

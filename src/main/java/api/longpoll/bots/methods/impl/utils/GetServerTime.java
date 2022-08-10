@@ -17,7 +17,7 @@ public class GetServerTime extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("utils.getServerTime");
+        return property("utils.getServerTime");
     }
 
     @Override

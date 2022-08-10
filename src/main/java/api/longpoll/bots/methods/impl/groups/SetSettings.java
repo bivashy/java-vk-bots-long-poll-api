@@ -16,7 +16,7 @@ public class SetSettings extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.setSettings");
+        return property("groups.setSettings");
     }
 
     @Override

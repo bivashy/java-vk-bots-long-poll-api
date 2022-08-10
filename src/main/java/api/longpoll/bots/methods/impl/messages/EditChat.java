@@ -17,7 +17,7 @@ public class EditChat extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.editChat");
+        return property("messages.editChat");
     }
 
     @Override

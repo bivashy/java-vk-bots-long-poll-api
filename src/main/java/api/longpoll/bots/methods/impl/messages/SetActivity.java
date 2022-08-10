@@ -17,7 +17,7 @@ public class SetActivity extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.setActivity");
+        return property("messages.setActivity");
     }
 
     @Override

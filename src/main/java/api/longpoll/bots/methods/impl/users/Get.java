@@ -22,7 +22,7 @@ public class Get extends VkMethod<Get.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("users.get");
+        return property("users.get");
     }
 
     @Override

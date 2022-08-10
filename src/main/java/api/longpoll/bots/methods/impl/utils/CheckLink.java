@@ -18,7 +18,7 @@ public class CheckLink extends VkMethod<CheckLink.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("utils.checkLink");
+        return property("utils.checkLink");
     }
 
     public CheckLink setUrl(String url) {

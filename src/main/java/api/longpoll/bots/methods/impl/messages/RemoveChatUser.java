@@ -17,7 +17,7 @@ public class RemoveChatUser extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.removeChatUser");
+        return property("messages.removeChatUser");
     }
 
     @Override

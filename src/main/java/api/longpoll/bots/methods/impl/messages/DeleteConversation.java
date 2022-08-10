@@ -18,7 +18,7 @@ public class DeleteConversation extends VkMethod<DeleteConversation.ResponseBody
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.deleteConversation");
+        return property("messages.deleteConversation");
     }
 
     @Override

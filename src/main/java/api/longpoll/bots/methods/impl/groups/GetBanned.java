@@ -24,7 +24,7 @@ public class GetBanned extends VkMethod<GetBanned.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.getBanned");
+        return property("groups.getBanned");
     }
 
     @Override

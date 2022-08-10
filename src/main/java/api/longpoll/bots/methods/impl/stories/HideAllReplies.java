@@ -17,7 +17,7 @@ public class HideAllReplies extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("stories.hideAllReplies");
+        return property("stories.hideAllReplies");
     }
 
     @Override

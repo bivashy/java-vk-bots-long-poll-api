@@ -20,7 +20,7 @@ public class Delete extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("stories.delete");
+        return property("stories.delete");
     }
 
     @Override

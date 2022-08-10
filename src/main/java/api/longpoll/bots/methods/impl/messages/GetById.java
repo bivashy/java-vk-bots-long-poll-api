@@ -19,7 +19,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.getById");
+        return property("messages.getById");
     }
 
     @Override

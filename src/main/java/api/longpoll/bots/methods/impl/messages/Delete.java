@@ -21,7 +21,7 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.delete");
+        return property("messages.delete");
     }
 
     @Override

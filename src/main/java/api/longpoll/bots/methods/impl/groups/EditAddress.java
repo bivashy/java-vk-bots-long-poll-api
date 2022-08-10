@@ -16,7 +16,7 @@ public class EditAddress extends VkMethod<EditAddress.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.editAddress");
+        return property("groups.editAddress");
     }
 
     @Override

@@ -21,7 +21,7 @@ public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("stories.getPhotoUploadServer");
+        return property("stories.getPhotoUploadServer");
     }
 
     @Override

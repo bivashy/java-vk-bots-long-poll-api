@@ -50,7 +50,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.send");
+        return property("messages.send");
     }
 
     @Override

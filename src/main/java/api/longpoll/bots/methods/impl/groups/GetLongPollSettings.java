@@ -18,7 +18,7 @@ public class GetLongPollSettings extends VkMethod<GetLongPollSettings.ResponseBo
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.getLongPollSettings");
+        return property("groups.getLongPollSettings");
     }
 
     @Override

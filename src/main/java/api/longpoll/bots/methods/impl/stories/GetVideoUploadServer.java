@@ -19,7 +19,7 @@ public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("stories.getVideoUploadServer");
+        return property("stories.getVideoUploadServer");
     }
 
     @Override

@@ -16,7 +16,7 @@ public class MarkAsImportantConversation extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.markAsImportantConversation");
+        return property("messages.markAsImportantConversation");
     }
 
     @Override

@@ -20,7 +20,7 @@ public class IsMessagesFromGroupAllowed extends VkMethod<IsMessagesFromGroupAllo
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.isMessagesFromGroupAllowed");
+        return property("messages.isMessagesFromGroupAllowed");
     }
 
     @Override

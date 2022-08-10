@@ -18,7 +18,7 @@ public class MarkAsRead extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.markAsRead");
+        return property("messages.markAsRead");
     }
 
     @Override

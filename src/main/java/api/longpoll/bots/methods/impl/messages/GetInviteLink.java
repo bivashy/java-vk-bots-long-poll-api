@@ -19,7 +19,7 @@ public class GetInviteLink extends VkMethod<GetInviteLink.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.getInviteLink");
+        return property("messages.getInviteLink");
     }
 
     @Override

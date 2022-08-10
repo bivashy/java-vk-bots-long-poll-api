@@ -18,7 +18,7 @@ public class Execute extends VkMethod<Execute.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("execute");
+        return property("execute");
     }
 
     @Override

@@ -22,7 +22,7 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.getHistoryAttachments");
+        return property("messages.getHistoryAttachments");
     }
 
     @Override

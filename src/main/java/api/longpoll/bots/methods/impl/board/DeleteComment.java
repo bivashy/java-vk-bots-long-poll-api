@@ -17,7 +17,7 @@ public class DeleteComment extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("board.deleteComment");
+        return property("board.deleteComment");
     }
 
     @Override

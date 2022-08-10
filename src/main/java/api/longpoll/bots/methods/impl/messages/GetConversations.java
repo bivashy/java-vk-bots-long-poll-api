@@ -24,7 +24,7 @@ public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.getConversations");
+        return property("messages.getConversations");
     }
 
     @Override

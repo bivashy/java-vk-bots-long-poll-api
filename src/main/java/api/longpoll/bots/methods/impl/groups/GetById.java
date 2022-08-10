@@ -21,7 +21,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("groups.getById");
+        return property("groups.getById");
     }
 
     @Override

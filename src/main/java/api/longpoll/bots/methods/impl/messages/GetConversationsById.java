@@ -22,7 +22,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.getConversationsById");
+        return property("messages.getConversationsById");
     }
 
     @Override

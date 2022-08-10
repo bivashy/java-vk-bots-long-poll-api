@@ -17,7 +17,7 @@ public class Restore extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.restore");
+        return property("messages.restore");
     }
 
     @Override

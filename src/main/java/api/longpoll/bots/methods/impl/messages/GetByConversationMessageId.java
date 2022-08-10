@@ -20,7 +20,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("messages.getByConversationMessageId");
+        return property("messages.getByConversationMessageId");
     }
 
     @Override

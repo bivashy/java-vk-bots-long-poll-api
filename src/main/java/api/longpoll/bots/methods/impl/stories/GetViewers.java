@@ -24,7 +24,7 @@ public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("stories.getViewers");
+        return property("stories.getViewers");
     }
 
     @Override

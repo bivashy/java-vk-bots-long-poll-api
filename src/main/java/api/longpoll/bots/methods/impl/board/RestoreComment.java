@@ -17,7 +17,7 @@ public class RestoreComment extends VkMethod<IntegerResponseBody> {
 
     @Override
     public String getUri() {
-        return VK_METHODS.getProperty("board.restoreComment");
+        return property("board.restoreComment");
     }
 
     @Override
