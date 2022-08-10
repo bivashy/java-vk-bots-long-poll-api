@@ -5,13 +5,13 @@ import api.longpoll.bots.async.DefaultAsyncCaller;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkApiHttpException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
+import api.longpoll.bots.helpers.properties.VkProperties;
 import api.longpoll.bots.http.HttpClient;
 import api.longpoll.bots.http.HttpResponse;
 import api.longpoll.bots.http.RequestBody;
 import api.longpoll.bots.http.impl.DefaultHttpClient;
 import api.longpoll.bots.http.impl.FormUrlencoded;
 import api.longpoll.bots.http.impl.PostRequest;
-import api.longpoll.bots.reader.impl.PropertiesReader;
 import api.longpoll.bots.validator.VkResponseBodyValidator;
 import api.longpoll.bots.validator.VkResponseValidator;
 import com.google.gson.Gson;
@@ -39,7 +39,7 @@ public abstract class VkMethod<Response> {
     /**
      * VK methods.
      */
-    public static final Properties VK_METHODS = new PropertiesReader().read(VK_METHODS_PROPERTIES_PATH);
+    public static final Properties VK_METHODS = new VkProperties(VK_METHODS_PROPERTIES_PATH);
 
     /**
      * VK API version.
