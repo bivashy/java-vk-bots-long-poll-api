@@ -20,7 +20,7 @@ public class PostRequest implements HttpRequest {
      */
     private static final String USER_AGENT_KEY = "User-Agent";
 
-    private static final String USER_AGENT_VALUE = "JavaVkLongPollBot/3.3.1";
+    private static final String USER_AGENT_VALUE = "Java Client/1.0.0";
 
     /**
      * Content-Type header.
