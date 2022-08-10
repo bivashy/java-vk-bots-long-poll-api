@@ -23,9 +23,14 @@ public class PostRequest implements HttpRequest {
     private static final String USER_AGENT_VALUE = "Java Client/1.0.0";
 
     /**
-     * Content-Type header.
+     * Accept key.
      */
-    private static final String CONTENT_TYPE_KEY = "Content-Type";
+    private static final String ACCEPT_KEY = "Accept";
+
+    /**
+     * Accept value.
+     */
+    private static final String ACCEPT_VALUE = "application/json";
 
     /**
      * Request URI.
@@ -45,16 +50,22 @@ public class PostRequest implements HttpRequest {
     public PostRequest(String uri) {
         this.uri = uri;
         addHeader(USER_AGENT_KEY, USER_AGENT_VALUE);
+        addHeader(ACCEPT_KEY, ACCEPT_VALUE);
     }
 
-    private PostRequest addHeader(String key, String value) {
-        headers.put(key, value);
+    public PostRequest addHeader(String key, String value) {
+        this.headers.put(key, value);
+        return this;
+    }
+
+    public PostRequest addHeaders(Map<String, String> headers) {
+        this.headers.putAll(headers);
         return this;
     }
 
     public PostRequest setRequestBody(RequestBody requestBody) {
         this.requestBody = requestBody;
-        return addHeader(CONTENT_TYPE_KEY, requestBody.getContentType());
+        return addHeaders(requestBody.getHeaders());
     }
 
     @Override

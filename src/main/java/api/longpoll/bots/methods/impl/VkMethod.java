@@ -153,9 +153,7 @@ public abstract class VkMethod<Response> {
      * @return HTTP request body.
      */
     protected RequestBody getRequestBody() {
-        FormUrlencoded requestBody = new FormUrlencoded();
-        params.forEach(requestBody::addParam);
-        return requestBody;
+        return new FormUrlencoded(params);
     }
 
     /**

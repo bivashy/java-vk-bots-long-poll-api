@@ -1,13 +1,15 @@
 package api.longpoll.bots.http;
 
+import java.util.Map;
+
 /**
  * HTTP request body wrapper.
  */
 public interface RequestBody {
     /**
-     * Gets Content-Type.
+     * Gets request body headers.
      *
-     * @return Content-Type.
+     * @return HTTP headers.
      */
-    String getContentType();
+    Map<String, String> getHeaders();
 }

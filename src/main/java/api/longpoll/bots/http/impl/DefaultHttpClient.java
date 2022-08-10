@@ -132,7 +132,7 @@ public class DefaultHttpClient implements HttpClient {
      */
     private void sendFormUrlencoded(HttpURLConnection httpURLConnection, FormUrlencoded requestBody) throws IOException {
         try (DataOutputStream output = new DataOutputStream(httpURLConnection.getOutputStream())) {
-            output.writeBytes(requestBody.getContent());
+            output.writeBytes(requestBody.getBody());
             output.flush();
         }
     }
@@ -167,7 +167,7 @@ public class DefaultHttpClient implements HttpClient {
                 request.getHeaders(),
                 request.getRequestMethod(),
                 request.getUri(),
-                requestBody instanceof FormUrlencoded ? ((FormUrlencoded) requestBody).getContent() : "-",
+                requestBody instanceof FormUrlencoded ? ((FormUrlencoded) requestBody).getBody() : "-",
                 executionTime,
                 response.getResponseMessage(),
                 response.getHeaders(),

@@ -48,6 +48,6 @@ public abstract class UploadMethod<Response> extends VkMethod<Response> {
 
     @Override
     protected RequestBody getRequestBody() {
-        return new MultipartFormData().setFormInput(new FileInput(name, filename, inputStream));
+        return new MultipartFormData(new FileInput(name, filename, inputStream));
     }
 }

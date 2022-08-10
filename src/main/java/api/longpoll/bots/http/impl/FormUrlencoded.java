@@ -14,27 +14,54 @@ import java.util.stream.Collectors;
  */
 public class FormUrlencoded implements RequestBody {
     /**
-     * Content-Type.
+     * Content-Type key.
      */
-    private static final String CONTENT_TYPE = "application/x-www-form-urlencoded";
+    private static final String CONTENT_TYPE_KEY = "Content-Type";
 
     /**
-     * Content params.
+     * Content-Type value.
      */
-    private final Map<String, String> params = new HashMap<>();
+    private static final String CONTENT_TYPE_VALUE = "application/x-www-form-urlencoded";
 
-    public FormUrlencoded addParam(String key, String value) {
-        params.put(key, value);
-        return this;
-    }
+    /**
+     * Content-Length key.
+     */
+    private static final String CONTENT_LENGTH_KEY = "Content-Length";
 
-    public String getContent() {
-        return params.entrySet()
+    /**
+     * Request headers.
+     */
+    private final Map<String, String> headers = new HashMap<>();
+
+    /**
+     * Request body.
+     */
+    private final String body;
+
+    public FormUrlencoded(Map<String, String> params) {
+        this.body = params.entrySet()
                 .stream()
                 .map(entry -> encode(entry.getKey()) + "=" + encode(entry.getValue()))
                 .collect(Collectors.joining("&"));
+        this.headers.put(CONTENT_TYPE_KEY, CONTENT_TYPE_VALUE);
+        this.headers.put(CONTENT_LENGTH_KEY, String.valueOf(this.body.length()));
     }
 
+    /**
+     * Gets form body.
+     *
+     * @return form body.
+     */
+    public String getBody() {
+        return body;
+    }
+
+    /**
+     * Encodes a string.
+     *
+     * @param s string to encode.
+     * @return encoded string.
+     */
     private String encode(String s) {
         try {
             return URLEncoder.encode(s, StandardCharsets.UTF_8.name());
@@ -44,14 +71,14 @@ public class FormUrlencoded implements RequestBody {
     }
 
     @Override
-    public String getContentType() {
-        return CONTENT_TYPE;
+    public Map<String, String> getHeaders() {
+        return headers;
     }
 
     @Override
     public String toString() {
         return "FormUrlencoded{" +
-                "params=" + params +
+                "body='" + body + '\'' +
                 '}';
     }
 }
