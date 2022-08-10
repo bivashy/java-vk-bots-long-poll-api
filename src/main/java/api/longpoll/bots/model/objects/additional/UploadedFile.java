@@ -41,7 +41,7 @@ public abstract class UploadedFile {
                 .append(getMediaId());
 
         if (getAccessKey() != null) {
-            stringBuilder.append(getAccessKey());
+            stringBuilder.append("_").append(getAccessKey());
         }
 
         return stringBuilder.toString();
