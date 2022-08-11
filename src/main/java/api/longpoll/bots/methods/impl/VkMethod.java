@@ -7,6 +7,7 @@ import api.longpoll.bots.exceptions.VkApiHttpException;
 import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.helpers.properties.VkProperties;
 import api.longpoll.bots.http.HttpClient;
+import api.longpoll.bots.http.HttpRequest;
 import api.longpoll.bots.http.HttpResponse;
 import api.longpoll.bots.http.RequestBody;
 import api.longpoll.bots.http.impl.DefaultHttpClient;
@@ -116,7 +117,7 @@ public abstract class VkMethod<Response> {
      */
     public Response execute() throws VkApiException {
         try {
-            PostRequest request = new PostRequest(getUri()).setRequestBody(getRequestBody());
+            HttpRequest request = new PostRequest(getUri()).setRequestBody(getRequestBody());
             HttpResponse response = httpClient.execute(request);
 
             if (httpResponseValidator.negate().test(response)) {
