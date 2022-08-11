@@ -15,12 +15,12 @@ public class SendEventAnswer extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.sendMessageEventAnswer");
+    public String getUri() {
+        return property("messages.sendMessageEventAnswer");
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 

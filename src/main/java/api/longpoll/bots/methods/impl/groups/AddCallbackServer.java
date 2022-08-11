@@ -17,13 +17,13 @@ public class AddCallbackServer extends VkMethod<AddCallbackServer.ResponseBody> 
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.addCallbackServer");
+    public String getUri() {
+        return property("groups.addCallbackServer");
     }
 
     public AddCallbackServer setUrl(String url) {

@@ -18,12 +18,12 @@ public class SetChatPhoto extends VkMethod<SetChatPhoto.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.setChatPhoto");
+    public String getUri() {
+        return property("messages.setChatPhoto");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

@@ -16,12 +16,12 @@ public class EditOrder extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("market.editOrder");
+    public String getUri() {
+        return property("market.editOrder");
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 

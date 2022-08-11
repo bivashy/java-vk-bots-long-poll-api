@@ -23,12 +23,12 @@ public class GetBanned extends VkMethod<GetBanned.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.getBanned");
+    public String getUri() {
+        return property("groups.getBanned");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -49,7 +49,7 @@ public class GetBanned extends VkMethod<GetBanned.ResponseBody> {
     }
 
     public GetBanned setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetBanned setOwnerId(int ownerId) {

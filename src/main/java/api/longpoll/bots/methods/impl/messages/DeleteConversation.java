@@ -17,12 +17,12 @@ public class DeleteConversation extends VkMethod<DeleteConversation.ResponseBody
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.deleteConversation");
+    public String getUri() {
+        return property("messages.deleteConversation");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

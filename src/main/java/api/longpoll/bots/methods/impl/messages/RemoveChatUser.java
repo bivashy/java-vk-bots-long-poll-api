@@ -16,12 +16,12 @@ public class RemoveChatUser extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.removeChatUser");
+    public String getUri() {
+        return property("messages.removeChatUser");
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 

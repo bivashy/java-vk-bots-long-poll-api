@@ -17,12 +17,12 @@ public class SetLongPollSettings extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.setLongPollSettings");
+    public String getUri() {
+        return property("groups.setLongPollSettings");
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 

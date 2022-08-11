@@ -18,12 +18,12 @@ public class GetOrderById extends VkMethod<GetOrderById.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("market.getOrderById");
+    public String getUri() {
+        return property("market.getOrderById");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

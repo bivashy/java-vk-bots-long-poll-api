@@ -15,12 +15,12 @@ public class MarkAsAnsweredConversation extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.markAsAnsweredConversation");
+    public String getUri() {
+        return property("messages.markAsAnsweredConversation");
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 

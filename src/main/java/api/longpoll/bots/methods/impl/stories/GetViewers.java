@@ -23,12 +23,12 @@ public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("stories.getViewers");
+    public String getUri() {
+        return property("stories.getViewers");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -37,7 +37,7 @@ public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
     }
 
     public GetViewers setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", toCommaSeparatedValues(messageIds));
+        return addParam("message_ids", csv(messageIds));
     }
 
     public GetViewers setPreviewLength(int previewLength) {
@@ -53,7 +53,7 @@ public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
     }
 
     public GetViewers setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetViewers setGroupId(int groupId) {

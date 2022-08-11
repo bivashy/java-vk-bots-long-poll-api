@@ -2,6 +2,7 @@ package api.longpoll.bots.model.objects.additional;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -61,6 +62,10 @@ public class Forward {
         return conversationMessageIds;
     }
 
+    public Forward setConversationMessageIds(Integer... conversationMessageIds) {
+        return setConversationMessageIds(Arrays.asList(conversationMessageIds));
+    }
+
     public Forward setConversationMessageIds(List<Integer> conversationMessageIds) {
         this.conversationMessageIds = conversationMessageIds;
         return this;
@@ -68,6 +73,10 @@ public class Forward {
 
     public List<Integer> getMessageIds() {
         return messageIds;
+    }
+
+    public Forward setMessageIds(Integer... messageIds) {
+        return setMessageIds(Arrays.asList(messageIds));
     }
 
     public Forward setMessageIds(List<Integer> messageIds) {

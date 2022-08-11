@@ -15,12 +15,12 @@ public class MarkAsImportantConversation extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.markAsImportantConversation");
+    public String getUri() {
+        return property("messages.markAsImportantConversation");
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 

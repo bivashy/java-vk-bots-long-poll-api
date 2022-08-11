@@ -17,13 +17,13 @@ public class GetLongPollServer extends VkMethod<GetLongPollServer.ResponseBody> 
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.getLongPollServer");
+    public String getUri() {
+        return property("groups.getLongPollServer");
     }
 
     public GetLongPollServer setGroupId(int groupId) {

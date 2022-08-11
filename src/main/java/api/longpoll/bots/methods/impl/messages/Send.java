@@ -49,12 +49,12 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.send");
+    public String getUri() {
+        return property("messages.send");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -78,7 +78,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
         uploadableFiles.add(new PathUploadableMessagePhoto(
                 photo,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -88,7 +88,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
                 photo,
                 extension,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -101,7 +101,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
         uploadableFiles.add(new PathUploadableMessageDoc(
                 doc,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -111,7 +111,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
                 doc,
                 extension,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -121,7 +121,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setAttachment(List<UploadedFile> uploadedFiles) {
-        return setAttachment(toCommaSeparatedValues(uploadedFiles));
+        return setAttachment(csv(uploadedFiles));
     }
 
     public Send setAttachment(String attachment) {
@@ -155,7 +155,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", toCommaSeparatedValues(userIds));
+        return addParam("user_ids", csv(userIds));
     }
 
     public Send setMessage(String message) {
@@ -179,7 +179,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setForwardMessages(List<Integer> forwardMessages) {
-        return addParam("forward_messages", toCommaSeparatedValues(forwardMessages));
+        return addParam("forward_messages", csv(forwardMessages));
     }
 
     public Send setStickerId(int stickerId) {

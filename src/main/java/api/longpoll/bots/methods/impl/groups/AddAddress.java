@@ -17,12 +17,12 @@ public class AddAddress extends VkMethod<AddAddress.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.addAddress");
+    public String getUri() {
+        return property("groups.addAddress");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

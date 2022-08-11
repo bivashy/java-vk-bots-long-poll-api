@@ -23,12 +23,12 @@ public class IsMember extends VkMethod<IsMember.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.isMember");
+    public String getUri() {
+        return property("groups.isMember");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -45,7 +45,7 @@ public class IsMember extends VkMethod<IsMember.ResponseBody> {
     }
 
     public IsMember setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", toCommaSeparatedValues(userIds));
+        return addParam("user_ids", csv(userIds));
     }
 
     public IsMember setExtended(boolean extended) {

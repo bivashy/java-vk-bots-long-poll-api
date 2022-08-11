@@ -1,6 +1,12 @@
 package api.longpoll.bots.methods.impl.upload;
 
+import api.longpoll.bots.http.RequestBody;
+import api.longpoll.bots.http.impl.FileInput;
+import api.longpoll.bots.http.impl.MultipartFormData;
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.model.objects.media.FileType;
+
+import java.io.InputStream;
 
 /**
  * Generic method that uploads files to VK server.
@@ -9,17 +15,39 @@ import api.longpoll.bots.methods.impl.VkMethod;
  */
 public abstract class UploadMethod<Response> extends VkMethod<Response> {
     /**
-     * URL to upload file.
+     * URI to upload file.
      */
-    private String url;
+    private final String uri;
 
-    @Override
-    public String getUrl() {
-        return url;
+    /**
+     * File type.
+     */
+    private final String name;
+
+    /**
+     * Filename.
+     */
+    private final String filename;
+
+    /**
+     * File {@link InputStream}.
+     */
+    private final InputStream inputStream;
+
+    public UploadMethod(String uri, FileType fileType, String filename, InputStream inputStream) {
+        this.uri = uri;
+        this.name = fileType.getValue();
+        this.filename = filename;
+        this.inputStream = inputStream;
     }
 
-    public UploadMethod<Response> setUrl(String uploadUrl) {
-        this.url = uploadUrl;
-        return this;
+    @Override
+    public String getUri() {
+        return uri;
+    }
+
+    @Override
+    protected RequestBody getRequestBody() {
+        return new MultipartFormData(new FileInput(name, filename, inputStream));
     }
 }

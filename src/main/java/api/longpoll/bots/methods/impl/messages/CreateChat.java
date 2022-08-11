@@ -19,12 +19,12 @@ public class CreateChat extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.createChat");
+    public String getUri() {
+        return property("messages.createChat");
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 
@@ -33,7 +33,7 @@ public class CreateChat extends VkMethod<IntegerResponseBody> {
     }
 
     public CreateChat setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", toCommaSeparatedValues(userIds));
+        return addParam("user_ids", csv(userIds));
     }
 
     public CreateChat setTitle(String title) {

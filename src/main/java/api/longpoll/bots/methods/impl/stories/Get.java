@@ -21,12 +21,12 @@ public class Get extends VkMethod<Get.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("stories.get");
+    public String getUri() {
+        return property("stories.get");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -43,7 +43,7 @@ public class Get extends VkMethod<Get.ResponseBody> {
     }
 
     public Get setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     @Override

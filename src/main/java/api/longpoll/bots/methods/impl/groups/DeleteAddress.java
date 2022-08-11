@@ -14,12 +14,12 @@ public class DeleteAddress extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.deleteAddress");
+    public String getUri() {
+        return property("groups.deleteAddress");
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 

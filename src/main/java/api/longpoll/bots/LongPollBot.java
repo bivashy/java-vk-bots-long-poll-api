@@ -51,7 +51,7 @@ public abstract class LongPollBot extends VkBot {
                 handle(updates.getEvents());
             }  catch (VkApiHttpException | VkApiResponseException e) {
                 LOGGER.warn("Failed to get events from VK Long Poll Server.", e);
-                if (e instanceof VkApiResponseException && !((VkApiResponseException) e).getError().has("failed")) {
+                if (e instanceof VkApiResponseException && !e.getMessage().contains("failed")) {
                     throw e;
                 }
                 initialize();

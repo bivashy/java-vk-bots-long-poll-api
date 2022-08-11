@@ -13,12 +13,12 @@ public class GetWallUploadServer extends VkMethod<GetWallUploadServer.ResponseBo
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("docs.getWallUploadServer");
+    public String getUri() {
+        return property("docs.getWallUploadServer");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

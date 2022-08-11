@@ -21,12 +21,12 @@ public class Get extends VkMethod<Get.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("users.get");
+    public String getUri() {
+        return property("users.get");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -35,7 +35,7 @@ public class Get extends VkMethod<Get.ResponseBody> {
     }
 
     public Get setUserIds(List<String> userIds) {
-        return addParam("user_ids", toCommaSeparatedValues(userIds));
+        return addParam("user_ids", csv(userIds));
     }
 
     public Get setFields(String... fields) {
@@ -43,7 +43,7 @@ public class Get extends VkMethod<Get.ResponseBody> {
     }
 
     public Get setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     public Get setNameCase(NameCase nameCase) {

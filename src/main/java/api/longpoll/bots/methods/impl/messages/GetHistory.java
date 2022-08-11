@@ -24,12 +24,12 @@ public class GetHistory extends VkMethod<GetHistory.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.getHistory");
+    public String getUri() {
+        return property("messages.getHistory");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -66,7 +66,7 @@ public class GetHistory extends VkMethod<GetHistory.ResponseBody> {
     }
 
     public GetHistory setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetHistory setGroupId(int groupId) {

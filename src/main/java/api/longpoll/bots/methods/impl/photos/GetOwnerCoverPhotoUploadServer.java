@@ -17,12 +17,12 @@ public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoU
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("photos.getOwnerCoverPhotoUploadServer");
+    public String getUri() {
+        return property("photos.getOwnerCoverPhotoUploadServer");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

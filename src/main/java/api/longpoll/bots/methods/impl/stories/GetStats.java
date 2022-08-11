@@ -17,12 +17,12 @@ public class GetStats extends VkMethod<GetStats.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("stories.getStats");
+    public String getUri() {
+        return property("stories.getStats");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

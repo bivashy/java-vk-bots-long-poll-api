@@ -18,12 +18,12 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.getById");
+    public String getUri() {
+        return property("messages.getById");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -32,7 +32,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", toCommaSeparatedValues(messageIds));
+        return addParam("message_ids", csv(messageIds));
     }
 
     public GetById setPreviewLength(int previewLength) {
@@ -48,7 +48,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetById setGroupId(int groupId) {

@@ -19,12 +19,12 @@ public class GetCallbackSettings extends VkMethod<GetCallbackSettings.ResponseBo
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.getCallbackSettings");
+    public String getUri() {
+        return property("groups.getCallbackSettings");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

@@ -1,50 +1,36 @@
 package api.longpoll.bots.http;
 
+import java.util.Map;
+
 /**
  * HTTP response wrapper.
  */
-public class HttpResponse {
+public interface HttpResponse {
     /**
-     * HTTP status code.
+     * Get HTTP response code.
+     *
+     * @return HTTP response code.
      */
-    private int statusCode;
+    int getResponseCode();
 
     /**
-     * Response body.
+     * Gets HTTP response message.
+     *
+     * @return HTTP response message.
      */
-    private String body;
+    String getResponseMessage();
 
-    public HttpResponse(int statusCode) {
-        this.statusCode = statusCode;
-    }
+    /**
+     * Gets HTTP response headers.
+     *
+     * @return HTTP response headers.
+     */
+    Map<String, String> getHeaders();
 
-    public HttpResponse(int statusCode, String body) {
-        this.statusCode = statusCode;
-        this.body = body;
-    }
-
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    @Override
-    public String toString() {
-        return String.format(
-                "Status Code=%d, Body=%s",
-                statusCode,
-                body
-        );
-    }
+    /**
+     * Gets HTTP response body.
+     *
+     * @return HTTP response body.
+     */
+    String getBody();
 }

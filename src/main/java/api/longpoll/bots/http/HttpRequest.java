@@ -14,41 +14,23 @@ public interface HttpRequest {
     String getRequestMethod();
 
     /**
-     * Gets HTTP request URL.
+     * Gets HTTP request URI.
      *
-     * @return HTTP request URL.
+     * @return HTTP request URI.
      */
-    String getUrl();
+    String getUri();
 
     /**
-     * Gets HTTP request URL params.
+     * Gets HTTP request headers.
      *
-     * @return HTTP request URL params.
+     * @return HTTP request headers.
      */
-    Map<String, String> getParams();
+    Map<String, String> getHeaders();
 
     /**
-     * Get HTTP request multipart form data.
+     * Gets HTTP request body.
      *
-     * @return HTTP request multipart form data.
+     * @return HTTP request body.
      */
-    MultipartFormData getMultipartFormData();
-
-    /**
-     * Whether this request has params.
-     *
-     * @return <b>true</b> if this request has params, <b>false</b> otherwise.
-     */
-    default boolean hasParams() {
-        return getParams() != null && !getParams().isEmpty();
-    }
-
-    /**
-     * Whether this request has Multipart Form Data.
-     *
-     * @return <b>true</b> if this request has Multipart Form Data, <b>false</b> otherwise.
-     */
-    default boolean hasMultipartFormData() {
-        return getMultipartFormData() != null;
-    }
+    RequestBody getRequestBody();
 }

@@ -23,12 +23,12 @@ public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.getConversations");
+    public String getUri() {
+        return property("messages.getConversations");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -57,7 +57,7 @@ public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
     }
 
     public GetConversations setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetConversations setGroupId(int groupId) {

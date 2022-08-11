@@ -16,12 +16,12 @@ public class Save extends VkMethod<Save.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("docs.save");
+    public String getUri() {
+        return property("docs.save");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

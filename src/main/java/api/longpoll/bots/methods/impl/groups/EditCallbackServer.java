@@ -16,8 +16,8 @@ public class EditCallbackServer extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.editCallbackServer");
+    public String getUri() {
+        return property("groups.editCallbackServer");
     }
 
     public EditCallbackServer setUrl(String url) {
@@ -25,7 +25,7 @@ public class EditCallbackServer extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 

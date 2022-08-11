@@ -19,12 +19,12 @@ public class GetTokenPermissions extends VkMethod<GetTokenPermissions.ResponseBo
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.getTokenPermissions");
+    public String getUri() {
+        return property("groups.getTokenPermissions");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

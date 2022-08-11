@@ -19,12 +19,12 @@ public class IsMessagesFromGroupAllowed extends VkMethod<IsMessagesFromGroupAllo
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.isMessagesFromGroupAllowed");
+    public String getUri() {
+        return property("messages.isMessagesFromGroupAllowed");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

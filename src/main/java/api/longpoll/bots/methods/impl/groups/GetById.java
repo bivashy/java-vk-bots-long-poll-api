@@ -20,12 +20,12 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.getById");
+    public String getUri() {
+        return property("groups.getById");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -34,7 +34,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setGroupIds(List<String> groupIds) {
-        return addParam("group_ids", toCommaSeparatedValues(groupIds));
+        return addParam("group_ids", csv(groupIds));
     }
 
     public GetById setGroupId(String groupId) {
@@ -46,7 +46,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     @Override

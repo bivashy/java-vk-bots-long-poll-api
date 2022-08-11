@@ -18,12 +18,12 @@ public class GetInviteLink extends VkMethod<GetInviteLink.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.getInviteLink");
+    public String getUri() {
+        return property("messages.getInviteLink");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

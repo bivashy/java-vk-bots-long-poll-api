@@ -21,12 +21,12 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.getHistoryAttachments");
+    public String getUri() {
+        return property("messages.getHistoryAttachments");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -55,7 +55,7 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
     }
 
     public GetHistoryAttachments setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetHistoryAttachments setGroupId(int groupId) {

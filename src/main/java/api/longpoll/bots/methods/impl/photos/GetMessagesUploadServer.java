@@ -17,12 +17,12 @@ public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.Re
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("photos.getMessagesUploadServer");
+    public String getUri() {
+        return property("photos.getMessagesUploadServer");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

@@ -1,6 +1,5 @@
 package api.longpoll.bots.methods.impl.upload;
 
-import api.longpoll.bots.http.MultipartFormData;
 import api.longpoll.bots.model.objects.media.FileType;
 import com.google.gson.annotations.SerializedName;
 
@@ -10,21 +9,12 @@ import java.io.InputStream;
  * Uploads chat photo.
  */
 public class UploadChatPhoto extends UploadMethod<UploadChatPhoto.Response> {
-    @Override
-    public UploadChatPhoto setUrl(String uploadUrl) {
-        return (UploadChatPhoto) super.setUrl(uploadUrl);
-    }
-
-    public UploadChatPhoto setChatPhoto(String filename, InputStream chatPhoto) {
-        return (UploadChatPhoto) super.setMultipartFormData(new MultipartFormData(
-                FileType.FILE,
-                filename,
-                chatPhoto
-        ));
+    public UploadChatPhoto(String uri, String filename, InputStream inputStream) {
+        super(uri, FileType.FILE, filename, inputStream);
     }
 
     @Override
-    protected Class<Response> getResponseType() {
+    protected Class<Response> getResponseClass() {
         return Response.class;
     }
 

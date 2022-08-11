@@ -19,12 +19,12 @@ public class Delete extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("stories.delete");
+    public String getUri() {
+        return property("stories.delete");
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 
@@ -41,7 +41,7 @@ public class Delete extends VkMethod<IntegerResponseBody> {
     }
 
     public Delete setStories(List<String> stories) {
-        return addParam("stories", toCommaSeparatedValues(stories));
+        return addParam("stories", csv(stories));
     }
 
     @Override

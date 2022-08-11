@@ -17,12 +17,12 @@ public class Execute extends VkMethod<Execute.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("execute");
+    public String getUri() {
+        return property("execute");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

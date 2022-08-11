@@ -17,12 +17,12 @@ public class ResolveScreenName extends VkMethod<ResolveScreenName.ResponseBody> 
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("utils.resolveScreenName");
+    public String getUri() {
+        return property("utils.resolveScreenName");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

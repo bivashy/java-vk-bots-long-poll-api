@@ -21,13 +21,13 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.getConversationMembers");
+    public String getUri() {
+        return property("messages.getConversationMembers");
     }
 
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -40,7 +40,7 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
     }
 
     public GetConversationMembers setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetConversationMembers setGroupId(int groupId) {

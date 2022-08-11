@@ -43,12 +43,12 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.edit");
+    public String getUri() {
+        return property("messages.edit");
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 
@@ -72,7 +72,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
         uploadableFiles.add(new PathUploadableMessagePhoto(
                 photo,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -82,7 +82,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
                 photo,
                 extension,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -95,7 +95,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
         uploadableFiles.add(new PathUploadableMessageDoc(
                 doc,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -105,7 +105,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
                 doc,
                 extension,
                 peerIdSupplier,
-                getParams().get("access_token")
+                getAccessToken()
         ));
         return this;
     }
@@ -115,7 +115,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit setAttachment(List<UploadedFile> uploadedFiles) {
-        return setAttachment(toCommaSeparatedValues(uploadedFiles));
+        return setAttachment(csv(uploadedFiles));
     }
 
     public Edit setAttachment(String attachment) {

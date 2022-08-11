@@ -17,12 +17,12 @@ public class GetCallbackConfirmationCode extends VkMethod<GetCallbackConfirmatio
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.getCallbackConfirmationCode");
+    public String getUri() {
+        return property("groups.getCallbackConfirmationCode");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

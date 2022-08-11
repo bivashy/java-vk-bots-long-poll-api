@@ -1,15 +1,16 @@
 package api.longpoll.bots.validator;
 
-import com.google.gson.JsonElement;
+import api.longpoll.bots.http.HttpResponse;
+
+import java.net.HttpURLConnection;
+import java.util.function.Predicate;
 
 /**
- * Default implementation of VK API response validator.
+ * Validates Vk HTTP response.
  */
-public class VkResponseValidator implements Validator<JsonElement> {
+public class VkResponseValidator implements Predicate<HttpResponse> {
     @Override
-    public boolean isValid(JsonElement jsonElement) {
-        return !jsonElement.isJsonObject()
-                || !jsonElement.getAsJsonObject().has("error")
-                && !jsonElement.getAsJsonObject().has("failed");
+    public boolean test(HttpResponse response) {
+        return response.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST;
     }
 }

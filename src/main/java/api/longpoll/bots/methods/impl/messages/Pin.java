@@ -17,12 +17,12 @@ public class Pin extends VkMethod<Pin.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.pin");
+    public String getUri() {
+        return property("messages.pin");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

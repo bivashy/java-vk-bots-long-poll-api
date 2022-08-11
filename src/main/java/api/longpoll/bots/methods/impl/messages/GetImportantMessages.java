@@ -21,12 +21,12 @@ public class GetImportantMessages extends VkMethod<GetImportantMessages.Response
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.getImportantMessages");
+    public String getUri() {
+        return property("messages.getImportantMessages");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -51,7 +51,7 @@ public class GetImportantMessages extends VkMethod<GetImportantMessages.Response
     }
 
     public GetImportantMessages setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetImportantMessages setExtended(boolean extended) {

@@ -15,12 +15,12 @@ public class EditAddress extends VkMethod<EditAddress.ResponseBody> {
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("groups.editAddress");
+    public String getUri() {
+        return property("groups.editAddress");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return null;
     }
 

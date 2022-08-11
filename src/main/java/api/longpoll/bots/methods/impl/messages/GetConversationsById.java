@@ -21,12 +21,12 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     }
 
     @Override
-    public String getUrl() {
-        return VK_METHODS.getProperty("messages.getConversationsById");
+    public String getUri() {
+        return property("messages.getConversationsById");
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 
@@ -35,7 +35,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     }
 
     public GetConversationsById setPeerIds(List<Integer> peerIds) {
-        return addParam("peer_ids", toCommaSeparatedValues(peerIds));
+        return addParam("peer_ids", csv(peerIds));
     }
 
     public GetConversationsById setExtended(boolean extended) {
@@ -47,7 +47,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
     }
 
     public GetConversationsById setFields(List<String> fields) {
-        return addParam("fields", toCommaSeparatedValues(fields));
+        return addParam("fields", csv(fields));
     }
 
     public GetConversationsById setGroupId(int groupId) {
