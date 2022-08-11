@@ -23,7 +23,7 @@ public class GetOrderById extends VkMethod<GetOrderById.ResponseBody> {
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

@@ -17,7 +17,7 @@ class DeleteCommentTest {
                 .setCommentId(3);
 
         assertEquals("https://api.vk.com/method/board.deleteComment", deleteComment.getUri());
-        assertEquals(IntegerResponseBody.class, deleteComment.getResponseType());
+        assertEquals(IntegerResponseBody.class, deleteComment.getResponseClass());
 //        assertEquals("1", deleteComment.getParams().get("group_id"));
 //        assertEquals("2", deleteComment.getParams().get("topic_id"));
 //        assertEquals("3", deleteComment.getParams().get("comment_id"));

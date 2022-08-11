@@ -20,7 +20,7 @@ public class GetChatUploadServer extends VkMethod<GetChatUploadServer.ResponseBo
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

@@ -54,7 +54,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

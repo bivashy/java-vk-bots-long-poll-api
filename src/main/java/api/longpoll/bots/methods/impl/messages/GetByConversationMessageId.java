@@ -24,7 +24,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

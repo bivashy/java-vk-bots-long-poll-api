@@ -23,7 +23,7 @@ public class DeleteChatPhoto extends VkMethod<DeleteChatPhoto.ResponseBody> {
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

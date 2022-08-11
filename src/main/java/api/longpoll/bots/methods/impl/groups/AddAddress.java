@@ -22,7 +22,7 @@ public class AddAddress extends VkMethod<AddAddress.ResponseBody> {
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

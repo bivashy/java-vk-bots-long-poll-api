@@ -23,7 +23,7 @@ public class SearchConversations extends VkMethod<SearchConversations.ResponseBo
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

@@ -22,7 +22,7 @@ public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoU
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

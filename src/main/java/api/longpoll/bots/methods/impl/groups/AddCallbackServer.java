@@ -17,7 +17,7 @@ public class AddCallbackServer extends VkMethod<AddCallbackServer.ResponseBody> 
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

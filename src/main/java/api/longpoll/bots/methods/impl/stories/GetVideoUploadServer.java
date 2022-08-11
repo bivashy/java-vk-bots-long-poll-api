@@ -23,7 +23,7 @@ public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

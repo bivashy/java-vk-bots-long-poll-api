@@ -23,7 +23,7 @@ public class GetInviteLink extends VkMethod<GetInviteLink.ResponseBody> {
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

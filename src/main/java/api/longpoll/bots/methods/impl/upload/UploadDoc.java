@@ -15,7 +15,7 @@ public class UploadDoc extends UploadMethod<UploadDoc.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
+    protected Class<Response> getResponseClass() {
         return Response.class;
     }
 

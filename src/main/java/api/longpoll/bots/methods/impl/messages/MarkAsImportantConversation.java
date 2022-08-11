@@ -20,7 +20,7 @@ public class MarkAsImportantConversation extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    protected Class<IntegerResponseBody> getResponseType() {
+    protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }
 

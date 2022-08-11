@@ -20,7 +20,7 @@ public class EditAddress extends VkMethod<EditAddress.ResponseBody> {
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return null;
     }
 

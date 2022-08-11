@@ -26,7 +26,7 @@ public class GetReplies extends VkMethod<GetReplies.ResponseBody> {
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

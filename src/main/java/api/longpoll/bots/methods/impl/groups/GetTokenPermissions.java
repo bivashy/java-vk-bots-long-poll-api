@@ -24,7 +24,7 @@ public class GetTokenPermissions extends VkMethod<GetTokenPermissions.ResponseBo
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

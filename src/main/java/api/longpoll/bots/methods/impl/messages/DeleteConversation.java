@@ -22,7 +22,7 @@ public class DeleteConversation extends VkMethod<DeleteConversation.ResponseBody
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

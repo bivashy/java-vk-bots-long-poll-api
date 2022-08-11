@@ -17,7 +17,7 @@ public class GetLongPollServer extends VkMethod<GetLongPollServer.ResponseBody> 
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

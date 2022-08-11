@@ -27,7 +27,7 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
 
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

@@ -23,7 +23,7 @@ public class GetGroupOrders extends VkMethod<GetGroupOrders.ResponseBody> {
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

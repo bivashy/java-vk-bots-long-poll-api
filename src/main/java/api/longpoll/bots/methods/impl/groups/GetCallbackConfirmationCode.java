@@ -22,7 +22,7 @@ public class GetCallbackConfirmationCode extends VkMethod<GetCallbackConfirmatio
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

@@ -27,7 +27,7 @@ public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

@@ -26,7 +26,7 @@ public class CheckLink extends VkMethod<CheckLink.ResponseBody> {
     }
 
     @Override
-    protected Class<ResponseBody> getResponseType() {
+    protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }
 

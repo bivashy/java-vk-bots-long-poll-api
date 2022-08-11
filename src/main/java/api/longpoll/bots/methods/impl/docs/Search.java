@@ -21,7 +21,7 @@ public class Search extends VkMethod<Search.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseType() {
+    protected Class<Response> getResponseClass() {
         return Response.class;
     }
 

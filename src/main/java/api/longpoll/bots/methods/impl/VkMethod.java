@@ -124,7 +124,7 @@ public abstract class VkMethod<Response> {
             }
 
             if (responseBodyValidator.test(response.getBody())) {
-                return gson.fromJson(response.getBody(), getResponseType());
+                return gson.fromJson(response.getBody(), getResponseClass());
             }
             throw new VkApiResponseException(response.toString());
         } catch (IOException e) {
@@ -133,12 +133,12 @@ public abstract class VkMethod<Response> {
     }
 
     /**
-     * Gets type of VK API response.
+     * Gets a class of VK API response.
      * This value is used during deserialization of received JSON.
      *
-     * @return type of VK API response.
+     * @return a class of VK API response.
      */
-    protected abstract Class<Response> getResponseType();
+    protected abstract Class<Response> getResponseClass();
 
     /**
      * Gets request URI.
