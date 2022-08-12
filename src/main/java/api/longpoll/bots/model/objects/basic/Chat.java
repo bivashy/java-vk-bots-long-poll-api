@@ -16,7 +16,7 @@ public class Chat {
      * Chat ID.
      */
     @SerializedName("id")
-    private Integer id;
+    private int id;
 
     /**
      * Dialog type.
@@ -34,7 +34,7 @@ public class Chat {
      * ID of the chat starter.
      */
     @SerializedName("admin_id")
-    private Integer adminId;
+    private int adminId;
 
     /**
      * List of chat participants' IDs.
@@ -80,11 +80,11 @@ public class Chat {
     @JsonAdapter(BoolIntDeserializer.class)
     private Boolean kicked;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -104,11 +104,11 @@ public class Chat {
         this.title = title;
     }
 
-    public Integer getAdminId() {
+    public int getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(Integer adminId) {
+    public void setAdminId(int adminId) {
         this.adminId = adminId;
     }
 
