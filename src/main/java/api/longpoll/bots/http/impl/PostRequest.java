@@ -20,6 +20,9 @@ public class PostRequest implements HttpRequest {
      */
     private static final String USER_AGENT_KEY = "User-Agent";
 
+    /**
+     * User-Agent header value.
+     */
     private static final String USER_AGENT_VALUE = "Java Client/1.0.0";
 
     /**
@@ -49,23 +52,21 @@ public class PostRequest implements HttpRequest {
 
     public PostRequest(String uri) {
         this.uri = uri;
-        addHeader(USER_AGENT_KEY, USER_AGENT_VALUE);
-        addHeader(ACCEPT_KEY, ACCEPT_VALUE);
+        this.addHeader(USER_AGENT_KEY, USER_AGENT_VALUE);
+        this.addHeader(ACCEPT_KEY, ACCEPT_VALUE);
     }
 
-    public PostRequest addHeader(String key, String value) {
+    public void addHeader(String key, String value) {
         this.headers.put(key, value);
-        return this;
     }
 
-    public PostRequest addHeaders(Map<String, String> headers) {
+    public void addHeaders(Map<String, String> headers) {
         this.headers.putAll(headers);
-        return this;
     }
 
-    public PostRequest setRequestBody(RequestBody requestBody) {
+    public void setRequestBody(RequestBody requestBody) {
         this.requestBody = requestBody;
-        return addHeaders(requestBody.getHeaders());
+        this.addHeaders(requestBody.getHeaders());
     }
 
     @Override
@@ -86,5 +87,38 @@ public class PostRequest implements HttpRequest {
     @Override
     public RequestBody getRequestBody() {
         return requestBody;
+    }
+
+    /**
+     * PostRequest builder.
+     */
+    public static class Builder {
+        /**
+         * {@link PostRequest} instance.
+         */
+        private final PostRequest postRequest;
+
+        public Builder(String uri) {
+            this.postRequest = new PostRequest(uri);
+        }
+
+        public Builder addHeader(String key, String value) {
+            this.postRequest.addHeader(key, value);
+            return this;
+        }
+
+        public Builder addHeaders(Map<String, String> headers) {
+            this.postRequest.addHeaders(headers);
+            return this;
+        }
+
+        public Builder setRequestBody(RequestBody requestBody) {
+            this.postRequest.setRequestBody(requestBody);
+            return this;
+        }
+
+        public PostRequest build() {
+            return this.postRequest;
+        }
     }
 }

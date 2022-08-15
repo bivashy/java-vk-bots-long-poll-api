@@ -37,6 +37,12 @@ public class Attachment {
     private Doc doc;
 
     /**
+     * {@link Gift} object.
+     */
+    @SerializedName("gift")
+    private Gift gift;
+
+    /**
      * {@link Graffiti} object.
      */
     @SerializedName("graffiti")
@@ -132,6 +138,14 @@ public class Attachment {
 
     public void setDoc(Doc doc) {
         this.doc = doc;
+    }
+
+    public Gift getGift() {
+        return gift;
+    }
+
+    public void setGift(Gift gift) {
+        this.gift = gift;
     }
 
     public Graffiti getGraffiti() {
@@ -239,6 +253,10 @@ public class Attachment {
             stringJoiner.add("doc=" + doc);
         }
 
+        if (gift != null) {
+            stringJoiner.add("gift=" + gift);
+        }
+
         if (graffiti != null) {
             stringJoiner.add("graffiti=" + graffiti);
         }
@@ -293,6 +311,7 @@ public class Attachment {
         @SerializedName("audio") AUDIO,
         @SerializedName("audio_message") AUDIO_MESSAGE,
         @SerializedName("doc") DOC,
+        @SerializedName("gift") GIFT,
         @SerializedName("graffiti") GRAFFITI,
         @SerializedName("link") LINK,
         @SerializedName("market") MARKET,

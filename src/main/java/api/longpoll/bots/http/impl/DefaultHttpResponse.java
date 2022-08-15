@@ -29,24 +29,20 @@ public class DefaultHttpResponse implements HttpResponse {
      */
     private String body;
 
-    public DefaultHttpResponse setResponseCode(int responseCode) {
+    public void setResponseCode(int responseCode) {
         this.responseCode = responseCode;
-        return this;
     }
 
-    public DefaultHttpResponse addHeader(String key, String value) {
+    public void addHeader(String key, String value) {
         this.headers.put(key, value);
-        return this;
     }
 
-    public DefaultHttpResponse setBody(String body) {
+    public void setBody(String body) {
         this.body = body;
-        return this;
     }
 
-    public DefaultHttpResponse setResponseMessage(String responseMessage) {
+    public void setResponseMessage(String responseMessage) {
         this.responseMessage = responseMessage;
-        return this;
     }
 
     @Override
@@ -77,5 +73,39 @@ public class DefaultHttpResponse implements HttpResponse {
                 ", headers=" + headers +
                 ", body='" + body + '\'' +
                 '}';
+    }
+
+    /**
+     * DefaultHttpResponse builder class.
+     */
+    public static final class Builder {
+        /**
+         * {@link DefaultHttpResponse} instance.
+         */
+        private final DefaultHttpResponse httpResponse = new DefaultHttpResponse();
+
+        public Builder setResponseCode(int responseCode) {
+            this.httpResponse.setResponseCode(responseCode);
+            return this;
+        }
+
+        public Builder addHeader(String key, String value) {
+            this.httpResponse.addHeader(key, value);
+            return this;
+        }
+
+        public Builder setBody(String body) {
+            this.httpResponse.setBody(body);
+            return this;
+        }
+
+        public Builder setResponseMessage(String responseMessage) {
+            this.httpResponse.setResponseMessage(responseMessage);
+            return this;
+        }
+
+        public DefaultHttpResponse build() {
+            return this.httpResponse;
+        }
     }
 }

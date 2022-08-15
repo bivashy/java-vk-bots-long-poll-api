@@ -21,13 +21,13 @@ public class Conversation {
      * ID of the last read incoming message.
      */
     @SerializedName("in_read")
-    private Integer inRead;
+    private int inRead;
 
     /**
      * ID of the last read outgoing message.
      */
     @SerializedName("out_read")
-    private Integer outRead;
+    private int outRead;
 
     /**
      * Number of unread messages.
@@ -73,19 +73,19 @@ public class Conversation {
         this.peer = peer;
     }
 
-    public Integer getInRead() {
+    public int getInRead() {
         return inRead;
     }
 
-    public void setInRead(Integer inRead) {
+    public void setInRead(int inRead) {
         this.inRead = inRead;
     }
 
-    public Integer getOutRead() {
+    public int getOutRead() {
         return outRead;
     }
 
-    public void setOutRead(Integer outRead) {
+    public void setOutRead(int outRead) {
         this.outRead = outRead;
     }
 

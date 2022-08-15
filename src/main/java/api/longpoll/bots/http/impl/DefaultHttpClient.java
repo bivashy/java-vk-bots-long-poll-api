@@ -77,21 +77,21 @@ public class DefaultHttpClient implements HttpClient {
      * @throws IOException if errors occur.
      */
     private HttpResponse readResponse(HttpURLConnection httpURLConnection) throws IOException {
-        DefaultHttpResponse httpResponse = new DefaultHttpResponse()
+        DefaultHttpResponse.Builder httpResponseBuilder = new DefaultHttpResponse.Builder()
                 .setResponseCode(httpURLConnection.getResponseCode())
                 .setResponseMessage(httpURLConnection.getResponseMessage());
 
-        httpURLConnection.getHeaderFields().forEach((key, value) -> httpResponse.addHeader(key, String.join(",", value)));
+        httpURLConnection.getHeaderFields().forEach((key, value) -> httpResponseBuilder.addHeader(key, String.join(",", value)));
 
         InputStream inputStream = httpURLConnection.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST
                 ? httpURLConnection.getInputStream()
                 : httpURLConnection.getErrorStream();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-            httpResponse.setBody(reader.lines().collect(Collectors.joining()));
+            httpResponseBuilder.setBody(reader.lines().collect(Collectors.joining()));
         }
 
-        return httpResponse;
+        return httpResponseBuilder.build();
     }
 
     /**

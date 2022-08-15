@@ -20,7 +20,7 @@ public class Community {
      * Community ID.
      */
     @SerializedName("id")
-    private Integer id;
+    private int id;
 
     /**
      * Community name.
@@ -343,11 +343,11 @@ public class Community {
     @SerializedName("wiki_page")
     private String wikiPage;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

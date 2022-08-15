@@ -117,7 +117,9 @@ public abstract class VkMethod<Response> {
      */
     public Response execute() throws VkApiException {
         try {
-            HttpRequest request = new PostRequest(getUri()).setRequestBody(getRequestBody());
+            HttpRequest request = new PostRequest.Builder(getUri())
+                    .setRequestBody(getRequestBody())
+                    .build();
             HttpResponse response = httpClient.execute(request);
 
             if (httpResponseValidator.negate().test(response)) {
