@@ -15,15 +15,17 @@ import java.util.List;
  */
 public class SendResponseBodyDeserializer implements JsonDeserializer<Send.ResponseBody> {
     @Override
-    public Send.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public Send.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonElement jsonResponse = jsonElement.getAsJsonObject().get("response");
 
-        Send.ResponseBody response = new Send.ResponseBody();
-        response.setResponse(
-                jsonResponse.isJsonPrimitive()
-                        ? jsonResponse.getAsInt()
-                        : jsonDeserializationContext.deserialize(jsonResponse, TypeToken.getParameterized(List.class, Send.ResponseBody.Response.class).getType())
-        );
-        return response;
+        Send.ResponseBody responseBody = new Send.ResponseBody();
+        responseBody.setResponse(deserializeResponse(jsonResponse, context));
+        return responseBody;
+    }
+
+    private Object deserializeResponse(JsonElement jsonResponse, JsonDeserializationContext context) {
+        return jsonResponse.isJsonPrimitive()
+                ? jsonResponse.getAsInt()
+                : context.deserialize(jsonResponse, TypeToken.getParameterized(List.class, Send.ResponseBody.Response.class).getType());
     }
 }

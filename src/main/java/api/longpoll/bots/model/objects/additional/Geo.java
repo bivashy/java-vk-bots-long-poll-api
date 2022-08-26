@@ -1,5 +1,7 @@
 package api.longpoll.bots.model.objects.additional;
 
+import api.longpoll.bots.adapters.deserializers.CoordinatesDeserializer;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -16,6 +18,7 @@ public class Geo {
      * Location coordinates.
      */
     @SerializedName("coordinates")
+    @JsonAdapter(CoordinatesDeserializer.class)
     private Coordinates coordinates;
 
     /**

@@ -44,20 +44,14 @@ import java.lang.reflect.Type;
  */
 public class UpdateDeserializer implements JsonDeserializer<Update> {
     @Override
-    public final Update deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        JsonObject jsonEvent = jsonElement.getAsJsonObject();
+    public final Update deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
+        JsonObject jsonUpdate = jsonElement.getAsJsonObject();
 
         Update update = new Update();
-        update.setType(jsonDeserializationContext.deserialize(
-                jsonEvent.get("type"),
-                Update.Type.class
-        ));
-        update.setGroupId(jsonEvent.get("group_id").getAsInt());
-        update.setEventId(jsonEvent.get("event_id").getAsString());
-        update.setObject(jsonDeserializationContext.deserialize(
-                jsonEvent.get("object"),
-                getObjectClass(update.getType())
-        ));
+        update.setType(context.deserialize(jsonUpdate.get("type"), Update.Type.class));
+        update.setGroupId(jsonUpdate.get("group_id").getAsInt());
+        update.setEventId(jsonUpdate.get("event_id").getAsString());
+        update.setObject(context.deserialize(jsonUpdate.get("object"), getObjectClass(update.getType())));
         return update;
     }
 
