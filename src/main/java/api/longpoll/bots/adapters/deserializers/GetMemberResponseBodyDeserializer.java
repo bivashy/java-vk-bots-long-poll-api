@@ -18,22 +18,22 @@ import java.util.List;
  */
 public class GetMemberResponseBodyDeserializer implements JsonDeserializer<GetMembers.ResponseBody> {
     @Override
-    public GetMembers.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public GetMembers.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonResponse = jsonElement.getAsJsonObject().getAsJsonObject("response");
         JsonArray jsonItems = jsonResponse.getAsJsonArray("items");
 
-
         VkList<Object> vkList = new VkList<>();
         vkList.setCount(jsonResponse.get("count").getAsInt());
-        vkList.setItems(jsonDeserializationContext.deserialize(
-                jsonItems,
-                jsonItems.size() == 0 || jsonItems.get(0).isJsonPrimitive()
-                        ? TypeToken.getParameterized(List.class, Integer.class).getType()
-                        : TypeToken.getParameterized(List.class, GetMembers.ResponseBody.Item.class).getType()
-        ));
+        vkList.setItems(context.deserialize(jsonItems, guessItemsType(jsonItems)));
 
-        GetMembers.ResponseBody response = new GetMembers.ResponseBody();
-        response.setResponse(vkList);
-        return response;
+        GetMembers.ResponseBody responseBody = new GetMembers.ResponseBody();
+        responseBody.setResponse(vkList);
+        return responseBody;
+    }
+
+    private Type guessItemsType(JsonArray jsonItems) {
+        return jsonItems.isEmpty() || jsonItems.get(0).isJsonPrimitive()
+                ? TypeToken.getParameterized(List.class, Integer.class).getType()
+                : TypeToken.getParameterized(List.class, GetMembers.ResponseBody.Item.class).getType();
     }
 }

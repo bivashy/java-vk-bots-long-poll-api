@@ -15,24 +15,23 @@ import java.util.List;
  */
 public class IsMemberResponseBodyDeserializer implements JsonDeserializer<IsMember.ResponseBody> {
     @Override
-    public IsMember.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public IsMember.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonElement jsonResponse = jsonElement.getAsJsonObject().get("response");
 
-        IsMember.ResponseBody response = new IsMember.ResponseBody();
-        response.setResponse(deserializeResponse(jsonResponse, jsonDeserializationContext));
-        return response;
+        IsMember.ResponseBody responseBody = new IsMember.ResponseBody();
+        responseBody.setResponse(deserializeResponse(jsonResponse, context));
+        return responseBody;
     }
 
-    private Object deserializeResponse(JsonElement jsonResponse, JsonDeserializationContext jsonDeserializationContext) {
+    private Object deserializeResponse(JsonElement jsonResponse, JsonDeserializationContext context) {
         if (jsonResponse.isJsonPrimitive()) {
             return jsonResponse.getAsInt() == 1;
-        } else if (jsonResponse.isJsonObject()) {
-            return jsonDeserializationContext.deserialize(jsonResponse, IsMember.ResponseBody.Response.class);
-        } else {
-            return jsonDeserializationContext.deserialize(
-                    jsonResponse,
-                    TypeToken.getParameterized(List.class, IsMember.ResponseBody.Response.class).getType()
-            );
         }
+
+        if (jsonResponse.isJsonObject()) {
+            return context.deserialize(jsonResponse, IsMember.ResponseBody.Response.class);
+        }
+
+        return context.deserialize(jsonResponse, TypeToken.getParameterized(List.class, IsMember.ResponseBody.Response.class).getType());
     }
 }

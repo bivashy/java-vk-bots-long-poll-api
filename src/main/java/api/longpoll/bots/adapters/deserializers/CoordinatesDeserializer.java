@@ -14,7 +14,7 @@ import java.lang.reflect.Type;
  */
 public class CoordinatesDeserializer implements JsonDeserializer<Geo.Coordinates> {
     @Override
-    public Geo.Coordinates deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public Geo.Coordinates deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         if (jsonElement.isJsonPrimitive()) {
             JsonPrimitive jsonPrimitive = jsonElement.getAsJsonPrimitive();
             if (jsonPrimitive.isString()) {
@@ -27,6 +27,6 @@ public class CoordinatesDeserializer implements JsonDeserializer<Geo.Coordinates
             }
         }
 
-        return jsonDeserializationContext.deserialize(jsonElement, type);
+        return context.deserialize(jsonElement, type);
     }
 }

@@ -19,24 +19,21 @@ import java.util.List;
  */
 public class GetViewersResponseBodyDeserializer implements JsonDeserializer<GetViewers.ResponseBody> {
     @Override
-    public GetViewers.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public GetViewers.ResponseBody deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonResponse = jsonElement.getAsJsonObject().get("response").getAsJsonObject();
         JsonArray jsonItems = jsonResponse.getAsJsonArray("items");
 
-        VkList<Object> response = new VkList<>();
-        response.setCount(jsonResponse.get("count").getAsInt());
-        response.setItems(jsonDeserializationContext.deserialize(
-                jsonItems,
-                getItemListType(jsonItems)
-        ));
+        VkList<Object> vkList = new VkList<>();
+        vkList.setCount(jsonResponse.get("count").getAsInt());
+        vkList.setItems(context.deserialize(jsonItems, guessItemsType(jsonItems)));
 
-        GetViewers.ResponseBody vkResponse = new GetViewers.ResponseBody();
-        vkResponse.setResponse(response);
-        return vkResponse;
+        GetViewers.ResponseBody responseBody = new GetViewers.ResponseBody();
+        responseBody.setResponse(vkList);
+        return responseBody;
     }
 
-    private Type getItemListType(JsonArray jsonItems) {
-        return jsonItems.size() == 0 || jsonItems.get(0).getAsJsonObject().has("user_id")
+    private Type guessItemsType(JsonArray jsonItems) {
+        return jsonItems.isEmpty() || jsonItems.get(0).getAsJsonObject().has("user_id")
                 ? TypeToken.getParameterized(List.class, GetViewers.ResponseBody.Response.class).getType()
                 : TypeToken.getParameterized(List.class, User.class).getType();
     }
