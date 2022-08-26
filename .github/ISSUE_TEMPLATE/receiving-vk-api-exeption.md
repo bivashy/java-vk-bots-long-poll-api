@@ -7,9 +7,9 @@ assignees: ''
 
 ---
 
-I'm executing the request by this URL (replace with URL from your logs): `https://api.vk.com/method/messages.send`
+I'm executing this request (replace with URI from your logs): `https://api.vk.com/method/messages.send`
 
-with parameters (replace with params from your logs): `{access_token=*************************************************************************************, random_id=1413328727, message=Sending you message, v=5.131}`
+with parameters (replace with params from your logs): `access_token=*************************************************************************************&random_id=1413328727&message=Sending you message&v=5.131`
 
 and I'm receiving (replace with response from your logs): 
 ```json

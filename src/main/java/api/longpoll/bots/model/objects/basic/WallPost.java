@@ -475,7 +475,6 @@ public class WallPost implements Update.Object {
          * Whether communities can comment this post.
          */
         @SerializedName("groups_can_post")
-        @JsonAdapter(BoolIntDeserializer.class)
         private Boolean groupsCanPost;
 
         /**
