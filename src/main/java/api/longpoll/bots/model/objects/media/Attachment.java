@@ -37,6 +37,12 @@ public class Attachment {
     private Doc doc;
 
     /**
+     * {@link Event} object.
+     */
+    @SerializedName("event")
+    private Event event;
+
+    /**
      * {@link Gift} object.
      */
     @SerializedName("gift")
@@ -65,6 +71,12 @@ public class Attachment {
      */
     @SerializedName("market_album")
     private MarketCollection marketAlbum;
+
+    /**
+     * {@link Page} object.
+     */
+    @SerializedName("page")
+    private Page page;
 
     /**
      * {@link Photo} object.
@@ -140,6 +152,14 @@ public class Attachment {
         this.doc = doc;
     }
 
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
     public Gift getGift() {
         return gift;
     }
@@ -178,6 +198,14 @@ public class Attachment {
 
     public void setMarketAlbum(MarketCollection marketAlbum) {
         this.marketAlbum = marketAlbum;
+    }
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
     }
 
     public Photo getPhoto() {
@@ -253,6 +281,10 @@ public class Attachment {
             stringJoiner.add("doc=" + doc);
         }
 
+        if (event != null) {
+            stringJoiner.add("event=" + event);
+        }
+
         if (gift != null) {
             stringJoiner.add("gift=" + gift);
         }
@@ -271,6 +303,10 @@ public class Attachment {
 
         if (marketAlbum != null) {
             stringJoiner.add("marketAlbum=" + marketAlbum);
+        }
+
+        if (page != null) {
+            stringJoiner.add("page=" + page);
         }
 
         if (photo != null) {
@@ -311,11 +347,13 @@ public class Attachment {
         @SerializedName("audio") AUDIO,
         @SerializedName("audio_message") AUDIO_MESSAGE,
         @SerializedName("doc") DOC,
+        @SerializedName("event") EVENT,
         @SerializedName("gift") GIFT,
         @SerializedName("graffiti") GRAFFITI,
         @SerializedName("link") LINK,
         @SerializedName("market") MARKET,
         @SerializedName("market_album") MARKET_ALBUM,
+        @SerializedName("page") PAGE,
         @SerializedName("photo") PHOTO,
         @SerializedName("poll") POLL,
         @SerializedName("sticker") STICKER,
