@@ -16,17 +16,17 @@ This library keeps on improving. Feel free to create issues or pull requests.
 
 ## Third-party dependencies
 This library uses the next third-party dependencies:
-* Gson
-* SLF4J
+* `Gson`
+* `SLF4J`
 
 ## Requirements
-1. Java 8+
-2. Maven (or other build tool)
+1. `Java 8` or higher
+2. `Maven` or other build tool
 
 ## Quickstart
 1. Create VK Community.
 2. Go to `Manage` - `API usage` - `Access tokens` and create `access_token`.
-3. Add the library to your Maven project:
+3. Add the library to your `Maven` project: 
 ```xml
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
@@ -82,7 +82,7 @@ public void onMessageNew(MessageNew messageNew) {
 }
 ```
 ## More Examples
-Find more examples of bot usage [here](https://github.com/yvasyliev/java-vk-bots-long-poll-api-examples)
+Find more examples of bot usage [here](https://github.com/yvasyliev/java-vk-bots-long-poll-api-examples).
 ## Async execution
 Each API method can be executed asynchronously:
 ```java
@@ -142,6 +142,6 @@ CompletableFuture<Send.Response> future = vk.messages.send()
 |             `wall_repost` | `public void onWallRepost(WallPost wallPost)`                                 |
 
 ## Logging
-This library uses SLF4J API to log all events. You can add any SLF4J binding to your project to register events the way you want.
+This library uses `SLF4J` API to log all events. You can add any `SLF4J` binding to your project to register events the way you want.
 
 It is highly recommended enabling `DEBUG` log level to see sent and received data.
