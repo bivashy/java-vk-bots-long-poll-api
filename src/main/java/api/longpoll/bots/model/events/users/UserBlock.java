@@ -35,7 +35,7 @@ public class UserBlock implements Update.Object {
      * Text of the comment to the ban.
      */
     @SerializedName("comment")
-    private Integer comment;
+    private String comment;
 
     public Integer getAdminId() {
         return adminId;
@@ -69,11 +69,11 @@ public class UserBlock implements Update.Object {
         this.reason = reason;
     }
 
-    public Integer getComment() {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment(Integer comment) {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 
