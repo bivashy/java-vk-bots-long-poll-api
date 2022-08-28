@@ -91,52 +91,55 @@ CompletableFuture<Send.Response> future = vk.messages.send()
         .setMessage("Sending message asynchronously...")
         .executeAsync();
 ```
-## Bot capabilities
-`LongPollBot` supports the next event handlers:
-* `onAppPayload(AppPayload appPayload)`
-* `onAudioNew(Audio audio)`
-* `onBoardPostDelete(BoardPostDelete boardPostDelete)`
-* `onBoardPostEdit(BoardPost boardPost)`
-* `onBoardPostNew(BoardPost boardPost)`
-* `onBoardPostRestore(BoardPost boardPost)`
-* `onGroupChangePhoto(GroupChangePhoto groupChangePhoto)`
-* `onGroupChangeSettings(GroupChangeSettings groupChangeSettings)`
-* `onGroupJoin(GroupJoin groupJoin)`
-* `onGroupLeave(GroupLeave groupLeave)`
-* `onLikeAdd(Like like)`
-* `onLikeRemove(Like like)`
-* `onMarketCommentDelete(MarketCommentDelete marketCommentDelete)`
-* `onMarketCommentEdit(MarketComment marketComment)`
-* `onMarketCommentNew(MarketComment marketComment)`
-* `onMarketCommentRestore(MarketComment marketComment)`
-* `onMarketOrderEdit(MarketOrder marketOrder)`
-* `onMarketOrderNew(MarketOrder marketOrder)`
-* `onMessageAllow(MessageAllow messageAllow)`
-* `onMessageDeny(MessageDeny messageDeny)`
-* `onMessageEdit(Message message)`
-* `onMessageEvent(MessageEvent messageEvent)`
-* `onMessageNew(MessageNew messageNew)`
-* `onMessageReply(Message message)`
-* `onMessageTypingState(MessageTypingState messageTypingState)`
-* `onPhotoCommentDelete(PhotoCommentDelete photoCommentDelete)`
-* `onPhotoCommentEdit(PhotoComment photoComment)`
-* `onPhotoCommentNew(PhotoComment photoComment)`
-* `onPhotoCommentRestore(PhotoComment photoComment)`
-* `onPhotoNew(Photo photo)`
-* `onUserBlock(UserBlock userBlock)`
-* `onUserUnblock(UserUnblock userUnblock)`
-* `onVideoCommentDelete(VideoCommentDelete videoCommentDelete)`
-* `onVideoCommentEdit(VideoComment videoComment)`
-* `onVideoCommentNew(VideoComment videoComment)`
-* `onVideoCommentRestore(VideoComment videoComment)`
-* `onVideoNew(Video video)`
-* `onVkpayTransaction(VkpayTransaction vkpayTransaction)`
-* `onWallPostNew(WallPost wallPost)`
-* `onWallReplyDelete(WallReplyDelete wallReplyDelete)`
-* `onWallReplyEdit(WallReply wallReply)`
-* `onWallReplyNew(WallReply wallReply)`
-* `onWallReplyRestore(WallReply wallReply)`
-* `onWallRepost(WallPost wallPost)`
+## Bot events
+`LongPollBot` can handle the next events:
+
+|                  VK event | Handler method                                                                |
+|--------------------------:|:------------------------------------------------------------------------------|
+|             `app_payload` | `public void onAppPayload(AppPayload appPayload)`                             |
+|               `audio_new` | `public void onAudioNew(Audio audio)`                                         |
+|       `board_post_delete` | `public void onBoardPostDelete(BoardPostDelete boardPostDelete)`              |
+|         `board_post_edit` | `public void onBoardPostEdit(BoardPost boardPost)`                            |
+|          `board_post_new` | `public void onBoardPostNew(BoardPost boardPost)`                             |
+|      `board_post_restore` | `public void onBoardPostRestore(BoardPost boardPost)`                         |
+|      `group_change_photo` | `public void onGroupChangePhoto(GroupChangePhoto groupChangePhoto)`           |
+|   `group_change_settings` | `public void onGroupChangeSettings(GroupChangeSettings groupChangeSettings)`  |
+|              `group_join` | `public void onGroupJoin(GroupJoin groupJoin)`                                |
+|             `group_leave` | `public void onGroupLeave(GroupLeave groupLeave)`                             |
+|                `like_add` | `public void onLikeAdd(Like like)`                                            |
+|             `like_remove` | `public void onLikeRemove(Like like)`                                         |
+|   `market_comment_delete` | `public void onMarketCommentDelete(MarketCommentDelete marketCommentDelete)`  |
+|     `market_comment_edit` | `public void onMarketCommentEdit(MarketComment marketComment)`                |
+|      `market_comment_new` | `public void onMarketCommentNew(MarketComment marketComment)`                 |
+|  `market_comment_restore` | `public void onMarketCommentRestore(MarketComment marketComment)`             |
+|       `market_order_edit` | `public void onMarketOrderEdit(MarketOrder marketOrder)`                      |
+|        `market_order_new` | `public void onMarketOrderNew(MarketOrder marketOrder)`                       |
+|           `message_allow` | `public void onMessageAllow(MessageAllow messageAllow)`                       |
+|            `message_deny` | `public void onMessageDeny(MessageDeny messageDeny)`                          |
+|            `message_edit` | `public void onMessageEdit(Message message)`                                  |
+|           `message_event` | `public void onMessageEvent(MessageEvent messageEvent)`                       |
+|             `message_new` | `public void onMessageNew(MessageNew messageNew)`                             |
+|           `message_reply` | `public void onMessageReply(Message message)`                                 |
+|    `message_typing_state` | `public void onMessageTypingState(MessageTypingState messageTypingState)`     |
+|    `photo_comment_delete` | `public void onPhotoCommentDelete(PhotoCommentDelete photoCommentDelete)`     |
+|      `photo_comment_edit` | `public void onPhotoCommentEdit(PhotoComment photoComment)`                   |
+|       `photo_comment_new` | `public void onPhotoCommentNew(PhotoComment photoComment)`                    |
+|   `photo_comment_restore` | `public void onPhotoCommentRestore(PhotoComment photoComment)`                |
+|       `photo_comment_new` | `public void onPhotoNew(Photo photo)`                                         |
+|              `user_block` | `public void onUserBlock(UserBlock userBlock)`                                |
+|            `user_unblock` | `public void onUserUnblock(UserUnblock userUnblock)`                          |
+|    `video_comment_delete` | `public void onVideoCommentDelete(VideoCommentDelete videoCommentDelete)`     |
+|      `video_comment_edit` | `public void onVideoCommentEdit(VideoComment videoComment)`                   |
+|       `video_comment_new` | `public void onVideoCommentNew(VideoComment videoComment)`                    |
+|   `video_comment_restore` | `public void onVideoCommentRestore(VideoComment videoComment)`                |
+|               `video_new` | `public void onVideoNew(Video video)`                                         |
+|       `vkpay_transaction` | `public void onVkpayTransaction(VkpayTransaction vkpayTransaction)`           |
+|           `wall_post_new` | `public void onWallPostNew(WallPost wallPost)`                                |
+|       `wall_reply_delete` | `public void onWallReplyDelete(WallReplyDelete wallReplyDelete)`              |
+|         `wall_reply_edit` | `public void onWallReplyEdit(WallReply wallReply)`                            |
+|          `wall_reply_new` | `public void onWallReplyNew(WallReply wallReply)`                             |
+|      `wall_reply_restore` | `public void onWallReplyRestore(WallReply wallReply)`                         |
+|             `wall_repost` | `public void onWallRepost(WallPost wallPost)`                                 |
 
 ## Logging
 This library uses SLF4J API to log all events. You can add any SLF4J binding to your project to register events the way you want.
