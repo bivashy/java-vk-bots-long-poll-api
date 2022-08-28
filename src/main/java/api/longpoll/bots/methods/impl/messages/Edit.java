@@ -11,7 +11,6 @@ import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.IntegerResponseBody;
-import api.longpoll.bots.suppliers.PeerIdSupplier;
 
 import java.io.File;
 import java.io.InputStream;
@@ -34,9 +33,9 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     private final List<UploadableFile> uploadableFiles = new ArrayList<>();
 
     /**
-     * Supplies {@code peer_id}.
+     * Message {@code peer_id}.
      */
-    private final PeerIdSupplier peerIdSupplier = new PeerIdSupplier();
+    private int peerId;
 
     public Edit(String accessToken) {
         super(accessToken);
@@ -71,7 +70,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     public Edit addPhoto(Path photo) {
         uploadableFiles.add(new PathUploadableMessagePhoto(
                 photo,
-                peerIdSupplier,
+                () -> peerId,
                 getAccessToken()
         ));
         return this;
@@ -81,7 +80,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
         uploadableFiles.add(new InputStreamUploadableMessagePhoto(
                 photo,
                 extension,
-                peerIdSupplier,
+                () -> peerId,
                 getAccessToken()
         ));
         return this;
@@ -94,7 +93,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     public Edit addDoc(Path doc) {
         uploadableFiles.add(new PathUploadableMessageDoc(
                 doc,
-                peerIdSupplier,
+                () -> peerId,
                 getAccessToken()
         ));
         return this;
@@ -104,7 +103,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
         uploadableFiles.add(new InputStreamUploadableMessageDoc(
                 doc,
                 extension,
-                peerIdSupplier,
+                () -> peerId,
                 getAccessToken()
         ));
         return this;
@@ -123,7 +122,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit setPeerId(int peerId) {
-        peerIdSupplier.setPeerId(peerId);
+        this.peerId = peerId;
         return addParam("peer_id", peerId);
     }
 
