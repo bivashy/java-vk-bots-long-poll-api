@@ -13,17 +13,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class UpdatesParseTest {
     @Test
     void emptyUpdatesParse() {
-        GetUpdates.Response response = ParseUtil.getEventsResult("json/response/empty_updates_sample_5_110.json");
-        assertEquals(2587, response.getTs());
+        GetUpdates.ResponseBody responseBody = ParseUtil.getEventsResult("json/response/empty_updates_sample_5_110.json");
+        assertEquals(2587, responseBody.getTs());
 
-        List<Update> events = response.getEvents();
+        List<Update> events = responseBody.getEvents();
         assertNotNull(events);
         assertTrue(events.isEmpty());
     }
 
     @Test
     void updatesFailed() {
-        GetUpdates.Response response = ParseUtil.getEventsResult("json/response/get_updates_failed_1_5_110.json");
-        assertEquals(2593, response.getTs());
+        GetUpdates.ResponseBody responseBody = ParseUtil.getEventsResult("json/response/get_updates_failed_1_5_110.json");
+        assertEquals(2593, responseBody.getTs());
     }
 }

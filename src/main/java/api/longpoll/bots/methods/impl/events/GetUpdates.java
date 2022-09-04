@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Gets update events from VK server.
  */
-public class GetUpdates extends VkMethod<GetUpdates.Response> {
+public class GetUpdates extends VkMethod<GetUpdates.ResponseBody> {
     /**
      * Server URL.
      */
@@ -21,8 +21,8 @@ public class GetUpdates extends VkMethod<GetUpdates.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseClass() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseClass() {
+        return ResponseBody.class;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class GetUpdates extends VkMethod<GetUpdates.Response> {
     /**
      * Contains list of events that occur on VK server.
      */
-    public static class Response {
+    public static class ResponseBody {
         /**
          * The number of the last event.
          */

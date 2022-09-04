@@ -32,7 +32,7 @@ public abstract class UploadableMessageDoc extends AbstractUploadableFile {
     @Override
     public UploadedFile uploadFile(String filename, InputStream inputStream) throws VkApiException {
         GetMessagesUploadServer.ResponseBody uploadServer = getMessagesUploadServer.execute();
-        UploadDoc.Response uploadedDoc = new UploadDoc(
+        UploadDoc.ResponseBody uploadedDoc = new UploadDoc(
                 uploadServer.getResponse().getUploadUrl(),
                 filename,
                 inputStream

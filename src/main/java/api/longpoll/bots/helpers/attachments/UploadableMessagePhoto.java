@@ -31,7 +31,7 @@ public abstract class UploadableMessagePhoto extends AbstractUploadableFile {
     @Override
     public UploadedFile uploadFile(String filename, InputStream inputStream) throws VkApiException {
         GetMessagesUploadServer.ResponseBody uploadServer = getMessagesUploadServer.execute();
-        UploadPhoto.Response uploadedPhoto = new UploadPhoto(
+        UploadPhoto.ResponseBody uploadedPhoto = new UploadPhoto(
                 uploadServer.getResponse().getUploadUrl(),
                 filename,
                 inputStream

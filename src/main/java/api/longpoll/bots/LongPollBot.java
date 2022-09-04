@@ -46,7 +46,7 @@ public abstract class LongPollBot extends VkBot {
         initialize();
         while (polling) {
             try {
-                GetUpdates.Response updates = getUpdates.execute();
+                GetUpdates.ResponseBody updates = getUpdates.execute();
                 getUpdates.setTs(updates.getTs());
                 handle(updates.getEvents());
             }  catch (VkApiHttpException | VkApiResponseException e) {

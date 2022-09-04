@@ -9,7 +9,7 @@ import api.longpoll.bots.model.objects.media.Doc;
  *
  * @see <a href="https://vk.com/dev/docs.search">https://vk.com/dev/docs.search</a>
  */
-public class Search extends VkMethod<Search.Response> {
+public class Search extends VkMethod<Search.ResponseBody> {
 
     public Search(String accessToken) {
         super(accessToken);
@@ -21,8 +21,8 @@ public class Search extends VkMethod<Search.Response> {
     }
 
     @Override
-    protected Class<Response> getResponseClass() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseClass() {
+        return ResponseBody.class;
     }
 
     public Search setQ(String q) {
@@ -49,6 +49,6 @@ public class Search extends VkMethod<Search.Response> {
     /**
      * Response to <b>docs.search</b> request.
      */
-    public static class Response extends VkList<Doc> {
+    public static class ResponseBody extends VkList<Doc> {
     }
 }

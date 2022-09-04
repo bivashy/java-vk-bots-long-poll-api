@@ -40,8 +40,8 @@ public class ParseUtil {
         return notNull(objects.get(0));
     }
 
-    public static GetUpdates.Response getEventsResult(String relativePath) {
-        return notNull(GSON.fromJson(readJson(relativePath), GetUpdates.Response.class));
+    public static GetUpdates.ResponseBody getEventsResult(String relativePath) {
+        return notNull(GSON.fromJson(readJson(relativePath), GetUpdates.ResponseBody.class));
     }
 
     public static List<Update> getEvents(String relativePath) {

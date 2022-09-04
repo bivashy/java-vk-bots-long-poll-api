@@ -8,20 +8,20 @@ import java.io.InputStream;
 /**
  * Implements uploading photo in VK API.
  */
-public class UploadPhoto extends UploadMethod<UploadPhoto.Response> {
+public class UploadPhoto extends UploadMethod<UploadPhoto.ResponseBody> {
     public UploadPhoto(String uri, String filename, InputStream inputStream) {
         super(uri, FileType.PHOTO, filename, inputStream);
     }
 
     @Override
-    protected Class<Response> getResponseClass() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseClass() {
+        return ResponseBody.class;
     }
 
     /**
      * Response to photo upload.
      */
-    public static class Response {
+    public static class ResponseBody {
         /**
          * Server ID.
          */
