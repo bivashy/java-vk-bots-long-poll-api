@@ -38,9 +38,9 @@ public class Send extends VkMethod<Send.ResponseBody> {
     private final List<UploadableFile> uploadableFiles = new ArrayList<>();
 
     /**
-     * Message {@code peer_id}.
+     * Message {@code peer_ids}.
      */
-    private int peerId;
+    private final List<Integer> peerIds = new ArrayList<>();
 
     public Send(String accessToken) {
         super(accessToken);
@@ -74,21 +74,29 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send addPhoto(Path photo) {
-        uploadableFiles.add(new PathUploadableMessagePhoto(
+        if (peerIds.isEmpty()) {
+            throw new RuntimeException("Please set 'peer_id' or 'user_id' before adding photo!");
+        }
+
+        peerIds.forEach(peerId -> uploadableFiles.add(new PathUploadableMessagePhoto(
                 photo,
                 () -> peerId,
                 getAccessToken()
-        ));
+        )));
         return this;
     }
 
     public Send addPhoto(InputStream photo, String extension) {
-        uploadableFiles.add(new InputStreamUploadableMessagePhoto(
+        if (peerIds.isEmpty()) {
+            throw new RuntimeException("Please set 'peer_id' or 'user_id' before adding photo!");
+        }
+
+        peerIds.forEach(peerId -> uploadableFiles.add(new InputStreamUploadableMessagePhoto(
                 photo,
                 extension,
                 () -> peerId,
                 getAccessToken()
-        ));
+        )));
         return this;
     }
 
@@ -97,21 +105,29 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send addDoc(Path doc) {
-        uploadableFiles.add(new PathUploadableMessageDoc(
+        if (peerIds.isEmpty()) {
+            throw new RuntimeException("Please set 'peer_id' or 'user_id' before adding doc!");
+        }
+
+        peerIds.forEach(peerId -> uploadableFiles.add(new PathUploadableMessageDoc(
                 doc,
                 () -> peerId,
                 getAccessToken()
-        ));
+        )));
         return this;
     }
 
     public Send addDoc(InputStream doc, String extension) {
-        uploadableFiles.add(new InputStreamUploadableMessageDoc(
+        if (peerIds.isEmpty()) {
+            throw new RuntimeException("Please set 'peer_id' or 'user_id' before adding doc!");
+        }
+
+        peerIds.forEach(peerId -> uploadableFiles.add(new InputStreamUploadableMessageDoc(
                 doc,
                 extension,
                 () -> peerId,
                 getAccessToken()
-        ));
+        )));
         return this;
     }
 
@@ -128,7 +144,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setUserId(int userId) {
-        this.peerId = userId;
+        peerIds.add(userId);
         return addParam("user_id", userId);
     }
 
@@ -137,8 +153,17 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setPeerId(int peerId) {
-        this.peerId = peerId;
+        peerIds.add(peerId);
         return addParam("peer_id", peerId);
+    }
+
+    public Send setPeerIds(Integer... peerIds) {
+        return setPeerIds(Arrays.asList(peerIds));
+    }
+
+    public Send setPeerIds(List<Integer> peerIds) {
+        this.peerIds.addAll(peerIds);
+        return addParam("peer_ids", csv(peerIds));
     }
 
     public Send setDomain(String domain) {
@@ -154,6 +179,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setUserIds(List<Integer> userIds) {
+        peerIds.addAll(userIds);
         return addParam("user_ids", csv(userIds));
     }
 
@@ -235,6 +261,9 @@ public class Send extends VkMethod<Send.ResponseBody> {
             @SerializedName("message_id")
             private Integer messageId;
 
+            @SerializedName("conversation_message_id")
+            private Integer conversationMessageId;
+
             /**
              * Error message, if message is not delivered.
              */
@@ -257,6 +286,14 @@ public class Send extends VkMethod<Send.ResponseBody> {
                 this.messageId = messageId;
             }
 
+            public Integer getConversationMessageId() {
+                return conversationMessageId;
+            }
+
+            public void setConversationMessageId(Integer conversationMessageId) {
+                this.conversationMessageId = conversationMessageId;
+            }
+
             public String getError() {
                 return error;
             }
@@ -270,6 +307,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
                 return "Response{" +
                         "peerId=" + peerId +
                         ", messageId=" + messageId +
+                        ", conversationMessageId=" + conversationMessageId +
                         ", error='" + error + '\'' +
                         '}';
             }
