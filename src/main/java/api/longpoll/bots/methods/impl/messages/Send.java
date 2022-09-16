@@ -7,6 +7,7 @@ import api.longpoll.bots.helpers.attachments.InputStreamUploadableMessagePhoto;
 import api.longpoll.bots.helpers.attachments.PathUploadableMessageDoc;
 import api.longpoll.bots.helpers.attachments.PathUploadableMessagePhoto;
 import api.longpoll.bots.helpers.attachments.UploadableFile;
+import api.longpoll.bots.helpers.attachments.UploadableFilesSupplier;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Forward;
 import api.longpoll.bots.model.objects.additional.Keyboard;
@@ -33,14 +34,9 @@ import java.util.List;
  */
 public class Send extends VkMethod<Send.ResponseBody> {
     /**
-     * List of objects to attach.
+     * Supplies {@link List<UploadableFile>}.
      */
-    private final List<UploadableFile> uploadableFiles = new ArrayList<>();
-
-    /**
-     * Message {@code peer_ids}.
-     */
-    private final List<Integer> peerIds = new ArrayList<>();
+    private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Send(String accessToken) {
         super(accessToken);
@@ -60,7 +56,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     @Override
     public ResponseBody execute() throws VkApiException {
         List<UploadedFile> uploadedFiles = new ArrayList<>();
-        for (UploadableFile uploadableFile : uploadableFiles) {
+        for (UploadableFile uploadableFile : uploadableFilesSupplier.get()) {
             uploadedFiles.add(uploadableFile.upload());
         }
         if (!uploadedFiles.isEmpty()) {
@@ -74,29 +70,21 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send addPhoto(Path photo) {
-        if (peerIds.isEmpty()) {
-            throw new RuntimeException("Please set 'peer_id' or 'user_id' before adding photo!");
-        }
-
-        peerIds.forEach(peerId -> uploadableFiles.add(new PathUploadableMessagePhoto(
+        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new PathUploadableMessagePhoto(
                 photo,
-                () -> peerId,
+                peerId,
                 getAccessToken()
-        )));
+        ));
         return this;
     }
 
-    public Send addPhoto(InputStream photo, String extension) {
-        if (peerIds.isEmpty()) {
-            throw new RuntimeException("Please set 'peer_id' or 'user_id' before adding photo!");
-        }
-
-        peerIds.forEach(peerId -> uploadableFiles.add(new InputStreamUploadableMessagePhoto(
+    public Send addPhoto(InputStream photo, String filename) {
+        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new InputStreamUploadableMessagePhoto(
                 photo,
-                extension,
-                () -> peerId,
+                filename,
+                peerId,
                 getAccessToken()
-        )));
+        ));
         return this;
     }
 
@@ -105,29 +93,21 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send addDoc(Path doc) {
-        if (peerIds.isEmpty()) {
-            throw new RuntimeException("Please set 'peer_id' or 'user_id' before adding doc!");
-        }
-
-        peerIds.forEach(peerId -> uploadableFiles.add(new PathUploadableMessageDoc(
+        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new PathUploadableMessageDoc(
                 doc,
-                () -> peerId,
+                peerId,
                 getAccessToken()
-        )));
+        ));
         return this;
     }
 
-    public Send addDoc(InputStream doc, String extension) {
-        if (peerIds.isEmpty()) {
-            throw new RuntimeException("Please set 'peer_id' or 'user_id' before adding doc!");
-        }
-
-        peerIds.forEach(peerId -> uploadableFiles.add(new InputStreamUploadableMessageDoc(
+    public Send addDoc(InputStream doc, String filename) {
+        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new InputStreamUploadableMessageDoc(
                 doc,
-                extension,
-                () -> peerId,
+                filename,
+                peerId,
                 getAccessToken()
-        )));
+        ));
         return this;
     }
 
@@ -144,7 +124,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setUserId(int userId) {
-        peerIds.add(userId);
+        uploadableFilesSupplier.addPeerId(userId);
         return addParam("user_id", userId);
     }
 
@@ -153,7 +133,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setPeerId(int peerId) {
-        peerIds.add(peerId);
+        uploadableFilesSupplier.addPeerId(peerId);
         return addParam("peer_id", peerId);
     }
 
@@ -162,7 +142,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setPeerIds(List<Integer> peerIds) {
-        this.peerIds.addAll(peerIds);
+        uploadableFilesSupplier.addPeerIds(peerIds);
         return addParam("peer_ids", csv(peerIds));
     }
 
@@ -179,7 +159,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setUserIds(List<Integer> userIds) {
-        peerIds.addAll(userIds);
+        uploadableFilesSupplier.addPeerIds(userIds);
         return addParam("user_ids", csv(userIds));
     }
 

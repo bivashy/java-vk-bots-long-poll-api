@@ -4,7 +4,6 @@ import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 
 import java.io.InputStream;
-import java.util.function.Supplier;
 
 /**
  * Uploads a document to a message using {@link InputStream}.
@@ -16,18 +15,18 @@ public class InputStreamUploadableMessageDoc extends UploadableMessageDoc {
     private final InputStream inputStream;
 
     /**
-     * Document extension.
+     * Document name.
      */
-    private final String extension;
+    private final String filename;
 
-    public InputStreamUploadableMessageDoc(InputStream inputStream, String extension, Supplier<Integer> peerIdSupplier, String accessToken) {
-        super(peerIdSupplier, accessToken);
+    public InputStreamUploadableMessageDoc(InputStream inputStream, String filename, Integer peerId, String accessToken) {
+        super(peerId, accessToken);
         this.inputStream = inputStream;
-        this.extension = extension;
+        this.filename = filename;
     }
 
     @Override
     public UploadedFile upload() throws VkApiException {
-        return uploadFile("Doc" + System.currentTimeMillis() + "." + extension, inputStream);
+        return uploadFile(filename, inputStream);
     }
 }

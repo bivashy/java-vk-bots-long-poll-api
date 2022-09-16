@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.function.Supplier;
 
 /**
  * Uploads a document to message using {@link Path}.
@@ -18,8 +17,8 @@ public class PathUploadableMessageDoc extends UploadableMessageDoc {
      */
     private final Path path;
 
-    public PathUploadableMessageDoc(Path path, Supplier<Integer> peerIdSupplier, String accessToken) {
-        super(peerIdSupplier, accessToken);
+    public PathUploadableMessageDoc(Path path, Integer peerId, String accessToken) {
+        super(peerId, accessToken);
         this.path = path;
     }
 
