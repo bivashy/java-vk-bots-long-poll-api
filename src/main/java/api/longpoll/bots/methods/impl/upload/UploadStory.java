@@ -8,20 +8,20 @@ import java.io.InputStream;
 /**
  * Implements uploading story in VK API.
  */
-public class UploadStory extends UploadMethod<UploadStory.Response> {
+public class UploadStory extends UploadMethod<UploadStory.ResponseBody> {
     public UploadStory(String uri, String filename, InputStream inputStream) {
         super(uri, FileType.VIDEO_FILE, filename, inputStream);
     }
 
     @Override
-    protected Class<Response> getResponseClass() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseClass() {
+        return ResponseBody.class;
     }
 
     /**
      * Response to story uploading.
      */
-    public static class Response {
+    public static class ResponseBody {
         @SerializedName("upload_result")
         private String uploadResult;
 

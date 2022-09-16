@@ -8,7 +8,6 @@ import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.objects.media.Doc;
 
 import java.io.InputStream;
-import java.util.function.Supplier;
 
 /**
  * Uploads a document to message.
@@ -24,15 +23,15 @@ public abstract class UploadableMessageDoc extends AbstractUploadableFile {
      */
     private final Save save;
 
-    public UploadableMessageDoc(Supplier<Integer> peerIdSupplier, String accessToken) {
-        this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerIdSupplier.get()).setType("doc");
+    public UploadableMessageDoc(Integer peerId, String accessToken) {
+        this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerId).setType("doc");
         this.save = new Save(accessToken);
     }
 
     @Override
     public UploadedFile uploadFile(String filename, InputStream inputStream) throws VkApiException {
         GetMessagesUploadServer.ResponseBody uploadServer = getMessagesUploadServer.execute();
-        UploadDoc.Response uploadedDoc = new UploadDoc(
+        UploadDoc.ResponseBody uploadedDoc = new UploadDoc(
                 uploadServer.getResponse().getUploadUrl(),
                 filename,
                 inputStream

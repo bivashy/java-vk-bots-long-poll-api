@@ -8,20 +8,20 @@ import java.io.InputStream;
 /**
  * Uploads chat photo.
  */
-public class UploadChatPhoto extends UploadMethod<UploadChatPhoto.Response> {
+public class UploadChatPhoto extends UploadMethod<UploadChatPhoto.ResponseBody> {
     public UploadChatPhoto(String uri, String filename, InputStream inputStream) {
         super(uri, FileType.FILE, filename, inputStream);
     }
 
     @Override
-    protected Class<Response> getResponseClass() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseClass() {
+        return ResponseBody.class;
     }
 
     /**
      * Response to chat photo uploading.
      */
-    public static class Response {
+    public static class ResponseBody {
         /**
          * Response.
          */

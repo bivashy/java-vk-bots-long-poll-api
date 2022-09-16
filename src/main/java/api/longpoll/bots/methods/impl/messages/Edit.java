@@ -6,6 +6,7 @@ import api.longpoll.bots.helpers.attachments.InputStreamUploadableMessagePhoto;
 import api.longpoll.bots.helpers.attachments.PathUploadableMessageDoc;
 import api.longpoll.bots.helpers.attachments.PathUploadableMessagePhoto;
 import api.longpoll.bots.helpers.attachments.UploadableFile;
+import api.longpoll.bots.helpers.attachments.UploadableFilesSupplier;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
@@ -28,14 +29,9 @@ import java.util.List;
  */
 public class Edit extends VkMethod<IntegerResponseBody> {
     /**
-     * List of objects to attach.
+     * Supplies f list of {@link UploadableFile}.
      */
-    private final List<UploadableFile> uploadableFiles = new ArrayList<>();
-
-    /**
-     * Message {@code peer_id}.
-     */
-    private int peerId;
+    private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Edit(String accessToken) {
         super(accessToken);
@@ -54,7 +50,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     @Override
     public IntegerResponseBody execute() throws VkApiException {
         List<UploadedFile> attachments = new ArrayList<>();
-        for (UploadableFile uploadableFile : uploadableFiles) {
+        for (UploadableFile uploadableFile : uploadableFilesSupplier.get()) {
             attachments.add(uploadableFile.upload());
         }
         if (!attachments.isEmpty()) {
@@ -68,19 +64,19 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit addPhoto(Path photo) {
-        uploadableFiles.add(new PathUploadableMessagePhoto(
+        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new PathUploadableMessagePhoto(
                 photo,
-                () -> peerId,
+                peerId,
                 getAccessToken()
         ));
         return this;
     }
 
-    public Edit addPhoto(InputStream photo, String extension) {
-        uploadableFiles.add(new InputStreamUploadableMessagePhoto(
+    public Edit addPhoto(InputStream photo, String filename) {
+        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new InputStreamUploadableMessagePhoto(
                 photo,
-                extension,
-                () -> peerId,
+                filename,
+                peerId,
                 getAccessToken()
         ));
         return this;
@@ -91,19 +87,19 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit addDoc(Path doc) {
-        uploadableFiles.add(new PathUploadableMessageDoc(
+        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new PathUploadableMessageDoc(
                 doc,
-                () -> peerId,
+                peerId,
                 getAccessToken()
         ));
         return this;
     }
 
-    public Edit addDoc(InputStream doc, String extension) {
-        uploadableFiles.add(new InputStreamUploadableMessageDoc(
+    public Edit addDoc(InputStream doc, String filename) {
+        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new InputStreamUploadableMessageDoc(
                 doc,
-                extension,
-                () -> peerId,
+                filename,
+                peerId,
                 getAccessToken()
         ));
         return this;
@@ -122,7 +118,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit setPeerId(int peerId) {
-        this.peerId = peerId;
+        uploadableFilesSupplier.addPeerId(peerId);
         return addParam("peer_id", peerId);
     }
 

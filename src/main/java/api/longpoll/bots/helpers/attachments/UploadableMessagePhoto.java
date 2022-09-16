@@ -7,7 +7,6 @@ import api.longpoll.bots.methods.impl.upload.UploadPhoto;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 
 import java.io.InputStream;
-import java.util.function.Supplier;
 
 /**
  * Uploads a photo to message.
@@ -23,15 +22,15 @@ public abstract class UploadableMessagePhoto extends AbstractUploadableFile {
      */
     private final SaveMessagesPhoto saveMessagesPhoto;
 
-    public UploadableMessagePhoto(Supplier<Integer> peerIdSupplier, String accessToken) {
-        this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerIdSupplier.get());
+    public UploadableMessagePhoto(Integer peerId, String accessToken) {
+        this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerId);
         this.saveMessagesPhoto = new SaveMessagesPhoto(accessToken);
     }
 
     @Override
     public UploadedFile uploadFile(String filename, InputStream inputStream) throws VkApiException {
         GetMessagesUploadServer.ResponseBody uploadServer = getMessagesUploadServer.execute();
-        UploadPhoto.Response uploadedPhoto = new UploadPhoto(
+        UploadPhoto.ResponseBody uploadedPhoto = new UploadPhoto(
                 uploadServer.getResponse().getUploadUrl(),
                 filename,
                 inputStream

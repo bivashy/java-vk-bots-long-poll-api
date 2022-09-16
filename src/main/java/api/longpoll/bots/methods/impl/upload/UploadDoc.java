@@ -8,21 +8,21 @@ import java.io.InputStream;
 /**
  * Implements uploading document in VK API.
  */
-public class UploadDoc extends UploadMethod<UploadDoc.Response> {
+public class UploadDoc extends UploadMethod<UploadDoc.ResponseBody> {
 
     public UploadDoc(String uri, String filename, InputStream inputStream) {
         super(uri, FileType.FILE, filename, inputStream);
     }
 
     @Override
-    protected Class<Response> getResponseClass() {
-        return Response.class;
+    protected Class<ResponseBody> getResponseClass() {
+        return ResponseBody.class;
     }
 
     /**
      * Response to document uploading.
      */
-    public static class Response {
+    public static class ResponseBody {
         /**
          * Uploaded file.
          */

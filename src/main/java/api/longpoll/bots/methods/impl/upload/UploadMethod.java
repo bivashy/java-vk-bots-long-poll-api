@@ -11,9 +11,9 @@ import java.io.InputStream;
 /**
  * Generic method that uploads files to VK server.
  *
- * @param <Response> response type.
+ * @param <ResponseBody> response type.
  */
-public abstract class UploadMethod<Response> extends VkMethod<Response> {
+public abstract class UploadMethod<ResponseBody> extends VkMethod<ResponseBody> {
     /**
      * URI to upload file.
      */

@@ -19,11 +19,11 @@ and I'm receiving (replace with response from your logs):
 Here is the code example (replace with your code example):
 ```java
 public void sendMessage() throws VkApiException {
-    Send.Response response = vk.messages.send()
+    Send.ResponseBody responseBody = vk.messages.send()
             .setMessage("Sending you message")
             .execute();
 
-    System.out.println("Response: " + response);
+    System.out.println("Response: " + responseBody);
 }
 ```
 

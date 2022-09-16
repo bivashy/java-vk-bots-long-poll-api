@@ -28,9 +28,9 @@ import java.util.stream.Collectors;
 /**
  * Executes generic HTTP request to VK API.
  *
- * @param <Response> VK API response type.
+ * @param <ResponseBody> VK API response type.
  */
-public abstract class VkMethod<Response> {
+public abstract class VkMethod<ResponseBody> {
     /**
      * Path to VK methods list.
      */
@@ -105,7 +105,7 @@ public abstract class VkMethod<Response> {
      *
      * @return VK API response wrapped to CompletableFuture
      */
-    public CompletableFuture<Response> executeAsync() {
+    public CompletableFuture<ResponseBody> executeAsync() {
         return asyncCaller.call(this::execute);
     }
 
@@ -115,7 +115,7 @@ public abstract class VkMethod<Response> {
      * @return VK API response.
      * @throws VkApiException if errors occur.
      */
-    public Response execute() throws VkApiException {
+    public ResponseBody execute() throws VkApiException {
         try {
             HttpRequest request = new PostRequest.Builder(getUri())
                     .setRequestBody(getRequestBody())
@@ -141,7 +141,7 @@ public abstract class VkMethod<Response> {
      *
      * @return a class of VK API response.
      */
-    protected abstract Class<Response> getResponseClass();
+    protected abstract Class<ResponseBody> getResponseClass();
 
     /**
      * Gets request URI.
@@ -166,7 +166,7 @@ public abstract class VkMethod<Response> {
      * @param value URL parameter value.
      * @return current instance.
      */
-    public VkMethod<Response> addParam(String key, Object value) {
+    public VkMethod<ResponseBody> addParam(String key, Object value) {
         params.put(key, String.valueOf(value));
         return this;
     }
