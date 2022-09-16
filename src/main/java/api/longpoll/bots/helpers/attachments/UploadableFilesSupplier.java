@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Supplies {@link List<UploadableFile>}.
+ * Supplies a list of {@link UploadableFile}.
  */
 public class UploadableFilesSupplier implements Supplier<List<UploadableFile>> {
     /**

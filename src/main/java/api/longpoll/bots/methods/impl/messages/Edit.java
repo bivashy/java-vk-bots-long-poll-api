@@ -29,7 +29,7 @@ import java.util.List;
  */
 public class Edit extends VkMethod<IntegerResponseBody> {
     /**
-     * Supplies {@link List<UploadableFile>}.
+     * Supplies f list of {@link UploadableFile}.
      */
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 

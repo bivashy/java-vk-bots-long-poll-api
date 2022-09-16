@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class Send extends VkMethod<Send.ResponseBody> {
     /**
-     * Supplies {@link List<UploadableFile>}.
+     * Supplies a list of {@link UploadableFile}.
      */
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
