@@ -45,6 +45,9 @@ import java.lang.reflect.Type;
  * Deserializes JSON objects to {@link Update}.
  */
 public class UpdateDeserializer implements JsonDeserializer<Update> {
+    /**
+     * {@link Gson} object.
+     */
     private final Gson gson = new Gson();
 
     @Override
@@ -55,7 +58,7 @@ public class UpdateDeserializer implements JsonDeserializer<Update> {
         update.setType(context.deserialize(jsonUpdate.get("type"), Update.Type.class));
 
         if (update.getType() == null) {
-            throw new IllegalArgumentException("Cannot deserialize '" + jsonUpdate.get("type") + "'. JSON: " + gson.toJson(jsonElement));
+            throw new IllegalArgumentException("There is no mapping for event '" + jsonUpdate.get("type") + "'. JSON: " + gson.toJson(jsonElement));
         }
 
         update.setGroupId(jsonUpdate.get("group_id").getAsInt());
