@@ -14,6 +14,7 @@ import api.longpoll.bots.model.events.other.GroupChangeSettings;
 import api.longpoll.bots.model.events.other.VkpayTransaction;
 import api.longpoll.bots.model.events.photos.PhotoComment;
 import api.longpoll.bots.model.events.photos.PhotoCommentDelete;
+import api.longpoll.bots.model.events.poll.PollVoteNew;
 import api.longpoll.bots.model.events.users.GroupJoin;
 import api.longpoll.bots.model.events.users.GroupLeave;
 import api.longpoll.bots.model.events.users.UserBlock;
@@ -237,6 +238,10 @@ public abstract class VkBot {
 
                 case MESSAGE_DENY:
                     onMessageDeny((MessageDeny) update.getObject());
+                    break;
+
+                case POLL_VOTE_NEW:
+                    onPollVoteNew((PollVoteNew) update.getObject());
                     break;
 
                 default:
@@ -596,5 +601,13 @@ public abstract class VkBot {
      * @param messageDeny event object.
      */
     public void onMessageDeny(MessageDeny messageDeny) {
+    }
+
+    /**
+     * Handles <b>poll_vote_new</b> events.
+     *
+     * @param pollVoteNew event object.
+     */
+    public void onPollVoteNew(PollVoteNew pollVoteNew) {
     }
 }

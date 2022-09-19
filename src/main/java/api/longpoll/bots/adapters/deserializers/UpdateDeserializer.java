@@ -17,6 +17,7 @@ import api.longpoll.bots.model.events.other.GroupChangeSettings;
 import api.longpoll.bots.model.events.other.VkpayTransaction;
 import api.longpoll.bots.model.events.photos.PhotoComment;
 import api.longpoll.bots.model.events.photos.PhotoCommentDelete;
+import api.longpoll.bots.model.events.poll.PollVoteNew;
 import api.longpoll.bots.model.events.users.GroupJoin;
 import api.longpoll.bots.model.events.users.GroupLeave;
 import api.longpoll.bots.model.events.users.UserBlock;
@@ -31,6 +32,7 @@ import api.longpoll.bots.model.objects.basic.WallPost;
 import api.longpoll.bots.model.objects.media.Audio;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.objects.media.Video;
+import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -43,12 +45,19 @@ import java.lang.reflect.Type;
  * Deserializes JSON objects to {@link Update}.
  */
 public class UpdateDeserializer implements JsonDeserializer<Update> {
+    private final Gson gson = new Gson();
+
     @Override
     public final Update deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonUpdate = jsonElement.getAsJsonObject();
 
         Update update = new Update();
         update.setType(context.deserialize(jsonUpdate.get("type"), Update.Type.class));
+
+        if (update.getType() == null) {
+            throw new IllegalArgumentException("Cannot deserialize '" + jsonUpdate.get("type") + "'. JSON: " + gson.toJson(jsonElement));
+        }
+
         update.setGroupId(jsonUpdate.get("group_id").getAsInt());
         update.setEventId(jsonUpdate.get("event_id").getAsString());
         update.setObject(context.deserialize(jsonUpdate.get("object"), getObjectClass(update.getType())));
@@ -131,6 +140,9 @@ public class UpdateDeserializer implements JsonDeserializer<Update> {
             case PHOTO_NEW:
                 return Photo.class;
 
+            case POLL_VOTE_NEW:
+                return PollVoteNew.class;
+
             case USER_BLOCK:
                 return UserBlock.class;
 
@@ -166,7 +178,7 @@ public class UpdateDeserializer implements JsonDeserializer<Update> {
                 return VkpayTransaction.class;
 
             default:
-                throw new RuntimeException("Update type '" + type + "' is not handled.");
+                throw new IllegalArgumentException("Update type '" + type + "' is not handled.");
         }
     }
 }
