@@ -89,6 +89,15 @@ public class PostRequest implements HttpRequest {
         return requestBody;
     }
 
+    @Override
+    public String toString() {
+        return "PostRequest{" +
+                "uri='" + uri + '\'' +
+                ", headers=" + headers +
+                ", requestBody=" + requestBody +
+                '}';
+    }
+
     /**
      * PostRequest builder.
      */
