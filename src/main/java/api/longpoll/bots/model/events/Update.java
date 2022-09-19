@@ -111,6 +111,7 @@ public class Update {
         @SerializedName("photo_comment_new") PHOTO_COMMENT_NEW,
         @SerializedName("photo_comment_restore") PHOTO_COMMENT_RESTORE,
         @SerializedName("photo_new") PHOTO_NEW,
+        @SerializedName("poll_vote_new") POLL_VOTE_NEW,
         @SerializedName("user_block") USER_BLOCK,
         @SerializedName("user_unblock") USER_UNBLOCK,
         @SerializedName("video_comment_delete") VIDEO_COMMENT_DELETE,
