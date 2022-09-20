@@ -86,7 +86,7 @@ Find more examples of bot usage [here](https://github.com/yvasyliev/java-vk-bots
 ## Async execution
 Each API method can be executed asynchronously:
 ```java
-CompletableFuture<Send.Response> future = vk.messages.send()
+CompletableFuture<Send.ResponseBody> future = vk.messages.send()
         .setPeerId(peerId)
         .setMessage("Sending message asynchronously...")
         .executeAsync();
