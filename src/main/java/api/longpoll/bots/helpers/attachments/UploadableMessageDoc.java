@@ -39,26 +39,11 @@ public abstract class UploadableMessageDoc extends AbstractUploadableFile {
 
         Save.ResponseBody savedFile = save.setFile(uploadedDoc.getFile()).execute();
         Doc doc = savedFile.getResponse().getDoc();
-        return new UploadedFile() {
-            @Override
-            public String getType() {
-                return "doc";
-            }
-
-            @Override
-            public int getOwnerId() {
-                return doc.getOwnerId();
-            }
-
-            @Override
-            public int getMediaId() {
-                return doc.getId();
-            }
-
-            @Override
-            public String getAccessKey() {
-                return doc.getAccessKey();
-            }
-        };
+        return new UploadedFile(
+                "doc",
+                doc.getOwnerId(),
+                doc.getId(),
+                doc.getAccessKey()
+        );
     }
 }

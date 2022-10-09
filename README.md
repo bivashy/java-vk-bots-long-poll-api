@@ -31,7 +31,7 @@ This library uses the next third-party dependencies:
 <dependency>
   <groupId>com.github.yvasyliev</groupId>
   <artifactId>java-vk-bots-longpoll-api</artifactId>
-  <version>3.4.7</version>
+  <version>3.5.0</version>
 </dependency>
 ```
 4. Extend `LongPollBot` class and override necessary methods:
@@ -86,7 +86,7 @@ Find more examples of bot usage [here](https://github.com/yvasyliev/java-vk-bots
 ## Async execution
 Each API method can be executed asynchronously:
 ```java
-CompletableFuture<Send.Response> future = vk.messages.send()
+CompletableFuture<Send.ResponseBody> future = vk.messages.send()
         .setPeerId(peerId)
         .setMessage("Sending message asynchronously...")
         .executeAsync();
@@ -126,6 +126,7 @@ CompletableFuture<Send.Response> future = vk.messages.send()
 |      `photo_comment_new` | `public void onPhotoCommentNew(PhotoComment photoComment)`                   |
 |  `photo_comment_restore` | `public void onPhotoCommentRestore(PhotoComment photoComment)`               |
 |      `photo_comment_new` | `public void onPhotoNew(Photo photo)`                                        |
+|          `poll_vote_new` | `public void onPollVoteNew(PollVoteNew pollVoteNew)`                         |
 |             `user_block` | `public void onUserBlock(UserBlock userBlock)`                               |
 |           `user_unblock` | `public void onUserUnblock(UserUnblock userUnblock)`                         |
 |   `video_comment_delete` | `public void onVideoCommentDelete(VideoCommentDelete videoCommentDelete)`    |
@@ -140,7 +141,6 @@ CompletableFuture<Send.Response> future = vk.messages.send()
 |         `wall_reply_new` | `public void onWallReplyNew(WallReply wallReply)`                            |
 |     `wall_reply_restore` | `public void onWallReplyRestore(WallReply wallReply)`                        |
 |            `wall_repost` | `public void onWallRepost(WallPost wallPost)`                                |
-|          `poll_vote_new` | `public void onPollVoteNew(PollVoteNew pollVoteNew)`                         |
 
 ## Logging
 This library uses `SLF4J` API to log all events. You can add any `SLF4J` binding to your project to register events the way you want.
