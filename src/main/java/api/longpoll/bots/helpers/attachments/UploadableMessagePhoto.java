@@ -42,26 +42,11 @@ public abstract class UploadableMessagePhoto extends AbstractUploadableFile {
                 .setHash(uploadedPhoto.getHash())
                 .execute();
         SaveMessagesPhoto.ResponseBody.Response photo = savedPhoto.getResponse().get(0);
-        return new UploadedFile() {
-            @Override
-            public String getType() {
-                return "photo";
-            }
-
-            @Override
-            public int getOwnerId() {
-                return photo.getOwnerId();
-            }
-
-            @Override
-            public int getMediaId() {
-                return photo.getId();
-            }
-
-            @Override
-            public String getAccessKey() {
-                return photo.getAccessKey();
-            }
-        };
+        return new UploadedFile(
+                "photo",
+                photo.getOwnerId(),
+                photo.getId(),
+                photo.getAccessKey()
+        );
     }
 }
