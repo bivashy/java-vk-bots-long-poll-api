@@ -87,7 +87,7 @@ public class MessageNewTest {
         assertNotNull(friend);
         assertEquals(40490031, friend.getId());
 
-        List<Integer> answerIds = poll.getAnswerIds();
+        List<Long> answerIds = poll.getAnswerIds();
         assertNotNull(answerIds);
         assertFalse(answerIds.isEmpty());
         assertEquals(1831815044, answerIds.get(0));

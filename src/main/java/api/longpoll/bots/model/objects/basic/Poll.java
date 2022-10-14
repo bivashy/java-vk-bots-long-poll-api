@@ -64,7 +64,7 @@ public class Poll {
      * Current user's chosen answers.
      */
     @SerializedName("answer_ids")
-    private List<Integer> answerIds;
+    private List<Long> answerIds;
 
     /**
      * End date in Unixtime. 0 if poll's lifetime not limited.
@@ -196,11 +196,11 @@ public class Poll {
         this.multiple = multiple;
     }
 
-    public List<Integer> getAnswerIds() {
+    public List<Long> getAnswerIds() {
         return answerIds;
     }
 
-    public void setAnswerIds(List<Integer> answerIds) {
+    public void setAnswerIds(List<Long> answerIds) {
         this.answerIds = answerIds;
     }
 
@@ -326,7 +326,7 @@ public class Poll {
          * Option ID
          */
         @SerializedName("id")
-        private Integer id;
+        private Long id;
 
         /**
          * Option text.
@@ -346,11 +346,11 @@ public class Poll {
         @SerializedName("rate")
         private Double rate;
 
-        public Integer getId() {
+        public Long getId() {
             return id;
         }
 
-        public void setId(Integer id) {
+        public void setId(Long id) {
             this.id = id;
         }
 
