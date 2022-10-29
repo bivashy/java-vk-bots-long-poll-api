@@ -15,6 +15,7 @@ import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -245,10 +246,10 @@ public class Send extends VkMethod<Send.ResponseBody> {
             private Integer conversationMessageId;
 
             /**
-             * Error message, if message is not delivered.
+             * Error object, if message is not delivered.
              */
             @SerializedName("error")
-            private String error;
+            private JsonObject error;
 
             public Integer getPeerId() {
                 return peerId;
@@ -274,11 +275,11 @@ public class Send extends VkMethod<Send.ResponseBody> {
                 this.conversationMessageId = conversationMessageId;
             }
 
-            public String getError() {
+            public JsonObject getError() {
                 return error;
             }
 
-            public void setError(String error) {
+            public void setError(JsonObject error) {
                 this.error = error;
             }
 
@@ -288,7 +289,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
                         "peerId=" + peerId +
                         ", messageId=" + messageId +
                         ", conversationMessageId=" + conversationMessageId +
-                        ", error='" + error + '\'' +
+                        ", error=" + error +
                         '}';
             }
         }
