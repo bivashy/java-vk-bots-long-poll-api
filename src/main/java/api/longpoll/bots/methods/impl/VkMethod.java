@@ -129,7 +129,7 @@ public abstract class VkMethod<ResponseBody> {
             if (responseBodyValidator.test(response.getBody())) {
                 return gson.fromJson(response.getBody(), getResponseClass());
             }
-            throw new VkApiResponseException(response.toString());
+            throw new VkApiResponseException(response.getBody());
         } catch (IOException e) {
             throw new VkApiException(e);
         }
