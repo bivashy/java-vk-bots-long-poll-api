@@ -8,6 +8,9 @@ import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 /**
  * Abstract bot to handle VK events.
  */
@@ -16,6 +19,13 @@ public abstract class LongPollBot extends VkBot {
      * {@link Logger} object.
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(LongPollBot.class);
+
+    /**
+     * Default session time.
+     *
+     * @see LongPollBot#sessionDuration
+     */
+    private static final long DEFAULT_SESSION_DURATION = 9;
 
     /**
      * Group ID.
@@ -38,6 +48,17 @@ public abstract class LongPollBot extends VkBot {
     private boolean polling = true;
 
     /**
+     * Last time when {@link LongPollBot#initialize()} was called.
+     */
+    private LocalDateTime initializedAt;
+
+    /**
+     * Long Poll session duration (in hours).
+     * When time is expired, {@link LongPollBot#initialize()} method is called.
+     */
+    private long sessionDuration = DEFAULT_SESSION_DURATION;
+
+    /**
      * Begins listening to VK updates.
      *
      * @throws VkApiException if errors occur.
@@ -46,10 +67,13 @@ public abstract class LongPollBot extends VkBot {
         initialize();
         while (polling) {
             try {
+                if (isSessionExpired()) {
+                    initialize();
+                }
                 GetUpdates.ResponseBody updates = getUpdates.execute();
                 getUpdates.setTs(updates.getTs());
                 handle(updates.getEvents());
-            }  catch (VkApiHttpException | VkApiResponseException e) {
+            } catch (VkApiHttpException | VkApiResponseException e) {
                 LOGGER.warn("Failed to get events from VK Long Poll Server.", e);
                 if (e instanceof VkApiResponseException && !e.getMessage().contains("failed")) {
                     throw e;
@@ -71,7 +95,9 @@ public abstract class LongPollBot extends VkBot {
      *
      * @throws VkApiException if errors occur.
      */
-    private void initialize() throws VkApiException {
+    public void initialize() throws VkApiException {
+        initializedAt = LocalDateTime.now();
+
         if (groupId == null) {
             groupId = vk.other.execute()
                     .setCode("return API.groups.getById()@.id[0];")
@@ -88,5 +114,23 @@ public abstract class LongPollBot extends VkBot {
         getUpdates.setServer(longPollServer.getResponse().getServer())
                 .setKey(longPollServer.getResponse().getKey())
                 .setTs(longPollServer.getResponse().getTs());
+    }
+
+    /**
+     * Sets session duration (in hours).
+     *
+     * @param sessionDuration session duration (in hours).
+     */
+    public void setSessionDuration(long sessionDuration) {
+        this.sessionDuration = sessionDuration;
+    }
+
+    /**
+     * Checks whether Long Poll session is expired.
+     *
+     * @return {@code true} if Long Poll session is expired, {@code false} otherwise.
+     */
+    private boolean isSessionExpired() {
+        return ChronoUnit.HOURS.between(initializedAt, LocalDateTime.now()) >= sessionDuration;
     }
 }
