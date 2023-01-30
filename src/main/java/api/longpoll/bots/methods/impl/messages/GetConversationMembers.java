@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class GetConversationMembers extends VkMethod<GetConversationMembers.ResponseBody> {
     public GetConversationMembers(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

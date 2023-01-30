@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class GetById extends VkMethod<GetById.ResponseBody> {
     public GetById(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

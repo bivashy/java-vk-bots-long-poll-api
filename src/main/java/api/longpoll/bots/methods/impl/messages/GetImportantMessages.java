@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class GetImportantMessages extends VkMethod<GetImportantMessages.ResponseBody> {
     public GetImportantMessages(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

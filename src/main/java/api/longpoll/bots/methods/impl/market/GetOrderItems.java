@@ -14,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetOrderItems extends VkMethod<GetOrderItems.ResponseBody> {
     public GetOrderItems(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

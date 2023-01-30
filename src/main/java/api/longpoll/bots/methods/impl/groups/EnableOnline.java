@@ -12,7 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class EnableOnline extends VkMethod<IntegerResponseBody> {
     public EnableOnline(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

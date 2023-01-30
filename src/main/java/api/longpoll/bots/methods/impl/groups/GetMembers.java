@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class GetMembers extends VkMethod<GetMembers.ResponseBody> {
     public GetMembers(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

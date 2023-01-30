@@ -40,7 +40,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Send(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
         addParam("random_id", (int) System.currentTimeMillis());
     }
 

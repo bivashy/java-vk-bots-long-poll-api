@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetStats extends VkMethod<GetStats.ResponseBody> {
     public GetStats(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

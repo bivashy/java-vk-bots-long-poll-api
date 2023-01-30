@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetLongPollServer extends VkMethod<GetLongPollServer.ResponseBody> {
     public GetLongPollServer(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

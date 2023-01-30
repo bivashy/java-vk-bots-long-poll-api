@@ -34,7 +34,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Edit(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

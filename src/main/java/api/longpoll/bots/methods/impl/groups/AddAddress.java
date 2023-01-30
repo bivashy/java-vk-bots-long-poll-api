@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
 public class AddAddress extends VkMethod<AddAddress.ResponseBody> {
 
     public AddAddress(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

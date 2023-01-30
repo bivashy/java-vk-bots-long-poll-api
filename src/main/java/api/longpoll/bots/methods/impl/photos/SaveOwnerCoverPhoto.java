@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class SaveOwnerCoverPhoto extends VkMethod<SaveOwnerCoverPhoto.ResponseBody> {
     public SaveOwnerCoverPhoto(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

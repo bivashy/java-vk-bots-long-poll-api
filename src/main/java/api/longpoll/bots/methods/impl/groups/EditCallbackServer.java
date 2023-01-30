@@ -12,7 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class EditCallbackServer extends VkMethod<IntegerResponseBody> {
     public EditCallbackServer(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

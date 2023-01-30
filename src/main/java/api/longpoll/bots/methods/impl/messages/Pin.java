@@ -13,7 +13,7 @@ import api.longpoll.bots.model.response.GenericResponseBody;
  */
 public class Pin extends VkMethod<Pin.ResponseBody> {
     public Pin(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

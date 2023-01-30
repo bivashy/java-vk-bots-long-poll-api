@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class GetConversationsById extends VkMethod<GetConversationsById.ResponseBody> {
     public GetConversationsById(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

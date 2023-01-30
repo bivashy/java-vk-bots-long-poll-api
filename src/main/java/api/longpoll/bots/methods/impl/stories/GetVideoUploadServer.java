@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.ResponseBody> {
     public GetVideoUploadServer(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class DeleteConversation extends VkMethod<DeleteConversation.ResponseBody> {
     public DeleteConversation(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

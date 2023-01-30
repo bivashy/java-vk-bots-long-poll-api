@@ -13,7 +13,7 @@ import com.google.gson.JsonElement;
  */
 public class Execute extends VkMethod<Execute.ResponseBody> {
     public Execute(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

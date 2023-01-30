@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.ResponseBody> {
     public GetPhotoUploadServer(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

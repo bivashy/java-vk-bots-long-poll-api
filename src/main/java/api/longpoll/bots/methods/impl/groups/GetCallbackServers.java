@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class GetCallbackServers extends VkMethod<GetCallbackServers.ResponseBody> {
     public GetCallbackServers(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

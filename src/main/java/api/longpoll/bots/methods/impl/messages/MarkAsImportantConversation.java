@@ -11,7 +11,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
 public class MarkAsImportantConversation extends VkMethod<IntegerResponseBody> {
 
     public MarkAsImportantConversation(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

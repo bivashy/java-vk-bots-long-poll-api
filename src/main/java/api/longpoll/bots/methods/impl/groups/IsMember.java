@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class IsMember extends VkMethod<IsMember.ResponseBody> {
     public IsMember(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

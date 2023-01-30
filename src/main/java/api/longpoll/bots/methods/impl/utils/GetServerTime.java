@@ -12,7 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class GetServerTime extends VkMethod<IntegerResponseBody> {
     public GetServerTime(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

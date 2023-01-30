@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class AddCallbackServer extends VkMethod<AddCallbackServer.ResponseBody> {
     public AddCallbackServer(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

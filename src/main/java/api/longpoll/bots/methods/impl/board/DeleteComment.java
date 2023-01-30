@@ -12,7 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class DeleteComment extends VkMethod<IntegerResponseBody> {
     public DeleteComment(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

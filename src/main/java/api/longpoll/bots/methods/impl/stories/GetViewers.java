@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
     public GetViewers(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override

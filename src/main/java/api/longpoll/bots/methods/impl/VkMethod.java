@@ -3,34 +3,35 @@ package api.longpoll.bots.methods.impl;
 import api.longpoll.bots.async.AsyncCaller;
 import api.longpoll.bots.async.DefaultAsyncCaller;
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.exceptions.VkApiHttpException;
-import api.longpoll.bots.exceptions.VkApiResponseException;
 import api.longpoll.bots.helpers.properties.VkProperties;
-import api.longpoll.bots.http.HttpClient;
-import api.longpoll.bots.http.HttpRequest;
-import api.longpoll.bots.http.HttpResponse;
 import api.longpoll.bots.http.RequestBody;
-import api.longpoll.bots.http.impl.DefaultHttpClient;
 import api.longpoll.bots.http.impl.FormUrlencoded;
-import api.longpoll.bots.http.impl.PostRequest;
 import api.longpoll.bots.validator.VkResponseBodyValidator;
-import api.longpoll.bots.validator.VkResponseValidator;
 import com.google.gson.Gson;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
  * Executes generic HTTP request to VK API.
  *
- * @param <ResponseBody> VK API response type.
+ * @param <VkResponse> VK API response type.
  */
-public abstract class VkMethod<ResponseBody> {
+public abstract class VkMethod<VkResponse> {
     /**
      * Path to VK methods list.
      */
@@ -40,6 +41,8 @@ public abstract class VkMethod<ResponseBody> {
      * Access token key.
      */
     private static final String ACCESS_TOKEN_KEY = "access_token";
+
+    private static final long CALL_TIMEOUT = 50;
 
     /**
      * VK API version key.
@@ -67,16 +70,6 @@ public abstract class VkMethod<ResponseBody> {
     private final AsyncCaller asyncCaller = new DefaultAsyncCaller();
 
     /**
-     * HTTP client.
-     */
-    private final HttpClient httpClient = new DefaultHttpClient();
-
-    /**
-     * HTTP response validator.
-     */
-    private final Predicate<HttpResponse> httpResponseValidator = new VkResponseValidator();
-
-    /**
      * Validator to check if VK API response is valid.
      */
     private final Predicate<String> responseBodyValidator = new VkResponseBodyValidator();
@@ -86,12 +79,21 @@ public abstract class VkMethod<ResponseBody> {
      */
     private final Gson gson = new Gson();
 
+    private final Request.Builder requestBuilder = new Request.Builder();
+
+    private final FormBody.Builder formBodyBuilder = new FormBody.Builder();
+
+    private final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .callTimeout(CALL_TIMEOUT, TimeUnit.SECONDS)
+            .build();
+
     /**
      * Access token.
      */
     private String accessToken;
 
-    public VkMethod(String accessToken) {
+    public VkMethod(String url, String accessToken) {
+        this.requestBuilder.url(url);
         this.accessToken = accessToken;
         addParam(ACCESS_TOKEN_KEY, accessToken);
         addParam(API_VERSION_KEY, API_VERSION_VALUE);
@@ -105,8 +107,26 @@ public abstract class VkMethod<ResponseBody> {
      *
      * @return VK API response wrapped to CompletableFuture
      */
-    public CompletableFuture<ResponseBody> executeAsync() {
-        return asyncCaller.call(this::execute);
+    public CompletableFuture<VkResponse> executeAsync() {
+        CompletableFuture<VkResponse> completableFuture = new CompletableFuture<>();
+        okHttpClient.newCall(newRequest()).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                completableFuture.completeExceptionally(e);
+                okHttpClient.dispatcher().executorService().shutdown();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                try {
+                    completableFuture.complete(extractResponse(response));
+                } catch (VkApiException e) {
+                    completableFuture.completeExceptionally(e);
+                }
+                okHttpClient.dispatcher().executorService().shutdown();
+            }
+        });
+        return completableFuture;
     }
 
     /**
@@ -115,24 +135,30 @@ public abstract class VkMethod<ResponseBody> {
      * @return VK API response.
      * @throws VkApiException if errors occur.
      */
-    public ResponseBody execute() throws VkApiException {
-        try {
-            HttpRequest request = new PostRequest.Builder(getUri())
-                    .setRequestBody(getRequestBody())
-                    .build();
-            HttpResponse response = httpClient.execute(request);
-
-            if (httpResponseValidator.negate().test(response)) {
-                throw new VkApiHttpException(response.toString());
-            }
-
-            if (responseBodyValidator.test(response.getBody())) {
-                return gson.fromJson(response.getBody(), getResponseClass());
-            }
-            throw new VkApiResponseException(response.getBody());
+    public VkResponse execute() throws VkApiException {
+        try (Response response = okHttpClient.newCall(newRequest()).execute()) {
+            return extractResponse(response);
         } catch (IOException e) {
             throw new VkApiException(e);
         }
+    }
+
+    private VkResponse extractResponse(Response response) throws VkApiException, IOException {
+        if (!response.isSuccessful()) {
+            throw new VkApiException("Response code: " + response.code());
+        }
+
+        ResponseBody responseBody = response.body();
+        if (responseBody == null) {
+            throw new VkApiException("Response body is null.");
+        }
+
+        String stringBody = responseBody.string();
+        if (responseBodyValidator.negate().test(stringBody)) {
+            throw new VkApiException(stringBody);
+        }
+
+        return gson.fromJson(stringBody, getResponseClass());
     }
 
     /**
@@ -141,7 +167,7 @@ public abstract class VkMethod<ResponseBody> {
      *
      * @return a class of VK API response.
      */
-    protected abstract Class<ResponseBody> getResponseClass();
+    protected abstract Class<VkResponse> getResponseClass();
 
     /**
      * Gets request URI.
@@ -149,6 +175,14 @@ public abstract class VkMethod<ResponseBody> {
      * @return request URI.
      */
     public abstract String getUri();
+
+    private okhttp3.Request newRequest() {
+        return requestBuilder.post(newRequestBody()).build();
+    }
+
+    protected okhttp3.RequestBody newRequestBody() {
+        return formBodyBuilder.build();
+    }
 
     /**
      * Gets HTTP request body.
@@ -166,8 +200,8 @@ public abstract class VkMethod<ResponseBody> {
      * @param value URL parameter value.
      * @return current instance.
      */
-    public VkMethod<ResponseBody> addParam(String key, Object value) {
-        params.put(key, String.valueOf(value));
+    public VkMethod<VkResponse> addParam(String key, Object value) {
+        formBodyBuilder.add(key, String.valueOf(value));
         return this;
     }
 

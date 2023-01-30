@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetCallbackConfirmationCode extends VkMethod<GetCallbackConfirmationCode.ResponseBody> {
     public GetCallbackConfirmationCode(String accessToken) {
-        super(accessToken);
+        super(, accessToken);
     }
 
     @Override
