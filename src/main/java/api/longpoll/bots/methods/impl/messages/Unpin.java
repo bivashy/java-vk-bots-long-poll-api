@@ -12,7 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class Unpin extends VkMethod<IntegerResponseBody> {
     public Unpin(String accessToken) {
-        super(, accessToken);
+        super(property("messages.unpin"), accessToken);
     }
 
     @Override

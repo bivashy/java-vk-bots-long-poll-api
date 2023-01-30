@@ -1,11 +1,7 @@
 package api.longpoll.bots.methods.impl;
 
-import api.longpoll.bots.async.AsyncCaller;
-import api.longpoll.bots.async.DefaultAsyncCaller;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.helpers.properties.VkProperties;
-import api.longpoll.bots.http.RequestBody;
-import api.longpoll.bots.http.impl.FormUrlencoded;
 import api.longpoll.bots.validator.VkResponseBodyValidator;
 import com.google.gson.Gson;
 import okhttp3.Call;
@@ -13,14 +9,13 @@ import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
@@ -60,16 +55,6 @@ public abstract class VkMethod<VkResponse> {
     private static final VkProperties VK_PROPERTIES = new VkProperties(VK_PROPERTIES_PATH);
 
     /**
-     * Request params.
-     */
-    private final Map<String, String> params = new HashMap<>();
-
-    /**
-     * Async executor.
-     */
-    private final AsyncCaller asyncCaller = new DefaultAsyncCaller();
-
-    /**
      * Validator to check if VK API response is valid.
      */
     private final Predicate<String> responseBodyValidator = new VkResponseBodyValidator();
@@ -99,7 +84,8 @@ public abstract class VkMethod<VkResponse> {
         addParam(API_VERSION_KEY, API_VERSION_VALUE);
     }
 
-    public VkMethod() {
+    public VkMethod(String url) {
+        this.requestBuilder.url(url);
     }
 
     /**
@@ -176,21 +162,12 @@ public abstract class VkMethod<VkResponse> {
      */
     public abstract String getUri();
 
-    private okhttp3.Request newRequest() {
+    private Request newRequest() {
         return requestBuilder.post(newRequestBody()).build();
     }
 
-    protected okhttp3.RequestBody newRequestBody() {
+    protected RequestBody newRequestBody() {
         return formBodyBuilder.build();
-    }
-
-    /**
-     * Gets HTTP request body.
-     *
-     * @return HTTP request body.
-     */
-    protected RequestBody getRequestBody() {
-        return new FormUrlencoded(params);
     }
 
     /**
@@ -232,7 +209,7 @@ public abstract class VkMethod<VkResponse> {
      * @param key property key.
      * @return property value.
      */
-    protected String property(String key) {
+    protected static String property(String key) {
         return VK_PROPERTIES.getProperty(key);
     }
 
@@ -243,12 +220,5 @@ public abstract class VkMethod<VkResponse> {
      */
     protected String getAccessToken() {
         return accessToken;
-    }
-
-    @Override
-    public String toString() {
-        return "VkMethod{" +
-                "params=" + params +
-                '}';
     }
 }

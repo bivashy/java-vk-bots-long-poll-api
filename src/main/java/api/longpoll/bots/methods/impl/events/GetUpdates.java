@@ -16,6 +16,7 @@ public class GetUpdates extends VkMethod<GetUpdates.ResponseBody> {
     private String server;
 
     public GetUpdates() {
+        super();
         addParam("act", "a_check");
         addParam("wait", "25");
     }

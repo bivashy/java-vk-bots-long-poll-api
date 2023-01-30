@@ -1,8 +1,9 @@
 package api.longpoll.bots.methods.impl.upload;
 
-import api.longpoll.bots.model.objects.media.FileType;
+import api.longpoll.bots.model.objects.media.UploadTypes;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.File;
 import java.io.InputStream;
 
 /**
@@ -10,8 +11,16 @@ import java.io.InputStream;
  */
 public class UploadDoc extends UploadMethod<UploadDoc.ResponseBody> {
 
-    public UploadDoc(String uri, String filename, InputStream inputStream) {
-        super(uri, FileType.FILE, filename, inputStream);
+    public UploadDoc(String uri, String filename, InputStream doc) {
+        super(uri, UploadTypes.FILE, filename, doc);
+    }
+
+    public UploadDoc(String url, String filename, byte[] doc) {
+        super(url, UploadTypes.FILE, filename, doc);
+    }
+
+    public UploadDoc(String url, File doc) {
+        super(url, UploadTypes.FILE, doc);
     }
 
     @Override
