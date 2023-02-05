@@ -10,16 +10,16 @@ import java.io.InputStream;
  * Implements uploading photo in VK API.
  */
 public class UploadPhoto extends UploadMethod<UploadPhoto.ResponseBody> {
-    public UploadPhoto(String uri, String filename, InputStream doc) {
-        super(uri, UploadTypes.PHOTO, filename, doc);
+    public UploadPhoto(String uri, String filename, InputStream photo) {
+        super(uri, UploadTypes.PHOTO, filename, photo);
     }
 
-    public UploadPhoto(String uri, String filename, byte[] doc) {
-        super(uri, UploadTypes.PHOTO, filename, doc);
+    public UploadPhoto(String uri, String filename, byte[] photo) {
+        super(uri, UploadTypes.PHOTO, filename, photo);
     }
 
-    public UploadPhoto(String uri, File doc) {
-        super(uri, UploadTypes.PHOTO, doc);
+    public UploadPhoto(String uri, File photo) {
+        super(uri, UploadTypes.PHOTO, photo);
     }
 
     @Override
