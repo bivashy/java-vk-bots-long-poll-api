@@ -10,16 +10,16 @@ import java.io.InputStream;
  * Uploads chat photo.
  */
 public class UploadChatPhoto extends UploadMethod<UploadChatPhoto.ResponseBody> {
-    public UploadChatPhoto(String uri, String filename, InputStream chatPhoto) {
-        super(uri, UploadTypes.FILE, filename, chatPhoto);
+    public UploadChatPhoto(String uploadUrl, String filename, InputStream chatPhoto) {
+        super(uploadUrl, UploadTypes.FILE, filename, chatPhoto);
     }
 
-    public UploadChatPhoto(String uri, String filename, byte[] chatPhoto) {
-        super(uri, UploadTypes.FILE, filename, chatPhoto);
+    public UploadChatPhoto(String uploadUrl, String filename, byte[] chatPhoto) {
+        super(uploadUrl, UploadTypes.FILE, filename, chatPhoto);
     }
 
-    public UploadChatPhoto(String uri, File chatPhoto) {
-        super(uri, UploadTypes.FILE, chatPhoto);
+    public UploadChatPhoto(String uploadUrl, File chatPhoto) {
+        super(uploadUrl, UploadTypes.FILE, chatPhoto);
     }
 
     @Override

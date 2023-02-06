@@ -18,20 +18,20 @@ import java.net.URLConnection;
 public abstract class UploadMethod<VkResponse> extends VkMethod<VkResponse> {
     private final MultipartBody.Builder multipartBodyBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
 
-    public UploadMethod(String url, String name, String filename, InputStream inputStream) {
-        this(url, name, filename, new InputStreamRequestBody(filename, inputStream));
+    public UploadMethod(String uploadUrl, String name, String filename, InputStream inputStream) {
+        this(uploadUrl, name, filename, new InputStreamRequestBody(filename, inputStream));
     }
 
-    public UploadMethod(String url, String name, String filename, byte[] file) {
-        this(url, name, filename, RequestBody.create(file, MediaType.get(URLConnection.guessContentTypeFromName(filename))));
+    public UploadMethod(String uploadUrl, String name, String filename, byte[] file) {
+        this(uploadUrl, name, filename, RequestBody.create(file, MediaType.get(URLConnection.guessContentTypeFromName(filename))));
     }
 
-    public UploadMethod(String url, String name, File file) {
-        this(url, name, file.getName(), RequestBody.create(file, MediaType.get(URLConnection.guessContentTypeFromName(file.getName()))));
+    public UploadMethod(String uploadUrl, String name, File file) {
+        this(uploadUrl, name, file.getName(), RequestBody.create(file, MediaType.get(URLConnection.guessContentTypeFromName(file.getName()))));
     }
 
-    private UploadMethod(String url, String name, String filename, RequestBody file) {
-        super(url);
+    private UploadMethod(String uploadUrl, String name, String filename, RequestBody file) {
+        super(uploadUrl);
         this.multipartBodyBuilder.addFormDataPart(name, filename, file);
     }
 

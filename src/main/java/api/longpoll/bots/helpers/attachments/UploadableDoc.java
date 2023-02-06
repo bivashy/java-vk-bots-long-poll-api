@@ -10,12 +10,12 @@ import api.longpoll.bots.model.objects.media.Doc;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
-public class MessageDocUploader implements MessageFileUploader {
+public class UploadableDoc implements UploadableFile {
     private final GetMessagesUploadServer getMessagesUploadServer;
     private final Save save;
     private final Function<String, UploadDoc> uploadDocFactory;
 
-    public MessageDocUploader(String accessToken, int peerId, Function<String, UploadDoc> uploadDocFactory) {
+    public UploadableDoc(String accessToken, int peerId, Function<String, UploadDoc> uploadDocFactory) {
         this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setType("doc").setPeerId(peerId);
         this.save = new Save(accessToken);
         this.uploadDocFactory = uploadDocFactory;

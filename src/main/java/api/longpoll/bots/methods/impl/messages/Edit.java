@@ -1,13 +1,13 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.helpers.attachments.InputStreamUploadableMessageDoc;
-import api.longpoll.bots.helpers.attachments.InputStreamUploadableMessagePhoto;
-import api.longpoll.bots.helpers.attachments.PathUploadableMessageDoc;
-import api.longpoll.bots.helpers.attachments.PathUploadableMessagePhoto;
+import api.longpoll.bots.helpers.attachments.UploadableDoc;
 import api.longpoll.bots.helpers.attachments.UploadableFile;
 import api.longpoll.bots.helpers.attachments.UploadableFilesSupplier;
+import api.longpoll.bots.helpers.attachments.UploadablePhoto;
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.methods.impl.upload.UploadDoc;
+import api.longpoll.bots.methods.impl.upload.UploadPhoto;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
@@ -19,6 +19,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 /**
  * Implements <b>messages.edit</b> method.
@@ -28,13 +30,12 @@ import java.util.List;
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
  */
 public class Edit extends VkMethod<IntegerResponseBody> {
-    /**
-     * Supplies f list of {@link UploadableFile}.
-     */
+    private final String accessToken;
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Edit(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
+        this.accessToken = accessToken;
     }
 
     @Override
@@ -59,48 +60,80 @@ public class Edit extends VkMethod<IntegerResponseBody> {
         return super.execute();
     }
 
-    public Edit addPhoto(File photo) {
-        return addPhoto(photo.toPath());
+    @Override
+    public CompletableFuture<IntegerResponseBody> executeAsync() {
+        List<CompletableFuture<UploadedFile>> uploadedFiles = new ArrayList<>();
+        for (UploadableFile uploadableFile : uploadableFilesSupplier.get()) {
+            uploadedFiles.add(uploadableFile.uploadAsync());
+        }
+        return CompletableFuture.allOf(uploadedFiles.toArray(new CompletableFuture[0]))
+                .thenApply(unused -> uploadedFiles.stream().map(CompletableFuture::join).collect(Collectors.toList()))
+                .thenCompose(attachments -> {
+                    if (!attachments.isEmpty()) {
+                        setAttachment(attachments);
+                    }
+                    return super.executeAsync();
+                });
     }
 
-    public Edit addPhoto(Path photo) {
-        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new PathUploadableMessagePhoto(
-                photo,
+    public Edit addPhoto(File photo) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadablePhoto(
+                accessToken,
                 peerId,
-                getAccessToken()
+                uploadUrl -> new UploadPhoto(uploadUrl, photo)
         ));
         return this;
     }
 
-    public Edit addPhoto(InputStream photo, String filename) {
-        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new InputStreamUploadableMessagePhoto(
-                photo,
-                filename,
+    public Edit addPhoto(Path photo) {
+        return addPhoto(photo.toFile());
+    }
+
+    public Edit addPhoto(String filename, InputStream photo) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadablePhoto(
+                accessToken,
                 peerId,
-                getAccessToken()
+                uploadUrl -> new UploadPhoto(uploadUrl, filename, photo)
+        ));
+        return this;
+    }
+
+    public Edit addPhoto(String filename, byte[] photo) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadablePhoto(
+                accessToken,
+                peerId,
+                uploadUrl -> new UploadPhoto(uploadUrl, filename, photo)
         ));
         return this;
     }
 
     public Edit addDoc(File doc) {
-        return addDoc(doc.toPath());
-    }
-
-    public Edit addDoc(Path doc) {
-        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new PathUploadableMessageDoc(
-                doc,
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadableDoc(
+                accessToken,
                 peerId,
-                getAccessToken()
+                uploadUrl -> new UploadDoc(uploadUrl, doc)
         ));
         return this;
     }
 
-    public Edit addDoc(InputStream doc, String filename) {
-        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new InputStreamUploadableMessageDoc(
-                doc,
-                filename,
+    public Edit addDoc(Path doc) {
+        return addDoc(doc.toFile());
+    }
+
+    public Edit addDoc(String filename, InputStream doc) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadableDoc(
+                accessToken,
                 peerId,
-                getAccessToken()
+                uploadUrl -> new UploadDoc(uploadUrl, filename, doc)
+        ));
+        return this;
+    }
+
+    public Edit addDoc(String filename, byte[] doc) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadableDoc(
+                accessToken,
+                peerId,
+                uploadUrl -> new UploadDoc(uploadUrl, filename, doc)
         ));
         return this;
     }

@@ -10,12 +10,12 @@ import api.longpoll.bots.model.objects.additional.UploadedFile;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
-public class MessagePhotoUploader implements MessageFileUploader {
+public class UploadablePhoto implements UploadableFile {
     private final GetMessagesUploadServer getMessagesUploadServer;
     private final SaveMessagesPhoto saveMessagesPhoto;
     private final Function<String, UploadPhoto> uploadPhotoFactory;
 
-    public MessagePhotoUploader(String accessToken, int peerId, Function<String, UploadPhoto> uploadPhotoFactory) {
+    public UploadablePhoto(String accessToken, int peerId, Function<String, UploadPhoto> uploadPhotoFactory) {
         this.getMessagesUploadServer = new GetMessagesUploadServer(accessToken).setPeerId(peerId);
         this.saveMessagesPhoto = new SaveMessagesPhoto(accessToken);
         this.uploadPhotoFactory = uploadPhotoFactory;

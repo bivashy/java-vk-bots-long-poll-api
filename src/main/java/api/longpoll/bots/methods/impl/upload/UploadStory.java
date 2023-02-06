@@ -10,16 +10,16 @@ import java.io.InputStream;
  * Implements uploading story in VK API.
  */
 public class UploadStory extends UploadMethod<UploadStory.ResponseBody> {
-    public UploadStory(String uri, String filename, InputStream story) {
-        super(uri, UploadTypes.VIDEO_FILE, filename, story);
+    public UploadStory(String uploadUrl, String filename, InputStream story) {
+        super(uploadUrl, UploadTypes.VIDEO_FILE, filename, story);
     }
 
-    public UploadStory(String uri, String filename, byte[] story) {
-        super(uri, UploadTypes.VIDEO_FILE, filename, story);
+    public UploadStory(String uploadUrl, String filename, byte[] story) {
+        super(uploadUrl, UploadTypes.VIDEO_FILE, filename, story);
     }
 
-    public UploadStory(String uri, File story) {
-        super(uri, UploadTypes.VIDEO_FILE, story);
+    public UploadStory(String uploadUrl, File story) {
+        super(uploadUrl, UploadTypes.VIDEO_FILE, story);
     }
 
     @Override

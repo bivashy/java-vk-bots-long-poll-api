@@ -11,16 +11,16 @@ import java.io.InputStream;
  */
 public class UploadDoc extends UploadMethod<UploadDoc.ResponseBody> {
 
-    public UploadDoc(String uri, String filename, InputStream doc) {
-        super(uri, UploadTypes.FILE, filename, doc);
+    public UploadDoc(String uploadUrl, String filename, InputStream doc) {
+        super(uploadUrl, UploadTypes.FILE, filename, doc);
     }
 
-    public UploadDoc(String url, String filename, byte[] doc) {
-        super(url, UploadTypes.FILE, filename, doc);
+    public UploadDoc(String uploadUrl, String filename, byte[] doc) {
+        super(uploadUrl, UploadTypes.FILE, filename, doc);
     }
 
-    public UploadDoc(String url, File doc) {
-        super(url, UploadTypes.FILE, doc);
+    public UploadDoc(String uploadUrl, File doc) {
+        super(uploadUrl, UploadTypes.FILE, doc);
     }
 
     @Override
