@@ -241,13 +241,4 @@ public abstract class VkMethod<VkResponse> {
     protected static String property(String key) {
         return VK_PROPERTIES.getProperty(key);
     }
-
-    /**
-     * Gets {@link VkMethod#accessToken}.
-     *
-     * @return {@link VkMethod#accessToken}.
-     */
-    protected String getAccessToken() {
-        return accessToken;
-    }
 }
