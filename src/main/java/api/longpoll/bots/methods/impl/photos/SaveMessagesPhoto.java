@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class SaveMessagesPhoto extends VkMethod<SaveMessagesPhoto.ResponseBody> {
     public SaveMessagesPhoto(String accessToken) {
-        super(accessToken);
+        super(property("photos.saveMessagesPhoto"), accessToken);
     }
 
     @Override

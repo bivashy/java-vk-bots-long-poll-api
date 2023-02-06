@@ -10,13 +10,8 @@ import java.util.List;
  * Gets update events from VK server.
  */
 public class GetUpdates extends VkMethod<GetUpdates.ResponseBody> {
-    /**
-     * Server URL.
-     */
-    private String server;
-
-    public GetUpdates() {
-        super();
+    public GetUpdates(String url) {
+        super(url);
         addParam("act", "a_check");
         addParam("wait", "25");
     }
@@ -28,12 +23,7 @@ public class GetUpdates extends VkMethod<GetUpdates.ResponseBody> {
 
     @Override
     public String getUri() {
-        return server;
-    }
-
-    public GetUpdates setServer(String server) {
-        this.server = server;
-        return this;
+        return null;
     }
 
     public GetUpdates setKey(String key) {

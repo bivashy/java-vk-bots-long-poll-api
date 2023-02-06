@@ -13,6 +13,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Executes generic HTTP request to VK API.
@@ -27,6 +30,7 @@ import java.util.stream.Collectors;
  * @param <VkResponse> VK API response type.
  */
 public abstract class VkMethod<VkResponse> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(VkMethod.class);
     /**
      * Path to VK methods list.
      */
@@ -37,7 +41,7 @@ public abstract class VkMethod<VkResponse> {
      */
     private static final String ACCESS_TOKEN_KEY = "access_token";
 
-    private static final long CALL_TIMEOUT = 50;
+    private static final long CALL_TIMEOUT = 120;
 
     /**
      * VK API version key.
@@ -70,6 +74,38 @@ public abstract class VkMethod<VkResponse> {
 
     private final OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .callTimeout(CALL_TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(CALL_TIMEOUT, TimeUnit.SECONDS)
+            .addInterceptor(chain -> {
+                Request request = chain.request();
+
+                LOGGER.debug(
+                        "--> {} {} {} {}",
+                        request.method(),
+                        request.url() + (request.body() != null && request.body() instanceof FormBody ? "?" + IntStream.range(0, ((FormBody) request.body()).size()).mapToObj(i -> ((FormBody) request.body()).encodedName(i) + "=" + ((FormBody) request.body()).encodedValue(i)).collect(Collectors.joining()) : ""),
+                        request.body() != null ? "Content-Type: " + request.body().contentType() : "",
+                        request.body() != null ? "Content-Length: " + request.body().contentLength() : ""
+                );
+
+                long start = System.currentTimeMillis();
+                Response response = chain.proceed(request);
+                long end = System.currentTimeMillis();
+
+                ResponseBody responseBody = response.body();
+                String stringBody = responseBody != null ? responseBody.string() : null;
+
+                LOGGER.debug(
+                        "<-- {}ms: {} {}",
+                        end - start,
+                        response.code(),
+                        stringBody
+                );
+
+                ResponseBody responseBodyCopy = responseBody != null
+                        ? ResponseBody.create(stringBody, responseBody.contentType())
+                        : ResponseBody.create(new byte[0], null);
+                response.close();
+                return response.newBuilder().body(responseBodyCopy).build();
+            })
             .build();
 
     /**

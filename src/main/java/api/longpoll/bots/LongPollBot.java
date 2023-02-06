@@ -40,7 +40,7 @@ public abstract class LongPollBot extends VkBot {
     /**
      * Gets VK updates.
      */
-    private final GetUpdates getUpdates = new GetUpdates();
+    private GetUpdates getUpdates;
 
     /**
      * Whether infinite loop should be continued.
@@ -111,7 +111,7 @@ public abstract class LongPollBot extends VkBot {
         }
 
         GetLongPollServer.ResponseBody longPollServer = getLongPollServer.setGroupId(groupId).execute();
-        getUpdates.setServer(longPollServer.getResponse().getServer())
+        getUpdates = new GetUpdates(longPollServer.getResponse().getServer())
                 .setKey(longPollServer.getResponse().getKey())
                 .setTs(longPollServer.getResponse().getTs());
     }
