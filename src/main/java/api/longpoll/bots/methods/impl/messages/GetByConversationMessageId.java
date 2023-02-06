@@ -15,12 +15,7 @@ import java.util.List;
  */
 public class GetByConversationMessageId extends VkMethod<GetByConversationMessageId.ResponseBody> {
     public GetByConversationMessageId(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.getByConversationMessageId");
+        super(property("messages.getByConversationMessageId"), accessToken);
     }
 
     @Override

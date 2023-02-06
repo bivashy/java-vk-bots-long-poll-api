@@ -46,11 +46,6 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     @Override
-    public String getUri() {
-        return property("messages.send");
-    }
-
-    @Override
     protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }

@@ -20,12 +20,7 @@ import java.util.List;
  */
 public class GetMembers extends VkMethod<GetMembers.ResponseBody> {
     public GetMembers(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.getMembers");
+        super(property("groups.getMembers"), accessToken);
     }
 
     @Override

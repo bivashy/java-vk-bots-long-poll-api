@@ -14,12 +14,7 @@ import com.google.gson.annotations.SerializedName;
 public class GetShortLink extends VkMethod<GetShortLink.ResponseBody> {
 
     public GetShortLink(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("utils.getShortLink");
+        super(property("utils.getShortLink"), accessToken);
     }
 
     public GetShortLink setUrl(String url) {

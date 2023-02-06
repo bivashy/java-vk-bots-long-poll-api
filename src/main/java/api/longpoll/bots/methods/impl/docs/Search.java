@@ -12,12 +12,7 @@ import api.longpoll.bots.model.objects.media.Doc;
 public class Search extends VkMethod<Search.ResponseBody> {
 
     public Search(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("docs.search");
+        super(property("docs.search"), accessToken);
     }
 
     @Override

@@ -14,12 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetOrderItems extends VkMethod<GetOrderItems.ResponseBody> {
     public GetOrderItems(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("market.getOrderItems");
+        super(property("market.getOrderItems"), accessToken);
     }
 
     @Override

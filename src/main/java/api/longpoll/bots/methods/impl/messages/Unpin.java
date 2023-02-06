@@ -16,11 +16,6 @@ public class Unpin extends VkMethod<IntegerResponseBody> {
     }
 
     @Override
-    public String getUri() {
-        return property("messages.unpin");
-    }
-
-    @Override
     protected Class<IntegerResponseBody> getResponseClass() {
         return IntegerResponseBody.class;
     }

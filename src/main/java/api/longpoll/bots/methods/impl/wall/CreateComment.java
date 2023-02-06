@@ -18,12 +18,7 @@ import java.util.List;
 public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
 
     public CreateComment(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("wall.createComment");
+        super(property("wall.createComment"), accessToken);
     }
 
     @Override

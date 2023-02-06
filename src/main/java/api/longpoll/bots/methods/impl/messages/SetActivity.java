@@ -12,12 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class SetActivity extends VkMethod<IntegerResponseBody> {
     public SetActivity(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.setActivity");
+        super(property("messages.setActivity"), accessToken);
     }
 
     @Override

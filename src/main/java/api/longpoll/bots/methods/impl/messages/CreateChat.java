@@ -15,12 +15,7 @@ import java.util.List;
  */
 public class CreateChat extends VkMethod<IntegerResponseBody> {
     public CreateChat(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.createChat");
+        super(property("messages.createChat"), accessToken);
     }
 
     @Override

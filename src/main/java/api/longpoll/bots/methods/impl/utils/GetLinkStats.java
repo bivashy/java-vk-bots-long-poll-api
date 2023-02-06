@@ -16,12 +16,7 @@ import java.util.List;
 public class GetLinkStats extends VkMethod<GetLinkStats.ResponseBody> {
 
     public GetLinkStats(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("utils.getLinkStats");
+        super(property("utils.getLinkStats"), accessToken);
     }
 
     @Override

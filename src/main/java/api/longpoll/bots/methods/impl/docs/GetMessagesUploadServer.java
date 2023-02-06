@@ -13,12 +13,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.ResponseBody> {
     public GetMessagesUploadServer(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("docs.getMessagesUploadServer");
+        super(property("docs.getMessagesUploadServer"), accessToken);
     }
 
     @Override

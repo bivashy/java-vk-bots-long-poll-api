@@ -13,17 +13,12 @@ import com.google.gson.annotations.SerializedName;
  */
 public class AddCallbackServer extends VkMethod<AddCallbackServer.ResponseBody> {
     public AddCallbackServer(String accessToken) {
-        super(accessToken);
+        super(property("groups.addCallbackServer"), accessToken);
     }
 
     @Override
     protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.addCallbackServer");
     }
 
     public AddCallbackServer setUrl(String url) {

@@ -15,12 +15,7 @@ import java.util.List;
  */
 public class GetTokenPermissions extends VkMethod<GetTokenPermissions.ResponseBody> {
     public GetTokenPermissions(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.getTokenPermissions");
+        super(property("groups.getTokenPermissions"), accessToken);
     }
 
     @Override

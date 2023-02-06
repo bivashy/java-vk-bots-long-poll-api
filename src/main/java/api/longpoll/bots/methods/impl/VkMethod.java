@@ -191,13 +191,6 @@ public abstract class VkMethod<VkResponse> {
      */
     protected abstract Class<VkResponse> getResponseClass();
 
-    /**
-     * Gets request URI.
-     *
-     * @return request URI.
-     */
-    public abstract String getUri();
-
     private Request newRequest() {
         return requestBuilder.post(newRequestBody()).build();
     }

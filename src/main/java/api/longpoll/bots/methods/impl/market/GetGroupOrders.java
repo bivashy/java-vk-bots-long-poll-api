@@ -14,12 +14,7 @@ import api.longpoll.bots.model.response.GenericResponseBody;
  */
 public class GetGroupOrders extends VkMethod<GetGroupOrders.ResponseBody> {
     public GetGroupOrders(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("market.getGroupOrders");
+        super(property("market.getGroupOrders"), accessToken);
     }
 
     @Override

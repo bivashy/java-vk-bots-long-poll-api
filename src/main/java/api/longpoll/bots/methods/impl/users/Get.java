@@ -17,12 +17,7 @@ import java.util.List;
  */
 public class Get extends VkMethod<Get.ResponseBody> {
     public Get(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("users.get");
+        super(property("users.get"), accessToken);
     }
 
     @Override

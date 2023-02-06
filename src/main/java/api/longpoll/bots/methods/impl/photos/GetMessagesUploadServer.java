@@ -17,11 +17,6 @@ public class GetMessagesUploadServer extends VkMethod<GetMessagesUploadServer.Re
     }
 
     @Override
-    public String getUri() {
-        return property("photos.getMessagesUploadServer");
-    }
-
-    @Override
     protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }

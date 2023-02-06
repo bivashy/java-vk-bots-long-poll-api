@@ -15,12 +15,7 @@ import java.util.List;
  */
 public class Delete extends VkMethod<IntegerResponseBody> {
     public Delete(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.delete");
+        super(property("stories.delete"), accessToken);
     }
 
     @Override

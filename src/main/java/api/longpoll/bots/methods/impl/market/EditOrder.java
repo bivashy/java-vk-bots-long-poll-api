@@ -12,12 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class EditOrder extends VkMethod<IntegerResponseBody> {
     public EditOrder(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("market.editOrder");
+        super(property("market.editOrder"), accessToken);
     }
 
     @Override

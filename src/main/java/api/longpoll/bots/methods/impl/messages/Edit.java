@@ -34,13 +34,8 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Edit(String accessToken) {
-        super(accessToken);
+        super(property("messages.edit"), accessToken);
         this.accessToken = accessToken;
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.edit");
     }
 
     @Override

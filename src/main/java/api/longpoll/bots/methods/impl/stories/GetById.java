@@ -17,12 +17,7 @@ import java.util.List;
  */
 public class GetById extends VkMethod<GetById.ResponseBody> {
     public GetById(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.getById");
+        super(property("stories.getById"), accessToken);
     }
 
     @Override

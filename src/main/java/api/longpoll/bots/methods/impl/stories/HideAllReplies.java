@@ -12,12 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class HideAllReplies extends VkMethod<IntegerResponseBody> {
     public HideAllReplies(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.hideAllReplies");
+        super(property("stories.hideAllReplies"), accessToken);
     }
 
     @Override

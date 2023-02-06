@@ -20,12 +20,7 @@ import java.util.List;
  */
 public class GetHistory extends VkMethod<GetHistory.ResponseBody> {
     public GetHistory(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.getHistory");
+        super(property("messages.getHistory"), accessToken);
     }
 
     @Override

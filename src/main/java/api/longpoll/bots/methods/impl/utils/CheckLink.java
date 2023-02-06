@@ -13,12 +13,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class CheckLink extends VkMethod<CheckLink.ResponseBody> {
     public CheckLink(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("utils.checkLink");
+        super(property("utils.checkLink"), accessToken);
     }
 
     public CheckLink setUrl(String url) {

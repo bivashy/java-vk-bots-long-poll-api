@@ -12,12 +12,7 @@ import api.longpoll.bots.model.response.GenericResponseBody;
  */
 public class Save extends VkMethod<Save.ResponseBody> {
     public Save(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.save");
+        super(property("stories.save"), accessToken);
     }
 
     @Override

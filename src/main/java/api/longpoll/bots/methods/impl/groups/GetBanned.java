@@ -19,12 +19,7 @@ import java.util.List;
  */
 public class GetBanned extends VkMethod<GetBanned.ResponseBody> {
     public GetBanned(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.getBanned");
+        super(property("groups.getBanned"), accessToken);
     }
 
     @Override

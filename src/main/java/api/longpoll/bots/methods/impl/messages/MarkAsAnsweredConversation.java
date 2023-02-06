@@ -11,12 +11,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
 public class MarkAsAnsweredConversation extends VkMethod<IntegerResponseBody> {
 
     public MarkAsAnsweredConversation(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.markAsAnsweredConversation");
+        super(property("messages.markAsAnsweredConversation"), accessToken);
     }
 
     @Override

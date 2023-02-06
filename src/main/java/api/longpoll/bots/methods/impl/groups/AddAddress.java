@@ -13,12 +13,7 @@ import com.google.gson.annotations.SerializedName;
 public class AddAddress extends VkMethod<AddAddress.ResponseBody> {
 
     public AddAddress(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.addAddress");
+        super(property("groups.addAddress"), accessToken);
     }
 
     @Override

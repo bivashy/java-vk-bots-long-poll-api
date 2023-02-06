@@ -12,12 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class DeleteCallbackServer extends VkMethod<IntegerResponseBody> {
     public DeleteCallbackServer(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.deleteCallbackServer");
+        super(property("groups.deleteCallbackServer"), accessToken);
     }
 
     @Override

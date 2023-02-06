@@ -12,12 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class SetCallbackSettings extends VkMethod<IntegerResponseBody> {
     public SetCallbackSettings(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.setCallbackSettings");
+        super(property("groups.setCallbackSettings"), accessToken);
     }
 
     @Override

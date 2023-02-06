@@ -20,11 +20,6 @@ public class SaveMessagesPhoto extends VkMethod<SaveMessagesPhoto.ResponseBody> 
     }
 
     @Override
-    public String getUri() {
-        return property("photos.saveMessagesPhoto");
-    }
-
-    @Override
     protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
     }

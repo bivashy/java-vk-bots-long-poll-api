@@ -10,12 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class CloseComments extends VkMethod<IntegerResponseBody> {
     public CloseComments(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("wall.closeComments");
+        super(property("wall.closeComments"), accessToken);
     }
 
     @Override

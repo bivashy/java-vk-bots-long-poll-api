@@ -14,12 +14,7 @@ import java.util.List;
  */
 public class SearchConversations extends VkMethod<SearchConversations.ResponseBody> {
     public SearchConversations(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.searchConversations");
+        super(property("messages.searchConversations"), accessToken);
     }
 
     @Override

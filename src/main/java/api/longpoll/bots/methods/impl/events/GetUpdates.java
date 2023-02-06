@@ -21,11 +21,6 @@ public class GetUpdates extends VkMethod<GetUpdates.ResponseBody> {
         return ResponseBody.class;
     }
 
-    @Override
-    public String getUri() {
-        return null;
-    }
-
     public GetUpdates setKey(String key) {
         return addParam("key", key);
     }

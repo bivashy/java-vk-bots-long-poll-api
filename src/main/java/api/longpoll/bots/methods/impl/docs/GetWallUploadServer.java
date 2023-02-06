@@ -9,12 +9,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
  */
 public class GetWallUploadServer extends VkMethod<GetWallUploadServer.ResponseBody> {
     public GetWallUploadServer(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("docs.getWallUploadServer");
+        super(property("docs.getWallUploadServer"), accessToken);
     }
 
     @Override

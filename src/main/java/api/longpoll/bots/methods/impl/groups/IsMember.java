@@ -19,12 +19,7 @@ import java.util.List;
  */
 public class IsMember extends VkMethod<IsMember.ResponseBody> {
     public IsMember(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.isMember");
+        super(property("groups.isMember"), accessToken);
     }
 
     @Override

@@ -12,12 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class RemoveChatUser extends VkMethod<IntegerResponseBody> {
     public RemoveChatUser(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.removeChatUser");
+        super(property("messages.removeChatUser"), accessToken);
     }
 
     @Override

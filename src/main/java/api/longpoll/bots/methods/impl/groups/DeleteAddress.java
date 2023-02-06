@@ -10,12 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class DeleteAddress extends VkMethod<IntegerResponseBody> {
     public DeleteAddress(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.deleteAddress");
+        super(property("groups.deleteAddress"), accessToken);
     }
 
     @Override

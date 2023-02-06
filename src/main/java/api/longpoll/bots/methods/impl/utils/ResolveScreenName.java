@@ -13,12 +13,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class ResolveScreenName extends VkMethod<ResolveScreenName.ResponseBody> {
     public ResolveScreenName(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("utils.resolveScreenName");
+        super(property("utils.resolveScreenName"), accessToken);
     }
 
     @Override

@@ -15,12 +15,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetCallbackSettings extends VkMethod<GetCallbackSettings.ResponseBody> {
     public GetCallbackSettings(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.getCallbackSettings");
+        super(property("groups.getCallbackSettings"), accessToken);
     }
 
     @Override

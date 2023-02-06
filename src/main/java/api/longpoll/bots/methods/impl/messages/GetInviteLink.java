@@ -14,12 +14,7 @@ import com.google.gson.annotations.SerializedName;
 public class GetInviteLink extends VkMethod<GetInviteLink.ResponseBody> {
 
     public GetInviteLink(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.getInviteLink");
+        super(property("messages.getInviteLink"), accessToken);
     }
 
     @Override

@@ -12,12 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class EditChat extends VkMethod<IntegerResponseBody> {
     public EditChat(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.editChat");
+        super(property("messages.editChat"), accessToken);
     }
 
     @Override

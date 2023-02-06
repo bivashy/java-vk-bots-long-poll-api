@@ -13,12 +13,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
 public class SetLongPollSettings extends VkMethod<IntegerResponseBody> {
 
     public SetLongPollSettings(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.setLongPollSettings");
+        super(property("groups.setLongPollSettings"), accessToken);
     }
 
     @Override

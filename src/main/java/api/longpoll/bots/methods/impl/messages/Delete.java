@@ -16,12 +16,7 @@ import java.util.Map;
  */
 public class Delete extends VkMethod<Delete.ResponseBody> {
     public Delete(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.delete");
+        super(property("messages.delete"), accessToken);
     }
 
     @Override

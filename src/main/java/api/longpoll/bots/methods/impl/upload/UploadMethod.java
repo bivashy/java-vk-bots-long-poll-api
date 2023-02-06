@@ -46,8 +46,4 @@ public abstract class UploadMethod<VkResponse> extends VkMethod<VkResponse> {
         return multipartBodyBuilder.build();
     }
 
-    @Override
-    public String getUri() {
-        return null;
-    }
 }

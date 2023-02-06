@@ -19,12 +19,7 @@ import java.util.List;
  */
 public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
     public GetViewers(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.getViewers");
+        super(property("stories.getViewers"), accessToken);
     }
 
     @Override

@@ -14,12 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class DeleteChatPhoto extends VkMethod<DeleteChatPhoto.ResponseBody> {
     public DeleteChatPhoto(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.deleteChatPhoto");
+        super(property("messages.deleteChatPhoto"), accessToken);
     }
 
     @Override

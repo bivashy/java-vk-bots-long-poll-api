@@ -11,12 +11,7 @@ public class EditAddress extends VkMethod<EditAddress.ResponseBody> {
 
 
     public EditAddress(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.editAddress");
+        super(property("groups.editAddress"), accessToken);
     }
 
     @Override

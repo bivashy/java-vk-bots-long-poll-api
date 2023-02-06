@@ -14,12 +14,7 @@ import java.util.List;
  */
 public class GetById extends VkMethod<GetById.ResponseBody> {
     public GetById(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.getById");
+        super(property("messages.getById"), accessToken);
     }
 
     @Override
