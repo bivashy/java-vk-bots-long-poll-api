@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.File;
 import java.io.InputStream;
+import java.nio.file.Path;
 
 /**
  * Implements uploading story in VK API.
@@ -19,6 +20,10 @@ public class UploadStory extends UploadMethod<UploadStory.ResponseBody> {
     }
 
     public UploadStory(String uploadUrl, File story) {
+        super(uploadUrl, UploadTypes.VIDEO_FILE, story);
+    }
+
+    public UploadStory(String uploadUrl, Path story) {
         super(uploadUrl, UploadTypes.VIDEO_FILE, story);
     }
 

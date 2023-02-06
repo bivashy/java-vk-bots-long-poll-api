@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.upload;
 
 import api.longpoll.bots.http.impl.InputStreamRequestBody;
+import api.longpoll.bots.http.impl.PathRequestBody;
 import api.longpoll.bots.methods.impl.VkMethod;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -9,6 +10,7 @@ import okhttp3.RequestBody;
 import java.io.File;
 import java.io.InputStream;
 import java.net.URLConnection;
+import java.nio.file.Path;
 
 /**
  * Generic method that uploads files to VK server.
@@ -28,6 +30,10 @@ public abstract class UploadMethod<VkResponse> extends VkMethod<VkResponse> {
 
     public UploadMethod(String uploadUrl, String name, File file) {
         this(uploadUrl, name, file.getName(), RequestBody.create(file, MediaType.get(URLConnection.guessContentTypeFromName(file.getName()))));
+    }
+
+    public UploadMethod(String uploadUrl, String name, Path file) {
+        this(uploadUrl, name, file.getFileName().toString(), new PathRequestBody(file));
     }
 
     private UploadMethod(String uploadUrl, String name, String filename, RequestBody file) {

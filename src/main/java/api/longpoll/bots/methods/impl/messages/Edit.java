@@ -86,7 +86,12 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit addPhoto(Path photo) {
-        return addPhoto(photo.toFile());
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadablePhoto(
+                accessToken,
+                peerId,
+                uploadUrl -> new UploadPhoto(uploadUrl, photo)
+        ));
+        return this;
     }
 
     public Edit addPhoto(String filename, InputStream photo) {
@@ -117,7 +122,12 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit addDoc(Path doc) {
-        return addDoc(doc.toFile());
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadableDoc(
+                accessToken,
+                peerId,
+                uploadUrl -> new UploadDoc(uploadUrl, doc)
+        ));
+        return this;
     }
 
     public Edit addDoc(String filename, InputStream doc) {

@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.File;
 import java.io.InputStream;
+import java.nio.file.Path;
 
 /**
  * Uploads chat photo.
@@ -19,6 +20,10 @@ public class UploadChatPhoto extends UploadMethod<UploadChatPhoto.ResponseBody> 
     }
 
     public UploadChatPhoto(String uploadUrl, File chatPhoto) {
+        super(uploadUrl, UploadTypes.FILE, chatPhoto);
+    }
+
+    public UploadChatPhoto(String uploadUrl, Path chatPhoto) {
         super(uploadUrl, UploadTypes.FILE, chatPhoto);
     }
 

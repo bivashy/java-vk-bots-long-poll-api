@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.File;
 import java.io.InputStream;
+import java.nio.file.Path;
 
 /**
  * Implements uploading photo in VK API.
@@ -19,6 +20,10 @@ public class UploadPhoto extends UploadMethod<UploadPhoto.ResponseBody> {
     }
 
     public UploadPhoto(String uploadUrl, File photo) {
+        super(uploadUrl, UploadTypes.PHOTO, photo);
+    }
+
+    public UploadPhoto(String uploadUrl, Path photo) {
         super(uploadUrl, UploadTypes.PHOTO, photo);
     }
 

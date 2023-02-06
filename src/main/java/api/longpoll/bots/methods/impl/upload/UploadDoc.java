@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.File;
 import java.io.InputStream;
+import java.nio.file.Path;
 
 /**
  * Implements uploading document in VK API.
@@ -20,6 +21,10 @@ public class UploadDoc extends UploadMethod<UploadDoc.ResponseBody> {
     }
 
     public UploadDoc(String uploadUrl, File doc) {
+        super(uploadUrl, UploadTypes.FILE, doc);
+    }
+
+    public UploadDoc(String uploadUrl, Path doc) {
         super(uploadUrl, UploadTypes.FILE, doc);
     }
 

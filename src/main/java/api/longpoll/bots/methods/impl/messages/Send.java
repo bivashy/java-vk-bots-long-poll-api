@@ -93,7 +93,12 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send addPhoto(Path photo) {
-        return addPhoto(photo.toFile());
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadablePhoto(
+                accessToken,
+                peerId,
+                uploadUrl -> new UploadPhoto(uploadUrl, photo)
+        ));
+        return this;
     }
 
     public Send addPhoto(String filename, InputStream photo) {
@@ -124,7 +129,12 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send addDoc(Path doc) {
-        return addDoc(doc.toFile());
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadableDoc(
+                accessToken,
+                peerId,
+                uploadUrl -> new UploadDoc(uploadUrl, doc)
+        ));
+        return this;
     }
 
     public Send addDoc(String filename, InputStream doc) {
