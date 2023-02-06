@@ -11,7 +11,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class SendEventAnswer extends VkMethod<IntegerResponseBody> {
     public SendEventAnswer(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

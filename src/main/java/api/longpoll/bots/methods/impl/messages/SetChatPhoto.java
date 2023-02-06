@@ -14,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class SetChatPhoto extends VkMethod<SetChatPhoto.ResponseBody> {
     public SetChatPhoto(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

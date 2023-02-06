@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoUploadServer.ResponseBody> {
     public GetOwnerCoverPhotoUploadServer(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

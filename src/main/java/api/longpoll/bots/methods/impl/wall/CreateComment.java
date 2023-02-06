@@ -18,7 +18,7 @@ import java.util.List;
 public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
 
     public CreateComment(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

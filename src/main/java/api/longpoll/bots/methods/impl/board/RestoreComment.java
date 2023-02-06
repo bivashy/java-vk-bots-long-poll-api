@@ -12,7 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class RestoreComment extends VkMethod<IntegerResponseBody> {
     public RestoreComment(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

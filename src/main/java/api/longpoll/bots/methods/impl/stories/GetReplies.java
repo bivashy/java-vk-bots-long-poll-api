@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class GetReplies extends VkMethod<GetReplies.ResponseBody> {
     public GetReplies(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

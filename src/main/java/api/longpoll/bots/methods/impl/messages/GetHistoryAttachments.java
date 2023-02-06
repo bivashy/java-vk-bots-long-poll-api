@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.ResponseBody> {
     public GetHistoryAttachments(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

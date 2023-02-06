@@ -10,7 +10,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class OpenComments extends VkMethod<IntegerResponseBody> {
     public OpenComments(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

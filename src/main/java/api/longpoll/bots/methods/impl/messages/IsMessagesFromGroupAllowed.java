@@ -15,7 +15,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class IsMessagesFromGroupAllowed extends VkMethod<IsMessagesFromGroupAllowed.ResponseBody> {
     public IsMessagesFromGroupAllowed(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

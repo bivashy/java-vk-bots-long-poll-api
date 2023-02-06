@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
     public GetConversations(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class GetTokenPermissions extends VkMethod<GetTokenPermissions.ResponseBody> {
     public GetTokenPermissions(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

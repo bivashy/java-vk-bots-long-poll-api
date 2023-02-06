@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Delete extends VkMethod<IntegerResponseBody> {
     public Delete(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

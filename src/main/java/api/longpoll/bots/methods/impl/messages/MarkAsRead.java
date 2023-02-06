@@ -13,7 +13,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
 public class MarkAsRead extends VkMethod<IntegerResponseBody> {
 
     public MarkAsRead(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

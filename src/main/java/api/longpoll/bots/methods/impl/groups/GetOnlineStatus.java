@@ -14,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
 public class GetOnlineStatus extends VkMethod<GetOnlineStatus.ResponseBody> {
 
     public GetOnlineStatus(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

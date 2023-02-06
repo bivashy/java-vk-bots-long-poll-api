@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class Delete extends VkMethod<Delete.ResponseBody> {
     public Delete(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

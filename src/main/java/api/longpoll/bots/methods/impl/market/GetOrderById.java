@@ -14,7 +14,7 @@ import api.longpoll.bots.model.response.GenericResponseBody;
 public class GetOrderById extends VkMethod<GetOrderById.ResponseBody> {
 
     public GetOrderById(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

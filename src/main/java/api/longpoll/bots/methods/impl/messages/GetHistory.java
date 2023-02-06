@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class GetHistory extends VkMethod<GetHistory.ResponseBody> {
     public GetHistory(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

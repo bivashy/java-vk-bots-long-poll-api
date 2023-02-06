@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class GetBanned extends VkMethod<GetBanned.ResponseBody> {
     public GetBanned(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

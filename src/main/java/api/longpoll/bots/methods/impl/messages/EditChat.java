@@ -12,7 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class EditChat extends VkMethod<IntegerResponseBody> {
     public EditChat(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

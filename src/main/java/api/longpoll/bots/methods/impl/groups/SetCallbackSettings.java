@@ -12,7 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class SetCallbackSettings extends VkMethod<IntegerResponseBody> {
     public SetCallbackSettings(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

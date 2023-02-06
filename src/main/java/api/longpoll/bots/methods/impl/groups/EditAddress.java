@@ -11,7 +11,7 @@ public class EditAddress extends VkMethod<EditAddress.ResponseBody> {
 
 
     public EditAddress(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override

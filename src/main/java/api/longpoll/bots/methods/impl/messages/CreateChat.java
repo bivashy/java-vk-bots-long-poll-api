@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class CreateChat extends VkMethod<IntegerResponseBody> {
     public CreateChat(String accessToken) {
-        super(, accessToken);
+        super(accessToken);
     }
 
     @Override
