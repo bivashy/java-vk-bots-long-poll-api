@@ -4,6 +4,7 @@ import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.adapters.deserializers.IsMemberResponseBodyDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -40,7 +41,7 @@ public class IsMember extends VkMethod<IsMember.ResponseBody> {
     }
 
     public IsMember setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", csv(userIds));
+        return addParam("user_ids", ParamUtils.csv(userIds));
     }
 
     public IsMember setExtended(boolean extended) {

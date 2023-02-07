@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +37,7 @@ public class Delete extends VkMethod<IntegerResponseBody> {
     }
 
     public Delete setStories(List<String> stories) {
-        return addParam("stories", csv(stories));
+        return addParam("stories", ParamUtils.csv(stories));
     }
 
     @Override

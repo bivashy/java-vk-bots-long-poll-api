@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.utils.ParamUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +28,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", csv(messageIds));
+        return addParam("message_ids", ParamUtils.csv(messageIds));
     }
 
     public GetById setPreviewLength(int previewLength) {
@@ -43,7 +44,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetById setGroupId(int groupId) {

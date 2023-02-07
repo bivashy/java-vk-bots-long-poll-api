@@ -4,6 +4,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +33,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
     }
 
     public GetByConversationMessageId setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", csv(conversationMessageIds));
+        return addParam("conversation_message_ids", ParamUtils.csv(conversationMessageIds));
     }
 
     public GetByConversationMessageId setExtended(boolean extended) {
@@ -44,7 +45,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
     }
 
     public GetByConversationMessageId setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetByConversationMessageId setGroupId(int groupId) {

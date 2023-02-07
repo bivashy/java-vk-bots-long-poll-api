@@ -5,6 +5,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -49,7 +50,7 @@ public class GetMembers extends VkMethod<GetMembers.ResponseBody> {
     }
 
     public GetMembers setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetMembers setFilter(String filter) {

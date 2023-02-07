@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -50,7 +51,7 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
     }
 
     public GetHistoryAttachments setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetHistoryAttachments setGroupId(int groupId) {

@@ -12,6 +12,7 @@ import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 
 import java.io.File;
 import java.io.InputStream;
@@ -148,7 +149,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit setAttachment(List<UploadedFile> uploadedFiles) {
-        return setAttachment(csv(uploadedFiles));
+        return setAttachment(ParamUtils.csv(uploadedFiles));
     }
 
     public Edit setAttachment(String attachment) {

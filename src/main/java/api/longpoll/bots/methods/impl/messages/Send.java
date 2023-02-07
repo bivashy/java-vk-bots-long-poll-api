@@ -14,6 +14,7 @@ import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.JsonAdapter;
@@ -155,7 +156,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setAttachment(List<UploadedFile> uploadedFiles) {
-        return setAttachment(csv(uploadedFiles));
+        return setAttachment(ParamUtils.csv(uploadedFiles));
     }
 
     public Send setAttachment(String attachment) {
@@ -182,7 +183,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
 
     public Send setPeerIds(List<Integer> peerIds) {
         uploadableFilesSupplier.addPeerIds(peerIds);
-        return addParam("peer_ids", csv(peerIds));
+        return addParam("peer_ids", ParamUtils.csv(peerIds));
     }
 
     public Send setDomain(String domain) {
@@ -199,7 +200,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
 
     public Send setUserIds(List<Integer> userIds) {
         uploadableFilesSupplier.addPeerIds(userIds);
-        return addParam("user_ids", csv(userIds));
+        return addParam("user_ids", ParamUtils.csv(userIds));
     }
 
     public Send setMessage(String message) {
@@ -223,7 +224,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setForwardMessages(List<Integer> forwardMessages) {
-        return addParam("forward_messages", csv(forwardMessages));
+        return addParam("forward_messages", ParamUtils.csv(forwardMessages));
     }
 
     public Send setStickerId(int stickerId) {

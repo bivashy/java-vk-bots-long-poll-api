@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +30,7 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
     }
 
     public Delete setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", csv(messageIds));
+        return addParam("message_ids", ParamUtils.csv(messageIds));
     }
 
     public Delete setSpam(boolean spam) {
@@ -49,7 +50,7 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
     }
 
     public Delete setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", csv(conversationMessageIds));
+        return addParam("conversation_message_ids", ParamUtils.csv(conversationMessageIds));
     }
 
     public Delete setPeerId(int peerId) {

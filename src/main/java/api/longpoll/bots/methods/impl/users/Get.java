@@ -4,6 +4,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.NameCase;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Get extends VkMethod<Get.ResponseBody> {
     }
 
     public Get setUserIds(List<String> userIds) {
-        return addParam("user_ids", csv(userIds));
+        return addParam("user_ids", ParamUtils.csv(userIds));
     }
 
     public Get setFields(String... fields) {
@@ -38,7 +39,7 @@ public class Get extends VkMethod<Get.ResponseBody> {
     }
 
     public Get setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public Get setNameCase(NameCase nameCase) {

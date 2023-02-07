@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -53,7 +54,7 @@ public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response
     }
 
     public GetPhotoUploadServer setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", csv(userIds));
+        return addParam("user_ids", ParamUtils.csv(userIds));
     }
 
     @Override

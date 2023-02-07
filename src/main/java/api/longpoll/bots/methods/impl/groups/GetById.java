@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.groups;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Community;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +30,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setGroupIds(List<String> groupIds) {
-        return addParam("group_ids", csv(groupIds));
+        return addParam("group_ids", ParamUtils.csv(groupIds));
     }
 
     public GetById setGroupId(String groupId) {
@@ -41,7 +42,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     @Override

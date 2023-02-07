@@ -4,6 +4,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Story;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +31,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setStories(List<String> stories) {
-        return addParam("stories", csv(stories));
+        return addParam("stories", ParamUtils.csv(stories));
     }
 
     public GetById setExtended(boolean extended) {
@@ -42,7 +43,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
     }
 
     public GetById setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     @Override

@@ -17,7 +17,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
@@ -218,18 +217,6 @@ public abstract class VkMethod<VkResponse> {
      */
     protected Gson getGson() {
         return gson;
-    }
-
-    /**
-     * Converts list of objects to comma separated values.
-     *
-     * @param values list of objects.
-     * @return comma separated values.
-     */
-    protected String csv(List<?> values) {
-        return values.stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining(","));
     }
 
     /**

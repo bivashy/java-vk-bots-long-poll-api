@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.utils.ParamUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,7 +41,7 @@ public class SearchConversations extends VkMethod<SearchConversations.ResponseBo
     }
 
     public SearchConversations setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public SearchConversations setGroupId(int groupId) {

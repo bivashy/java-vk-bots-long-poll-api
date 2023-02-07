@@ -6,6 +6,7 @@ import api.longpoll.bots.model.objects.basic.Conversation;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -61,7 +62,7 @@ public class GetHistory extends VkMethod<GetHistory.ResponseBody> {
     }
 
     public GetHistory setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetHistory setGroupId(int groupId) {

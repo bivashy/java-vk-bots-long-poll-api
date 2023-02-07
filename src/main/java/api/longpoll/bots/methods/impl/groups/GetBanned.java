@@ -5,6 +5,7 @@ import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Community;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -44,7 +45,7 @@ public class GetBanned extends VkMethod<GetBanned.ResponseBody> {
     }
 
     public GetBanned setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetBanned setOwnerId(int ownerId) {

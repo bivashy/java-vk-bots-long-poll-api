@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.utils.ParamUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -51,7 +52,7 @@ public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response
     }
 
     public GetVideoUploadServer setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", csv(userIds));
+        return addParam("user_ids", ParamUtils.csv(userIds));
     }
 
     @Override
