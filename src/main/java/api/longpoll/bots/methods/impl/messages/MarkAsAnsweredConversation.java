@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>messages.markAsAnsweredConversation</b> method.
@@ -9,9 +10,8 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  * @see <a href="https://vk.com/dev/messages.markAsAnsweredConversation">https://vk.com/dev/messages.markAsAnsweredConversation</a>
  */
 public class MarkAsAnsweredConversation extends VkMethod<IntegerResponseBody> {
-
     public MarkAsAnsweredConversation(String accessToken) {
-        super(property("messages.markAsAnsweredConversation"), accessToken);
+        super(VkMethods.get("messages.markAsAnsweredConversation"), accessToken);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.docs;
 
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>docs.getWallUploadServer</b> method.
@@ -9,7 +10,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
  */
 public class GetWallUploadServer extends VkMethod<GetWallUploadServer.ResponseBody> {
     public GetWallUploadServer(String accessToken) {
-        super(property("docs.getWallUploadServer"), accessToken);
+        super(VkMethods.get("docs.getWallUploadServer"), accessToken);
     }
 
     @Override

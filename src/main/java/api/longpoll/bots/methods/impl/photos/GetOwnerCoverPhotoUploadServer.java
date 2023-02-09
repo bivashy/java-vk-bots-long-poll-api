@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.photos;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -13,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetOwnerCoverPhotoUploadServer extends VkMethod<GetOwnerCoverPhotoUploadServer.ResponseBody> {
     public GetOwnerCoverPhotoUploadServer(String accessToken) {
-        super(property("photos.getOwnerCoverPhotoUploadServer"), accessToken);
+        super(VkMethods.get("photos.getOwnerCoverPhotoUploadServer"), accessToken);
     }
 
     @Override

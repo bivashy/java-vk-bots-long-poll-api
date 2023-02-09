@@ -6,6 +6,7 @@ import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -21,7 +22,7 @@ import java.util.List;
  */
 public class GetMembers extends VkMethod<GetMembers.ResponseBody> {
     public GetMembers(String accessToken) {
-        super(property("groups.getMembers"), accessToken);
+        super(VkMethods.get("groups.getMembers"), accessToken);
     }
 
     @Override

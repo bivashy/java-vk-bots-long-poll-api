@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.other;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.JsonElement;
 
 /**
@@ -13,7 +14,7 @@ import com.google.gson.JsonElement;
  */
 public class Execute extends VkMethod<Execute.ResponseBody> {
     public Execute(String accessToken) {
-        super(property("execute"), accessToken);
+        super(VkMethods.get("execute"), accessToken);
     }
 
     @Override

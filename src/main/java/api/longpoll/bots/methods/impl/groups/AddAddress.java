@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
 public class AddAddress extends VkMethod<AddAddress.ResponseBody> {
 
     public AddAddress(String accessToken) {
-        super(property("groups.addAddress"), accessToken);
+        super(VkMethods.get("groups.addAddress"), accessToken);
     }
 
     @Override

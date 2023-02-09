@@ -5,6 +5,7 @@ import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class GetImportantMessages extends VkMethod<GetImportantMessages.ResponseBody> {
     public GetImportantMessages(String accessToken) {
-        super(property("messages.getImportantMessages"), accessToken);
+        super(VkMethods.get("messages.getImportantMessages"), accessToken);
     }
 
     @Override

@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.market;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>market.editOrder</b> method.
@@ -12,7 +13,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class EditOrder extends VkMethod<IntegerResponseBody> {
     public EditOrder(String accessToken) {
-        super(property("market.editOrder"), accessToken);
+        super(VkMethods.get("market.editOrder"), accessToken);
     }
 
     @Override

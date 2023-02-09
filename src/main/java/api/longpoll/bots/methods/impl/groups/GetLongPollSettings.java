@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -13,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetLongPollSettings extends VkMethod<GetLongPollSettings.ResponseBody> {
     public GetLongPollSettings(String accessToken) {
-        super(property("groups.getLongPollSettings"), accessToken);
+        super(VkMethods.get("groups.getLongPollSettings"), accessToken);
     }
 
     @Override

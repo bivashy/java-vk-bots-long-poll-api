@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.stories;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class Delete extends VkMethod<IntegerResponseBody> {
     public Delete(String accessToken) {
-        super(property("stories.delete"), accessToken);
+        super(VkMethods.get("stories.delete"), accessToken);
     }
 
     @Override

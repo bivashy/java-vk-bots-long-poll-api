@@ -13,6 +13,7 @@ import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.IntegerResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.io.File;
 import java.io.InputStream;
@@ -35,7 +36,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Edit(String accessToken) {
-        super(property("messages.edit"), accessToken);
+        super(VkMethods.get("messages.edit"), accessToken);
         this.accessToken = accessToken;
     }
 

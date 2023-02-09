@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.utils;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -14,7 +15,7 @@ import com.google.gson.annotations.SerializedName;
 public class GetShortLink extends VkMethod<GetShortLink.ResponseBody> {
 
     public GetShortLink(String accessToken) {
-        super(property("utils.getShortLink"), accessToken);
+        super(VkMethods.get("utils.getShortLink"), accessToken);
     }
 
     public GetShortLink setUrl(String url) {

@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>groups.disableOnline</b> method.
@@ -12,7 +13,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class DisableOnline extends VkMethod<IntegerResponseBody> {
     public DisableOnline(String accessToken) {
-        super(property("groups.disableOnline"), accessToken);
+        super(VkMethods.get("groups.disableOnline"), accessToken);
     }
 
     @Override

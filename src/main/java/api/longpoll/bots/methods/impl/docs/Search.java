@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.docs;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.media.Doc;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>docs.search</b> method.
@@ -12,7 +13,7 @@ import api.longpoll.bots.model.objects.media.Doc;
 public class Search extends VkMethod<Search.ResponseBody> {
 
     public Search(String accessToken) {
-        super(property("docs.search"), accessToken);
+        super(VkMethods.get("docs.search"), accessToken);
     }
 
     @Override

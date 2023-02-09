@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class SearchConversations extends VkMethod<SearchConversations.ResponseBody> {
     public SearchConversations(String accessToken) {
-        super(property("messages.searchConversations"), accessToken);
+        super(VkMethods.get("messages.searchConversations"), accessToken);
     }
 
     @Override

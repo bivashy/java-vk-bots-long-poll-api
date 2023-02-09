@@ -4,6 +4,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -19,7 +20,7 @@ import java.util.List;
 public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
 
     public CreateComment(String accessToken) {
-        super(property("wall.createComment"), accessToken);
+        super(VkMethods.get("wall.createComment"), accessToken);
     }
 
     @Override

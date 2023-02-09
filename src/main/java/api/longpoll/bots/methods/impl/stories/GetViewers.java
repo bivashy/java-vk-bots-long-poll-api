@@ -5,6 +5,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
     public GetViewers(String accessToken) {
-        super(property("stories.getViewers"), accessToken);
+        super(VkMethods.get("stories.getViewers"), accessToken);
     }
 
     @Override

@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.docs;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>docs.save</b> method.
@@ -12,7 +13,7 @@ import api.longpoll.bots.model.response.GenericResponseBody;
 public class Save extends VkMethod<Save.ResponseBody> {
 
     public Save(String accessToken) {
-        super(property("docs.save"), accessToken);
+        super(VkMethods.get("docs.save"), accessToken);
     }
 
     @Override

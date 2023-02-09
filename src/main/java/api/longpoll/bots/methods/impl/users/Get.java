@@ -5,6 +5,7 @@ import api.longpoll.bots.model.objects.additional.NameCase;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class Get extends VkMethod<Get.ResponseBody> {
     public Get(String accessToken) {
-        super(property("users.get"), accessToken);
+        super(VkMethods.get("users.get"), accessToken);
     }
 
     @Override

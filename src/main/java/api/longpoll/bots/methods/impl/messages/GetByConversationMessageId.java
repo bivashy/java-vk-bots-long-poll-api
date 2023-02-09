@@ -5,6 +5,7 @@ import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class GetByConversationMessageId extends VkMethod<GetByConversationMessageId.ResponseBody> {
     public GetByConversationMessageId(String accessToken) {
-        super(property("messages.getByConversationMessageId"), accessToken);
+        super(VkMethods.get("messages.getByConversationMessageId"), accessToken);
     }
 
     @Override

@@ -4,6 +4,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Story;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>stories.save</b> method.
@@ -12,7 +13,7 @@ import api.longpoll.bots.model.response.GenericResponseBody;
  */
 public class Save extends VkMethod<Save.ResponseBody> {
     public Save(String accessToken) {
-        super(property("stories.save"), accessToken);
+        super(VkMethods.get("stories.save"), accessToken);
     }
 
     @Override

@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.utils;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -13,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class CheckLink extends VkMethod<CheckLink.ResponseBody> {
     public CheckLink(String accessToken) {
-        super(property("utils.checkLink"), accessToken);
+        super(VkMethods.get("utils.checkLink"), accessToken);
     }
 
     public CheckLink setUrl(String url) {

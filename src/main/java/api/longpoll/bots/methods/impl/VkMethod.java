@@ -1,7 +1,6 @@
 package api.longpoll.bots.methods.impl;
 
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.helpers.properties.VkProperties;
 import api.longpoll.bots.validator.VkResponseBodyValidator;
 import com.google.gson.Gson;
 import okhttp3.Call;
@@ -30,10 +29,6 @@ import java.util.stream.IntStream;
  */
 public abstract class VkMethod<VkResponse> {
     private static final Logger LOGGER = LoggerFactory.getLogger(VkMethod.class);
-    /**
-     * Path to VK methods list.
-     */
-    private static final String VK_PROPERTIES_PATH = "/vk/vk_methods.properties";
 
     /**
      * Access token key.
@@ -51,11 +46,6 @@ public abstract class VkMethod<VkResponse> {
      * VK API version value.
      */
     private static final String API_VERSION_VALUE = "5.131";
-
-    /**
-     * VK methods.
-     */
-    private static final VkProperties VK_PROPERTIES = new VkProperties(VK_PROPERTIES_PATH);
 
     /**
      * Validator to check if VK API response is valid.
@@ -217,15 +207,5 @@ public abstract class VkMethod<VkResponse> {
      */
     protected Gson getGson() {
         return gson;
-    }
-
-    /**
-     * Gets a property from {@link VkMethod#VK_PROPERTIES}.
-     *
-     * @param key property key.
-     * @return property value.
-     */
-    protected static String property(String key) {
-        return VK_PROPERTIES.getProperty(key);
     }
 }

@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public class CreateChat extends VkMethod<IntegerResponseBody> {
     public CreateChat(String accessToken) {
-        super(property("messages.createChat"), accessToken);
+        super(VkMethods.get("messages.createChat"), accessToken);
     }
 
     @Override

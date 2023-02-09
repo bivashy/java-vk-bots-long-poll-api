@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class GetTokenPermissions extends VkMethod<GetTokenPermissions.ResponseBody> {
     public GetTokenPermissions(String accessToken) {
-        super(property("groups.getTokenPermissions"), accessToken);
+        super(VkMethods.get("groups.getTokenPermissions"), accessToken);
     }
 
     @Override

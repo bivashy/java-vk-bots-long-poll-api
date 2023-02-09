@@ -5,6 +5,7 @@ import api.longpoll.bots.adapters.deserializers.IsMemberResponseBodyDeserializer
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public class IsMember extends VkMethod<IsMember.ResponseBody> {
     public IsMember(String accessToken) {
-        super(property("groups.isMember"), accessToken);
+        super(VkMethods.get("groups.isMember"), accessToken);
     }
 
     @Override

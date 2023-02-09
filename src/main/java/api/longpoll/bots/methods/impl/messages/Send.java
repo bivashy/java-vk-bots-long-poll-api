@@ -15,6 +15,7 @@ import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.JsonAdapter;
@@ -41,7 +42,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Send(String accessToken) {
-        super(property("messages.send"), accessToken);
+        super(VkMethods.get("messages.send"), accessToken);
         this.accessToken = accessToken;
         addParam("random_id", (int) System.currentTimeMillis());
     }

@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>groups.setSettings</b> method.
@@ -11,7 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
 public class SetSettings extends VkMethod<IntegerResponseBody> {
 
     public SetSettings(String accessToken) {
-        super(property("groups.setSettings"), accessToken);
+        super(VkMethods.get("groups.setSettings"), accessToken);
     }
 
     @Override

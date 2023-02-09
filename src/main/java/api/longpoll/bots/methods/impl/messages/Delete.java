@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Map;
  */
 public class Delete extends VkMethod<Delete.ResponseBody> {
     public Delete(String accessToken) {
-        super(property("messages.delete"), accessToken);
+        super(VkMethods.get("messages.delete"), accessToken);
     }
 
     @Override

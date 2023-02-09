@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.groups;
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,7 +16,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetCallbackSettings extends VkMethod<GetCallbackSettings.ResponseBody> {
     public GetCallbackSettings(String accessToken) {
-        super(property("groups.getCallbackSettings"), accessToken);
+        super(VkMethods.get("groups.getCallbackSettings"), accessToken);
     }
 
     @Override

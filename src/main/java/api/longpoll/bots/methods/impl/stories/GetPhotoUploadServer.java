@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.stories;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.ResponseBody> {
     public GetPhotoUploadServer(String accessToken) {
-        super(property("stories.getPhotoUploadServer"), accessToken);
+        super(VkMethods.get("stories.getPhotoUploadServer"), accessToken);
     }
 
     @Override
