@@ -1,7 +1,7 @@
 package api.longpoll.bots.methods.impl.upload;
 
-import api.longpoll.bots.http.impl.InputStreamRequestBody;
-import api.longpoll.bots.http.impl.PathRequestBody;
+import api.longpoll.bots.http.InputStreamRequestBody;
+import api.longpoll.bots.http.PathRequestBody;
 import api.longpoll.bots.methods.impl.VkMethod;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;

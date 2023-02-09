@@ -1,4 +1,4 @@
-package api.longpoll.bots.http.impl;
+package api.longpoll.bots.http;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -12,8 +12,18 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.nio.file.Path;
 
+/**
+ * Wraps {@link Path} into {@link RequestBody}.
+ */
 public class PathRequestBody extends RequestBody {
+    /**
+     * File.
+     */
     private final Path path;
+
+    /**
+     * Content-Type.
+     */
     private final MediaType contentType;
 
     public PathRequestBody(Path path) {

@@ -10,9 +10,23 @@ import api.longpoll.bots.model.objects.media.Doc;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
+/**
+ * Uploads doc.
+ */
 public class UploadableDoc implements UploadableFile {
+    /**
+     * Gets upload server URL.
+     */
     private final GetMessagesUploadServer getMessagesUploadServer;
+
+    /**
+     * Saves uploaded doc.
+     */
     private final Save save;
+
+    /**
+     * Gets {@link UploadDoc} methods by upload server URL.
+     */
     private final Function<String, UploadDoc> uploadDocFactory;
 
     public UploadableDoc(String accessToken, int peerId, Function<String, UploadDoc> uploadDocFactory) {

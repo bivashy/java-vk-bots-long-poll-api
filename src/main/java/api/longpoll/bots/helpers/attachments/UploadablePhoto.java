@@ -10,9 +10,23 @@ import api.longpoll.bots.model.objects.additional.UploadedFile;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
+/**
+ * Uploads photo.
+ */
 public class UploadablePhoto implements UploadableFile {
+    /**
+     * Gets upload server URL.
+     */
     private final GetMessagesUploadServer getMessagesUploadServer;
+
+    /**
+     * Saves uploaded photo.
+     */
     private final SaveMessagesPhoto saveMessagesPhoto;
+
+    /**
+     * Gets {@link UploadPhoto} methods by upload server URL.
+     */
     private final Function<String, UploadPhoto> uploadPhotoFactory;
 
     public UploadablePhoto(String accessToken, int peerId, Function<String, UploadPhoto> uploadPhotoFactory) {

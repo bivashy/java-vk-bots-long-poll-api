@@ -1,4 +1,4 @@
-package api.longpoll.bots.http.impl;
+package api.longpoll.bots.http;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -12,7 +12,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLConnection;
 
+/**
+ * Wraps {@link InputStream} into {@link RequestBody}.
+ */
 public class InputStreamRequestBody extends RequestBody {
+    /**
+     * Content-Type.
+     */
     private final MediaType contentType;
 
     /**
