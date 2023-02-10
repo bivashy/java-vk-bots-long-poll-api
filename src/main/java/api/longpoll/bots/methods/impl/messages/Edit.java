@@ -14,6 +14,7 @@ import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.IntegerResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
 import api.longpoll.bots.utils.VkMethods;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.InputStream;
@@ -32,6 +33,7 @@ import java.util.stream.Collectors;
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
  */
 public class Edit extends VkMethod<IntegerResponseBody> {
+    private final Gson gson = new Gson();
     private final String accessToken;
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
@@ -203,7 +205,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
     }
 
     public Edit setTemplate(Template template) {
-        return addParam("template", getGson().toJson(template));
+        return addParam("template", gson.toJson(template));
     }
 
     public Edit setDisableMentions(boolean disableMentions) {

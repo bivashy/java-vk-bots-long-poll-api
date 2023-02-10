@@ -193,13 +193,4 @@ public abstract class VkMethod<VkResponse> {
         formBodyBuilder.add(key, String.valueOf(value));
         return this;
     }
-
-    /**
-     * Gets {@link VkMethod#gson} object.
-     *
-     * @return {@link VkMethod#gson} object.
-     */
-    protected Gson getGson() {
-        return gson;
-    }
 }

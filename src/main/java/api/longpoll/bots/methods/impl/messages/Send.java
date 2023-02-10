@@ -16,6 +16,7 @@ import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.GenericResponseBody;
 import api.longpoll.bots.utils.ParamUtils;
 import api.longpoll.bots.utils.VkMethods;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.JsonAdapter;
@@ -38,6 +39,7 @@ import java.util.stream.Collectors;
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
 public class Send extends VkMethod<Send.ResponseBody> {
+    private final Gson gson = new Gson();
     private final String accessToken;
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
@@ -245,15 +247,15 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setTemplate(Template template) {
-        return addParam("template", getGson().toJson(template));
+        return addParam("template", gson.toJson(template));
     }
 
     public Send setForward(Forward forward) {
-        return addParam("forward", getGson().toJson(forward));
+        return addParam("forward", gson.toJson(forward));
     }
 
     public Send setPayload(JsonElement payload) {
-        return addParam("payload", getGson().toJson(payload));
+        return addParam("payload", gson.toJson(payload));
     }
 
     @Override
