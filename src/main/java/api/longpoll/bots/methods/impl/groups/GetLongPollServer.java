@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -13,17 +14,12 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetLongPollServer extends VkMethod<GetLongPollServer.ResponseBody> {
     public GetLongPollServer(String accessToken) {
-        super(accessToken);
+        super(VkMethods.get("groups.getLongPollServer"), accessToken);
     }
 
     @Override
     protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.getLongPollServer");
     }
 
     public GetLongPollServer setGroupId(int groupId) {

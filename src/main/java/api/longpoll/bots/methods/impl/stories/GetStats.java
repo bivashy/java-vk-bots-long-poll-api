@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -13,12 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class GetStats extends VkMethod<GetStats.ResponseBody> {
     public GetStats(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.getStats");
+        super(VkMethods.get("stories.getStats"), accessToken);
     }
 
     @Override

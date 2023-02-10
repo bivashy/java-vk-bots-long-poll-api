@@ -4,6 +4,8 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.NameCase;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,12 +19,7 @@ import java.util.List;
  */
 public class Get extends VkMethod<Get.ResponseBody> {
     public Get(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("users.get");
+        super(VkMethods.get("users.get"), accessToken);
     }
 
     @Override
@@ -34,16 +31,16 @@ public class Get extends VkMethod<Get.ResponseBody> {
         return setUserIds(Arrays.asList(userIds));
     }
 
-    public Get setUserIds(List<String> userIds) {
-        return addParam("user_ids", csv(userIds));
+    public Get setUserIds(Iterable<String> userIds) {
+        return addParam("user_ids", ParamUtils.csv(userIds));
     }
 
     public Get setFields(String... fields) {
         return setFields(Arrays.asList(fields));
     }
 
-    public Get setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+    public Get setFields(Iterable<String> fields) {
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public Get setNameCase(NameCase nameCase) {

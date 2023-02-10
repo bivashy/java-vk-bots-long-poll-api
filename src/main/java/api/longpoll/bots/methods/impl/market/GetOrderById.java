@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.market;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.MarketOrder;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>market.getOrderById</b> method.
@@ -14,12 +15,7 @@ import api.longpoll.bots.model.response.GenericResponseBody;
 public class GetOrderById extends VkMethod<GetOrderById.ResponseBody> {
 
     public GetOrderById(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("market.getOrderById");
+        super(VkMethods.get("market.getOrderById"), accessToken);
     }
 
     @Override

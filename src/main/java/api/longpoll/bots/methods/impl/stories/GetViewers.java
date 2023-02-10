@@ -4,11 +4,12 @@ import api.longpoll.bots.adapters.deserializers.GetViewersResponseBodyDeserializ
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>messages.getById</b> method.
@@ -19,12 +20,7 @@ import java.util.List;
  */
 public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
     public GetViewers(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.getViewers");
+        super(VkMethods.get("stories.getViewers"), accessToken);
     }
 
     @Override
@@ -36,8 +32,8 @@ public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
         return setMessageIds(Arrays.asList(messageIds));
     }
 
-    public GetViewers setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", csv(messageIds));
+    public GetViewers setMessageIds(Iterable<Integer> messageIds) {
+        return addParam("message_ids", ParamUtils.csv(messageIds));
     }
 
     public GetViewers setPreviewLength(int previewLength) {
@@ -52,8 +48,8 @@ public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetViewers setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+    public GetViewers setFields(Iterable<String> fields) {
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetViewers setGroupId(int groupId) {

@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>messages.editChat</b> method.
@@ -12,12 +13,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class EditChat extends VkMethod<IntegerResponseBody> {
     public EditChat(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.editChat");
+        super(VkMethods.get("messages.editChat"), accessToken);
     }
 
     @Override

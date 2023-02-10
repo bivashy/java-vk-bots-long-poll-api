@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.basic.Chat;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -14,12 +15,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class SetChatPhoto extends VkMethod<SetChatPhoto.ResponseBody> {
     public SetChatPhoto(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.setChatPhoto");
+        super(VkMethods.get("messages.setChatPhoto"), accessToken);
     }
 
     @Override

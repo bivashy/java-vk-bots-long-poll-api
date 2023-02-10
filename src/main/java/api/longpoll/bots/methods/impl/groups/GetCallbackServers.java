@@ -3,10 +3,11 @@ package api.longpoll.bots.methods.impl.groups;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>groups.getCallbackServers</b> method.
@@ -17,12 +18,7 @@ import java.util.List;
  */
 public class GetCallbackServers extends VkMethod<GetCallbackServers.ResponseBody> {
     public GetCallbackServers(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.getCallbackServers");
+        super(VkMethods.get("groups.getCallbackServers"), accessToken);
     }
 
     @Override
@@ -38,8 +34,8 @@ public class GetCallbackServers extends VkMethod<GetCallbackServers.ResponseBody
         return setServerIds(Arrays.asList(serverIds));
     }
 
-    public GetCallbackServers setServerIds(List<Integer> serverIds) {
-        return addParam("server_ids", csv(serverIds));
+    public GetCallbackServers setServerIds(Iterable<Integer> serverIds) {
+        return addParam("server_ids", ParamUtils.csv(serverIds));
     }
 
     @Override

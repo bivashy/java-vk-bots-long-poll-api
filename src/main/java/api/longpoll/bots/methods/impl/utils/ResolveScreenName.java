@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.utils;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -13,12 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class ResolveScreenName extends VkMethod<ResolveScreenName.ResponseBody> {
     public ResolveScreenName(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("utils.resolveScreenName");
+        super(VkMethods.get("utils.resolveScreenName"), accessToken);
     }
 
     @Override

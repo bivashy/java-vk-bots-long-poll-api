@@ -3,10 +3,11 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>messages.getConversationMembers</b> method.
@@ -17,12 +18,7 @@ import java.util.List;
  */
 public class GetConversationMembers extends VkMethod<GetConversationMembers.ResponseBody> {
     public GetConversationMembers(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.getConversationMembers");
+        super(VkMethods.get("messages.getConversationMembers"), accessToken);
     }
 
 
@@ -39,8 +35,8 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
         return setFields(Arrays.asList(fields));
     }
 
-    public GetConversationMembers setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+    public GetConversationMembers setFields(Iterable<String> fields) {
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetConversationMembers setGroupId(int groupId) {

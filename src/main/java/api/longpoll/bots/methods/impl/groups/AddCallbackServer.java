@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -13,17 +14,12 @@ import com.google.gson.annotations.SerializedName;
  */
 public class AddCallbackServer extends VkMethod<AddCallbackServer.ResponseBody> {
     public AddCallbackServer(String accessToken) {
-        super(accessToken);
+        super(VkMethods.get("groups.addCallbackServer"), accessToken);
     }
 
     @Override
     protected Class<ResponseBody> getResponseClass() {
         return ResponseBody.class;
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.addCallbackServer");
     }
 
     public AddCallbackServer setUrl(String url) {

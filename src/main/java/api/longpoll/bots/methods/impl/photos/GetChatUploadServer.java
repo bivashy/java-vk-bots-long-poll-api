@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.photos;
 
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>photos.getChatUploadServer</b> method.
@@ -11,12 +12,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
  */
 public class GetChatUploadServer extends VkMethod<GetChatUploadServer.ResponseBody> {
     public GetChatUploadServer(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("photos.getChatUploadServer");
+        super(VkMethods.get("photos.getChatUploadServer"), accessToken);
     }
 
     @Override

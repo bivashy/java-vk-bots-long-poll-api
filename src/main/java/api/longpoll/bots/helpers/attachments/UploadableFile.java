@@ -3,16 +3,24 @@ package api.longpoll.bots.helpers.attachments;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 
+import java.util.concurrent.CompletableFuture;
+
 /**
- * Uploads a file to VK server.
+ * Uploads file.
  */
-@FunctionalInterface
 public interface UploadableFile {
     /**
-     * Uploads a file to VK server.
+     * Uploads file synchronously.
      *
-     * @return uploaded file info.
+     * @return uploaded file.
      * @throws VkApiException if errors occur.
      */
     UploadedFile upload() throws VkApiException;
+
+    /**
+     * Uploads file asynchronously.
+     *
+     * @return uploaded file.
+     */
+    CompletableFuture<UploadedFile> uploadAsync();
 }

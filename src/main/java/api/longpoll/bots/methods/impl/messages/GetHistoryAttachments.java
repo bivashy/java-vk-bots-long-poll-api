@@ -3,6 +3,8 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.media.Attachment;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -17,12 +19,7 @@ import java.util.List;
  */
 public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.ResponseBody> {
     public GetHistoryAttachments(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.getHistoryAttachments");
+        super(VkMethods.get("messages.getHistoryAttachments"), accessToken);
     }
 
     @Override
@@ -54,8 +51,8 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
         return setFields(Arrays.asList(fields));
     }
 
-    public GetHistoryAttachments setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+    public GetHistoryAttachments setFields(Iterable<String> fields) {
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetHistoryAttachments setGroupId(int groupId) {

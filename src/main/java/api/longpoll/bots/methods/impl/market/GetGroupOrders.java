@@ -4,6 +4,7 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.MarketOrder;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>market.getGroupOrders</b> method.
@@ -14,12 +15,7 @@ import api.longpoll.bots.model.response.GenericResponseBody;
  */
 public class GetGroupOrders extends VkMethod<GetGroupOrders.ResponseBody> {
     public GetGroupOrders(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("market.getGroupOrders");
+        super(VkMethods.get("market.getGroupOrders"), accessToken);
     }
 
     @Override

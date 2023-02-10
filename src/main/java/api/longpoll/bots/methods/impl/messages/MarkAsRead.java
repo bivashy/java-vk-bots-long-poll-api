@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>messages.markAsRead</b> method.
@@ -11,14 +12,8 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  * @see <a href="https://vk.com/dev/messages.markAsRead">https://vk.com/dev/messages.markAsRead</a>
  */
 public class MarkAsRead extends VkMethod<IntegerResponseBody> {
-
     public MarkAsRead(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.markAsRead");
+        super(VkMethods.get("messages.markAsRead"), accessToken);
     }
 
     @Override

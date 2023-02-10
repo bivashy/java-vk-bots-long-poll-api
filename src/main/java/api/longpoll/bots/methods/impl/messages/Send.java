@@ -2,18 +2,21 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.adapters.deserializers.SendResponseBodyDeserializer;
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.helpers.attachments.InputStreamUploadableMessageDoc;
-import api.longpoll.bots.helpers.attachments.InputStreamUploadableMessagePhoto;
-import api.longpoll.bots.helpers.attachments.PathUploadableMessageDoc;
-import api.longpoll.bots.helpers.attachments.PathUploadableMessagePhoto;
+import api.longpoll.bots.helpers.attachments.UploadableDoc;
 import api.longpoll.bots.helpers.attachments.UploadableFile;
 import api.longpoll.bots.helpers.attachments.UploadableFilesSupplier;
+import api.longpoll.bots.helpers.attachments.UploadablePhoto;
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.methods.impl.upload.UploadDoc;
+import api.longpoll.bots.methods.impl.upload.UploadPhoto;
 import api.longpoll.bots.model.objects.additional.Forward;
 import api.longpoll.bots.model.objects.additional.Keyboard;
 import api.longpoll.bots.model.objects.additional.Template;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.JsonAdapter;
@@ -25,6 +28,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
 /**
  * Implements <b>messages.send</b> method.
@@ -35,18 +40,24 @@ import java.util.List;
  */
 public class Send extends VkMethod<Send.ResponseBody> {
     /**
-     * Supplies a list of {@link UploadableFile}.
+     * {@link Gson} instance.
+     */
+    private final Gson gson = new Gson();
+
+    /**
+     * {@code access_token}.
+     */
+    private final String accessToken;
+
+    /**
+     * Supplies list of {@link UploadableFile}.
      */
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Send(String accessToken) {
-        super(accessToken);
+        super(VkMethods.get("messages.send"), accessToken);
+        this.accessToken = accessToken;
         addParam("random_id", (int) System.currentTimeMillis());
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.send");
     }
 
     @Override
@@ -57,8 +68,8 @@ public class Send extends VkMethod<Send.ResponseBody> {
     @Override
     public ResponseBody execute() throws VkApiException {
         List<UploadedFile> uploadedFiles = new ArrayList<>();
-        for (UploadableFile uploadableFile : uploadableFilesSupplier.get()) {
-            uploadedFiles.add(uploadableFile.upload());
+        for (UploadableFile messageFileUploader : uploadableFilesSupplier.get()) {
+            uploadedFiles.add(messageFileUploader.upload());
         }
         if (!uploadedFiles.isEmpty()) {
             setAttachment(uploadedFiles);
@@ -66,48 +77,90 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return super.execute();
     }
 
-    public Send addPhoto(File photo) {
-        return addPhoto(photo.toPath());
+    @Override
+    public CompletableFuture<ResponseBody> executeAsync() {
+        List<CompletableFuture<UploadedFile>> uploadedFiles = new ArrayList<>();
+        for (UploadableFile messageFileUploader : uploadableFilesSupplier.get()) {
+            uploadedFiles.add(messageFileUploader.uploadAsync());
+        }
+        return CompletableFuture.allOf(uploadedFiles.toArray(new CompletableFuture[0]))
+                .thenApply(unused -> uploadedFiles.stream().map(CompletableFuture::join).collect(Collectors.toList()))
+                .thenCompose(attachments -> {
+                    if (!attachments.isEmpty()) {
+                        setAttachment(attachments);
+                    }
+                    return super.executeAsync();
+                });
     }
 
-    public Send addPhoto(Path photo) {
-        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new PathUploadableMessagePhoto(
-                photo,
+    public Send addPhoto(File photo) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadablePhoto(
+                accessToken,
                 peerId,
-                getAccessToken()
+                uploadUrl -> new UploadPhoto(uploadUrl, photo)
         ));
         return this;
     }
 
-    public Send addPhoto(InputStream photo, String filename) {
-        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new InputStreamUploadableMessagePhoto(
-                photo,
-                filename,
+    public Send addPhoto(Path photo) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadablePhoto(
+                accessToken,
                 peerId,
-                getAccessToken()
+                uploadUrl -> new UploadPhoto(uploadUrl, photo)
+        ));
+        return this;
+    }
+
+    public Send addPhoto(String filename, InputStream photo) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadablePhoto(
+                accessToken,
+                peerId,
+                uploadUrl -> new UploadPhoto(uploadUrl, filename, photo)
+        ));
+        return this;
+    }
+
+    public Send addPhoto(String filename, byte[] photo) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadablePhoto(
+                accessToken,
+                peerId,
+                uploadUrl -> new UploadPhoto(uploadUrl, filename, photo)
         ));
         return this;
     }
 
     public Send addDoc(File doc) {
-        return addDoc(doc.toPath());
-    }
-
-    public Send addDoc(Path doc) {
-        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new PathUploadableMessageDoc(
-                doc,
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadableDoc(
+                accessToken,
                 peerId,
-                getAccessToken()
+                uploadUrl -> new UploadDoc(uploadUrl, doc)
         ));
         return this;
     }
 
-    public Send addDoc(InputStream doc, String filename) {
-        uploadableFilesSupplier.addUploadableFileFactory(peerId -> new InputStreamUploadableMessageDoc(
-                doc,
-                filename,
+    public Send addDoc(Path doc) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadableDoc(
+                accessToken,
                 peerId,
-                getAccessToken()
+                uploadUrl -> new UploadDoc(uploadUrl, doc)
+        ));
+        return this;
+    }
+
+    public Send addDoc(String filename, InputStream doc) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadableDoc(
+                accessToken,
+                peerId,
+                uploadUrl -> new UploadDoc(uploadUrl, filename, doc)
+        ));
+        return this;
+    }
+
+    public Send addDoc(String filename, byte[] doc) {
+        uploadableFilesSupplier.addUploadbleFileFactory(peerId -> new UploadableDoc(
+                accessToken,
+                peerId,
+                uploadUrl -> new UploadDoc(uploadUrl, filename, doc)
         ));
         return this;
     }
@@ -116,8 +169,8 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return setAttachment(Arrays.asList(uploadedFiles));
     }
 
-    public Send setAttachment(List<UploadedFile> uploadedFiles) {
-        return setAttachment(csv(uploadedFiles));
+    public Send setAttachment(Iterable<UploadedFile> uploadedFiles) {
+        return setAttachment(ParamUtils.csv(uploadedFiles));
     }
 
     public Send setAttachment(String attachment) {
@@ -142,9 +195,9 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return setPeerIds(Arrays.asList(peerIds));
     }
 
-    public Send setPeerIds(List<Integer> peerIds) {
+    public Send setPeerIds(Iterable<Integer> peerIds) {
         uploadableFilesSupplier.addPeerIds(peerIds);
-        return addParam("peer_ids", csv(peerIds));
+        return addParam("peer_ids", ParamUtils.csv(peerIds));
     }
 
     public Send setDomain(String domain) {
@@ -159,9 +212,9 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return setUserIds(Arrays.asList(userIds));
     }
 
-    public Send setUserIds(List<Integer> userIds) {
+    public Send setUserIds(Iterable<Integer> userIds) {
         uploadableFilesSupplier.addPeerIds(userIds);
-        return addParam("user_ids", csv(userIds));
+        return addParam("user_ids", ParamUtils.csv(userIds));
     }
 
     public Send setMessage(String message) {
@@ -184,8 +237,8 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return setForwardMessages(Arrays.asList(forwardMessages));
     }
 
-    public Send setForwardMessages(List<Integer> forwardMessages) {
-        return addParam("forward_messages", csv(forwardMessages));
+    public Send setForwardMessages(Iterable<Integer> forwardMessages) {
+        return addParam("forward_messages", ParamUtils.csv(forwardMessages));
     }
 
     public Send setStickerId(int stickerId) {
@@ -205,15 +258,15 @@ public class Send extends VkMethod<Send.ResponseBody> {
     }
 
     public Send setTemplate(Template template) {
-        return addParam("template", getGson().toJson(template));
+        return addParam("template", gson.toJson(template));
     }
 
     public Send setForward(Forward forward) {
-        return addParam("forward", getGson().toJson(forward));
+        return addParam("forward", gson.toJson(forward));
     }
 
     public Send setPayload(JsonElement payload) {
-        return addParam("payload", getGson().toJson(payload));
+        return addParam("payload", gson.toJson(payload));
     }
 
     @Override

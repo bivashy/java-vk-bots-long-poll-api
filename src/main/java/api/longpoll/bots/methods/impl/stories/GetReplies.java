@@ -4,9 +4,10 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.StoriesFeedBlock;
 import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>stories.getReplies</b> method.
@@ -17,12 +18,7 @@ import java.util.List;
  */
 public class GetReplies extends VkMethod<GetReplies.ResponseBody> {
     public GetReplies(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.getReplies");
+        super(VkMethods.get("stories.getReplies"), accessToken);
     }
 
     @Override
@@ -50,8 +46,8 @@ public class GetReplies extends VkMethod<GetReplies.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetReplies setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+    public GetReplies setFields(Iterable<String> fields) {
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     @Override

@@ -2,9 +2,10 @@ package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>stories.delete</b> method.
@@ -15,12 +16,7 @@ import java.util.List;
  */
 public class Delete extends VkMethod<IntegerResponseBody> {
     public Delete(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.delete");
+        super(VkMethods.get("stories.delete"), accessToken);
     }
 
     @Override
@@ -40,8 +36,8 @@ public class Delete extends VkMethod<IntegerResponseBody> {
         return setStories(Arrays.asList(stories));
     }
 
-    public Delete setStories(List<String> stories) {
-        return addParam("stories", csv(stories));
+    public Delete setStories(Iterable<String> stories) {
+        return addParam("stories", ParamUtils.csv(stories));
     }
 
     @Override

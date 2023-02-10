@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.board;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>board.deleteComment</b> method.
@@ -12,12 +13,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class DeleteComment extends VkMethod<IntegerResponseBody> {
     public DeleteComment(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("board.deleteComment");
+        super(VkMethods.get("board.deleteComment"), accessToken);
     }
 
     @Override

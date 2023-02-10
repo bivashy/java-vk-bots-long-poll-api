@@ -9,7 +9,7 @@ import java.util.function.Supplier;
  */
 public class OtherMethods {
     /**
-     * Access token.
+     * {@code access_token}.
      */
     private final Supplier<String> accessTokenSupplier;
 

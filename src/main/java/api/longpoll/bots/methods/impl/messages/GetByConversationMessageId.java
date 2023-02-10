@@ -4,9 +4,10 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>messages.getByConversationMessageId</b> method.
@@ -15,12 +16,7 @@ import java.util.List;
  */
 public class GetByConversationMessageId extends VkMethod<GetByConversationMessageId.ResponseBody> {
     public GetByConversationMessageId(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.getByConversationMessageId");
+        super(VkMethods.get("messages.getByConversationMessageId"), accessToken);
     }
 
     @Override
@@ -36,8 +32,8 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
         return setConversationMessageIds(Arrays.asList(conversationMessageIds));
     }
 
-    public GetByConversationMessageId setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", csv(conversationMessageIds));
+    public GetByConversationMessageId setConversationMessageIds(Iterable<Integer> conversationMessageIds) {
+        return addParam("conversation_message_ids", ParamUtils.csv(conversationMessageIds));
     }
 
     public GetByConversationMessageId setExtended(boolean extended) {
@@ -48,8 +44,8 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
         return setFields(Arrays.asList(fields));
     }
 
-    public GetByConversationMessageId setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+    public GetByConversationMessageId setFields(Iterable<String> fields) {
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetByConversationMessageId setGroupId(int groupId) {

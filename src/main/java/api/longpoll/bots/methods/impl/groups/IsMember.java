@@ -4,11 +4,12 @@ import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.adapters.deserializers.IsMemberResponseBodyDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>groups.isMember</b> method.
@@ -19,12 +20,7 @@ import java.util.List;
  */
 public class IsMember extends VkMethod<IsMember.ResponseBody> {
     public IsMember(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.isMember");
+        super(VkMethods.get("groups.isMember"), accessToken);
     }
 
     @Override
@@ -44,8 +40,8 @@ public class IsMember extends VkMethod<IsMember.ResponseBody> {
         return setUserIds(Arrays.asList(userIds));
     }
 
-    public IsMember setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", csv(userIds));
+    public IsMember setUserIds(Iterable<Integer> userIds) {
+        return addParam("user_ids", ParamUtils.csv(userIds));
     }
 
     public IsMember setExtended(boolean extended) {

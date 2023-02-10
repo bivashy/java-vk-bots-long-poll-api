@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.EventData;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Sends an event with an action that will occur when the callback button is clicked.
@@ -11,12 +12,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class SendEventAnswer extends VkMethod<IntegerResponseBody> {
     public SendEventAnswer(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.sendMessageEventAnswer");
+        super(VkMethods.get("messages.sendMessageEventAnswer"), accessToken);
     }
 
     @Override

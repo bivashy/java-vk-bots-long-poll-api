@@ -30,7 +30,7 @@ import java.util.function.Supplier;
  */
 public class GroupsMethods {
     /**
-     * Access token.
+     * {@code access_token}.
      */
     private final Supplier<String> accessTokenSupplier;
 

@@ -2,6 +2,7 @@ package api.longpoll.bots.methods.impl.wall;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.IntegerResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>wall.openComments</b> method.
@@ -10,12 +11,7 @@ import api.longpoll.bots.model.response.IntegerResponseBody;
  */
 public class OpenComments extends VkMethod<IntegerResponseBody> {
     public OpenComments(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("wall.openComments");
+        super(VkMethods.get("wall.openComments"), accessToken);
     }
 
     @Override

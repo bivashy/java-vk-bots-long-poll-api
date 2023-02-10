@@ -5,10 +5,11 @@ import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.objects.basic.Community;
 import api.longpoll.bots.model.objects.basic.User;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>groups.getBanned</b> method.
@@ -19,12 +20,7 @@ import java.util.List;
  */
 public class GetBanned extends VkMethod<GetBanned.ResponseBody> {
     public GetBanned(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.getBanned");
+        super(VkMethods.get("groups.getBanned"), accessToken);
     }
 
     @Override
@@ -48,8 +44,8 @@ public class GetBanned extends VkMethod<GetBanned.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetBanned setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+    public GetBanned setFields(Iterable<String> fields) {
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetBanned setOwnerId(int ownerId) {

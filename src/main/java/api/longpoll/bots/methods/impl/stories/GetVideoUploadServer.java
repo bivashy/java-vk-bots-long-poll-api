@@ -1,9 +1,10 @@
 package api.longpoll.bots.methods.impl.stories;
 
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>stories.getVideoUploadServer</b> method.
@@ -14,12 +15,7 @@ import java.util.List;
  */
 public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.ResponseBody> {
     public GetVideoUploadServer(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.getVideoUploadServer");
+        super(VkMethods.get("stories.getVideoUploadServer"), accessToken);
     }
 
     @Override
@@ -55,8 +51,8 @@ public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response
         return setUserIds(Arrays.asList(userIds));
     }
 
-    public GetVideoUploadServer setUserIds(List<Integer> userIds) {
-        return addParam("user_ids", csv(userIds));
+    public GetVideoUploadServer setUserIds(Iterable<Integer> userIds) {
+        return addParam("user_ids", ParamUtils.csv(userIds));
     }
 
     @Override

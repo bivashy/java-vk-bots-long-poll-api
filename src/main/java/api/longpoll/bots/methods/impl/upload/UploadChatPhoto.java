@@ -1,16 +1,30 @@
 package api.longpoll.bots.methods.impl.upload;
 
-import api.longpoll.bots.model.objects.media.FileType;
+import api.longpoll.bots.model.objects.media.UploadTypes;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.File;
 import java.io.InputStream;
+import java.nio.file.Path;
 
 /**
  * Uploads chat photo.
  */
 public class UploadChatPhoto extends UploadMethod<UploadChatPhoto.ResponseBody> {
-    public UploadChatPhoto(String uri, String filename, InputStream inputStream) {
-        super(uri, FileType.FILE, filename, inputStream);
+    public UploadChatPhoto(String uploadUrl, String filename, InputStream chatPhoto) {
+        super(uploadUrl, UploadTypes.FILE, filename, chatPhoto);
+    }
+
+    public UploadChatPhoto(String uploadUrl, String filename, byte[] chatPhoto) {
+        super(uploadUrl, UploadTypes.FILE, filename, chatPhoto);
+    }
+
+    public UploadChatPhoto(String uploadUrl, File chatPhoto) {
+        super(uploadUrl, UploadTypes.FILE, chatPhoto);
+    }
+
+    public UploadChatPhoto(String uploadUrl, Path chatPhoto) {
+        super(uploadUrl, UploadTypes.FILE, chatPhoto);
     }
 
     @Override

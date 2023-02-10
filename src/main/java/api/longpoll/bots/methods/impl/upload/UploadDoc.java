@@ -1,17 +1,31 @@
 package api.longpoll.bots.methods.impl.upload;
 
-import api.longpoll.bots.model.objects.media.FileType;
+import api.longpoll.bots.model.objects.media.UploadTypes;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.File;
 import java.io.InputStream;
+import java.nio.file.Path;
 
 /**
  * Implements uploading document in VK API.
  */
 public class UploadDoc extends UploadMethod<UploadDoc.ResponseBody> {
 
-    public UploadDoc(String uri, String filename, InputStream inputStream) {
-        super(uri, FileType.FILE, filename, inputStream);
+    public UploadDoc(String uploadUrl, String filename, InputStream doc) {
+        super(uploadUrl, UploadTypes.FILE, filename, doc);
+    }
+
+    public UploadDoc(String uploadUrl, String filename, byte[] doc) {
+        super(uploadUrl, UploadTypes.FILE, filename, doc);
+    }
+
+    public UploadDoc(String uploadUrl, File doc) {
+        super(uploadUrl, UploadTypes.FILE, doc);
+    }
+
+    public UploadDoc(String uploadUrl, Path doc) {
+        super(uploadUrl, UploadTypes.FILE, doc);
     }
 
     @Override

@@ -2,9 +2,10 @@ package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,12 +17,7 @@ import java.util.Map;
  */
 public class Delete extends VkMethod<Delete.ResponseBody> {
     public Delete(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.delete");
+        super(VkMethods.get("messages.delete"), accessToken);
     }
 
     @Override
@@ -33,8 +29,8 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
         return setMessageIds(Arrays.asList(messageIds));
     }
 
-    public Delete setMessageIds(List<Integer> messageIds) {
-        return addParam("message_ids", csv(messageIds));
+    public Delete setMessageIds(Iterable<Integer> messageIds) {
+        return addParam("message_ids", ParamUtils.csv(messageIds));
     }
 
     public Delete setSpam(boolean spam) {
@@ -53,8 +49,8 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
         return setConversationMessageIds(Arrays.asList(conversationMessageIds));
     }
 
-    public Delete setConversationMessageIds(List<Integer> conversationMessageIds) {
-        return addParam("conversation_message_ids", csv(conversationMessageIds));
+    public Delete setConversationMessageIds(Iterable<Integer> conversationMessageIds) {
+        return addParam("conversation_message_ids", ParamUtils.csv(conversationMessageIds));
     }
 
     public Delete setPeerId(int peerId) {

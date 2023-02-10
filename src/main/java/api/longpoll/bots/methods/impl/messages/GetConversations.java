@@ -5,10 +5,11 @@ import api.longpoll.bots.model.objects.basic.Conversation;
 import api.longpoll.bots.model.objects.basic.Message;
 import api.longpoll.bots.model.response.ExtendedVkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>messages.getConversations</b> method.
@@ -19,12 +20,7 @@ import java.util.List;
  */
 public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
     public GetConversations(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.getConversations");
+        super(VkMethods.get("messages.getConversations"), accessToken);
     }
 
     @Override
@@ -56,8 +52,8 @@ public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetConversations setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+    public GetConversations setFields(Iterable<String> fields) {
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public GetConversations setGroupId(int groupId) {

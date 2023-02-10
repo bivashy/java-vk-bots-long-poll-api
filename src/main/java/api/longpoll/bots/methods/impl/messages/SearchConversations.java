@@ -1,9 +1,10 @@
 package api.longpoll.bots.methods.impl.messages;
 
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>messages.searchConversations</b> method.
@@ -14,12 +15,7 @@ import java.util.List;
  */
 public class SearchConversations extends VkMethod<SearchConversations.ResponseBody> {
     public SearchConversations(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.searchConversations");
+        super(VkMethods.get("messages.searchConversations"), accessToken);
     }
 
     @Override
@@ -44,8 +40,8 @@ public class SearchConversations extends VkMethod<SearchConversations.ResponseBo
         return setFields(Arrays.asList(fields));
     }
 
-    public SearchConversations setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+    public SearchConversations setFields(Iterable<String> fields) {
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     public SearchConversations setGroupId(int groupId) {

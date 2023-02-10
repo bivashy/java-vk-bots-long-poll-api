@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl.groups;
 
 import api.longpoll.bots.methods.impl.VkMethod;
+import api.longpoll.bots.utils.VkMethods;
 
 /**
  * Implements <b>groups.editAddress</b> method.
@@ -11,12 +12,7 @@ public class EditAddress extends VkMethod<EditAddress.ResponseBody> {
 
 
     public EditAddress(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("groups.editAddress");
+        super(VkMethods.get("groups.editAddress"), accessToken);
     }
 
     @Override

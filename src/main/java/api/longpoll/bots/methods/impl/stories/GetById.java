@@ -4,9 +4,10 @@ import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.Story;
 import api.longpoll.bots.model.objects.additional.VkList;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>stories.get</b> method.
@@ -17,12 +18,7 @@ import java.util.List;
  */
 public class GetById extends VkMethod<GetById.ResponseBody> {
     public GetById(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("stories.getById");
+        super(VkMethods.get("stories.getById"), accessToken);
     }
 
     @Override
@@ -34,8 +30,8 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
         return setStories(Arrays.asList(stories));
     }
 
-    public GetById setStories(List<String> stories) {
-        return addParam("stories", csv(stories));
+    public GetById setStories(Iterable<String> stories) {
+        return addParam("stories", ParamUtils.csv(stories));
     }
 
     public GetById setExtended(boolean extended) {
@@ -46,8 +42,8 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetById setFields(List<String> fields) {
-        return addParam("fields", csv(fields));
+    public GetById setFields(Iterable<String> fields) {
+        return addParam("fields", ParamUtils.csv(fields));
     }
 
     @Override

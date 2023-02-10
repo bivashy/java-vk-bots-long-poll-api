@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl.messages;
 import api.longpoll.bots.adapters.deserializers.BoolIntDeserializer;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,12 +16,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class IsMessagesFromGroupAllowed extends VkMethod<IsMessagesFromGroupAllowed.ResponseBody> {
     public IsMessagesFromGroupAllowed(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("messages.isMessagesFromGroupAllowed");
+        super(VkMethods.get("messages.isMessagesFromGroupAllowed"), accessToken);
     }
 
     @Override

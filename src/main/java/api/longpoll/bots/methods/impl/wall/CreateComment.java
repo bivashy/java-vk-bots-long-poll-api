@@ -3,6 +3,8 @@ package api.longpoll.bots.methods.impl.wall;
 import api.longpoll.bots.methods.impl.VkMethod;
 import api.longpoll.bots.model.objects.additional.UploadedFile;
 import api.longpoll.bots.model.response.GenericResponseBody;
+import api.longpoll.bots.utils.ParamUtils;
+import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
@@ -18,12 +20,7 @@ import java.util.List;
 public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
 
     public CreateComment(String accessToken) {
-        super(accessToken);
-    }
-
-    @Override
-    public String getUri() {
-        return property("wall.createComment");
+        super(VkMethods.get("wall.createComment"), accessToken);
     }
 
     @Override
@@ -35,8 +32,8 @@ public class CreateComment extends VkMethod<CreateComment.ResponseBody> {
         return setAttachment(Arrays.asList(attachments));
     }
 
-    public CreateComment setAttachment(List<UploadedFile> attachments) {
-        return setAttachment(csv(attachments));
+    public CreateComment setAttachment(Iterable<UploadedFile> attachments) {
+        return setAttachment(ParamUtils.csv(attachments));
     }
 
     public CreateComment setAttachment(String attachment) {

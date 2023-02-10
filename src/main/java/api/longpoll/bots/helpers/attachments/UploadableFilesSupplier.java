@@ -1,62 +1,54 @@
 package api.longpoll.bots.helpers.attachments;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
- * Supplies a list of {@link UploadableFile}.
+ * Supplies {@link UploadableFile} list.
  */
 public class UploadableFilesSupplier implements Supplier<List<UploadableFile>> {
     /**
-     * List of {@code peer_id}.
+     * Receivers.
      */
-    private final List<Integer> peerIds = new ArrayList<>();
+    private final Set<Integer> peerIds = new HashSet<>();
 
     /**
-     * List of {@link UploadableFile} factories.
+     * {@link UploadableFile} factories.
      */
     private final List<Function<Integer, UploadableFile>> uploadableFileFactories = new ArrayList<>();
 
     /**
-     * Adds {@code peer_id} to the list.
+     * Adds receiver.
      *
-     * @param peerId message {@code peer_id}.
+     * @param peerId receiver ID.
      */
-    public void addPeerId(Integer peerId) {
-        this.peerIds.add(peerId);
+    public void addPeerId(int peerId) {
+        peerIds.add(peerId);
     }
 
     /**
-     * Adds list of {@code peer_id} to the list.
+     * Adds receivers.
      *
-     * @param peerIds list of message {@code peer_id}.
+     * @param peerIds receiver IDs.
      */
-    public void addPeerIds(List<Integer> peerIds) {
-        this.peerIds.addAll(peerIds);
+    public void addPeerIds(Iterable<Integer> peerIds) {
+        StreamSupport.stream(peerIds.spliterator(), false).forEach(this::addPeerId);
     }
 
     /**
-     * Adds {@link UploadableFile} factory to the list.
+     * Adds {@link UploadableFile} factory.
      *
      * @param uploadableFileFactory {@link UploadableFile} factory.
      */
-    public void addUploadableFileFactory(Function<Integer, UploadableFile> uploadableFileFactory) {
-        this.uploadableFileFactories.add(uploadableFileFactory);
-    }
-
-    /**
-     * Gets {@link Stream<UploadableFile>}.
-     *
-     * @param peerId message {@code peer_id}.
-     * @return {@link Stream<UploadableFile>}.
-     */
-    private Stream<UploadableFile> getUploadableFiles(Integer peerId) {
-        return uploadableFileFactories.stream()
-                .map(uploadableFileFactory -> uploadableFileFactory.apply(peerId));
+    public void addUploadbleFileFactory(Function<Integer, UploadableFile> uploadableFileFactory) {
+        uploadableFileFactories.add(uploadableFileFactory);
     }
 
     @Override
@@ -64,5 +56,16 @@ public class UploadableFilesSupplier implements Supplier<List<UploadableFile>> {
         return peerIds.stream()
                 .flatMap(this::getUploadableFiles)
                 .collect(Collectors.toList());
+    }
+
+    /**
+     * Gets {@link Stream} of {@link UploadableFile} by receiver ID.
+     *
+     * @param peerId receiver ID.
+     * @return {@link Stream} of {@link UploadableFile}.
+     */
+    private Stream<UploadableFile> getUploadableFiles(int peerId) {
+        return uploadableFileFactories.stream()
+                .map(messageFileUploaderFactory -> messageFileUploaderFactory.apply(peerId));
     }
 }

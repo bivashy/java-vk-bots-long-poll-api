@@ -1,4 +1,4 @@
 /**
- * Contains HTTP clients, requests and responses.
+ * HTTP wrappers.
  */
 package api.longpoll.bots.http;
