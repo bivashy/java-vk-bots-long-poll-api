@@ -33,7 +33,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
         return setConversationMessageIds(Arrays.asList(conversationMessageIds));
     }
 
-    public GetByConversationMessageId setConversationMessageIds(List<Integer> conversationMessageIds) {
+    public GetByConversationMessageId setConversationMessageIds(Iterable<Integer> conversationMessageIds) {
         return addParam("conversation_message_ids", ParamUtils.csv(conversationMessageIds));
     }
 
@@ -45,7 +45,7 @@ public class GetByConversationMessageId extends VkMethod<GetByConversationMessag
         return setFields(Arrays.asList(fields));
     }
 
-    public GetByConversationMessageId setFields(List<String> fields) {
+    public GetByConversationMessageId setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

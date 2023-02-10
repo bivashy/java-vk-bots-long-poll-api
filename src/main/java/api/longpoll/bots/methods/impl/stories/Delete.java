@@ -37,7 +37,7 @@ public class Delete extends VkMethod<IntegerResponseBody> {
         return setStories(Arrays.asList(stories));
     }
 
-    public Delete setStories(List<String> stories) {
+    public Delete setStories(Iterable<String> stories) {
         return addParam("stories", ParamUtils.csv(stories));
     }
 

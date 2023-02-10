@@ -158,7 +158,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return setAttachment(Arrays.asList(uploadedFiles));
     }
 
-    public Send setAttachment(List<UploadedFile> uploadedFiles) {
+    public Send setAttachment(Iterable<UploadedFile> uploadedFiles) {
         return setAttachment(ParamUtils.csv(uploadedFiles));
     }
 
@@ -184,7 +184,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return setPeerIds(Arrays.asList(peerIds));
     }
 
-    public Send setPeerIds(List<Integer> peerIds) {
+    public Send setPeerIds(Iterable<Integer> peerIds) {
         uploadableFilesSupplier.addPeerIds(peerIds);
         return addParam("peer_ids", ParamUtils.csv(peerIds));
     }
@@ -201,7 +201,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return setUserIds(Arrays.asList(userIds));
     }
 
-    public Send setUserIds(List<Integer> userIds) {
+    public Send setUserIds(Iterable<Integer> userIds) {
         uploadableFilesSupplier.addPeerIds(userIds);
         return addParam("user_ids", ParamUtils.csv(userIds));
     }
@@ -226,7 +226,7 @@ public class Send extends VkMethod<Send.ResponseBody> {
         return setForwardMessages(Arrays.asList(forwardMessages));
     }
 
-    public Send setForwardMessages(List<Integer> forwardMessages) {
+    public Send setForwardMessages(Iterable<Integer> forwardMessages) {
         return addParam("forward_messages", ParamUtils.csv(forwardMessages));
     }
 

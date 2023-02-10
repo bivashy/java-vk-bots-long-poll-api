@@ -1,11 +1,14 @@
 package api.longpoll.bots.helpers.attachments;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * Supplies {@link UploadableFile} list.
@@ -14,7 +17,7 @@ public class UploadableFilesSupplier implements Supplier<List<UploadableFile>> {
     /**
      * Receivers.
      */
-    private final List<Integer> peerIds = new ArrayList<>();
+    private final Set<Integer> peerIds = new HashSet<>();
 
     /**
      * {@link UploadableFile} factories.
@@ -35,8 +38,8 @@ public class UploadableFilesSupplier implements Supplier<List<UploadableFile>> {
      *
      * @param peerIds receiver IDs.
      */
-    public void addPeerIds(List<Integer> peerIds) {
-        this.peerIds.addAll(peerIds);
+    public void addPeerIds(Iterable<Integer> peerIds) {
+        StreamSupport.stream(peerIds.spliterator(), false).forEach(this::addPeerId);
     }
 
     /**

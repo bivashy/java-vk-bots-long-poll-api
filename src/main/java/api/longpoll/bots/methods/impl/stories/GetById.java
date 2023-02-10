@@ -31,7 +31,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
         return setStories(Arrays.asList(stories));
     }
 
-    public GetById setStories(List<String> stories) {
+    public GetById setStories(Iterable<String> stories) {
         return addParam("stories", ParamUtils.csv(stories));
     }
 
@@ -43,7 +43,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetById setFields(List<String> fields) {
+    public GetById setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

@@ -62,7 +62,7 @@ public class GetHistory extends VkMethod<GetHistory.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetHistory setFields(List<String> fields) {
+    public GetHistory setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

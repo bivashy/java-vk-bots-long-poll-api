@@ -41,7 +41,7 @@ public class SearchConversations extends VkMethod<SearchConversations.ResponseBo
         return setFields(Arrays.asList(fields));
     }
 
-    public SearchConversations setFields(List<String> fields) {
+    public SearchConversations setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

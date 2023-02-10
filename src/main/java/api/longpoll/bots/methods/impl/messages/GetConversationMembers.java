@@ -36,7 +36,7 @@ public class GetConversationMembers extends VkMethod<GetConversationMembers.Resp
         return setFields(Arrays.asList(fields));
     }
 
-    public GetConversationMembers setFields(List<String> fields) {
+    public GetConversationMembers setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

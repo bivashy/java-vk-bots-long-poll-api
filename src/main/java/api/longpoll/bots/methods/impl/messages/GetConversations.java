@@ -53,7 +53,7 @@ public class GetConversations extends VkMethod<GetConversations.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetConversations setFields(List<String> fields) {
+    public GetConversations setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

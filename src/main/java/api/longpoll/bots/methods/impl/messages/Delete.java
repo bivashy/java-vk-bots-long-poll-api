@@ -30,7 +30,7 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
         return setMessageIds(Arrays.asList(messageIds));
     }
 
-    public Delete setMessageIds(List<Integer> messageIds) {
+    public Delete setMessageIds(Iterable<Integer> messageIds) {
         return addParam("message_ids", ParamUtils.csv(messageIds));
     }
 
@@ -50,7 +50,7 @@ public class Delete extends VkMethod<Delete.ResponseBody> {
         return setConversationMessageIds(Arrays.asList(conversationMessageIds));
     }
 
-    public Delete setConversationMessageIds(List<Integer> conversationMessageIds) {
+    public Delete setConversationMessageIds(Iterable<Integer> conversationMessageIds) {
         return addParam("conversation_message_ids", ParamUtils.csv(conversationMessageIds));
     }
 

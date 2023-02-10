@@ -28,7 +28,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
         return setMessageIds(Arrays.asList(messageIds));
     }
 
-    public GetById setMessageIds(List<Integer> messageIds) {
+    public GetById setMessageIds(Iterable<Integer> messageIds) {
         return addParam("message_ids", ParamUtils.csv(messageIds));
     }
 
@@ -44,7 +44,7 @@ public class GetById extends VkMethod<GetById.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetById setFields(List<String> fields) {
+    public GetById setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

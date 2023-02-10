@@ -47,7 +47,7 @@ public class GetReplies extends VkMethod<GetReplies.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetReplies setFields(List<String> fields) {
+    public GetReplies setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

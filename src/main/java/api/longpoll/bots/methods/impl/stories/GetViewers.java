@@ -33,7 +33,7 @@ public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
         return setMessageIds(Arrays.asList(messageIds));
     }
 
-    public GetViewers setMessageIds(List<Integer> messageIds) {
+    public GetViewers setMessageIds(Iterable<Integer> messageIds) {
         return addParam("message_ids", ParamUtils.csv(messageIds));
     }
 
@@ -49,7 +49,7 @@ public class GetViewers extends VkMethod<GetViewers.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetViewers setFields(List<String> fields) {
+    public GetViewers setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

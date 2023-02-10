@@ -10,7 +10,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>groups.isMember</b> method.
@@ -41,7 +40,7 @@ public class IsMember extends VkMethod<IsMember.ResponseBody> {
         return setUserIds(Arrays.asList(userIds));
     }
 
-    public IsMember setUserIds(List<Integer> userIds) {
+    public IsMember setUserIds(Iterable<Integer> userIds) {
         return addParam("user_ids", ParamUtils.csv(userIds));
     }
 

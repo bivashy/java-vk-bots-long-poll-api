@@ -51,7 +51,7 @@ public class GetHistoryAttachments extends VkMethod<GetHistoryAttachments.Respon
         return setFields(Arrays.asList(fields));
     }
 
-    public GetHistoryAttachments setFields(List<String> fields) {
+    public GetHistoryAttachments setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

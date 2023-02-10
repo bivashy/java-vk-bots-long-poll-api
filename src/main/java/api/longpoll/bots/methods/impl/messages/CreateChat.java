@@ -6,7 +6,6 @@ import api.longpoll.bots.utils.ParamUtils;
 import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>messages.createChat</b> method.
@@ -29,7 +28,7 @@ public class CreateChat extends VkMethod<IntegerResponseBody> {
         return setUserIds(Arrays.asList(userIds));
     }
 
-    public CreateChat setUserIds(List<Integer> userIds) {
+    public CreateChat setUserIds(Iterable<Integer> userIds) {
         return addParam("user_ids", ParamUtils.csv(userIds));
     }
 

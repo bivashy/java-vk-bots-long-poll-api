@@ -47,7 +47,7 @@ public class GetImportantMessages extends VkMethod<GetImportantMessages.Response
         return setFields(Arrays.asList(fields));
     }
 
-    public GetImportantMessages setFields(List<String> fields) {
+    public GetImportantMessages setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

@@ -54,7 +54,7 @@ public class GetPhotoUploadServer extends VkMethod<GetPhotoUploadServer.Response
         return setUserIds(Arrays.asList(userIds));
     }
 
-    public GetPhotoUploadServer setUserIds(List<Integer> userIds) {
+    public GetPhotoUploadServer setUserIds(Iterable<Integer> userIds) {
         return addParam("user_ids", ParamUtils.csv(userIds));
     }
 

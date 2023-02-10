@@ -151,7 +151,7 @@ public class Edit extends VkMethod<IntegerResponseBody> {
         return setAttachment(Arrays.asList(uploadedFiles));
     }
 
-    public Edit setAttachment(List<UploadedFile> uploadedFiles) {
+    public Edit setAttachment(Iterable<UploadedFile> uploadedFiles) {
         return setAttachment(ParamUtils.csv(uploadedFiles));
     }
 

@@ -11,7 +11,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>groups.getMembers</b> method.
@@ -50,7 +49,7 @@ public class GetMembers extends VkMethod<GetMembers.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetMembers setFields(List<String> fields) {
+    public GetMembers setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

@@ -10,7 +10,6 @@ import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>groups.getBanned</b> method.
@@ -45,7 +44,7 @@ public class GetBanned extends VkMethod<GetBanned.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public GetBanned setFields(List<String> fields) {
+    public GetBanned setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

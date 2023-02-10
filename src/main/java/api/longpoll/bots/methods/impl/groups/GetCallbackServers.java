@@ -8,7 +8,6 @@ import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>groups.getCallbackServers</b> method.
@@ -35,7 +34,7 @@ public class GetCallbackServers extends VkMethod<GetCallbackServers.ResponseBody
         return setServerIds(Arrays.asList(serverIds));
     }
 
-    public GetCallbackServers setServerIds(List<Integer> serverIds) {
+    public GetCallbackServers setServerIds(Iterable<Integer> serverIds) {
         return addParam("server_ids", ParamUtils.csv(serverIds));
     }
 

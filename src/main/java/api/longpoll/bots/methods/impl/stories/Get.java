@@ -39,7 +39,7 @@ public class Get extends VkMethod<Get.ResponseBody> {
         return setFields(Arrays.asList(fields));
     }
 
-    public Get setFields(List<String> fields) {
+    public Get setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 

@@ -52,7 +52,7 @@ public class GetVideoUploadServer extends VkMethod<GetVideoUploadServer.Response
         return setUserIds(Arrays.asList(userIds));
     }
 
-    public GetVideoUploadServer setUserIds(List<Integer> userIds) {
+    public GetVideoUploadServer setUserIds(Iterable<Integer> userIds) {
         return addParam("user_ids", ParamUtils.csv(userIds));
     }
 

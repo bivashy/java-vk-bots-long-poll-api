@@ -31,7 +31,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
         return setPeerIds(Arrays.asList(peerIds));
     }
 
-    public GetConversationsById setPeerIds(List<Integer> peerIds) {
+    public GetConversationsById setPeerIds(Iterable<Integer> peerIds) {
         return addParam("peer_ids", ParamUtils.csv(peerIds));
     }
 
@@ -43,7 +43,7 @@ public class GetConversationsById extends VkMethod<GetConversationsById.Response
         return setFields(Arrays.asList(fields));
     }
 
-    public GetConversationsById setFields(List<String> fields) {
+    public GetConversationsById setFields(Iterable<String> fields) {
         return addParam("fields", ParamUtils.csv(fields));
     }
 
