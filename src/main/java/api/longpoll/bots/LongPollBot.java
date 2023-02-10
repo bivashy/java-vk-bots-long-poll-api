@@ -1,12 +1,9 @@
 package api.longpoll.bots;
 
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.exceptions.VkApiHttpException;
-import api.longpoll.bots.exceptions.VkApiResponseException;
+import api.longpoll.bots.exceptions.VkResponseException;
 import api.longpoll.bots.methods.impl.events.GetUpdates;
 import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -15,11 +12,6 @@ import java.time.temporal.ChronoUnit;
  * Abstract bot to handle VK events.
  */
 public abstract class LongPollBot extends VkBot {
-    /**
-     * {@link Logger} object.
-     */
-    private static final Logger LOGGER = LoggerFactory.getLogger(LongPollBot.class);
-
     /**
      * Default session time.
      *
@@ -73,9 +65,8 @@ public abstract class LongPollBot extends VkBot {
                 GetUpdates.ResponseBody updates = getUpdates.execute();
                 getUpdates.setTs(updates.getTs());
                 handle(updates.getEvents());
-            } catch (VkApiHttpException | VkApiResponseException e) {
-                LOGGER.warn("Failed to get events from VK Long Poll Server.", e);
-                if (e instanceof VkApiResponseException && !e.getMessage().contains("failed")) {
+            } catch (VkResponseException e) {
+                if (!e.getMessage().contains("failed")) {
                     throw e;
                 }
                 initialize();

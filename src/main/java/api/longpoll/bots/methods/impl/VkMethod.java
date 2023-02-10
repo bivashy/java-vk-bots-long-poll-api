@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl;
 
 import api.longpoll.bots.exceptions.VkApiException;
+import api.longpoll.bots.exceptions.VkResponseException;
 import api.longpoll.bots.http.LoggerInterceptor;
 import api.longpoll.bots.validator.VkResponseBodyValidator;
 import com.google.gson.Gson;
@@ -33,21 +34,6 @@ public abstract class VkMethod<VkResponse> {
     private static final Logger LOGGER = LoggerFactory.getLogger(VkMethod.class);
 
     /**
-     * Access token key.
-     */
-    private static final String ACCESS_TOKEN_KEY = "access_token";
-
-    /**
-     * VK API version key.
-     */
-    private static final String API_VERSION_KEY = "v";
-
-    /**
-     * VK API version value.
-     */
-    private static final String API_VERSION_VALUE = "5.131";
-
-    /**
      * Validator to check if VK API response is valid.
      */
     private final Predicate<String> responseBodyValidator = new VkResponseBodyValidator();
@@ -78,8 +64,8 @@ public abstract class VkMethod<VkResponse> {
 
     public VkMethod(String url, String accessToken) {
         this(url);
-        addParam(ACCESS_TOKEN_KEY, accessToken);
-        addParam(API_VERSION_KEY, API_VERSION_VALUE);
+        addParam("access_token", accessToken);
+        addParam("v", "5.131");
     }
 
     public VkMethod(String url) {
@@ -147,7 +133,7 @@ public abstract class VkMethod<VkResponse> {
 
         String stringBody = responseBody.string();
         if (responseBodyValidator.negate().test(stringBody)) {
-            throw new VkApiException(stringBody);
+            throw new VkResponseException(stringBody);
         }
 
         return gson.fromJson(stringBody, getResponseClass());
