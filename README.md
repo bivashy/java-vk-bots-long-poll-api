@@ -18,6 +18,7 @@ This library keeps on improving. Feel free to create issues or pull requests.
 This library uses the next third-party dependencies:
 * `Gson`
 * `SLF4J`
+* `OkHttp`
 
 ## Requirements
 1. `Java 8` or higher
