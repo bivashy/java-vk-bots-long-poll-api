@@ -98,7 +98,7 @@ public abstract class VkMethod<VkResponse> {
             .build();
 
     public VkMethod(String url, String accessToken) {
-        this.requestBuilder.url(url);
+        this(url);
         addParam(ACCESS_TOKEN_KEY, accessToken);
         addParam(API_VERSION_KEY, API_VERSION_VALUE);
     }
