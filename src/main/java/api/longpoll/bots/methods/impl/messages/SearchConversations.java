@@ -5,7 +5,6 @@ import api.longpoll.bots.utils.ParamUtils;
 import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>messages.searchConversations</b> method.

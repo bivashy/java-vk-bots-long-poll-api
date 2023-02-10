@@ -18,6 +18,9 @@ import java.nio.file.Path;
  * @param <VkResponse> response type.
  */
 public abstract class UploadMethod<VkResponse> extends VkMethod<VkResponse> {
+    /**
+     * {@link MultipartBody} builder.
+     */
     private final MultipartBody.Builder multipartBodyBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
 
     public UploadMethod(String uploadUrl, String name, String filename, InputStream inputStream) {

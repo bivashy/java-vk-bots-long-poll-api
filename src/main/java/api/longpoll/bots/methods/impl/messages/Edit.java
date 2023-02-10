@@ -33,8 +33,19 @@ import java.util.stream.Collectors;
  * @see <a href="https://vk.com/dev/messages.edit">https://vk.com/dev/messages.edit</a>
  */
 public class Edit extends VkMethod<IntegerResponseBody> {
+    /**
+     * {@link Gson} instance.
+     */
     private final Gson gson = new Gson();
+
+    /**
+     * {@code access_token}.
+     */
     private final String accessToken;
+
+    /**
+     * Supplies list of {@link UploadableFile}.
+     */
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Edit(String accessToken) {

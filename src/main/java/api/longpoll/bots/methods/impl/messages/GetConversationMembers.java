@@ -8,7 +8,6 @@ import api.longpoll.bots.utils.VkMethods;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Implements <b>messages.getConversationMembers</b> method.

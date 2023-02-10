@@ -39,8 +39,19 @@ import java.util.stream.Collectors;
  * @see <a href="https://vk.com/dev/messages.send">https://vk.com/dev/messages.send</a>
  */
 public class Send extends VkMethod<Send.ResponseBody> {
+    /**
+     * {@link Gson} instance.
+     */
     private final Gson gson = new Gson();
+
+    /**
+     * {@code access_token}.
+     */
     private final String accessToken;
+
+    /**
+     * Supplies list of {@link UploadableFile}.
+     */
     private final UploadableFilesSupplier uploadableFilesSupplier = new UploadableFilesSupplier();
 
     public Send(String accessToken) {

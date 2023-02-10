@@ -6,7 +6,6 @@ import api.longpoll.bots.utils.ParamUtils;
 import api.longpoll.bots.utils.VkMethods;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 /**

@@ -12,7 +12,7 @@ import java.util.function.Supplier;
  */
 public class MarketMethods {
     /**
-     * Access token.
+     * {@code access_token}.
      */
     private final Supplier<String> accessTokenSupplier;
 

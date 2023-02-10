@@ -36,7 +36,7 @@ import java.util.function.Supplier;
  */
 public class MessagesMethods {
     /**
-     * Access token.
+     * {@code access_token}.
      */
     private final Supplier<String> accessTokenSupplier;
 
