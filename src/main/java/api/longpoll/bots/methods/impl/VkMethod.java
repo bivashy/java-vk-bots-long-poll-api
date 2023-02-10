@@ -1,6 +1,7 @@
 package api.longpoll.bots.methods.impl;
 
 import api.longpoll.bots.exceptions.VkApiException;
+import api.longpoll.bots.http.LoggerInterceptor;
 import api.longpoll.bots.validator.VkResponseBodyValidator;
 import com.google.gson.Gson;
 import okhttp3.Call;
@@ -19,8 +20,6 @@ import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * Executes generic HTTP request to VK API.
@@ -28,14 +27,15 @@ import java.util.stream.IntStream;
  * @param <VkResponse> VK API response type.
  */
 public abstract class VkMethod<VkResponse> {
+    /**
+     * {@link Logger} instance.
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(VkMethod.class);
 
     /**
      * Access token key.
      */
     private static final String ACCESS_TOKEN_KEY = "access_token";
-
-    private static final long CALL_TIMEOUT = 120;
 
     /**
      * VK API version key.
@@ -57,44 +57,23 @@ public abstract class VkMethod<VkResponse> {
      */
     private final Gson gson = new Gson();
 
+    /**
+     * {@link Request} builder.
+     */
     private final Request.Builder requestBuilder = new Request.Builder();
 
+    /**
+     * {@link FormBody} builder.
+     */
     private final FormBody.Builder formBodyBuilder = new FormBody.Builder();
 
+    /**
+     * HTTP client.
+     */
     private final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .callTimeout(CALL_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(CALL_TIMEOUT, TimeUnit.SECONDS)
-            .addInterceptor(chain -> {
-                Request request = chain.request();
-
-                LOGGER.debug(
-                        "--> {} {} {} {}",
-                        request.method(),
-                        request.url() + (request.body() != null && request.body() instanceof FormBody ? "?" + IntStream.range(0, ((FormBody) request.body()).size()).mapToObj(i -> ((FormBody) request.body()).encodedName(i) + "=" + ((FormBody) request.body()).encodedValue(i)).collect(Collectors.joining()) : ""),
-                        request.body() != null ? "Content-Type: " + request.body().contentType() : "",
-                        request.body() != null ? "Content-Length: " + request.body().contentLength() : ""
-                );
-
-                long start = System.currentTimeMillis();
-                Response response = chain.proceed(request);
-                long end = System.currentTimeMillis();
-
-                ResponseBody responseBody = response.body();
-                String stringBody = responseBody != null ? responseBody.string() : null;
-
-                LOGGER.debug(
-                        "<-- {}ms: {} {}",
-                        end - start,
-                        response.code(),
-                        stringBody
-                );
-
-                ResponseBody responseBodyCopy = responseBody != null
-                        ? ResponseBody.create(stringBody, responseBody.contentType())
-                        : ResponseBody.create(new byte[0], null);
-                response.close();
-                return response.newBuilder().body(responseBodyCopy).build();
-            })
+            .callTimeout(32, TimeUnit.SECONDS)
+            .readTimeout(32, TimeUnit.SECONDS)
+            .addInterceptor(new LoggerInterceptor(LOGGER))
             .build();
 
     public VkMethod(String url, String accessToken) {
@@ -148,6 +127,14 @@ public abstract class VkMethod<VkResponse> {
         }
     }
 
+    /**
+     * Gets {@link VkResponse} from {@link Response}.
+     *
+     * @param response HTTP response.
+     * @return {@link VkResponse}.
+     * @throws VkApiException if errors occur.
+     * @throws IOException    if errors occur.
+     */
     private VkResponse extractResponse(Response response) throws VkApiException, IOException {
         if (!response.isSuccessful()) {
             throw new VkApiException("Response code: " + response.code());
@@ -174,10 +161,20 @@ public abstract class VkMethod<VkResponse> {
      */
     protected abstract Class<VkResponse> getResponseClass();
 
+    /**
+     * Supplies new HTTP request.
+     *
+     * @return HTTP request.
+     */
     private Request newRequest() {
         return requestBuilder.post(newRequestBody()).build();
     }
 
+    /**
+     * Supplies new request body.
+     *
+     * @return request body.
+     */
     protected RequestBody newRequestBody() {
         return formBodyBuilder.build();
     }
