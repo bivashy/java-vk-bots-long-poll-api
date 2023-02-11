@@ -1,4 +1,5 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.yvasyliev/java-vk-bots-longpoll-api/badge.svg?kill_cache=1)](https://search.maven.org/artifact/com.github.yvasyliev/java-vk-bots-longpoll-api)
+[![GitHub tag](https://img.shields.io/github/tag/yvasyliev/java-vk-bots-long-poll-api)](https://github.com/yvasyliev/java-vk-bots-long-poll-api/releases/?include_prereleases&sort=semver "View GitHub releases")
 ![Build status](https://github.com/yvasyliev/java-vk-bots-long-poll-api/actions/workflows/build-maven-project.yml/badge.svg?branch=master)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/yvasyliev/java-vk-bots-long-poll-api/blob/master/LICENSE)
 ![CodeQL](https://github.com/yvasyliev/java-vk-bots-long-poll-api/workflows/CodeQL/badge.svg)
