@@ -158,7 +158,7 @@ public class User {
      * City specified on user's page in "Contacts" section.
      */
     @SerializedName("city")
-    private String city;
+    private City city;
 
     /**
      * Number of common friends with current user.
@@ -698,11 +698,11 @@ public class User {
         this.nickname = nickname;
     }
 
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
 
