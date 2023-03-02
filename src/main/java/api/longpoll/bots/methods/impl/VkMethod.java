@@ -3,6 +3,7 @@ package api.longpoll.bots.methods.impl;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkResponseException;
 import api.longpoll.bots.http.LoggerInterceptor;
+import api.longpoll.bots.model.objects.additional.Lang;
 import api.longpoll.bots.validator.VkResponseBodyValidator;
 import com.google.gson.Gson;
 import okhttp3.Call;
@@ -175,5 +176,15 @@ public abstract class VkMethod<VkResponse> {
     public VkMethod<VkResponse> addParam(String key, Object value) {
         formBodyBuilder.add(key, String.valueOf(value));
         return this;
+    }
+
+    /**
+     * Sets {@code lang} parameter.
+     *
+     * @param lang lang value.
+     * @return current instance.
+     */
+    public VkMethod<VkResponse> setLang(Lang lang) {
+        return addParam("lang", lang);
     }
 }
