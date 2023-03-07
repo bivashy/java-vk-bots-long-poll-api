@@ -3,7 +3,7 @@ package api.longpoll.bots;
 import api.longpoll.bots.exceptions.VkApiException;
 import api.longpoll.bots.exceptions.VkResponseException;
 import api.longpoll.bots.methods.impl.events.GetUpdates;
-import api.longpoll.bots.methods.impl.groups.GetLongPollServer;
+import com.google.gson.JsonObject;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -18,16 +18,6 @@ public abstract class LongPollBot extends VkBot {
      * @see LongPollBot#sessionDuration
      */
     private static final long DEFAULT_SESSION_DURATION = 9;
-
-    /**
-     * Group ID.
-     */
-    private Integer groupId;
-
-    /**
-     * Gets VK long poll server.
-     */
-    private GetLongPollServer getLongPollServer;
 
     /**
      * Gets VK updates.
@@ -89,22 +79,15 @@ public abstract class LongPollBot extends VkBot {
     public void initialize() throws VkApiException {
         initializedAt = LocalDateTime.now();
 
-        if (groupId == null) {
-            groupId = vk.other.execute()
-                    .setCode("return API.groups.getById()@.id[0];")
-                    .execute()
-                    .getResponse()
-                    .getAsInt();
-        }
+        JsonObject longPollServer = vk.other.execute()
+                .setCode("return API.groups.getLongPollServer({\"group_id\":API.groups.getById()@.id[0]});")
+                .execute()
+                .getResponse()
+                .getAsJsonObject();
 
-        if (getLongPollServer == null) {
-            getLongPollServer = new GetLongPollServer(getAccessToken());
-        }
-
-        GetLongPollServer.ResponseBody longPollServer = getLongPollServer.setGroupId(groupId).execute();
-        getUpdates = new GetUpdates(longPollServer.getResponse().getServer())
-                .setKey(longPollServer.getResponse().getKey())
-                .setTs(longPollServer.getResponse().getTs());
+        getUpdates = new GetUpdates(longPollServer.get("server").getAsString())
+                .setKey(longPollServer.get("key").getAsString())
+                .setTs(longPollServer.get("ts").getAsInt());
     }
 
     /**
