@@ -35,6 +35,11 @@ public abstract class VkMethod<VkResponse> {
     private static final Logger LOGGER = LoggerFactory.getLogger(VkMethod.class);
 
     /**
+     * Timeout for HTTP calls.
+     */
+    private static final int DEFAULT_TIMEOUT = 60;
+
+    /**
      * Validator to check if VK API response is valid.
      */
     private final Predicate<String> responseBodyValidator = new VkResponseBodyValidator();
@@ -58,8 +63,8 @@ public abstract class VkMethod<VkResponse> {
      * HTTP client.
      */
     private final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .callTimeout(32, TimeUnit.SECONDS)
-            .readTimeout(32, TimeUnit.SECONDS)
+            .callTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor(new LoggerInterceptor(LOGGER))
             .build();
 
