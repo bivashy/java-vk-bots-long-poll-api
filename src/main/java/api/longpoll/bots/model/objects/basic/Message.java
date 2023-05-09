@@ -64,6 +64,12 @@ public class Message implements Update.Object {
      */
     @SerializedName("important")
     private Boolean important;
+    
+    @SerializedName("ref")
+    private String ref;
+    
+    @SerializedName("ref_source")
+    private String refSource;
 
     /**
      * Information about location.
