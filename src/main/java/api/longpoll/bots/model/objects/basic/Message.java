@@ -64,6 +64,12 @@ public class Message implements Update.Object {
      */
     @SerializedName("important")
     private Boolean important;
+    
+    @SerializedName("ref")
+    private String ref;
+    
+    @SerializedName("ref_source")
+    private String ref_source;
 
     /**
      * Information about location.
@@ -200,6 +206,22 @@ public class Message implements Update.Object {
 
     public void setImportant(Boolean important) {
         this.important = important;
+    }
+    
+    public String getRef() {
+        return ref;
+    }
+    
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+    
+    public String getRef_source() {
+        return ref_source;
+    }
+    
+    public void setRef_source(String ref_source) {
+        this.ref_source = ref_source;
     }
 
     public Geo getGeo() {
