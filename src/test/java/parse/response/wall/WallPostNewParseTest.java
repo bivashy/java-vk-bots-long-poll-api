@@ -36,5 +36,11 @@ public class WallPostNewParseTest {
         WallPost.Comments comments = wallPost.getComments();
         assertNotNull(comments);
         assertEquals(0, comments.getCount());
+
+        WallPost.Copyright copyright = wallPost.getCopyright();
+        assertNotNull(copyright);
+        assertEquals("external_link", copyright.getType());
+        assertEquals("github.com", copyright.getName());
+        assertEquals("https://github.com/", copyright.getLink());
     }
 }

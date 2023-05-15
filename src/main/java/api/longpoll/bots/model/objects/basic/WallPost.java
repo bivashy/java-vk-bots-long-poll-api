@@ -182,6 +182,12 @@ public class WallPost implements Update.Object {
     private PostSource postSource;
 
     /**
+     * Information about copyright.
+     */
+    @SerializedName("copyright")
+    private Copyright copyright;
+
+    /**
      * List of attachments in the comments (photos, links, etc.)
      */
     @SerializedName("attachments")
@@ -403,6 +409,14 @@ public class WallPost implements Update.Object {
         this.postSource = postSource;
     }
 
+    public Copyright getCopyright() {
+        return copyright;
+    }
+
+    public void setCopyright(Copyright copyright) {
+        this.copyright = copyright;
+    }
+
     public List<Attachment> getAttachments() {
         return attachments;
     }
@@ -450,6 +464,7 @@ public class WallPost implements Update.Object {
                 ", canArchive=" + canArchive +
                 ", archived=" + archived +
                 ", postSource=" + postSource +
+                ", copyright=" + copyright +
                 ", attachments=" + attachments +
                 '}';
     }
@@ -704,6 +719,62 @@ public class WallPost implements Update.Object {
                     ", platform='" + platform + '\'' +
                     ", data='" + data + '\'' +
                     ", url='" + url + '\'' +
+                    '}';
+        }
+    }
+
+    /**
+     * Describes post source.
+     */
+    public static class Copyright {
+        /**
+         * Source type.
+         */
+        @SerializedName("type")
+        private String type;
+
+        /**
+         * Source name,
+         */
+        @SerializedName("name")
+        private String name;
+
+        /**
+         * Source URL.
+         */
+        @SerializedName("link")
+        private String link;
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getLink() {
+            return link;
+        }
+
+        public void setLink(String link) {
+            this.link = link;
+        }
+
+        @Override
+        public String toString() {
+            return "Copyright{" +
+                    "type='" + type + '\'' +
+                    ", name='" + name + '\'' +
+                    ", link='" + link + '\'' +
                     '}';
         }
     }
