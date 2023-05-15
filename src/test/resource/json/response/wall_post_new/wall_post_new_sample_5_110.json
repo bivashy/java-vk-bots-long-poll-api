@@ -17,7 +17,12 @@
         "comments": {
           "count": 0
         },
-        "is_favorite": false
+        "is_favorite": false,
+        "copyright": {
+          "type": "external_link",
+          "name": "github.com",
+          "link": "https://github.com/"
+        }
       },
       "group_id": 444,
       "event_id": "aaa"
