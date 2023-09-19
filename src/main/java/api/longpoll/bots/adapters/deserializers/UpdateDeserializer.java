@@ -32,7 +32,6 @@ import api.longpoll.bots.model.objects.basic.WallPost;
 import api.longpoll.bots.model.objects.media.Audio;
 import api.longpoll.bots.model.objects.media.Photo;
 import api.longpoll.bots.model.objects.media.Video;
-import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -45,11 +44,6 @@ import java.lang.reflect.Type;
  * Deserializes JSON objects to {@link Update}.
  */
 public class UpdateDeserializer implements JsonDeserializer<Update> {
-    /**
-     * {@link Gson} object.
-     */
-    private final Gson gson = new Gson();
-
     @Override
     public final Update deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonUpdate = jsonElement.getAsJsonObject();
@@ -58,12 +52,16 @@ public class UpdateDeserializer implements JsonDeserializer<Update> {
         update.setType(context.deserialize(jsonUpdate.get("type"), Update.Type.class));
 
         if (update.getType() == null) {
-            throw new IllegalArgumentException("There is no mapping for event '" + jsonUpdate.get("type") + "'. JSON: " + gson.toJson(jsonElement));
+            update.setType(Update.Type.UNKNOWN);
+            Update.UnknownObject unknownObject = new Update.UnknownObject();
+            unknownObject.setData(jsonUpdate.get("object"));
+            update.setObject(unknownObject);
+        } else {
+            update.setObject(context.deserialize(jsonUpdate.get("object"), getObjectClass(update.getType())));
         }
 
         update.setGroupId(jsonUpdate.get("group_id").getAsInt());
         update.setEventId(jsonUpdate.get("event_id").getAsString());
-        update.setObject(context.deserialize(jsonUpdate.get("object"), getObjectClass(update.getType())));
         return update;
     }
 

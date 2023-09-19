@@ -244,6 +244,10 @@ public abstract class VkBot {
                     onPollVoteNew((PollVoteNew) update.getObject());
                     break;
 
+                case UNKNOWN:
+                    onUnknownObject((Update.UnknownObject) update.getObject());
+                    break;
+
                 default:
                     LOGGER.warn("No update handler found update updateType: {}", updateType);
                     break;
@@ -609,5 +613,13 @@ public abstract class VkBot {
      * @param pollVoteNew event object.
      */
     public void onPollVoteNew(PollVoteNew pollVoteNew) {
+    }
+
+    /**
+     * Handles all unknown events.
+     *
+     * @param unknownObject unknown event.
+     */
+    public void onUnknownObject(Update.UnknownObject unknownObject) {
     }
 }
