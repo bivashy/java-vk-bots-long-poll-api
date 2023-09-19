@@ -139,7 +139,7 @@ public class Update {
     /**
      * Default object for all unknown events.
      */
-    public static class UnknownObject implements Update.Object {
+    public static class UnknownObject implements Object {
         /**
          * Object data.
          */
