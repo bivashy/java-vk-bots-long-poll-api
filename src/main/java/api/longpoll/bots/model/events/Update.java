@@ -1,6 +1,7 @@
 package api.longpoll.bots.model.events;
 
 import api.longpoll.bots.adapters.deserializers.UpdateDeserializer;
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -112,6 +113,7 @@ public class Update {
         @SerializedName("photo_comment_restore") PHOTO_COMMENT_RESTORE,
         @SerializedName("photo_new") PHOTO_NEW,
         @SerializedName("poll_vote_new") POLL_VOTE_NEW,
+        UNKNOWN,
         @SerializedName("user_block") USER_BLOCK,
         @SerializedName("user_unblock") USER_UNBLOCK,
         @SerializedName("video_comment_delete") VIDEO_COMMENT_DELETE,
@@ -132,5 +134,30 @@ public class Update {
      * Marks that derived classes can be a part of <a href="https://vk.com/dev/bots_longpoll">events</a>.
      */
     public interface Object {
+    }
+
+    /**
+     * Default object for all unknown events.
+     */
+    public static class UnknownObject implements Object {
+        /**
+         * Object data.
+         */
+        private JsonElement data;
+
+        public JsonElement getData() {
+            return data;
+        }
+
+        public void setData(JsonElement data) {
+            this.data = data;
+        }
+
+        @Override
+        public String toString() {
+            return "UnknownObject{" +
+                    "data=" + data +
+                    '}';
+        }
     }
 }
