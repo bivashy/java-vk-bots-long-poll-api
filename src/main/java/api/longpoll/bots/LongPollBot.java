@@ -20,9 +20,19 @@ public abstract class LongPollBot extends VkBot {
     private static final long DEFAULT_SESSION_DURATION = 9;
 
     /**
-     * Gets VK updates.
+     * Server URL.
      */
-    private GetUpdates getUpdates;
+    private String server;
+
+    /**
+     * Session key.
+     */
+    private String key;
+
+    /**
+     * Latest received event.
+     */
+    private int ts;
 
     /**
      * Whether infinite loop should be continued.
@@ -52,8 +62,8 @@ public abstract class LongPollBot extends VkBot {
                 if (isSessionExpired()) {
                     initialize();
                 }
-                GetUpdates.ResponseBody updates = getUpdates.execute();
-                getUpdates.setTs(updates.getTs());
+                GetUpdates.ResponseBody updates = getUpdates().execute();
+                ts = updates.getTs();
                 handle(updates.getEvents());
             } catch (VkResponseException e) {
                 if (!e.getMessage().contains("failed")) {
@@ -85,9 +95,9 @@ public abstract class LongPollBot extends VkBot {
                 .getResponse()
                 .getAsJsonObject();
 
-        getUpdates = new GetUpdates(longPollServer.get("server").getAsString())
-                .setKey(longPollServer.get("key").getAsString())
-                .setTs(longPollServer.get("ts").getAsInt());
+        server = longPollServer.get("server").getAsString();
+        key = longPollServer.get("key").getAsString();
+        ts = longPollServer.get("ts").getAsInt();
     }
 
     /**
@@ -106,5 +116,16 @@ public abstract class LongPollBot extends VkBot {
      */
     private boolean isSessionExpired() {
         return ChronoUnit.HOURS.between(initializedAt, LocalDateTime.now()) >= sessionDuration;
+    }
+
+    /**
+     * Produces new {@link GetUpdates} instance based on {@link LongPollBot#server}, {@link LongPollBot#key} and {@link LongPollBot#ts}.
+     *
+     * @return {@link GetUpdates} instance.
+     */
+    private GetUpdates getUpdates() {
+        return new GetUpdates(server)
+                .setKey(key)
+                .setTs(ts);
     }
 }

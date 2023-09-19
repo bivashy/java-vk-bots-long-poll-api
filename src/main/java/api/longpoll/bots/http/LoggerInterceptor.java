@@ -76,7 +76,7 @@ public class LoggerInterceptor implements Interceptor {
             if (size > 0) {
                 return "?" + IntStream.range(0, size)
                         .mapToObj(i -> formBody.encodedName(i) + "=" + formBody.encodedValue(i))
-                        .collect(Collectors.joining());
+                        .collect(Collectors.joining("&"));
             }
         }
         return "";
