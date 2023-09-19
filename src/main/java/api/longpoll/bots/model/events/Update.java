@@ -1,7 +1,7 @@
 package api.longpoll.bots.model.events;
 
 import api.longpoll.bots.adapters.deserializers.UpdateDeserializer;
-import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -143,13 +143,13 @@ public class Update {
         /**
          * Object data.
          */
-        private JsonElement data;
+        private JsonObject data;
 
-        public JsonElement getData() {
+        public JsonObject getData() {
             return data;
         }
 
-        public void setData(JsonElement data) {
+        public void setData(JsonObject data) {
             this.data = data;
         }
 

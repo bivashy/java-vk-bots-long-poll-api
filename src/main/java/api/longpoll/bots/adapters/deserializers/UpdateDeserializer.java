@@ -54,7 +54,7 @@ public class UpdateDeserializer implements JsonDeserializer<Update> {
         if (update.getType() == null) {
             update.setType(Update.Type.UNKNOWN);
             Update.UnknownObject unknownObject = new Update.UnknownObject();
-            unknownObject.setData(jsonUpdate.get("object"));
+            unknownObject.setData(jsonUpdate);
             update.setObject(unknownObject);
         } else {
             update.setObject(context.deserialize(jsonUpdate.get("object"), getObjectClass(update.getType())));
