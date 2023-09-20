@@ -32,7 +32,7 @@ public abstract class LongPollBot extends VkBot {
     /**
      * Latest received event.
      */
-    private int ts;
+    private Integer ts;
 
     /**
      * Whether infinite loop should be continued.
@@ -97,7 +97,9 @@ public abstract class LongPollBot extends VkBot {
 
         server = longPollServer.get("server").getAsString();
         key = longPollServer.get("key").getAsString();
-        ts = longPollServer.get("ts").getAsInt();
+        if (ts == null) {
+            ts = longPollServer.get("ts").getAsInt();
+        }
     }
 
     /**
