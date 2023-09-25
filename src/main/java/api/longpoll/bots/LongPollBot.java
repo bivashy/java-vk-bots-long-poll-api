@@ -56,20 +56,16 @@ public abstract class LongPollBot extends VkBot {
      * @throws VkApiException if errors occur.
      */
     public void startPolling() throws VkApiException {
-        initialize();
         while (polling) {
             try {
-                if (isSessionExpired()) {
-                    initialize();
-                }
                 GetUpdates.ResponseBody updates = getUpdates().execute();
-                ts = updates.getTs();
+                setTs(updates.getTs());
                 handle(updates.getEvents());
             } catch (VkResponseException e) {
                 if (!e.getMessage().contains("failed")) {
                     throw e;
                 }
-                initialize();
+                initializedAt = null;
             }
         }
     }
@@ -95,10 +91,10 @@ public abstract class LongPollBot extends VkBot {
                 .getResponse()
                 .getAsJsonObject();
 
-        server = longPollServer.get("server").getAsString();
-        key = longPollServer.get("key").getAsString();
-        if (ts == null) {
-            ts = longPollServer.get("ts").getAsInt();
+        setServer(longPollServer.get("server").getAsString());
+        setKey(longPollServer.get("key").getAsString());
+        if (getTs() == null) {
+            setTs(longPollServer.get("ts").getAsInt());
         }
     }
 
@@ -125,9 +121,36 @@ public abstract class LongPollBot extends VkBot {
      *
      * @return {@link GetUpdates} instance.
      */
-    private GetUpdates getUpdates() {
-        return new GetUpdates(server)
-                .setKey(key)
-                .setTs(ts);
+    public GetUpdates getUpdates() throws VkApiException {
+        if (initializedAt == null || isSessionExpired()) {
+            initialize();
+        }
+        return new GetUpdates(getServer())
+                .setKey(getKey())
+                .setTs(getTs());
+    }
+
+    public String getServer() {
+        return server;
+    }
+
+    public void setServer(String server) {
+        this.server = server;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public Integer getTs() {
+        return ts;
+    }
+
+    public void setTs(Integer ts) {
+        this.ts = ts;
     }
 }
