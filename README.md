@@ -15,6 +15,12 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=yvasyliev_java-vk-bots-long-poll-api&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=yvasyliev_java-vk-bots-long-poll-api)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 
+# IMPORTANT
+
+This project reached its end of life. No further updates/support are planned. Look for the other projects.
+
+---
+
 # Java VK Bots Long Poll API
 
 A Java library to create VK bots using Bots Long Poll API.
@@ -23,10 +29,6 @@ A Java library to create VK bots using Bots Long Poll API.
 
 An easy-to-use and lightweight Java library that implements [Bots Long Poll API](https://vk.com/dev/bots_longpoll). Uses
 API version: `5.131`.
-
-## Note
-
-This library keeps on improving. Feel free to create issues or pull requests.
 
 ## Third-party dependencies
 
