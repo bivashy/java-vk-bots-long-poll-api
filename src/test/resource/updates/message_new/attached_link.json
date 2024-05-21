@@ -19,10 +19,10 @@
             {
               "type": "link",
               "link": {
-                "url": "https://github.com/yvasyliev/java-vk-bots-long-poll-api",
-                "title": "yvasyliev/java-vk-bots-long-poll-api",
+                "url": "https://github.com/bivashy/java-vk-bots-long-poll-api",
+                "title": "bivashy/java-vk-bots-long-poll-api",
                 "caption": "github.com",
-                "description": "A Java library to create VK bots using Bots Long Poll API - yvasyliev/java-vk-bots-long-poll-api",
+                "description": "A Java library to create VK bots using Bots Long Poll API - bivashy/java-vk-bots-long-poll-api",
                 "photo": {
                   "album_id": -27,
                   "date": 1619335586,
