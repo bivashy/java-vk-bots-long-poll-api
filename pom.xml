@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.yvasyliev</groupId>
+    <groupId>io.github.bivashy</groupId>
     <artifactId>java-vk-bots-longpoll-api</artifactId>
     <packaging>jar</packaging>
     <version>4.1.8</version>
     <name>Java VK Bots Long Poll API</name>
     <description>A Java library to create VK bots using Bots Long Poll API</description>
-    <url>https://github.com/yvasyliev/java-vk-bots-long-poll-api</url>
+    <url>https://github.com/bivashy/java-vk-bots-long-poll-api</url>
 
     <licenses>
         <license>
@@ -86,14 +86,13 @@
                 <version>3.11.0</version>
             </plugin>
             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.13</version>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.4.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
                 </configuration>
             </plugin>
             <plugin>
@@ -210,17 +209,17 @@
     </build>
 
     <scm>
-        <connection>scm:git:ssh://github.com/yvasyliev/java-vk-bots-long-poll-api.git</connection>
-        <developerConnection>scm:git:ssh://github.com/yvasyliev/java-vk-bots-long-poll-api.git</developerConnection>
-        <url>https://github.com/yvasyliev/java-vk-bots-longpoll-api</url>
+        <connection>scm:git:ssh://github.com/bivashy/java-vk-bots-long-poll-api.git</connection>
+        <developerConnection>scm:git:ssh://github.com/bivashy/java-vk-bots-long-poll-api.git</developerConnection>
+        <url>https://github.com/bivashy/java-vk-bots-longpoll-api</url>
     </scm>
 
     <developers>
         <developer>
-            <name>Yevhen Vasyliev</name>
-            <email>ye.vasyliev@gmail.com</email>
-            <organization>com.github.yvasyliev</organization>
-            <organizationUrl>https://github.com/yvasyliev</organizationUrl>
+            <name>Bivashy</name>
+            <email>biivashy@gmail.com</email>
+            <organization>io.github.bivashy</organization>
+            <organizationUrl>https://github.com/bivashy</organizationUrl>
         </developer>
     </developers>
 </project>

@@ -19,10 +19,10 @@ public class MessageNewTest {
 
         AttachedLink attachedLink = attachment.getLink();
         assertNotNull(attachedLink);
-        assertEquals("https://github.com/yvasyliev/java-vk-bots-long-poll-api", attachedLink.getUrl());
-        assertEquals("yvasyliev/java-vk-bots-long-poll-api", attachedLink.getTitle());
+        assertEquals("https://github.com/bivashy/java-vk-bots-long-poll-api", attachedLink.getUrl());
+        assertEquals("bivashy/java-vk-bots-long-poll-api", attachedLink.getTitle());
         assertEquals("github.com", attachedLink.getCaption());
-        assertEquals("A Java library to create VK bots using Bots Long Poll API - yvasyliev/java-vk-bots-long-poll-api", attachedLink.getDescription());
+        assertEquals("A Java library to create VK bots using Bots Long Poll API - bivashy/java-vk-bots-long-poll-api", attachedLink.getDescription());
 
         Photo photo = attachedLink.getPhoto();
         assertNotNull(photo);

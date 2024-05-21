@@ -1,8 +1,8 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.yvasyliev/java-vk-bots-longpoll-api/badge.svg?kill_cache=1)](https://search.maven.org/artifact/com.github.yvasyliev/java-vk-bots-longpoll-api)
-[![javadoc](https://javadoc.io/badge2/com.github.yvasyliev/java-vk-bots-longpoll-api/javadoc.svg?kill_cache=1)](https://javadoc.io/doc/com.github.yvasyliev/java-vk-bots-longpoll-api)
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/yvasyliev/java-vk-bots-long-poll-api/blob/master/LICENSE)
-![Build status](https://github.com/yvasyliev/java-vk-bots-long-poll-api/actions/workflows/build-maven-project.yml/badge.svg?branch=master)
-![CodeQL](https://github.com/yvasyliev/java-vk-bots-long-poll-api/workflows/CodeQL/badge.svg)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.bivashy/java-vk-bots-longpoll-api/badge.svg?kill_cache=1)](https://search.maven.org/artifact/io.github.bivashy/java-vk-bots-longpoll-api)
+[![javadoc](https://javadoc.io/badge2/io.github.bivashy/java-vk-bots-longpoll-api/javadoc.svg?kill_cache=1)](https://javadoc.io/doc/io.github.bivashy/java-vk-bots-longpoll-api)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/bivashy/java-vk-bots-long-poll-api/blob/master/LICENSE)
+![Build status](https://github.com/bivashy/java-vk-bots-long-poll-api/actions/workflows/build-maven-project.yml/badge.svg?branch=master)
+![CodeQL](https://github.com/bivashy/java-vk-bots-long-poll-api/workflows/CodeQL/badge.svg)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=yvasyliev_java-vk-bots-long-poll-api&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=yvasyliev_java-vk-bots-long-poll-api)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=yvasyliev_java-vk-bots-long-poll-api&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=yvasyliev_java-vk-bots-long-poll-api)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=yvasyliev_java-vk-bots-long-poll-api&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=yvasyliev_java-vk-bots-long-poll-api)
@@ -50,12 +50,12 @@ This library uses the next third-party dependencies:
 3. Add the library to your `Maven` project:
    ```xml
    <dependency>
-       <groupId>com.github.yvasyliev</groupId>
+       <groupId>io.github.bivashy</groupId>
        <artifactId>java-vk-bots-longpoll-api</artifactId>
        <version>VERSION</version>
    </dependency>
    ```
-   * Replace `VERSION` with [the latest release](https://github.com/yvasyliev/java-vk-bots-long-poll-api/releases).
+   * Replace `VERSION` with [the latest release](https://github.com/bivashy/java-vk-bots-long-poll-api/releases).
 4. Extend `LongPollBot` class and override necessary methods:
    ```java
    import api.longpoll.bots.LongPollBot;
@@ -122,7 +122,7 @@ public class HelloBot extends LongPollBot {
 
 ## More Examples
 
-Find more examples of bot usage [here](https://github.com/yvasyliev/java-vk-bots-long-poll-api-examples).
+Find more examples of bot usage [here](https://github.com/bivashy/java-vk-bots-long-poll-api-examples).
 
 ## Async execution
 
@@ -131,9 +131,11 @@ Each API method can be executed asynchronously:
 ```java
 import api.longpoll.bots.LongPollBot;
 import api.longpoll.bots.exceptions.VkApiException;
-import api.longpoll.bots.methods.impl.messages.Send;import api.longpoll.bots.model.events.messages.MessageNew;
+import api.longpoll.bots.methods.impl.messages.Send;
+import api.longpoll.bots.model.events.messages.MessageNew;
 import api.longpoll.bots.model.objects.basic.Message;
-import java.io.File;import java.util.concurrent.CompletableFuture;
+import java.io.File;
+import java.util.concurrent.CompletableFuture;
 
 public class HelloBot extends LongPollBot {
    @Override
