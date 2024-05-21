@@ -9,8 +9,7 @@
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=bivashy_java-vk-bots-long-poll-api&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=bivashy_java-vk-bots-long-poll-api)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bivashy_java-vk-bots-long-poll-api&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=bivashy_java-vk-bots-long-poll-api)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=bivashy_java-vk-bots-long-poll-api&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=bivashy_java-vk-bots-long-poll-api)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=bivashy_java-vk-bots-long-poll-api&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?
-id=bivashy_java-vk-bots-long-poll-api)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=bivashy_java-vk-bots-long-poll-api&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=bivashy_java-vk-bots-long-poll-api)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=bivashy_java-vk-bots-long-poll-api&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=bivashy_java-vk-bots-long-poll-api)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=bivashy_java-vk-bots-long-poll-api&metric=bugs)](https://sonarcloud.io/summary/new_code?id=bivashy_java-vk-bots-long-poll-api)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bivashy_java-vk-bots-long-poll-api&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=bivashy_java-vk-bots-long-poll-api)
