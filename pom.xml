@@ -6,7 +6,7 @@
     <groupId>io.github.bivashy</groupId>
     <artifactId>java-vk-bots-longpoll-api</artifactId>
     <packaging>jar</packaging>
-    <version>4.1.8</version>
+    <version>4.1.9</version>
     <name>Java VK Bots Long Poll API</name>
     <description>A Java library to create VK bots using Bots Long Poll API</description>
     <url>https://github.com/bivashy/java-vk-bots-long-poll-api</url>

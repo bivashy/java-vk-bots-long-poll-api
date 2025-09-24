@@ -114,6 +114,18 @@ public class Message implements Update.Object {
     @SerializedName("expire_ttl")
     private Integer expireTtl;
 
+    /**
+     * Referrer.
+     */
+    @SerializedName("ref")
+    private String ref;
+
+    /**
+     * Referrer source.
+     */
+    @SerializedName("ref_source")
+    private String ref_source;
+
     public Boolean hasText() {
         return text != null && !text.isEmpty();
     }
@@ -266,6 +278,22 @@ public class Message implements Update.Object {
         this.expireTtl = expireTtl;
     }
 
+    public String getRef() {
+        return ref;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+
+    public String getRefSource() {
+        return ref_source;
+    }
+
+    public void setRefSource(String ref_source) {
+        this.ref_source = ref_source;
+    }
+
     @Override
     public String toString() {
         return "Message{" +
@@ -285,6 +313,8 @@ public class Message implements Update.Object {
                 ", conversationMessageId=" + conversationMessageId +
                 ", cropped=" + cropped +
                 ", expireTtl=" + expireTtl +
+                ", ref=" + ref +
+                ", ref_source=" + ref_source +
                 '}';
     }
 
